@@ -1,0 +1,13 @@
+apply plugin: 'scala'
+apply plugin: 'application'
+
+mainClassName = "lod2014.Main"
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	compile 'org.scala-lang:scala-library:2.10.4'
+}
