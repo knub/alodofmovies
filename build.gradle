@@ -6,7 +6,6 @@ mainClassName = "lod2014.Main"
 
 repositories {
 	mavenCentral()
-	mavenLocal()
 }
 
 dependencies {
