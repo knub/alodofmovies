@@ -1,4 +1,4 @@
-package lod2014
+package lod2014group1
 
 import org.joda.time.DateTime
 

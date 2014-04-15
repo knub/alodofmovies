@@ -2,7 +2,7 @@ apply plugin: 'scala'
 apply plugin: 'application'
 apply plugin: 'eclipse'
 
-mainClassName = "lod2014.Main"
+mainClassName = "lod2014group1.Main"
 
 repositories {
 	mavenCentral()
