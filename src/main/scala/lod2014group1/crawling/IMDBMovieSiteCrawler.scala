@@ -1,8 +1,10 @@
 package lod2014group1.crawling
 
-class IMDBMovieSiteCrawler extends Crawler {
+import org.slf4s.Logging
+
+class IMDBMovieSiteCrawler extends Crawler with Logging {
 
 	def crawl: Unit = {
-		println("Hello World")
+		log.info("Start.")
 	}
 }

@@ -13,4 +13,7 @@ dependencies {
 	compile 'joda-time:joda-time:2.3'
 	compile 'org.joda:joda-convert:1.6'
 	compile 'org.jsoup:jsoup:1.7.3'
+	compile 'org.slf4s:slf4s-api_2.10:1.7.6'
+	compile 'ch.qos.logback:logback-classic:1.1.1'
+
 }

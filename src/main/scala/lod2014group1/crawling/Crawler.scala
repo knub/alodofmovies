@@ -3,6 +3,7 @@ package lod2014group1.crawling
 import java.nio.channels.{Channels, ReadableByteChannel}
 import java.io.FileOutputStream
 import java.net.URL
+import org.slf4s.Logging
 
 abstract class Crawler {
 
@@ -16,10 +17,11 @@ abstract class Crawler {
 	def crawl: Unit
 }
 
-object Crawler {
+object Crawler extends Logging {
 	def crawl: Unit = {
 		val crawlers: List[Crawler] = List(new lod2014group1.crawling.IMDBMovieSiteCrawler())
 
+		log.info("Start crawling.")
 		crawlers.foreach(crawler => crawler.crawl)
 	}
 }
