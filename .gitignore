@@ -3,14 +3,7 @@
 
 # sbt specific
 .gradle/
-.history/
 .lib/
-dist/*
-target/
-lib_managed/
-src_managed/
-project/boot/
-project/plugins/project/
 
 # Scala-IDE specific
 .scala_dependencies
@@ -19,3 +12,4 @@ project/plugins/project/
 alodofmovies.iml
 
 build/
+data/
