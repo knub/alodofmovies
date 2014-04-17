@@ -55,9 +55,13 @@ abstract class Crawler extends Logging {
 		file
 	};
 
+	/**
+	 * Generates a random time to wait for the next request (we do not want to ddos any website).
+	 * @return A time in ms.
+	 */
 	def getNewRandomWaitingTime(): Long = {
 		val d = Math.max(r.nextGaussian * 1 + 4, 3) * 1000
-		System.out.println(s"Waited $d");
+		log.debug(s"Waited $d");
 		d.toLong
 	}
 

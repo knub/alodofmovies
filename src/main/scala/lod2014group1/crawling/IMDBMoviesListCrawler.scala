@@ -12,11 +12,12 @@ class IMDBMoviesListCrawler extends Crawler with Logging {
 
 	def crawl: Unit = {
 		log.info("Start.")
-		val years = List(2012)
+		val years = List(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010)
 
 
-		var offset = 0;
+		var offset = MOVIES_PER_LIST;
 		years.foreach { year =>
+			System.out.println(year);
 			val numberOfMovies = downloadFirstFileToGetNumberOfMovies(year);
 			System.out.println(numberOfMovies);
 
@@ -54,6 +55,7 @@ class IMDBMoviesListCrawler extends Crawler with Logging {
 			.map(_.getValue.substring(0, 4).toInt)
 			.getOrElse(throw new RuntimeException("Could not find start param."))
 
-		new File(s"data/IMDBMoviesList/$year/IMDBMovies$start.html")
+		val prependedStart = "%04d".format(start)
+		new File(s"data/IMDBMoviesList/$year/IMDBMovies$prependedStart.html")
 	}
 }
