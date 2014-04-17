@@ -15,24 +15,24 @@ class IMDBMoviesListCrawler extends Crawler with Logging {
 		val years = List(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010)
 
 
-		var offset = MOVIES_PER_LIST;
 		years.foreach { year =>
+			var offset = MOVIES_PER_LIST;
 			System.out.println(year);
 			val numberOfMovies = downloadFirstFileToGetNumberOfMovies(year);
 			System.out.println(numberOfMovies);
 
 			while (offset < numberOfMovies) {
-				Thread.sleep(getNewRandomWaitingTime())
-				val file = getFile(DOWNLOAD_URL.format(offset, year))
+				val (_, needsDownloading) = getFile(DOWNLOAD_URL.format(offset, year))
+				if (needsDownloading)
+					Thread.sleep(getNewRandomWaitingTime())
 				offset += MOVIES_PER_LIST
-				System.out.println(s"$offset/$numberOfMovies");
+				System.out.println(s"$offset/$numberOfMovies")
 			}
 		}
-//		http://www.imdb.com/search/title?at=0&sort=alpha,asc&start=101&title_type=feature&year=2013,2013
 	}
 
 	def downloadFirstFileToGetNumberOfMovies(year: Int): Int = {
-		val file = getFile(DOWNLOAD_URL.format(0, year))
+		val (file, _) = getFile(DOWNLOAD_URL.format(0, year))
 
 		val doc = Jsoup.parse(file, null)
 		val innerHtml = doc.getElementById("left").html()

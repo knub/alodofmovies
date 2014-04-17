@@ -12,21 +12,21 @@ import java.util.Random
  */
 abstract class Crawler extends Logging {
 
-	val r = new Random();
+	val r = new Random()
 
 	/**
 	 * Gets the file for a given URL. If the file is not yet downloaded, this is done automatically.
 	 * @param urlString The URL of the file you want to process.
 	 * @return The file on the hard-drive.
 	 */
-	def getFile(urlString: String): File = {
+	def getFile(urlString: String): (File, Boolean) = {
 		val uriBuilder = new URIBuilder(urlString)
-		val file = determineFileName(uriBuilder);
+		val file = determineFileName(uriBuilder)
 		if (file.exists()) {
-			log.info(s"File ${file.getName} already exists.");
-			file;
+			log.info(s"File ${file.getName} already exists.")
+			(file, false)
 		} else {
-			downloadFile(uriBuilder.build().toURL, file)
+			(downloadFile(uriBuilder.build().toURL, file), true)
 		}
 	}
 
@@ -85,7 +85,7 @@ object Crawler extends Logging {
 	def crawl: Unit = {
 		val crawlers: List[Crawler] = List(new lod2014group1.crawling.IMDBMoviesListCrawler())
 
-		log.info("Start crawling.")
+		log.debug("Start crawling.")
 		crawlers.foreach(crawler => crawler.crawl)
 	}
 }
