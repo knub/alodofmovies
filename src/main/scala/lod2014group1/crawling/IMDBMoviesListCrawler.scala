@@ -12,7 +12,8 @@ class IMDBMoviesListCrawler extends Crawler with Logging {
 
 	def crawl: Unit = {
 		log.info("Start.")
-		val years = List(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010)
+		// first movie ever: 1894
+		val years = ((1894 to 2013) diff List(1895, 1896)).reverse
 
 
 		years.foreach { year =>
@@ -36,12 +37,11 @@ class IMDBMoviesListCrawler extends Crawler with Logging {
 
 		val doc = Jsoup.parse(file, null)
 		val innerHtml = doc.getElementById("left").html()
-		val numberOfMovies = "of ([\\d,]+) titles".r.findFirstMatchIn(innerHtml).map(_.group(1).replace(",", "").toInt)
+		val numberOfMovies = "([\\d,]+) titles".r.findFirstMatchIn(innerHtml).map(_.group(1).replace(",", "").toInt)
 		numberOfMovies match {
 			case Some(i) => i
 			case None => throw new RuntimeException("Could not determine number of movies.")
 		}
-
 	}
 
 	def determineFileName(uri: URIBuilder): File = {
