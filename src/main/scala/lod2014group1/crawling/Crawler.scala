@@ -83,7 +83,9 @@ object Crawler extends Logging {
 	 * Start crawling for all configured crawlers.
 	 */
 	def crawl: Unit = {
-		val crawlers: List[Crawler] = List(new lod2014group1.crawling.IMDBMoviesListCrawler())
+		val crawlers: List[Crawler] = List(
+//			new lod2014group1.crawling.IMDBMoviesListCrawler(),
+			new lod2014group1.crawling.IMDBMovieCrawler())
 
 		log.debug("Start crawling.")
 		crawlers.foreach(crawler => crawler.crawl)
