@@ -11,23 +11,22 @@ class IMDBMoviesListCrawler extends Crawler with Logging {
 	val MOVIES_PER_LIST = 50
 
 	def crawl: Unit = {
-		log.info("Start.")
+		log.debug("Start.")
 		// first movie ever: 1894
 		val years = ((1894 to 2013) diff List(1895, 1896)).reverse
 
 
 		years.foreach { year =>
-			var offset = MOVIES_PER_LIST;
-			System.out.println(year);
-			val numberOfMovies = downloadFirstFileToGetNumberOfMovies(year);
-			System.out.println(numberOfMovies);
+			var offset = MOVIES_PER_LIST
+			val numberOfMovies = downloadFirstFileToGetNumberOfMovies(year)
+			log.debug(s"Year: $year, $numberOfMovies movies.")
 
 			while (offset < numberOfMovies) {
 				val (_, needsDownloading) = getFile(DOWNLOAD_URL.format(offset, year))
 				if (needsDownloading)
 					Thread.sleep(getNewRandomWaitingTime())
 				offset += MOVIES_PER_LIST
-				System.out.println(s"$offset/$numberOfMovies")
+				log.debug(s"$offset/$numberOfMovies movies.")
 			}
 		}
 	}

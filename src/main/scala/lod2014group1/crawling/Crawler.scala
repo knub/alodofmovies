@@ -23,7 +23,7 @@ abstract class Crawler extends Logging {
 		val uriBuilder = new URIBuilder(urlString)
 		val file = determineFileName(uriBuilder)
 		if (file.exists()) {
-			log.info(s"File ${file.getName} already exists.")
+			log.debug(s"File ${file.getName} already exists.")
 			(file, false)
 		} else {
 			(downloadFile(uriBuilder.build().toURL, file), true)
