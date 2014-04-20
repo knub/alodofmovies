@@ -16,4 +16,5 @@ dependencies {
 	compile 'org.slf4s:slf4s-api_2.10:1.7.6'
 	compile 'ch.qos.logback:logback-classic:1.1.1'
 	compile 'org.apache.httpcomponents:httpclient:4.3.3'
+	compile 'commons-io:commons-io:2.4'
 }
