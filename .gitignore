@@ -1,5 +1,6 @@
 *.class
 *.log
+*.DS_Store
 
 src/main/scala/lod2014group1/I.scala
 
