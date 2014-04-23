@@ -1,6 +1,8 @@
 *.class
 *.log
 
+src/main/scala/lod2014group1/I.scala
+
 # sbt specific
 .gradle/
 .lib/
