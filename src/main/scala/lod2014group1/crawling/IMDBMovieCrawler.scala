@@ -53,7 +53,7 @@ class IMDBMovieCrawler extends Crawler {
 	def determineFileName(url: URIBuilder): File = {
 		val urlSplit = url.getPath.split('/')
 		val movieId  = urlSplit(2)
-		val pageType = urlSplit(3)
-		new File(s"${Config.DATA_FOLDER}/${IMDBMovieCrawler.BASE_DIR_NAME}/$movieId/$pageType.html")
+		val pageType = if (urlSplit.length > 3) urlSplit(3) + ".html" else "main.html"
+		new File(s"${Config.DATA_FOLDER}/${IMDBMovieCrawler.BASE_DIR_NAME}/$movieId/$pageType")
 	}
 }
