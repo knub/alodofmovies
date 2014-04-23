@@ -20,7 +20,7 @@ class IMDBMovieCrawler extends Crawler {
 		// null means no filtering, true means searching recursively
 		val movieLists = FileUtils.listFiles(moviesListDir, null, true).toList.sorted.reverse
 
-		movieLists.take(100).foreach { movieList =>
+		movieLists.foreach { movieList =>
 			val doc = Jsoup.parse(movieList, null)
 			log.info(movieList.toString)
 

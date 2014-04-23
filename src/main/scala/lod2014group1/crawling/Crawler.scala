@@ -49,7 +49,7 @@ abstract class Crawler extends Logging {
 		// download file according to http://stackoverflow.com/questions/921262
 		val inputStream = connection.getInputStream
 		val channel = Channels.newChannel(inputStream)
-		val fos = new FileOutputStream(file);
+		val fos = new FileOutputStream(file)
 		fos.getChannel().transferFrom(channel, 0, Long.MaxValue)
 		
 		file
@@ -60,9 +60,10 @@ abstract class Crawler extends Logging {
 	 * @return A time in ms.
 	 */
 	def getNewRandomWaitingTime(): Long = {
-		val d = Math.max(r.nextGaussian * 1 + 4, 3) * 1000
+		val d = Math.max(r.nextGaussian * 1 + 0.5, 0) * 1000
 		log.debug(s"Waited $d");
 		d.toLong
+		0
 	}
 
 	/**
