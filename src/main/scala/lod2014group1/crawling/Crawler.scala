@@ -47,13 +47,28 @@ abstract class Crawler extends Logging {
 		connection.addRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36")
 
 		// download file according to http://stackoverflow.com/questions/921262
-		val inputStream = connection.getInputStream
-		val channel = Channels.newChannel(inputStream)
-		val fos = new FileOutputStream(file)
-		fos.getChannel().transferFrom(channel, 0, Long.MaxValue)
-		
-		file
-	};
+		retry(10) {
+			val inputStream = connection.getInputStream
+			val channel = Channels.newChannel(inputStream)
+			val fos = new FileOutputStream(file)
+			fos.getChannel().transferFrom(channel, 0, Long.MaxValue)
+			file
+		}
+	}
+
+	private def retry[T](n: Int)(fn: => T): T = {
+		try {
+			fn
+		} catch {
+			case e =>
+				if (n > 1) {
+					Thread.sleep(1000 * 60 * 10)
+					log.info("Waiting for better times.")
+					retry(n - 1)(fn)
+				}
+				else throw e
+		}
+	}
 
 	/**
 	 * Generates a random time to wait for the next request (we do not want to ddos any website).
