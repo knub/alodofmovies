@@ -4,6 +4,8 @@ import org.apache.http.client.utils.URIBuilder
 import java.io.File
 import org.apache.commons.io.FileUtils
 import lod2014group1.Config
+import lod2014group1.Config.Person._
+import lod2014group1.I
 import scala.collection.JavaConversions._
 import org.jsoup.Jsoup
 
@@ -32,8 +34,14 @@ class IMDBMovieCrawler extends Crawler {
 				if (!(linkText matches """/title/tt\d{7}/"""))
 					log.error(s"Link '$linkText' does not have the required format.")
 
-
-				val (_, needsDownloading) = getFile(IMDBMovieCrawler.DOWNLOAD_URL.format(linkText, "fullcredits"))
+				val subPage = I.am match {
+					case Dominik => ""
+					case Rice    => "xxx"
+					case Stefan  => "fullcredits"
+					case Tanja   => "xxx"
+					case Tim     => "xxx"
+				}
+				val (_, needsDownloading) = getFile(IMDBMovieCrawler.DOWNLOAD_URL.format(linkText, subPage))
 				if (needsDownloading)
 					Thread.sleep(getNewRandomWaitingTime())
 
