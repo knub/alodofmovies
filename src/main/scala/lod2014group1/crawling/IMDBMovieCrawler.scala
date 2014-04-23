@@ -36,10 +36,10 @@ class IMDBMovieCrawler extends Crawler {
 
 				val subPage = I.am match {
 					case Dominik => ""
-					case Rice    => "xxx"
+					case Rice    => "awards"
 					case Stefan  => "fullcredits"
-					case Tanja   => "xxx"
-					case Tim     => "xxx"
+					case Tanja   => "locations"
+					case Tim     => "releaseinfo"
 				}
 				val (_, needsDownloading) = getFile(IMDBMovieCrawler.DOWNLOAD_URL.format(linkText, subPage))
 				if (needsDownloading)
