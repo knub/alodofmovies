@@ -12,7 +12,10 @@ object Main extends App with Logging {
 		if (I.am == Person.Stefan) {
 			val triplifier = new Triplifier
 			triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
-		} else {
+		}	else if (I.am == Person.Tanja) {
+      val triplifier = new Triplifier
+      triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html"))
+    } else {
 			Crawler.crawl
 		}
 		log.debug("Finished.")
