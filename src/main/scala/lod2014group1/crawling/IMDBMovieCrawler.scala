@@ -37,7 +37,7 @@ class IMDBMovieCrawler extends Crawler {
 				val subPage = I.am match {
 					case Dominik => ""
 					case Rice    => "awards"
-					case Stefan  => "fullcredits"
+					case Stefan  => "keywords"
 					case Tanja   => "locations"
 					case Tim     => "releaseinfo"
 				}
