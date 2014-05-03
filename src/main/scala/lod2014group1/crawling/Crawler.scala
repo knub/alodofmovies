@@ -60,7 +60,7 @@ abstract class Crawler extends Logging {
 		try {
 			fn
 		} catch {
-			case e =>
+			case e: Throwable =>
 				if (n > 1) {
 					Thread.sleep(1000 * 60 * 10)
 					log.info("Waiting for better times.")

@@ -1,15 +1,20 @@
 package lod2014group1
-
-import org.joda.time.DateTime
 import lod2014group1.crawling.Crawler
-import java.io.File
 import org.slf4s.Logging
+import lod2014group1.Config.Person
+import lod2014group1.triplification.Triplifier
+import java.io.File
 
 object Main extends App with Logging {
 
 	override def main(args: Array[String]): Unit = {
-		log.info("Started.")
-		Crawler.crawl;
-		log.info("Finished.")
+		log.debug("Started.")
+		if (I.am == Person.Stefan) {
+			val triplifier = new Triplifier
+			triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
+		} else {
+			Crawler.crawl
+		}
+		log.debug("Finished.")
 	}
 }
