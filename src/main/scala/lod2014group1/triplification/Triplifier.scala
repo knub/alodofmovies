@@ -10,6 +10,8 @@ class Triplifier {
 			new IMDBCastTriplifier().triplify(f)
     else if (f.getName == "locations.html")
       new IMDBLocationTriplifier().triplify(f)
+    else if (f.getName == "keywords.html")
+      new IMDBKeywordTriplifier().triplify(f)
 		else
 			List()
 	}
