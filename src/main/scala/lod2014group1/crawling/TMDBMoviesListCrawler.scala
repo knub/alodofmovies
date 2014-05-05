@@ -40,8 +40,7 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 		for (id <- getHighestParsed to latest_id) {
 			log.info(s"$id")
 			val (_, needsDownloading) = getFile(TMDBMoviesListCrawler.MOVIE_URL.format(id.toString))
-			if (needsDownloading)
-				Thread.sleep(getNewRandomWaitingTime() * 2)
+			Thread.sleep(500)
 		}
 
 	}
@@ -82,6 +81,7 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 			val bw = new BufferedWriter(new FileWriter(file))
 			bw.write(response.asString)
 			bw.close()
+			log.info(s"$path written")
 		} else if (responseCode != 404) {
 			log.info(s"$path had response code $responseCode")
 		}
