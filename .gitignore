@@ -18,3 +18,5 @@ build/
 data/
 data
 /bin
+
+*.api-key
