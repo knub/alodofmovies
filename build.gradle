@@ -4,10 +4,15 @@ apply plugin: 'eclipse'
 
 mainClassName = "lod2014group1.Main"
 
-task crawl(type: JavaExec, dependsOn: [build]) {
+task crawlimdb(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
 	classpath = sourceSets.main.runtimeClasspath
-	args = ['crawl']
+	args = ['crawl-imdb']
+}
+task crawltmdb(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['crawl-tmdb']
 }
 task triplify(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
@@ -33,6 +38,8 @@ dependencies {
 	compile 'ch.qos.logback:logback-classic:1.1.1'
 	compile 'org.apache.httpcomponents:httpclient:4.3.3'
 	compile 'commons-io:commons-io:2.4'
+	compile 'org.scalaj:scalaj-http_2.10:0.3.14'
+	compile 'net.liftweb:lift-json_2.10:2.6-M3'
 	compile 'com.google.apis:google-api-services-freebase:v1-rev54-1.18.0-rc'
 	//compile 'org.apache.jena:jena:2.11.1'
 	//compile 'org.apache.jena:jena-arq:2.11.1'

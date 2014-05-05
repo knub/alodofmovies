@@ -17,8 +17,11 @@ object Main extends App with Logging {
 			triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
 			triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
 			//triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html"))
-		} else if (args contains "crawl") {
+		} else if (args contains "crawl-imdb") {
 			Crawler.crawl
+		} else if (args contains "crawl-tmdb") {
+    		val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
+    		tmdb.crawl
 		} else if (args contains "freebase") {
 		  val freebase = new FreebaseAPI()
 		  freebase.getAllNotImdbMovies
