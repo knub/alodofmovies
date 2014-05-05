@@ -25,6 +25,7 @@ object Main extends App with Logging {
 		} else if (args contains "freebase") {
 		  val freebase = new FreebaseAPI()
 		  freebase.getAllNotImdbMovies
+		  freebase.getFreebaseFilmsWithIMDB
 		  //freebase.getExampleRdf
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")

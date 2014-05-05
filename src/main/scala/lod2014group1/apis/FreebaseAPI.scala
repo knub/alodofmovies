@@ -9,11 +9,16 @@ import java.io.File
 import java.io.FileInputStream
 import org.apache.commons.io.IOUtils
 import lod2014group1.Config
+import lod2014group1.crawling.IMDBMovieCrawler
+import net.liftweb.json.JsonAST.JArray
+
+case class FreebaseFilm (name : String, imdb_id: String)
+case class Result (result: List[FreebaseFilm])
 
 
 class FreebaseAPI extends App{
-  
-  val API_KEY = IOUtils.toString(new FileInputStream(Config.FREEBASE_API_KEY))
+
+	val API_KEY = IOUtils.toString(new FileInputStream(Config.FREEBASE_API_KEY))
 
   def requestMQL(mqlQuery: String) : JValue = {
 
@@ -30,9 +35,34 @@ class FreebaseAPI extends App{
   def getAllNotImdbMovies() = {
 	  val query = "[{\"type\": \"/film/film\", \"imdb_id\": [{\"type\": null, \"optional\": \"forbidden\"}],\"return\": \"count\"}]"
 	  val json = requestMQL(query)
-	  print (json)
+	  println (json)
+  }
+  
+  def getImdbQuery(imdbId: String): String = {
+  	"""[{"type": "/film/film", "name": null, "imdb_id": "%s"}]""".format(imdbId)
+  }
+  
+  def getFreebaseFilmsWithIMDB={
+  	implicit val formats = net.liftweb.json.DefaultFormats
+  	
+  	getImdbdsFromDirectories.take(10).foreach(imdbId => {
+//  		println(imdbId)
+//  		val json = requestMQL(getImdbQuery(imdbId))
+//  		println(json)
+//  		val filmJson = Result(for {
+//  			JArray(films) <- json \ "result"
+//  			film <- films
+//  		} yield film.extract[FreebaseFilm])
+//  		
+//  		println(filmJson)
+ 		
+ 		val films = requestMQL(getImdbQuery(imdbId)).extract[Result]
+ 		println(films)
+  	})
   }
 
-  
+  def getImdbdsFromDirectories: Array[String] = {
+  	new File(s"${Config.DATA_FOLDER}/${IMDBMovieCrawler.BASE_DIR_NAME}").list().filterNot(name => name.contains("."))
+  }
   
 }
