@@ -1,14 +1,14 @@
 package lod2014group1.triplification
 
-import lod2014group1.rdf.RDFTriple
+import lod2014group1.rdf.RdfTriple
 import java.io.File
 import org.jsoup.Jsoup
 import scala.collection.JavaConversions._
 import org.jsoup.nodes.Element
 
-class IMDBCastTriplifier {
+class ImdbCastTriplifier {
 
-	def triplify(f: File): List[RDFTriple] = {
+	def triplify(f: File): List[RdfTriple] = {
 		val doc = Jsoup.parse(f, null)
 
 		val tables = doc.select("#fullcredits_content table")
@@ -20,7 +20,7 @@ class IMDBCastTriplifier {
 		List()
 	}
 
-	def triplifyCast(castTable: Element): List[RDFTriple] = {
+	def triplifyCast(castTable: Element): List[RdfTriple] = {
 		if (castTable.attr("class") != "cast_list")
 			throw new RuntimeException("This is not a cast list.")
 

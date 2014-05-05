@@ -1,3 +1,3 @@
 package lod2014group1.rdf
 
-class RDFObject { }
+class RdfObject { }

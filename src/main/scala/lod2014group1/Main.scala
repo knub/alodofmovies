@@ -4,9 +4,9 @@ import org.slf4s.Logging
 import lod2014group1.apis.FreebaseAPI
 import lod2014group1.triplification.Triplifier
 import java.io.File
-import lod2014group1.rdf.RDFResource
+import lod2014group1.rdf.RdfResource
 import org.joda.time.DateTime
-import lod2014group1.rdf.RDFMovieResource.fromRDFResource
+import lod2014group1.rdf.RdfMovieResource.fromRdfResource
 
 object Main extends App with Logging {
 
@@ -29,7 +29,8 @@ object Main extends App with Logging {
 		  //freebase.getExampleRdf
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
-			val forrestGump = new RDFResource("http://dbpedia.org/resource/Forrest_Gump")
+			val forrestGump = new RdfResource("http://dbpedia.org/resource/Forrest_Gump")
+//			val rdfTriple = forrestGump releasedOn new DateTime(1994, 7, 6, 0, 0, 0)
 			val rdfTriple = forrestGump releasedOn new DateTime(1994, 7, 6, 0, 0, 0)
 			System.out.println(rdfTriple);
 		}

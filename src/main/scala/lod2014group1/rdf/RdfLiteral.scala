@@ -3,11 +3,11 @@ package lod2014group1.rdf
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 
-abstract class RDFLiteral extends RDFObject {}
+abstract class RdfLiteral extends RdfObject {}
 
-case class RDFInteger(lit: Integer) extends RDFLiteral
-case class RDFURL(lit: Integer) extends RDFLiteral
-case class RDFDate(lit: DateTime) extends RDFLiteral {
+case class RdfInteger(lit: Integer) extends RdfLiteral
+case class RdfUrl(lit: Integer) extends RdfLiteral
+case class RdfDate(lit: DateTime) extends RdfLiteral {
 	override def toString(): String = {
 		val format = DateTimeFormat.forPattern("y-M-d")
 		val formatString = format.print(lit)

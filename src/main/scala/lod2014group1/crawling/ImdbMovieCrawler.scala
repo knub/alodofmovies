@@ -9,16 +9,16 @@ import lod2014group1.I
 import scala.collection.JavaConversions._
 import org.jsoup.Jsoup
 
-object IMDBMovieCrawler {
+object ImdbMovieCrawler {
 	val DOWNLOAD_URL  =  "http://www.imdb.com%s%s"
 	val BASE_DIR_NAME = "IMDBMovie"
 }
 
-class IMDBMovieCrawler extends Crawler {
+class ImdbMovieCrawler extends Crawler {
 
 	def crawl: Unit = {
-		log.info(IMDBMoviesListCrawler.BASE_DIR_NAME)
-		val moviesListDir = new File(s"${Config.DATA_FOLDER}/${IMDBMoviesListCrawler.BASE_DIR_NAME}")
+		log.info(ImdbMoviesListCrawler.BASE_DIR_NAME)
+		val moviesListDir = new File(s"${Config.DATA_FOLDER}/${ImdbMoviesListCrawler.BASE_DIR_NAME}")
 		// null means no filtering, true means searching recursively
 		val movieLists = FileUtils.listFiles(moviesListDir, null, true).toList.sorted.reverse
 
@@ -41,7 +41,7 @@ class IMDBMovieCrawler extends Crawler {
 					case Tanja   => "keywords"
 					case Tim     => "releaseinfo"
 				}
-				val (_, needsDownloading) = getFile(IMDBMovieCrawler.DOWNLOAD_URL.format(linkText, subPage))
+				val (_, needsDownloading) = getFile(ImdbMovieCrawler.DOWNLOAD_URL.format(linkText, subPage))
 				if (needsDownloading)
 					Thread.sleep(getNewRandomWaitingTime())
 
@@ -54,6 +54,6 @@ class IMDBMovieCrawler extends Crawler {
 		val urlSplit = url.getPath.split('/')
 		val movieId  = urlSplit(2)
 		val pageType = if (urlSplit.length > 3) urlSplit(3) + ".html" else "main.html"
-		new File(s"${Config.DATA_FOLDER}/${IMDBMovieCrawler.BASE_DIR_NAME}/$movieId/$pageType")
+		new File(s"${Config.DATA_FOLDER}/${ImdbMovieCrawler.BASE_DIR_NAME}/$movieId/$pageType")
 	}
 }
