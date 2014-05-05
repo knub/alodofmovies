@@ -6,7 +6,9 @@ case class RdfResource(val uri: String) extends RdfObject {
 	}
 
 	override def toString(): String = {
-		"<" + uri + ">"
+		if (uri startsWith "http")
+			"<" + uri + ">"
+		uri
 	}
 }
 

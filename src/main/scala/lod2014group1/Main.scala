@@ -6,7 +6,7 @@ import lod2014group1.triplification.Triplifier
 import java.io.File
 import lod2014group1.rdf.RdfResource
 import org.joda.time.DateTime
-import lod2014group1.rdf.RdfMovieResource.fromRdfResource
+import lod2014group1.rdf.RdfMovieResource._
 
 object Main extends App with Logging {
 
@@ -31,8 +31,10 @@ object Main extends App with Logging {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 			val forrestGump = new RdfResource("http://dbpedia.org/resource/Forrest_Gump")
 //			val rdfTriple = forrestGump releasedOn new DateTime(1994, 7, 6, 0, 0, 0)
-			val rdfTriple = forrestGump releasedOn new DateTime(1994, 7, 6, 0, 0, 0)
-			System.out.println(rdfTriple);
+			val rdfTriple1 = forrestGump releasedOn new DateTime(1994, 7, 6, 0, 0, 0)
+      val rdfTriple2 = forrestGump isA film
+			System.out.println(rdfTriple1);
+      System.out.println(rdfTriple2);
 		}
 		log.debug("Finished.")
 	}
