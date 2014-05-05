@@ -4,6 +4,27 @@ apply plugin: 'eclipse'
 
 mainClassName = "lod2014group1.Main"
 
+task crawlimdb(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['crawl-imdb']
+}
+task crawltmdb(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['crawl-tmdb']
+}
+task triplify(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['triplify']
+}
+task freebase(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['freebase']
+}
+
 repositories {
 	mavenCentral()
 }
@@ -19,4 +40,7 @@ dependencies {
 	compile 'commons-io:commons-io:2.4'
 	compile 'org.scalaj:scalaj-http_2.10:0.3.14'
 	compile 'net.liftweb:lift-json_2.10:2.6-M3'
+	compile 'com.google.apis:google-api-services-freebase:v1-rev54-1.18.0-rc'
+	//compile 'org.apache.jena:jena:2.11.1'
+	//compile 'org.apache.jena:jena-arq:2.11.1'
 }
