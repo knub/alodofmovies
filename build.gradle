@@ -4,6 +4,17 @@ apply plugin: 'eclipse'
 
 mainClassName = "lod2014group1.Main"
 
+task crawl(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['crawl']
+}
+task triplify(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['triplify']
+}
+
 repositories {
 	mavenCentral()
 }

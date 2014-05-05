@@ -1,0 +1,23 @@
+apply plugin: 'scala'
+apply plugin: 'war'
+apply from: 'gretty9.plugin'
+
+gretty {
+	port = 9009
+	scanInterval = 2
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.scalatra:scalatra_2.10:2.3.0.M1'
+	compile 'org.eclipse.jetty:jetty-webapp:9.2.0.M0'
+	compile 'org.eclipse.jetty:jetty-servlet:9.2.0.M0'
+	compile 'org.eclipse.jetty:jetty-servlets:9.2.0.M0'
+	compile 'org.eclipse.jetty:jetty-server:9.2.0.M0'
+	compile 'org.scalatra:scalatra-scalate_2.10:2.3.0.M1'
+	compile 'javax.servlet:javax.servlet-api:3.0.1'
+	runtime 'ch.qos.logback:logback-classic:1.0.13'
+}
