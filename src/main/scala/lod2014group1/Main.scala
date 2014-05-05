@@ -2,10 +2,11 @@ package lod2014group1
 import lod2014group1.crawling.Crawler
 import org.slf4s.Logging
 import lod2014group1.apis.FreebaseAPI
-import lod2014group1.Config.Person
 import lod2014group1.triplification.Triplifier
 import java.io.File
-import scala.collection.JavaConversions._
+import lod2014group1.rdf.RDFResource
+import org.joda.time.DateTime
+import lod2014group1.rdf.RDFMovieResource.fromRDFResource
 
 object Main extends App with Logging {
 
@@ -28,6 +29,9 @@ object Main extends App with Logging {
 		  //freebase.getExampleRdf
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
+			val forrestGump = new RDFResource("http://dbpedia.org/resource/Forrest_Gump")
+			val rdfTriple = forrestGump releasedOn new DateTime(1994, 7, 6, 0, 0, 0)
+			System.out.println(rdfTriple);
 		}
 		log.debug("Finished.")
 	}
