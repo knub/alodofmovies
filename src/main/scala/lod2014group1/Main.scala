@@ -32,9 +32,9 @@ object Main extends App with Logging {
 			val forrestGump = new RdfResource("http://dbpedia.org/resource/Forrest_Gump")
 //			val rdfTriple = forrestGump releasedOn new DateTime(1994, 7, 6, 0, 0, 0)
 			val rdfTriple1 = forrestGump releasedOn new DateTime(1994, 7, 6, 0, 0, 0)
-      val rdfTriple2 = forrestGump isA film
+			val rdfTriple2 = forrestGump isA film
 			System.out.println(rdfTriple1);
-      System.out.println(rdfTriple2);
+			System.out.println(rdfTriple2);
 		}
 		log.debug("Finished.")
 	}
