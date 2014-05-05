@@ -15,16 +15,16 @@ object TMDBMoviesListCrawler {
 	implicit val formats = net.liftweb.json.DefaultFormats
 	val TMDB_API_KEY = IOUtils.toString(new FileInputStream(Config.TMDB_API_KEY))
 	val MOVIE_URL  =  "api.themoviedb.org/3/movie/%s"
-	lazy val LATEST_ID = Http("api.themoviedb.org/3/movie/latest").options(
+	lazy val LATEST_ID = Http("https://api.themoviedb.org/3/movie/latest").options(
 		HttpOptions.connTimeout(5000),
 		HttpOptions.readTimeout(5000)).param("api_key", TMDB_API_KEY) { inputStream =>
 			JsonParser.parse(new InputStreamReader(inputStream))
 		}.extract[TmdbJsonResponse]
 
 
-	val RANDOM_ID = Http("api.themoviedb.org/3/movie/1").options(
+	val RANDOM_ID = Http("https://api.themoviedb.org/3/movie/1").options(
 		HttpOptions.connTimeout(5000),
-		HttpOptions.readTimeout(5000)).param("api_key", Config.TMDB_API).responseCode
+		HttpOptions.readTimeout(5000)).param("api_key", TMDB_API_KEY).responseCode
 
 	val BASE_DIR_NAME = "TMDBMoviesList"
 
@@ -41,7 +41,7 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 	}
 
 	def determineFileName(uri: URIBuilder): File = {
-		val urlSplit = url.getPath.split('/')
+		val urlSplit = uri.getPath.split('/')
 		val queryType  = urlSplit(2)
 		val id  = urlSplit(3)
 
