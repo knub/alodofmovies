@@ -1,8 +1,15 @@
 apply plugin: 'scala'
 apply plugin: 'application'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 
 mainClassName = "lod2014group1.Main"
+
+idea {
+	module {
+		excludeDirs += file('data')
+	}
+}
 
 task crawlimdb(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
@@ -24,6 +31,11 @@ task freebase(type: JavaExec, dependsOn: [build]) {
 	classpath = sourceSets.main.runtimeClasspath
 	args = ['freebase']
 }
+task jobs(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.job_managing.JobManager'
+	classpath = sourceSets.main.runtimeClasspath
+	args = []
+}
 
 repositories {
 	mavenCentral()
@@ -41,6 +53,8 @@ dependencies {
 	compile 'org.scalaj:scalaj-http_2.10:0.3.14'
 	compile 'net.liftweb:lift-json_2.10:2.6-M3'
 	compile 'com.google.apis:google-api-services-freebase:v1-rev54-1.18.0-rc'
+	compile 'com.typesafe.slick:slick_2.10:2.0.1'
+	compile 'org.xerial:sqlite-jdbc:3.7.2'
 	//compile 'org.apache.jena:jena:2.11.1'
 	//compile 'org.apache.jena:jena-arq:2.11.1'
 }
