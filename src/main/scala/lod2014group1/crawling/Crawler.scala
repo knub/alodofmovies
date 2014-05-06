@@ -47,13 +47,11 @@ abstract class Crawler extends Logging {
 		connection.addRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36")
 
 		// download file according to http://stackoverflow.com/questions/921262
-		retry(10) {
-			val inputStream = connection.getInputStream
-			val channel = Channels.newChannel(inputStream)
-			val fos = new FileOutputStream(file)
-			fos.getChannel().transferFrom(channel, 0, Long.MaxValue)
-			file
-		}
+		val inputStream = connection.getInputStream
+		val channel = Channels.newChannel(inputStream)
+		val fos = new FileOutputStream(file)
+		fos.getChannel().transferFrom(channel, 0, Long.MaxValue)
+		file
 	}
 
 	private def retry[T](n: Int)(fn: => T): T = {
