@@ -35,9 +35,11 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 
 	def crawl: Unit = {
 		val latest_id = TMDBMoviesListCrawler.LATEST_ID.id
+		val latest_parsed = getHighestParsed
+		log.info(s"Latest parsed: $latest_parsed")
 		log.info(s"Latest id is: $latest_id")
 
-		for (id <- getHighestParsed to latest_id) {
+		for (id <- latest_parsed to latest_id) {
 			log.info(s"$id")
 			val (_, needsDownloading) = getFile(TMDBMoviesListCrawler.MOVIE_URL.format(id.toString))
 			Thread.sleep(500)
@@ -56,7 +58,7 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 
 	def getHighestParsed() = {
 		val moviesListDir = new File(s"${Config.DATA_FOLDER}/${TMDBMoviesListCrawler.BASE_DIR_NAME}/movie/")
-		// null means no filtering, true means searching recursively
+		// get list of id files
 		val moviesList = moviesListDir.list().filter(isAllDigits).map(x => x.toLong)
 		moviesList.sorted.reverse.head
 	}
