@@ -1,8 +1,15 @@
 apply plugin: 'scala'
 apply plugin: 'application'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 
 mainClassName = "lod2014group1.Main"
+
+idea {
+	module {
+		excludeDirs += file('data')
+	}
+}
 
 task crawlimdb(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
