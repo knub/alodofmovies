@@ -15,4 +15,8 @@ case class RdfDate(lit: DateTime) extends RdfLiteral {
 		'"' + formatString + '"' + "^^<http://www.w3.org/2001/XMLSchema#date>"
 	}
 }
-case class RdfString(str: String) extends RdfLiteral
+case class RdfString(lit: String) extends RdfLiteral {
+	override def toString(): String = {
+		'"' + lit + '"'
+	}
+}

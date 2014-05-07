@@ -16,3 +16,15 @@ class Triplifier {
 			List()
 	}
 }
+
+object Triplifier {
+	def go() {
+		val triplifier = new Triplifier
+		val triples = triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
+		triples.take(10).foreach(println)
+
+		//triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
+		//triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html"))
+
+	}
+}
