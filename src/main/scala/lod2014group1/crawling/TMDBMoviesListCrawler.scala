@@ -28,7 +28,7 @@ object TMDBMoviesListCrawler {
 
 	def movieRequest(url: String): Http.Request = {
 		Http(url).options(HttpOptions.connTimeout(5000),
-			HttpOptions.readTimeout(10000)).params("api_key" -> TMDB_API_KEY, "append_to_response" -> ADDITIONAL_INFO)
+			HttpOptions.readTimeout(10000)).header("retry-after", "10").params("api_key" -> TMDB_API_KEY, "append_to_response" -> ADDITIONAL_INFO)
 	}
 
 }
