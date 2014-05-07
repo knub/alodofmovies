@@ -22,10 +22,17 @@ class ImdbCastTriplifier {
 		val castTable = tables.select("table.cast_list")
 		if (castTable.size() > 1)
 			throw new RuntimeException("More than one cast list!")
-		if (castTable.isEmpty)
+
+		val actorTriples = if (castTable.isEmpty)
 			List()
-		else
+		else {
 			castTable.select("td a span").toList.flatMap(handler)
+//			:::
+//			castTable.select("td.character a").toList.map {
+//				_.attr("href").replaceAll("\\D", "").toInt
+//			}
+		}
+		actorTriples
 	}
 
 	def triplifyCast(castTable: Element): List[RdfTriple] = {
