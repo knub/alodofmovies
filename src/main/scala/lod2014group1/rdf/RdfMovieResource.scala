@@ -48,20 +48,20 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasGenre(genre: String): RdfTriple = buildTriple(RdfResource("dbpprop:genre"), RdfString(genre))
 
-	def shotInLanguage(language: String): RdfTriple = buildTriple(RdfResource("dbpprop:language"), RdfInteger(language))
+	def shotInLanguage(language: String): RdfTriple = buildTriple(RdfResource("dbpprop:language"), RdfString(language))
 
-	def lasts(runtime: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:runtime"), RdfString(runtime))
+	def lasts(runtime: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:runtime"), RdfInteger(runtime))
 
 	def releasedInCountry(country: String): RdfTriple = buildTriple(RdfResource("dbpprop:country"), RdfString(country))
 
-	def hasRating(rating: Integer): RdfTriple = {
+	def hasRating(rating: String): RdfTriple = {
 		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), rating(country))
+		this.buildTriple(RdfResource("somerdfname"), RdfString(rating))
 	}
 
 	def shotIn(blackAndWhite: RdfResource): RdfTriple = buildTriple(RdfResource("dcterms:subject"), blackAndWhite)
 
-	def isReleased(released: Boolean): RdfTriple = {
+	def isReleased(released: String): RdfTriple = {
 		log.warn("Predicate not set yet.")
 		this.buildTriple(RdfResource("somerdfname"), RdfString(released))
 	}
