@@ -1,6 +1,8 @@
 package lod2014group1.rdf
 
 import org.slf4s.Logging
+import org.joda.time.DateTime
+
 
 object RdfActorResource {
 	implicit def fromRdfResource(resource: RdfResource): RdfActorResource = {
@@ -14,9 +16,9 @@ class RdfActorResource(resource: String) extends RdfResource(resource) with Logg
 
 	def born(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthDate"), RdfDate(date))
 
-	def hasBirthName(name: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthName"), RdfDate(date))
+	def hasBirthName(name: String): RdfTriple = buildTriple(RdfResource("dbpprop:birthName"), RdfString(name))
 
-	def hasBirthPlace(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthPlace"), RdfDate(date))
+	def hasBirthPlace(place: String): RdfTriple = buildTriple(RdfResource("dbpprop:birthPlace"), RdfString(place))
 
 }
 
