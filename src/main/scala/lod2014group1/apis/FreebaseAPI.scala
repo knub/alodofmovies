@@ -9,10 +9,12 @@ import java.io.File
 import java.io.FileInputStream
 import org.apache.commons.io.IOUtils
 import lod2014group1.Config
-import lod2014group1.crawling.IMDBMovieCrawler
+import lod2014group1.crawling.ImdbMovieCrawler
 import net.liftweb.json.JsonAST.JArray
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfResource
 
-case class FreebaseFilm (name : String, imdb_id: String)
+case class FreebaseFilm (name : String, imdb_id: String, id: String)
 case class Result (result: List[FreebaseFilm])
 
 
@@ -38,31 +40,26 @@ class FreebaseAPI extends App{
 	  println (json)
   }
   
-  def getImdbQuery(imdbId: String): String = {
-  	"""[{"type": "/film/film", "name": null, "imdb_id": "%s"}]""".format(imdbId)
+  def getImdbQuery(imdbIds: List[String]): String = {
+  	val imdbIdsWithQuotes = imdbIds.map(id => "\"" + id + "\"")
+  	val imdbString = imdbIdsWithQuotes.mkString(",")
+  	
+  	
+  	"""[{"type": "/film/film", "name": null, "imdb_id|=": [%s],"imdb_id": null, "id" : null }]""".format(imdbString)
   }
   
-  def getFreebaseFilmsWithIMDB={
+  def getFreebaseFilmsWithIMDB: Unit = {
   	implicit val formats = net.liftweb.json.DefaultFormats
   	
-  	getImdbdsFromDirectories.take(10).foreach(imdbId => {
-//  		println(imdbId)
-//  		val json = requestMQL(getImdbQuery(imdbId))
-//  		println(json)
-//  		val filmJson = Result(for {
-//  			JArray(films) <- json \ "result"
-//  			film <- films
-//  		} yield film.extract[FreebaseFilm])
-//  		
-//  		println(filmJson)
- 		
- 		val films = requestMQL(getImdbQuery(imdbId)).extract[Result]
- 		println(films)
-  	})
+  	getImdbdsFromDirectories.toList.grouped(5).take(2).foreach{imdbIds =>	
+ 		val films = requestMQL(getImdbQuery(imdbIds)).extract[Result]
+ 		films.result.foreach(film => println(new RdfResource("http://www.freebase.com" + film.id).sameAs("http://www.imdb.com/title/" + film.imdb_id)) )
+ 		//println(films)
+  	}
   }
 
   def getImdbdsFromDirectories: Array[String] = {
-  	new File(s"${Config.DATA_FOLDER}/${IMDBMovieCrawler.BASE_DIR_NAME}").list().filterNot(name => name.contains("."))
+  	new File(s"${Config.DATA_FOLDER}/${ImdbMovieCrawler.BASE_DIR_NAME}").list().filterNot(name => name.contains("."))
   }
   
 }
