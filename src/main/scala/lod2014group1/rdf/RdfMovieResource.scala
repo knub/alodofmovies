@@ -33,205 +33,116 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 		PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 	*/
-	val titleResource = RdfResource("dbpprop:name")
-	val alternativeTitleResource = RdfResource("dbpprop:alternativeNames")
-	//val partOfResource = RdfResource("")
-	val yearResource = RdfResource("dbpprop:years")
-	val genreResource = RdfResource("dbpprop:genre")
-	val runtimeResource = RdfResource("dbpprop:runtime")
-	val languageResource = RdfResource("dbpprop:language")
-	val countryResource = RdfResource("dbpprop:country")
-	//val ratingResource = RdfResource("")
-	val subjectResource = RdfResource("dcterms:subject")
-	//val releasedStatusResource = RdfResource("")
-	val releaseDateResource = RdfResource("dbpprop:realeased")
-	val shortSummaryResource = RdfResource("dbpedia-owl:abstact")
-	val storylineResource = RdfResource("dbpprop:description")
-	//val keywordsResource = RdfResource("")
-	val directorResource = RdfResource("dbpprop:director")
-	val writerResource = RdfResource("dbpprop:writer")
-	val actorResource = RdfResource("dbpprop:starring")
-	val productorResource = RdfResource("dbpprop:producer")
-	val setDesignerResource = RdfResource("dbpedia-owl:setDesigner")
-	val editorResource = RdfResource("dbpprop:editing")
-	val costumeDesignerResource = RdfResource("dbpprop:costume")
-	val makeupArtistResource = RdfResource("dbpprop:makeupArtist")
-	val cameraResource = RdfResource("dbpprop:camera")
-	val distributorResource = RdfResource("dbpprop:distributor")
-	val studioResource = RdfResource("dbpprop:studio")
-	val posterResource = RdfResource("dbpprop:image")
-	val photosResource = RdfResource("dbpprop:hasPhotoCollection")
-	//val videosResource = RdfResource("")
-	val websitesResource = RdfResource("dbpprop:website")
-	val filmingLocationResource = RdfResource("dbpprop:location")
-	val budgetResource = RdfResource("dbpprop:budget")
-	val revenueResource = RdfResource("dbpprop:revenue")
-	//val soundMixResource = RdfResource("")
-	val soundtracktResource = RdfResource("dbpprop:music")
-	val quoteResource = RdfResource("dbpprop:quote")
-	//val aspectRatioResource = RdfResource("")
-	//val triviaResource = RdfResource("")
-	//val goofsResource = RdfResource("")
-	//val reviewsResource = RdfResource("")
 
-	def hasTitle(title: String): RdfTriple = {
-		this.buildTriple(titleResource, RdfString(title))
+
+	def hasTitle(title: String): RdfTriple = buildTriple(RdfResource("dbpprop:name"), RdfString(title))
+
+	def alsoKnownAs(title: String): RdfTriple = buildTriple(RdfResource("dbpprop:alternativeNames"), RdfString(title))
+
+	def isPartOf(collection: String): RdfTriple = {
+		log.warn("Predicate not set yet.")
+		this.buildTriple(RdfResource("somerdfname"), RdfString(collection))
 	}
 
-	def alsoKnownAs(title: String): RdfTriple = {
-		this.buildTriple(alternativeTitleResource, RdfString(title))
+	def releasedInYear(year: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:years"), RdfInteger(year))
+
+	def hasGenre(genre: String): RdfTriple = buildTriple(RdfResource("dbpprop:genre"), RdfString(genre))
+
+	def shotInLanguage(language: String): RdfTriple = buildTriple(RdfResource("dbpprop:language"), RdfInteger(language))
+
+	def lasts(runtime: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:runtime"), RdfString(runtime))
+
+	def releasedInCountry(country: String): RdfTriple = buildTriple(RdfResource("dbpprop:country"), RdfString(country))
+
+	def hasRating(rating: Integer): RdfTriple = {
+		log.warn("Predicate not set yet.")
+		this.buildTriple(RdfResource("somerdfname"), rating(country))
 	}
 
-	//	def isPartOf(collection: String): RdfTriple = {
-	//		this.buildTriple(partOfResource, RdfString(collection))
-	//	}
+	def shotIn(blackAndWhite: RdfResource): RdfTriple = buildTriple(RdfResource("dcterms:subject"), blackAndWhite)
 
-	def releasedInYear(year: Integer): RdfTriple = {
-		this.buildTriple(yearResource, RdfInteger(year))
+	def isReleased(released: Boolean): RdfTriple = {
+		log.warn("Predicate not set yet.")
+		this.buildTriple(RdfResource("somerdfname"), RdfString(released))
 	}
 
-	def hasGenre(genre: String): RdfTriple = {
-		this.buildTriple(genreResource, RdfString(genre))
+	def releasedOn(releaseDate: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:realeased"), RdfDate(releaseDate))
+
+	def hasShortSummary(summary: String): RdfTriple = buildTriple(RdfResource("dbpedia-owl:abstact"), RdfString(summary))
+
+	def hasStoryline(storyline: String): RdfTriple = buildTriple(RdfResource("dbpprop:description"), RdfString(storyline))
+
+	def hasKeyword(keyword: String): RdfTriple = {
+		log.warn("Predicate not set yet.")
+		this.buildTriple(RdfResource("somerdfname"), RdfString(keyword))
 	}
 
-	def shootInLanguage(language: String): RdfTriple = {
-		this.buildTriple(languageResource, RdfString(language))
+	def directedBy(director: String): RdfTriple = buildTriple(RdfResource("dbpprop:director"), RdfString(director))
+
+	def writtenBy(writer: String): RdfTriple = buildTriple(RdfResource("dbpprop:writer"), RdfString(writer))
+
+	def playedBy(actor: String): RdfTriple = buildTriple(RdfResource("dbpprop:starring"), RdfString(actor))
+
+	def producedBy(producer: String): RdfTriple = buildTriple(RdfResource("dbpprop:producer"), RdfString(producer))
+
+	def setDesignedBy(setDesigner: String): RdfTriple = buildTriple(RdfResource("dbpedia-owl:setDesigner"), RdfString(setDesigner))
+
+	def editBy(editor: String): RdfTriple = buildTriple(RdfResource("dbpprop:editing"), RdfString(editor))
+
+	def costumeDesignedBy(costumeDesigner: String): RdfTriple = buildTriple(RdfResource("dbpprop:costume"), RdfString(costumeDesigner))
+
+	def MakeupBy(makeupArtist: String): RdfTriple = buildTriple(RdfResource("dbpprop:makeupArtist"), RdfString(makeupArtist))
+
+	def shotBy(camera: String): RdfTriple = buildTriple(RdfResource("dbpprop:camera"), RdfString(camera))
+
+	def distributedBy(distributor: String): RdfTriple = buildTriple(RdfResource("dbpprop:distributor"), RdfString(distributor))
+
+	def filmedInStudio(studio: String): RdfTriple = buildTriple(RdfResource("dbpprop:studio"), RdfString(studio))
+
+	def hasPoster(poster: String): RdfTriple = buildTriple(RdfResource("dbpprop:image"), RdfString(poster))
+
+	def hasPhotos(photos: String): RdfTriple = buildTriple(RdfResource("dbpprop:hasPhotoCollection"), RdfUrl(photos))
+
+	def hasVideo(video: String): RdfTriple = {
+		log.warn("Predicate not set yet.")
+		this.buildTriple(RdfResource("somerdfname"), RdfUrl(video))
 	}
 
-	def takes(runtime: Integer): RdfTriple = {
-		this.buildTriple(runtimeResource, RdfInteger(runtime))
+	def hasWebsite(website: String): RdfTriple = buildTriple(RdfResource("dbpprop:website"), RdfUrl(website))
+
+	def filmedInLocation(location: String): RdfTriple = buildTriple(RdfResource("dbpprop:location"), RdfString(location))
+
+	def hasBudget(budget: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:budget"), RdfInteger(budget))
+
+	def hasRevenue(revenue: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:revenue"), RdfInteger(revenue))
+
+	def hasSoundMix(soundMix: String): RdfTriple = {
+		log.warn("Predicate not set yet.")
+		this.buildTriple(RdfResource("somerdfname"), RdfString(soundMix))
 	}
 
-	def releasedInCountry(country: String): RdfTriple = {
-		this.buildTriple(countryResource, RdfString(country))
+	def hasSoundtrack(music: String): RdfTriple = buildTriple(RdfResource("dbpprop:music"), RdfString(music))
+
+	def hasQuote(quote: String): RdfTriple = buildTriple(RdfResource("dbpprop:quote"), RdfUrl(quote))
+
+	def hasAspectRatio(ratio: String): RdfTriple = {
+		log.warn("Predicate not set yet.")
+		this.buildTriple(RdfResource("somerdfname"), RdfString(ratio))
 	}
 
-	//	def hasRating(rating: Integer): RdfTriple = {
-	//		this.buildTriple(ratingResource, rating(country))
-	//	}
-
-	def shotIn(blackAndWhite: RdfResource): RdfTriple = {
-		this.buildTriple(subjectResource, blackAndWhite)
+	def hasTrivia(trivia: String): RdfTriple = {
+		log.warn("Predicate not set yet.")
+		this.buildTriple(RdfResource("somerdfname"), RdfString(trivia))
 	}
 
-	//	def isReleased(released: Boolean): RdfTriple = {
-	//		this.buildTriple(releasedStatusResource, RdfString(released))
-	//	}
-
-	def releasedOn(releaseDate: DateTime): RdfTriple = {
-		this.buildTriple(releaseDateResource, RdfDate(releaseDate))
+	def hasGoofs(goofs: String): RdfTriple = {
+		log.warn("Predicate not set yet.")
+		this.buildTriple(RdfResource("somerdfname"), RdfString(goofs))
 	}
 
-	def hasShortSummary(summary: String): RdfTriple = {
-		this.buildTriple(shortSummaryResource, RdfString(summary))
+	def hasReview(review: String): RdfTriple = {
+		log.warn("Predicate not set yet.")
+		this.buildTriple(RdfResource("somerdfname"), RdfString(review))
 	}
-
-	def hasStoryline(storyline: String): RdfTriple = {
-		this.buildTriple(storylineResource, RdfString(storyline))
-	}
-
-	//	def hasKeyword(keyword: String): RdfTriple = {
-	//		this.buildTriple(keywordsResource, RdfString(keyword))
-	//	}
-
-	def directedBy(director: String): RdfTriple = {
-		this.buildTriple(directorResource, RdfString(director))
-	}
-
-	def writtenBy(writer: String): RdfTriple = {
-		this.buildTriple(writerResource, RdfString(writer))
-	}
-
-	def playedBy(actor: String): RdfTriple = {
-		this.buildTriple(actorResource, RdfString(actor))
-	}
-
-	def producedBy(producer: String): RdfTriple = {
-		this.buildTriple(productorResource, RdfString(producer))
-	}
-
-	def setDesignedBy(setDesigner: String): RdfTriple = {
-		this.buildTriple(setDesignerResource, RdfString(setDesigner))
-	}
-
-	def editBy(editor: String): RdfTriple = {
-		this.buildTriple(editorResource, RdfString(editor))
-	}
-
-	def costumeDesignedBy(costumeDesigner: String): RdfTriple = {
-		this.buildTriple(costumeDesignerResource, RdfString(costumeDesigner))
-	}
-
-	def MakeupBy(makeupArtist: String): RdfTriple = {
-		this.buildTriple(makeupArtistResource, RdfString(makeupArtist))
-	}
-
-	def shootBy(camera: String): RdfTriple = {
-		this.buildTriple(cameraResource, RdfString(camera))
-	}
-
-	def distributedBy(distributor: String): RdfTriple = {
-		this.buildTriple(distributorResource, RdfString(distributor))
-	}
-
-	def filmedInStudio(studio: String): RdfTriple = {
-		this.buildTriple(studioResource, RdfString(studio))
-	}
-
-	def hasPoster(poster: String): RdfTriple = {
-		this.buildTriple(posterResource, RdfString(poster))
-	}
-
-	def hasPhotos(photos: String): RdfTriple = {
-		this.buildTriple(photosResource, RdfUrl(photos))
-	}
-
-	//	def hasVideo(video: String): RdfTriple = {
-	//		this.buildTriple(videosResource, RdfUrl(video))
-	//	}
-
-	def hasWebsite(website: String): RdfTriple = {
-		this.buildTriple(websitesResource, RdfUrl(website))
-	}
-
-	def filmedInLocation(location: String): RdfTriple = {
-		this.buildTriple(filmingLocationResource, RdfString(location))
-	}
-
-	def hasBudget(budget: Integer): RdfTriple = {
-		this.buildTriple(budgetResource, RdfInteger(budget))
-	}
-
-	def hasRevenue(revenue: Integer): RdfTriple = {
-		this.buildTriple(revenueResource, RdfInteger(revenue))
-	}
-
-	//	def hasSoundMix(soundMix: String): RdfTriple = {
-	//		this.buildTriple(soundMixResource, RdfString(soundMix))
-	//	}
-
-	def hasSoundtrack(music: String): RdfTriple = {
-		this.buildTriple(soundtracktResource, RdfString(music))
-	}
-
-	def hasQuote(quote: String): RdfTriple = {
-		this.buildTriple(quoteResource, RdfUrl(quote))
-	}
-
-	//	def hasAspectRatio(ratio: String): RdfTriple = {
-	//		this.buildTriple(aspectRatioResource, RdfString(ratio))
-	//	}
-
-	//	def hasTrivia(trivia: String): RdfTriple = {
-	//		this.buildTriple(triviaResource, RdfString(trivia))
-	//	}
-
-	//	def hasGoofs(goofs: String): RdfTriple = {
-	//		this.buildTriple(goofsResource, RdfString(goofs))
-	//	}
-
-	//	def hasReview(review: String): RdfTriple = {
-	//		this.buildTriple(reviewResource, RdfString(review))
-	//	}
 
 }

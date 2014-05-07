@@ -10,9 +10,13 @@ object RdfActorResource {
 
 class RdfActorResource(resource: String) extends RdfResource(resource) with Logging {
 
-	def name(name: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfString(name))
-	}
+	def name(name: String): RdfTriple = buildTriple(RdfResource("dbpprop:name"), RdfString(name))
+
+	def born(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthDate"), RdfDate(date))
+
+	def hasBirthName(name: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthName"), RdfDate(date))
+
+	def hasBirthPlace(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthPlace"), RdfDate(date))
+
 }
 
