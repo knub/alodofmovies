@@ -9,11 +9,13 @@ import net.liftweb.json.JsonParser
 import lod2014group1.Config
 import org.apache.commons.io.{FileUtils, IOUtils}
 import java.net.URL
+import scala.compat.Platform
 
 case class TmdbJsonResponse(id: Long, imdb_id: String)
 
 object TMDBMoviesListCrawler {
 	val BASE_DIR_NAME = "TMDBMoviesList"
+	val API_INTERVAL: Long = 10000
 
 
 	val TMDB_API_KEY = IOUtils.toString(new FileInputStream(Config.TMDB_API_KEY))
@@ -26,7 +28,7 @@ object TMDBMoviesListCrawler {
 
 	def movieRequest(url: String): Http.Request = {
 		Http(url).options(HttpOptions.connTimeout(5000),
-			HttpOptions.readTimeout(5000)).params("api_key" -> TMDB_API_KEY, "append_to_response" -> ADDITIONAL_INFO)
+			HttpOptions.readTimeout(10000)).params("api_key" -> TMDB_API_KEY, "append_to_response" -> ADDITIONAL_INFO)
 	}
 
 }
@@ -39,10 +41,16 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 		log.info(s"Latest parsed: $latest_parsed")
 		log.info(s"Latest id is: $latest_id")
 
+		var lastTime = Platform.currentTime
+
 		for (id <- latest_parsed to latest_id) {
 			log.info(s"$id")
 			val (_, needsDownloading) = getFile(TMDBMoviesListCrawler.MOVIE_URL.format(id.toString))
-			Thread.sleep(500)
+			if (id % 20 == 0) {
+				Thread.sleep(calcSleep(lastTime))
+				lastTime = Platform.currentTime
+			}
+
 		}
 
 	}
@@ -64,6 +72,16 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 	}
 
 	def isAllDigits(x: String) = x forall Character.isDigit
+
+	def calcSleep(lastTime: Long): Long = {
+		val timeDiff = (lastTime + TMDBMoviesListCrawler.API_INTERVAL) - Platform.currentTime
+		if (timeDiff > 0) {
+			log.info(s"sleeping $timeDiff ms")
+			timeDiff
+		} else {
+			0
+		}
+	}
 
 	/**
 	 * Downloads a file to the local hard-disk if it has content.

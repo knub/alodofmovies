@@ -31,6 +31,11 @@ task freebase(type: JavaExec, dependsOn: [build]) {
 	classpath = sourceSets.main.runtimeClasspath
 	args = ['freebase']
 }
+task dbpedia(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['dbpedia']
+}
 task jobs(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.job_managing.JobManager'
 	classpath = sourceSets.main.runtimeClasspath
@@ -55,6 +60,6 @@ dependencies {
 	compile 'com.google.apis:google-api-services-freebase:v1-rev54-1.18.0-rc'
 	compile 'com.typesafe.slick:slick_2.10:2.0.1'
 	compile 'org.xerial:sqlite-jdbc:3.7.2'
-	//compile 'org.apache.jena:jena:2.11.1'
-	//compile 'org.apache.jena:jena-arq:2.11.1'
+	compile 'org.apache.jena:jena:2.11.1'
+	compile 'org.apache.jena:jena-arq:2.11.1'
 }
