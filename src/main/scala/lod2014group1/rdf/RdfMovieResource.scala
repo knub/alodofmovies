@@ -1,23 +1,38 @@
 package lod2014group1.rdf
 
+import org.slf4s.Logging
 import org.joda.time.DateTime
 
-class RdfMovieResource(resource: String) extends RdfResource(resource) {
-/*
-	PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-	PREFIX dbpprop: <http://dbpedia.org/property/>
-	PREFIX owl: <http://www.w3.org/2002/07/owl#>
-	PREFIX dcterms: <http://dublincore.org/2010/10/11/dcterms.rdf#>
-	PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
-	PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-	PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-*/
+object RdfMovieResource {
+	implicit def fromRdfResource(resource: RdfResource): RdfMovieResource = {
+		new RdfMovieResource(resource.uri)
+	}
 
-	val typeResource = RdfResource("rdf:type")
-	val sameAsResource = RdfResource("owl:sameAs")
+	def film: RdfResource = {
+		RdfResource("dbpedia-owl:Film")
+	}
 
+	def actor: RdfResource = {
+		RdfResource("dbpedia-owl:Actor")
+	}
+
+	def blackAndWhite(): RdfResource = {
+		RdfResource("category:Black-and-white_films")
+	}
+}
+
+class RdfMovieResource(resource: String) extends RdfResource(resource) with Logging {
+	/*
+		PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+		PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+		PREFIX dbpprop: <http://dbpedia.org/property/>
+		PREFIX owl: <http://www.w3.org/2002/07/owl#>
+		PREFIX dcterms: <http://dublincore.org/2010/10/11/dcterms.rdf#>
+		PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+		PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+		PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	*/
 	val titleResource = RdfResource("dbpprop:name")
 	val alternativeTitleResource = RdfResource("dbpprop:alternativeNames")
 	//val partOfResource = RdfResource("")
@@ -59,16 +74,6 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) {
 	//val goofsResource = RdfResource("")
 	//val reviewsResource = RdfResource("")
 
-
-
-	def isA(film: RdfResource): RdfTriple = {
-		this.buildTriple(typeResource, film)
-	}
-
-	def sameAs(url: String): RdfTriple = {
-		this.buildTriple(sameAsResource, RdfUrl(url))
-	}
-
 	def hasTitle(title: String): RdfTriple = {
 		this.buildTriple(titleResource, RdfString(title))
 	}
@@ -77,9 +82,9 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) {
 		this.buildTriple(alternativeTitleResource, RdfString(title))
 	}
 
-//	def isPartOf(collection: String): RdfTriple = {
-//		this.buildTriple(partOfResource, RdfString(collection))
-//	}
+	//	def isPartOf(collection: String): RdfTriple = {
+	//		this.buildTriple(partOfResource, RdfString(collection))
+	//	}
 
 	def releasedInYear(year: Integer): RdfTriple = {
 		this.buildTriple(yearResource, RdfInteger(year))
@@ -101,17 +106,17 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) {
 		this.buildTriple(countryResource, RdfString(country))
 	}
 
-//	def hasRating(rating: Integer): RdfTriple = {
-//		this.buildTriple(ratingResource, rating(country))
-//	}
+	//	def hasRating(rating: Integer): RdfTriple = {
+	//		this.buildTriple(ratingResource, rating(country))
+	//	}
 
 	def shotIn(blackAndWhite: RdfResource): RdfTriple = {
 		this.buildTriple(subjectResource, blackAndWhite)
 	}
 
-//	def isReleased(released: Boolean): RdfTriple = {
-//		this.buildTriple(releasedStatusResource, RdfString(released))
-//	}
+	//	def isReleased(released: Boolean): RdfTriple = {
+	//		this.buildTriple(releasedStatusResource, RdfString(released))
+	//	}
 
 	def releasedOn(releaseDate: DateTime): RdfTriple = {
 		this.buildTriple(releaseDateResource, RdfDate(releaseDate))
@@ -125,9 +130,9 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) {
 		this.buildTriple(storylineResource, RdfString(storyline))
 	}
 
-//	def hasKeyword(keyword: String): RdfTriple = {
-//		this.buildTriple(keywordsResource, RdfString(keyword))
-//	}
+	//	def hasKeyword(keyword: String): RdfTriple = {
+	//		this.buildTriple(keywordsResource, RdfString(keyword))
+	//	}
 
 	def directedBy(director: String): RdfTriple = {
 		this.buildTriple(directorResource, RdfString(director))
@@ -181,9 +186,9 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) {
 		this.buildTriple(photosResource, RdfUrl(photos))
 	}
 
-//	def hasVideo(video: String): RdfTriple = {
-//		this.buildTriple(videosResource, RdfUrl(video))
-//	}
+	//	def hasVideo(video: String): RdfTriple = {
+	//		this.buildTriple(videosResource, RdfUrl(video))
+	//	}
 
 	def hasWebsite(website: String): RdfTriple = {
 		this.buildTriple(websitesResource, RdfUrl(website))
@@ -201,9 +206,9 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) {
 		this.buildTriple(revenueResource, RdfInteger(revenue))
 	}
 
-//	def hasSoundMix(soundMix: String): RdfTriple = {
-//		this.buildTriple(soundMixResource, RdfString(soundMix))
-//	}
+	//	def hasSoundMix(soundMix: String): RdfTriple = {
+	//		this.buildTriple(soundMixResource, RdfString(soundMix))
+	//	}
 
 	def hasSoundtrack(music: String): RdfTriple = {
 		this.buildTriple(soundtracktResource, RdfString(music))
@@ -213,34 +218,20 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) {
 		this.buildTriple(quoteResource, RdfUrl(quote))
 	}
 
-//	def hasAspectRatio(ratio: String): RdfTriple = {
-//		this.buildTriple(aspectRatioResource, RdfString(ratio))
-//	}
+	//	def hasAspectRatio(ratio: String): RdfTriple = {
+	//		this.buildTriple(aspectRatioResource, RdfString(ratio))
+	//	}
 
-//	def hasTrivia(trivia: String): RdfTriple = {
-//		this.buildTriple(triviaResource, RdfString(trivia))
-//	}
+	//	def hasTrivia(trivia: String): RdfTriple = {
+	//		this.buildTriple(triviaResource, RdfString(trivia))
+	//	}
 
-//	def hasGoofs(goofs: String): RdfTriple = {
-//		this.buildTriple(goofsResource, RdfString(goofs))
-//	}
+	//	def hasGoofs(goofs: String): RdfTriple = {
+	//		this.buildTriple(goofsResource, RdfString(goofs))
+	//	}
 
-//	def hasReview(review: String): RdfTriple = {
-//		this.buildTriple(reviewResource, RdfString(review))
-//	}
+	//	def hasReview(review: String): RdfTriple = {
+	//		this.buildTriple(reviewResource, RdfString(review))
+	//	}
 
-}
-
-object RdfMovieResource {
-	implicit def fromRdfResource(resource: RdfResource): RdfMovieResource = {
-		new RdfMovieResource(resource.uri)
-	}
-
-	def film(): RdfResource = {
-		RdfResource("owl:film")
-	}
-
-	def blackAndWhite(): RdfResource = {
-		RdfResource("category:Black-and-white_films")
-	}
 }

@@ -15,7 +15,8 @@ object Main extends App with Logging {
 		log.info("Arguments: " + args.toList)
 		if (args contains "triplify") {
 			val triplifier = new Triplifier
-			triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
+			val triples = triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
+			System.out.println(triples);
 //			triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
 			//triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html"))
 		} else if (args contains "crawl-imdb") {
