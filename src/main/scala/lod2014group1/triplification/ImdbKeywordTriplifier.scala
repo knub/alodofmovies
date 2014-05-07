@@ -6,27 +6,31 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 import scala.collection.JavaConversions._
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf.RdfMovieResource._
 
-class ImdbKeywordTriplifier {
+class ImdbKeywordTriplifier(val imdbId: String) {
 
-  def triplify(f: File): List[RdfTriple] = {
-    val doc = Jsoup.parse(f, null)
+	def triplify(f: File): List[RdfTriple] = {
+		val doc = Jsoup.parse(f, null)
 
-    val keywordsDiv = doc.getElementById("keywords_content")
-    val keywordsTable = keywordsDiv.select("table")
+		val keywordsDiv = doc.getElementById("keywords_content")
+		val keywordsTable = keywordsDiv.select("table")
 
-    triplifyKeywords(keywordsTable)
+		triplifyKeywords(keywordsTable)
+	}
 
-    List()
-  }
+	def triplifyKeywords(table: Elements): List[RdfTriple] = {
+		table.select("tr td a").toList.flatMap { keyword =>
+			handleKeyword(keyword.ownText())
+		}
+	}
 
-  def triplifyKeywords(table: Elements): List[RdfTriple] = {
-    table.select("tr td a").foreach( keyword => {
-      System.out.println("keyword: " + keyword.ownText())
-      System.out.println("url: " + keyword.attr("href"))
-    })
+	def handleKeyword(keyword: String): List[RdfTriple] = {
+		val movie = RdfResource(s"lod:Movie$imdbId")
 
-    List()
-  }
+		List(movie hasKeyword keyword)
+	}
 
 }
