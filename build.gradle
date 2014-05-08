@@ -57,11 +57,13 @@ dependencies {
 	compile 'commons-io:commons-io:2.4'
 	compile 'org.scalaj:scalaj-http_2.10:0.3.14'
 	compile 'net.liftweb:lift-json_2.10:2.6-M3'
-    compile 'com.rabbitmq:amqp-client:3.3.1'
-    compile 'org.scala-lang:scala-pickling_2.10:0.8.0'
 	compile 'com.google.apis:google-api-services-freebase:v1-rev54-1.18.0-rc'
 	compile 'com.typesafe.slick:slick_2.10:2.0.1'
 	compile 'org.xerial:sqlite-jdbc:3.7.2'
+    //Worker
+    compile 'com.rabbitmq:amqp-client:3.3.1'
+    compile 'org.scala-lang:scala-pickling_2.10:0.8.0'
+    compile 'com.typesafe:config:1.2.1'
 	//compile 'org.apache.jena:jena:2.11.1'
 	//compile 'org.apache.jena:jena-arq:2.11.1'
 }
