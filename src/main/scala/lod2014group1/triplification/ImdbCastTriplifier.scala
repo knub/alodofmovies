@@ -1,34 +1,42 @@
 package lod2014group1.triplification
 
-import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf._
 import java.io.File
 import org.jsoup.Jsoup
 import scala.collection.JavaConversions._
 import org.jsoup.nodes.{Document, Element}
+import lod2014group1.rdf.RdfActorResource._
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfResource
 
 class ImdbCastTriplifier {
 
 	def triplify(f: File): List[RdfTriple] = {
 		val doc = Jsoup.parse(f, null)
+		val table = getContentTable(doc)
+		triplifyCast(table)
+	}
 
-		val tables = doc.select("#fullcredits_content table")
-		System.out.println(tables.size());
+	def handleCast[A](contentTable: Element, handler: (Element) => List[A]) = {
+		val tables = contentTable.select("#fullcredits_content")
+		val castTable = tables.select("table.cast_list")
+		if (castTable.size() > 1)
+			throw new RuntimeException("More than one cast list!")
 
-		triplifyCast(tables.get(2))
-
-
-		List()
+		val actorTriples = if (castTable.isEmpty)
+			List()
+		else {
+			castTable.select("td a span").toList.flatMap(handler)
+//			:::
+//			castTable.select("td.character a").toList.map {
+//				_.attr("href").replaceAll("\\D", "").toInt
+//			}
+		}
+		actorTriples
 	}
 
 	def triplifyCast(castTable: Element): List[RdfTriple] = {
-		if (castTable.attr("class") != "cast_list")
-			throw new RuntimeException("This is not a cast list.")
-
-		castTable.select("td a span").foreach { spanWithActorName =>
-			System.out.println(spanWithActorName.html)
-			System.out.println(spanWithActorName.parent().attr("href").split("\\?")(0));
-		}
-		List()
+		handleCast(castTable, extractRdfTriples)
 	}
 
 	def getActorUrls(f: File): List[String] = {
@@ -36,23 +44,23 @@ class ImdbCastTriplifier {
 	}
 
 	private def getActorUrls(doc: Document): List[String] = {
-		val tables = doc.select("#fullcredits_content")
-		val castList = tables.select("table.cast_list")
-		if (castList.size() > 1)
-			throw new RuntimeException("More than one cast list!")
-		if (castList.isEmpty)
-			List()
-		else
-			getActorUrls(castList.get(0))
+		handleCast(getContentTable(doc), extractActorUrls)
 	}
 
-	private def getActorUrls(castTable: Element): List[String] = {
-		if (castTable.attr("class") != "cast_list")
-			throw new RuntimeException("This is not a cast list, the class is " + castTable.attr("class"))
+	private def extractActorUrls(spanWithActorName: Element): List[String] = {
+		List(spanWithActorName.parent().attr("href").split("\\?")(0))
+	}
+	private def extractRdfTriples(spanWithActorName: Element): List[RdfTriple] = {
+		val imdbId = spanWithActorName.parent().attr("href").split("\\?")(0).replaceAll("\\D", "").toInt
+		val actorName = spanWithActorName.html()
+		val actor = RdfResource(s"lod:Actor$imdbId")
+		List(actor isAn RdfMovieResource.actor,
+			actor name actorName)
+	}
 
-		castTable.select("td a span").toList.map { spanWithActorName =>
-			spanWithActorName.parent().attr("href").split("\\?")(0)
-		}
+
+	private def getContentTable(doc: Document): Element = {
+		doc.select("#fullcredits_content").get(0)
 	}
 
 }

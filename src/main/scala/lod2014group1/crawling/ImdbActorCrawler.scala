@@ -23,14 +23,13 @@ class ImdbActorCrawler extends Crawler {
 		val movieFiles = moviesDir.listFiles
 		val movieNumber = movieFiles.size
 		movieFiles.foreach { f =>
-			System.out.println(f.getName);
 			val actorUrls = castParser.getActorUrls(new File(f, "fullcredits.html"))
 			actorUrls.take(5).foreach { actorUrl =>
 				getFile(ImdbActorCrawler.DOWNLOAD_URL.format(actorUrl))
 			}
 			movieCount += 1
-			if (movieCount % 10 == 0)
-				System.out.println(s"$movieCount/$movieNumber");
+			if (movieCount % 100 == 0)
+				log.info(s"$movieCount/$movieNumber");
 		}
 	}
 

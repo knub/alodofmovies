@@ -36,6 +36,11 @@ task freebase(type: JavaExec, dependsOn: [build]) {
 	classpath = sourceSets.main.runtimeClasspath
 	args = ['freebase']
 }
+task dbpedia(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['dbpedia']
+}
 task jobs(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.job_managing.JobManager'
 	classpath = sourceSets.main.runtimeClasspath
@@ -64,6 +69,6 @@ dependencies {
     compile 'com.rabbitmq:amqp-client:3.3.1'
     compile 'org.scala-lang:scala-pickling_2.10:0.8.0'
     compile 'com.typesafe:config:1.2.1'
-	//compile 'org.apache.jena:jena:2.11.1'
-	//compile 'org.apache.jena:jena-arq:2.11.1'
+	compile 'org.apache.jena:jena:2.11.1'
+	compile 'org.apache.jena:jena-arq:2.11.1'
 }
