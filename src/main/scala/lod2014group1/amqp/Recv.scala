@@ -5,7 +5,6 @@ import scala.pickling._
 import binary._
 import com.typesafe.config.ConfigFactory
 
-
 object Recv {
 	val conf = ConfigFactory.load();
 	private val QUEUE_NAME = conf.getString("alodofmovies.hosts.localhost.queue")
@@ -27,6 +26,7 @@ object Recv {
 		while (true) {
 			val delivery = consumer.nextDelivery()
 			val message = delivery.getBody.unpickle[WorkerTask]
+			channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
 			println(" [x] Received '" + message.msg + "'")
 		}
 	}
