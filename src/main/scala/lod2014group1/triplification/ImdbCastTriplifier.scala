@@ -8,54 +8,74 @@ import org.jsoup.nodes.{Document, Element}
 import lod2014group1.rdf.RdfActorResource._
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
+import org.jsoup.select.Elements
+import org.slf4s.Logging
 
-class ImdbCastTriplifier {
+class ImdbCastTriplifier extends Logging {
 
 	def triplify(f: File): List[RdfTriple] = {
 		val doc = Jsoup.parse(f, null)
-		val table = getContentTable(doc)
-		triplifyCast(table)
+		try {
+			val table = getContentTable(doc)
+			triplifyCast(table)
+		} catch {
+			case e: IndexOutOfBoundsException =>
+				log.error("No content table found in " + f.getAbsolutePath)
+				List()
+		}
 	}
 
-	def handleCast[A](contentTable: Element, handler: (Element) => List[A]) = {
+	def triplifyCast(contentTable: Element) = {
 		val tables = contentTable.select("#fullcredits_content")
 		val castTable = tables.select("table.cast_list")
 		if (castTable.size() > 1)
 			throw new RuntimeException("More than one cast list!")
 
-		val actorTriples = if (castTable.isEmpty)
+		if (castTable.isEmpty)
 			List()
 		else {
-			castTable.select("td a span").toList.flatMap(handler)
-//			:::
-//			castTable.select("td.character a").toList.map {
-//				_.attr("href").replaceAll("\\D", "").toInt
-//			}
-		}
-		actorTriples
-	}
+			castTable.select("tr").toList.flatMap { row =>
+				if (row.select("a").isEmpty)
+					List()
+				else {
+					val imdbIdString = row.select("a").first.attr("href").split("\\?")(0)
+					val imdbId = imdbIdString.replaceAll("\\D", "").toInt
+					val actor = RdfResource(s"lod:Actor$imdbId")
 
-	def triplifyCast(castTable: Element): List[RdfTriple] = {
-		handleCast(castTable, extractRdfTriples)
+					(actor hasImdbUrl imdbIdString) ::
+					extractActorTriples(actor, row.select("a span").get(0)) :::
+					extractCharacterTriples(actor, row.select("td.character"))
+				}
+			}
+		}
 	}
 
 	def getActorUrls(f: File): List[String] = {
-		getActorUrls(Jsoup.parse(f, null))
+		triplify(f).flatMap { triple =>
+			if (triple.p.uri == "lod:imdbUrl")
+				List(triple.o.asInstanceOf[RdfUrl].url)
+			else
+				List()
+		}
 	}
 
-	private def getActorUrls(doc: Document): List[String] = {
-		handleCast(getContentTable(doc), extractActorUrls)
-	}
-
-	private def extractActorUrls(spanWithActorName: Element): List[String] = {
-		List(spanWithActorName.parent().attr("href").split("\\?")(0))
-	}
-	private def extractRdfTriples(spanWithActorName: Element): List[RdfTriple] = {
-		val imdbId = spanWithActorName.parent().attr("href").split("\\?")(0).replaceAll("\\D", "").toInt
+	private def extractActorTriples(actor: RdfResource, spanWithActorName: Element): List[RdfTriple] = {
 		val actorName = spanWithActorName.html()
-		val actor = RdfResource(s"lod:Actor$imdbId")
 		List(actor isAn RdfMovieResource.actor,
 			actor name actorName)
+	}
+
+	private def extractCharacterTriples(actor: RdfResource, characterTableCells: Elements): List[RdfTriple] = {
+		characterTableCells.toList.flatMap { characterTd =>
+			val link = characterTd.select("a")
+			if (link.isEmpty)
+				List()
+			else {
+				val characterId = link.get(0).attr("href").split("/")(2).substring(2)
+				val character = new RdfResource(s"lod:Character$characterId")
+				List(actor playsRole character)
+			}
+		}
 	}
 
 

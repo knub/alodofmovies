@@ -20,5 +20,12 @@ class RdfActorResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasBirthPlace(place: String): RdfTriple = buildTriple(RdfResource("dbpprop:birthPlace"), RdfString(place))
 
-}
+	def playsRole(role: RdfResource): RdfTriple = {
+		log.debug("Predicate not set yet.")
+		this.buildTriple(RdfResource("lod:playsIn"), role)
+	}
 
+	def hasImdbUrl(url: String): RdfTriple = {
+		this.buildTriple(RdfResource("lod:imdbUrl"), new RdfUrl(url))
+	}
+}

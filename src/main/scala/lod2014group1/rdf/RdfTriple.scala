@@ -20,7 +20,6 @@ case class RdfResource(val uri: String) extends RdfObject {
 	def sameAs(url: String): RdfTriple = {
 		this.buildTriple(RdfResource("owl:sameAs"), RdfUrl(url))
 	}
-
 }
 
 case class RdfTriple(s: RdfResource, p: RdfResource, o: RdfObject) {
