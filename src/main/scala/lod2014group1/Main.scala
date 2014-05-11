@@ -4,7 +4,7 @@ import org.slf4s.Logging
 import lod2014group1.apis._
 import lod2014group1.triplification.Triplifier
 import java.io.File
-import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf._
 import org.joda.time.DateTime
 import lod2014group1.rdf.RdfMovieResource._
 
@@ -26,7 +26,7 @@ object Main extends App with Logging {
 		  //freebase.getExampleRdf
 		} else if (args contains "dbpedia") {
 			val dbpedia = new DBpediaAPI()
-			dbpedia.executeQuery("select distinct ?Concept where {[] a ?Concept} LIMIT 100")
+			dbpedia getAllTriplesFor "http://dbpedia.org/resource/Despicable_Me"
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 			val forrestGump = new RdfResource("http://dbpedia.org/resource/Forrest_Gump")
