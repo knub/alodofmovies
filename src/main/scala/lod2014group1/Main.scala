@@ -23,6 +23,7 @@ object Main extends App with Logging {
 		} else if (args contains "freebase") {
 		  val freebase = new FreebaseAPI()
 		  freebase.getAllNotImdbMovies
+		  freebase.getFreebaseFilmsWithIMDB
 		  //freebase.getExampleRdf
 		} else if (args contains "dbpedia") {
 			val dbpedia = new DBpediaAPI()
