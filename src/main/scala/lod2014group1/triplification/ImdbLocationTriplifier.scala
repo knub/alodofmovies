@@ -4,26 +4,38 @@ import java.io.File
 import lod2014group1.rdf.RdfTriple
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
+import org.jsoup.select.Elements
 import scala.collection.JavaConversions._
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf.RdfMovieResource._
 
-class ImdbLocationTriplifier {
+class ImdbLocationTriplifier(val imdbId: String) {
+
 	def triplify(f: File): List[RdfTriple] = {
 		val doc = Jsoup.parse(f, null)
 		val locationDiv = doc.getElementById("filming_locations_content")
 
+		var triples: List[RdfTriple] = List()
+
 		locationDiv.children().foreach(div => {
 			if (div.className().equals("soda odd") || div.className().equals("soda even")) {
-				triplifyLocations(div)
+				triples = triplifyLocations(div) ::: triples
 			}
 		})
-		List()
+
+		triples
 	}
 
 	def triplifyLocations(location: Element): List[RdfTriple] = {
-		location.select("dt a").foreach( loc => {
-			System.out.println("location: " + loc.ownText())
-			System.out.println("url: " + loc.attr("href"))
-		})
-		List()
+		location.select("dt a").toList.flatMap { loc =>
+			handleLocation(loc.ownText())
+		}
+	}
+
+	def handleLocation(location: String): List[RdfTriple] = {
+		val movie = RdfResource(s"lod:Movie$imdbId")
+
+		List(movie filmedInLocation location)
 	}
 }
