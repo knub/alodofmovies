@@ -24,16 +24,14 @@ case class Result (result: List[FreebaseFilm])
 case class Ids (id: String)
 case class FilmIds (result: List[Ids], cursor: String)
 
-
-class FreebaseAPI extends App{
+object FreebaseAPI {
 	private val conf = ConfigFactory.load();
-	private var FREEBASE_API_KEY = "fsdfs"
-	
-	def FreebaseAPI() = {		
-		FREEBASE_API_KEY = conf.getString("alodofmovies.api.key.freebase")
+	private val API_KEY = conf.getString("alodofmovies.api.key.freebase")
+}
 
-		
-	}
+class FreebaseAPI{
+	private val conf = ConfigFactory.load();
+	private val FREEBASE_API_KEY = conf.getString("alodofmovies.api.key.freebase")
 	
 	def requestMQL(mqlQuery: String, cursor: String) : JValue = {
 
@@ -58,11 +56,13 @@ class FreebaseAPI extends App{
 	
 	def getAllFilmId(): Unit = {
 		implicit val formats = net.liftweb.json.DefaultFormats
-		
-		print(FREEBASE_API_KEY)
+		println(FreebaseAPI.API_KEY)
+		println(FREEBASE_API_KEY)
 		val query = """[{"id": null, "type": "/film/film", "limit": 400}]"""
 		var cursor = ""
-		val bw = new BufferedWriter(new FileWriter(Config.DATA_FOLDER + "/Freebase/movieList.txt"))
+		val movieListFile = new File(Config.DATA_FOLDER + "/Freebase/movieList.txt")
+		movieListFile.getParentFile.mkdirs()
+		val bw = new BufferedWriter(new FileWriter(movieListFile))
 			
 		while (cursor!= null){
 			val json = requestMQL(query, cursor)	
