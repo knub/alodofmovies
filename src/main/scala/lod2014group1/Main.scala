@@ -22,9 +22,10 @@ object Main extends App with Logging {
     		tmdb.crawl
 		} else if (args contains "freebase") {
 		  val freebase = new FreebaseAPI()
-		  freebase.getAllNotImdbMovies
-		  freebase.getFreebaseFilmsWithIMDB
+		  //freebase.getAllNotImdbMovies
+		  //freebase.getFreebaseFilmsWithIMDB
 		  //freebase.getExampleRdf
+		  freebase.getAllFilmId
 		} else if (args contains "dbpedia") {
 			val dbpedia = new DBpediaAPI()
 			dbpedia.executeQuery("select distinct ?Concept where {[] a ?Concept} LIMIT 100")
