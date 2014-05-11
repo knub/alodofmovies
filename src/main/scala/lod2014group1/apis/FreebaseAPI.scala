@@ -17,6 +17,7 @@ import com.google.api.services.freebase.FreebaseRequest
 import java.io.BufferedWriter
 import java.io.FileOutputStream
 import java.io.FileWriter
+import com.typesafe.config.ConfigFactory
 
 case class FreebaseFilm (name : String, imdb_id: String, id: String)
 case class Result (result: List[FreebaseFilm])
@@ -25,15 +26,21 @@ case class FilmIds (result: List[Ids], cursor: String)
 
 
 class FreebaseAPI extends App{
+	private val conf = ConfigFactory.load();
+	private var FREEBASE_API_KEY = "fsdfs"
+	
+	def FreebaseAPI() = {		
+		FREEBASE_API_KEY = conf.getString("alodofmovies.api.key.freebase")
 
-	val API_KEY = IOUtils.toString(new FileInputStream(Config.FREEBASE_API_KEY))
-
+		
+	}
+	
 	def requestMQL(mqlQuery: String, cursor: String) : JValue = {
 
       val httpTransport = new NetHttpTransport()
       val requestFactory = httpTransport.createRequestFactory()
       val url = new GenericUrl("https://www.googleapis.com/freebase/v1/mqlread")
-      url.put("key", API_KEY)
+      url.put("key", FREEBASE_API_KEY)
       url.put("query", mqlQuery)
       url.put("cursor", cursor);
       val request = requestFactory.buildGetRequest(url);
@@ -52,7 +59,7 @@ class FreebaseAPI extends App{
 	def getAllFilmId(): Unit = {
 		implicit val formats = net.liftweb.json.DefaultFormats
 		
-		print(API_KEY)
+		print(FREEBASE_API_KEY)
 		val query = """[{"id": null, "type": "/film/film", "limit": 400}]"""
 		var cursor = ""
 		val bw = new BufferedWriter(new FileWriter(Config.DATA_FOLDER + "/Freebase/movieList.txt"))
@@ -70,14 +77,6 @@ class FreebaseAPI extends App{
 		}	
 
 		bw.close()
-		
-//		val resp1 = response.getHeaders()
-//		print(resp1)
-//		val json1 = JsonParser.parse(new InputStreamReader(resp1.getContent()))
-//		val filmIds1 = json1.extract[FilmIds]
-//		println(filmIds1.result.size)
-//		println(filmIds1.result(1))
-	
 	}
 	
 	def writeIdsInFile(ids:List[Ids], bw: BufferedWriter): Unit = {
