@@ -5,7 +5,7 @@ import scala.pickling._
 import binary._
 import com.typesafe.config.ConfigFactory
 
-case class WorkerTask(msg: String, freq: Int)
+case class WorkerTask(msg: String, time: Int)
 
 /**
  * An Example of how to use the Example subclass of AMQPSender[T]. Still following?
