@@ -7,6 +7,7 @@ import java.io.File
 import lod2014group1.rdf._
 import org.joda.time.DateTime
 import lod2014group1.rdf.RdfMovieResource._
+import lod2014group1.amqp.{WorkerTask, Recv, Supervisor}
 
 object Main extends App with Logging {
 
@@ -20,6 +21,10 @@ object Main extends App with Logging {
 		} else if (args contains "crawl-tmdb") {
     		val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
     		tmdb.crawl
+		} else if (args contains "rabbit") {
+			val task = WorkerTask("Short Task", 15)
+			Supervisor.send(task)
+			Recv.listen()
 		} else if (args contains "freebase") {
 		  val freebase = new FreebaseAPI()
 		  //freebase.getAllNotImdbMovies
