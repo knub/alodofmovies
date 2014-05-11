@@ -4,9 +4,10 @@ import org.slf4s.Logging
 import lod2014group1.apis._
 import lod2014group1.triplification.Triplifier
 import java.io.File
-import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf._
 import org.joda.time.DateTime
 import lod2014group1.rdf.RdfMovieResource._
+import lod2014group1.amqp.{WorkerTask, Recv, Supervisor}
 
 object Main extends App with Logging {
 
@@ -20,13 +21,19 @@ object Main extends App with Logging {
 		} else if (args contains "crawl-tmdb") {
     		val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
     		tmdb.crawl
+		} else if (args contains "rabbit") {
+			val task = WorkerTask("Short Task", 15)
+			Supervisor.send(task)
+			Recv.listen()
 		} else if (args contains "freebase") {
 		  val freebase = new FreebaseAPI()
-		  freebase.getAllNotImdbMovies
+		  //freebase.getAllNotImdbMovies
+		  //freebase.getFreebaseFilmsWithIMDB
 		  //freebase.getExampleRdf
+		  freebase.getAllFilmId
 		} else if (args contains "dbpedia") {
 			val dbpedia = new DBpediaAPI()
-			dbpedia.executeQuery("select distinct ?Concept where {[] a ?Concept} LIMIT 100")
+			dbpedia getAllTriplesFor "http://dbpedia.org/resource/Despicable_Me"
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 			val forrestGump = new RdfResource("http://dbpedia.org/resource/Forrest_Gump")

@@ -2,6 +2,7 @@ package lod2014group1.triplification
 
 import lod2014group1.rdf.RdfTriple
 import java.io.File
+import lod2014group1.{Config, I}
 
 class Triplifier {
 
@@ -11,7 +12,7 @@ class Triplifier {
 		if (f.getName == "fullcredits.html")
 			new ImdbCastTriplifier().triplify(f)
 		else if (f.getName == "locations.html")
-			new ImdbLocationTriplifier().triplify(f)
+			new ImdbLocationTriplifier(imdbId).triplify(f)
 		else if (f.getName == "keywords.html")
 			new ImdbKeywordTriplifier(imdbId).triplify(f)
 		else
@@ -23,11 +24,19 @@ object Triplifier {
 	def go() {
 		val triplifier = new Triplifier
 //		val triples = triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
-		val triples = triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
+		val triples = I.am match {
+			case Config.Person.Stefan => {
+				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
+			}
+			case Config.Person.Tanja => {
+				triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html"))
+			}
+		}
 		triples.take(10).foreach(println)
 
 		//triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
 		//triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html"))
+		//triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
 
 	}
 }
