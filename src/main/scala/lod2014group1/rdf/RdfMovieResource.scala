@@ -12,10 +12,6 @@ object RdfMovieResource {
 		RdfResource("dbpedia-owl:Film")
 	}
 
-	def actor: RdfResource = {
-		RdfResource("dbpedia-owl:Actor")
-	}
-
 	def blackAndWhite(): RdfResource = {
 		RdfResource("category:Black-and-white_films")
 	}

@@ -61,7 +61,7 @@ class ImdbCastTriplifier extends Logging {
 
 	private def extractActorTriples(actor: RdfResource, spanWithActorName: Element): List[RdfTriple] = {
 		val actorName = spanWithActorName.html()
-		List(actor isAn RdfMovieResource.actor,
+		List(actor isAn RdfActorResource.actor,
 			actor name actorName)
 	}
 

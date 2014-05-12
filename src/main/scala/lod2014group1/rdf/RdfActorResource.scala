@@ -8,6 +8,10 @@ object RdfActorResource {
 	implicit def fromRdfResource(resource: RdfResource): RdfActorResource = {
 		new RdfActorResource(resource.uri)
 	}
+
+	def actor: RdfResource = {
+		RdfResource("dbpedia-owl:Actor")
+	}
 }
 
 class RdfActorResource(resource: String) extends RdfResource(resource) with Logging {
