@@ -79,7 +79,9 @@ class ImdbCastTriplifier extends Logging {
 			else {
 				val characterId = link.get(0).attr("href").split("/")(2).substring(2)
 				val character = RdfResource(s"lod:Character$characterId")
-				List(actor playsRole character)
+				val characterName = link.text()
+				List(character name characterName,
+					actor playsRole character)
 			}
 		}
 	}

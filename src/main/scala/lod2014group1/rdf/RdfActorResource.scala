@@ -16,8 +16,6 @@ object RdfActorResource {
 
 class RdfActorResource(resource: String) extends RdfResource(resource) with Logging {
 
-	def name(name: String): RdfTriple = buildTriple(RdfResource("dbpprop:name"), RdfString(name))
-
 	def born(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthDate"), RdfDate(date))
 
 	def hasBirthName(name: String): RdfTriple = buildTriple(RdfResource("dbpprop:birthName"), RdfString(name))
