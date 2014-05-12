@@ -19,9 +19,15 @@ class ImdbCastTriplifier extends Logging {
 			val table = getContentTable(doc)
 			triplifyCast(table)
 		} catch {
-			case e: IndexOutOfBoundsException =>
+			case e: IndexOutOfBoundsException => {
 				log.error("No content table found in " + f.getAbsolutePath)
 				List()
+			}
+			case e: Throwable => {
+				log.error("Error in  " + f.getAbsolutePath)
+				log.error(e.getStackTraceString)
+				List()
+			}
 		}
 	}
 
@@ -61,7 +67,7 @@ class ImdbCastTriplifier extends Logging {
 
 	private def extractActorTriples(actor: RdfResource, spanWithActorName: Element): List[RdfTriple] = {
 		val actorName = spanWithActorName.html()
-		List(actor isAn RdfMovieResource.actor,
+		List(actor isAn actor,
 			actor name actorName)
 	}
 
@@ -72,7 +78,7 @@ class ImdbCastTriplifier extends Logging {
 				List()
 			else {
 				val characterId = link.get(0).attr("href").split("/")(2).substring(2)
-				val character = new RdfResource(s"lod:Character$characterId")
+				val character = RdfResource(s"lod:Character$characterId")
 				List(actor playsRole character)
 			}
 		}

@@ -32,7 +32,23 @@ object Triplifier {
 				triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html"))
 			}
 		}
-		triples.take(10).foreach(println)
+
+		println(
+			"""
+			  |@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+			  |@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+			  |@prefix dbpprop: <http://dbpedia.org/property/> .
+			  |@prefix owl: <http://www.w3.org/2002/07/owl#> .
+			  |@prefix dcterms: <http://dublincore.org/2010/10/11/dcterms.rdf#> .
+			  |@prefix dbpedia-owl: <http://dbpedia.org/ontology/> .
+			  |@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+			  |@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+			  |@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+			  |@prefix lod: <http://purl.org/hpi/movie#> .
+			  |
+			""".stripMargin)
+
+		triples.foreach(println)
 
 		//triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
 		//triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html"))

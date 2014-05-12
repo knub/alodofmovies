@@ -8,7 +8,8 @@ case class RdfResource(val uri: String) extends RdfObject {
 	override def toString(): String = {
 		if (uri startsWith "http")
 			"<" + uri + ">"
-		uri
+		else
+			uri
 	}
 
 	def isA(entity: RdfResource): RdfTriple = {
@@ -24,6 +25,6 @@ case class RdfResource(val uri: String) extends RdfObject {
 
 case class RdfTriple(s: RdfResource, p: RdfResource, o: RdfObject) {
 	override def toString(): String = {
-		s"$s $p $o"
+		s"$s $p $o ."
 	}
 }
