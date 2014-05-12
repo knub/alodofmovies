@@ -11,7 +11,7 @@ import org.apache.commons.io.{FileUtils, IOUtils}
 import java.net.URL
 import scala.compat.Platform
 
-case class TmdbJsonResponse(id: Long, imdb_id: String)
+case class TmdbJsonResponse(id: Long, imdb_id: String, original_title: String)
 
 object TMDBMoviesListCrawler {
 	val BASE_DIR_NAME = "TMDBMoviesList"
@@ -44,8 +44,10 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 		var lastTime = Platform.currentTime
 
 		for (id <- latest_parsed to latest_id) {
-			log.info(s"$id")
 			val (_, needsDownloading) = getFile(TMDBMoviesListCrawler.MOVIE_URL.format(id.toString))
+			if (! needsDownloading) {
+				//log.info(s"$id")
+			}
 			if (id % 20 == 0) {
 				Thread.sleep(calcSleep(lastTime))
 				lastTime = Platform.currentTime
@@ -101,7 +103,12 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 			val bw = new BufferedWriter(new FileWriter(file))
 			bw.write(response.asString)
 			bw.close()
-			log.info(s"$path written")
+
+			implicit val formats = net.liftweb.json.DefaultFormats
+			lazy val movie = response { inputStream => JsonParser.parse(
+				new InputStreamReader(inputStream))}.extract[TmdbJsonResponse]
+
+			log.info(s"Id: '${movie.id}' is the movie '${movie.original_title}' and matches to imdb_id: '${movie.imdb_id}'")
 		} else if (responseCode != 404) {
 			log.info(s"$path had response code $responseCode")
 		}
