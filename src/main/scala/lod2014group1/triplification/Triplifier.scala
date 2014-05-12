@@ -39,13 +39,13 @@ object Triplifier extends Logging {
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
 			}
 			case Config.Person.Tanja => {
-				triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html")) :::
-				triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
-				//triplifier.triplify(new File("data/IMDBMovie/tt0758758/awards.html"))
+				//triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html")) :::
+				//triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
+				triplifier.triplify(new File("data/IMDBMovie/tt0758758/awards.html"))
 			}
 		}
 
-		println(
+		/*println(
 			"""
 			  |@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 			  |@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -58,7 +58,7 @@ object Triplifier extends Logging {
 			  |@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 			  |@prefix lod: <http://purl.org/hpi/movie#> .
 			  |
-			""".stripMargin)
+			""".stripMargin)*/
 
 		triples.foreach(println)
 
