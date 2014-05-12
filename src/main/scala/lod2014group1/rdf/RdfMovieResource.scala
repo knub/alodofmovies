@@ -68,10 +68,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasStoryline(storyline: String): RdfTriple = buildTriple(RdfResource("dbpprop:description"), RdfString(storyline))
 
-	def hasKeyword(keyword: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfString(keyword))
-	}
+	def hasKeyword(keyword: String): RdfTriple = buildTriple(RdfResource("lod:keyword"), RdfString(keyword))
 
 	def directedBy(director: String): RdfTriple = buildTriple(RdfResource("dbpprop:director"), RdfString(director))
 

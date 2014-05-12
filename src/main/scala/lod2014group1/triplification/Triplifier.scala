@@ -15,6 +15,8 @@ class Triplifier {
 			new ImdbLocationTriplifier(imdbId).triplify(f)
 		else if (f.getName == "keywords.html")
 			new ImdbKeywordTriplifier(imdbId).triplify(f)
+		else if (f.getName == "awards.html")
+			new ImdbAwardTriplifier(imdbId).triplify(f)
 		else
 			List()
 	}
@@ -23,13 +25,14 @@ class Triplifier {
 object Triplifier {
 	def go() {
 		val triplifier = new Triplifier
-//		val triples = triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
 		val triples = I.am match {
 			case Config.Person.Stefan => {
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
 			}
 			case Config.Person.Tanja => {
-				triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html"))
+				triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html")) :::
+				triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
+				//triplifier.triplify(new File("data/IMDBMovie/tt0758758/awards.html"))
 			}
 		}
 
@@ -49,10 +52,6 @@ object Triplifier {
 			""".stripMargin)
 
 		triples.foreach(println)
-
-		//triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
-		//triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html"))
-		//triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
 
 	}
 }
