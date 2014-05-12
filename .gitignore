@@ -21,3 +21,4 @@ data
 
 *.api-key
 *.db
+*.triples
