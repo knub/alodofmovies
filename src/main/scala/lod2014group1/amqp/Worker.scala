@@ -42,6 +42,6 @@ object Worker {
 	}
 
 	def doWork(task: WorkerTask) {
-		//Thread.sleep(task.time * 1000)
+		Thread.sleep(task.time * 1000)
 	}
 }

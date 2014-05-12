@@ -21,10 +21,11 @@ object Main extends App with Logging {
 		} else if (args contains "crawl-tmdb") {
     		val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
     		tmdb.crawl
-		} else if (args contains "rabbit") {
+		} else if (args contains "rabbit-worker") {
+			Recv.listen()
+		} else if (args contains "rabbit-server") {
 			val task = WorkerTask("Short Task", 15)
 			Supervisor.send(task)
-			Recv.listen()
 		} else if (args contains "freebase") {
 		  val freebase = new FreebaseAPI()
 		  //freebase.getAllNotImdbMovies
