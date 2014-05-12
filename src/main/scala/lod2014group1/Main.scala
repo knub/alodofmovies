@@ -37,12 +37,6 @@ object Main extends App with Logging {
 			dbpedia getAllTriplesFor "http://dbpedia.org/resource/Despicable_Me"
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
-			val forrestGump = new RdfResource("http://dbpedia.org/resource/Forrest_Gump")
-//			val rdfTriple = forrestGump releasedOn new DateTime(1994, 7, 6, 0, 0, 0)
-			val rdfTriple1 = forrestGump releasedOn new DateTime(1994, 7, 6, 0, 0, 0)
-			val rdfTriple2 = forrestGump isA film
-			System.out.println(rdfTriple1);
-			System.out.println(rdfTriple2);
 		}
 		log.debug("Finished.")
 	}
