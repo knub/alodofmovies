@@ -45,7 +45,8 @@ object Main extends App with Logging {
 		  //freebase.getAllNotImdbMovies
 		  //freebase.getFreebaseFilmsWithIMDB
 		  //freebase.getExampleRdf
-		  freebase.getAllFilmId
+		  //freebase.loadAllFilmId
+		  freebase.downloadResources
 		} else if (args contains "dbpedia") {
 			val dbpedia = new DBpediaAPI()
 			dbpedia getAllTriplesFor "http://dbpedia.org/resource/Despicable_Me"
