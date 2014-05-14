@@ -39,8 +39,16 @@ class TaskDatabase extends Logging {
 		}
 	}
 
-	def getNextNTasks(n: Int): Query[Task, (Int, String, Date, Byte, String)] = {
-		tasks.sortBy(t => (t.dueDate, t.importance)).take(n)
+	def getNextNTasks(n: Int): List[(Int, String, Date, Byte, String)] = {
+		database withSession { implicit session =>
+			tasks.sortBy(t => (t.dueDate, t.importance)).take(n).list()
+		}
+	}
+
+	def getNumberOfOpenTasks: Int = {
+		database withSession { implicit session =>
+			tasks.length.run
+		}
 	}
 
 

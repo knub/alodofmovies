@@ -6,18 +6,17 @@ import org.joda.time.DateTime
 object JobManager extends App with Logging {
 
 	override def main(args: Array[String]): Unit = {
-		val dbPopulator = new DatabasePopulator
-		dbPopulator.populate()
-//		run()
+		console
 	}
 
-	def run(): Unit = {
-		var s = ""
-		while (s != "STOP") {
-			print("> ")
-			s = scala.Console.readLine
-			println(s)
-		}
+	def populate(): Unit = {
+		val dbPopulator = new DatabasePopulator
+		dbPopulator.populate()
+	}
+
+	def console(): Unit = {
+		val console = new AdminConsole
+		console.run
 	}
 
 }
