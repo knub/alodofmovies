@@ -23,18 +23,20 @@ object Main extends App with Logging {
     		val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
     		tmdb.crawl
 		} else if (args contains "rabbit-worker") {
-			Worker.listen()
+			val worker = new Worker("asks", "answers")
+			worker.listen()
 		} else if (args contains "rabbit-server") {
-			new Thread(new RPCServer).start();
+			new Thread(new RPCServer("answers")).start();
 			val task1 = WorkerTask("Short Task", 10)
 			val task2 = WorkerTask("Medium Task", 15)
 			val task3 = WorkerTask("Long Task", 25)
-			Supervisor.send(task3)
-			Supervisor.send(task1)
-			Supervisor.send(task2)
-			Supervisor.send(task2)
-			Supervisor.send(task1)
-			Supervisor.send(task3)
+			val sup = new Supervisor("tasks")
+			sup.send(task3)
+			sup.send(task1)
+			sup.send(task2)
+			sup.send(task2)
+			sup.send(task1)
+			sup.send(task3)
 		} else if (args contains "crawl-ofdb") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.crawl

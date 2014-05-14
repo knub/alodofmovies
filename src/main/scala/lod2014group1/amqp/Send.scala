@@ -7,82 +7,74 @@ import binary._
 import com.typesafe.config.ConfigFactory
 
 case class WorkerTask(msg: String, time: Int)
+case class TaskAnswer(header: String, body: Array[Byte])
 
-/**
- * An Example of how to use the Example subclass of AMQPSender[T]. Still following?
- */
-object Supervisor {
+
+object ConnectionBuilder {
 	private val conf = ConfigFactory.load();
-	private val QUEUE_NAME = conf.getString("alodofmovies.hosts.tukex.queue")
 	private val HOST_NAME = conf.getString("alodofmovies.hosts.tukex.host")
 	private val VHOST = conf.getString("alodofmovies.hosts.tukex.vhost")
 	private val USERNAME = conf.getString("alodofmovies.hosts.tukex.username")
 	private val PASSWORD = conf.getString("alodofmovies.hosts.tukex.password")
 
-	def send(task: WorkerTask) {
-
+	def newConnection(): Connection = {
 		val factory = new ConnectionFactory()
 		factory.setHost(HOST_NAME)
-
 		factory.setVirtualHost(VHOST)
 		factory.setUsername(USERNAME)
 		factory.setPassword(PASSWORD)
+		factory.getNewConnection
+	}
+}
 
-		val connection = factory.newConnection()
-		val channel = connection.createChannel()
-		val durable = true
-		channel.queueDeclare(QUEUE_NAME, durable, false, false, null)
-		channel.basicPublish("", QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, task.pickle.value)
-		println(" [x] Sent '" + task.msg + "' to queue '" + QUEUE_NAME + "' at vhost: '" + VHOST + "'")
+class Supervisor(taskQueueName: String) {
+	val connection = ConnectionBuilder.newConnection()
+	val channel = connection.createChannel()
+	channel.queueDeclare(taskQueueName, true, false, false, null)
+
+	def send(task: WorkerTask) {
+		channel.basicPublish("", taskQueueName, MessageProperties.PERSISTENT_TEXT_PLAIN, task.pickle.value)
+		println(" [x] Sent '" + task.msg + "' to queue '" + TASK_QUEUE_NAME + "'")
+	}
+
+	def close() {
 		channel.close()
 		connection.close()
 	}
 }
 
-object RPCServer {
-	private val conf = ConfigFactory.load();
-	private val RPC_QUEUE_NAME = "answers"
-	private val HOST_NAME = conf.getString("alodofmovies.hosts.tukex.host")
-	private val VHOST = conf.getString("alodofmovies.hosts.tukex.vhost")
-	private val USERNAME = conf.getString("alodofmovies.hosts.tukex.username")
-	private val PASSWORD = conf.getString("alodofmovies.hosts.tukex.password")
-}
-
-class RPCServer extends Runnable{
+class RPCServer(rpcQueueName: String) extends Runnable{
+	val connection = ConnectionBuilder.newConnection()
+	val channel = connection.createChannel()
+	channel.queueDeclare(rpcQueueName, false, false, false, null)
+	channel.basicQos(1)
+	val consumer = new QueueingConsumer(channel)
+	channel.basicConsume(rpcQueueName, false, consumer)
 
 	override def run() {
-		val factory = new ConnectionFactory()
-		factory.setHost(RPCServer.HOST_NAME)
-		factory.setVirtualHost(RPCServer.VHOST)
-		factory.setUsername(RPCServer.USERNAME)
-		factory.setPassword(RPCServer.PASSWORD)
 
-
-
-		val connection = factory.newConnection()
-		val channel = connection.createChannel()
-		channel.queueDeclare(RPCServer.RPC_QUEUE_NAME, false, false, false, null)
-		channel.basicQos(1)
-		val consumer = new QueueingConsumer(channel)
-		channel.basicConsume(RPCServer.RPC_QUEUE_NAME, false, consumer)
 		println(" [x] Awaiting RPC requests")
 		while (true) {
 			val delivery = consumer.nextDelivery()
-			val props = delivery.getProperties
-			val replyProps = new BasicProperties.Builder().correlationId(props.getCorrelationId)
-				.build()
 
-			val answer = delivery.getBody.unpickle[String]
-			handleAnswer(answer)
-			val response = true
+			val response = handle(delivery.getBody)
+
+			val props = delivery.getProperties
+			val replyProps = new BasicProperties.Builder().correlationId(props.getCorrelationId).build()
 			channel.basicPublish("", props.getReplyTo, replyProps, response.pickle.value)
 			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 		}
 	}
 
-	def handleAnswer(answer: String) {
-		println(" [x] Received '" + answer + "'")
+	def close() {
+		channel.close()
+		connection.close()
 	}
 
+	def handle(messageBody: Array[Byte]): Boolean = {
+		val answer = messageBody.unpickle[TaskAnswer]
+		println(" [x] Received '" + answer.header + "'")
+		true
+	}
 }
 
