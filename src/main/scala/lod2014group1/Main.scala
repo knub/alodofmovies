@@ -7,7 +7,8 @@ import java.io.File
 import lod2014group1.rdf._
 import org.joda.time.DateTime
 import lod2014group1.rdf.RdfMovieResource._
-import lod2014group1.amqp.{Worker, WorkerTask, Recv, Supervisor}
+import lod2014group1.amqp._
+import lod2014group1.amqp.WorkerTask
 
 object Main extends App with Logging {
 
@@ -24,8 +25,16 @@ object Main extends App with Logging {
 		} else if (args contains "rabbit-worker") {
 			Worker.listen()
 		} else if (args contains "rabbit-server") {
-			val task = WorkerTask("Short Task", 15)
-			Supervisor.send(task)
+			new Thread(new RPCServer).start();
+			val task1 = WorkerTask("Short Task", 10)
+			val task2 = WorkerTask("Medium Task", 15)
+			val task3 = WorkerTask("Long Task", 25)
+			Supervisor.send(task3)
+			Supervisor.send(task1)
+			Supervisor.send(task2)
+			Supervisor.send(task2)
+			Supervisor.send(task1)
+			Supervisor.send(task3)
 		} else if (args contains "crawl-ofdb") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.crawl
