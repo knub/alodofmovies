@@ -3,13 +3,16 @@ package lod2014group1.job_managing
 import scala.slick.driver.SQLiteDriver.simple._
 import org.slf4s.Logging
 import scala.slick.jdbc.meta.MTable
+import java.sql.Date
 
-class Crawl(tag: Tag) extends Table[(Int, String, String)](tag, "crawls") {
-	def id = column[Int]("CRAWL_ID", O.PrimaryKey, O.AutoInc)
-	def uri = column[String]("URI")
-	def file = column[String]("FILE")
+class Task(tag: Tag) extends Table[(Int, String, String)](tag, "tasks") {
+	def id         = column[Int]("task_id", O.PrimaryKey, O.AutoInc)
+	def taskType   = column[String]("task_type")
+	def dueDate    = column[Date]("due_date")
+	def importance = column[Int]("importance")
+	def params     = column[String]("params")
 
-	def * = (id, uri, file)
+	def * = (id, taskType, dueDate, importance, params)
 }
 
 object JobManager extends App with Logging {
@@ -21,14 +24,14 @@ object JobManager extends App with Logging {
 	def run(): Unit = {
 		val database =  Database.forURL("jdbc:sqlite:test.db", driver = "org.sqlite.JDBC")
 		database withSession { implicit session =>
-			val crawls = TableQuery[Crawl]
-			if (MTable.getTables("crawls").list.isEmpty) {
-				crawls.ddl.create
+			val tasks = TableQuery[Task]
+			if (MTable.getTables("tasks").list.isEmpty) {
+				tasks.ddl.create
 			} else {
 				println("Not creating table.")
 			}
 
-			crawls.insert(0, "abc", "def")
+			tasks.insert(0, "abc", "def")
 
 			var s = ""
 			while (s != "STOP") {
