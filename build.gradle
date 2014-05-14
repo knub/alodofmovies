@@ -31,6 +31,11 @@ task server(type: JavaExec, dependsOn: [build]) {
     classpath = sourceSets.main.runtimeClasspath
     args = ['rabbit-server']
 }
+task crawlofdb(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['crawl-ofdb']
+}
 task triplify(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
 	classpath = sourceSets.main.runtimeClasspath
@@ -51,7 +56,11 @@ task jobs(type: JavaExec, dependsOn: [build]) {
 	classpath = sourceSets.main.runtimeClasspath
 	args = []
 }
-
+task ofdbcoverage(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['ofdb-coverage']
+}
 repositories {
 	mavenCentral()
 }

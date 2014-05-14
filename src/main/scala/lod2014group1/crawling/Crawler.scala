@@ -17,7 +17,7 @@ abstract class Crawler extends Logging {
 	/**
 	 * Gets the file for a given URL. If the file is not yet downloaded, this is done automatically.
 	 * @param urlString The URL of the file you want to process.
-	 * @return The file on the hard-drive.
+	 * @return The file on the hard-drive and a boolean, indicating success or failure.
 	 */
 	def getFile(urlString: String): (File, Boolean) = {
 		val uriBuilder = new URIBuilder(urlString)
