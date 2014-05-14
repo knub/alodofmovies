@@ -44,7 +44,7 @@ object Triplifier extends Logging {
 				//triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html")) :::
 				//triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
 				//triplifier.triplify(new File("data/IMDBMovie/tt0758758/awards.html"))
-				triplifier.triplify(new File("data/IMDBMovie/tt0758758/releaseinfo.html"))
+				triplifier.triplify(new File("data/IMDBMovie/tt0050900/releaseinfo.html"))
 			}
 		}
 

@@ -30,11 +30,13 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 	*/
 
+	def hasReleaseInfo(releaseInfo: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasReleaseInfo"), releaseInfo)
+
+	def alsoKnownAs(name: RdfResource): RdfTriple = buildTriple(RdfResource("lod:alsoKnownAs"), name)
+
 	def hasAward(award: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasAward"), award)
 
 	def hasTitle(title: String): RdfTriple = buildTriple(RdfResource("dbpprop:name"), RdfString(title))
-
-	def alsoKnownAs(title: String): RdfTriple = buildTriple(RdfResource("dbpprop:alternativeNames"), RdfString(title))
 
 	def isPartOf(collection: String): RdfTriple = {
 		log.warn("Predicate not set yet.")
