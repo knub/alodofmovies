@@ -91,7 +91,7 @@ class RPCClient {
 		channel.basicPublish("", RPCClient.QUEUE_NAME, props, msg.pickle.value)
 		var recievedAnswer = false
 		println("[x] Waiting for rpc answer")
-		while (recievedAnswer) {
+		while (!recievedAnswer) {
 			val delivery = consumer.nextDelivery()
 			if (delivery.getProperties.getCorrelationId == corrId) {
 				recievedAnswer = delivery.getBody.unpickle[Boolean]
