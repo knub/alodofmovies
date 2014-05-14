@@ -55,6 +55,7 @@ task jobs(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.job_managing.JobManager'
 	classpath = sourceSets.main.runtimeClasspath
 	args = []
+	standardInput = System.in
 }
 task ofdbcoverage(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
