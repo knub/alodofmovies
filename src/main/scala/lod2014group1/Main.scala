@@ -41,12 +41,12 @@ object Main extends App with Logging {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.crawl
 		} else if (args contains "freebase") {
-		  val freebase = new FreebaseAPI()
+		  val freebase = new lod2014group1.crawling.FreebaseFilmCrawler()
 		  //freebase.getAllNotImdbMovies
 		  //freebase.getFreebaseFilmsWithIMDB
 		  //freebase.getExampleRdf
 		  //freebase.loadAllFilmId
-		  freebase.downloadResources
+		  freebase.crawl
 		} else if (args contains "dbpedia") {
 			val dbpedia = new DBpediaAPI()
 			dbpedia getAllTriplesFor "http://dbpedia.org/resource/Despicable_Me"

@@ -22,6 +22,11 @@ import java.io.BufferedReader
 import java.io.FileReader
 import scala.io.Source
 import com.google.api.client.http.HttpResponse
+import lod2014group1.crawling.Crawler
+import org.slf4s.Logging
+import org.apache.http.client.utils.URIBuilder
+import java.net.URL
+import java.nio.channels.Channels
 
 case class FreebaseFilm (name : String, imdb_id: String, id: String)
 case class Result (result: List[FreebaseFilm])
@@ -31,22 +36,21 @@ case class FilmIds (result: List[Ids], cursor: Option[String])
 object FreebaseAPI {
 	private val conf = ConfigFactory.load();
 	private val API_KEY = conf.getString("alodofmovies.api.key.freebase")
-	private val movieListFile = new File(Config.DATA_FOLDER + "/Freebase/movieList.txt")
-	
+	private val BASE_DIR = Config.DATA_FOLDER + "/Freebase/"
+	private val movieListFile = new File(BASE_DIR +"/movieList.txt")
+	private val FILM_DIR = BASE_DIR + "/film/"
+	private val topicURL = "https://www.googleapis.com/freebase/v1/topic"
 }
 
 class FreebaseAPI{
-	private val conf = ConfigFactory.load();
-	private val FREEBASE_API_KEY = conf.getString("alodofmovies.api.key.freebase")
-	private val movieListFile = new File(Config.DATA_FOLDER + "/Freebase/movieList.txt")
-	
-	
+		
+	/////////////////////////////////////////////////////////////////
 	def requestMQL(mqlQuery: String, cursor: String) : JValue = {
 
       val httpTransport = new NetHttpTransport()
       val requestFactory = httpTransport.createRequestFactory()
       val url = new GenericUrl("https://www.googleapis.com/freebase/v1/mqlread")
-      url.put("key", FREEBASE_API_KEY)
+      url.put("key", FreebaseAPI.API_KEY)
       url.put("query", mqlQuery)
       url.put("cursor", cursor);
       val request = requestFactory.buildGetRequest(url);
@@ -63,13 +67,11 @@ class FreebaseAPI{
 	def loadAllFilmId(): Unit = {
 		
 		implicit val formats = net.liftweb.json.DefaultFormats
-		println(FreebaseAPI.API_KEY)
-		println(FREEBASE_API_KEY)
 		val query = """[{"mid": null, "type": "/film/film", "limit": 400}]"""
 		var cursor: Option[String] = Some("")
 			
-		movieListFile.getParentFile.mkdirs()
-		val bw = new BufferedWriter(new FileWriter(movieListFile))
+		FreebaseAPI.movieListFile.getParentFile.mkdirs()
+		val bw = new BufferedWriter(new FileWriter(FreebaseAPI.movieListFile))
 				
 		while (cursor.isDefined){
 			val json = requestMQL(query, cursor.get)	
@@ -84,32 +86,6 @@ class FreebaseAPI{
 	
 		bw.close()
 
-	}
-
-	def downloadResources() = {
-		val movieDirPath = Config.DATA_FOLDER + "/Freebase/MovieJson/"
-		val movieDir = new File(movieDirPath)
-		movieDir.mkdirs()
-		
-		for(line <- Source.fromFile("myfile.txt").getLines.take(10)){
-			val filePath = new File (movieDirPath + "line")
-			if (!filePath.exists()){
-				val bw = new BufferedWriter(new FileWriter(filePath))
-				bw.write(loadResource(line).toString())	
-			}
-		}	
-		
-	}
-	
-	def loadResource(resource: String): HttpResponse = {
-		
-		val httpTransport = new NetHttpTransport()
-		val requestFactory = httpTransport.createRequestFactory()
-		val url = new GenericUrl("https://www.googleapis.com/freebase/v1/topic" + resource)
-		url.put("key", FREEBASE_API_KEY)
-		url.put("filter", "allproperties")
-		val request = requestFactory.buildGetRequest(url);
-		request.execute()
 	}
 	
 	def writeIdsInFile(ids:List[Ids], bw: BufferedWriter): Unit = {
