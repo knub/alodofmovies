@@ -75,7 +75,7 @@ class RPCServer extends Runnable{
 			val answer = delivery.getBody.unpickle[String]
 			handleAnswer(answer)
 			val response = true
-			channel.basicPublish("", props.getReplyTo, replyProps, response.getBytes("UTF-8"))
+			channel.basicPublish("", props.getReplyTo, replyProps, response.pickle.value)
 			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 		}
 	}
