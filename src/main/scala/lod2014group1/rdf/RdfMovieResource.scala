@@ -4,7 +4,7 @@ import org.slf4s.Logging
 import org.joda.time.DateTime
 
 object RdfMovieResource {
-	implicit def fromRdfResource(resource: RdfResource): RdfMovieResource = {
+	implicit def movieResourceFromRdfResource(resource: RdfResource): RdfMovieResource = {
 		new RdfMovieResource(resource.uri)
 	}
 
@@ -30,6 +30,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 	*/
 
+	def hasAward(award: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasAward"), award)
 
 	def hasTitle(title: String): RdfTriple = buildTriple(RdfResource("dbpprop:name"), RdfString(title))
 

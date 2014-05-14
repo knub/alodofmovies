@@ -5,7 +5,7 @@ import org.joda.time.DateTime
 
 
 object RdfActorResource {
-	implicit def fromRdfResource(resource: RdfResource): RdfActorResource = {
+	implicit def actorResourceFromRdfResource(resource: RdfResource): RdfActorResource = {
 		new RdfActorResource(resource.uri)
 	}
 
@@ -15,6 +15,8 @@ object RdfActorResource {
 }
 
 class RdfActorResource(resource: String) extends RdfResource(resource) with Logging {
+
+	def hasAward(award: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasAward"), award)
 
 	def born(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthDate"), RdfDate(date))
 
