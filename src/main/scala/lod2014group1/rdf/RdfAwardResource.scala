@@ -5,7 +5,7 @@ import org.joda.time.DateTime
 
 
 object RdfAwardResource {
-	implicit def fromRdfResource(resource: RdfResource): RdfAwardResource = {
+	implicit def awardResourceFromRdfResource(resource: RdfResource): RdfAwardResource = {
 		new RdfAwardResource(resource.uri)
 	}
 
@@ -29,4 +29,6 @@ class RdfAwardResource(resource: String) extends RdfResource(resource) with Logg
 	def details(details: String): RdfTriple = buildTriple(RdfResource("dbpprop:description"), RdfString(details))
 
 	def nominee(nominee: RdfResource): RdfTriple = buildTriple(RdfResource("lod:nominee"), nominee)
+
+	def role(role: String): RdfTriple = buildTriple(RdfResource("lod:role"), RdfString(role))
 }

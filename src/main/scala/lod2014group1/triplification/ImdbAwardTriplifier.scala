@@ -1,14 +1,15 @@
 package lod2014group1.triplification
 
 import java.io.File
-import lod2014group1.rdf.RdfTriple
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
-import org.jsoup.select.Elements
 import scala.collection.JavaConversions._
-import lod2014group1.rdf.RdfTriple
-import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfMovieResource._
+import lod2014group1.rdf.RdfAwardResource._
+import lod2014group1.rdf.RdfActorResource._
+import lod2014group1.rdf._
+import lod2014group1.rdf
+import java.lang.ArrayIndexOutOfBoundsException
 
 class ImdbAwardTriplifier(val imdbId: String) {
 
@@ -22,6 +23,7 @@ class ImdbAwardTriplifier(val imdbId: String) {
 	var nomineeUri = ""
 	var details = ""
 	var role = ""
+	var awardCount = 1
 
 	def triplify(f: File): List[RdfTriple] = {
 		val doc = Jsoup.parse(f, null)
@@ -36,8 +38,9 @@ class ImdbAwardTriplifier(val imdbId: String) {
 	}
 
 	def triplifyAward(table: Element): List[RdfTriple] = {
-		val nameCountryYear = table.previousElementSibling().text();
+		var triples: List[RdfTriple] = List()
 
+		val nameCountryYear = table.previousElementSibling().text();
 		name = getName(nameCountryYear)
 		country = getCountry(nameCountryYear)
 		year = getYear(nameCountryYear)
@@ -52,69 +55,103 @@ class ImdbAwardTriplifier(val imdbId: String) {
 				description = td.select(".award_description").first().ownText()
 
 				if (td.children().size() == 1) {
-					handleAward()
+					triples = handleAward() ::: triples
+					awardCount += 1
 				}
 
 				td.select("a").foreach(a => {
-					nominee = a.text()
-					nomineeUri = a.attr("href")
-
-					val roleSibling = a.nextElementSibling()
-					var detailSibling: Element = a
-
-					if (roleSibling != null) {
-						if (roleSibling.hasClass("production_role")) {
-							role = roleSibling.text();
-							detailSibling = roleSibling
-						}
-					}
-
-					// the details are in the second sibling element
-					detailSibling = detailSibling.nextElementSibling()
-					if (detailSibling != null) {
-						detailSibling = detailSibling.nextElementSibling()
-						if (detailSibling != null) {
-							// check if this elements is a award_detail_notes element
-							if (detailSibling.hasClass("award_detail_notes")) {
-								if (detailSibling.children().size() == 2) {
-									details = detailSibling.select(".full-note").text()
-								} else {
-									details = detailSibling.text()
-								}
-							}
-						}
-					}
-
-					// create triples
-					handleAward()
+					triples = handelElement(a) ::: triples
 				})
 			}
 		})
 
-		List()
+		triples
 	}
 
-	def handleAward(): List[RdfTriple] = {
-		val movie = RdfResource(s"lod:Movie$imdbId")
+	def handelElement(a: Element): List[RdfTriple] = {
+		nominee = a.text()
+		nomineeUri = a.attr("href")
 
-		System.out.println("Name: " + name)
-		System.out.println("Country: " + country)
-		System.out.println("Year: " + year)
-		System.out.println("Outcome: " + outcome)
-		System.out.println("Category: " + category)
-		System.out.println("Description: " + description)
-		System.out.println("Nominee: " + nominee)
-		System.out.println("Nominee URI: " + nomineeUri)
-		System.out.println("Role: " + role)
-		System.out.println("Details: " + details)
-		System.out.println("-------------------------")
+		// If the nominee is "More", the tag does not include a nominee
+		if (nominee == "More")
+			return List()
+
+		val roleSibling = a.nextElementSibling()
+		var detailSibling: Element = a
+
+		if (roleSibling != null) {
+			if (roleSibling.hasClass("production_role")) {
+				role = roleSibling.text();
+				detailSibling = roleSibling
+			}
+		}
+
+		// the details are in the second sibling element
+		detailSibling = detailSibling.nextElementSibling()
+		if (detailSibling != null) {
+			detailSibling = detailSibling.nextElementSibling()
+			if (detailSibling != null) {
+				// check if this elements is a award_detail_notes element
+				if (detailSibling.hasClass("award_detail_notes")) {
+					if (detailSibling.children().size() == 2) {
+						details = detailSibling.select(".full-note").text()
+					} else {
+						details = detailSibling.text()
+					}
+				}
+			}
+		}
+
+		// create triples
+		val triples = handleAward()
+		awardCount += 1
+
+		triples
+	}
+
+
+	def handleAward(): List[RdfTriple] = {
+		var movie = RdfResource(s"lod:Movie$imdbId")
+		val award = RdfResource(s"lod:Movie$imdbId/Award$awardCount")
+
+		var triples = List(
+			 movieResourceFromRdfResource(movie) hasAward award,
+			 award isAn RdfAwardResource.award,
+			 award name name,
+			 award outcome outcome,
+			 award category category
+		)
+
+		if (nominee.isEmpty) {
+			triples = (award nominee movie) :: triples
+		} else {
+			val actorNr = nomineeUri.split("/")(2).split("\\?")(0).substring(2)
+			val actor = RdfResource(s"lod:Actor$actorNr")
+
+			triples = List(award nominee actor, actorResourceFromRdfResource(actor) hasAward award) ::: triples
+		}
+
+		if (! description.isEmpty)
+			triples = (award description description) :: triples
+
+		if (! role.isEmpty)
+			triples = (award role role) :: triples
+
+		if (! country.isEmpty)
+			triples = (award country country) :: triples
+
+		if (! year.isEmpty)
+			triples = (award year year) :: triples
+
+		if (! details.isEmpty)
+			triples = (award details details) :: triples
 
 		details = ""
 		role = ""
 		nominee = ""
 		nomineeUri = ""
 
-		List()
+		triples
 	}
 
 
