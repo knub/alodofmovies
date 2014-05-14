@@ -11,7 +11,7 @@ import org.slf4s.Logging
 class Triplifier {
 
 	def triplify(f: File): List[RdfTriple] = {
-		val imdbId = f.getPath().split("/"){2}.replaceAll("\\D", "")
+		val imdbId = f.getPath().split("/")(2).replaceAll("\\D", "")
 
 		if (f.getName == "fullcredits.html")
 			new ImdbCastTriplifier().triplify(f)
@@ -21,6 +21,8 @@ class Triplifier {
 			new ImdbKeywordTriplifier(imdbId).triplify(f)
 		else if (f.getName == "awards.html")
 			new ImdbAwardTriplifier(imdbId).triplify(f)
+		else if (f.getName == "releaseinfo.html")
+			new ImdbReleaseInfoTriplifier(imdbId).triplify(f)
 		else
 			List()
 	}
@@ -41,7 +43,8 @@ object Triplifier extends Logging {
 			case Config.Person.Tanja => {
 				//triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html")) :::
 				//triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html"))
-				triplifier.triplify(new File("data/IMDBMovie/tt0758758/awards.html"))
+				//triplifier.triplify(new File("data/IMDBMovie/tt0758758/awards.html"))
+				triplifier.triplify(new File("data/IMDBMovie/tt0758758/releaseinfo.html"))
 			}
 		}
 
