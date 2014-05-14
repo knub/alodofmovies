@@ -89,4 +89,5 @@ dependencies {
 	compile('org.apache.jena:jena-arq:2.11.1'){
 		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
 	}
+	compile 'jline:jline:2.11'
 }
