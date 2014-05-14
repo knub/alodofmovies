@@ -21,17 +21,14 @@ object Main extends App with Logging {
 		} else if (args contains "crawl-tmdb") {
     		val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
     		tmdb.crawl
-<<<<<<< HEAD
 		} else if (args contains "rabbit-worker") {
 			Worker.listen()
 		} else if (args contains "rabbit-server") {
 			val task = WorkerTask("Short Task", 15)
 			Supervisor.send(task)
-=======
 		} else if (args contains "crawl-ofdb") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.crawl
->>>>>>> OFDBCrawler updated and ofdbcoverage functionality added
 		} else if (args contains "freebase") {
 		  val freebase = new FreebaseAPI()
 		  //freebase.getAllNotImdbMovies
@@ -40,14 +37,11 @@ object Main extends App with Logging {
 		  freebase.getAllFilmId
 		} else if (args contains "dbpedia") {
 			val dbpedia = new DBpediaAPI()
-<<<<<<< HEAD
 			dbpedia getAllTriplesFor "http://dbpedia.org/resource/Despicable_Me"
-=======
 			dbpedia.executeQuery("select distinct ?Concept where {[] a ?Concept} LIMIT 100")
 		} else if (args contains "ofdb-coverage"){
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.coverage
->>>>>>> OFDBCrawler updated and ofdbcoverage functionality added
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}
