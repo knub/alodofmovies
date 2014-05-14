@@ -7,11 +7,11 @@ import com.typesafe.config.ConfigFactory
 
 object Worker {
 	private val conf = ConfigFactory.load();
-	private val QUEUE_NAME = conf.getString("alodofmovies.hosts.localhost.queue")
-	private val HOST_NAME = conf.getString("alodofmovies.hosts.localhost.host")
-	private val VHOST = conf.getString("alodofmovies.hosts.localhost.vhost")
-	private val USERNAME = conf.getString("alodofmovies.hosts.localhost.username")
-	private val PASSWORD = conf.getString("alodofmovies.hosts.localhost.password")
+	private val QUEUE_NAME = conf.getString("alodofmovies.hosts.tukex.queue")
+	private val HOST_NAME = conf.getString("alodofmovies.hosts.tukex.host")
+	private val VHOST = conf.getString("alodofmovies.hosts.tukex.vhost")
+	private val USERNAME = conf.getString("alodofmovies.hosts.tukex.username")
+	private val PASSWORD = conf.getString("alodofmovies.hosts.tukex.password")
 
 	def listen() {
 		val factory = new ConnectionFactory()
