@@ -86,5 +86,7 @@ dependencies {
     compile 'com.typesafe:config:1.2.1'
 
 	compile 'org.apache.jena:jena:2.11.1'
-	compile 'org.apache.jena:jena-arq:2.11.1'
+	compile('org.apache.jena:jena-arq:2.11.1'){
+		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+	}
 }
