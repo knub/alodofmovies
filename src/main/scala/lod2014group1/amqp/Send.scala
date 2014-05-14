@@ -1,10 +1,10 @@
 package lod2014group1.amqp
 
 import com.rabbitmq.client._
+import com.rabbitmq.client.AMQP.BasicProperties
 import scala.pickling._
 import binary._
 import com.typesafe.config.ConfigFactory
-import java.util.UUID
 
 case class WorkerTask(msg: String, time: Int)
 
@@ -59,8 +59,8 @@ class RPCServer extends Runnable{
 
 
 
-		connection = factory.newConnection()
-		channel = connection.createChannel()
+		val connection = factory.newConnection()
+		val channel = connection.createChannel()
 		channel.queueDeclare(RPCServer.RPC_QUEUE_NAME, false, false, false, null)
 		channel.basicQos(1)
 		val consumer = new QueueingConsumer(channel)
@@ -74,14 +74,14 @@ class RPCServer extends Runnable{
 
 			val answer = delivery.getBody.unpickle[String]
 			handleAnswer(answer)
-
+			val response = true
 			channel.basicPublish("", props.getReplyTo, replyProps, response.getBytes("UTF-8"))
 			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 		}
 	}
 
 	def handleAnswer(answer: String) {
-		println(" [x] Received '" + answer.msg + "'")
+		println(" [x] Received '" + answer + "'")
 	}
 
 }

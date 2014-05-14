@@ -1,6 +1,7 @@
 package lod2014group1.amqp
 
 import com.rabbitmq.client._
+import com.rabbitmq.client.AMQP.BasicProperties
 import scala.pickling._
 import binary._
 import com.typesafe.config.ConfigFactory
@@ -38,7 +39,7 @@ object Worker {
 			val delivery = consumer.nextDelivery()
 			val task = delivery.getBody.unpickle[WorkerTask]
 			println(" [x] Received '" + task.msg + "'")
-			val answer = doWork()
+			val answer = doWork(task)
 			println(" [x] Done working on '" + task.msg + "'")
 			val ack = rpcClient.send(answer)
 			if (ack) {
