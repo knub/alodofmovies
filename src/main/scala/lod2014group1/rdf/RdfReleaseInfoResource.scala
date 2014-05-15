@@ -16,12 +16,7 @@ object RdfReleaseInfoResource {
 
 class RdfReleaseInfoResource(resource: String) extends RdfResource(resource) with Logging {
 
-	def inCountry(country: String): RdfTriple = buildTriple(RdfResource("dbpprop:country"), RdfString(country))
+	def atDate(dateStr: String) = dateRes(dateStr)
+	def atDate(dateObj: DateTime) = dateRes(dateObj)
 
-	def atDate(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:date"), RdfDate(date))
-
-	def atDate(date: String): RdfTriple = buildTriple(RdfResource("dbpprop:date"), RdfString(date))
-
-	def hasDescription(description: String): RdfTriple = buildTriple(RdfResource("dbpprop:description"), RdfString(description))
-	
 }

@@ -117,34 +117,34 @@ class ImdbAwardTriplifier(val imdbId: String) {
 		var triples = List(
 			 movieResourceFromRdfResource(movie) hasAward award,
 			 award isAn RdfAwardResource.award,
-			 award name name,
-			 award outcome outcome,
-			 award category category
+			 award hasName name,
+			 award hasOutcome outcome,
+			 award inCategory category
 		)
 
 		if (nominee.isEmpty) {
-			triples = (award nominee movie) :: triples
+			triples = (award forNominee movie) :: triples
 		} else {
 			val actorNr = nomineeUri.split("/")(2).split("\\?")(0).substring(2)
 			val actor = RdfResource(s"lod:Actor$actorNr")
 
-			triples = List(award nominee actor, actorResourceFromRdfResource(actor) hasAward award) ::: triples
+			triples = List(award forNominee actor, actorResourceFromRdfResource(actor) hasAward award) ::: triples
 		}
 
 		if (! description.isEmpty)
-			triples = (award description description) :: triples
+			triples = (award hasDescription description) :: triples
 
 		if (! role.isEmpty)
-			triples = (award role role) :: triples
+			triples = (award withRole role) :: triples
 
 		if (! country.isEmpty)
-			triples = (award country country) :: triples
+			triples = (award inCountry country) :: triples
 
 		if (! year.isEmpty)
-			triples = (award year year) :: triples
+			triples = (award inYear year) :: triples
 
 		if (! details.isEmpty)
-			triples = (award details details) :: triples
+			triples = (award hasDetails details) :: triples
 
 		details = ""
 		role = ""

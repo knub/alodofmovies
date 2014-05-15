@@ -30,20 +30,20 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 	*/
 
+
+	def hasTitle = name _
+	def releasedInYear = year _
+	def releasedInCountry = country _
+	def shotIn = subject _
+	def hasShortSummary = abstractContent _
+	def hasStoryLine = description _
+
+
+	def alsoKnownAs(aka: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasAka"), aka)
+
 	def hasReleaseInfo(releaseInfo: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasReleaseInfo"), releaseInfo)
 
-	def alsoKnownAs(name: RdfResource): RdfTriple = buildTriple(RdfResource("lod:alsoKnownAs"), name)
-
-	def hasAward(award: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasAward"), award)
-
-	def hasTitle(title: String): RdfTriple = buildTriple(RdfResource("dbpprop:name"), RdfString(title))
-
-	def isPartOf(collection: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfString(collection))
-	}
-
-	def releasedInYear(year: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:years"), RdfInteger(year))
+	def isPartOf(collection: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(collection))
 
 	def hasGenre(genre: String): RdfTriple = buildTriple(RdfResource("dbpprop:genre"), RdfString(genre))
 
@@ -51,25 +51,11 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def lasts(runtime: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:runtime"), RdfInteger(runtime))
 
-	def releasedInCountry(country: String): RdfTriple = buildTriple(RdfResource("dbpprop:country"), RdfString(country))
+	def hasRating(rating: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(rating))
 
-	def hasRating(rating: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfString(rating))
-	}
-
-	def shotIn(blackAndWhite: RdfResource): RdfTriple = buildTriple(RdfResource("dcterms:subject"), blackAndWhite)
-
-	def isReleased(released: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfString(released))
-	}
+	def isReleased(released: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(released))
 
 	def releasedOn(releaseDate: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:realeased"), RdfDate(releaseDate))
-
-	def hasShortSummary(summary: String): RdfTriple = buildTriple(RdfResource("dbpedia-owl:abstact"), RdfString(summary))
-
-	def hasStoryline(storyline: String): RdfTriple = buildTriple(RdfResource("dbpprop:description"), RdfString(storyline))
 
 	def hasKeyword(keyword: String): RdfTriple = buildTriple(RdfResource("lod:keyword"), RdfString(keyword))
 
@@ -99,10 +85,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasPhotos(photos: String): RdfTriple = buildTriple(RdfResource("dbpprop:hasPhotoCollection"), RdfUrl(photos))
 
-	def hasVideo(video: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfUrl(video))
-	}
+	def hasVideo(video: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfUrl(video))
 
 	def hasWebsite(website: String): RdfTriple = buildTriple(RdfResource("dbpprop:website"), RdfUrl(website))
 
@@ -112,33 +95,18 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasRevenue(revenue: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:revenue"), RdfInteger(revenue))
 
-	def hasSoundMix(soundMix: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfString(soundMix))
-	}
+	def hasSoundMix(soundMix: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(soundMix))
 
 	def hasSoundtrack(music: String): RdfTriple = buildTriple(RdfResource("dbpprop:music"), RdfString(music))
 
 	def hasQuote(quote: String): RdfTriple = buildTriple(RdfResource("dbpprop:quote"), RdfUrl(quote))
 
-	def hasAspectRatio(ratio: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfString(ratio))
-	}
+	def hasAspectRatio(ratio: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(ratio))
 
-	def hasTrivia(trivia: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfString(trivia))
-	}
+	def hasTrivia(trivia: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(trivia))
 
-	def hasGoofs(goofs: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfString(goofs))
-	}
+	def hasGoofs(goofs: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(goofs))
 
-	def hasReview(review: String): RdfTriple = {
-		log.warn("Predicate not set yet.")
-		this.buildTriple(RdfResource("somerdfname"), RdfString(review))
-	}
+	def hasReview(review: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(review))
 
 }

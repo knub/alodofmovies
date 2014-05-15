@@ -16,7 +16,7 @@ object RdfActorResource {
 
 class RdfActorResource(resource: String) extends RdfResource(resource) with Logging {
 
-	def hasAward(award: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasAward"), award)
+	def hasImdbUrl(url: String) = sameAs("http://imdb.com" + url)
 
 	def born(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthDate"), RdfDate(date))
 
@@ -24,12 +24,6 @@ class RdfActorResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasBirthPlace(place: String): RdfTriple = buildTriple(RdfResource("dbpprop:birthPlace"), RdfString(place))
 
-	def playsRole(role: RdfResource): RdfTriple = {
-		log.debug("Predicate not set yet.")
-		this.buildTriple(RdfResource("lod:playsRole"), role)
-	}
+	def playsRole(role: RdfResource): RdfTriple = buildTriple(RdfResource("lod:playsRole"), role)
 
-	def hasImdbUrl(url: String): RdfTriple = {
-		this.buildTriple(RdfResource("lod:imdbUrl"), RdfResource("http://imdb.com" + url))
-	}
 }

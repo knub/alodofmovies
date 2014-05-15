@@ -7,7 +7,7 @@ import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 import scala.collection.JavaConversions._
 import lod2014group1.rdf.RdfReleaseInfoResource._
-import lod2014group1.rdf.RdfAlternativeMovieNamesResource._
+import lod2014group1.rdf.RdfAkaResource._
 import lod2014group1.rdf.RdfMovieResource._
 import org.joda.time.DateTime
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
@@ -119,15 +119,15 @@ class ImdbReleaseInfoTriplifier(val imdbId: String) {
 		var triples = List(
 			movie alsoKnownAs aka,
 			aka isAn alternativeMovieName,
-			aka name name
+			aka hasAkaName name
 		)
 
 		if (! description.isEmpty) {
-			triples = (aka description description) :: triples
+			triples = (aka hasDescription description) :: triples
 		}
 
 		if (! country.isEmpty) {
-			triples = (aka country country) :: triples
+			triples = (aka inCountry country) :: triples
 		}
 
 		triples

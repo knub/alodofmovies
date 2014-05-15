@@ -16,19 +16,13 @@ object RdfAwardResource {
 
 class RdfAwardResource(resource: String) extends RdfResource(resource) with Logging {
 
-	def country(country: String): RdfTriple = buildTriple(RdfResource("dbpprop:country"), RdfString(country))
+	def hasOutcome(outcome: String): RdfTriple = buildTriple(RdfResource("lod:outcome"), RdfString(outcome))
 
-	def year(year: String): RdfTriple = buildTriple(RdfResource("dbpprop:years"), RdfString(year))
+	def hasDetails(details: String): RdfTriple = buildTriple(RdfResource("dbpprop:details"), RdfString(details))
 
-	def outcome(outcome: String): RdfTriple = buildTriple(RdfResource("lod:outcome"), RdfString(outcome))
+	def inCategory(category: String): RdfTriple = buildTriple(RdfResource("lod:awardCategory"), RdfString(category))
 
-	def category(category: String): RdfTriple = buildTriple(RdfResource("lod:awardCategory"), RdfString(category))
+	def forNominee(nominee: RdfResource): RdfTriple = buildTriple(RdfResource("lod:nominee"), nominee)
 
-	def description(description: String): RdfTriple = buildTriple(RdfResource("dbpedia-owl:abstact"), RdfString(description))
-
-	def details(details: String): RdfTriple = buildTriple(RdfResource("dbpprop:description"), RdfString(details))
-
-	def nominee(nominee: RdfResource): RdfTriple = buildTriple(RdfResource("lod:nominee"), nominee)
-
-	def role(role: String): RdfTriple = buildTriple(RdfResource("lod:role"), RdfString(role))
+	def withRole(role: String): RdfTriple = buildTriple(RdfResource("lod:role"), RdfString(role))
 }
