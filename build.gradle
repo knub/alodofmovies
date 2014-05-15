@@ -11,6 +11,10 @@ idea {
 	}
 }
 
+tasks.withType(ScalaCompile) {
+	scalaCompileOptions.useAnt = false
+}
+
 task crawlimdb(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
 	classpath = sourceSets.main.runtimeClasspath
