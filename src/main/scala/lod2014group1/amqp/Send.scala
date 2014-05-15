@@ -23,7 +23,7 @@ object ConnectionBuilder {
 		factory.setVirtualHost(VHOST)
 		factory.setUsername(USERNAME)
 		factory.setPassword(PASSWORD)
-		factory.getNewConnection
+		factory.newConnection
 	}
 }
 
@@ -34,7 +34,7 @@ class Supervisor(taskQueueName: String) {
 
 	def send(task: WorkerTask) {
 		channel.basicPublish("", taskQueueName, MessageProperties.PERSISTENT_TEXT_PLAIN, task.pickle.value)
-		println(" [x] Sent '" + task.msg + "' to queue '" + TASK_QUEUE_NAME + "'")
+		println(" [x] Sent '" + task.msg + "' to queue '" + taskQueueName + "'")
 	}
 
 	def close() {
