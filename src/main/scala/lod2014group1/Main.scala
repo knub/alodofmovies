@@ -23,7 +23,7 @@ object Main extends App with Logging {
     		val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
     		tmdb.crawl
 		} else if (args contains "rabbit-worker") {
-			val worker = new Worker("asks", "answers")
+			val worker = new Worker("tasks", "answers")
 			worker.listen()
 		} else if (args contains "rabbit-server") {
 			new Thread(new RPCServer("answers")).start();
