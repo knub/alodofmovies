@@ -6,27 +6,16 @@ import com.google.api.client.http.javanet.NetHttpTransport
 import net.liftweb.json.JsonParser
 import java.io.InputStreamReader
 import java.io.File
-import java.io.FileInputStream
-import org.apache.commons.io.IOUtils
 import lod2014group1.Config
-import lod2014group1.crawling.ImdbMovieCrawler
 import net.liftweb.json.JsonAST.JArray
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import com.google.api.services.freebase.FreebaseRequest
 import java.io.BufferedWriter
-import java.io.FileOutputStream
 import java.io.FileWriter
 import com.typesafe.config.ConfigFactory
-import java.io.BufferedReader
-import java.io.FileReader
-import scala.io.Source
 import com.google.api.client.http.HttpResponse
-import lod2014group1.crawling.Crawler
-import org.slf4s.Logging
-import org.apache.http.client.utils.URIBuilder
-import java.net.URL
-import java.nio.channels.Channels
+import lod2014group1.crawling.ImdbMovieCrawler
 
 case class FreebaseFilm (name : String, imdb_id: String, id: String)
 case class Result (result: List[FreebaseFilm])
@@ -34,12 +23,10 @@ case class Ids (mid: String)
 case class FilmIds (result: List[Ids], cursor: Option[String])
 
 object FreebaseAPI {
-	private val conf = ConfigFactory.load();
-	private val API_KEY = conf.getString("alodofmovies.api.key.freebase")
-	private val BASE_DIR = Config.DATA_FOLDER + "/Freebase/"
-	private val movieListFile = new File(BASE_DIR +"/movieList.txt")
-	private val FILM_DIR = BASE_DIR + "/film/"
-	private val topicURL = "https://www.googleapis.com/freebase/v1/topic"
+	val conf = ConfigFactory.load();
+	val API_KEY = conf.getString("alodofmovies.api.key.freebase")
+	val BASE_DIR = Config.DATA_FOLDER + "/Freebase/"
+	val movieListFile = new File(BASE_DIR +"/movieList.txt")
 }
 
 class FreebaseAPI{

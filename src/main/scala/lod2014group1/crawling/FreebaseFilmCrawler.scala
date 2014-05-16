@@ -13,14 +13,11 @@ import java.io.FileOutputStream
 import com.google.api.client.http.HttpResponse
 import com.google.api.client.http.javanet.NetHttpTransport
 import com.google.api.client.http.GenericUrl
+import lod2014group1.apis.FreebaseAPI
 
 
 object FreebaseFilmCrawler {
-	private val conf = ConfigFactory.load();
-	private val API_KEY = conf.getString("alodofmovies.api.key.freebase")
-	private val BASE_DIR = Config.DATA_FOLDER + "/Freebase/"
-	private val movieListFile = new File(BASE_DIR +"/movieList.txt")
-	private val FILM_DIR = BASE_DIR + "/film/"
+	private val FILM_DIR = FreebaseAPI.BASE_DIR + "/film/"
 	private val topicURL = "https://www.googleapis.com/freebase/v1/topic"
 }
 
@@ -32,7 +29,7 @@ class FreebaseFilmCrawler extends Crawler with Logging{
 		log.info(s"Latest parsed: $latest_parsed")
 		log.info(s"Latest id is: $latest_id")
 
-		val br = new BufferedReader(new FileReader(FreebaseFilmCrawler.movieListFile));
+		val br = new BufferedReader(new FileReader(FreebaseAPI.movieListFile));
 		for( a <- 1 to latest_id){
 			if (a <= latest_parsed){
 				br.readLine
@@ -42,7 +39,7 @@ class FreebaseFilmCrawler extends Crawler with Logging{
 				if (! needsDownloading) {
 				//log.info(s"$id")
 				}
-				if ((a % 50)==0){
+				if ((a % 100)==0){
 					log.info(s"downloaded movies: $a / $latest_id")
 				}
 				
@@ -87,7 +84,7 @@ class FreebaseFilmCrawler extends Crawler with Logging{
 		val httpTransport = new NetHttpTransport()
 		val requestFactory = httpTransport.createRequestFactory()
 		val url = new GenericUrl(urlString)
-		url.put("key", FreebaseFilmCrawler.API_KEY)
+		url.put("key", FreebaseAPI.API_KEY)
 		url.put("filter", "allproperties")
 		val request = requestFactory.buildGetRequest(url);
 		request.execute()

@@ -46,6 +46,9 @@ object Triplifier extends Logging {
 				triplifier.triplify(new File("data/IMDBMovie/tt0758758/awards.html")) :::
 				triplifier.triplify(new File("data/IMDBMovie/tt0050900/releaseinfo.html"))
 			}
+			case Config.Person.Rice => {
+				new FreebaseFilmsTriplifier("/m/0_7w6").triplify(new File("data/Freebase/0_7w6"))
+			}
 		}
 
 //		println(
