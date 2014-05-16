@@ -49,6 +49,9 @@ object Triplifier extends Logging {
 			case Config.Person.Rice => {
 				new FreebaseFilmsTriplifier("/m/0_7w6").triplify(new File("data/Freebase/0_7w6"))
 			}
+			case Config.Person.Dominik => {
+				new TMDBFilmsTriplifier().triplify(new File("data/TMDBMoviesList/movie/550"))
+			}
 		}
 
 //		println(
