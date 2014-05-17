@@ -44,7 +44,7 @@ class TaskDatabase extends Logging {
 	def getFilesMatching(pattern: String): List[Task] = {
 		database withSession { implicit session =>
 			tasks.filter { task =>
-				task.fileOrUrl like s"%$pattern.html"
+				task.fileOrUrl endsWith  s"$pattern.html"
 			}.list
 		}
 	}
