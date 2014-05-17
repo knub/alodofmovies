@@ -1,5 +1,7 @@
 package lod2014group1.job_managing
 
+import lod2014group1.database.TaskDatabase
+
 class AdminConsole {
 
 	val db = new TaskDatabase

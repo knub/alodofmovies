@@ -1,18 +1,24 @@
 package lod2014group1.job_managing
 
 import org.slf4s.Logging
-import org.joda.time.DateTime
+import lod2014group1.triplification.Triplifier
+import java.io.File
+import lod2014group1.Config
+import lod2014group1.database._
 
 object JobManager extends App with Logging {
 
 	override def main(args: Array[String]): Unit = {
-		val database = new TaskDatabase()
-		println(database.getFilesMatching("keywords").size)
-		println(database.getFilesMatching("fullcredits").size)
-//		database.getFilesMatching("keywords").foreach { task =>
-//			System.out.println(task.fileOrUrl);
-//		}
-//		console
+		val triplifier = new Triplifier
+		val database = new TaskDatabase
+		val bulkLoadWriter = new BulkLoadWriter
+		bulkLoadWriter.newFile("keywords.bulk")
+		database.getFilesMatching("keywords").take(100).foreach { task =>
+			val triples = triplifier.triplify(new File(s"${Config.DATA_FOLDER}/${task.fileOrUrl}"))
+			bulkLoadWriter.addTriples(triples)
+		}
+		bulkLoadWriter.bulkLoad
+//		println(database.getFilesMatching("fullcredits").size)
 	}
 
 	def populate(): Unit = {

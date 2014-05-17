@@ -1,13 +1,13 @@
-package lod2014group1.job_managing
+package lod2014group1.database
 
 import java.io.File
+import java.sql.Date
 import lod2014group1.Config
 import lod2014group1.crawling.ImdbMovieCrawler
 import org.apache.commons.io.FileUtils
+import org.joda.time.DateTime
 import org.slf4s.Logging
 import scala.collection.JavaConversions._
-import java.sql.Date
-import org.joda.time.DateTime
 
 class DatabasePopulator extends Logging {
 

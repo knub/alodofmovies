@@ -1,10 +1,10 @@
-package lod2014group1.job_managing
+package lod2014group1.database
 
+import java.sql.Date
+import org.joda.time.DateTime
+import org.slf4s.Logging
 import scala.slick.driver.SQLiteDriver.simple._
 import scala.slick.jdbc.meta.MTable
-import java.sql.Date
-import org.slf4s.Logging
-import org.joda.time.DateTime
 
 case class Task(id: Int, taskType: String, dueDate: Date, importance: Byte, fileOrUrl: String)
 
