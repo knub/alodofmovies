@@ -14,7 +14,7 @@ object ImdbActorCrawler {
 }
 class ImdbActorCrawler extends Crawler {
 
-	val castParser = new ImdbCastTriplifier
+	val castParser = new ImdbCastTriplifier("fakeid")
 
 	def crawl: Unit = {
 		val moviesDir = new File(s"${Config.DATA_FOLDER}/${ImdbMovieCrawler.BASE_DIR_NAME}/")

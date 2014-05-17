@@ -14,7 +14,7 @@ class Triplifier {
 		val imdbId = f.getPath().split("/")(2).replaceAll("\\D", "")
 
 		if (f.getName == "fullcredits.html")
-			new ImdbCastTriplifier().triplify(f)
+			new ImdbCastTriplifier(imdbId).triplify(f)
 		else if (f.getName == "locations.html")
 			new ImdbLocationTriplifier(imdbId).triplify(f)
 		else if (f.getName == "keywords.html")

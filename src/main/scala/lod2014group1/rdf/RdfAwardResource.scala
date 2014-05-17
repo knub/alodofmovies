@@ -22,7 +22,7 @@ class RdfAwardResource(resource: String) extends RdfResource(resource) with Logg
 
 	def inCategory(category: String): RdfTriple = buildTriple(RdfResource("lod:awardCategory"), RdfString(category))
 
-	def forNominee(nominee: RdfResource): RdfTriple = buildTriple(RdfResource("lod:nominee"), nominee)
+	def forNominee(nominee: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:nominee"), nominee)
 
 	def withRole(role: String): RdfTriple = buildTriple(RdfResource("lod:role"), RdfString(role))
 }

@@ -39,11 +39,15 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def hasStoryLine = description _
 
 
-	def alsoKnownAs(aka: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasAka"), aka)
+	def alsoKnownAs(aka: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:alternativeNames"), aka)
 
-	def hasReleaseInfo(releaseInfo: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasReleaseInfo"), releaseInfo)
+	def hasReleaseInfo(releaseInfo: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:released"), releaseInfo)
 
-	def isPartOf(collection: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(collection))
+	def isPartOf(collection: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/film_series"), RdfString(collection))
+
+	def nextMovie(movie: RdfResource): RdfTriple = buildTriple(RdfResource("freebase:film/film/sequel"), movie)
+
+	def previousMovie(movie: RdfResource): RdfTriple = buildTriple(RdfResource("freebase:film/film/prequel"), movie)
 
 	def hasGenre(genre: String): RdfTriple = buildTriple(RdfResource("dbpprop:genre"), RdfString(genre))
 
@@ -51,11 +55,11 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def lasts(runtime: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:runtime"), RdfInteger(runtime))
 
-	def hasRating(rating: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(rating))
+	def rated(rating: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/rating"), RdfString(rating))
 
-	def isReleased(released: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(released))
+	def isReleased(released: String): RdfTriple = buildTriple(RdfResource("lod:isReleased"), RdfString(released))
 
-	def releasedOn(releaseDate: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:realeased"), RdfDate(releaseDate))
+	def releasedOn(releaseDate: DateTime): RdfTriple = buildTriple(RdfResource("dbpedia-owl:releaseDate"), RdfDate(releaseDate))
 
 	def hasKeyword(keyword: String): RdfTriple = buildTriple(RdfResource("lod:keyword"), RdfString(keyword))
 
@@ -85,7 +89,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasPhotos(photos: String): RdfTriple = buildTriple(RdfResource("dbpprop:hasPhotoCollection"), RdfUrl(photos))
 
-	def hasVideo(video: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfUrl(video))
+	def hasTrailer(video: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/trailers"), RdfUrl(video))
 
 	def hasWebsite(website: String): RdfTriple = buildTriple(RdfResource("dbpprop:website"), RdfUrl(website))
 
@@ -95,18 +99,18 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasRevenue(revenue: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:revenue"), RdfInteger(revenue))
 
-	def hasSoundMix(soundMix: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(soundMix))
+	def hasSoundMix(soundMix: String): RdfTriple = buildTriple(RdfResource("lod:soundmix"), RdfString(soundMix))
 
-	def hasSoundtrack(music: String): RdfTriple = buildTriple(RdfResource("dbpprop:music"), RdfString(music))
+	def hasSoundtrack(music: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/soundtrack"), RdfString(music))
 
 	def hasQuote(quote: String): RdfTriple = buildTriple(RdfResource("dbpprop:quote"), RdfUrl(quote))
 
-	def hasAspectRatio(ratio: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(ratio))
+	def hasAspectRatio(ratio: String): RdfTriple = buildTriple(RdfResource("lod:aspectRatio"), RdfString(ratio))
 
-	def hasTrivia(trivia: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(trivia))
+	def hasTrivia(trivia: String): RdfTriple = buildTriple(RdfResource("lod:trivia"), RdfString(trivia))
 
-	def hasGoofs(goofs: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(goofs))
+	def hasGoofs(goofs: String): RdfTriple = buildTriple(RdfResource("lod:goofs"), RdfString(goofs))
 
-	def hasReview(review: String): RdfTriple = buildTriple(RdfResource("somerdfname"), RdfString(review))
+	def hasReview(review: String): RdfTriple = buildTriple(RdfResource("lod:review"), RdfString(review))
 
 }

@@ -31,6 +31,9 @@ case class RdfResource(val uri: String) extends RdfObject {
 	def description(description: String): RdfTriple = buildTriple(RdfResource("dbpprop:description"), RdfString(description))
 	def hasDescription = description _
 
+	def shortDescription(shortDescription: String): RdfTriple = buildTriple(RdfResource("dbpprop:shortDescription"), RdfString(shortDescription))
+	def hasShortDescription = shortDescription _
+
 	def abstractContent(abstractStr: String): RdfTriple = buildTriple(RdfResource("dbpedia-owl:abstact"), RdfString(abstractStr))
 
 	def dateRes(date: String): RdfTriple = buildTriple(RdfResource("dbpprop:date"), RdfString(date))

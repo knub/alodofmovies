@@ -6,12 +6,13 @@ import org.jsoup.Jsoup
 import scala.collection.JavaConversions._
 import org.jsoup.nodes.{Document, Element}
 import lod2014group1.rdf.RdfActorResource._
+import lod2014group1.rdf.RdfCharacterResource._
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import org.jsoup.select.Elements
 import org.slf4s.Logging
 
-class ImdbCastTriplifier extends Logging {
+class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
 	def triplify(f: File): List[RdfTriple] = {
 		val doc = Jsoup.parse(f, null)
@@ -79,9 +80,14 @@ class ImdbCastTriplifier extends Logging {
 			else {
 				val characterId = link.get(0).attr("href").split("/")(2).substring(2)
 				val character = RdfResource(s"lod:Character$characterId")
+				val movie = RdfResource(s"lod:Movie$imdbId")
 				val characterName = link.text()
+
 				List(character name characterName,
-					actor playsRole character)
+					actor playsCharacter character,
+					character inMovie movie,
+					character playedBy actor,
+					character isA RdfCharacterResource.character)
 			}
 		}
 	}
