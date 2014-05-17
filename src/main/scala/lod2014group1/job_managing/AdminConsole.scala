@@ -19,8 +19,8 @@ class AdminConsole {
 		val Exit = """exit""".r
 		command match {
 			case ShowNextTasksPattern(nbr) => {
-				db.getNextNTasks(nbr.toInt).foreach { case (_, taskType, dueDate, importance, fileOrUrl) =>
-					println(s"${taskType}ing $fileOrUrl until $dueDate")
+				db.getNextNTasks(nbr.toInt).foreach { case task =>
+					println(s"${task.taskType}ing ${task.fileOrUrl} until ${task.dueDate}")
 				}
 			}
 			case ShowNumberOfOpenTasksPattern() => {

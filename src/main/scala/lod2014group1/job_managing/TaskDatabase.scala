@@ -6,7 +6,9 @@ import java.sql.Date
 import org.slf4s.Logging
 import org.joda.time.DateTime
 
-class Task(tag: Tag) extends Table[(Int, String, Date, Byte, String)](tag, "tasks") {
+case class Task(id: Int, taskType: String, dueDate: Date, importance: Byte, fileOrUrl: String)
+
+class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
 	def id         = column[Int]("task_id", O.PrimaryKey, O.AutoInc)
 	def taskType   = column[String]("task_type")
 	def dueDate    = column[Date]("due_date")
@@ -15,13 +17,13 @@ class Task(tag: Tag) extends Table[(Int, String, Date, Byte, String)](tag, "task
 
 	def uniqueConstraint = index("unique_constraint", (taskType, fileOrUrl), unique = true)
 
-	def * = (id, taskType, dueDate, importance, fileOrUrl)
+	def * = (id, taskType, dueDate, importance, fileOrUrl) <>  (Task.tupled, Task.unapply)
 }
 class TaskDatabase extends Logging {
 	val DATABASE_NAME = "lod.db"
 	val database =  Database.forURL(s"jdbc:sqlite:${DATABASE_NAME}", driver = "org.sqlite.JDBC")
 
-	val tasks = TableQuery[Task]
+	val tasks = TableQuery[TaskTable]
 	createTablesIfNotExist
 
 	private def createTablesIfNotExist(): Unit = {
@@ -39,7 +41,7 @@ class TaskDatabase extends Logging {
 		}
 	}
 
-	def getNextNTasks(n: Int): List[(Int, String, Date, Byte, String)] = {
+	def getNextNTasks(n: Int): List[Task] = {
 		database withSession { implicit session =>
 			tasks.sortBy(t => (t.dueDate, t.importance)).take(n).list()
 		}
@@ -52,15 +54,15 @@ class TaskDatabase extends Logging {
 	}
 
 
-	def insert(taskType: String, dueDate: DateTime, importance: Byte, fileOrUrl: String): Unit = {
+	def insert(task: Task): Unit = {
 		database withSession { implicit session =>
 			// task_id is ignored because it is an auto increment column
-			tasks.insert(0, taskType, dueDate, importance, fileOrUrl)
+			tasks.insert(task)
 //			(tasks returning tasks.map(._id)) += Task(0, taskType, dueDate, importance, params)
 		}
 
 	}
-	def insertAll(values: (Int, String, Date, Byte, String)*): Unit = {
+	def insertAll(values: Task*): Unit = {
 		database withSession { implicit session =>
 			tasks.insertAll(values: _*)
 		}

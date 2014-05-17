@@ -20,7 +20,7 @@ class DatabasePopulator extends Logging {
 		val db = new TaskDatabase
 		movieFiles.grouped(BATCH_INSERT_SIZE).zipWithIndex.foreach { case (movieFilesBatch, i) =>
 			db.insertAll(movieFilesBatch.map { f =>
-				(0, "triplify", new Date(2014 - 1900, 5 - 1, 20), 5.toByte, f.getCanonicalPath.split("/data/")(1))
+				Task(0, "triplify", new Date(2014 - 1900, 5 - 1, 20), 5.toByte, f.getCanonicalPath.split("/data/")(1))
 			}: _*)
 			log.info("%8d/%d".format(i * BATCH_INSERT_SIZE, movieFiles.size))
 		}
