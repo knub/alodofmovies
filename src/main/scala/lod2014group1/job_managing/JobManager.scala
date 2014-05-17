@@ -6,7 +6,13 @@ import org.joda.time.DateTime
 object JobManager extends App with Logging {
 
 	override def main(args: Array[String]): Unit = {
-		console
+		val database = new TaskDatabase()
+		println(database.getFilesMatching("keywords").size)
+		println(database.getFilesMatching("fullcredits").size)
+//		database.getFilesMatching("keywords").foreach { task =>
+//			System.out.println(task.fileOrUrl);
+//		}
+//		console
 	}
 
 	def populate(): Unit = {

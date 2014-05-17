@@ -41,6 +41,14 @@ class TaskDatabase extends Logging {
 		}
 	}
 
+	def getFilesMatching(pattern: String): List[Task] = {
+		database withSession { implicit session =>
+			tasks.filter { task =>
+				task.fileOrUrl like s"%$pattern.html"
+			}.list
+		}
+	}
+
 	def getNextNTasks(n: Int): List[Task] = {
 		database withSession { implicit session =>
 			tasks.sortBy(t => (t.dueDate, t.importance)).take(n).list()

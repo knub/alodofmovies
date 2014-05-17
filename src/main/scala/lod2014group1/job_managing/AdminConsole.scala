@@ -8,8 +8,14 @@ class AdminConsole {
 		val reader = new jline.console.ConsoleReader
 		var continue = true;
 		while (continue) {
-			val s = reader.readLine("> ").toLowerCase.trim.stripSuffix(";")
-			continue = handleCommand(s)
+			val readline = reader.readLine("> ")
+			if (readline != null) {
+				val command = readline.toLowerCase.trim.stripSuffix(";")
+				continue = handleCommand(command)
+			} else {
+				print("See ya.")
+				continue = false
+			}
 		}
 	}
 
