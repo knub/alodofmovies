@@ -21,6 +21,91 @@ object OFDBMovieCrawler {
 
 class OFDBMovieCrawler extends Crawler {
 	
+	def clean: Unit = {
+		val lastMovieFilePath = s"${OFDBMovieCrawler.OFDB_PATH}/OFDBLastMovie.txt"
+		if (!Files.exists(Paths.get(lastMovieFilePath)))
+			println(s"$lastMovieFilePath not found. Could not clean HTML files.")
+		else{
+			val lastMovieIDCrawled = Source.fromFile(lastMovieFilePath).mkString.toInt
+			println(s"Last movie ID crawled: $lastMovieIDCrawled.")
+			val movieBasePath = s"${OFDBMovieCrawler.OFDB_PATH}/Movies"
+			for (i <- 9397 to lastMovieIDCrawled){
+				cleanOneCast(s"$movieBasePath/$i/Cast.html")
+				cleanOneFilm(s"$movieBasePath/$i/Film.html")
+				if ( i % 50 == 0) {
+					println(s"Cleaned $i movies. ${lastMovieIDCrawled - i} to go.")
+				}
+			}
+		}
+	}
+	
+	
+	def cleanOneCast(path : String): Unit = {
+		if (!Files.exists(Paths.get(path))){
+			return
+		}
+		implicit val codec = Codec("UTF-8")
+		codec.onMalformedInput(CodingErrorAction.REPLACE)
+		codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
+		var fileContent = Source.fromFile(path)(codec).mkString
+		if (fileContent.contains("Unter dieser ID existiert kein Film.") || fileContent.contains("Anzeige nicht zul")){
+			return
+		}
+		fileContent = fileContent.split("""ndigkeit.</font></div>\n<br>""", 2)(1)
+		fileContent = fileContent.split("""<br><br><br><div align="center"><script type="text/javascript"><!--\ngoogle_ad_client = """", 2)(0)
+		fileContent = s"""<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+$fileContent
+</body>
+</html>"""
+		scala.tools.nsc.io.File(path).writeAll(s"$fileContent")
+	}
+	
+	
+	def cleanOneFilm(path : String): Unit = {
+		if (!Files.exists(Paths.get(path))){
+			return
+		}
+		implicit val codec = Codec("UTF-8")
+		codec.onMalformedInput(CodingErrorAction.REPLACE)
+		codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
+		var fileContent = Source.fromFile(path)(codec).mkString
+		if (fileContent.contains("Unter dieser ID existiert kein Film.")){
+			return
+		}
+		fileContent = fileContent.split("""<div itemscope itemtype="http://schema.org/Movie">\n<table cellspacing="0" cellpadding="0" border="0">\n<tr valign="top"><td width="99%">\n<table cellspacing="0" cellpadding="0" border="0">\n<tr valign="top">""", 2)(1)
+		fileContent = fileContent.split("""<font face="Arial,Helvetica,sans-serif" size="2" class="Normal"><br>Neue Fassung eintragen:""", 2)(0)
+		val fileContentTopPart = fileContent.split("""</td><td width="1%"><div id="Layer_mb" style="position: relative; left: 10px; top: -15px; z-index: 1;"><script src="Scripts/swfobject_modified.js" type="text/javascript"></script>""", 2)(0)
+		fileContent = fileContent.split("""<td nowrap><font face="Arial,Helvetica,sans-serif" size="2" class="Normal">Genre""", 2)(1)
+		fileContent = s"""<td><font face="Arial,Helvetica,sans-serif">Genre $fileContent"""
+		val fileContentMiddlePart = fileContent.split("""<!-- Shop-Artikel darstellen -->""", 2)(0)
+		fileContent = fileContent.split("""<td width="99%"><img src="images/design3/s_linie_t.png" width="150" height="10" border="0"><br><div style="color: #0000AA; font-size: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style: italic;">Fassungen</div></td>\n</tr>""", 2)(1)
+		fileContent = s"""Fassungen <table> $fileContent"""
+		fileContent = s"""<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<table>
+<tr>
+<td>
+<table>
+<tr>
+$fileContentTopPart
+$fileContentMiddlePart
+$fileContent
+</tr>
+</table>
+</body>
+</html>"""
+
+		scala.tools.nsc.io.File(path).writeAll(s"$fileContent")		
+	}
+	
+	
 	def coverage: Unit = {
 		implicit val codec = Codec("UTF-8")
 		codec.onMalformedInput(CodingErrorAction.REPLACE)
@@ -47,7 +132,7 @@ class OFDBMovieCrawler extends Crawler {
 				}
 				if (i % statusPrintEvery == 0){
 					var coveragePercent = 100.0f * imdbLinks.toFloat / moviesFound.toFloat
-					println(s"Processed $moviesFound movies. IMBd coverage so far: $imdbLinks -> $coveragePercent%.")
+					println(s"Processed $moviesFound movies. IMDb coverage so far: $imdbLinks -> $coveragePercent%.")
 				}
 			}
 			val existingMoviesPercent = 100.0f * moviesFound.toFloat / lastMovieIDCrawled.toFloat

@@ -50,6 +50,9 @@ object Main extends App with Logging {
 		} else if (args contains "dbpedia") {
 			val dbpedia = new DBpediaAPI()
 			dbpedia getAllTriplesFor "http://dbpedia.org/resource/Despicable_Me"
+		} else if (args contains "ofdb-clean"){
+			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
+			ofdb.clean
 		} else if (args contains "ofdb-coverage"){
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.coverage

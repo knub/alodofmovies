@@ -61,6 +61,11 @@ task jobs(type: JavaExec, dependsOn: [build]) {
 	args = []
 	standardInput = System.in
 }
+task ofdbclean(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['ofdb-clean']
+}
 task ofdbcoverage(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
 	classpath = sourceSets.main.runtimeClasspath
