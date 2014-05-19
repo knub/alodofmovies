@@ -16,9 +16,13 @@ class ImdbKeywordTriplifier(val imdbId: String) {
 		val doc = Jsoup.parse(f, null)
 
 		val keywordsDiv = doc.getElementById("keywords_content")
-		val keywordsTable = keywordsDiv.select("table")
+		if (keywordsDiv == null) {
+			List()
+		} else {
+			val keywordsTable = keywordsDiv.select("table")
 
-		triplifyKeywords(keywordsTable)
+			triplifyKeywords(keywordsTable)
+		}
 	}
 
 	def triplifyKeywords(table: Elements): List[RdfTriple] = {

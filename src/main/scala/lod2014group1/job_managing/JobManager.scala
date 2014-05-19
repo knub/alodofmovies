@@ -13,7 +13,7 @@ object JobManager extends App with Logging {
 		val database = new TaskDatabase
 		val bulkLoadWriter = new BulkLoadWriter
 		bulkLoadWriter.newFile("keywords.bulk")
-		database.getFilesMatching("keywords").take(100).foreach { task =>
+		database.getFilesMatching("keywords").foreach { task =>
 			val triples = triplifier.triplify(new File(s"${Config.DATA_FOLDER}/${task.fileOrUrl}"))
 			bulkLoadWriter.addTriples(triples)
 		}
