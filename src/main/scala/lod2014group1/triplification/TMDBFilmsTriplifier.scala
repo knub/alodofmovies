@@ -1,8 +1,10 @@
 package lod2014group1.triplification
 
 import java.io.{FileReader, File}
-import lod2014group1.rdf.RdfTriple
 import net.liftweb.json.JsonParser
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf.RdfMovieResource._
 
 case class TmdbGenre(id: Long, name: String)
 case class TmdbCollection(id: Long, name: String, poster_path: String, backdrop_path: String)
@@ -53,7 +55,33 @@ class TMDBFilmsTriplifier {
 		val json1: TmdbJsonResponse1 = JsonParser.parse(new FileReader(f)).extract[TmdbJsonResponse1]
 		val json2: TmdbJsonResponse2 = JsonParser.parse(new FileReader(f)).extract[TmdbJsonResponse2]
 		println(s"Movie id: ${json1.id} original_title: ${json1.original_title}")
-		var triples: List[RdfTriple] = List()
-		triples
+		val imdb_id = json1.imdb_id
+		if (!imdb_id.equals("")){
+			val movie = RdfResource(s"lod:Movie${json1.imdb_id}")
+			addKeywords(movie, json2.keywords.keywords) :::
+			addGenres(movie, json1.genres)
+		} else {
+			List()
+		}
+	}
+
+	def addKeywords(movie: RdfResource, keywords: List[TmdbKeyword]): List[RdfTriple] = {
+		keywords.map { keyword =>
+			handleKeyword(movie, keyword.name)
+		}
+	}
+
+	def handleKeyword(movie: RdfResource, keyword: String): RdfTriple = {
+		movie hasKeyword keyword
+	}
+
+	def addGenres(movie: RdfResource, keywords: List[TmdbGenre]): List[RdfTriple] = {
+		keywords.map { keyword =>
+			handleGenre(movie, keyword.name)
+		}
+	}
+
+	def handleGenre(movie: RdfResource, keyword: String): RdfTriple = {
+		movie hasGenre keyword
 	}
 }

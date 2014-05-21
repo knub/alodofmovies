@@ -5,9 +5,12 @@ import com.rabbitmq.client.AMQP.BasicProperties
 import scala.pickling._
 import binary._
 import com.typesafe.config.ConfigFactory
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.amqp.TaskType._
 
-case class WorkerTask(msg: String, time: Int)
-case class TaskAnswer(header: String, body: Array[Byte])
+case class WorkerTask(`type`: TaskType, params: Map[String, String])
+case class UriFile(uri: String, fileContent: String)
+case class TaskAnswer(header: String, files: List[UriFile], triples: List[RdfTriple])
 
 
 object ConnectionBuilder {
@@ -34,7 +37,7 @@ class Supervisor(taskQueueName: String) {
 
 	def send(task: WorkerTask) {
 		channel.basicPublish("", taskQueueName, MessageProperties.PERSISTENT_TEXT_PLAIN, task.pickle.value)
-		println(" [x] Sent '" + task.msg + "' to queue '" + taskQueueName + "'")
+		println(" [x] Sent '" + task.`type` + "' to queue '" + taskQueueName + "'")
 	}
 
 	def close() {
