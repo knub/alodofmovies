@@ -73,14 +73,20 @@ class RPCServer(rpcQueueName: String) extends Runnable{
 		connection.close()
 	}
 
+	var i = 0;
 	def handle(messageBody: Array[Byte]): Unit = {
 		val answer = messageBody.unpickle[TaskAnswer]
-		println(" [x] Received '" + answer.header + "'")
-		println("I save these files:")
-		println(answer.files)
-		println("I stored these triples:")
-		println(answer.triples)
-		println("=======================")
+		i += 1;
+
+
+		if (i % 701 == 35) {
+			println(" [x] Received '" + answer.header + "'")
+			println("I save these files:")
+			println(answer.files.size)
+			println("I stored these triples:")
+			println(answer.triples.size)
+			println("=======================")
+		}
 	}
 }
 

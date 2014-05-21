@@ -69,7 +69,6 @@ class RPCClient(rpcQueueName: String) extends Logging {
 
 		channel.basicPublish("", rpcQueueName, props, taskAnswer.pickle.value)
 
-		log.info(" [x] Waiting for rpc answer")
 		var receivedAnswer = false
 		while (!receivedAnswer) {
 			val delivery = consumer.nextDelivery()
