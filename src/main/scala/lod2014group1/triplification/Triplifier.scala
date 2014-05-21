@@ -43,11 +43,11 @@ object Triplifier extends Logging {
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
 			}
 			case Config.Person.Tanja => {
-//				triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html")) :::
-//				triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html")) :::
-//				triplifier.triplify(new File("data/IMDBMovie/tt0758758/awards.html")) :::
-//				triplifier.triplify(new File("data/IMDBMovie/tt0050900/releaseinfo.html")) :::
-//				triplifier.triplify(new File("data/IMDBMovie/tt0137523/tt0137523.html")) :::
+				triplifier.triplify(new File("data/IMDBMovie/tt0758758/locations.html")) :::
+				triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html")) :::
+				triplifier.triplify(new File("data/IMDBMovie/tt0758758/awards.html")) :::
+				triplifier.triplify(new File("data/IMDBMovie/tt0050900/releaseinfo.html")) :::
+				triplifier.triplify(new File("data/IMDBMovie/tt0137523/tt0137523.html")) :::
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
 			}
 			case Config.Person.Rice => {
