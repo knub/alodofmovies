@@ -167,7 +167,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 	}
 
 	private def extractActorImageTriples(actor: RdfResource, imgTag: Element): List[RdfTriple] = {
-		List(actor hasImage imgTag.attr("scr"))
+		List(actor hasImage imgTag.attr("src"))
 	}
 
 	private def extractActorTriples(actor: RdfResource, spanWithActorName: Element): List[RdfTriple] = {
@@ -274,7 +274,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 	def getActorUrls(f: File): List[String] = {
 		triplify(f).flatMap { triple =>
 			if (triple.p.uri == "lod:imdbUrl")
-				List(triple.o.asInstanceOf[RdfUrl].url)
+				List(triple.o.asInstanceOf[RdfUrl].lit)
 			else
 				List()
 		}
