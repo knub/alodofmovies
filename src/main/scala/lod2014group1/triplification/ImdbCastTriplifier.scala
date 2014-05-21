@@ -41,22 +41,41 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 		val groups = contentTable.select("h4.dataHeaderWithBorder")
 		groups.foreach(group => {
 			val groupName = group.ownText()
-			if (groupName.startsWith("Directed by")) { triples = handleDirector(group.nextElementSibling()) ::: triples }
-			else if (groupName.startsWith("Writing Credits")) { triples = handleWriter(group.nextElementSibling()) ::: triples }
-			else if (groupName.startsWith("Produced by")) { triples = handleProducer(group.nextElementSibling()) ::: triples }
-			else if (groupName.startsWith("Music by")) { triples = handleMusic(group.nextElementSibling()) ::: triples }
-			else if (groupName.startsWith("Cinematography by")) { triples = handleCinematography(group.nextElementSibling()) ::: triples }
-			else if (groupName.startsWith("Film Editing by")) { triples = handleFilmEditing(group.nextElementSibling()) ::: triples }
-			else if (groupName.startsWith("Cast") && !groupName.startsWith("Casting")) { triples = handleActor(group.nextElementSibling()) ::: triples }
+			val groupTable = group.nextElementSibling()
+
+			groupName match {
+				case name if name.startsWith("Directed by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:director", RdfPersonResource.director) ::: triples
+				}
+				case name if name.startsWith("Writing Credits") => {
+					triples = handleWriter(groupTable) ::: triples
+				}
+				case name if name.startsWith("Produced by") => {
+					triples = handleProducer(groupTable) ::: triples
+				}
+				case name if name.startsWith("Music by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:music", null) ::: triples
+				}
+				case name if name.startsWith("Cinematography by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:cinematography", null) ::: triples
+				}
+				case name if name.startsWith("Film Editing by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:editing", null) ::: triples
+				}
+				case name if name.startsWith("Makeup Department") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:makeupArtist", null) ::: triples
+				}
+				case name if name.startsWith("Costume Design by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:costume", null) ::: triples
+				}
+				case name if name.startsWith("Cast") && !name.startsWith("Casting") => {
+					triples = handleActor(groupTable) ::: triples
+				}
+				case _ => {}
+			}
 		})
 
 		triples
-	}
-
-	def handleDirector(table: Element): List[RdfTriple] = {
-		table.select("tr").toList.flatMap(tr => {
-			buildNameAndUrlTriple(tr, "dbpprop:director", RdfPersonResource.director)
-		})
 	}
 
 	def handleWriter(table: Element): List[RdfTriple] = {
@@ -131,24 +150,6 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 		triples
 	}
 
-	def handleMusic(table: Element): List[RdfTriple] = {
-		table.select("tr").toList.flatMap(tr => {
-			buildNameAndUrlTriple(tr, "dbpprop:music", null)
-		})
-	}
-
-	def handleCinematography(table: Element): List[RdfTriple] = {
-		table.select("tr").toList.flatMap(tr => {
-			buildNameAndUrlTriple(tr, "dbpprop:cinematography", null)
-		})
-	}
-
-	def handleFilmEditing(table: Element): List[RdfTriple] = {
-		table.select("tr").toList.flatMap(tr => {
-			buildNameAndUrlTriple(tr, "dbpprop:editing", null)
-		})
-	}
-
 	def handleActor(castTable: Element): List[RdfTriple] = {
 		castTable.select("tr").toList.flatMap { row =>
 			if (row.select("a").isEmpty)
@@ -204,30 +205,37 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 	}
 
 
-	def buildNameAndUrlTriple(tr: Element, property: String, rdfType: RdfResource): List[RdfTriple] = {
+	def extractTriplesForGroup(table: Element, property: String, rdfType: RdfResource): List[RdfTriple] = {
 		var triples: List[RdfTriple] = List()
 
-		val name = extractName(tr)
-		val url = extractUrl(tr)
-		val credit = extractCredit(tr)
+		table.select("tr").foreach(tr => {
+			val name = extractName(tr)
+			val url = extractUrl(tr)
+			val credit = extractCredit(tr)
 
-		if (!name.isEmpty) {
-			if (url.isEmpty) {
-				return List(RdfTriple(movie, RdfResource(property), RdfString(name)))
-			} else {
-				val person = getPersonResource(url)
+			if (!name.isEmpty) {
+				if (url.isEmpty) {
+					return List(RdfTriple(movie, RdfResource(property), RdfString(name)))
+				} else {
+					val person = getPersonResource(url)
 
-				triples = List (
-					person hasName name,
-					person isA RdfPersonResource.person
-				) ::: triples
+					triples = List (
+						person hasName name,
+						person isA RdfPersonResource.person
+					) ::: triples
 
-				if (rdfType != null) {
-					triples = RdfTriple(person, RdfResource("rdf:type"), rdfType) :: triples
+					if (rdfType != null) {
+						triples = RdfTriple(person, RdfResource("rdf:type"), rdfType) :: triples
+					}
+					triples = RdfTriple(movie, RdfResource(property), person) :: triples
+
+					if (credit.contains("(as ")) {
+						val alternativeName = getAlias(credit)
+						triples = (person hasAlternativeName alternativeName) :: triples
+					}
 				}
-				triples = RdfTriple(movie, RdfResource(property), person) :: triples
 			}
-		}
+		})
 
 		triples
 	}
