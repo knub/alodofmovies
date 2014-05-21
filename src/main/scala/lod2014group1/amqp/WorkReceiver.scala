@@ -54,7 +54,7 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 			val taskName = TaskType.withName(task.`type`)
 			workerAssignment.getOrElse(taskName, classOf[DummyWorker]).newInstance()
 		} catch {
-			case e => new DummyWorker
+			case e: Throwable => new DummyWorker
 		}
 		worker.execute(task.params)
 	}
