@@ -8,7 +8,7 @@ import com.typesafe.config.ConfigFactory
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.amqp.TaskType._
 
-case class WorkerTask(`type`: TaskType, params: Map[String, String])
+case class WorkerTask(`type`: String, params: Map[String, String])
 case class UriFile(uri: String, fileContent: String)
 case class TaskAnswer(header: String, files: List[UriFile], triples: List[RdfTriple])
 
@@ -77,7 +77,11 @@ class RPCServer(rpcQueueName: String) extends Runnable{
 	def handle(messageBody: Array[Byte]): Boolean = {
 		val answer = messageBody.unpickle[TaskAnswer]
 		println(" [x] Received '" + answer.header + "'")
-		true
+		println("I save these files:")
+		answer.files.foreach(println)
+		println("I stored these triples:")
+		answer.triples.foreach(println)
+		println()
 	}
 }
 
