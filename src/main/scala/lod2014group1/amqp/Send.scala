@@ -5,11 +5,11 @@ import com.rabbitmq.client.AMQP.BasicProperties
 import scala.pickling._
 import binary._
 import com.typesafe.config.ConfigFactory
-import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfTripleString
 
 case class WorkerTask(`type`: String, params: Map[String, String])
 case class UriFile(uri: String, fileContent: String)
-case class TaskAnswer(header: String, files: List[UriFile], triples: List[RdfTriple])
+case class TaskAnswer(header: String, files: List[UriFile], triples: List[RdfTripleString])
 
 
 object ConnectionBuilder {
@@ -81,7 +81,7 @@ class RPCServer(rpcQueueName: String) extends Runnable{
 		println("I stored these triples:")
 		println(answer.triples)
 		println("=======================")
-		Thread.sleep(5000)
+		Thread.sleep(10000)
 	}
 }
 

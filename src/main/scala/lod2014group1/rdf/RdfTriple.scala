@@ -45,9 +45,14 @@ case class RdfResource(val uri: String) extends RdfObject {
 	def hasAward(award: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasAward"), award)
 
 }
+case class RdfTripleString(s: String, p: String, o: String)
 
 case class RdfTriple(s: RdfResource, p: RdfResource, o: RdfObject) {
 	override def toString(): String = {
 		s"$s $p $o ."
+	}
+
+	def toRdfTripleString(): RdfTripleString = {
+		RdfTripleString(s.toString, p.toString, o.toString)
 	}
 }
