@@ -86,6 +86,7 @@ class FreebaseFilmCrawler extends Crawler with Logging{
 		val url = new GenericUrl(urlString)
 		url.put("key", FreebaseAPI.API_KEY)
 		url.put("filter", "allproperties")
+		url.put("limit", 1000)
 		val request = requestFactory.buildGetRequest(url);
 		request.execute()
 	}

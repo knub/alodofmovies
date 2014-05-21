@@ -15,6 +15,9 @@ object RdfMovieResource {
 	def blackAndWhite(): RdfResource = {
 		RdfResource("category:Black-and-white_films")
 	}
+	def fromImdbId(id: String): RdfResource = {
+		RdfResource(s"lod:Movie$id")
+	}
 }
 
 class RdfMovieResource(resource: String) extends RdfResource(resource) with Logging {

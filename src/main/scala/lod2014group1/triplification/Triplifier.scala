@@ -31,11 +31,6 @@ class Triplifier {
 object Triplifier extends Logging {
 	def go() {
 		val triplifier = new Triplifier
-		val movieDir = new File(s"${Config.DATA_FOLDER}/${ImdbMovieCrawler.BASE_DIR_NAME}/")
-		log.info("Started grabbing files.");
-		val movieFiles = FileUtils.listFiles(movieDir, null, true).toList.sorted.reverse
-		log.info("Found " + movieFiles.size + " movies.")
-		movieFiles.take(10).foreach(println)
 		val triples = I.am match {
 			case Config.Person.Stefan => {
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
@@ -47,7 +42,8 @@ object Triplifier extends Logging {
 				triplifier.triplify(new File("data/IMDBMovie/tt0050900/releaseinfo.html"))
 			}
 			case Config.Person.Rice => {
-				new FreebaseFilmsTriplifier("/m/0_7w6").triplify(new File("data/Freebase/0_7w6"))
+				new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd"))
+				new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))
 			}
 			case Config.Person.Dominik => {
 				new TMDBFilmsTriplifier().triplify(new File("data/TMDBMoviesList/movie/550"))
