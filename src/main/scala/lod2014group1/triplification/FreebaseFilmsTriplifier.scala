@@ -19,7 +19,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 
 	protected val fileLog: Logger = LoggerFactory.getLogger("FreebaseFileLogger")
 	
-	def triplify(f: File): List[RdfTriple] = {
+	def triplify(f: File): (List[RdfTriple], Int, Int)= {
 		
 		var triples: List[RdfTriple] = List()
 		
@@ -29,20 +29,25 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		val topicEquivalentWebpageJson = json\\"/common/topic/topic_equivalent_webpage"\"values"\"value"
 		val topicEquivalentWebpages = topicEquivalentWebpageJson.extract[List[String]]
 		
+		var imdbFlag = 0
+		var equivFlag = 0
+		
 		var imdbId = getImdbIdFromImdbTag(json)
 		if (imdbId.isEmpty) imdbId = getImdbIdFromWebpages(topicEquivalentWebpages)
+		else imdbFlag = imdbFlag + 1
 		
 		var id = ""
 		
 		imdbId match {
 			case Some(imdbId) => {
 					triples = RdfMovieResource.fromImdbId(imdbId).sameAs(FREEBASE_URI + freebaseId) :: triples// 
+					equivFlag = equivFlag + 1
 					id = imdbId
 				}
 			case None => id = idFromFreebaseId()
 		}
 		
-		triples
+		(triples, imdbFlag, equivFlag)
 	}
 	
 	
@@ -66,12 +71,12 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 			val imdbIds = imdbEquivalents.head.split("/").filter(urlPart => urlPart.startsWith("tt"))
 			val id = idFromIdmId(imdbIds.head)
 			val msg = s"freebase: $freebaseId imdb: ${id}"
-			log.info(msg)
-			fileLog.info(msg)
+			//log.info(msg)
+			//fileLog.info(msg)
 			Some(id)
 			
 		} else{
-			log.info(s"no imdb for $freebaseId")
+			//log.info(s"no imdb for $freebaseId")
 			None
 		}
 	}
