@@ -37,15 +37,18 @@ object Main extends App with Logging {
 			val triplifyTask4 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "August_Rush", "task_id" -> "8"))
 			val dummyTask = WorkerTask(null, Map())
 			val sup = new Supervisor("tasks")
-			sup.send(crawlTask1)
-			sup.send(crawlTask2)
-			sup.send(crawlTask3)
-			sup.send(crawlTask4)
-			sup.send(triplifyTask1)
-			sup.send(triplifyTask2)
-			sup.send(triplifyTask3)
-			sup.send(triplifyTask4)
-			sup.send(dummyTask)
+
+			(0 to 100).foreach { _ =>
+				sup.send(crawlTask1)
+				sup.send(crawlTask2)
+				sup.send(crawlTask3)
+				sup.send(crawlTask4)
+				sup.send(triplifyTask1)
+				sup.send(triplifyTask2)
+				sup.send(triplifyTask3)
+				sup.send(triplifyTask4)
+				sup.send(dummyTask)
+			}
 		} else if (args contains "crawl-ofdb") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.crawl

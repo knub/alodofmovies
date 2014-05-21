@@ -81,7 +81,6 @@ class RPCServer(rpcQueueName: String) extends Runnable{
 		println("I stored these triples:")
 		println(answer.triples)
 		println("=======================")
-		Thread.sleep(10000)
 	}
 }
 
