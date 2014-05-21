@@ -12,34 +12,27 @@ object RdfMovieResource {
 		RdfResource("dbpedia-owl:Film")
 	}
 
-	def blackAndWhite(): RdfResource = {
+	def blackAndWhiteFilm(): RdfResource = {
 		RdfResource("category:Black-and-white_films")
 	}
+
 	def fromImdbId(id: String): RdfResource = {
 		RdfResource(s"lod:Movie$id")
+	}
+
+	def colorFilm(): RdfResource = {
+		RdfResource("lod:category/color_films")
 	}
 }
 
 class RdfMovieResource(resource: String) extends RdfResource(resource) with Logging {
-	/*
-		PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-		PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-		PREFIX dbpprop: <http://dbpedia.org/property/>
-		PREFIX owl: <http://www.w3.org/2002/07/owl#>
-		PREFIX dcterms: <http://dublincore.org/2010/10/11/dcterms.rdf#>
-		PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
-		PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-		PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-		PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-	*/
-
 
 	def hasTitle = name _
 	def releasedInYear = year _
 	def releasedInCountry = country _
-	def shotIn = subject _
 	def hasShortSummary = abstractContent _
 	def hasStoryLine = description _
+	def belongsTo = subject _
 
 
 	def alsoKnownAs(aka: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:alternativeNames"), aka)
@@ -59,6 +52,8 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def lasts(runtime: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:runtime"), RdfInteger(runtime))
 
 	def rated(rating: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/rating"), RdfString(rating))
+
+	def scored(score: String): RdfTriple = buildTriple(RdfResource("freebase:base/edbase/score/score"), RdfString(score))
 
 	def isReleased(released: String): RdfTriple = buildTriple(RdfResource("lod:isReleased"), RdfString(released))
 
@@ -92,13 +87,13 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasPhotos(photos: String): RdfTriple = buildTriple(RdfResource("dbpprop:hasPhotoCollection"), RdfUrl(photos))
 
-	def hasTrailer(video: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/trailers"), RdfUrl(video))
+	def hasVideo(video: String): RdfTriple = buildTriple(RdfResource("dbpprop:video"), RdfUrl(video))
 
 	def hasWebsite(website: String): RdfTriple = buildTriple(RdfResource("dbpprop:website"), RdfUrl(website))
 
 	def filmedInLocation(location: String): RdfTriple = buildTriple(RdfResource("dbpprop:location"), RdfString(location))
 
-	def hasBudget(budget: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:budget"), RdfInteger(budget))
+	def hasBudget(budget: String): RdfTriple = buildTriple(RdfResource("dbpprop:budget"), RdfString(budget))
 
 	def hasRevenue(revenue: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:revenue"), RdfInteger(revenue))
 
@@ -106,14 +101,8 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasSoundtrack(music: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/soundtrack"), RdfString(music))
 
-	def hasQuote(quote: String): RdfTriple = buildTriple(RdfResource("dbpprop:quote"), RdfUrl(quote))
-
 	def hasAspectRatio(ratio: String): RdfTriple = buildTriple(RdfResource("lod:aspectRatio"), RdfString(ratio))
 
-	def hasTrivia(trivia: String): RdfTriple = buildTriple(RdfResource("lod:trivia"), RdfString(trivia))
-
-	def hasGoofs(goofs: String): RdfTriple = buildTriple(RdfResource("lod:goofs"), RdfString(goofs))
-
-	def hasReview(review: String): RdfTriple = buildTriple(RdfResource("lod:review"), RdfString(review))
+	def hasTagline(tagline: String): RdfTriple = buildTriple(RdfResource("dbpprop:tagline"), RdfString(tagline))
 
 }

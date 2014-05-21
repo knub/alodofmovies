@@ -5,9 +5,11 @@ import com.rabbitmq.client.AMQP.BasicProperties
 import scala.pickling._
 import binary._
 import com.typesafe.config.ConfigFactory
+import lod2014group1.rdf.RdfTripleString
 
-case class WorkerTask(msg: String, time: Int)
-case class TaskAnswer(header: String, body: Array[Byte])
+case class WorkerTask(`type`: String, params: Map[String, String])
+case class UriFile(uri: String, fileContent: String)
+case class TaskAnswer(header: String, files: List[UriFile], triples: List[RdfTripleString])
 
 
 object ConnectionBuilder {
@@ -34,7 +36,7 @@ class Supervisor(taskQueueName: String) {
 
 	def send(task: WorkerTask) {
 		channel.basicPublish("", taskQueueName, MessageProperties.PERSISTENT_TEXT_PLAIN, task.pickle.value)
-		println(" [x] Sent '" + task.msg + "' to queue '" + taskQueueName + "'")
+		println(" [x] Sent '" + task.`type` + "' to queue '" + taskQueueName + "'")
 	}
 
 	def close() {
@@ -57,11 +59,11 @@ class RPCServer(rpcQueueName: String) extends Runnable{
 		while (true) {
 			val delivery = consumer.nextDelivery()
 
-			val response = handle(delivery.getBody)
+			handle(delivery.getBody)
 
 			val props = delivery.getProperties
 			val replyProps = new BasicProperties.Builder().correlationId(props.getCorrelationId).build()
-			channel.basicPublish("", props.getReplyTo, replyProps, response.pickle.value)
+			channel.basicPublish("", props.getReplyTo, replyProps, true.pickle.value)
 			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 		}
 	}
@@ -71,10 +73,15 @@ class RPCServer(rpcQueueName: String) extends Runnable{
 		connection.close()
 	}
 
-	def handle(messageBody: Array[Byte]): Boolean = {
+	def handle(messageBody: Array[Byte]): Unit = {
 		val answer = messageBody.unpickle[TaskAnswer]
 		println(" [x] Received '" + answer.header + "'")
-		true
+		println("I save these files:")
+		println(answer.files)
+		println("I stored these triples:")
+		println(answer.triples)
+		println("=======================")
+		Thread.sleep(10000)
 	}
 }
 

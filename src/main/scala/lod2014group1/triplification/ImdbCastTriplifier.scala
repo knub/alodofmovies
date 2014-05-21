@@ -14,10 +14,12 @@ import org.slf4s.Logging
 
 class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
+	val movie = RdfResource(s"lod:Movie$imdbId")
+
 	def triplify(f: File): List[RdfTriple] = {
 		val doc = Jsoup.parse(f, null)
 		try {
-			val table = getContentTable(doc)
+			val table = doc.select("div#fullcredits_content").get(0)
 			triplifyCast(table)
 		} catch {
 			case e: IndexOutOfBoundsException => {
@@ -32,27 +34,55 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 		}
 	}
 
-	def triplifyCast(contentTable: Element) = {
-		val tables = contentTable.select("#fullcredits_content")
-		val castTable = tables.select("table.cast_list")
-		if (castTable.size() > 1)
-			throw new RuntimeException("More than one cast list!")
+	def triplifyCast(contentTable: Element): List[RdfTriple] = {
+		var triples: List[RdfTriple] = List()
 
-		if (castTable.isEmpty)
-			List()
-		else {
-			castTable.select("tr").toList.flatMap { row =>
-				if (row.select("a").isEmpty)
-					List()
-				else {
-					val imdbIdString = row.select("a").first.attr("href").split("\\?")(0)
-					val imdbId = imdbIdString.replaceAll("\\D", "").toInt
-					val actor = RdfResource(s"lod:Actor$imdbId")
+		val groups = contentTable.select("h4.dataHeaderWithBorder")
+		groups.foreach(group => {
+			val groupName = group.ownText()
+			if (groupName.startsWith("Directed by")) { triples = handleDirector(group.nextElementSibling()) ::: triples }
+			else if (groupName.startsWith("Writing Credits")) { triples = handleWriter(group.nextElementSibling()) ::: triples }
+			else if (groupName.startsWith("Produced by")) { triples = handleProducer(group.nextElementSibling()) ::: triples }
+			else if (groupName.startsWith("Music by")) { triples = handleMusic(group.nextElementSibling()) ::: triples }
+			else if (groupName.startsWith("Film Editing by")) { triples = handleEditing(group.nextElementSibling()) ::: triples }
+			else if (groupName.startsWith("Cast") && !groupName.startsWith("Casting")) { triples = handleActor(group.nextElementSibling()) ::: triples }
+		})
 
-					(actor hasImdbUrl imdbIdString) ::
+		triples
+	}
+
+	def handleDirector(table: Element): List[RdfTriple] = {
+		List()
+	}
+
+	def handleWriter(table: Element): List[RdfTriple] = {
+		List()
+	}
+
+	def handleProducer(table: Element): List[RdfTriple] = {
+		List()
+	}
+
+	def handleMusic(table: Element): List[RdfTriple] = {
+		List()
+	}
+
+	def handleEditing(table: Element): List[RdfTriple] = {
+		List()
+	}
+
+	def handleActor(castTable: Element): List[RdfTriple] = {
+		castTable.select("tr").toList.flatMap { row =>
+			if (row.select("a").isEmpty)
+				List()
+			else {
+				val imdbIdString = row.select("a").first.attr("href").split("\\?")(0)
+				val imdbId = imdbIdString.replaceAll("\\D", "").toInt
+				val actor = RdfResource(s"lod:Actor$imdbId")
+
+				(actor hasImdbUrl imdbIdString) ::
 					extractActorTriples(actor, row.select("a span").get(0)) :::
 					extractCharacterTriples(actor, row.select("td.character"))
-				}
 			}
 		}
 	}
@@ -69,7 +99,8 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 	private def extractActorTriples(actor: RdfResource, spanWithActorName: Element): List[RdfTriple] = {
 		val actorName = spanWithActorName.html()
 		List(actor isAn RdfActorResource.actor,
-			actor name actorName)
+			actor name actorName,
+			movie playedBy actor)
 	}
 
 	private def extractCharacterTriples(actor: RdfResource, characterTableCells: Elements): List[RdfTriple] = {
@@ -80,7 +111,6 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			else {
 				val characterId = link.get(0).attr("href").split("/")(2).substring(2)
 				val character = RdfResource(s"lod:Character$characterId")
-				val movie = RdfResource(s"lod:Movie$imdbId")
 				val characterName = link.text()
 
 				List(character name characterName,
@@ -91,10 +121,4 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			}
 		}
 	}
-
-
-	private def getContentTable(doc: Document): Element = {
-		doc.select("#fullcredits_content").get(0)
-	}
-
 }

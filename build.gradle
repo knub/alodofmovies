@@ -11,6 +11,13 @@ idea {
 	}
 }
 
+compileScala {
+    scalaCompileOptions.useCompileDaemon = true
+
+    // optionally specify host and port of the daemon:
+    scalaCompileOptions.daemonServer = "localhost:4243"
+}
+
 tasks.withType(ScalaCompile) {
 	scalaCompileOptions.useAnt = false
 }

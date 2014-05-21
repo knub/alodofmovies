@@ -38,7 +38,7 @@ class ImdbMovieCrawler extends Crawler {
 					case Dominik => ""
 					case Rice    => "awards"
 					case Stefan  => "keywords"
-					case Tanja   => "keywords"
+					case Tanja   => "locations"
 					case Tim     => "releaseinfo"
 				}
 				val (_, needsDownloading) = getFile(ImdbMovieCrawler.DOWNLOAD_URL.format(linkText, subPage))
