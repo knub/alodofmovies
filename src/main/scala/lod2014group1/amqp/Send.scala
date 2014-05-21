@@ -74,7 +74,7 @@ class RPCServer(rpcQueueName: String) extends Runnable{
 		connection.close()
 	}
 
-	def handle(messageBody: Array[Byte]): Boolean = {
+	def handle(messageBody: Array[Byte]): Unit = {
 		val answer = messageBody.unpickle[TaskAnswer]
 		println(" [x] Received '" + answer.header + "'")
 		println("I save these files:")
