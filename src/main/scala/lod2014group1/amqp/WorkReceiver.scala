@@ -36,7 +36,7 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 					log.info(" [x] Done with '" + task.`type` + "'")
 				}
 				case Failure(e) => {
-					log.error(e.toString)
+					log.error(e.getStackTraceString)
 				}
 			}
 			channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false)
