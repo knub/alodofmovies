@@ -4,17 +4,33 @@ import org.slf4s.Logging
 import org.joda.time.DateTime
 
 
-object RdfActorResource {
-	implicit def actorResourceFromRdfResource(resource: RdfResource): RdfActorResource = {
-		new RdfActorResource(resource.uri)
+object RdfPersonResource {
+	implicit def personResourceFromRdfResource(resource: RdfResource): RdfPersonResource = {
+		new RdfPersonResource(resource.uri)
 	}
 
 	def actor: RdfResource = {
 		RdfResource("dbpedia-owl:Actor")
 	}
+
+	def person: RdfResource = {
+		RdfResource("dbpedia-owl:Person")
+	}
+
+	def director: RdfResource = {
+		RdfResource("dbpedia-owl:director")
+	}
+
+	def writer: RdfResource = {
+		RdfResource("dbpedia-owl:Writer")
+	}
+
+	def producer: RdfResource = {
+		RdfResource("dbpedia-owl:producer")
+	}
 }
 
-class RdfActorResource(resource: String) extends RdfResource(resource) with Logging {
+class RdfPersonResource(resource: String) extends RdfResource(resource) with Logging {
 
 	def hasImdbUrl(url: String) = sameAs("http://imdb.com" + url)
 
