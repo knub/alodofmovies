@@ -50,8 +50,12 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 	}
 
 	def forwardTask(task: WorkerTask): TaskAnswer = {
-		val worker: Worker = workerAssignment.getOrElse(TaskType.withName(task.`type`), classOf[DummyWorker]).newInstance()
-
+		val worker: Worker = try {
+			val taskName = TaskType.withName(task.`type`)
+			workerAssignment.getOrElse(taskName, classOf[DummyWorker]).newInstance()
+		} catch {
+			case e => new DummyWorker
+		}
 		worker.execute(task.params)
 	}
 }
