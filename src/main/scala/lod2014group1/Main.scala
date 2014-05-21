@@ -27,6 +27,7 @@ object Main extends App with Logging {
 			worker.listen()
 		} else if (args contains "rabbit-server") {
 			new Thread(new RPCServer("answers")).start();
+			new Thread(new RPCServer("answers")).start();
 			val crawlTask1 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://Kung_Fu_Panda", "task_id" -> "1", "content" -> FileContent.longString))
 			val triplifyTask1 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "Kung_Fu_Panda", "task_id" -> "2", "content" -> FileContent.longString))
 			val crawlTask2 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://Fight_Club", "task_id" -> "3", "content" -> FileContent.longString))
