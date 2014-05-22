@@ -52,6 +52,11 @@ task triplify(type: JavaExec, dependsOn: [build]) {
 	classpath = sourceSets.main.runtimeClasspath
 	args = ['triplify']
 }
+task freebasestats(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['freebase-stats']
+}
 task freebase(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
 	classpath = sourceSets.main.runtimeClasspath

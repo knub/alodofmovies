@@ -9,6 +9,7 @@ import org.joda.time.DateTime
 import lod2014group1.rdf.RdfMovieResource._
 import lod2014group1.amqp._
 import lod2014group1.amqp.WorkerTask
+import lod2014group1.statistics.FreebaseToImdb
 
 object Main extends App with Logging {
 
@@ -55,6 +56,10 @@ object Main extends App with Logging {
 		} else if (args contains "crawl-ofdb") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.crawl
+		} else if(args contains "freebase-stats"){
+			val stat = new FreebaseToImdb
+			stat.matchFreebase
+			stat.getStatistic
 		} else if (args contains "freebase") {
 		  val freebase = new lod2014group1.crawling.FreebaseFilmCrawler()
 		  //freebase.getAllNotImdbMovies
