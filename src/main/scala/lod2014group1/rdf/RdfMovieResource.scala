@@ -52,11 +52,9 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def lasts(runtime: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:runtime"), RdfInteger(runtime))
 
-	def rated(rating: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/rating"), RdfString(rating))
+	def rated(rating: String): RdfTriple = buildTriple(RdfResource("dbpprop:rated"), RdfString(rating))
 
 	def scored(score: String): RdfTriple = buildTriple(RdfResource("freebase:base/edbase/score/score"), RdfString(score))
-
-	def isReleased(released: String): RdfTriple = buildTriple(RdfResource("lod:isReleased"), RdfString(released))
 
 	def releasedOn(releaseDate: DateTime): RdfTriple = buildTriple(RdfResource("dbpedia-owl:releaseDate"), RdfDate(releaseDate))
 
@@ -77,34 +75,54 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def novelBy(writer: String): RdfTriple = buildTriple(RdfResource("dbpprop:author"), RdfString(writer))
 	def novelBy(writer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:author"), writer)
 
-	def playedBy(actor: String): RdfTriple = buildTriple(RdfResource("dbpprop:starring"), RdfString(actor))
+	def playedBy(actor: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:starring"), actor)
 
 	def producedBy(producer: String): RdfTriple = buildTriple(RdfResource("dbpprop:producer"), RdfString(producer))
 	def producedBy(producer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:producer"), producer)
 
-	def musicBy(musicer: String): RdfTriple = buildTriple(RdfResource("dbpprop:music"), RdfString(musicer))
-	def musicBy(musicer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:music"), musicer)
-
-	def cinematographyBy(cinematographer: String): RdfTriple = buildTriple(RdfResource("dbpprop:cinematography"), RdfString(cinematographer))
-	def cinematographyBy(cinematographer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:cinematography"), cinematographer)
-
 	def coProducedBy(producer: String): RdfTriple = buildTriple(RdfResource("dbpprop:coProducer"), RdfString(producer))
 	def coProducedBy(producer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:coProducer"), producer)
 
-	def setDesignedBy(setDesigner: String): RdfTriple = buildTriple(RdfResource("dbpedia-owl:setDesigner"), RdfString(setDesigner))
+	def setDesignedBy(setDesigner: String): RdfTriple = buildTriple(RdfResource("dbpprop:setDecorator"), RdfString(setDesigner))
+	def setDesignedBy(setDesigner: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:setDecorator"), setDesigner)
+
+	def makeupBy(makeupArtist: String): RdfTriple = buildTriple(RdfResource("dbpprop:makeupArtist"), RdfString(makeupArtist))
+	def makeupBy(makeupArtist: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:makeupArtist"), makeupArtist)
+
+	def specialEffectsBy(person: String): RdfTriple = buildTriple(RdfResource("dbpprop:specialEffects"), RdfString(person))
+	def specialEffectsBy(person: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:specialEffects"), person)
+
+	def visualEffectsBy(person: String): RdfTriple = buildTriple(RdfResource("dbpprop:makeupArtist"), RdfString(person))
+	def visualEffectsBy(person: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:makeupArtist"), person)
 
 	def editBy(editor: String): RdfTriple = buildTriple(RdfResource("dbpprop:editing"), RdfString(editor))
 	def editBy(editor: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:editing"), editor)
 
 	def costumeDesignedBy(costumeDesigner: String): RdfTriple = buildTriple(RdfResource("dbpprop:costume"), RdfString(costumeDesigner))
+	def costumeDesignedBy(costumeDesigner: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:costume"), costumeDesigner)
 
-	def makeupBy(makeupArtist: String): RdfTriple = buildTriple(RdfResource("dbpprop:makeupArtist"), RdfString(makeupArtist))
+	def cinematographyBy(cinematographer: String): RdfTriple = buildTriple(RdfResource("dbpprop:cinematography"), RdfString(cinematographer))
+	def cinematographyBy(cinematographer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:cinematography"), cinematographer)
 
-	def shotBy(camera: String): RdfTriple = buildTriple(RdfResource("dbpprop:camera"), RdfString(camera))
+	def musicBy(musicer: String): RdfTriple = buildTriple(RdfResource("dbpprop:music"), RdfString(musicer))
+	def musicBy(musicer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:music"), musicer)
+
+	def castingBy(casting: String): RdfTriple = buildTriple(RdfResource("dbpprop:casting"), RdfString(casting))
+	def castingBy(casting: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:casting"), casting)
+
+	def stuntsBy(stunt: String): RdfTriple = buildTriple(RdfResource("dbpprop:stunts/acting"), RdfString(stunt))
+	def stuntsBy(stunt: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:stunts/acting"), stunt)
+
+	def productionDesignBy(designer: String): RdfTriple = buildTriple(RdfResource("dbpprop:productionDesigner"), RdfString(designer))
+	def productionDesignBy(designer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:productionDesigner"), designer)
+
+	def artDirector(director: String): RdfTriple = buildTriple(RdfResource("dbpprop:artDirector"), RdfString(director))
+	def artDirector(director: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:artDirector"), director)
+
+	def belongsToOtherCrew(person: String): RdfTriple = buildTriple(RdfResource("dbpprop:otherCrew"), RdfString(person))
+	def belongsToOtherCrew(person: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:otherCrew"), person)
 
 	def distributedBy(distributor: String): RdfTriple = buildTriple(RdfResource("dbpprop:distributor"), RdfString(distributor))
-
-	def filmedInStudio(studio: String): RdfTriple = buildTriple(RdfResource("dbpprop:studio"), RdfString(studio))
 
 	def hasPhotos(photos: String): RdfTriple = buildTriple(RdfResource("dbpprop:hasPhotoCollection"), RdfUrl(photos))
 
@@ -116,11 +134,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasBudget(budget: String): RdfTriple = buildTriple(RdfResource("dbpprop:budget"), RdfString(budget))
 
-	def hasRevenue(revenue: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:revenue"), RdfInteger(revenue))
-
 	def hasSoundMix(soundMix: String): RdfTriple = buildTriple(RdfResource("lod:soundmix"), RdfString(soundMix))
-
-	def hasSoundtrack(music: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/soundtrack"), RdfString(music))
 
 	def hasAspectRatio(ratio: String): RdfTriple = buildTriple(RdfResource("lod:aspectRatio"), RdfString(ratio))
 

@@ -51,7 +51,6 @@ case class RdfResource(val uri: String) extends RdfObject {
 
 	def image(image: String): RdfTriple = buildTriple(RdfResource("dbpprop:image"), RdfUrl(image))
 	def hasImage = image _
-
 }
 case class RdfTripleString(s: String, p: String, o: String)
 

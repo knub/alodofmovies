@@ -40,7 +40,7 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 		triples = (movie hasPoster poster) :: triples
 
 		val title = div.select(".header [itemprop=name]").text();
-		triples = (movie hasTitle title) :: triples
+		triples = List(movie hasTitle title, movie hasLabel title) ::: triples
 
 		val year = div.select(".header .nobr a").text();
 		triples = (movie releasedInYear year) :: triples

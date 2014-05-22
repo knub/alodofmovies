@@ -118,6 +118,7 @@ class ImdbAwardTriplifier(val imdbId: String) {
 			 movieResourceFromRdfResource(movie) hasAward award,
 			 award isAn RdfAwardResource.award,
 			 award hasName name,
+			 award hasLabel name,
 			 award hasOutcome outcome,
 			 award inCategory category
 		)

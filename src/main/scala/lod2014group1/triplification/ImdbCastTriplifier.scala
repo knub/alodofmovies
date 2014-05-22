@@ -8,10 +8,12 @@ import org.jsoup.nodes.{Document, Element}
 import lod2014group1.rdf.RdfPersonResource._
 import lod2014group1.rdf.RdfCharacterResource._
 import lod2014group1.rdf.RdfMovieResource._
+import lod2014group1.rdf.RdfMovieResource
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import org.jsoup.select.Elements
 import org.slf4s.Logging
+import lod2014group1.rdf
 
 class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
@@ -62,18 +64,45 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 				case name if name.startsWith("Film Editing by") => {
 					triples = extractTriplesForGroup(groupTable, "dbpprop:editing", null) ::: triples
 				}
-				case name if name.startsWith("Makeup Department") => {
-					triples = extractTriplesForGroup(groupTable, "dbpprop:makeupArtist", null) ::: triples
+				case name if name.startsWith("Casting by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:casting", null) ::: triples
+				}
+				case name if name.startsWith("Production Design by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:productionDesigner", null) ::: triples
+				}
+				case name if name.startsWith("Art Direction by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:artDirector", null) ::: triples
+				}
+				case name if name.startsWith("Set Decoration by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:setDecorator", null) ::: triples
 				}
 				case name if name.startsWith("Costume Design by") => {
 					triples = extractTriplesForGroup(groupTable, "dbpprop:costume", null) ::: triples
 				}
+				case name if name.startsWith("Makeup Department") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:makeupArtist", null) ::: triples
+				}
+				case name if name.startsWith("Production Management") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:productionManager", null) ::: triples
+				}
+				case name if name.startsWith("Special Effects by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:specialEffects", null) ::: triples
+				}
+				case name if name.startsWith("Visual Effects by") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:visualEffects", null) ::: triples
+				}
+				case name if name.startsWith("Stunts") => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:stunts/acting", null) ::: triples
+				}
 				case name if name.startsWith("Cast") && !name.startsWith("Casting") => {
 					triples = handleActor(groupTable) ::: triples
 				}
-				case _ => {}
+				case _ => {
+					triples = extractTriplesForGroup(groupTable, "dbpprop:otherCrew", null) ::: triples
+				}
 			}
 		})
+
 
 		triples
 	}
@@ -89,9 +118,9 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			if (!name.isEmpty) {
 				if (url.isEmpty) {
 					credit match {
-						case "(story)" => triples = (movie stroyBy name) :: triples
-						case "(novel)" => triples = (movie novelBy writer) :: triples
-						case "(screenplay)" => triples = (movie screenplayBy name) :: triples
+						case str if str.contains("story") => triples = (movie stroyBy name) :: triples
+						case str if str.contains("novel") => triples = (movie novelBy writer) :: triples
+						case str if str.contains("screenplay") => triples = (movie screenplayBy name) :: triples
 						case _ => triples = (movie writtenBy name) :: triples
 					}
 				} else {
@@ -99,14 +128,15 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
 					triples = List(
 						writer hasName name,
+						writer hasLabel name,
 						writer isA RdfPersonResource.writer,
 						writer isA RdfPersonResource.person
 					) ::: triples
 
 					credit match {
-						case "(story)" => triples = (movie stroyBy writer) :: triples
-						case "(novel)" => triples = (movie novelBy writer) :: triples
-						case "(screenplay)" => triples = (movie screenplayBy writer) :: triples
+						case str if str.contains("story") => triples = (movie stroyBy writer) :: triples
+						case str if str.contains("novel") => triples = (movie novelBy writer) :: triples
+						case str if str.contains("screenplay") => triples = (movie screenplayBy writer) :: triples
 						case _ => triples = (movie writtenBy writer) :: triples
 					}
 				}
@@ -135,6 +165,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
 					triples = List(
 						producer hasName name,
+						producer hasLabel name,
 						producer isA RdfPersonResource.producer,
 						producer isA RdfPersonResource.person
 					) ::: triples
@@ -157,7 +188,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			else {
 				val imdbIdString = row.select("a").first.attr("href").split("\\?")(0)
 				val imdbId = imdbIdString.replaceAll("\\D", "").toInt
-				val actor = RdfResource(s"lod:Actor$imdbId")
+				val actor = RdfResource(s"lod:MoviePerson$imdbId")
 
 				(actor hasImdbUrl imdbIdString) ::
 					extractActorImageTriples(actor, row.select(".primary_photo img").get(0)) :::
@@ -176,7 +207,8 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 		List(actor isAn RdfPersonResource.actor,
 			actor isA RdfPersonResource.person,
 			actor name actorName,
-			movie playedBy actor)
+			actor hasLabel actorName,
+			movieResourceFromRdfResource(movie) playedBy actor)
 	}
 
 	private def extractCharacterTriples(actor: RdfResource, characterTableCells: Elements): List[RdfTriple] = {
@@ -195,9 +227,10 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 				val characterName = link.text()
 
 				triples = List(character name characterName,
+					character hasLabel characterName,
 					actor playsCharacter character,
 					character inMovie movie,
-					character playedBy actor,
+					characterInfoResourceFromRdfResource(character) playedBy actor,
 					character isA RdfCharacterResource.character) ::: triples
 			}
 		})
@@ -221,6 +254,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
 					triples = List (
 						person hasName name,
+						person hasLabel name,
 						person isA RdfPersonResource.person
 					) ::: triples
 

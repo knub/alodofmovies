@@ -119,7 +119,8 @@ class ImdbReleaseInfoTriplifier(val imdbId: String) {
 		var triples = List(
 			movie alsoKnownAs aka,
 			aka isAn alternativeMovieName,
-			aka hasAkaName name
+			aka hasAkaName name,
+			aka hasLabel name
 		)
 
 		if (! description.isEmpty) {
