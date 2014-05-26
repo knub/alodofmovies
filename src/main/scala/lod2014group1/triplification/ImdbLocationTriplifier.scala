@@ -13,24 +13,21 @@ import lod2014group1.rdf.RdfMovieResource._
 class ImdbLocationTriplifier(val imdbId: String) {
 
 	def triplify(f: File): List[RdfTriple] = {
-		try {
-			var triples: List[RdfTriple] = List()
+		var triples: List[RdfTriple] = List()
 
-			val doc = Jsoup.parse(f, null)
-			val locationDiv = doc.getElementById("filming_locations_content")
+		val doc = Jsoup.parse(f, null)
+		val locationDiv = doc.getElementById("filming_locations_content")
 
-			locationDiv.children().foreach(div => {
-				if (div.className().equals("soda odd") || div.className().equals("soda even")) {
-					triples = triplifyLocations(div) ::: triples
-				}
-			})
+		if (locationDiv == null)
+			return List()
 
-			triples
-		} catch {
-			case e: Exception =>
-				println(s"File $f empty.")
-				List()
-		}
+		locationDiv.children().foreach(div => {
+			if (div.className().equals("soda odd") || div.className().equals("soda even")) {
+				triples = triplifyLocations(div) ::: triples
+			}
+		})
+
+		triples
 	}
 
 	def triplifyLocations(location: Element): List[RdfTriple] = {

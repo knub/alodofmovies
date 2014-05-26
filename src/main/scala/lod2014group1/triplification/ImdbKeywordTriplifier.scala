@@ -14,15 +14,13 @@ class ImdbKeywordTriplifier(val imdbId: String) {
 
 	def triplify(f: File): List[RdfTriple] = {
 		val doc = Jsoup.parse(f, null)
-
 		val keywordsDiv = doc.getElementById("keywords_content")
-		if (keywordsDiv == null) {
-			List()
-		} else {
-			val keywordsTable = keywordsDiv.select("table")
 
-			triplifyKeywords(keywordsTable)
-		}
+		if (keywordsDiv == null)
+			return List()
+
+		val keywordsTable = keywordsDiv.select("table")
+		triplifyKeywords(keywordsTable)
 	}
 
 	def triplifyKeywords(table: Elements): List[RdfTriple] = {
