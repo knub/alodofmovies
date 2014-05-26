@@ -17,8 +17,8 @@ import lod2014group1.apis.FreebaseAPI
 
 
 object FreebaseFilmCrawler {
-	private val FILM_DIR = FreebaseAPI.BASE_DIR + "/film/"
-	private val topicURL = "https://www.googleapis.com/freebase/v1/topic"
+	val FILM_DIR = FreebaseAPI.BASE_DIR + "/film/"
+	val topicURL = "https://www.googleapis.com/freebase/v1/topic"
 }
 
 class FreebaseFilmCrawler extends Crawler with Logging{
@@ -86,6 +86,7 @@ class FreebaseFilmCrawler extends Crawler with Logging{
 		val url = new GenericUrl(urlString)
 		url.put("key", FreebaseAPI.API_KEY)
 		url.put("filter", "allproperties")
+		url.put("limit", 1000)
 		val request = requestFactory.buildGetRequest(url);
 		request.execute()
 	}

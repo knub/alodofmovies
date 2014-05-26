@@ -11,6 +11,13 @@ idea {
 	}
 }
 
+compileScala {
+    scalaCompileOptions.useCompileDaemon = true
+
+    // optionally specify host and port of the daemon:
+    scalaCompileOptions.daemonServer = "localhost:4243"
+}
+
 tasks.withType(ScalaCompile) {
 	scalaCompileOptions.useAnt = false
 }
@@ -44,6 +51,11 @@ task triplify(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
 	classpath = sourceSets.main.runtimeClasspath
 	args = ['triplify']
+}
+task freebasestats(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['freebase-stats']
 }
 task freebase(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'

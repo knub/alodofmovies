@@ -6,7 +6,7 @@ import org.jsoup.nodes.Element
 import scala.collection.JavaConversions._
 import lod2014group1.rdf.RdfMovieResource._
 import lod2014group1.rdf.RdfAwardResource._
-import lod2014group1.rdf.RdfActorResource._
+import lod2014group1.rdf.RdfPersonResource._
 import lod2014group1.rdf._
 import lod2014group1.rdf
 import java.lang.ArrayIndexOutOfBoundsException
@@ -118,6 +118,7 @@ class ImdbAwardTriplifier(val imdbId: String) {
 			 movieResourceFromRdfResource(movie) hasAward award,
 			 award isAn RdfAwardResource.award,
 			 award hasName name,
+			 award hasLabel name,
 			 award hasOutcome outcome,
 			 award inCategory category
 		)
@@ -128,7 +129,7 @@ class ImdbAwardTriplifier(val imdbId: String) {
 			val actorNr = nomineeUri.split("/")(2).split("\\?")(0).substring(2)
 			val actor = RdfResource(s"lod:Actor$actorNr")
 
-			triples = List(award forNominee actor, actorResourceFromRdfResource(actor) hasAward award) ::: triples
+			triples = List(award forNominee actor, personResourceFromRdfResource(actor) hasAward award) ::: triples
 		}
 
 		if (! description.isEmpty)

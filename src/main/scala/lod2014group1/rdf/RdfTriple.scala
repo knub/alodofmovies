@@ -22,6 +22,11 @@ case class RdfResource(val uri: String) extends RdfObject {
 	def name(name: String): RdfTriple = buildTriple(RdfResource("dbpprop:name"), RdfString(name))
 	def hasName = name _
 
+	def hasAlternativeName(name: String): RdfTriple = buildTriple(RdfResource("dbpprop:alternativeNames"), RdfString(name))
+
+	def label(name: String): RdfTriple = buildTriple(RdfResource("rdfs:label"), RdfString(name))
+	def hasLabel = label _
+
 	def country(country: String): RdfTriple = buildTriple(RdfResource("dbpprop:country"), RdfString(country))
 	def inCountry = country _
 
@@ -44,10 +49,17 @@ case class RdfResource(val uri: String) extends RdfObject {
 
 	def hasAward(award: RdfResource): RdfTriple = buildTriple(RdfResource("lod:hasAward"), award)
 
+	def image(image: String): RdfTriple = buildTriple(RdfResource("dbpprop:image"), RdfUrl(image))
+	def hasImage = image _
 }
+case class RdfTripleString(s: String, p: String, o: String)
 
 case class RdfTriple(s: RdfResource, p: RdfResource, o: RdfObject) {
 	override def toString(): String = {
 		s"$s $p $o ."
+	}
+
+	def toRdfTripleString(): RdfTripleString = {
+		RdfTripleString(s.toString, p.toString, o.toString)
 	}
 }
