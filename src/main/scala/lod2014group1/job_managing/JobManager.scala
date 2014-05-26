@@ -9,15 +9,16 @@ import lod2014group1.database._
 object JobManager extends App with Logging {
 
 	override def main(args: Array[String]): Unit = {
-		val triplifier = new Triplifier
-		val database = new TaskDatabase
-		val bulkLoadWriter = new BulkLoadWriter
-		bulkLoadWriter.newFile("keywords.bulk")
-		database.getFilesMatching("keywords").foreach { task =>
-			val triples = triplifier.triplify(new File(s"${Config.DATA_FOLDER}/${task.fileOrUrl}"))
-			bulkLoadWriter.addTriples(triples)
-		}
-		bulkLoadWriter.bulkLoad
+		console
+//		val triplifier = new Triplifier
+//		val database = new TaskDatabase
+//		val bulkLoadWriter = new BulkLoadWriter
+//		bulkLoadWriter.newFile("keywords.bulk")
+//		database.getFilesMatching("keywords").foreach { task =>
+//			val triples = triplifier.triplify(new File(s"${Config.DATA_FOLDER}/${task.fileOrUrl}"))
+//			bulkLoadWriter.addTriples(triples)
+//		}
+//		bulkLoadWriter.bulkLoad
 //		println(database.getFilesMatching("fullcredits").size)
 	}
 
