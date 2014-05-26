@@ -92,8 +92,8 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def specialEffectsBy(person: String): RdfTriple = buildTriple(RdfResource("dbpprop:specialEffects"), RdfString(person))
 	def specialEffectsBy(person: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:specialEffects"), person)
 
-	def visualEffectsBy(person: String): RdfTriple = buildTriple(RdfResource("dbpprop:makeupArtist"), RdfString(person))
-	def visualEffectsBy(person: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:makeupArtist"), person)
+	def visualEffectsBy(person: String): RdfTriple = buildTriple(RdfResource("dbpprop:visualEffects"), RdfString(person))
+	def visualEffectsBy(person: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:visualEffects"), person)
 
 	def editBy(editor: String): RdfTriple = buildTriple(RdfResource("dbpprop:editing"), RdfString(editor))
 	def editBy(editor: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:editing"), editor)
