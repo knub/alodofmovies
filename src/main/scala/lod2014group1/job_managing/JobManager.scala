@@ -9,19 +9,30 @@ import lod2014group1.database._
 object JobManager extends App with Logging {
 
 	override def main(args: Array[String]): Unit = {
-		console
-//		val triplifier = new Triplifier
-//		val database = new TaskDatabase
-//		val bulkLoadWriter = new BulkLoadWriter
-//		bulkLoadWriter.newFile("keywords.bulk")
-//		database.getFilesMatching("keywords").foreach { task =>
-//			val triples = triplifier.triplify(new File(s"${Config.DATA_FOLDER}/${task.fileOrUrl}"))
-//			bulkLoadWriter.addTriples(triples)
-//		}
-//		bulkLoadWriter.bulkLoad
-//		println(database.getFilesMatching("fullcredits").size)
+		console()
 	}
 
+	def bulkLoad(fileType: String): Unit = {
+		val triplifier = new Triplifier
+		val database = new TaskDatabase
+		val bulkLoadWriter = new BulkLoadWriter
+		bulkLoadWriter.newFile(s"$fileType.bulk")
+		val files = database.getFilesMatching(fileType)
+
+		println(s"Creating bulk load file for ${files.size} files.")
+		files.zipWithIndex.foreach { case (task, index) =>
+			if (index % 10000 == 0)
+				println(index)
+			try {
+				val triples = triplifier.triplify(new File(s"${Config.DATA_FOLDER}/${task.fileOrUrl}"))
+				bulkLoadWriter.addTriples(triples)
+			} catch {
+				case e: Exception => println(s"Error in file ${task.fileOrUrl}")
+			}
+		}
+		bulkLoadWriter.finishFile
+
+	}
 	def populate(): Unit = {
 		val dbPopulator = new DatabasePopulator
 		dbPopulator.populate()
@@ -29,7 +40,7 @@ object JobManager extends App with Logging {
 
 	def console(): Unit = {
 		val console = new AdminConsole
-		console.run
+		console.run()
 	}
 
 }

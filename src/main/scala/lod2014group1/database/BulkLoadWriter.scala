@@ -30,7 +30,7 @@ class BulkLoadWriter {
 		}
 	}
 
-	def bulkLoad: Unit = {
+	def finishFile: Unit = {
 		writer.close()
 	}
 

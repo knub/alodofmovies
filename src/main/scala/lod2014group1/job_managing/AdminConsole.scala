@@ -1,6 +1,6 @@
 package lod2014group1.job_managing
 
-import lod2014group1.database.TaskDatabase
+import lod2014group1.database.{DatabasePopulator, TaskDatabase}
 
 class AdminConsole {
 
@@ -8,7 +8,7 @@ class AdminConsole {
 
 	def run(): Unit = {
 		val reader = new jline.console.ConsoleReader
-		var continue = true;
+		var continue = true
 		while (continue) {
 			val readline = reader.readLine("> ")
 			if (readline != null) {
@@ -24,23 +24,25 @@ class AdminConsole {
 	def handleCommand(command: String): Boolean = {
 		val ShowNextTasksPattern = """show next (\d+) tasks""".r
 		val ShowNumberOfOpenTasksPattern = """open tasks|show number of open tasks""".r
+		val PopulateDatabase = """populate database""".r
+		val BulkLoadFor = """create bulk load file (.*)""".r
 		val Exit = """exit""".r
 		command match {
-			case ShowNextTasksPattern(nbr) => {
+			case ShowNextTasksPattern(nbr) =>
 				db.getNextNTasks(nbr.toInt).foreach { case task =>
 					println(s"${task.taskType}ing ${task.fileOrUrl} until ${task.dueDate}")
 				}
-			}
-			case ShowNumberOfOpenTasksPattern() => {
+			case ShowNumberOfOpenTasksPattern() =>
 				println(s"There are ${db.getNumberOfOpenTasks} open tasks.")
-			}
-			case Exit() => {
+			case PopulateDatabase() =>
+				JobManager.populate()
+			case BulkLoadFor(fileType) =>
+				JobManager.bulkLoad(fileType)
+			case Exit() =>
 				println("See ya.")
 				return false
-			};
-			case _ => {
+			case _ =>
 				println("Command not known.")
-			}
 		}
 		true
 	}
