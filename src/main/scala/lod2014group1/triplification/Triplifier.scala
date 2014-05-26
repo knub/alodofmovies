@@ -23,7 +23,7 @@ class Triplifier {
 			new ImdbAwardTriplifier(imdbId).triplify(f)
 		else if (f.getName == "releaseinfo.html")
 			new ImdbReleaseInfoTriplifier(imdbId).triplify(f)
-		else if (f.getName.startsWith("tt"))
+		else if (f.getName == "main.html")
 			new ImdbMainPageTriplifier(imdbId).triplify(f)
 		else
 			List()
@@ -38,15 +38,9 @@ object Triplifier extends Logging {
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
 			}
 			case Config.Person.Tanja => {
-				triplifier.triplify(new File("data/IMDBMovie/tt2234024/locations.html"))
-//				triplifier.triplify(new File("data/IMDBMovie/tt0054331/keywords.html")) :::
-//				triplifier.triplify(new File("data/IMDBMovie/tt0758758/awards.html")) :::
-//				triplifier.triplify(new File("data/IMDBMovie/tt0050900/releaseinfo.html")) :::
-//				triplifier.triplify(new File("data/IMDBMovie/tt0137523/tt0137523.html")) :::
-//				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
+				triplifier.triplify(new File("data/IMDBMovie/tt0000502/main.html"))
 
-
-				// MAIN PAGE ERROR : tt0000009 t0000147 tt0000335 tt0000502
+				// MAIN PAGE ERROR : tt0000009 tt0000147 tt0000335 tt0000502
 			}
 			case Config.Person.Rice => {
 				new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd"))

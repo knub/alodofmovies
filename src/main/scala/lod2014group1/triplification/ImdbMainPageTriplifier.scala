@@ -1,7 +1,7 @@
 package lod2014group1.triplification
 
 import java.io.File
-import lod2014group1.rdf.{RdfResource, RdfTriple}
+import lod2014group1.rdf.{RdfAkaResource, RdfResource, RdfTriple}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
@@ -37,30 +37,34 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 		var triples: List[RdfTriple] = List()
 
 		val poster = div.select(".image img").attr("src")
-		triples = (movie hasPoster poster) :: triples
+		if (!poster.isEmpty) triples = (movie hasPoster poster) :: triples
 
 		val title = div.select(".header [itemprop=name]").text();
-		triples = List(movie hasTitle title, movie hasLabel title) ::: triples
+		if (!title.isEmpty) triples = List(movie hasTitle title, movie hasLabel title) ::: triples
 
 		val year = div.select(".header .nobr a").text();
-		triples = (movie releasedInYear year) :: triples
+		if (!year.isEmpty) triples = (movie releasedInYear year) :: triples
 
 		val runtime = div.select(".infobar [itemprop=duration]").text().split(" ")(0);
-		triples = (movie lasts runtime.toInt) :: triples
+		if (!runtime.isEmpty) triples = (movie lasts runtime.toInt) :: triples
 
 		val genres = div.select((".infobar [itemprop=genre]"))
-		genres.foreach(genre => {
-			triples = (movie hasGenre genre.text()) :: triples
-		})
+		if (genres != null)
+			genres.foreach(genre => {
+				triples = (movie hasGenre genre.text()) :: triples
+			})
 
-		val metascore = div.select(".star-box-details").text().split("Metascore: ")(1).split(" ")(0)
-		triples = (movie scored metascore) :: triples
+		val metascoreDiv = div.select(".star-box-details")
+		if (metascoreDiv.size() > 1) {
+			val metascore = metascoreDiv.text().split("Metascore: ")(1).split(" ")(0)
+			if (!metascore.isEmpty) triples = (movie scored metascore) :: triples
+		}
 
 		val rating = div.select(".star-box-details [itemprop=ratingValue]").text();
-		triples = (movie rated rating) :: triples
+		if (!rating.isEmpty) triples = (movie rated rating) :: triples
 
 		val description = div.select("p[itemprop=description]").text();
-		triples = (movie hasShortSummary description) :: triples
+		if (!description.isEmpty) triples = (movie hasShortSummary description) :: triples
 
 		triples
 	}
@@ -92,8 +96,11 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 	def handleStoryLineDiv(div: Elements): List[RdfTriple] = {
 		var triples: List[RdfTriple] = List()
 
-		val storyLine = div.select(".inline.canwrap[itemprop=description] p").first().ownText()
-		triples = (movie hasStoryLine storyLine) :: triples
+		val storyLineDiv = div.select(".inline.canwrap[itemprop=description] p")
+		if (storyLineDiv.size() > 1) {
+			val storyLine = storyLineDiv.first().ownText()
+			if (!storyLine.isEmpty) triples = (movie hasStoryLine storyLine) :: triples
+		}
 
 		val textBlocks = div.select(".txt-block")
 		textBlocks.foreach(block => {
@@ -103,6 +110,13 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 				triples = (movie hasTagline tagline) :: triples
 			}
 		})
+
+		val keywordDiv = div.select("div[itemprop=keywords]")
+		if (keywordDiv.select("nobr").size() == 0) {
+			keywordDiv.select("span[itemprop=keywords]").foreach( keyword => {
+				triples = (movie hasKeyword keyword.text()) :: triples
+			})
+		}
 
 		triples
 	}
@@ -130,6 +144,26 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 					val dateStr = (block.text().substring(heading.length + 1)).split("\\(")(0).dropRight(1)
 					val date = formatter.parseDateTime(dateStr);
 					triples = (movie releasedOn date) :: triples
+				}
+				case "Filming Locations:" => {
+					if (block.select("span.see-more.inline").size == 0) {
+						block.select("a").foreach(location => {
+							triples = (movie filmedInLocation location.text()) :: triples
+						})
+					}
+				}
+				case "Also Known As:" => {
+					if (block.select("span.see-more.inline").size == 0) {
+						block.select("a").zipWithIndex.foreach{ case(aka, index) => {
+							val akaRes = RdfResource(s"lod:Movie$imdbId/Aka$index")
+
+							triples = List(movie alsoKnownAs akaRes,
+								akaRes isAn RdfAkaResource.alternativeMovieName,
+								akaRes hasName aka.text,
+								akaRes hasLabel aka.text
+							) ::: triples
+						}}
+					}
 				}
 				case "Budget:" => {
 					val budget = block.text().substring(heading.length + 1)
