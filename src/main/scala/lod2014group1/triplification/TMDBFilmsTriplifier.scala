@@ -10,7 +10,7 @@ case class TmdbGenre(id: Long, name: String)
 case class TmdbCollection(id: Long, name: String, poster_path: String, backdrop_path: String)
 case class TmdbProductionCompanie(id: Long, name: String)
 case class TmdbProductionCountry(iso_3166_1: String, name: String)
-case class TmdbLanguage(iso_3166_1: String, ame: String)
+case class TmdbLanguage(iso_3166_1: String, name: String)
 case class TmdbCast(cast_id: Long, character: String, credit_id: String, id: Long, name: String,
                     order: Integer, profile_path: String)
 case class TmdbCrew(credit_id: String, department: String, id: Long, job: String, name: String, profile_path: String)
@@ -25,10 +25,10 @@ case class TmdbImages(backdrops: List[TmdbBackdrop], posters: List[TmdbImages])
 case class TmdbVideoResult(id: String, iso_639_1: String, key: String, name: String, site: String,
                       size: Integer)
 case class TmdbVideo(results: List[TmdbVideoResult])
-case class TmdbTitle(iso_639_1: String, title: String)
+case class TmdbTitle(iso_3166_1: String, title: String)
 case class TmdbAlternateTitles(titles: List[TmdbTitle])
 case class TmdbCountry(iso_3166_1: String, certification: String, release_date: String)
-case class TmdbReleases(ountries: List[TmdbCountry])
+case class TmdbReleases(countries: List[TmdbCountry])
 case class TmdbSimilarResult(adult: Boolean, backdrop_path: String, id: Long, original_title: String,
                              release_date: String, poster_path: String, popularity: String, title: String,
                              vote_average: Double, vote_count: Integer)
@@ -43,7 +43,7 @@ case class TmdbJsonResponse1(adult: Boolean, backdrop_path: String, belongs_to_c
 case class TmdbJsonResponse2(revenue: Integer, runtime: Integer, spoken_language: List[TmdbLanguage],
                             status: String, tagline: String, title: String, vote_average: Double,
                             vote_count: Integer, credits: TmdbCredits, keywords: TmdbKeywords, videos: TmdbVideo,
-                            alternate_titles: TmdbAlternateTitles, releases: TmdbReleases, similar: TmdbSimilar
+                            alternative_titles: TmdbAlternateTitles, releases: TmdbReleases, similar: TmdbSimilar
 	                          )
 
 
@@ -61,9 +61,11 @@ class TMDBFilmsTriplifier {
 			val movie = RdfResource(s"lod:Movie${json1.imdb_id}")
 			(movie sameAs uri.toString()) ::
 			(movie hasTitle json1.original_title) ::
+			(movie lasts json2.runtime) ::
+			(movie hasTagline  json2.tagline) ::
 			addKeywords(movie, json2.keywords.keywords) :::
 			addGenres(movie, json1.genres) :::
-			addAlternativeTitles(movie, json2.alternate_titles.titles)
+			addAlternativeTitles(movie, json2.alternative_titles.titles)
 		} else {
 			List()
 		}
