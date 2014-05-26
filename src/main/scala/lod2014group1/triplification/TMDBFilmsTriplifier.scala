@@ -57,31 +57,27 @@ class TMDBFilmsTriplifier {
 		println(s"Movie id: ${json1.id} original_title: ${json1.original_title}")
 		val imdb_id = json1.imdb_id
 		if (!imdb_id.equals("")){
+			val uri = RdfResource(s"https://www.themoviedb.org/movie/${json1.id}")
 			val movie = RdfResource(s"lod:Movie${json1.imdb_id}")
+			(movie sameAs uri.toString()) ::
+			(movie hasTitle json1.original_title) ::
 			addKeywords(movie, json2.keywords.keywords) :::
-			addGenres(movie, json1.genres)
+			addGenres(movie, json1.genres) :::
+			addAlternativeTitles(movie, json2.alternate_titles.titles)
 		} else {
 			List()
 		}
 	}
 
 	def addKeywords(movie: RdfResource, keywords: List[TmdbKeyword]): List[RdfTriple] = {
-		keywords.map { keyword =>
-			handleKeyword(movie, keyword.name)
-		}
+		keywords.map { keyword => movie hasKeyword keyword.name }
 	}
 
-	def handleKeyword(movie: RdfResource, keyword: String): RdfTriple = {
-		movie hasKeyword keyword
+	def addGenres(movie: RdfResource, genres: List[TmdbGenre]): List[RdfTriple] = {
+		genres.map { genre => movie hasGenre genre.name }
 	}
 
-	def addGenres(movie: RdfResource, keywords: List[TmdbGenre]): List[RdfTriple] = {
-		keywords.map { keyword =>
-			handleGenre(movie, keyword.name)
-		}
-	}
-
-	def handleGenre(movie: RdfResource, keyword: String): RdfTriple = {
-		movie hasGenre keyword
+	def addAlternativeTitles(movie: RdfResource, titles: List[TmdbTitle]): List[RdfTriple] = {
+		titles.map { title => movie hasAlternativeName title.title }
 	}
 }
