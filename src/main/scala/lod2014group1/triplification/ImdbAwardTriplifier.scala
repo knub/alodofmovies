@@ -48,11 +48,11 @@ class ImdbAwardTriplifier(val imdbId: String) {
 		table.select("td").foreach(td => {
 			if (td.hasClass("title_award_outcome")) {
 				outcome = td.select("b").text()
-				category = td.select(".award_category").text()
+				description = td.select(".award_category").text()
 			}
 
 			if (td.hasClass("award_description")) {
-				description = td.select(".award_description").first().ownText()
+				category = td.select(".award_description").first().ownText()
 
 				if (td.children().size() == 1) {
 					triples = handleAward() ::: triples
@@ -119,8 +119,7 @@ class ImdbAwardTriplifier(val imdbId: String) {
 			 award isAn RdfAwardResource.award,
 			 award hasName name,
 			 award hasLabel name,
-			 award hasOutcome outcome,
-			 award inCategory category
+			 award hasOutcome outcome
 		)
 
 		if (nominee.isEmpty) {
@@ -131,6 +130,9 @@ class ImdbAwardTriplifier(val imdbId: String) {
 
 			triples = List(award forNominee actor, personResourceFromRdfResource(actor) hasAward award) ::: triples
 		}
+
+		if (! category.isEmpty)
+			triples = (award inCategory category) :: triples
 
 		if (! description.isEmpty)
 			triples = (award hasDescription description) :: triples

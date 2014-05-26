@@ -27,6 +27,14 @@ case class RdfDate(lit: DateTime) extends RdfLiteral {
 }
 case class RdfString(lit: String) extends RdfLiteral {
 	override def toString(): String = {
-		'"' + lit + '"' + "^^<http://www.w3.org/2001/XMLSchema#string>"
+		'"' + lit + '"'
 	}
+
+//	override def toString(): String = {
+//		'"' + lit + '"' + "^^<http://www.w3.org/2001/XMLSchema#string>"
+//	}
+//
+//	override def toString(): String = {
+//		'"' + lit + '"' + "@en"
+//	}
 }

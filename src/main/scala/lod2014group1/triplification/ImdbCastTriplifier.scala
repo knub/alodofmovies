@@ -74,19 +74,19 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 					triples = extractTriplesForGroup(groupTable, "dbpprop:artDirector", null) ::: triples
 				}
 				case name if name.startsWith("Set Decoration by") => {
-					triples = extractTriplesForGroup(groupTable, "dbpprop:setDecorator", null) ::: triples
+					triples = extractTriplesForGroup(groupTable, "dbpprop:setDecorator", RdfPersonResource.setDesigner) ::: triples
 				}
 				case name if name.startsWith("Costume Design by") => {
-					triples = extractTriplesForGroup(groupTable, "dbpprop:costume", null) ::: triples
+					triples = extractTriplesForGroup(groupTable, "dbpprop:costume", RdfPersonResource.costumeDesigner) ::: triples
 				}
 				case name if name.startsWith("Makeup Department") => {
-					triples = extractTriplesForGroup(groupTable, "dbpprop:makeupArtist", null) ::: triples
+					triples = extractTriplesForGroup(groupTable, "dbpprop:makeupArtist", RdfPersonResource.makeUpArtist) ::: triples
 				}
 				case name if name.startsWith("Production Management") => {
 					triples = extractTriplesForGroup(groupTable, "dbpprop:productionManager", null) ::: triples
 				}
 				case name if name.startsWith("Special Effects by") => {
-					triples = extractTriplesForGroup(groupTable, "dbpprop:specialEffects", null) ::: triples
+					triples = extractTriplesForGroup(groupTable, "dbpprop:specialEffects", RdfPersonResource.specialEffects) ::: triples
 				}
 				case name if name.startsWith("Visual Effects by") => {
 					triples = extractTriplesForGroup(groupTable, "dbpprop:visualEffects", null) ::: triples
@@ -157,8 +157,8 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			if (!name.isEmpty) {
 				if (url.isEmpty) {
 					credit match {
-						case "co-producer" => triples = (movie coProducedBy name) :: triples
-						case _ => triples = (movie producedBy name) :: triples
+						case "co-producer" => triples = List(movie coProducedBy name, producer isA RdfPersonResource.coProducer) ::: triples
+						case _ => triples = List(movie producedBy name, producer isA RdfPersonResource.producer) ::: triples
 					}
 				} else {
 					val producer = getPersonResource(url)
@@ -166,7 +166,6 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 					triples = List(
 						producer hasName name,
 						producer hasLabel name,
-						producer isA RdfPersonResource.producer,
 						producer isA RdfPersonResource.person
 					) ::: triples
 

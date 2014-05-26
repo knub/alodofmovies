@@ -28,6 +28,30 @@ object RdfPersonResource {
 	def producer: RdfResource = {
 		RdfResource("dbpedia-owl:producer")
 	}
+
+	def coProducer: RdfResource = {
+		RdfResource("dbpedia-owl:coProducer")
+	}
+
+	def makeUpArtist: RdfResource = {
+		RdfResource("dbpedia-owl:makeUpArtist")
+	}
+
+	def costumeDesigner: RdfResource = {
+		RdfResource("dbpedia-owl:costumeDesigner")
+	}
+
+	def specialEffects: RdfResource = {
+		RdfResource("dbpedia-owl:specialEffects")
+	}
+
+	def setDesigner: RdfResource = {
+		RdfResource("dbpedia-owl:setDesigner")
+	}
+
+	def storyEditor: RdfResource = {
+		RdfResource("dbpedia-owl:storyEditor")
+	}
 }
 
 class RdfPersonResource(resource: String) extends RdfResource(resource) with Logging {
