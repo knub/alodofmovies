@@ -73,8 +73,11 @@ class ImdbAwardTriplifier(val imdbId: String) {
 		nomineeUri = a.attr("href")
 
 		// If the nominee is "More", the tag does not include a nominee
-		if (nominee == "More")
+		if (nominee == "More") {
+			nominee = ""
+			nomineeUri = ""
 			return List()
+		}
 
 		val roleSibling = a.nextElementSibling()
 		var detailSibling: Element = a

@@ -142,8 +142,14 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 				case "Release Date:" => {
 					val formatter = DateTimeFormat.forPattern("dd MMM yyyy");
 					val dateStr = (block.text().substring(heading.length + 1)).split("\\(")(0).dropRight(1)
-					val date = formatter.parseDateTime(dateStr);
-					triples = (movie releasedOn date) :: triples
+					try {
+						val date = formatter.parseDateTime(dateStr)
+						triples = (movie releasedOn date) :: triples
+					} catch {
+						case e: Exception =>
+							triples = (movie releasedOn dateStr) :: triples
+							println(s"Warning: Release Date is not a full date $dateStr.")
+					}
 				}
 				case "Filming Locations:" => {
 					if (block.select("span.see-more.inline").size == 0) {

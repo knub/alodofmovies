@@ -56,7 +56,8 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def scored(score: String): RdfTriple = buildTriple(RdfResource("freebase:base/edbase/score/score"), RdfString(score))
 
-	def releasedOn(releaseDate: DateTime): RdfTriple = buildTriple(RdfResource("dbpedia-owl:releaseDate"), RdfDate(releaseDate))
+	def releasedOn(releaseDate: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:initialRelease"), RdfDate(releaseDate))
+	def releasedOn(releaseDate: String): RdfTriple = buildTriple(RdfResource("dbpprop:initialRelease"), RdfString(releaseDate))
 
 	def hasKeyword(keyword: String): RdfTriple = buildTriple(RdfResource("lod:keyword"), RdfString(keyword))
 
