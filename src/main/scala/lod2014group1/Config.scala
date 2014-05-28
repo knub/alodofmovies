@@ -7,6 +7,6 @@ object Config {
 
 	object Person extends Enumeration {
 		type Person = Value
-	    val Dominik, Rice, Stefan, Tanja, Tim, Server = Value
+	    val Dominik, Rice, Stefan, Tanja, Tim, Server, RealServer = Value
 	}
 }
