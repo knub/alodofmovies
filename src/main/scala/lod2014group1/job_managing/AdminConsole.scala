@@ -37,7 +37,7 @@ class AdminConsole {
 			case PopulateDatabase() =>
 				JobManager.populate()
 			case BulkLoadFor(fileType) =>
-				JobManager.bulkLoad(fileType)
+				JobManager.createBulkLoadFile(fileType)
 			case Exit() =>
 				println("See ya.")
 				return false

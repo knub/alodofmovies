@@ -6,6 +6,8 @@ import scala.pickling._
 import binary._
 import com.typesafe.config.ConfigFactory
 import lod2014group1.rdf.RdfTripleString
+import org.slf4s.Logger
+import org.slf4s.LoggerFactory
 
 case class WorkerTask(`type`: String, params: Map[String, String])
 case class UriFile(uri: String, fileContent: String)
@@ -13,7 +15,7 @@ case class TaskAnswer(header: String, files: List[UriFile], triples: List[RdfTri
 
 
 object ConnectionBuilder {
-	private val conf = ConfigFactory.load();
+	private val conf = ConfigFactory.load()
 	private val HOST_NAME = conf.getString("alodofmovies.hosts.server.host")
 	private val VHOST = conf.getString("alodofmovies.hosts.server.vhost")
 	private val USERNAME = conf.getString("alodofmovies.hosts.server.username")
@@ -45,7 +47,7 @@ class Supervisor(taskQueueName: String) {
 	}
 }
 
-class RPCServer(rpcQueueName: String) extends Runnable{
+class RPCServer(rpcQueueName: String) extends Runnable {
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
 	channel.queueDeclare(rpcQueueName, false, false, false, null)
@@ -73,20 +75,15 @@ class RPCServer(rpcQueueName: String) extends Runnable{
 		connection.close()
 	}
 
-	var i = 0;
+	var answersReceived = 0
+	val answersLog: Logger = LoggerFactory.getLogger("TaskAnswerLogger")
 	def handle(messageBody: Array[Byte]): Unit = {
 		val answer = messageBody.unpickle[TaskAnswer]
-		i += 1;
+		answersReceived += 1
 
-
-		if (i % 701 == 35) {
-			println(" [x] Received '" + answer.header + "'")
-			println("I save these files:")
-			println(answer.files.size)
-			println("I stored these triples:")
-			println(answer.triples.size)
-			println("=======================")
-		}
+		answersLog.info("Received '" + answer.header + "'")
+		answersLog.info(s"Safed ${answer.files.size} files.")
+		answersLog.info(s"Stored ${answer.triples.size} files.")
 	}
 }
 

@@ -15,7 +15,7 @@ class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
 	def importance = column[Byte]("importance")
 	def fileOrUrl  = column[String]("file")
 
-	def uniqueConstraint = index("unique_constraint", (taskType, fileOrUrl), unique = true)
+	def uniqueConstraint = index("unique_constraint", (taskType, fileOrUrl))
 
 	def * = (id, taskType, dueDate, importance, fileOrUrl) <>  (Task.tupled, Task.unapply)
 }

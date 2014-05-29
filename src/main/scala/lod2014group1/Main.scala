@@ -17,7 +17,7 @@ object Main extends App with Logging {
 		log.debug("Started.")
 		log.info("Arguments: " + args.toList)
 		if (args contains "triplify") {
-			Triplifier.go
+			Triplifier.go()
 		} else if (args contains "crawl-imdb") {
 			Crawler.crawl
 		} else if (args contains "crawl-tmdb") {
@@ -27,9 +27,9 @@ object Main extends App with Logging {
 			val worker = new WorkReceiver("tasks", "answers")
 			worker.listen()
 		} else if (args contains "rabbit-server") {
-			new Thread(new RPCServer("answers")).start();
-			new Thread(new RPCServer("answers")).start();
-			new Thread(new RPCServer("answers")).start();
+			new Thread(new RPCServer("answers")).start()
+			new Thread(new RPCServer("answers")).start()
+			new Thread(new RPCServer("answers")).start()
 
 			val crawlTask1 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://Kung_Fu_Panda", "task_id" -> "1", "content" -> FileContent.longString))
 			val triplifyTask1 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "Kung_Fu_Panda", "task_id" -> "2", "content" -> FileContent.longString))
@@ -39,7 +39,6 @@ object Main extends App with Logging {
 			val triplifyTask3 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "Godzilla", "task_id" -> "6", "content" -> FileContent.longString))
 			val crawlTask4 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://August_Rush", "task_id" -> "7", "content" -> FileContent.longString))
 			val triplifyTask4 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "August_Rush", "task_id" -> "8", "content" -> FileContent.longString))
-			val dummyTask = WorkerTask(null, Map())
 			val sup = new Supervisor("tasks")
 
 			(0 to 1000).foreach { _ =>
@@ -51,15 +50,14 @@ object Main extends App with Logging {
 				sup.send(triplifyTask2)
 				sup.send(triplifyTask3)
 				sup.send(triplifyTask4)
-				sup.send(dummyTask)
 			}
 		} else if (args contains "crawl-ofdb") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.crawl
 		} else if(args contains "freebase-stats"){
 			val stat = new FreebaseToImdb
-			stat.matchFreebase
-			stat.getStatistic
+			stat.matchFreebase()
+			stat.getStatistic()
 		} else if (args contains "freebase") {
 		  val freebase = new lod2014group1.crawling.FreebaseFilmCrawler()
 		  //freebase.getAllNotImdbMovies

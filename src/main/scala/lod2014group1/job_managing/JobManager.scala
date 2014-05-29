@@ -12,7 +12,7 @@ object JobManager extends App with Logging {
 		console()
 	}
 
-	def bulkLoad(fileType: String): Unit = {
+	def createBulkLoadFile(fileType: String): Unit = {
 		val triplifier = new Triplifier
 		val database = new TaskDatabase
 		val bulkLoadWriter = new BulkLoadWriter
