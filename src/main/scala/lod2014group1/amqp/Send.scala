@@ -91,6 +91,7 @@ class RPCServer(rpcQueueName: String) extends Runnable {
 
 		answersLog.info("Received '" + answer.header + "'")
 		answersLog.info(s"Safed ${answer.files.size} files.")
+		answersLog.info(answer.files(0).fileContent)
 		answersLog.info(s"Stored ${answer.triples.size} files.")
 	}
 }
