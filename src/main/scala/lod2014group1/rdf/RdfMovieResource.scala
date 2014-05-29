@@ -35,6 +35,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def belongsTo = subject _
 	def hasPoster = image _
 
+	def sameAsImdbUrl(id: String) = sameAs("http://imdb.com/title/tt" + id)
 
 	def alsoKnownAs(aka: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:alternativeNames"), aka)
 
@@ -54,7 +55,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def rated(rating: String): RdfTriple = buildTriple(RdfResource("dbpprop:rated"), RdfString(rating))
 
-	def scored(score: String): RdfTriple = buildTriple(RdfResource("freebase:base/edbase/score/score"), RdfString(score))
+	def scored(score: String): RdfTriple = buildTriple(RdfResource("lod:metascore"), RdfString(score))
 
 	def releasedOn(releaseDate: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:initialRelease"), RdfDate(releaseDate))
 	def releasedOn(releaseDate: String): RdfTriple = buildTriple(RdfResource("dbpprop:initialRelease"), RdfString(releaseDate))

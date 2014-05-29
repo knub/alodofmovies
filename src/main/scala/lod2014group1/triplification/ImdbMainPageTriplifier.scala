@@ -16,7 +16,7 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 	def triplify(f: File): List[RdfTriple] = {
 		val doc = Jsoup.parse(f, null)
 
-		var triples: List[RdfTriple] = List()
+		var triples: List[RdfTriple] = List(movie sameAsImdbUrl imdbId)
 
 		val overviewDiv = doc.select(".article.title-overview")
 		triples = handleOverviewDiv(overviewDiv) ::: triples
@@ -45,7 +45,7 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 		val year = div.select(".header .nobr a").text();
 		if (!year.isEmpty) triples = (movie releasedInYear year) :: triples
 
-		val runtime = div.select(".infobar [itemprop=duration]").text().split(" ")(0);
+		val runtime = div.select(".infobar [itemprop=duration]").text().split(" ")(0).replaceAll("\\D", "");
 		if (!runtime.isEmpty) triples = (movie lasts runtime.toInt) :: triples
 
 		val genres = div.select((".infobar [itemprop=genre]"))
@@ -148,7 +148,6 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 					} catch {
 						case e: Exception =>
 							triples = (movie releasedOn dateStr) :: triples
-							println(s"Warning: Release Date is not a full date $dateStr.")
 					}
 				}
 				case "Filming Locations:" => {
