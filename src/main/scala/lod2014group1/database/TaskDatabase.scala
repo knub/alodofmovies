@@ -25,7 +25,7 @@ class TaskDatabase extends Logging {
 	val database =  Database.forURL(s"jdbc:sqlite:${DATABASE_NAME}", driver = "org.sqlite.JDBC")
 
 	val tasks = TableQuery[TaskTable]
-	createTablesIfNotExist
+	createTablesIfNotExist()
 
 	private def createTablesIfNotExist(): Unit = {
 		database withSession { implicit session =>
@@ -39,6 +39,12 @@ class TaskDatabase extends Logging {
 					log.info(s"Table $tableName already exists.")
 				}
 			}
+		}
+	}
+
+	def runInDatabase(proc: TableQuery[TaskTable] => Session => Unit): Unit = {
+		database withSession { session =>
+			proc(tasks)(session)
 		}
 	}
 

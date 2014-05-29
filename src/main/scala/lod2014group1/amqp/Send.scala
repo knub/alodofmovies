@@ -20,7 +20,7 @@ object WorkerTask {
 	}
 }
 case class UriFile(uri: String, fileContent: String)
-case class TaskAnswer(header: String, files: List[UriFile], triples: List[RdfTripleString])
+case class TaskAnswer(header: Map[String, String], files: List[UriFile], triples: List[RdfTripleString])
 
 
 object ConnectionBuilder {
