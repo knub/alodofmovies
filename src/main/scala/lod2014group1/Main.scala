@@ -31,26 +31,26 @@ object Main extends App with Logging {
 			new Thread(new RPCServer("answers")).start()
 			new Thread(new RPCServer("answers")).start()
 
-			val crawlTask1 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://Kung_Fu_Panda", "task_id" -> "1", "content" -> FileContent.longString))
-			val triplifyTask1 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "Kung_Fu_Panda", "task_id" -> "2", "content" -> FileContent.longString))
-			val crawlTask2 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://Fight_Club", "task_id" -> "3", "content" -> FileContent.longString))
-			val triplifyTask2 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "Fight_Club", "task_id" -> "4", "content" -> FileContent.longString))
-			val crawlTask3 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://Godzilla", "task_id" -> "5", "content" -> FileContent.longString))
-			val triplifyTask3 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "Godzilla", "task_id" -> "6", "content" -> FileContent.longString))
-			val crawlTask4 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://August_Rush", "task_id" -> "7", "content" -> FileContent.longString))
-			val triplifyTask4 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "August_Rush", "task_id" -> "8", "content" -> FileContent.longString))
-			val sup = new Supervisor()
-
-			(0 to 1000).foreach { _ =>
-				sup.send(crawlTask1)
-				sup.send(crawlTask2)
-				sup.send(crawlTask3)
-				sup.send(crawlTask4)
-				sup.send(triplifyTask1)
-				sup.send(triplifyTask2)
-				sup.send(triplifyTask3)
-				sup.send(triplifyTask4)
-			}
+//			val crawlTask1 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://Kung_Fu_Panda", "task_id" -> "1", "content" -> FileContent.longString))
+//			val triplifyTask1 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "Kung_Fu_Panda", "task_id" -> "2", "content" -> FileContent.longString))
+//			val crawlTask2 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://Fight_Club", "task_id" -> "3", "content" -> FileContent.longString))
+//			val triplifyTask2 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "Fight_Club", "task_id" -> "4", "content" -> FileContent.longString))
+//			val crawlTask3 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://Godzilla", "task_id" -> "5", "content" -> FileContent.longString))
+//			val triplifyTask3 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "Godzilla", "task_id" -> "6", "content" -> FileContent.longString))
+//			val crawlTask4 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://August_Rush", "task_id" -> "7", "content" -> FileContent.longString))
+//			val triplifyTask4 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "August_Rush", "task_id" -> "8", "content" -> FileContent.longString))
+//			val sup = new Supervisor()
+//
+//			(0 to 1000).foreach { _ =>
+//				sup.send(crawlTask1)
+//				sup.send(crawlTask2)
+//				sup.send(crawlTask3)
+//				sup.send(crawlTask4)
+//				sup.send(triplifyTask1)
+//				sup.send(triplifyTask2)
+//				sup.send(triplifyTask3)
+//				sup.send(triplifyTask4)
+//			}
 		} else if (args contains "crawl-ofdb") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.crawl
