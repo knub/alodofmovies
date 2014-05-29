@@ -23,7 +23,7 @@ class ImdbActorCrawler extends Crawler {
 		val moviesDir = new File(s"${Config.DATA_FOLDER}/${ImdbMovieCrawler.BASE_DIR_NAME}/")
 
 		var movieCount = 0
-		val movieFiles = moviesDir.listFiles
+		val movieFiles = moviesDir.listFiles.sorted
 		val movieNumber = movieFiles.size
 		var tasks: List[Task] = List()
 		movieFiles.drop(movieCount).foreach { f =>
