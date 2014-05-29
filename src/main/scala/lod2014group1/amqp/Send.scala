@@ -8,8 +8,15 @@ import com.typesafe.config.ConfigFactory
 import lod2014group1.rdf.RdfTripleString
 import org.slf4s.Logger
 import org.slf4s.LoggerFactory
+import lod2014group1.database.Task
 
 case class WorkerTask(`type`: String, params: Map[String, String])
+
+object WorkerTask {
+	def fromDatabaseTask(dbTask: Task): WorkerTask = {
+		WorkerTask(dbTask.taskType, Map("task_id" -> dbTask.id.toString, "uri" -> dbTask.fileOrUrl))
+	}
+}
 case class UriFile(uri: String, fileContent: String)
 case class TaskAnswer(header: String, files: List[UriFile], triples: List[RdfTripleString])
 
@@ -31,7 +38,8 @@ object ConnectionBuilder {
 	}
 }
 
-class Supervisor(taskQueueName: String) {
+class Supervisor() {
+	val taskQueueName = "tasks"
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
 	channel.queueDeclare(taskQueueName, true, false, false, null)

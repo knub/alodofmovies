@@ -39,7 +39,7 @@ object Main extends App with Logging {
 			val triplifyTask3 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "Godzilla", "task_id" -> "6", "content" -> FileContent.longString))
 			val crawlTask4 = WorkerTask(TaskType.Crawl.toString, Map("uri" -> "http://August_Rush", "task_id" -> "7", "content" -> FileContent.longString))
 			val triplifyTask4 = WorkerTask(TaskType.Triplify.toString, Map("uri" -> "August_Rush", "task_id" -> "8", "content" -> FileContent.longString))
-			val sup = new Supervisor("tasks")
+			val sup = new Supervisor()
 
 			(0 to 1000).foreach { _ =>
 				sup.send(crawlTask1)

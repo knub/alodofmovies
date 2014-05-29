@@ -1,6 +1,7 @@
 package lod2014group1.job_managing
 
 import lod2014group1.database.{DatabasePopulator, TaskDatabase}
+import lod2014group1.amqp.{WorkerTask, Supervisor}
 
 class AdminConsole {
 
@@ -26,6 +27,7 @@ class AdminConsole {
 		val ShowNumberOfOpenTasksPattern = """open tasks|show number of open tasks""".r
 		val PopulateDatabase = """populate database""".r
 		val BulkLoadFor = """create bulk load file (.*)""".r
+		val SendToQueue = """send (.*) tasks to queue""".r
 		val Exit = """exit""".r
 		command match {
 			case ShowNextTasksPattern(nbr) =>
@@ -38,6 +40,11 @@ class AdminConsole {
 				JobManager.populate()
 			case BulkLoadFor(fileType) =>
 				JobManager.createBulkLoadFile(fileType)
+			case SendToQueue(nbr) =>
+				val sup = new Supervisor()
+				db.getNextNTasks(nbr.toInt).foreach { task =>
+					sup.send(WorkerTask.fromDatabaseTask(task))
+				}
 			case Exit() =>
 				println("See ya.")
 				return false
