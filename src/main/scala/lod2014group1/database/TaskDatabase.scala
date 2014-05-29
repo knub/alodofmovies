@@ -52,7 +52,7 @@ class TaskDatabase extends Logging {
 
 	def getNextNTasks(n: Int): List[Task] = {
 		database withSession { implicit session =>
-			tasks.sortBy(t => (t.dueDate, t.importance)).filter(_.finished).take(n).list()
+			tasks.sortBy(t => (t.dueDate, t.importance)).filter(!_.finished).take(n).list()
 		}
 	}
 
