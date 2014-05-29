@@ -314,8 +314,9 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
 	def getActorUrls(f: File): List[String] = {
 		triplify(f).flatMap { triple =>
-			if (triple.p.uri == "lod:imdbUrl")
-				List(triple.o.asInstanceOf[RdfUrl].lit)
+			// Only actors so far,
+			if (triple.p.uri == "owl:sameAs")
+				List(triple.o.asInstanceOf[RdfUrl].lit.replace("<", "").replace(">", ""))
 			else
 				List()
 		}
