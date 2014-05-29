@@ -26,20 +26,18 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 		while (true) {
 			val delivery = consumer.nextDelivery()
 			val task = delivery.getBody.unpickle[WorkerTask]
-			log.info(" [x] Received '" + task.`type` + "'")
+//			log.info(" [x] Received '" + task.`type` + "'")
 
 			val answer = Try(forwardTask(task))
 
 			answer match {
-				case Success(a) => {
+				case Success(a) =>
 					rpcClient.send(a)
 					log.info(" [x] Done with '" + task.`type` + "'")
-				}
-				case Failure(e) => {
+				case Failure(e) =>
 					log.error(e.getStackTraceString)
-				}
 			}
-			channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false)
+			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 		}
 	}
 

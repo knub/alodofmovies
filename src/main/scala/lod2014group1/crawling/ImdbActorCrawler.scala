@@ -28,17 +28,17 @@ class ImdbActorCrawler extends Crawler {
 		var tasks: List[Task] = List()
 		movieFiles.drop(movieCount).foreach { f =>
 			val actorUrls = castParser.getActorUrls(new File(f, "fullcredits.html"))
-//			actorUrls.take(5).foreach { actorUrl =>
-//				getFile(actorUrl)
+			actorUrls.take(5).foreach { actorUrl =>
+				getFile(actorUrl)
+			}
+//			val tmpTasks = actorUrls.take(5).map { actorUrl =>
+//				Task(0, "download", new Date(2014, 6, 10), 5, actorUrl, finished)
 //			}
-			val tmpTasks = actorUrls.take(5).map { actorUrl =>
-				Task(0, "download", new Date(2014, 6, 10), 5, actorUrl)
-			}
-			tasks = tasks ::: tmpTasks
-			if (tasks.size > 10000) {
-				taskDatabase.insertAll(tasks: _*)
-				tasks = List()
-			}
+//			tasks = tasks ::: tmpTasks
+//			if (tasks.size > 10000) {
+//				taskDatabase.insertAll(tasks: _*)
+//				tasks = List()
+//			}
 			movieCount += 1
 			if (movieCount % 100 == 0)
 				log.info(s"$movieCount/$movieNumber");

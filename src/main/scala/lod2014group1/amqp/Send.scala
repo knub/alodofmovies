@@ -6,8 +6,10 @@ import scala.pickling._
 import binary._
 import com.typesafe.config.ConfigFactory
 import lod2014group1.rdf.RdfTripleString
+import org.slf4s._
+import lod2014group1.database.Task
 import org.slf4s.Logger
-import org.slf4s.LoggerFactory
+import lod2014group1.rdf.RdfTripleString
 import lod2014group1.database.Task
 
 case class WorkerTask(`type`: String, params: Map[String, String])
@@ -55,7 +57,7 @@ class Supervisor() {
 	}
 }
 
-class RPCServer(rpcQueueName: String) extends Runnable {
+class RPCServer(rpcQueueName: String) extends Runnable with Logging {
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
 	channel.queueDeclare(rpcQueueName, false, false, false, null)
@@ -65,7 +67,7 @@ class RPCServer(rpcQueueName: String) extends Runnable {
 
 	override def run() {
 
-		println(" [x] Awaiting RPC requests")
+		log.info(" [x] Awaiting RPC requests")
 		while (true) {
 			val delivery = consumer.nextDelivery()
 
