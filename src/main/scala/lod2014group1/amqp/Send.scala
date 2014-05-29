@@ -4,43 +4,11 @@ import com.rabbitmq.client._
 import com.rabbitmq.client.AMQP.BasicProperties
 import scala.pickling._
 import binary._
-import com.typesafe.config.ConfigFactory
-import lod2014group1.rdf.RdfTripleString
 import org.slf4s._
-import lod2014group1.database.Task
 import org.slf4s.Logger
-import lod2014group1.rdf.RdfTripleString
-import lod2014group1.database.Task
+import lod2014group1.amqp.worker.{WorkerTask, TaskAnswer}
 
-case class WorkerTask(`type`: String, params: Map[String, String])
-
-object WorkerTask {
-	def fromDatabaseTask(dbTask: Task): WorkerTask = {
-		WorkerTask(dbTask.taskType, Map("task_id" -> dbTask.id.toString, "uri" -> dbTask.fileOrUrl))
-	}
-}
-case class UriFile(uri: String, fileContent: String)
-case class TaskAnswer(header: Map[String, String], files: List[UriFile], triples: List[RdfTripleString])
-
-
-object ConnectionBuilder {
-	private val conf = ConfigFactory.load()
-	private val HOST_NAME = conf.getString("alodofmovies.hosts.server.host")
-	private val VHOST = conf.getString("alodofmovies.hosts.server.vhost")
-	private val USERNAME = conf.getString("alodofmovies.hosts.server.username")
-	private val PASSWORD = conf.getString("alodofmovies.hosts.server.password")
-
-	def newConnection(): Connection = {
-		val factory = new ConnectionFactory()
-		factory.setHost(HOST_NAME)
-		factory.setVirtualHost(VHOST)
-		factory.setUsername(USERNAME)
-		factory.setPassword(PASSWORD)
-		factory.newConnection
-	}
-}
-
-class Supervisor() {
+class TaskDistributor() {
 	val taskQueueName = "tasks"
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
@@ -57,7 +25,7 @@ class Supervisor() {
 	}
 }
 
-class RPCServer(rpcQueueName: String) extends Runnable with Logging {
+class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable with Logging {
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
 	channel.queueDeclare(rpcQueueName, false, false, false, null)

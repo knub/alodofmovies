@@ -8,6 +8,9 @@ import java.util.UUID
 import org.slf4s.Logging
 import scala.util.{Failure, Success, Try}
 import TaskType._
+import lod2014group1.amqp.worker._
+import scala.util.Success
+import scala.util.Failure
 
 
 class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Logging {

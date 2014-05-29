@@ -1,7 +1,8 @@
 package lod2014group1.job_managing
 
-import lod2014group1.database.{DatabasePopulator, TaskDatabase}
-import lod2014group1.amqp.{WorkerTask, Supervisor}
+import lod2014group1.database.TaskDatabase
+import lod2014group1.amqp.TaskDistributor
+import lod2014group1.amqp.worker.WorkerTask
 
 class AdminConsole {
 
@@ -41,7 +42,7 @@ class AdminConsole {
 			case BulkLoadFor(fileType) =>
 				JobManager.createBulkLoadFile(fileType)
 			case SendToQueue(nbr) =>
-				val sup = new Supervisor()
+				val sup = new TaskDistributor()
 				db.getNextNTasks(nbr.toInt).foreach { task =>
 					sup.send(WorkerTask.fromDatabaseTask(task))
 				}

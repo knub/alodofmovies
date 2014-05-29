@@ -3,6 +3,7 @@ package lod2014group1.amqp
 import lod2014group1.rdf.{RdfTripleString, RdfTriple}
 import lod2014group1.database.TaskDatabase
 import scala.slick.driver.SQLiteDriver.simple._
+import lod2014group1.amqp.worker.{UriFile, TaskAnswer}
 
 class AnswerHandler {
 

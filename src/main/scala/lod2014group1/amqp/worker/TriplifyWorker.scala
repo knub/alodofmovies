@@ -1,4 +1,4 @@
-package lod2014group1.amqp
+package lod2014group1.amqp.worker
 
 import lod2014group1.rdf.{RdfResource, RdfTriple}
 
