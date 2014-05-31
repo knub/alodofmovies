@@ -29,7 +29,11 @@ class ImdbActorCrawler extends Crawler {
 		movieFiles.drop(movieCount).foreach { f =>
 			val actorUrls = castParser.getActorUrls(new File(f, "fullcredits.html"))
 			actorUrls.take(5).foreach { actorUrl =>
-				getFile(actorUrl)
+				try {
+					getFile(actorUrl)
+				} catch {
+					case e: java.io.FileNotFoundException =>
+				}
 			}
 //			val tmpTasks = actorUrls.take(5).map { actorUrl =>
 //				Task(0, "download", new Date(2014, 6, 10), 5, actorUrl, finished)

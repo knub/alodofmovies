@@ -95,7 +95,6 @@ object Crawler extends Logging {
 		// faking that we are a chrome browser to get access to imdb
 		val connection = buildConnection(url)
 
-		// download file according to http://stackoverflow.com/questions/921262
 		val inputStream = connection.getInputStream
 		val channel = Channels.newChannel(inputStream)
 		fos.getChannel().transferFrom(channel, 0, Long.MaxValue)
