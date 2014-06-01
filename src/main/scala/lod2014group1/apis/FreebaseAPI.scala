@@ -27,6 +27,7 @@ object FreebaseAPI {
 	val API_KEY = conf.getString("alodofmovies.api.key.freebase")
 	val BASE_DIR = Config.DATA_FOLDER + "/Freebase/"
 	val movieListFile = new File(BASE_DIR +"/movieList.txt")
+	val actorListFile = new File(BASE_DIR +"/actorList.txt")
 }
 
 class FreebaseAPI{
@@ -53,12 +54,24 @@ class FreebaseAPI{
 	
 	def loadAllFilmId(): Unit = {
 		
-		implicit val formats = net.liftweb.json.DefaultFormats
 		val query = """[{"mid": null, "type": "/film/film", "limit": 400}]"""
+	
+		loadIdsWithPagingAndSave(query, FreebaseAPI.movieListFile)
+	}
+	
+	def loadAllActorIds(): Unit = {
+		val query = """[{"type": "/film/actor","mid": null, "limit": 400}]"""
+		loadIdsWithPagingAndSave(query, FreebaseAPI.actorListFile)
+	}
+	
+	
+	def loadIdsWithPagingAndSave(query:String, saveFile: File): Unit = {
+		
+		implicit val formats = net.liftweb.json.DefaultFormats
 		var cursor: Option[String] = Some("")
 			
-		FreebaseAPI.movieListFile.getParentFile.mkdirs()
-		val bw = new BufferedWriter(new FileWriter(FreebaseAPI.movieListFile))
+		saveFile.getParentFile.mkdirs()
+		val bw = new BufferedWriter(new FileWriter(saveFile))
 				
 		while (cursor.isDefined){
 			val json = requestMQL(query, cursor.get)	

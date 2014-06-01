@@ -45,7 +45,10 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				id = idFromFreebaseId()
 			}
 			
-			triples
+			getWikipediaFromWebpages(topicEquivalentWebpages)
+			
+			//triples
+			List()
 		} catch{
 			case e:net.liftweb.json.JsonParser$ParseException => {
 				fileLog.info(s"ParseException:$freebaseId")
@@ -94,6 +97,14 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 			None
 		}
 	}
+	
+	def getWikipediaFromWebpages(topicEquivalentWebpages: List[String]): List[String] = {
+		
+		val wikiEquivalents = topicEquivalentWebpages.filter(page => page.contains("wikipedia"))
+		if (wikiEquivalents.size > 0) {fileLog.info("wiki equivalent")}
+		wikiEquivalents
+	}
+	
 	
 	def idFromFreebaseId(): String = {
 		s"m_${freebaseId.split("/").last}"

@@ -57,6 +57,11 @@ task freebasestats(type: JavaExec, dependsOn: [build]) {
 	classpath = sourceSets.main.runtimeClasspath
 	args = ['freebase-stats']
 }
+task freebaseactors(type: JavaExec, dependsOn: [build]) {
+	main = 'lod2014group1.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	args = ['freebase-actors']
+}
 task freebase(type: JavaExec, dependsOn: [build]) {
 	main = 'lod2014group1.Main'
 	classpath = sourceSets.main.runtimeClasspath
