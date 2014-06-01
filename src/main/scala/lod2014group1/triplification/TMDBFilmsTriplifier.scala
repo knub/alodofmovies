@@ -5,6 +5,7 @@ import net.liftweb.json.JsonParser
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfMovieResource._
+import lod2014group1.crawling.TMDBMoviesListCrawler
 
 case class TmdbGenre(id: Long, name: String)
 case class TmdbCollection(id: Long, name: String, poster_path: String, backdrop_path: String)
@@ -34,7 +35,7 @@ case class TmdbSimilarResult(adult: Boolean, backdrop_path: String, id: Long, or
                              vote_average: Double, vote_count: Integer)
 case class TmdbSimilar(page: Integer, results: List[TmdbSimilarResult], total_pages: Integer, total_results: Long)
 
-case class TmdbJsonResponse1(adult: Boolean, backdrop_path: String, belongs_to_collection: List[TmdbCollection],
+case class TmdbJsonResponse1(adult: Boolean, backdrop_path: String, belongs_to_collection: TmdbCollection,
                             budget: Long, genres: List[TmdbGenre], homepage: String, id: Long, imdb_id: String,
                             original_title: String, overview: String, popularity: String,
                             poster_path: String, production_companies: List[TmdbProductionCompanie],
@@ -49,12 +50,17 @@ case class TmdbJsonResponse2(revenue: Integer, runtime: Integer, spoken_language
 
 
 class TMDBFilmsTriplifier {
+	val crawler = new TMDBMoviesListCrawler
 
 	def triplify(f: File): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
 		val json1: TmdbJsonResponse1 = JsonParser.parse(new FileReader(f)).extract[TmdbJsonResponse1]
 		val json2: TmdbJsonResponse2 = JsonParser.parse(new FileReader(f)).extract[TmdbJsonResponse2]
 		println(s"Movie id: ${json1.id} original_title: ${json1.original_title}")
+
+		json2.credits.cast.foreach(person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)))
+		json2.credits.crew.foreach(person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)))
+
 		val imdb_id = json1.imdb_id
 		if (!imdb_id.equals("")){
 			val uri = RdfResource(s"https://www.themoviedb.org/movie/${json1.id}")

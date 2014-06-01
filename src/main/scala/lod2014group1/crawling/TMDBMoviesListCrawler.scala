@@ -41,6 +41,8 @@ object TMDBMoviesListCrawler {
 }
 
 class TMDBMoviesListCrawler extends Crawler with Logging{
+	var count: Int = 0
+	var lastTime: Long = Platform.currentTime
 
 	def crawl: Unit = {
 		val latest_id = TMDBMoviesListCrawler.LATEST_ID.id
@@ -48,20 +50,9 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 		log.info(s"Latest parsed: $latest_parsed")
 		log.info(s"Latest id is: $latest_id")
 
-		var lastTime = Platform.currentTime
-
 		for (id <- latest_parsed to latest_id) {
-			val (_, needsDownloading) = getFile(TMDBMoviesListCrawler.MOVIE_URL.format(id.toString))
-			if (! needsDownloading) {
-				//log.info(s"$id")
-			}
-			if (id % 20 == 0) {
-				Thread.sleep(calcSleep(lastTime))
-				lastTime = Platform.currentTime
-			}
-
+			getFile(TMDBMoviesListCrawler.MOVIE_URL.format(id.toString))
 		}
-
 	}
 
 	def determineFileName(uri: URIBuilder): File = {
@@ -69,26 +60,28 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 		val queryType  = urlSplit(2)
 		val id  = urlSplit(3)
 
-
 		new File(s"${Config.DATA_FOLDER}/${TMDBMoviesListCrawler.BASE_DIR_NAME}/$queryType/$id.json")
 	}
 
 	def getHighestParsed() = {
 		val moviesListDir = new File(s"${Config.DATA_FOLDER}/${TMDBMoviesListCrawler.BASE_DIR_NAME}/movie/")
 		// get list of id files
-		val moviesList = moviesListDir.list().filter(isAllDigits).map(x => x.toLong)
+		val moviesList = moviesListDir.list().filter(isJSON).map(x => x.replace(".json", "").toLong)
 		moviesList.sorted.reverse.head
 	}
 
-	def isAllDigits(x: String) = x forall Character.isDigit
+	def isJSON(x: String) = x endsWith ".json"
 
-	def calcSleep(lastTime: Long): Long = {
-		val timeDiff = (lastTime + TMDBMoviesListCrawler.API_INTERVAL) - Platform.currentTime
-		if (timeDiff > 0) {
-			log.info(s"sleeping $timeDiff ms")
-			timeDiff
-		} else {
-			0
+	def calcSleep() = {
+		count += 1
+		if (count > 20) {
+			val timeDiff = (lastTime + TMDBMoviesListCrawler.API_INTERVAL) - Platform.currentTime
+			if (timeDiff > 0) {
+				log.info(s"sleeping $timeDiff ms")
+				Thread.sleep(timeDiff)
+			}
+			count = 0
+			lastTime = Platform.currentTime
 		}
 	}
 
@@ -103,11 +96,14 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 		file.getParentFile.mkdirs()
 
 		val path = url.toString
+		val parent = file.getParentFile.getName
+
+		calcSleep
 
 		val response =
-		if (file.getParent.equals("movie")) {
+		if (parent.equals("movie")) {
 			TMDBMoviesListCrawler.movieRequest(path)
-		} else if (file.getParent.equals("person")) {
+		} else if (parent.equals("person")) {
 			TMDBMoviesListCrawler.personRequest(path)
 		} else {
 			log.error (s"No valid file: ${file.toString}")

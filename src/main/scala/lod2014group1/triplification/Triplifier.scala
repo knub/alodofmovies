@@ -45,7 +45,7 @@ object Triplifier extends Logging {
 				//new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))
 			}
 			case Config.Person.Dominik => {
-				new TMDBFilmsTriplifier().triplify(new File("data/TMDBMoviesList/movie/550"))
+				new TMDBFilmsTriplifier().triplify(new File("data/TMDBMoviesList/movie/120.json"))
 			}
 		}
 
