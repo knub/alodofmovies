@@ -20,7 +20,9 @@ object TMDBMoviesListCrawler {
 
 	val TMDB_API_KEY = IOUtils.toString(new FileInputStream(Config.TMDB_API_KEY))
 	val MOVIE_URL  =  "https://api.themoviedb.org/3/movie/%s"
-	val ADDITIONAL_INFO = "credits,keywords,images,videos,alternative_titles,releases,similar"
+	val ADDITIONAL_MOVIE_INFOS = "credits,keywords,images,videos,alternative_titles,releases,similar"
+	val PERSON_URL  =  "https://api.themoviedb.org/3/person/%s"
+	val ADDITIONAL_PERSON_INFOS = "external_ids,images,combined_credits"
 
 	implicit val formats = net.liftweb.json.DefaultFormats
 	lazy val LATEST_ID = movieRequest(MOVIE_URL.format("latest")) { inputStream => JsonParser.parse(
@@ -28,7 +30,12 @@ object TMDBMoviesListCrawler {
 
 	def movieRequest(url: String): Http.Request = {
 		Http(url).options(HttpOptions.connTimeout(5000),
-			HttpOptions.readTimeout(10000)).header("retry-after", "10").params("api_key" -> TMDB_API_KEY, "append_to_response" -> ADDITIONAL_INFO)
+			HttpOptions.readTimeout(10000)).header("retry-after", "10").params("api_key" -> TMDB_API_KEY, "append_to_response" -> ADDITIONAL_MOVIE_INFOS)
+	}
+
+	def personRequest(url: String): Http.Request = {
+		Http(url).options(HttpOptions.connTimeout(5000),
+			HttpOptions.readTimeout(10000)).header("retry-after", "10").params("api_key" -> TMDB_API_KEY, "append_to_response" -> ADDITIONAL_PERSON_INFOS)
 	}
 
 }
@@ -63,7 +70,7 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 		val id  = urlSplit(3)
 
 
-		new File(s"${Config.DATA_FOLDER}/${TMDBMoviesListCrawler.BASE_DIR_NAME}/$queryType/$id")
+		new File(s"${Config.DATA_FOLDER}/${TMDBMoviesListCrawler.BASE_DIR_NAME}/$queryType/$id.json")
 	}
 
 	def getHighestParsed() = {
@@ -96,24 +103,37 @@ class TMDBMoviesListCrawler extends Crawler with Logging{
 		file.getParentFile.mkdirs()
 
 		val path = url.toString
-		lazy val response = TMDBMoviesListCrawler.movieRequest(path)
+
+		val response =
+		if (file.getParent.equals("movie")) {
+			TMDBMoviesListCrawler.movieRequest(path)
+		} else if (file.getParent.equals("person")) {
+			TMDBMoviesListCrawler.personRequest(path)
+		} else {
+			log.error (s"No valid file: ${file.toString}")
+			return file
+		}
+
 		val responseCode = response.responseCode
 
 		if (responseCode == 200) {
-			val bw = new BufferedWriter(new FileWriter(file))
-			bw.write(response.asString)
-			bw.close()
-
-			implicit val formats = net.liftweb.json.DefaultFormats
-			lazy val movie = response { inputStream => JsonParser.parse(
-				new InputStreamReader(inputStream))}.extract[TmdbJsonResponse]
-
-			log.info(s"Id: '${movie.id}' is the movie '${movie.original_title}' and matches to imdb_id: '${movie.imdb_id}'")
-		} else if (responseCode != 404) {
-			log.info(s"$path had response code $responseCode")
+			saveResponse(file, response.asString)
+			log.info(s"Downloaded: $path")
+		} else if (response.responseCode != 404) {
+			log.error(s"$path had response code $responseCode")
+		} else {
+			log.info(s"Page not found: $path")
 		}
 
 		return file
+	}
+
+
+
+	def saveResponse(file: File, response: String) {
+		val bw = new BufferedWriter(new FileWriter(file))
+		bw.write(response)
+		bw.close()
 	}
 
 }
