@@ -29,7 +29,6 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 		while (true) {
 			val delivery = consumer.nextDelivery()
 			val task = delivery.getBody.unpickle[WorkerTask]
-//			log.info(" [x] Received '" + task.`type` + "'")
 
 			val answer = Try(forwardTask(task))
 
