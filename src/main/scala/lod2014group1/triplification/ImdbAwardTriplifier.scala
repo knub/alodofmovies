@@ -129,7 +129,7 @@ class ImdbAwardTriplifier(val imdbId: String) {
 			triples = (award forNominee movie) :: triples
 		} else {
 			val actorNr = nomineeUri.split("/")(2).split("\\?")(0).substring(2)
-			val actor = RdfResource(s"lod:Actor$actorNr")
+			val actor = RdfResource(s"lod:MoviePerson$actorNr")
 
 			triples = List(award forNominee actor, personResourceFromRdfResource(actor) hasAward award) ::: triples
 		}
