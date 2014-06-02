@@ -8,6 +8,9 @@ import java.util.UUID
 import org.slf4s.Logging
 import scala.util.{Failure, Success, Try}
 import TaskType._
+import lod2014group1.amqp.worker._
+import scala.util.Success
+import scala.util.Failure
 
 
 class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Logging {
@@ -26,20 +29,18 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 		while (true) {
 			val delivery = consumer.nextDelivery()
 			val task = delivery.getBody.unpickle[WorkerTask]
-			log.info(" [x] Received '" + task.`type` + "'")
+//			log.info(" [x] Received '" + task.`type` + "'")
 
 			val answer = Try(forwardTask(task))
 
 			answer match {
-				case Success(a) => {
+				case Success(a) =>
 					rpcClient.send(a)
 					log.info(" [x] Done with '" + task.`type` + "'")
-				}
-				case Failure(e) => {
+				case Failure(e) =>
 					log.error(e.getStackTraceString)
-				}
 			}
-			channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false)
+			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 		}
 	}
 
