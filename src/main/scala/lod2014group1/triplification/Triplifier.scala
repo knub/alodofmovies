@@ -37,8 +37,8 @@ object Triplifier extends Logging {
 			case Config.Person.Stefan => {
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
 			}
-			case Config.Person.RealServer => {
-				triplifier.triplify(new File("data/IMDBMovie/tt0109830/main.html"))
+			case Config.Person.Tanja => {
+				triplifier.triplify(new File("data/IMDBMovie/tt0000610/main.html"))
 			}
 			case Config.Person.Rice => {
 				new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd"))
