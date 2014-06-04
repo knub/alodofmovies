@@ -157,4 +157,8 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def hasOriginalTitle(originalTitle: String): RdfTriple = buildTriple(RdfResource("dbpprop:originalTitle"), RdfString(originalTitle))
 
 	def hasReleaseStatus(releaseStatus: String): RdfTriple = buildTriple(RdfResource("dbpprop:status"), RdfString(releaseStatus))
+
+	def tmdbVoteAverage(voteAverage: Double): RdfTriple = buildTriple(RdfResource("lod:tmdbVoteAverage"), RdfDouble(voteAverage))
+
+	def tmdbVoteCount(voteCount: Integer): RdfTriple = buildTriple(RdfResource("lod:tmdbVoteCount"), RdfInteger(voteCount))
 }

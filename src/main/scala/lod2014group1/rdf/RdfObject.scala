@@ -44,3 +44,10 @@ case class RdfBoolean(lit: Boolean) extends RdfLiteral {
 	}
 
 }
+
+	case class RdfDouble(lit: Double) extends RdfLiteral {
+		override def toString(): String = {
+			'"' + lit.toString + '"' + "^^<http://www.w3.org/2001/XMLSchema#double>"
+		}
+
+}
