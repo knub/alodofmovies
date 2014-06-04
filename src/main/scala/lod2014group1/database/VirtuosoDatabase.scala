@@ -86,7 +86,7 @@ abstract class VirtuosoDatabase {
 
 
 class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDatabase(sparqlEndpoint) {
-	private def isql = if (System.getProperty("os.name") == "Linux") "isql-vt" else "isql"
+	private def isql = "isql"
 
 	private val bulkLoadCommands = "bulk/bulk_load.isql"
 	private val bulkLoadFile = "bulk/load.bulk"
