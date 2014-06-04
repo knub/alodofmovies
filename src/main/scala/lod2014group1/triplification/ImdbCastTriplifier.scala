@@ -25,15 +25,13 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			val table = doc.select("div#fullcredits_content").get(0)
 			triplifyCast(table)
 		} catch {
-			case e: IndexOutOfBoundsException => {
+			case e: IndexOutOfBoundsException =>
 				log.error("No content table found in " + f.getAbsolutePath)
 				List()
-			}
-			case e: Throwable => {
+			case e: Throwable =>
 				log.error("Error in  " + f.getAbsolutePath)
 				log.error(e.getStackTraceString)
 				List()
-			}
 		}
 	}
 
@@ -46,60 +44,42 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			val groupTable = group.nextElementSibling()
 
 			groupName match {
-				case name if name.startsWith("Directed by") => {
+				case name if name.startsWith("Directed by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:director", RdfPersonResource.director) ::: triples
-				}
-				case name if name.startsWith("Writing Credits") => {
+				case name if name.startsWith("Writing Credits") =>
 					triples = handleWriter(groupTable) ::: triples
-				}
-				case name if name.startsWith("Produced by") => {
+				case name if name.startsWith("Produced by") =>
 					triples = handleProducer(groupTable) ::: triples
-				}
-				case name if name.startsWith("Music by") => {
+				case name if name.startsWith("Music by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:music", null) ::: triples
-				}
-				case name if name.startsWith("Cinematography by") => {
+				case name if name.startsWith("Cinematography by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:cinematography", null) ::: triples
-				}
-				case name if name.startsWith("Film Editing by") => {
+				case name if name.startsWith("Film Editing by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:editing", null) ::: triples
-				}
-				case name if name.startsWith("Casting by") => {
+				case name if name.startsWith("Casting by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:casting", null) ::: triples
-				}
-				case name if name.startsWith("Production Design by") => {
+				case name if name.startsWith("Production Design by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:productionDesigner", null) ::: triples
-				}
-				case name if name.startsWith("Art Direction by") => {
+				case name if name.startsWith("Art Direction by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:artDirector", null) ::: triples
-				}
-				case name if name.startsWith("Set Decoration by") => {
+				case name if name.startsWith("Set Decoration by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:setDecorator", RdfPersonResource.setDesigner) ::: triples
-				}
-				case name if name.startsWith("Costume Design by") => {
+				case name if name.startsWith("Costume Design by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:costume", RdfPersonResource.costumeDesigner) ::: triples
-				}
-				case name if name.startsWith("Makeup Department") => {
+				case name if name.startsWith("Makeup Department") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:makeupArtist", RdfPersonResource.makeUpArtist) ::: triples
-				}
-				case name if name.startsWith("Production Management") => {
+				case name if name.startsWith("Production Management") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:productionManager", null) ::: triples
-				}
-				case name if name.startsWith("Special Effects by") => {
+				case name if name.startsWith("Special Effects by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:specialEffects", RdfPersonResource.specialEffects) ::: triples
-				}
-				case name if name.startsWith("Visual Effects by") => {
+				case name if name.startsWith("Visual Effects by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:visualEffects", null) ::: triples
-				}
-				case name if name.startsWith("Stunts") => {
+				case name if name.startsWith("Stunts") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:stunts/acting", null) ::: triples
-				}
-				case name if name.startsWith("Cast") && !name.startsWith("Casting") => {
+				case name if name.startsWith("Cast") && !name.startsWith("Casting") =>
 					triples = handleActor(groupTable) ::: triples
-				}
-				case _ => {
+				case _ =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:otherCrew", null) ::: triples
-				}
 			}
 		})
 

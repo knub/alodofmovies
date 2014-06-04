@@ -54,9 +54,6 @@ object Main extends App with Logging {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.coverage
 		} else {
-			val db = new VirtuosoLocalDatabase("http://172.16.22.196:8890/sparql")
-			val testTriple = RdfResource("http://www.google.de")
-			db.bulkLoad(List(testTriple sameAs testTriple.uri), "http://hpi.uni-potsdam.de/lod2014group1-test")
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}
 		log.debug("Finished.")
