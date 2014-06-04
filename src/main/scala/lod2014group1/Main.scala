@@ -6,6 +6,7 @@ import lod2014group1.triplification.Triplifier
 import lod2014group1.amqp._
 import lod2014group1.statistics.FreebaseToImdb
 import lod2014group1.database._
+import lod2014group1.rdf.RdfResource
 
 object Main extends App with Logging {
 
@@ -53,9 +54,9 @@ object Main extends App with Logging {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.coverage
 		} else {
-			val db = new VirtuosoRemoteDatabase("http://172.16.22.196:8890/sparql")
-			val triple = db.allTriplesFor("<http://purl.org/hpi/movie#Movie0177533>")
-			System.out.println(triple.size)
+			val db = new VirtuosoLocalDatabase("http://172.16.22.196:8890/sparql")
+			val testTriple = RdfResource("http://www.google.de")
+			db.bulkLoad(List(testTriple sameAs testTriple.uri), "http://hpi.uni-potsdam.de/lod2014group1-test")
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}
 		log.debug("Finished.")
