@@ -1,0 +1,3 @@
+delete from DB.DBA.load_list;
+ld_dir('/home/semmul1/alodofmovies/bulk', '*.bulk', '<graph>');
+rdf_loader_run();
