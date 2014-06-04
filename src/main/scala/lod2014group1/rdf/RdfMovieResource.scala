@@ -144,4 +144,12 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasTagline(tagline: String): RdfTriple = buildTriple(RdfResource("dbpprop:tagline"), RdfString(tagline))
 
+	def hasRevenue(revenue: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:revenue"), RdfInteger(revenue))
+
+	def isAdult(adult: Boolean): RdfTriple = buildTriple(RdfResource("lod:adult"), RdfBoolean(adult))
+
+	def hasOriginalTitle(originalTitle: String): RdfTriple = buildTriple(RdfResource("dbpprop:originalTitle"), RdfString(originalTitle))
+
+	def hasReleaseStatus(releaseStatus: String): RdfTriple = buildTriple(RdfResource("dbpprop:status"), RdfString(releaseStatus))
+
 }
