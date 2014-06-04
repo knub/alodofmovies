@@ -38,13 +38,11 @@ object Triplifier extends Logging {
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
 			}
 			case Config.Person.Tanja => {
-				triplifier.triplify(new File("data/IMDBMovie/tt0179184/main.html"))
-
-				// MAIN PAGE ERROR : tt0004052 tt0179184
+				triplifier.triplify(new File("data/IMDBMovie/tt0109830/main.html"))
 			}
 			case Config.Person.Rice => {
 				new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd"))
-				new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))
+				//new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))
 			}
 			case Config.Person.Dominik => {
 				new TMDBFilmsTriplifier().triplify(new File("data/TMDBMoviesList/movie/550"))

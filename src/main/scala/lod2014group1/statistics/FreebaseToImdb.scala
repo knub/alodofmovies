@@ -48,12 +48,15 @@ class FreebaseToImdb extends Logging{
 		var noMatch = 0
 		var multiplePossibilities = 0
 		var wrongIdGiven = 0
+		var wikimatch = 0
 		
 		while (logLine != null){
 			if (logLine.contains("imdb")) imdbCount = imdbCount + 1
+			else if (logLine.contains("wiki")) wikimatch = wikimatch + 1
 			else if (logLine.contains("equivalent")) equivalentCount = equivalentCount + 1	
 			else if (logLine.contains("WARN")) multiplePossibilities = multiplePossibilities + 1
 			else if (logLine.contains("wrong")) wrongIdGiven = wrongIdGiven + 1
+
 			else noMatch = noMatch + 1
 			logLine = br.readLine()
 		}
@@ -64,7 +67,7 @@ class FreebaseToImdb extends Logging{
 		log.info(s"no match: $noMatch")
 		log.info(s"multiple matches possible: $multiplePossibilities")
 		log.info(s"wrong imdb given: $wrongIdGiven")
-		
+		log.info(s"wiki: $wikimatch") 
 		
 	}
 	

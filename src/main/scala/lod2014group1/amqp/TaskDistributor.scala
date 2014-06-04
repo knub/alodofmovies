@@ -8,7 +8,7 @@ import org.slf4s._
 import org.slf4s.Logger
 import lod2014group1.amqp.worker.{WorkerTask, TaskAnswer}
 
-class TaskDistributor() {
+class TaskDistributor() extends Logging {
 	val taskQueueName = "tasks"
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
@@ -16,7 +16,7 @@ class TaskDistributor() {
 
 	def send(task: WorkerTask) {
 		channel.basicPublish("", taskQueueName, MessageProperties.PERSISTENT_TEXT_PLAIN, task.pickle.value)
-		println(" [x] Sent '" + task.`type` + "' to queue '" + taskQueueName + "'")
+		log.debug(s"[x] Sent '${task.`type`}' to queue")
 	}
 
 	def close() {
@@ -33,9 +33,13 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable with Logg
 	val consumer = new QueueingConsumer(channel)
 	channel.basicConsume(rpcQueueName, false, consumer)
 
-	override def run() {
+	// domain-specific variables
+	var answersReceived = 0
+	val answersLog: Logger = LoggerFactory.getLogger("TaskAnswerLogger")
+	val answerHandler = new AnswerHandler()
 
-		log.info(" [x] Awaiting RPC requests")
+	override def run() {
+		log.info("[x] Awaiting RPC requests")
 		while (true) {
 			val delivery = consumer.nextDelivery()
 
@@ -53,11 +57,10 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable with Logg
 		connection.close()
 	}
 
-	var answersReceived = 0
-	val answersLog: Logger = LoggerFactory.getLogger("TaskAnswerLogger")
 	def handle(messageBody: Array[Byte]): Unit = {
 		val answer = messageBody.unpickle[TaskAnswer]
 		answersReceived += 1
+		answerHandler.handleAnswer(answer)
 
 		answersLog.info("Received '" + answer.header + "'")
 		answersLog.info(s"Safed ${answer.files.size} files.")

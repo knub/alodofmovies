@@ -30,8 +30,11 @@ object Main extends App with Logging {
 			ofdb.crawl
 		} else if(args contains "freebase-stats"){
 			val stat = new FreebaseToImdb
-			stat.matchFreebase()
-			stat.getStatistic()
+			stat.matchFreebase
+			stat.getStatistic
+		} else if (args contains "freebase-actors"){
+			val freebase = new FreebaseAPI
+			freebase.loadAllActorIds
 		} else if (args contains "freebase") {
 		  val freebase = new lod2014group1.crawling.FreebaseFilmCrawler()
 		  //freebase.getAllNotImdbMovies

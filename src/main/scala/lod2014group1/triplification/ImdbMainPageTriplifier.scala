@@ -48,6 +48,9 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 		val runtime = div.select(".infobar [itemprop=duration]").text().split(" ")(0).replaceAll("\\D", "");
 		if (!runtime.isEmpty) triples = (movie lasts runtime.toInt) :: triples
 
+		val ageRating = div.select(".infobar [itemprop=contentRating]").attr("content")
+		if (!ageRating.isEmpty) triples = (movie ageRating ageRating) :: triples
+
 		val genres = div.select((".infobar [itemprop=genre]"))
 		if (genres != null)
 			genres.foreach(genre => {

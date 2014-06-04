@@ -41,6 +41,8 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasReleaseInfo(releaseInfo: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:released"), releaseInfo)
 
+	def ageRating(age: String): RdfTriple = buildTriple(RdfResource("dbpprop:ageRating"), RdfString(age))
+
 	def isPartOf(collection: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/film_series"), RdfString(collection))
 
 	def nextMovie(movie: RdfResource): RdfTriple = buildTriple(RdfResource("freebase:film/film/sequel"), movie)

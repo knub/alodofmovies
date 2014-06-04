@@ -13,6 +13,10 @@ import org.slf4s.Logger
 import org.slf4s.LoggerFactory
 import lod2014group1.rdf.RdfTriple
 import net.liftweb.json.JsonAST.JValue
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfTriple
 
 class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 	
@@ -22,6 +26,34 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 	
 	def triplify(f: File): List[RdfTriple]= {
 		
+		
+		val (id, triples) = getId(f)
+		extractProperties(f, id)
+	}
+	
+	def extractProperties(f: File, id: String): List[RdfTriple]={
+		val json = JsonParser.parse(new FileReader(f))
+		val r = RdfMovieResource.movieResourceFromRdfResource(new RdfResource(id))
+				
+		//reduce list of strings
+		val mapJsonToProperty = Map[List[String], String => RdfTriple](
+				(List("property", "/common/topic/topic_equivalent_webpage", "values", "value") , r.sameAs(_: String)) 
+				)
+		val extract = new FreebaseExtraction
+		// println(
+		val triples = extract.extractListString(json, mapJsonToProperty)//)
+		//if (triples.isEmpty){println (id)}
+		
+		List()
+	}
+	
+	def extractFromJson(json: JValue, values: Map[List[String], String => RdfTriple]): List[RdfTriple] = {
+		
+		
+		List()
+	}
+	
+	def getId(f: File): (String,List[RdfTriple])= {
 		var triples: List[RdfTriple] = List()
 		
 		implicit val formats = net.liftweb.json.DefaultFormats
@@ -38,20 +70,24 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 			
 			var id = ""
 			
-			if (imdbId != ""){
-						triples = RdfMovieResource.fromImdbId(imdbId).sameAs(FREEBASE_URI + freebaseId) :: triples// 
-						id = imdbId
-			} else {
+			if (imdbId != "") {
+							triples = RdfMovieResource.fromImdbId(imdbId).sameAs(FREEBASE_URI + freebaseId) :: triples// 
+							id = imdbId
+				} else {
 				id = idFromFreebaseId()
 			}
 			
+			getWikipediaFromWebpages(topicEquivalentWebpages)
+			
 			triples
+			(id,triples)
 		} catch{
 			case e:net.liftweb.json.JsonParser$ParseException => {
-				fileLog.info(s"ParseException:$freebaseId")
-				List()
+				//fileLog.info(s"ParseException:$freebaseId")
+				("",List())
 			}
 		}
+		
 	}
 	
 	
@@ -60,7 +96,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 			val rawImdb = json\\"/imdb/topic/title_id"\"values"\"value"
 			try{
 				val imdb = rawImdb.extract[String]
-				fileLog.info(s"imdb freebase:$freebaseId")
+				//fileLog.info(s"imdb freebase:$freebaseId")
 				Some (imdb)	
 			}
 			catch {
@@ -75,7 +111,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		
 		val imdbEquivalents = topicEquivalentWebpages.filter(page => page.contains("imdb"))
 		if (imdbEquivalents.size > 2){
-			fileLog.warn(s"multiple mappings for freebase:$freebaseId")
+//			fileLog.warn(s"multiple mappings for freebase:$freebaseId")
 			None
 		}else if (imdbEquivalents.size == 1){
 			val imdbIds = imdbEquivalents.head.split("/").filter(urlPart => urlPart.startsWith("tt"))
@@ -83,17 +119,25 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				val id = idFromIdmId(imdbIds.head)
 				val msg = s"equivalent freebase:$freebaseId"
 				//log.info(msg)
-				fileLog.info(msg)
+//				fileLog.info(msg)
 				Some(id)
 			} else {
-				fileLog.info(s"wrong id given:${imdbEquivalents.head} freebase:$freebaseId")
+//				fileLog.info(s"wrong id given:${imdbEquivalents.head} freebase:$freebaseId")
 				None
 			}
 		} else{
-			fileLog.info(s"freebase:$freebaseId")
+//			fileLog.info(s"freebase:$freebaseId")
 			None
 		}
 	}
+	
+	def getWikipediaFromWebpages(topicEquivalentWebpages: List[String]): List[String] = {
+		
+		val wikiEquivalents = topicEquivalentWebpages.filter(page => page.contains("wikipedia"))
+		//if (wikiEquivalents.size > 0) {fileLog.info("wiki equivalent")}
+		wikiEquivalents
+	}
+	
 	
 	def idFromFreebaseId(): String = {
 		s"m_${freebaseId.split("/").last}"
