@@ -109,12 +109,12 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 		deleteTempBulkLoadFile(file)
 	}
 
-	def bulkLoad(triples: List[RdfTriple], graph: String): Unit = {
+	def bulkLoad(triples: List[RdfTripleString], graph: String): Unit = {
 		buildRdfFile(triples)
 		bulkLoad(graph)
 	}
 
-	private def buildRdfFile(triples: List[RdfTriple]) {
+	private def buildRdfFile(triples: List[RdfTripleString]) {
 		val f = new BufferedWriter(new FileWriter(bulkLoadFile))
 		writeFileHeader(f)
 		triples.foreach(triple => {

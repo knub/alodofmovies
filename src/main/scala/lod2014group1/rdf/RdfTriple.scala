@@ -52,10 +52,14 @@ case class RdfResource(val uri: String) extends RdfObject {
 	def image(image: String): RdfTriple = buildTriple(RdfResource("dbpprop:image"), RdfUrl(image))
 	def hasImage = image _
 }
-case class RdfTripleString(s: String, p: String, o: String)
+case class RdfTripleString(s: String, p: String, o: String) {
+	override def toString(): String = {
+		s"$s $p $o ."
+	}
+}
 
 case class RdfTriple(s: RdfResource, p: RdfResource, o: RdfObject) {
-	override def toString(): String = {
+	override def toString: String = {
 		s"$s $p $o ."
 	}
 
