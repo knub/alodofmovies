@@ -41,6 +41,8 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasReleaseInfo(releaseInfo: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:released"), releaseInfo)
 
+	def ageRating(age: String): RdfTriple = buildTriple(RdfResource("dbpprop:ageRating"), RdfString(age))
+
 	def isPartOf(collection: String): RdfTriple = buildTriple(RdfResource("freebase:film/film/film_series"), RdfString(collection))
 
 	def nextMovie(movie: RdfResource): RdfTriple = buildTriple(RdfResource("freebase:film/film/sequel"), movie)
@@ -147,4 +149,12 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def hasOfdbVoteCount(ofdbVoteCount: String): RdfTriple = buildTriple(RdfResource("lod:OfdbVoteCount"), RdfString(ofdbVoteCount))
 	
 	def hasVersion(version: String): RdfTriple = buildTriple(RdfResource("dbpprop:version"), RdfString(version))
+
+	def hasRevenue(revenue: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:revenue"), RdfInteger(revenue))
+
+	def isAdult(adult: Boolean): RdfTriple = buildTriple(RdfResource("lod:adult"), RdfBoolean(adult))
+
+	def hasOriginalTitle(originalTitle: String): RdfTriple = buildTriple(RdfResource("dbpprop:originalTitle"), RdfString(originalTitle))
+
+	def hasReleaseStatus(releaseStatus: String): RdfTriple = buildTriple(RdfResource("dbpprop:status"), RdfString(releaseStatus))
 }
