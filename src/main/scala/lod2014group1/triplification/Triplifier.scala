@@ -45,7 +45,12 @@ object Triplifier extends Logging {
 				//new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))
 			}
 			case Config.Person.Dominik => {
-				new TMDBFilmsTriplifier().triplify(new File("data/TMDBMoviesList/movie/120.json"))
+				val tmdbTriplifier = new TMDBFilmsTriplifier();
+				val tmdbFiles = (new File("data/TMDBMoviesList/movie/")).listFiles().filter( f => f.getName.endsWith(".json"))
+				log.info(s"Number of movies: ${tmdbFiles.size}")
+				val part: List[RdfTriple] = tmdbFiles.flatMap( f => tmdbTriplifier.triplify(f)).toList
+				log.info(s"Number of movies: ${part.size}")
+				part
 			}
 		}
 
