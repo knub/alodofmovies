@@ -10,6 +10,7 @@ class AnswerHandler {
 	val taskDatabase = new TaskDatabase
 	var filesToWrite: List[UriFile] = List()
 	var triplesToStore: List[RdfTripleString] = List()
+
 	def handleAnswer(answer: TaskAnswer): Unit = {
 		triplesToStore = triplesToStore ::: answer.triples
 		filesToWrite

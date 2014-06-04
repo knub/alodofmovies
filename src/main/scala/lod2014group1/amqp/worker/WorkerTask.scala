@@ -4,9 +4,9 @@ import lod2014group1.database.Task
 
 object WorkerTask {
 	def fromDatabaseTask(dbTask: Task): WorkerTask = {
-		WorkerTask(dbTask.taskType, Map("task_id" -> dbTask.id.toString, "uri" -> dbTask.fileOrUrl))
+		WorkerTask(dbTask.taskType, dbTask.id, Map("uri" -> dbTask.fileOrUrl))
 	}
 }
 
-case class WorkerTask(`type`: String, params: Map[String, String])
+case class WorkerTask(`type`: String, taskId: Long, params: Map[String, String])
 
