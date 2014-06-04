@@ -83,6 +83,10 @@ class TaskDatabase extends Logging {
 		}
 	}
 
+	def insertAll(values: List[Task]): Unit = {
+		insertAll(values: _*)
+	}
+
 	implicit private def jodaDateToSqlDate(dt: DateTime): Date = {
 		new Date(dt.toDate.getTime)
 	}
