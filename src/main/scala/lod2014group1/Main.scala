@@ -5,6 +5,7 @@ import lod2014group1.apis._
 import lod2014group1.triplification.Triplifier
 import lod2014group1.amqp._
 import lod2014group1.statistics.FreebaseToImdb
+import lod2014group1.database._
 
 object Main extends App with Logging {
 
@@ -30,11 +31,11 @@ object Main extends App with Logging {
 			ofdb.crawl
 		} else if(args contains "freebase-stats"){
 			val stat = new FreebaseToImdb
-			stat.matchFreebase
-			stat.getStatistic
+			stat.matchFreebase()
+			stat.getStatistic()
 		} else if (args contains "freebase-actors"){
 			val freebase = new FreebaseAPI
-			freebase.loadAllActorIds
+			freebase.loadAllActorIds()
 		} else if (args contains "freebase") {
 		  val freebase = new lod2014group1.crawling.FreebaseFilmCrawler()
 		  //freebase.getAllNotImdbMovies
@@ -52,6 +53,9 @@ object Main extends App with Logging {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.coverage
 		} else {
+			val db = new VirtuosoRemoteDatabase("http://172.16.22.196:8890/sparql")
+			val triple = db.allTriplesFor("<http://purl.org/hpi/movie#Movie0177533>")
+			System.out.println(triple.size)
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}
 		log.debug("Finished.")
