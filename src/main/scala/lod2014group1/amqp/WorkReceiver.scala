@@ -56,7 +56,7 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 		} catch {
 			case e: Throwable => new DummyWorker
 		}
-		worker.execute(task.params)
+		worker.execute(task.taskId, task.params)
 	}
 }
 

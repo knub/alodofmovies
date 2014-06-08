@@ -29,6 +29,7 @@ class AdminConsole {
 		val PopulateDatabase = """populate database""".r
 		val BulkLoadFor = """create bulk load file (.*)""".r
 		val SendToQueue = """send (.*) tasks to queue""".r
+		val Empty = "".r
 		val Exit = """exit""".r
 		command match {
 			case ShowNextTasksPattern(nbr) =>
@@ -49,6 +50,7 @@ class AdminConsole {
 			case Exit() =>
 				println("See ya.")
 				return false
+			case Empty() =>
 			case _ =>
 				println("Command not known.")
 		}

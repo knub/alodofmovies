@@ -90,6 +90,9 @@ task ofdbcoverage(type: JavaExec, dependsOn: [build]) {
 }
 repositories {
 	mavenCentral()
+	flatDir {
+		dirs 'libs'
+	}
 }
 
 dependencies {
@@ -112,8 +115,12 @@ dependencies {
 	compile 'org.scala-lang:scala-pickling_2.10:0.8.0'
 	compile 'com.typesafe:config:1.2.1'
 
+	//compile 'com.hp.hpl.jena:jena:2.6.4'
 	compile 'org.apache.jena:jena:2.11.1'
-	compile('org.apache.jena:jena-arq:2.11.1'){
+	// compile files('./lib/virtjdbc3.jar')
+	//compile name: 'virtjdbc3'
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+	compile('org.apache.jena:jena-arq:2.11.1') {
 		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
 	}
 	compile 'jline:jline:2.11'

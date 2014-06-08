@@ -29,12 +29,25 @@ case class RdfString(lit: String) extends RdfLiteral {
 	override def toString(): String = {
 		'"' + lit + '"'
 	}
+	//	override def toString(): String = {
+	//		'"' + lit + '"' + "^^<http://www.w3.org/2001/XMLSchema#string>"
+	//	}
+	//
+	//	override def toString(): String = {
+	//		'"' + lit + '"' + "@en"
+	//	}
+}
 
-//	override def toString(): String = {
-//		'"' + lit + '"' + "^^<http://www.w3.org/2001/XMLSchema#string>"
-//	}
-//
-//	override def toString(): String = {
-//		'"' + lit + '"' + "@en"
-//	}
+case class RdfBoolean(lit: Boolean) extends RdfLiteral {
+	override def toString(): String = {
+		'"' + lit.toString + '"' + "^^<http://www.w3.org/2001/XMLSchema#boolean>"
+	}
+
+}
+
+	case class RdfDouble(lit: Double) extends RdfLiteral {
+		override def toString(): String = {
+			'"' + lit.toString + '"' + "^^<http://www.w3.org/2001/XMLSchema#double>"
+		}
+
 }

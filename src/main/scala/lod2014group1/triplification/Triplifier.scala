@@ -34,21 +34,21 @@ object Triplifier extends Logging {
 	def go() {
 		val triplifier = new Triplifier
 		val triples = I.am match {
-			case Config.Person.Stefan => {
+			case Config.Person.Stefan =>
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
-			}
-			case Config.Person.Tanja => {
-				triplifier.triplify(new File("data/IMDBMovie/tt0179184/main.html"))
-
-				// MAIN PAGE ERROR : tt0004052 tt0179184
-			}
-			case Config.Person.Rice => {
+			case Config.Person.Tanja =>
+				triplifier.triplify(new File("data/IMDBMovie/tt0000610/main.html"))
+			case Config.Person.Rice =>
 				new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd"))
 				//new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))
-			}
-			case Config.Person.Dominik => {
-				new TMDBFilmsTriplifier().triplify(new File("data/TMDBMoviesList/movie/550"))
-			}
+			case Config.Person.Dominik =>
+				val tmdbTriplifier = new TMDBFilmsTriplifier()
+				val tmdbFiles = new File("data/TMDBMoviesList/movie/").listFiles().filter( f => f.getName.endsWith(".json"))
+				log.info(s"Number of movies: ${tmdbFiles.size}")
+				//val tmdbFiles = List(new File("data/TMDBMoviesList/movie/550.json"))
+				val part: List[RdfTriple] = tmdbFiles.flatMap( f => tmdbTriplifier.triplify(f)).toList
+				log.info(s"Number of movies: ${part.size}")
+				part
 		}
 
 		triples.foreach(println)
