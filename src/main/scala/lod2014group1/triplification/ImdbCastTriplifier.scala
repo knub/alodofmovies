@@ -118,7 +118,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			if (!name.isEmpty) {
 				if (url.isEmpty) {
 					credit match {
-						case str if str.contains("story") => triples = (movie stroyBy name) :: triples
+						case str if str.contains("story") => triples = (movie storyBy name) :: triples
 						case str if str.contains("novel") => triples = (movie novelBy writer) :: triples
 						case str if str.contains("screenplay") => triples = (movie screenplayBy name) :: triples
 						case _ => triples = (movie writtenBy name) :: triples
@@ -134,7 +134,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 					) ::: triples
 
 					credit match {
-						case str if str.contains("story") => triples = (movie stroyBy writer) :: triples
+						case str if str.contains("story") => triples = (movie storyBy writer) :: triples
 						case str if str.contains("novel") => triples = (movie novelBy writer) :: triples
 						case str if str.contains("screenplay") => triples = (movie screenplayBy writer) :: triples
 						case _ => triples = (movie writtenBy writer) :: triples

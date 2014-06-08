@@ -71,8 +71,8 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def screenplayBy(writer: String): RdfTriple = buildTriple(RdfResource("dbpprop:screenplay"), RdfString(writer))
 	def screenplayBy(writer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:screenplay"), writer)
 
-	def stroyBy(writer: String): RdfTriple = buildTriple(RdfResource("dbpprop:story"), RdfString(writer))
-	def stroyBy(writer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:story"), writer)
+	def storyBy(writer: String): RdfTriple = buildTriple(RdfResource("dbpprop:story"), RdfString(writer))
+	def storyBy(writer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:story"), writer)
 
 	def novelBy(writer: String): RdfTriple = buildTriple(RdfResource("dbpprop:author"), RdfString(writer))
 	def novelBy(writer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:author"), writer)
@@ -142,4 +142,5 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasTagline(tagline: String): RdfTriple = buildTriple(RdfResource("dbpprop:tagline"), RdfString(tagline))
 
+	
 }

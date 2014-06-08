@@ -17,6 +17,8 @@ import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfPersonResource
+import lod2014group1.rdf.RdfTriple
 
 class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 	
@@ -33,17 +35,45 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 	
 	def extractProperties(f: File, id: String): List[RdfTriple]={
 		val json = JsonParser.parse(new FileReader(f))
-		val r = RdfMovieResource.movieResourceFromRdfResource(new RdfResource(id))
+		val r = RdfMovieResource.movieResourceFromRdfResource(RdfMovieResource.fromImdbId(id))
 				
-		//reduce list of strings
 		val mapJsonToProperty = Map[List[String], String => RdfTriple](
-				(List("property", "/common/topic/topic_equivalent_webpage", "values", "value") , r.sameAs(_: String)) 
+		//reduce list of strings
+				(List("property", "/common/topic/topic_equivalent_webpage", "values", "value") , r.sameAs(_: String)),
+				(List("property", "/common/topic/article", "values", "property", "/common/document/text" ,"values", "value"), r.hasShortSummary(_: String)),
+				(List("property", "/film/film/initial_release_date", "values", "value"), r.releasedInYear(_: String)),
+				(List("property", "/type/object/name", "values", "value"), r.hasTitle(_: String)),
+				(List("property", "/film/film/language", "values", "id"), r.shotInLanguage(_: String)),
+				(List("property", "/film/film/language", "values", "text"), r.shotInLanguage(_: String)),
+		//		(List("property", "/film/film/metacritic_id", "values", "text"), r.shotInLanguage(_: String)),
+				//(List("property", "/common/topic/alias", "values", "value"), r.alsoKnownAs(_: RdfResource)),
+				(List("property", "/type/object/key", "values", "value"), r.hasKeyword(_: String))
+				//(List("property", "/common/topic/notable_for", "values", "text"), r.hasStoryLine(_: String))
+						
+				
+				
+				///common/topic/image
 				)
 		val extract = new FreebaseExtraction
-		// println(
-		val triples = extract.extractListString(json, mapJsonToProperty)//)
+		
+		var triples = List[RdfTriple]()
+		
+		//triples = extract.extractListString(json, mapJsonToProperty)
 		//if (triples.isEmpty){println (id)}
 		
+		val mapPersons = Map[List[String], RdfPersonResource => RdfTriple](
+				(List("property", "/film/film/film_art_direction_by", "values") , r.artDirector(_: RdfResource)),
+				(List("property", "/film/film/film_production_design_by", "values") , r.productionDesignBy(_: RdfResource)),
+				(List("property", "/film/film/film_set_decoration_by", "values") , r.setDesignedBy(_: RdfResource)),
+				(List("property", "/film/film/music", "values") , r.musicBy(_: RdfResource)),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , r.belongsToOtherCrew(_: RdfResource)),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , r.belongsToOtherCrew(_: RdfResource)),
+				(List("property", "/film/film/film_casting_director", "values") , r.castingBy(_: RdfResource))
+				)
+				
+		triples = extract.extractPersons(json, mapPersons) ::: triples
+		println(triples)
+				
 		List()
 	}
 	
