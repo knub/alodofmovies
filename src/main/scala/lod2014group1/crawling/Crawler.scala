@@ -97,14 +97,14 @@ object Crawler extends Logging {
 
 		val inputStream = connection.getInputStream
 		val channel = Channels.newChannel(inputStream)
-		fos.getChannel().transferFrom(channel, 0, Long.MaxValue)
+		fos.getChannel.transferFrom(channel, 0, Long.MaxValue)
 		file
 	}
 
 	def downloadFile(url: URL): String = {
 		val inputStream = buildConnection(url).getInputStream
-		val writer = new StringWriter();
+		val writer = new StringWriter()
 		IOUtils.copy(inputStream, writer, "UTF-8")
-		writer.toString();
+		writer.toString
 	}
 }

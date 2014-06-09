@@ -6,8 +6,9 @@ import scala.slick.driver.SQLiteDriver.simple._
 import lod2014group1.amqp.worker.{UriFile, TaskAnswer}
 import lod2014group1.Config
 import java.io.{File, PrintWriter}
+import org.slf4s.Logging
 
-class AnswerHandler {
+class AnswerHandler extends Logging {
 
 	lazy val BULK_LOAD_SIZE = 100
 
@@ -33,58 +34,68 @@ class AnswerHandler {
 		}
 	}
 
-	def writeFiles(files: List[UriFile]) {
+	def writeFiles(files: List[UriFile]): Unit = {
 		val dir = Config.DATA_FOLDER
 
 		files.foreach { file: UriFile =>
-			file.uri match {
+			// special flag for freebase, because for freebase we cannot determine whether its a movie
+			// or a actor from the url
+			val fileName = file.uri match {
 				// Freebase
 				case uri if uri.startsWith("http://www.freebase.com/)") =>
 					val id = uri.split("/").last
-					val path = s"$dir/freebase/$id/"
-					writeFileContent(file.fileContent, path, "freebase_page.html")
+					file.flag match {
+						case "actor" =>
+							s"$dir/freebase//person/$id/freebase_person.html"
+						case "movie" =>
+							s"$dir/freebase/movie/$id/freebase_movie.html"
+						case _ =>
+							""
+					}
 
 				// TMDB
 				case uri if uri.startsWith("http://www.themoviedb.org/movie/)") =>
 					val id = uri.split("/").last
-					val path = s"$dir/themoviedb/movie/$id/"
-					writeFileContent(file.fileContent, path, "tmdb_movie.html")
+					s"$dir/themoviedb/movie/$id/tmdb_movie.html"
 
 				case uri if uri.startsWith("http://www.themoviedb.org/person/)") =>
 					val id = uri.split("/").last
-					val path = s"$dir/themoviedb/person/$id/"
-					writeFileContent(file.fileContent, path, "tmdb_person.html")
+					s"$dir/themoviedb/person/$id/tmdb_person.html"
 
 				// IMDB
 				case uri if uri.startsWith("http://www.imdb.com/title/)") =>
 					val uriSplit = uri.split("/")
 					val id = uriSplit(2).substring(2)
-					var filename = uriSplit.last
-					if (filename.isEmpty)
-						filename = "main.html"
+					var imdbFileName = uriSplit.last
+					if (imdbFileName.isEmpty)
+						imdbFileName = "main.html"
 					else
-						filename = filename.split("?")(0) + ".html"
-					val path = s"$dir/IMDBMovie/$id/"
-					writeFileContent(file.fileContent, path, filename)
+						imdbFileName = imdbFileName.split("?")(0) + ".html"
+					s"$dir/IMDBMovie/$id/$imdbFileName"
 
 				case uri if uri.startsWith("http://www.imdb.com/name/)") =>
 					val id = uri.split("/").last
-					val path = s"$dir/Actor/$id/"
-					writeFileContent(file.fileContent, path, "main.html")
+					s"$dir/Actor/$id/main.html"
 
 				// OFDB
 				case uri if uri.startsWith("http://www.ofdb.de/film/)") =>
 					val id = uri.split("/").last
-					val path = s"$dir/OFDB/$id/"
-					writeFileContent(file.fileContent, path, "ofdb_movie.html")
+					s"$dir/OFDB/$id/ofdb_movie.html"
 
-				case _ => println(s"WARNING: Uri not supported!")
+				case _ =>
+					""
 			}
+			if (fileName != "")
+				writeFileContent(file.fileContent, fileName)
+			else
+				log.error(s"WARNING: URI ${file.uri} not supported!")
 		}
 	}
 
-	def writeFileContent(content: String, path: String, filename: String) {
-		val writer = new PrintWriter(new File(path + filename))
+	def writeFileContent(content: String, fileName: String) {
+		val file = new File(fileName)
+		file.getParentFile.mkdirs()
+		val writer = new PrintWriter(file)
 		writer.write(content)
 		writer.close()
 	}

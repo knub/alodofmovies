@@ -10,7 +10,7 @@ class CrawlWorker extends Worker {
 	def execute(taskId: Long, params: Map[String, String]): TaskAnswer = {
 		val id = taskId
 		val url = params("uri")
-		val file = UriFile(url, Crawler.downloadFile(new URL(url)))
+		val file = UriFile(url, Crawler.downloadFile(new URL(url)), params.getOrElse("flag", ""))
 
 		val answerMap: Map[String, String] = Map()
 		new TaskAnswer(id, answerMap, List(file), Nil)

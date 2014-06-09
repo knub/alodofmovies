@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils
 import org.joda.time.DateTime
 import org.slf4s.Logging
 import scala.collection.JavaConversions._
+import lod2014group1.amqp.TaskType
 
 class DatabasePopulator extends Logging {
 
@@ -21,7 +22,7 @@ class DatabasePopulator extends Logging {
 		val db = new TaskDatabase
 		movieFiles.grouped(BATCH_INSERT_SIZE).zipWithIndex.foreach { case (movieFilesBatch, i) =>
 			db.insertAll(movieFilesBatch.map { f =>
-				Task(0, "triplify", date(2014, 5, 20), 5.toByte, f.getCanonicalPath.split("/data/")(1), false)
+				Task(0, TaskType.Triplify.toString, date(2014, 5, 20), 5.toByte, f.getCanonicalPath.split("/data/")(1), false, "")
 			}: _*)
 			log.info("%8d/%d".format(i * BATCH_INSERT_SIZE, movieFiles.size))
 		}

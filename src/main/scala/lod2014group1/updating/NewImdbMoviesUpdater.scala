@@ -32,7 +32,7 @@ class NewImdbMoviesUpdater() {
 		val date = new Date(dt.toDate.getTime)
 
 		val taskList = ids.map { id =>
-			Task(0, TaskType.Crawlify.toString, date, 10, baseUri + id, false)
+			Task(0, TaskType.Crawlify.toString, date, 10, baseUri + id, false, "")
 		}
 
 		val database = new TaskDatabase

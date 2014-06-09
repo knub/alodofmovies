@@ -6,7 +6,7 @@ import org.slf4s.Logging
 import scala.slick.driver.SQLiteDriver.simple._
 import scala.slick.jdbc.meta.MTable
 
-case class Task(id: Long, taskType: String, dueDate: Date, importance: Byte, fileOrUrl: String, finished: Boolean)
+case class Task(id: Long, taskType: String, dueDate: Date, importance: Byte, fileOrUrl: String, finished: Boolean, flag: String)
 
 class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
 	def id         = column[Long]("task_id", O.PrimaryKey, O.AutoInc)
@@ -15,10 +15,11 @@ class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
 	def importance = column[Byte]("importance")
 	def fileOrUrl  = column[String]("file")
 	def finished   = column[Boolean]("finished")
+	def flag       = column[String]("flag")
 
 	def uniqueConstraint = index("unique_constraint", (taskType, fileOrUrl))
 
-	def * = (id, taskType, dueDate, importance, fileOrUrl, finished) <>  (Task.tupled, Task.unapply)
+	def * = (id, taskType, dueDate, importance, fileOrUrl, finished, flag) <>  (Task.tupled, Task.unapply)
 }
 class TaskDatabase extends Logging {
 	val DATABASE_NAME = "lod.db"
