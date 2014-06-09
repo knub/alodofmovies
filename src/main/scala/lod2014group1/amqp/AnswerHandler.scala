@@ -46,9 +46,9 @@ class AnswerHandler extends Logging {
 					val id = uri.split("/").last
 					file.flag match {
 						case "actor" =>
-							s"$dir/freebase//person/$id/freebase_person.html"
+							s"$dir/freebase/person/$id/main.json"
 						case "movie" =>
-							s"$dir/freebase/movie/$id/freebase_movie.html"
+							s"$dir/freebase/movie/$id/main.json"
 						case _ =>
 							""
 					}
@@ -56,11 +56,11 @@ class AnswerHandler extends Logging {
 				// TMDB
 				case uri if uri.startsWith("http://www.themoviedb.org/movie/)") =>
 					val id = uri.split("/").last
-					s"$dir/themoviedb/movie/$id/tmdb_movie.html"
+					s"$dir/themoviedb/movie/$id/main.json"
 
 				case uri if uri.startsWith("http://www.themoviedb.org/person/)") =>
 					val id = uri.split("/").last
-					s"$dir/themoviedb/person/$id/tmdb_person.html"
+					s"$dir/themoviedb/person/$id/main.json"
 
 				// IMDB
 				case uri if uri.startsWith("http://www.imdb.com/title/)") =>
@@ -80,7 +80,7 @@ class AnswerHandler extends Logging {
 				// OFDB
 				case uri if uri.startsWith("http://www.ofdb.de/film/)") =>
 					val id = uri.split("/").last
-					s"$dir/OFDB/$id/ofdb_movie.html"
+					s"$dir/OFDB/movie/$id/main.html"
 
 				case _ =>
 					""
