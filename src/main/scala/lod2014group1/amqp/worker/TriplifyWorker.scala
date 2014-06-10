@@ -10,9 +10,9 @@ class TriplifyWorker extends Worker {
 	val triplifier = new Triplifier()
 
 	def execute(taskId: Long, params: Map[String, String]): TaskAnswer = {
-		val tmpFile = File.createTempFile("triplify_tmp", null, null)
-		tmpFile.deleteOnExit()
-		FileUtils.writeStringToFile(tmpFile, params("content"))
+		val content = params("content")
+		val fileName = params("fileName")
+
 		val triples = triplifier.triplify(tmpFile).map { _.toRdfTripleString() }
 		val answerMap: Map[String, String] = Map()
 

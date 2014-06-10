@@ -19,8 +19,8 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
 	val movie = RdfResource(s"lod:Movie$imdbId")
 
-	def triplify(f: File): List[RdfTriple] = {
-		val doc = Jsoup.parse(f, null)
+	def triplify(content: String): List[RdfTriple] = {
+		val doc = Jsoup.parse(content)
 		try {
 			val table = doc.select("div#fullcredits_content").get(0)
 			triplifyCast(table)

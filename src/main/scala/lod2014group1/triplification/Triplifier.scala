@@ -10,23 +10,28 @@ import org.slf4s.Logging
 
 class Triplifier {
 
-	def triplify(f: File): List[RdfTriple] = {
-		val imdbId = f.getPath().split("/")(2).replaceAll("\\D", "")
-
-		if (f.getName == "fullcredits.html")
-			new ImdbCastTriplifier(imdbId).triplify(f)
-		else if (f.getName == "locations.html")
-			new ImdbLocationTriplifier(imdbId).triplify(f)
-		else if (f.getName == "keywords.html")
-			new ImdbKeywordTriplifier(imdbId).triplify(f)
-		else if (f.getName == "awards.html")
-			new ImdbAwardTriplifier(imdbId).triplify(f)
-		else if (f.getName == "releaseinfo.html")
-			new ImdbReleaseInfoTriplifier(imdbId).triplify(f)
-		else if (f.getName == "main.html")
-			new ImdbMainPageTriplifier(imdbId).triplify(f)
-		else
+	def triplify(fileName: String, content: String): List[RdfTriple] = {
+		val f = new File(s"${Config.DATA_FOLDER}/$fileName")
+		if (fileName.startsWith("IMDBMovie")) {
+			val imdbId = fileName.split("/")(2).replaceAll("\\D", "")
+			if (f.getName == "fullcredits.html")
+				new ImdbCastTriplifier(imdbId).triplify(content)
+			else if (f.getName == "locations.html")
+				new ImdbLocationTriplifier(imdbId).triplify(content)
+			else if (f.getName == "keywords.html")
+				new ImdbKeywordTriplifier(imdbId).triplify(content)
+			else if (f.getName == "awards.html")
+				new ImdbAwardTriplifier(imdbId).triplify(content)
+			else if (f.getName == "releaseinfo.html")
+				new ImdbReleaseInfoTriplifier(imdbId).triplify(content)
+			else if (f.getName == "main.html")
+				new ImdbMainPageTriplifier(imdbId).triplify(content)
+			else
+				List()
+		}
+		else {
 			List()
+		}
 	}
 }
 

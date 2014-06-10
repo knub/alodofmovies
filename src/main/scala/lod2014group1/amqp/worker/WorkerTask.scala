@@ -9,7 +9,10 @@ import lod2014group1.Config
 object WorkerTask {
 	def fromDatabaseTask(dbTask: Task): WorkerTask = {
 		if (TaskType.withName(dbTask.taskType) == TaskType.Triplify)
-			WorkerTask(dbTask.taskType, dbTask.id, Map("content" -> FileUtils.readFileToString(new File(s"${Config.DATA_FOLDER}/${dbTask.fileOrUrl}"))))
+			WorkerTask(dbTask.taskType, dbTask.id, Map(
+				"fileName" -> dbTask.fileOrUrl,
+				"content" -> FileUtils.readFileToString(new File(s"${Config.DATA_FOLDER}/${dbTask.fileOrUrl}")))
+			)
 		else if (TaskType.withName(dbTask.taskType) == TaskType.Crawl)
 			WorkerTask(dbTask.taskType, dbTask.id, Map("uri" -> dbTask.fileOrUrl))
 		else
