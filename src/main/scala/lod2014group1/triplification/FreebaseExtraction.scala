@@ -15,6 +15,8 @@ import lod2014group1.rdf.RdfReleaseInfoResource
 import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfTriple
 
 object FreebaseExtraction {
 	
@@ -81,34 +83,38 @@ class FreebaseExtraction() {
 		(new RdfPersonResource("www.freebase.com" + p.id), List())
 	}
 	
-	def extractReleaseInfo(json: JValue, movieUri: String): List[RdfTriple] = {
+	def extractCompounds(json: JValue, movieUri:String, properties: Map[List[String], (String, JValue) => Map[List[String], String => RdfTriple]]): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
 		
-		val root = List("property", "/film/film/release_date_s", "values")
-		val releases = root.foldLeft(json){ (acc, prop) =>	acc \ prop}
-		val releaseList = if (releases.isInstanceOf[JArray])
-							releases.asInstanceOf[JArray].arr
-							else List(releases)
 		
-
-		val triple: List[RdfTriple] = releaseList.flatMap{info => 
-			val obj = info \"property"
-			val id = info \ "id"
-			val releaseResource = RdfReleaseInfoResource.releaseInfoResourceFromRdfResource(RdfResource(s"${movieUri}/ReleaseInfo${id.extract[String]}"))
-			val properties = Map[String, String => RdfTriple](
-					//TODO ("/film/film_regional_release_date/film_release_distribution_medium", releaseResource.atDate(_:String)), 
-				("/film/film_regional_release_date/film_release_region", releaseResource.country(_:String)),
-				("/film/film_regional_release_date/release_date", releaseResource.atDate(_:String))
-				)
-			properties.map{prop => 
-				val value = obj \ prop._1 \"values" \ "text"
-				val valueObject = value.extract[String]
-				prop._2(valueObject)
+		val t: List[RdfTriple] = properties.flatMap {value => 
+			val compounds = value._1.foldLeft(json){ (acc, prop) =>	acc \ prop}
+			val compoundList = if (compounds.isInstanceOf[JArray])
+								compounds.asInstanceOf[JArray].arr
+								else List(compounds)
+	
+			compoundList.flatMap{info => 
+				val obj = info \"property"
+				val id = info \ "id"
+				value._2(movieUri, id).flatMap { prop => 
+					val value =	prop._1.foldLeft(obj){ (acc, prop) =>	acc \ prop}
+					if (!value.isInstanceOf[net.liftweb.json.JsonAST$JNothing$]){
+						val valueList = if (value.isInstanceOf[JArray])
+											value.asInstanceOf[JArray].arr
+										else
+											List(value)
+						valueList.flatMap{v => 
+							val valueObject = v.extract[String]
+							List(prop._2(valueObject))}
+					} else
+						List()
+				}						
 			}
-								
-		}
-		println(triple)
-		triple
+		}.toList
+		println(t)
+		t
 	}
+	
+
 	
 }

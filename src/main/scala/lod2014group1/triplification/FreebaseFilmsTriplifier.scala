@@ -13,6 +13,10 @@ import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfMovieResource
 import lod2014group1.rdf.RdfPersonResource
+import lod2014group1.rdf.RdfReleaseInfoResource
+import lod2014group1.rdf.RdfAwardResource
+import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf.RdfResource
 
 class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 	
@@ -94,16 +98,69 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				
 		triples = extract.extractPersons(json, mapPersons) ::: triples
 		println(triples)
-		triples = extract.extractReleaseInfo(json, id) ::: triples
+		val release = Map[List[String], (String, JValue) => Map[List[String], String => RdfTriple]](
+				 (List("property", "/film/film/release_date_s", "values"), this.releaseInfoProps(_:String, _:JValue)),
+				 (List("property", "/award/award_nominated_work/award_nominations", "values"), this.awardsNominationProps(_:String, _:JValue)),
+				 (List("property", "/award/award_winning_work/awards_won", "values"), this.awardsNominationProps(_:String, _:JValue))
+				 
+		)
 		
+		val releaseInfo = extract.extractCompounds(json, id, release)
+		println(releaseInfo)
+		triples = releaseInfo ::: triples
 		List()
 	}
 	
-	def extractFromJson(json: JValue, values: Map[List[String], String => RdfTriple]): List[RdfTriple] = {
-		
-		
-		List()
+	def releaseInfoProps(movieUri:String, id:JValue): Map[List[String], String => RdfTriple] ={
+		implicit val formats = net.liftweb.json.DefaultFormats
+		val releaseResource = RdfReleaseInfoResource.releaseInfoResourceFromRdfResource(RdfResource(s"${movieUri}/ReleaseInfo${id.extract[String]}"))
+		val properties = Map[List[String], String => RdfTriple](
+				//TODO ("/film/film_regional_release_date/film_release_distribution_medium", releaseResource.atDate(_:String)), 
+				(List("/film/film_regional_release_date/film_release_region", "values", "text"), releaseResource.country(_:String)),
+				(List("/film/film_regional_release_date/release_date", "values", "text"), releaseResource.atDate(_:String))
+			)
+		properties
 	}
+
+	def awardsNominationProps(movieUri:String, id:JValue): Map[List[String], String => RdfTriple] ={
+		implicit val formats = net.liftweb.json.DefaultFormats
+		val awardResource = RdfAwardResource.awardResourceFromRdfResource(RdfResource (s"${movieUri}/NAwards${id.extract[String]}"))
+		awardResource.hasOutcome("Nominated")
+		val properties = Map[List[String], String => RdfTriple](
+				(List("/award/award_nomination/award", "values", "text"), awardResource.inCategory(_:String)),
+				(List("/award/award_nomination/award_nominee", "values", "id"), awardResource.forFreebaseNominee(_:String)),
+				(List("/award/award_nomination/ceremony", "values", "text"), awardResource.hasName(_:String)),
+				(List("/award/award_nomination/year", "values", "text"), awardResource.inYear(_:String))
+			)
+		properties
+	}
+	
+	def awardsWonProps(movieUri:String, id:JValue): Map[List[String], String => RdfTriple] ={
+		implicit val formats = net.liftweb.json.DefaultFormats
+		val awardResource = RdfAwardResource.awardResourceFromRdfResource(RdfResource (s"${movieUri}/WAwards${id.extract[String]}"))
+		awardResource.hasOutcome("Honor")
+		val properties = Map[List[String], String => RdfTriple](
+				(List("/award/award_honor/award", "values", "text"), awardResource.inCategory(_:String)),
+				(List("/award/award_honor/award_winner", "values", "id"), awardResource.forFreebaseNominee(_:String)),
+				(List("/award/award_honor/ceremony", "values", "text"), awardResource.hasName(_:String)),
+				(List("/award/award_honor/year", "values", "text"), awardResource.inYear(_:String))
+			)
+		properties
+	}
+	
+	def starring(movieUri:String, id:JValue): Map[List[String], String => RdfTriple] ={
+		implicit val formats = net.liftweb.json.DefaultFormats
+		val awardResource = RdfAwardResource.awardResourceFromRdfResource(RdfResource (s"${movieUri}/WAwards${id.extract[String]}"))
+		awardResource.hasOutcome("Honor")
+		val properties = Map[List[String], String => RdfTriple](
+				(List("/award/award_honor/award", "values", "text"), awardResource.inCategory(_:String)),
+				(List("/award/award_honor/award_winner", "values", "id"), awardResource.forFreebaseNominee(_:String)),
+				(List("/award/award_honor/ceremony", "values", "text"), awardResource.hasName(_:String)),
+				(List("/award/award_honor/year", "values", "text"), awardResource.inYear(_:String))
+			)
+		properties
+	}
+	
 	
 	def getId(f: File): (String,List[RdfTriple])= {
 		var triples: List[RdfTriple] = List()
