@@ -3,7 +3,7 @@ package lod2014group1.amqp
 import com.rabbitmq.client._
 import com.rabbitmq.client.AMQP.BasicProperties
 import scala.pickling._
-import binary._
+import json._
 import java.util.UUID
 import org.slf4s.Logging
 import scala.util.{Failure, Success, Try}
@@ -28,7 +28,7 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 		println(" [*] Waiting for messages. To exit press CTRL+C")
 		while (true) {
 			val delivery = consumer.nextDelivery()
-			val task = delivery.getBody.unpickle[WorkerTask]
+			val task = new String(delivery.getBody, "UTF-8").unpickle[WorkerTask]
 
 			val answer = Try(forwardTask(task))
 
@@ -71,13 +71,13 @@ class RPCClient(rpcQueueName: String) extends Logging {
 		val corrId = UUID.randomUUID().toString
 		val props = new BasicProperties.Builder().correlationId(corrId).replyTo(replyQueueName).build()
 
-		channel.basicPublish("", rpcQueueName, props, taskAnswer.pickle.value)
+		channel.basicPublish("", rpcQueueName, props, taskAnswer.pickle.value.getBytes())
 
 		var receivedAnswer = false
 		while (!receivedAnswer) {
 			val delivery = consumer.nextDelivery()
 			if (delivery.getProperties.getCorrelationId == corrId) {
-				receivedAnswer = delivery.getBody.unpickle[Boolean]
+				receivedAnswer = new String(delivery.getBody, "UTF-8").unpickle[Boolean]
 			}
 		}
 	}

@@ -3,7 +3,7 @@ package lod2014group1.amqp
 import com.rabbitmq.client._
 import com.rabbitmq.client.AMQP.BasicProperties
 import scala.pickling._
-import binary._
+import json._
 import org.slf4s._
 import org.slf4s.Logger
 import lod2014group1.amqp.worker.{WorkerTask, TaskAnswer}
@@ -15,7 +15,7 @@ class TaskDistributor() extends Logging {
 	channel.queueDeclare(taskQueueName, true, false, false, null)
 
 	def send(task: WorkerTask) {
-		channel.basicPublish("", taskQueueName, MessageProperties.PERSISTENT_TEXT_PLAIN, task.pickle.value)
+		channel.basicPublish("", taskQueueName, MessageProperties.PERSISTENT_TEXT_PLAIN, task.pickle.value.getBytes("UTF-8"))
 		log.debug(s"[x] Sent '${task.`type`}' to queue")
 	}
 
@@ -47,7 +47,7 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable with Logg
 
 			val props = delivery.getProperties
 			val replyProps = new BasicProperties.Builder().correlationId(props.getCorrelationId).build()
-			channel.basicPublish("", props.getReplyTo, replyProps, true.pickle.value)
+			channel.basicPublish("", props.getReplyTo, replyProps, true.pickle.value.getBytes)
 			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 		}
 	}
@@ -58,7 +58,7 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable with Logg
 	}
 
 	def handle(messageBody: Array[Byte]): Unit = {
-		val answer = messageBody.unpickle[TaskAnswer]
+		val answer = new String(messageBody, "UTF-8").unpickle[TaskAnswer]
 		answersReceived += 1
 		answerHandler.handleAnswer(answer)
 
