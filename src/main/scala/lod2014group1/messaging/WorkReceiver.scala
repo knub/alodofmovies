@@ -34,18 +34,19 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 			val delivery = consumer.nextDelivery()
 			val task = new String(Gzipper.uncompress(delivery.getBody), "UTF-8").unpickle[WorkerTask]
 
+			log.info(s"Task received: ${task.`type`}, id: ${task.taskId}, params: ${task.params.-("content")}}" )
 			val answer = Try(forwardTask(task))
 
 			answer match {
 				case Success(a) =>
 					rpcClient.send(a)
-					log.info(s"Task finished: ${task.`type`}, id: ${task.taskId}, params: ${task.params.-("content")}}" )
+					log.info("Task finished." )
 				case Failure(e) =>
 					log.error(e.getStackTraceString)
 			}
 			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
-			if (i % 10000 == 0)
-				println(i)
+//			if (i % 10000 == 0)
+//				println(i)
 		}
 	}
 

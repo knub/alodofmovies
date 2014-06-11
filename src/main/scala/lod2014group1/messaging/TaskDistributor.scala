@@ -26,7 +26,6 @@ class TaskDistributor() extends Logging {
 }
 
 class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable {
-	val log = LoggerFactory.getLogger("TaskAnswerLogger")
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
 	channel.queueDeclare(rpcQueueName, false, false, false, null)
