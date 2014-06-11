@@ -123,8 +123,8 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def artDirector(director: String): RdfTriple = buildTriple(RdfResource("dbpprop:artDirector"), RdfString(director))
 	def artDirector(director: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:artDirector"), director)
 
-	def belongsToOtherCrew(person: String): RdfTriple = buildTriple(RdfResource("dbpprop:otherCrew"), RdfString(person))
-	def belongsToOtherCrew(person: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:otherCrew"), person)
+	def hasOtherCrew(person: String): RdfTriple = buildTriple(RdfResource("dbpprop:otherCrew"), RdfString(person))
+	def hasOtherCrew(person: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:otherCrew"), person)
 
 	def distributedBy(distributor: String): RdfTriple = buildTriple(RdfResource("dbpprop:distributor"), RdfString(distributor))
 

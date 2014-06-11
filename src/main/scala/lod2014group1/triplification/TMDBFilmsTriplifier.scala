@@ -59,22 +59,6 @@ class TMDBFilmsTriplifier {
 		addList(movie.hasVideo(_: String), appendJson.videos.results.map { video => TMDBFilmsTriplifier.YouTubeBaseUrl.format(video.key) } ) :::
 		addAlternativeTitles(movie, id, appendJson.alternative_titles.titles) :::
 		addReleaseInfo(movie, id, appendJson.releases.countries)
-
-//		List(movie label appendJson.title) :::
-//		addImdb(movie, mainJson.imdb_id) :::
-//		addTitle(movie, appendJson.title) :::
-//		addCollection(movie, mainJson.belongs_to_collection) :::
-//		addRuntime(movie, appendJson.runtime) :::
-//		addTagline(movie, appendJson.tagline) :::
-//		addBudget(movie, mainJson.budget) :::
-//		addOverview(movie, mainJson.overview) :::
-//		addKeywords(movie, appendJson.keywords.keywords) :::
-//		addGenres(movie, mainJson.genres) :::
-//		addAlternativeTitles(movie, appendJson.alternative_titles.titles) :::
-//		addSpokenLanguage(movie, appendJson.spoken_language) :::
-//		addProductionCompany(movie, mainJson.production_companies) :::
-//		addProductionCountry(movie, mainJson.production_countries) :::
-//		addString(movie.hasTitle(_: String), appendJson.title)
 	}
 
 
@@ -128,6 +112,12 @@ class TMDBFilmsTriplifier {
 					releaseInfo releasedOn obj.release_date, movie hasReleaseInfo releaseInfo,
 					releaseInfo hasLabel obj.release_date)
 		}.toList
+	}
+
+	def addCrew(movie: RdfMovieResource, id: Long, crew: List[TmdbCrew]): List[RdfTriple] = {
+		crew.flatMap { p =>
+			val person = new RdfPersonResource(s"http://www.themoviedb.org/person/${p.id}")
+		}
 	}
 
 }
