@@ -19,4 +19,7 @@ class RdfCharacterResource(resource: String) extends RdfResource(resource) with 
 
 	def playedBy(actor: RdfResource): RdfTriple = buildTriple(RdfResource("freebase:film/performance/actor"), actor)
 
+	def isSubclassOf(subclass: RdfResource): RdfTriple = buildTriple(RdfResource("rdfs:subClassOf"), subclass)
+
+
 }
