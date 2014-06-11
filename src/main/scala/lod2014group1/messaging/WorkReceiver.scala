@@ -32,7 +32,7 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 		while (true) {
 			i += 1
 			val delivery = consumer.nextDelivery()
-			val task = new String(Gzipper.uncompress(delivery.getBody), "UTF-8").unpickle[WorkerTask]
+			val task = new String(delivery.getBody, "UTF-8").unpickle[WorkerTask]
 
 			log.info(s"Task received: ${task.`type`}, id: ${task.taskId}, params: ${task.params.-("content")}}" )
 			val answer = Try(forwardTask(task))
@@ -78,7 +78,7 @@ class RPCClient(rpcQueueName: String) extends Logging {
 		val corrId = UUID.randomUUID().toString
 		val props = new BasicProperties.Builder().correlationId(corrId).replyTo(replyQueueName).build()
 
-		channel.basicPublish("", rpcQueueName, props, Gzipper.compress(taskAnswer.pickle.value.getBytes))
+		channel.basicPublish("", rpcQueueName, props, taskAnswer.pickle.value.getBytes)
 
 		var receivedAnswer = false
 		while (!receivedAnswer) {
