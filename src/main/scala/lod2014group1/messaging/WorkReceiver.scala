@@ -5,7 +5,7 @@ import com.rabbitmq.client.AMQP.BasicProperties
 import scala.pickling._
 import json._
 import java.util.UUID
-import org.slf4s.Logging
+import org.slf4s.{LoggerFactory, Logging}
 import scala.util.{Failure, Success, Try}
 import TaskType._
 import lod2014group1.messaging.worker._
@@ -13,7 +13,9 @@ import scala.util.Success
 import scala.util.Failure
 
 
-class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Logging {
+class WorkReceiver(taskQueueName: String, answerQueueName: String) {
+
+	val log = LoggerFactory.getLogger("TaskAnswerLogger")
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
 	channel.queueDeclare(taskQueueName, true, false, false, null)
@@ -25,8 +27,10 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 	val rpcClient = new RPCClient(answerQueueName)
 
 	def listen() {
-		println(" [*] Waiting for messages. To exit press CTRL+C")
+		println("Waiting for messages. To exit press CTRL+C")
+		var i = 0
 		while (true) {
+			i += 1
 			val delivery = consumer.nextDelivery()
 			val task = new String(Gzipper.uncompress(delivery.getBody), "UTF-8").unpickle[WorkerTask]
 
@@ -35,11 +39,13 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 			answer match {
 				case Success(a) =>
 					rpcClient.send(a)
-					log.info(" [x] Done with '" + task.`type` + "'")
+					log.info(s"Task finished: ${task.`type`}, id: ${task.taskId}, params: ${task.params.-("content")}}" )
 				case Failure(e) =>
 					log.error(e.getStackTraceString)
 			}
 			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
+			if (i % 10000 == 0)
+				println(i)
 		}
 	}
 
