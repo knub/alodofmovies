@@ -101,13 +101,16 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		val release = Map[List[String], (String, JValue) => Map[List[String], String => RdfTriple]](
 				 (List("property", "/film/film/release_date_s", "values"), this.releaseInfoProps(_:String, _:JValue)),
 				 (List("property", "/award/award_nominated_work/award_nominations", "values"), this.awardsNominationProps(_:String, _:JValue)),
-				 (List("property", "/award/award_winning_work/awards_won", "values"), this.awardsNominationProps(_:String, _:JValue))
+				 (List("property", "/award/award_winning_work/awards_won", "values"), this.awardsWonProps(_:String, _:JValue)),
+				 (List("property", "/film/film/starring", "values"), this.starring(_:String, _:JValue))
 				 
 		)
 		
 		val releaseInfo = extract.extractCompounds(json, id, release)
 		println(releaseInfo)
 		triples = releaseInfo ::: triples
+		
+		println(extract.extractStarring(json, r))
 		List()
 	}
 	
@@ -160,6 +163,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 			)
 		properties
 	}
+	
 	
 	
 	def getId(f: File): (String,List[RdfTriple])= {

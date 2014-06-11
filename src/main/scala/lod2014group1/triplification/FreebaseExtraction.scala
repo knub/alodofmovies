@@ -17,6 +17,9 @@ import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfCharacterResource
+import lod2014group1.rdf.RdfAwardResource
 
 object FreebaseExtraction {
 	
@@ -29,6 +32,7 @@ case class Persons (obj: List[Person])
 //case class Crew (crew: List)
 
 class FreebaseExtraction() {
+	val FREEBASE_URI = "www.freebase.com"
 		
 	def extractListString(json: JValue, values: Map[List[String], String => RdfTriple]): List[RdfTriple] = {
 		
@@ -113,6 +117,63 @@ class FreebaseExtraction() {
 		}.toList
 		println(t)
 		t
+	}
+	
+	def extractStarring(json: JValue, movie: RdfMovieResource): List[RdfTriple]= {
+		implicit val formats = net.liftweb.json.DefaultFormats
+		val extract = List("property", "/film/film/starring", "values", "property") 
+		val jsonValueList = extract.foldLeft(List(json)) { (acc, prop) =>
+			acc.flatMap { jfield =>
+				val obj = jfield \ prop
+				if (jfield.isInstanceOf[JObject] && obj.isInstanceOf[net.liftweb.json.JsonAST$JNothing$]){
+					List()
+				} else
+				if (obj.isInstanceOf[JArray])
+					obj.asInstanceOf[JArray].arr
+				else
+					List(obj)
+			}
+		}
+		
+		jsonValueList.flatMap{starringJson => 
+			val actorJson = starringJson \ "/film/performance/actor" \ "values"
+			val person = actorJson.extract[Person]
+			val personResource = new RdfPersonResource(FREEBASE_URI + person.id)
+			val triple = List(personResource isA RdfPersonResource.actor, personResource.hasName(person.text))
+			
+			val characterJson = starringJson \ "/film/performance/character" \ "values"
+			val character = characterJson.extractOpt[Person]
+			
+			val charactertriple = character match {
+				case Some(character) => {
+					val characterResource = new RdfCharacterResource(movie.uri + "_" + character.id)
+					List(characterResource isA RdfCharacterResource.character,
+						characterResource.hasName(character.text),
+						characterResource.inMovie(movie),
+						characterResource.playedBy(personResource),
+						characterResource.isSubclassOf(new RdfCharacterResource(FREEBASE_URI + character.id)))
+				}
+				case None => {
+					val specialPerformanceJson = starringJson \ "/film/performance/special_performance_type" \ "values"
+					val specialPerformance = specialPerformanceJson.extractOpt[Person]
+					specialPerformance match {
+						case Some(specialPerformance) => {
+							if (specialPerformance.text == "Him/Herself"){
+								val characterResource = new RdfCharacterResource(movie.uri + "_" + person.id)
+								List(characterResource isA RdfCharacterResource.character,
+										characterResource.hasName(person.text),
+										characterResource.inMovie(movie),
+										characterResource.playedBy(personResource),
+										characterResource.isSubclassOf(new RdfCharacterResource(FREEBASE_URI + person.id))
+								)
+							} else List()
+						} 
+						case None => List()
+					}
+				}
+			}
+			charactertriple ::: triple
+		}	
 	}
 	
 
