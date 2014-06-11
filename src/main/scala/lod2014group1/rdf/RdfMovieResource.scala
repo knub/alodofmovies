@@ -79,7 +79,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def novelBy(writer: String): RdfTriple = buildTriple(RdfResource("dbpprop:author"), RdfString(writer))
 	def novelBy(writer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:author"), writer)
 
-	def playedBy(actor: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:starring"), actor)
+	def starring(actor: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:starring"), actor)
 
 	def producedBy(producer: String): RdfTriple = buildTriple(RdfResource("dbpprop:producer"), RdfString(producer))
 	def producedBy(producer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:producer"), producer)

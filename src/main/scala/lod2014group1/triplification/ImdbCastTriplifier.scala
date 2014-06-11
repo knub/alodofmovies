@@ -186,7 +186,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			actor isA RdfPersonResource.person,
 			actor name actorName,
 			actor hasLabel actorName,
-			movieResourceFromRdfResource(movie) playedBy actor)
+			movieResourceFromRdfResource(movie) starring actor)
 	}
 
 	private def extractCharacterTriples(actor: RdfResource, characterTableCells: Elements): List[RdfTriple] = {

@@ -64,6 +64,7 @@ class RdfPersonResource(resource: String) extends RdfResource(resource) with Log
 
 	def hasBirthPlace(place: String): RdfTriple = buildTriple(RdfResource("dbpprop:birthPlace"), RdfString(place))
 
-	def playsCharacter(character: RdfResource): RdfTriple = buildTriple(RdfResource("freebase:film/actor/film"), character)
+	def playsCharacter(character: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:character"), character)
 
+	def hasJob(job: String): RdfTriple = buildTriple(RdfResource("dbpprop:job"), RdfString(job))
 }
