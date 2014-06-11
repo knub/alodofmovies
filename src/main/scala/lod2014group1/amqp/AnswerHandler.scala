@@ -20,7 +20,8 @@ class AnswerHandler extends Logging {
 
 	def handleAnswer(answer: TaskAnswer): Unit = {
 		triplesToStore = triplesToStore ::: answer.triples
-		
+
+		println(triplesToStore.size)
 		if (triplesToStore.size > BULK_LOAD_SIZE) {
 			db.bulkLoad(triplesToStore, "http://hpi.uni-potsdam.de/lod2014group1-test")
 			triplesToStore = List()
