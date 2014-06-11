@@ -7,6 +7,7 @@ import lod2014group1.amqp.worker.{UriFile, TaskAnswer}
 import lod2014group1.Config
 import java.io.{File, PrintWriter}
 import org.slf4s.Logging
+import lod2014group1.crawling.UriToFilename
 
 class AnswerHandler extends Logging {
 
@@ -36,56 +37,9 @@ class AnswerHandler extends Logging {
 	}
 
 	def writeFiles(files: List[UriFile]): Unit = {
-		val dir = Config.DATA_FOLDER
-
 		files.foreach { file: UriFile =>
-			// special flag for freebase, because for freebase we cannot determine whether its a movie
-			// or a actor from the url
-			val fileName = file.uri match {
-				// Freebase
-				case uri if uri.startsWith("http://www.freebase.com/)") =>
-					val id = uri.split("/").last
-					file.flag match {
-						case "actor" =>
-							s"$dir/freebase/person/$id/main.json"
-						case "movie" =>
-							s"$dir/freebase/movie/$id/main.json"
-						case _ =>
-							""
-					}
+			val fileName = UriToFilename.parse(file)
 
-				// TMDB
-				case uri if uri.startsWith("http://www.themoviedb.org/movie/)") =>
-					val id = uri.split("/").last
-					s"$dir/themoviedb/movie/$id/main.json"
-
-				case uri if uri.startsWith("http://www.themoviedb.org/person/)") =>
-					val id = uri.split("/").last
-					s"$dir/themoviedb/person/$id/main.json"
-
-				// IMDB
-				case uri if uri.startsWith("http://www.imdb.com/title/)") =>
-					val uriSplit = uri.split("/")
-					val id = uriSplit(2).substring(2)
-					var imdbFileName = uriSplit.last
-					if (imdbFileName.isEmpty)
-						imdbFileName = "main.html"
-					else
-						imdbFileName = imdbFileName.split("?")(0) + ".html"
-					s"$dir/IMDBMovie/$id/$imdbFileName"
-
-				case uri if uri.startsWith("http://www.imdb.com/name/)") =>
-					val id = uri.split("/").last
-					s"$dir/Actor/$id/main.html"
-
-				// OFDB
-				case uri if uri.startsWith("http://www.ofdb.de/film/)") =>
-					val id = uri.split("/").last
-					s"$dir/OFDB/movie/$id/main.html"
-
-				case _ =>
-					""
-			}
 			if (fileName != "")
 				writeFileContent(file.fileContent, fileName)
 			else
