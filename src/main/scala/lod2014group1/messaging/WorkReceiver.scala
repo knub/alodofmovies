@@ -28,7 +28,7 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) extends Loggi
 		println(" [*] Waiting for messages. To exit press CTRL+C")
 		while (true) {
 			val delivery = consumer.nextDelivery()
-			val task = new String(delivery.getBody, "UTF-8").unpickle[WorkerTask]
+			val task = new String(Gzipper.uncompress(delivery.getBody), "UTF-8").unpickle[WorkerTask]
 
 			val answer = Try(forwardTask(task))
 
@@ -71,7 +71,7 @@ class RPCClient(rpcQueueName: String) extends Logging {
 		val corrId = UUID.randomUUID().toString
 		val props = new BasicProperties.Builder().correlationId(corrId).replyTo(replyQueueName).build()
 
-		channel.basicPublish("", rpcQueueName, props, taskAnswer.pickle.value.getBytes)
+		channel.basicPublish("", rpcQueueName, props, Gzipper.compress(taskAnswer.pickle.value.getBytes))
 
 		var receivedAnswer = false
 		while (!receivedAnswer) {
