@@ -33,8 +33,13 @@ class Triplifier {
 				new ImdbMainPageTriplifier(imdbId).triplify(content)
 			else
 				List()
-		}
-		else {
+		} else if (fileName.contains("Actor")) {
+			val imdbId = fileName.split("/")(2).replaceAll("\\D", "")
+			if (f.getName == "main.html")
+				new ImdbActorTriplifier(imdbId).triplify(content)
+			else
+				List()
+		} else {
 			List()
 		}
 	}
@@ -47,7 +52,7 @@ object Triplifier extends Logging {
 			case Config.Person.Stefan =>
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
 			case Config.Person.Tanja =>
-				triplifier.triplify(new File("data/IMDBMovie/tt0427944/locations.html"))
+				triplifier.triplify(new File("data/Actor/nm0000158/main.html"))
 			case Config.Person.Rice =>
 				new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd"))
 				//new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))
@@ -60,5 +65,7 @@ object Triplifier extends Logging {
 				log.info(s"Number of movies: ${part.size}")
 				part
 		}
+
+		triples.foreach(println)
 	}
 }
