@@ -1,9 +1,9 @@
-package lod2014group1.amqp
+package lod2014group1.messaging
 
 import lod2014group1.rdf.{RdfTripleString, RdfTriple}
 import lod2014group1.database.{VirtuosoLocalDatabase, TaskDatabase}
 import scala.slick.driver.SQLiteDriver.simple._
-import lod2014group1.amqp.worker.{UriFile, TaskAnswer}
+import lod2014group1.messaging.worker.{UriFile, TaskAnswer}
 import lod2014group1.Config
 import java.io.{File, PrintWriter}
 import org.slf4s.Logging

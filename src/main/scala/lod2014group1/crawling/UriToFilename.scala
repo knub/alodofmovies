@@ -1,6 +1,6 @@
 package lod2014group1.crawling
 
-import lod2014group1.amqp.worker.UriFile
+import lod2014group1.messaging.worker.UriFile
 import lod2014group1.Config
 
 object UriToFilename {

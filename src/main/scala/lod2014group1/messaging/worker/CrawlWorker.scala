@@ -1,7 +1,7 @@
-package lod2014group1.amqp.worker
+package lod2014group1.messaging.worker
 
 import java.net.URL
-import lod2014group1.amqp._
+import lod2014group1.messaging._
 import lod2014group1.crawling.Crawler
 
 

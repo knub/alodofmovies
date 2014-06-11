@@ -8,7 +8,7 @@ import org.apache.commons.io.FileUtils
 import org.joda.time.DateTime
 import org.slf4s.Logging
 import scala.collection.JavaConversions._
-import lod2014group1.amqp.TaskType
+import lod2014group1.messaging.TaskType
 
 class DatabasePopulator extends Logging {
 

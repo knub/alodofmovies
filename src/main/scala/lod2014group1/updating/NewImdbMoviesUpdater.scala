@@ -8,7 +8,7 @@ import scala.collection.JavaConversions._
 import lod2014group1.database.{Task, TaskDatabase}
 import org.joda.time.{Days, DateTime}
 import java.sql.Date
-import lod2014group1.amqp.TaskType
+import lod2014group1.messaging.TaskType
 
 class NewImdbMoviesUpdater() {
 

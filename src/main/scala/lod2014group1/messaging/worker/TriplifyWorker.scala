@@ -1,4 +1,4 @@
-package lod2014group1.amqp.worker
+package lod2014group1.messaging.worker
 
 import lod2014group1.rdf.{RdfResource, RdfTriple}
 import org.apache.commons.io.FileUtils

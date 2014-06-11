@@ -1,4 +1,4 @@
-package lod2014group1.amqp
+package lod2014group1.messaging
 
 import com.rabbitmq.client._
 import com.rabbitmq.client.AMQP.BasicProperties
@@ -6,7 +6,7 @@ import scala.pickling._
 import json._
 import org.slf4s._
 import org.slf4s.Logger
-import lod2014group1.amqp.worker.{WorkerTask, TaskAnswer}
+import lod2014group1.messaging.worker.{WorkerTask, TaskAnswer}
 
 class TaskDistributor() extends Logging {
 	val taskQueueName = "tasks"

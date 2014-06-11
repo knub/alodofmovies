@@ -1,4 +1,4 @@
-package lod2014group1.amqp.worker
+package lod2014group1.messaging.worker
 
 import lod2014group1.crawling.{UriToFilename, Crawler}
 import java.net.URL

@@ -1,4 +1,4 @@
-package lod2014group1.amqp
+package lod2014group1.messaging
 
 import com.rabbitmq.client._
 import com.rabbitmq.client.AMQP.BasicProperties
@@ -8,7 +8,7 @@ import java.util.UUID
 import org.slf4s.Logging
 import scala.util.{Failure, Success, Try}
 import TaskType._
-import lod2014group1.amqp.worker._
+import lod2014group1.messaging.worker._
 import scala.util.Success
 import scala.util.Failure
 
@@ -71,7 +71,7 @@ class RPCClient(rpcQueueName: String) extends Logging {
 		val corrId = UUID.randomUUID().toString
 		val props = new BasicProperties.Builder().correlationId(corrId).replyTo(replyQueueName).build()
 
-		channel.basicPublish("", rpcQueueName, props, taskAnswer.pickle.value.getBytes())
+		channel.basicPublish("", rpcQueueName, props, taskAnswer.pickle.value.getBytes)
 
 		var receivedAnswer = false
 		while (!receivedAnswer) {

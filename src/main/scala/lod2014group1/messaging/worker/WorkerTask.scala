@@ -1,7 +1,7 @@
-package lod2014group1.amqp.worker
+package lod2014group1.messaging.worker
 
 import lod2014group1.database.Task
-import lod2014group1.amqp.TaskType
+import lod2014group1.messaging.TaskType
 import org.apache.commons.io.FileUtils
 import java.io.File
 import lod2014group1.Config

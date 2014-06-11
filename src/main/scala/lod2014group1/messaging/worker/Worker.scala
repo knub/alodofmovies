@@ -1,4 +1,4 @@
-package lod2014group1.amqp.worker
+package lod2014group1.messaging.worker
 
 abstract class Worker {
 

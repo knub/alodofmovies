@@ -3,7 +3,7 @@ import lod2014group1.crawling.Crawler
 import org.slf4s.Logging
 import lod2014group1.apis._
 import lod2014group1.triplification.Triplifier
-import lod2014group1.amqp._
+import lod2014group1.messaging._
 import lod2014group1.statistics.FreebaseToImdb
 import lod2014group1.database._
 import lod2014group1.rdf.RdfResource

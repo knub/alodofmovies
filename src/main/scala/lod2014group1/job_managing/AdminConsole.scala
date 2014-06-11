@@ -1,8 +1,8 @@
 package lod2014group1.job_managing
 
 import lod2014group1.database.TaskDatabase
-import lod2014group1.amqp.TaskDistributor
-import lod2014group1.amqp.worker.WorkerTask
+import lod2014group1.messaging.TaskDistributor
+import lod2014group1.messaging.worker.WorkerTask
 
 class AdminConsole {
 
