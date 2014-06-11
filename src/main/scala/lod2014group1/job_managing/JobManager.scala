@@ -25,7 +25,6 @@ object JobManager extends App with Logging {
 				println(index)
 			try {
 				val fileName = s"${Config.DATA_FOLDER}/${task.fileOrUrl}"
-				println(fileName)
 				val triples = triplifier.triplify(new File(fileName))
 				bulkLoadWriter.addTriples(triples)
 			} catch {
