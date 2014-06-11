@@ -37,7 +37,8 @@ class OFDBMovieCrawler extends Crawler {
 		if (!Files.exists(Paths.get(lastMovieFilePath)))
 			println(s"$lastMovieFilePath not found. Could not clean HTML files.")
 		else{
-			val lastMovieIDCrawled = Source.fromFile(lastMovieFilePath).mkString.toInt
+			val lastMovieIDCrawledString = Source.fromFile(lastMovieFilePath).mkString
+			val lastMovieIDCrawled = lastMovieIDCrawledString.trim().toInt
 			println(s"Last movie ID crawled: $lastMovieIDCrawled.")
 			val movieBasePath = s"${OFDBMovieCrawler.OFDB_PATH}/Movies"
 			for (i <- 9397 to lastMovieIDCrawled){
