@@ -66,8 +66,8 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				(List("property", "/film/film/film_production_design_by", "values") , r.productionDesignBy(_: RdfResource)),
 				(List("property", "/film/film/film_set_decoration_by", "values") , r.setDesignedBy(_: RdfResource)),
 				(List("property", "/film/film/music", "values") , r.musicBy(_: RdfResource)),
-				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , r.belongsToOtherCrew(_: RdfResource)),
-				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , r.belongsToOtherCrew(_: RdfResource)),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , r.hasOtherCrew(_: RdfResource)),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , r.hasOtherCrew(_: RdfResource)),
 				(List("property", "/film/film/film_casting_director", "values") , r.castingBy(_: RdfResource))
 				)
 				

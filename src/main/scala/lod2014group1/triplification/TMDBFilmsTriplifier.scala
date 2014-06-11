@@ -115,9 +115,10 @@ class TMDBFilmsTriplifier {
 	}
 
 	def addCrew(movie: RdfMovieResource, id: Long, crew: List[TmdbCrew]): List[RdfTriple] = {
-		crew.flatMap { p =>
+		crew.map { p =>
 			val person = new RdfPersonResource(s"http://www.themoviedb.org/person/${p.id}")
 		}
+		Nil
 	}
 
 }
