@@ -7,7 +7,7 @@ object UriToFilename {
 
 	def parse(file: UriFile): String = {
 		val dir = Config.DATA_FOLDER
-		
+
 		file.uri match {
 			// Freebase
 			case uri if uri.startsWith("http://www.freebase.com/)") =>

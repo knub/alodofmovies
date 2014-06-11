@@ -24,7 +24,9 @@ object JobManager extends App with Logging {
 			if (index % 10000 == 0)
 				println(index)
 			try {
-				val triples = triplifier.triplify(new File(s"${Config.DATA_FOLDER}/${task.fileOrUrl}"))
+				val fileName = s"${Config.DATA_FOLDER}/${task.fileOrUrl}"
+				println(fileName)
+				val triples = triplifier.triplify(new File(fileName))
 				bulkLoadWriter.addTriples(triples)
 			} catch {
 				case e: Exception => println(s"Error in file ${task.fileOrUrl}")
