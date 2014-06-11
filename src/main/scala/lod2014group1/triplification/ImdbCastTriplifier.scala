@@ -113,9 +113,9 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 					) ::: triples
 
 					credit match {
-						case str if str.contains("story") => triples = (movie storyBy writer) :: triples
-						case str if str.contains("novel") => triples = (movie novelBy writer) :: triples
-						case str if str.contains("screenplay") => triples = (movie screenplayBy writer) :: triples
+						case str if str.contains("story") => triples = List(movie storyBy writer, writer hasJob "story") ::: triples
+						case str if str.contains("novel") => triples = List(movie novelBy writer, writer hasJob "novel") ::: triples
+						case str if str.contains("screenplay") => triples = List(movie screenplayBy writer, writer hasJob "screenplay") ::: triples
 						case _ => triples = (movie writtenBy writer) :: triples
 					}
 				}
@@ -147,6 +147,14 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 						producer hasLabel name,
 						producer isA RdfPersonResource.person
 					) ::: triples
+
+					val job = getJob(credit)
+					if (credit != null)
+						triples = (producer hasJob job) :: triples
+
+					val alternatvieName = getAlias(credit)
+					if (alternatvieName != null)
+						triples = (person hasAlternativeName alternatvieName) :: triples
 
 					credit match {
 						case "co-producer" => triples = (movie coProducedBy producer) :: triples
@@ -241,15 +249,18 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 						person isA RdfPersonResource.person
 					) ::: triples
 
+					val job = getJob(credit)
+					if (job != null)
+						triples = (person hasJob job) :: triples
+
 					if (rdfType != null) {
 						triples = RdfTriple(person, RdfResource("rdf:type"), rdfType) :: triples
 					}
 					triples = RdfTriple(movie, RdfResource(property), person) :: triples
 
-					if (credit.contains("(as ")) {
-						val alternativeName = getAlias(credit)
-						triples = (person hasAlternativeName alternativeName) :: triples
-					}
+					val alternatvieName = getAlias(credit)
+					if (alternatvieName != null)
+						triples = (person hasAlternativeName alternatvieName) :: triples
 				}
 			}
 		})
@@ -259,7 +270,18 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
 
 	def getAlias(str: String): String = {
-		str.split("\\(as ")(1).split("\\)")(0)
+		if (str.contains("(as"))
+			return str.split("\\(as ")(1).split("\\)")(0)
+		null
+	}
+
+	def getJob(str: String): String = {
+		if (str.isEmpty)
+			return null
+
+		if (str.contains("(as"))
+			str.split("\\(as ")(0).dropRight(1)
+		str
 	}
 
 
