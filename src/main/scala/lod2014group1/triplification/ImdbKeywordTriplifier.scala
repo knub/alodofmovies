@@ -12,8 +12,8 @@ import lod2014group1.rdf.RdfMovieResource._
 
 class ImdbKeywordTriplifier(val imdbId: String) {
 
-	def triplify(f: File): List[RdfTriple] = {
-		val doc = Jsoup.parse(f, null)
+	def triplify(content: String): List[RdfTriple] = {
+		val doc = Jsoup.parse(content)
 		val keywordsDiv = doc.getElementById("keywords_content")
 
 		if (keywordsDiv == null)

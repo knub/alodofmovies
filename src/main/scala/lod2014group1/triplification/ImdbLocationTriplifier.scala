@@ -12,10 +12,10 @@ import lod2014group1.rdf.RdfMovieResource._
 
 class ImdbLocationTriplifier(val imdbId: String) {
 
-	def triplify(f: File): List[RdfTriple] = {
+	def triplify(content: String): List[RdfTriple] = {
 		var triples: List[RdfTriple] = List()
 
-		val doc = Jsoup.parse(f, null)
+		val doc = Jsoup.parse(content)
 		val locationDiv = doc.getElementById("filming_locations_content")
 
 		if (locationDiv == null)

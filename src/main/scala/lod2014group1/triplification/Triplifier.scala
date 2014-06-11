@@ -10,6 +10,10 @@ import org.slf4s.Logging
 
 class Triplifier {
 
+	def triplify(file: File): List[RdfTriple] = {
+		val content = FileUtils.readFileToString(file, "UTF-8")
+		triplify(file.getName, content)
+	}
 	def triplify(fileName: String, content: String): List[RdfTriple] = {
 		val f = new File(s"${Config.DATA_FOLDER}/$fileName")
 		if (fileName.startsWith("IMDBMovie")) {

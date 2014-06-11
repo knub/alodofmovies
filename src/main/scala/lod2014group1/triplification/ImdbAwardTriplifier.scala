@@ -25,8 +25,8 @@ class ImdbAwardTriplifier(val imdbId: String) {
 	var role = ""
 	var awardCount = 1
 
-	def triplify(f: File): List[RdfTriple] = {
-		val doc = Jsoup.parse(f, null)
+	def triplify(content: String): List[RdfTriple] = {
+		val doc = Jsoup.parse(content)
 		val awardTables = doc.getElementsByClass("awards")
 
 		var triple: List[RdfTriple] = List()

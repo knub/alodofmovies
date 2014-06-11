@@ -8,12 +8,11 @@ import org.jsoup.nodes.{Document, Element}
 import lod2014group1.rdf.RdfPersonResource._
 import lod2014group1.rdf.RdfCharacterResource._
 import lod2014group1.rdf.RdfMovieResource._
-import lod2014group1.rdf.RdfMovieResource
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import org.jsoup.select.Elements
 import org.slf4s.Logging
-import lod2014group1.rdf
+import org.apache.commons.io.FileUtils
 
 class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
@@ -26,10 +25,10 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			triplifyCast(table)
 		} catch {
 			case e: IndexOutOfBoundsException =>
-				log.error("No content table found in " + f.getAbsolutePath)
+				log.error("No content table found in " + doc.select("title").html)
 				List()
 			case e: Throwable =>
-				log.error("Error in  " + f.getAbsolutePath)
+				log.error("Error in  " + doc.select("title").html)
 				log.error(e.getStackTraceString)
 				List()
 		}
@@ -293,7 +292,8 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
 
 	def getActorUrls(f: File): List[String] = {
-		triplify(f).flatMap { triple =>
+		val content = FileUtils.readFileToString(f, "UTF-8")
+		triplify(content).flatMap { triple =>
 			// Only actors so far,
 			if (triple.p.uri == "owl:sameAs")
 				List(triple.o.asInstanceOf[RdfUrl].lit.replace("<", "").replace(">", ""))

@@ -13,8 +13,8 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 
 	val movie = RdfResource(s"lod:Movie$imdbId")
 
-	def triplify(f: File): List[RdfTriple] = {
-		val doc = Jsoup.parse(f, null)
+	def triplify(content: String): List[RdfTriple] = {
+		val doc = Jsoup.parse(content)
 
 		var triples: List[RdfTriple] = List(movie sameAsImdbUrl imdbId)
 
@@ -138,17 +138,15 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 			val heading = block.select("h4").text()
 
 			heading match {
-				case "Country:" => {
+				case "Country:" =>
 					block.select("a").foreach(country => {
 						triples = (movie releasedInCountry country.text()) :: triples
 					})
-				}
-				case "Language:" => {
+				case "Language:" =>
 					block.select("a").foreach(language => {
 						triples = (movie shotInLanguage language.text()) :: triples
 					})
-				}
-				case "Release Date:" => {
+				case "Release Date:" =>
 					val formatter = DateTimeFormat.forPattern("dd MMM yyyy");
 					val dateStr = (block.text().substring(heading.length + 1)).split("\\(")(0).dropRight(1)
 					try {
@@ -158,15 +156,13 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 						case e: Exception =>
 							triples = (movie releasedOn dateStr) :: triples
 					}
-				}
-				case "Filming Locations:" => {
+				case "Filming Locations:" =>
 					if (block.select("span.see-more.inline").size == 0) {
 						block.select("a").foreach(location => {
 							triples = (movie filmedInLocation location.text()) :: triples
 						})
 					}
-				}
-				case "Also Known As:" => {
+				case "Also Known As:" =>
 					if (block.select("span.see-more.inline").size == 0) {
 						block.select("a").zipWithIndex.foreach{ case(aka, index) => {
 							val akaRes = RdfResource(s"lod:Movie$imdbId/Aka$index")
@@ -178,34 +174,28 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 							) ::: triples
 						}}
 					}
-				}
-				case "Budget:" => {
+				case "Budget:" =>
 					val budget = block.text().substring(heading.length + 1)
 					triples = (movie hasBudget budget) :: triples
-				}
-				case "Production Co:" => {
+				case "Production Co:" =>
 					block.select("span[itemprop=creator] a").foreach(company => {
 						triples = (movie distributedBy company.text()) :: triples
 					})
-				}
-				case "Sound Mix:" => {
+				case "Sound Mix:" =>
 					block.select("a").foreach(mix => {
 						triples = (movie hasSoundMix mix.text()) :: triples
 					})
-				}
-				case "Color:" =>  {
+				case "Color:" =>
 					block.select("a").foreach(a => {
 						a.text() match {
 							case "Color" => triples = (movie belongsTo colorFilm) :: triples
 							case "Black and White" =>  triples = (movie belongsTo blackAndWhiteFilm) :: triples
 						}
 					})
-				}
-				case "Aspect Ratio:" => {
+				case "Aspect Ratio:" =>
 					val ratio = block.text().substring(heading.length + 1)
 					triples = (movie hasAspectRatio ratio) :: triples
-				}
-				case _ => {}
+				case _ =>
 			}
 		})
 

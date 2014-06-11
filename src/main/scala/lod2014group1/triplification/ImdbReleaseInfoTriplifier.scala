@@ -18,8 +18,8 @@ class ImdbReleaseInfoTriplifier(val imdbId: String) {
 	var releaseInfoCount = 1
 	var akaCount = 1
 
-	def triplify(f: File): List[RdfTriple] = {
-		val doc = Jsoup.parse(f, null)
+	def triplify(content: String): List[RdfTriple] = {
+		val doc = Jsoup.parse(content)
 
 		val releaseInfoTable= doc.select("table#release_dates")
 		val akaTable = doc.select("table#akas")
