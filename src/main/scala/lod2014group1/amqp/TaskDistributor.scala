@@ -38,7 +38,7 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable with Logg
 	val answersLog: Logger = LoggerFactory.getLogger("TaskAnswerLogger")
 	val answerHandler = new AnswerHandler()
 
-	override def run() {
+	override def run(): Unit = {
 		log.info("[x] Awaiting RPC requests")
 		while (true) {
 			val delivery = consumer.nextDelivery()
@@ -64,7 +64,6 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable with Logg
 
 		answersLog.info("Received '" + answer.header + "'")
 		answersLog.info(s"Safed ${answer.files.size} files.")
-		answersLog.info(answer.files(0).fileContent)
 		answersLog.info(s"Stored ${answer.triples.size} files.")
 	}
 }
