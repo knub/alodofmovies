@@ -64,7 +64,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		val mapPersons = Map[List[String], RdfPersonResource => RdfTriple](
 				(List("property", "/film/film/film_art_direction_by", "values") , r.artDirector(_: RdfResource)),
 				(List("property", "/film/film/film_production_design_by", "values") , r.productionDesignBy(_: RdfResource)),
-				(List("property", "/film/film/film_set_decoration_by", "values") , r.setDesignedBy(_: RdfResource)),
+				(List("property", "/film/film/film_set_decoration_by", "values") , r.setDecoratedBy(_: RdfResource)),
 				(List("property", "/film/film/music", "values") , r.musicBy(_: RdfResource)),
 				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , r.hasOtherCrew(_: RdfResource)),
 				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , r.hasOtherCrew(_: RdfResource)),

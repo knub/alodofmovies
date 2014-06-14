@@ -53,6 +53,7 @@ class TMDBFilmsTriplifier {
 		addDouble(movie.tmdbVoteAverage(_: Double), mainJson.vote_average) :::
 		addInteger(movie.tmdbVoteCount(_: Integer), mainJson.vote_count) :::
 		//addCast
+		addCrew(movie, appendJson.credits.crew)
 		addList(movie.hasKeyword(_: String), appendJson.keywords.keywords.map { keyword => keyword.name }) :::
 		addList(movie.hasImage(_: String), appendJson.images.backdrops.map { image => TMDBFilmsTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
 		addList(movie.hasPoster(_: String), appendJson.images.posters.map { image => TMDBFilmsTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
@@ -114,11 +115,44 @@ class TMDBFilmsTriplifier {
 		}.toList
 	}
 
-	def addCrew(movie: RdfMovieResource, id: Long, crew: List[TmdbCrew]): List[RdfTriple] = {
-		crew.map { p =>
-			val person = new RdfPersonResource(s"http://www.themoviedb.org/person/${p.id}")
+	def addCrew(movie: RdfMovieResource, crew: List[TmdbCrew]): List[RdfTriple] = {
+		crew.flatMap { p =>
+			handleCrew(movie, p)
 		}
-		Nil
+	}
+
+	def handleCrew(movie: RdfMovieResource, member: TmdbCrew): List[RdfTriple] = {
+		val person = new RdfPersonResource(s"http://www.themoviedb.org/person/${member.id}")
+		val job = person hasJob member.job
+		val name = person hasName member.name
+		val rel = (member.department, member.job) match {
+			case ("Directing", "Director") => movie directedBy person
+			case ("Directing", "Special Guest Director") => movie directedBy person
+			case ("Production", "Co-Producer") => movie coProducedBy person
+			case ("Production", "Co-Executive Producer") => movie coProducedBy person
+			case ("Production", "Producer") => movie producedBy person
+			case ("Production", "Executive Producer") => movie producedBy person
+			case ("Production", "Casting") => movie castingBy person
+			case ("Production", "Production Manager") => movie productionManagedBy person
+			case ("Writing", "Author") => movie storyBy person
+			case ("Writing", "Novel") => movie novelBy person
+			case ("Writing", "Screenplay") => movie screenplayBy person
+			case ("Writing", _) => movie writtenBy person
+			case ("Sound", "Original Music Composer") => movie musicBy person
+			case ("Camera", "Director of Photography") => movie musicBy person
+			case ("Editing", "Editor") => movie editBy person
+			case ("Art", "Production Design") => movie productionDesignBy person
+			case ("Art", "Art Director") => movie artDirector person
+			case ("Art", "Set Decorator") => movie setDecoratedBy person
+			case ("Costume & Make-up", "Costume Design") => movie costumeDesignedBy person
+			case ("Costume & Make-up", "Makeup Artist") => movie makeupBy person
+			case ("Visual Effects", _) => movie visualEffectsBy person
+			case ("Crew", "Special Effects") => movie specialEffectsBy person
+			case ("Crew", "Stunts") => movie stuntsBy person
+			case ("Actors", "Actor") => movie starring person
+			case default => movie hasOtherCrew person
+		}
+		rel :: name :: job :: List()
 	}
 
 }
