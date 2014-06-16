@@ -1,7 +1,7 @@
 package lod2014group1.triplification
 
 import java.io.File
-import lod2014group1.rdf.{RdfAkaResource, RdfResource, RdfTriple}
+import lod2014group1.rdf.{RdfMovieResource, RdfAkaResource, RdfResource, RdfTriple}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
@@ -16,7 +16,7 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 	def triplify(content: String): List[RdfTriple] = {
 		val doc = Jsoup.parse(content)
 
-		var triples: List[RdfTriple] = List(movie sameAsImdbUrl imdbId)
+		var triples: List[RdfTriple] = List(movie sameAsImdbUrl imdbId, movie isA RdfMovieResource.film)
 
 		val overviewDiv = doc.select(".article.title-overview")
 		triples = handleOverviewDiv(overviewDiv) ::: triples

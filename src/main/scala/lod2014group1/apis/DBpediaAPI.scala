@@ -4,13 +4,22 @@ import com.hp.hpl.jena.query._
 import com.hp.hpl.jena.rdf._
 import lod2014group1.rdf._
 
+object DBpediaAPI {
+	val EN_SPARQL_ENDPOINT = "http://dbpedia.org/sparql"
+	val DE_SPARQL_ENDPOINT = "http://de.dbpedia.org/sparql"
+}
+
 class DBpediaAPI {
 
-	var SPARQL_ENDPOINT = "http://dbpedia.org/sparql"
-
-	def buildQuery(queryString: String): QueryExecution = {
+	def buildQuery(queryString: String): List[QueryExecution] = {
 		val query: Query = QueryFactory.create(queryString)
-		QueryExecutionFactory.sparqlService(SPARQL_ENDPOINT, query)
+		List(QueryExecutionFactory.sparqlService(DBpediaAPI.EN_SPARQL_ENDPOINT, query),
+			QueryExecutionFactory.sparqlService(DBpediaAPI.DE_SPARQL_ENDPOINT, query))
+	}
+
+	def buildQuery(queryString: String, endpoint: String): QueryExecution = {
+		val query: Query = QueryFactory.create(queryString)
+		QueryExecutionFactory.sparqlService(endpoint, query)
 	}
 
 	def query(query: QueryExecution, resultFunction: (QuerySolution) => Unit) {
@@ -23,17 +32,24 @@ class DBpediaAPI {
 	}
 
 	def getFilmUris(queryString: String): List[String] = {
-		val queryExecution = buildQuery(queryString)
+		val queryExecution = buildQuery(queryString, DBpediaAPI.EN_SPARQL_ENDPOINT)
 
 		var films: List[String]= List()
 		query(queryExecution, rs => {
 			films = (rs.get("film").toString) :: films
 		})
 
+		println(films)
+
 		films
 	}
 
-	def getAllTriplesFor(resource: String) = {
+
+	def getAllTriplesFor(resource: String): List[RdfTriple] = {
+		getAllTriplesFor(resource, DBpediaAPI.EN_SPARQL_ENDPOINT)
+	}
+
+	def getAllTriplesFor(resource: String, endpoint: String): List[RdfTriple] = {
 		val queryString =
 			"""
 			  SELECT ?p ?o
@@ -42,7 +58,7 @@ class DBpediaAPI {
 		 	  }
 			""" format resource
 
-		val queryExecution = buildQuery(queryString)
+		val queryExecution = buildQuery(queryString, endpoint)
 
 		var triples: List[RdfTriple] = List()
 		query(queryExecution, rs => {
@@ -51,7 +67,7 @@ class DBpediaAPI {
 			triples = RdfTriple(RdfResource(resource), RdfResource(p.toString()), RdfResource(o.toString())) :: triples
 		})
 
-		System.out.println(triples)
+		println(triples)
 
 		triples
 	}
@@ -93,7 +109,7 @@ class DBpediaAPI {
 		  PREFIX yago: <http://dbpedia.org/class/yago/>
 		  PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
-		  SELECT count distinct ?film
+		  SELECT distinct ?film
 		  WHERE {
 		    {
 		      ?film rdf:type dbpedia-owl:Film .
