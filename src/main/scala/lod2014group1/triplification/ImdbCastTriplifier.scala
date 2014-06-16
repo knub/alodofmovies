@@ -173,7 +173,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 				List()
 			else {
 				val imdbIdString = row.select("a").first.attr("href").split("\\?")(0)
-				val imdbId = imdbIdString.replaceAll("\\D", "").toInt
+				val imdbId = imdbIdString.toInt
 				val actor = RdfResource(s"lod:MoviePerson$imdbId")
 
 				(actor hasImdbUrl imdbIdString) ::
@@ -208,7 +208,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
 			val link = characterTd.select("a")
 			if (!link.isEmpty) {
-				val characterId = link.get(0).attr("href").split("/")(2).substring(2)
+				val characterId = link.get(0).attr("href").split("/")(2)
 				val characterName = link.text()
 				val characterMovie = RdfResource(s"lod:Movie$imdbId/Character$characterId")
 				val character = RdfResource(s"lod:Character$characterId")

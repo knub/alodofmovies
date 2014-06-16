@@ -18,7 +18,7 @@ class Triplifier {
 		val f = new File(s"${Config.DATA_FOLDER}/$fileName")
 
 		if (fileName.contains("IMDBMovie")) {
-			val imdbId = fileName.split("/")(2).replaceAll("\\D", "")
+			val imdbId = fileName.split("/")(2)
 			if (f.getName == "fullcredits.html")
 				new ImdbCastTriplifier(imdbId).triplify(content)
 			else if (f.getName == "locations.html")
@@ -34,7 +34,7 @@ class Triplifier {
 			else
 				List()
 		} else if (fileName.contains("Actor")) {
-			val imdbId = fileName.split("/")(2).replaceAll("\\D", "")
+			val imdbId = fileName.split("/")(2)
 			if (f.getName == "main.html")
 				new ImdbActorTriplifier(imdbId).triplify(content)
 			else
@@ -52,7 +52,7 @@ object Triplifier extends Logging {
 			case Config.Person.Stefan =>
 				triplifier.triplify(new File("data/IMDBMovie/tt0109830/fullcredits.html"))
 			case Config.Person.Tanja =>
-				triplifier.triplify(new File("data/Actor/nm0000158/main.html"))
+				triplifier.triplify(new File("data/IMDBMovie/tt0179184/main.html"))
 			case Config.Person.Rice =>
 				new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd"))
 				//new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))

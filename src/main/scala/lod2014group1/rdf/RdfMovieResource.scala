@@ -35,7 +35,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def belongsTo = subject _
 	def hasPoster = image _
 
-	def sameAsImdbUrl(id: String) = sameAs("http://imdb.com/title/tt" + id)
+	def sameAsImdbUrl(id: String) = sameAs("http://imdb.com/title/" + id)
 
 	def alsoKnownAs(aka: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:alternativeNames"), aka)
 

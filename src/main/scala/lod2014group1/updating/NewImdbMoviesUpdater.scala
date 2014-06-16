@@ -38,6 +38,12 @@ class NewImdbMoviesUpdater() {
 
 		val database = new TaskDatabase
 		database.insertAll(taskList)
+	}
+
+	def watchUpcomingMovies() {
 
 	}
+
+
+
 }
