@@ -96,10 +96,10 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				//TODO check for rdfResource type
 				(List("property", "/film/film/film_art_direction_by", "values") , (movieResource.artDirector(_: RdfResource), Some(RdfPersonResource.director), Some("Art Director"))),
 				(List("property", "/film/film/film_production_design_by", "values") , (movieResource.productionDesignBy(_: RdfResource), None, Some("Production Desginer"))),
-				(List("property", "/film/film/film_set_decoration_by", "values") , (movieResource.setDesignedBy(_: RdfResource), Some(RdfPersonResource.setDesigner), Some("Set Decorater"))),
+				(List("property", "/film/film/film_set_decoration_by", "values") , (movieResource.setDecoratedBy(_: RdfResource), Some(RdfPersonResource.setDesigner), Some("Set Decorater"))),
 				(List("property", "/film/film/music", "values") , (movieResource.musicBy(_: RdfResource), None, Some("Composer"))),
-				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , (movieResource.belongsToOtherCrew(_: RdfResource), None, None)),
-				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , (movieResource.belongsToOtherCrew(_: RdfResource), None, None)),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , (movieResource.hasOtherCrew(_: RdfResource), None, None)),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , (movieResource.hasOtherCrew(_: RdfResource), None, None)),
 				(List("property", "/film/film/produced_by", "values") , (movieResource.producedBy(_: RdfResource), Some(RdfPersonResource.producer), Some("Producer"))),
 				(List("property", "/film/film/story_by", "values") , (movieResource.storyBy(_: RdfResource), Some(RdfPersonResource.storyEditor), Some("Story Writer"))),
 				(List("property", "/film/film/written_by", "values") , (movieResource.writtenBy(_: RdfResource), None, Some("Writer"))),
