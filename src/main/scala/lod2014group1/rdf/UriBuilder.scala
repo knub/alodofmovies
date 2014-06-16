@@ -34,6 +34,6 @@ object UriBuilder {
 	}
 	
 	def freebaseUri(id:String): String = {
-		s"http://www.freebase.com/$id"
+		s"http://www.freebase.com$id"
 	}
 }

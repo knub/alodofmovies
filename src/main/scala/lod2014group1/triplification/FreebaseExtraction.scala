@@ -68,7 +68,7 @@ class FreebaseExtraction() {
 					val obj = jfield \ prop
 					if (jfield.isInstanceOf[JObject] && obj.isInstanceOf[net.liftweb.json.JsonAST$JNothing$]){
 						//println("jfield: " + jfield)
-						println(s"no $prop")
+						//println(s"no $prop")
 						List()
 					} else
 					if (obj.isInstanceOf[JArray])

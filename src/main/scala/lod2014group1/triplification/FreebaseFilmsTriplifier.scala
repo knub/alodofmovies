@@ -23,22 +23,21 @@ import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.UriBuilder
 
 class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
-	
-	val FREEBASE_URI = "http://www.freebase.com"
 
 	protected val fileLog: Logger = LoggerFactory.getLogger("FreebaseFileLogger")
 	
 	def triplify(f: File): List[RdfTriple]= {
 		
-		
 		val (id, movieResource, triples) = getId(f)
 		
-		(movieResource, id) match{
+		val proptriples = (movieResource, id) match{
 			case (Some(movieResource), Some(id)) => extractProperties(f, id, movieResource)
 			case _ => {log.info(s"failed by id parsing ${f.getName()}")
 				List()
 			}
 		}
+		
+		triples:::proptriples
 	}
 	
 	def extractProperties(f: File, id: String, movieResource: RdfMovieResource): List[RdfTriple]={
@@ -74,7 +73,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				)
 		val extract = new FreebaseExtraction
 		
-		var triples = List[RdfTriple]()
+		var triples = extract.extractListString(json, mapJsonToProperty)
 		
 		//triples = extract.extractListString(json, mapJsonToProperty)
 		//if (triples.isEmpty){println (id)}
@@ -113,7 +112,6 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				 (List("property", "/film/film/release_date_s", "values"), this.releaseInfoProps(_:String, _:JValue)),
 				 (List("property", "/award/award_nominated_work/award_nominations", "values"), this.awardsNominationProps(_:String, _:JValue)),
 				 (List("property", "/award/award_winning_work/awards_won", "values"), this.awardsWonProps(_:String, _:JValue))
-			 
 		)
 		
 		val releaseInfo = extract.extractCompounds(json, id, compounds)
