@@ -87,8 +87,8 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def coProducedBy(producer: String): RdfTriple = buildTriple(RdfResource("dbpprop:coProducer"), RdfString(producer))
 	def coProducedBy(producer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:coProducer"), producer)
 
-	def setDesignedBy(setDesigner: String): RdfTriple = buildTriple(RdfResource("dbpprop:setDecorator"), RdfString(setDesigner))
-	def setDesignedBy(setDesigner: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:setDecorator"), setDesigner)
+	def setDecoratedBy(setDecorator: String): RdfTriple = buildTriple(RdfResource("dbpprop:setDecorator"), RdfString(setDecorator))
+	def setDecoratedBy(setDecorator: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:setDecorator"), setDecorator)
 
 	def makeupBy(makeupArtist: String): RdfTriple = buildTriple(RdfResource("dbpprop:makeupArtist"), RdfString(makeupArtist))
 	def makeupBy(makeupArtist: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:makeupArtist"), makeupArtist)
@@ -120,11 +120,14 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def productionDesignBy(designer: String): RdfTriple = buildTriple(RdfResource("dbpprop:productionDesigner"), RdfString(designer))
 	def productionDesignBy(designer: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:productionDesigner"), designer)
 
+	def productionManagedBy(manager: String): RdfTriple = buildTriple(RdfResource("dbpprop:productionManager"), RdfString(manager))
+	def productionManagedBy(manager: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:productionManager"), manager)
+
 	def artDirector(director: String): RdfTriple = buildTriple(RdfResource("dbpprop:artDirector"), RdfString(director))
 	def artDirector(director: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:artDirector"), director)
 
-	def belongsToOtherCrew(person: String): RdfTriple = buildTriple(RdfResource("dbpprop:otherCrew"), RdfString(person))
-	def belongsToOtherCrew(person: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:otherCrew"), person)
+	def hasOtherCrew(person: String): RdfTriple = buildTriple(RdfResource("dbpprop:otherCrew"), RdfString(person))
+	def hasOtherCrew(person: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:otherCrew"), person)
 
 	def distributedBy(distributor: String): RdfTriple = buildTriple(RdfResource("dbpprop:distributor"), RdfString(distributor))
 

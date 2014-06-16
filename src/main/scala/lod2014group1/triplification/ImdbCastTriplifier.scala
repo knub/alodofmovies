@@ -64,7 +64,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 				case name if name.startsWith("Set Decoration by") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:setDecorator", RdfPersonResource.setDesigner) ::: triples
 				case name if name.startsWith("Costume Design by") =>
-					triples = extractTriplesForGroup(groupTable, "dbpprop:costume", RdfPersonResource.costumeDesigner) ::: triples
+					triples = extractTriplesForGroup(groupTable, "dbpprop:costumeDesign", RdfPersonResource.costumeDesigner) ::: triples
 				case name if name.startsWith("Makeup Department") =>
 					triples = extractTriplesForGroup(groupTable, "dbpprop:makeupArtist", RdfPersonResource.makeUpArtist) ::: triples
 				case name if name.startsWith("Production Management") =>

@@ -9,7 +9,7 @@ import scala.slick.jdbc.meta.MTable
 case class Task(id: Long, taskType: String, dueDate: Date, importance: Byte, fileOrUrl: String, finished: Boolean, flag: String)
 
 class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
-	def id         = column[Long]("task_id", O.PrimaryKey, O.AutoInc)
+	def id         = column[Long]("task_id", O.PrimaryKey, O.AutoInc, O.DBType("INTEGER"))
 	def taskType   = column[String]("task_type")
 	def dueDate    = column[Date]("due_date")
 	def importance = column[Byte]("importance")

@@ -53,28 +53,13 @@ class TMDBFilmsTriplifier {
 		addDouble(movie.tmdbVoteAverage(_: Double), mainJson.vote_average) :::
 		addInteger(movie.tmdbVoteCount(_: Integer), mainJson.vote_count) :::
 		//addCast
+		addCrew(movie, appendJson.credits.crew)
 		addList(movie.hasKeyword(_: String), appendJson.keywords.keywords.map { keyword => keyword.name }) :::
 		addList(movie.hasImage(_: String), appendJson.images.backdrops.map { image => TMDBFilmsTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
 		addList(movie.hasPoster(_: String), appendJson.images.posters.map { image => TMDBFilmsTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
 		addList(movie.hasVideo(_: String), appendJson.videos.results.map { video => TMDBFilmsTriplifier.YouTubeBaseUrl.format(video.key) } ) :::
 		addAlternativeTitles(movie, id, appendJson.alternative_titles.titles) :::
 		addReleaseInfo(movie, id, appendJson.releases.countries)
-
-//		List(movie label appendJson.title) :::
-//		addImdb(movie, mainJson.imdb_id) :::
-//		addTitle(movie, appendJson.title) :::
-//		addCollection(movie, mainJson.belongs_to_collection) :::
-//		addRuntime(movie, appendJson.runtime) :::
-//		addTagline(movie, appendJson.tagline) :::
-//		addBudget(movie, mainJson.budget) :::
-//		addOverview(movie, mainJson.overview) :::
-//		addKeywords(movie, appendJson.keywords.keywords) :::
-//		addGenres(movie, mainJson.genres) :::
-//		addAlternativeTitles(movie, appendJson.alternative_titles.titles) :::
-//		addSpokenLanguage(movie, appendJson.spoken_language) :::
-//		addProductionCompany(movie, mainJson.production_companies) :::
-//		addProductionCountry(movie, mainJson.production_countries) :::
-//		addString(movie.hasTitle(_: String), appendJson.title)
 	}
 
 
@@ -128,6 +113,46 @@ class TMDBFilmsTriplifier {
 					releaseInfo releasedOn obj.release_date, movie hasReleaseInfo releaseInfo,
 					releaseInfo hasLabel obj.release_date)
 		}.toList
+	}
+
+	def addCrew(movie: RdfMovieResource, crew: List[TmdbCrew]): List[RdfTriple] = {
+		crew.flatMap { p =>
+			handleCrew(movie, p)
+		}
+	}
+
+	def handleCrew(movie: RdfMovieResource, member: TmdbCrew): List[RdfTriple] = {
+		val person = new RdfPersonResource(s"http://www.themoviedb.org/person/${member.id}")
+		val job = person hasJob member.job
+		val name = person hasName member.name
+		val rel = (member.department, member.job) match {
+			case ("Directing", "Director") => movie directedBy person
+			case ("Directing", "Special Guest Director") => movie directedBy person
+			case ("Production", "Co-Producer") => movie coProducedBy person
+			case ("Production", "Co-Executive Producer") => movie coProducedBy person
+			case ("Production", "Producer") => movie producedBy person
+			case ("Production", "Executive Producer") => movie producedBy person
+			case ("Production", "Casting") => movie castingBy person
+			case ("Production", "Production Manager") => movie productionManagedBy person
+			case ("Writing", "Author") => movie storyBy person
+			case ("Writing", "Novel") => movie novelBy person
+			case ("Writing", "Screenplay") => movie screenplayBy person
+			case ("Writing", _) => movie writtenBy person
+			case ("Sound", "Original Music Composer") => movie musicBy person
+			case ("Camera", "Director of Photography") => movie musicBy person
+			case ("Editing", "Editor") => movie editBy person
+			case ("Art", "Production Design") => movie productionDesignBy person
+			case ("Art", "Art Director") => movie artDirector person
+			case ("Art", "Set Decorator") => movie setDecoratedBy person
+			case ("Costume & Make-up", "Costume Design") => movie costumeDesignedBy person
+			case ("Costume & Make-up", "Makeup Artist") => movie makeupBy person
+			case ("Visual Effects", _) => movie visualEffectsBy person
+			case ("Crew", "Special Effects") => movie specialEffectsBy person
+			case ("Crew", "Stunts") => movie stuntsBy person
+			case ("Actors", "Actor") => movie starring person
+			case default => movie hasOtherCrew person
+		}
+		rel :: name :: job :: List()
 	}
 
 }
