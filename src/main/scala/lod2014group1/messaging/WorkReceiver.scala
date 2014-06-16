@@ -40,7 +40,6 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 			answer match {
 				case Success(a) =>
 					rpcClient.send(a)
-					log.info("Task finished." )
 				case Failure(e) =>
 					log.error(e.getStackTraceString)
 			}
