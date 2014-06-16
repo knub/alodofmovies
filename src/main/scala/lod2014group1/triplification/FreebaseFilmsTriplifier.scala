@@ -1,24 +1,18 @@
 package lod2014group1.triplification
 
 import java.io.File
-import lod2014group1.rdf.RdfTriple
-import net.liftweb.json.JsonParser
 import java.io.FileReader
+import net.liftweb.json.JsonParser
+import net.liftweb.json.JsonAST.JValue
 import net.liftweb.json._
 import net.liftweb.json.JsonDSL._
-import lod2014group1.rdf.RdfResource
-import lod2014group1.rdf.RdfMovieResource
 import org.slf4s.Logging
 import org.slf4s.Logger
 import org.slf4s.LoggerFactory
 import lod2014group1.rdf.RdfTriple
-import net.liftweb.json.JsonAST.JValue
-import lod2014group1.rdf.RdfTriple
-import lod2014group1.rdf.RdfTriple
-import lod2014group1.rdf.RdfTriple
-import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf.RdfMovieResource
 import lod2014group1.rdf.RdfPersonResource
-import lod2014group1.rdf.RdfTriple
 
 class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 	
@@ -45,6 +39,8 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				(List("property", "/type/object/name", "values", "value"), r.hasTitle(_: String)),
 				(List("property", "/film/film/language", "values", "id"), r.shotInLanguage(_: String)),
 				(List("property", "/film/film/language", "values", "text"), r.shotInLanguage(_: String)),
+				(List("property", "/film/film/tagline", "values", "value"), r.hasTagline(_: String)),
+				(List("property", "/imdb/topic/title_id", "values", "value"), r.sameAs(_: String)), // --> id not resource
 		//		(List("property", "/film/film/metacritic_id", "values", "text"), r.shotInLanguage(_: String)),
 				//(List("property", "/common/topic/alias", "values", "value"), r.alsoKnownAs(_: RdfResource)),
 				(List("property", "/type/object/key", "values", "value"), r.hasKeyword(_: String))
@@ -52,7 +48,10 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 						
 				
 				
-				///common/topic/image
+				///common/topic/image//	
+				//(List("property", "/film/film/production_companies", "values") , r.xxx(_: RdfResource)),
+
+				
 				)
 		val extract = new FreebaseExtraction
 		
@@ -61,19 +60,42 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		//triples = extract.extractListString(json, mapJsonToProperty)
 		//if (triples.isEmpty){println (id)}
 		
+		//TODO
+		// awards
+		// /film/film/rating - releaseInfo, getcountry
+		// /film/film/release_date_s
+		// /film/film/rottentomatoes_id
+		// /film/film/runtime --> more than 1 per movie, (cut versions, countries...) 
+		// /film/film/metacritic_id
+		// /film/film/soundtrack
+		// /film/film/starring
+		// /film/film/subjects
+		// /film/film/traileraddict_id --not important
+		// /film/film/trailers --> video?
+		// /media_common/netflix_title/netflix_genres
+		// /media_common/quotation_source/quotations
+		// /type/object/key
+		// /type/object/name
+		// /film/film/personal_appearances
+		
 		val mapPersons = Map[List[String], RdfPersonResource => RdfTriple](
 				(List("property", "/film/film/film_art_direction_by", "values") , r.artDirector(_: RdfResource)),
 				(List("property", "/film/film/film_production_design_by", "values") , r.productionDesignBy(_: RdfResource)),
 				(List("property", "/film/film/film_set_decoration_by", "values") , r.setDecoratedBy(_: RdfResource)),
 				(List("property", "/film/film/music", "values") , r.musicBy(_: RdfResource)),
-				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , r.hasOtherCrew(_: RdfResource)),
-				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , r.hasOtherCrew(_: RdfResource)),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , r.belongsToOtherCrew(_: RdfResource)),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , r.belongsToOtherCrew(_: RdfResource)),
+				(List("property", "/film/film/produced_by", "values") , r.producedBy(_: RdfResource)),
+				(List("property", "/film/film/story_by", "values") , r.storyBy(_: RdfResource)),
+				(List("property", "/film/film/written_by", "values") , r.writtenBy(_: RdfResource)),
+			//	(List("property", "/film/film/personal_appearances", "values", "property", "/film/personal_film_appearance/person", "values") , r.personal_appearnce(_: RdfResource)),
 				(List("property", "/film/film/film_casting_director", "values") , r.castingBy(_: RdfResource))
 				)
 				
 		triples = extract.extractPersons(json, mapPersons) ::: triples
 		println(triples)
-				
+		triples = extract.extractReleaseInfo(json, id) ::: triples
+		
 		List()
 	}
 	

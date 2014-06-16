@@ -11,6 +11,10 @@ import net.liftweb.json.JsonAST.JField
 import net.liftweb.json.JsonAST.JArray
 import net.liftweb.json.JsonAST.JObject
 import net.liftweb.json.JsonAST.JNothing
+import lod2014group1.rdf.RdfReleaseInfoResource
+import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfTriple
 
 object FreebaseExtraction {
 	
@@ -75,6 +79,36 @@ class FreebaseExtraction() {
 	def matchPersons(p: Person):(RdfPersonResource, List[RdfTriple]) = {
 		//TODO: match Persons and find right resource
 		(new RdfPersonResource("www.freebase.com" + p.id), List())
+	}
+	
+	def extractReleaseInfo(json: JValue, movieUri: String): List[RdfTriple] = {
+		implicit val formats = net.liftweb.json.DefaultFormats
+		
+		val root = List("property", "/film/film/release_date_s", "values")
+		val releases = root.foldLeft(json){ (acc, prop) =>	acc \ prop}
+		val releaseList = if (releases.isInstanceOf[JArray])
+							releases.asInstanceOf[JArray].arr
+							else List(releases)
+		
+
+		val triple: List[RdfTriple] = releaseList.flatMap{info => 
+			val obj = info \"property"
+			val id = info \ "id"
+			val releaseResource = RdfReleaseInfoResource.releaseInfoResourceFromRdfResource(RdfResource(s"${movieUri}/ReleaseInfo${id.extract[String]}"))
+			val properties = Map[String, String => RdfTriple](
+					//TODO ("/film/film_regional_release_date/film_release_distribution_medium", releaseResource.atDate(_:String)), 
+				("/film/film_regional_release_date/film_release_region", releaseResource.country(_:String)),
+				("/film/film_regional_release_date/release_date", releaseResource.atDate(_:String))
+				)
+			properties.map{prop => 
+				val value = obj \ prop._1 \"values" \ "text"
+				val valueObject = value.extract[String]
+				prop._2(valueObject)
+			}
+								
+		}
+		println(triple)
+		triple
 	}
 	
 }
