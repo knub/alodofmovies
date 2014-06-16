@@ -7,6 +7,7 @@ import lod2014group1.messaging._
 import lod2014group1.statistics.FreebaseToImdb
 import lod2014group1.database._
 import lod2014group1.rdf.RdfResource
+import lod2014group1.updating.NewImdbMoviesUpdater
 
 object Main extends App with Logging {
 
@@ -50,9 +51,11 @@ object Main extends App with Logging {
 		} else if (args contains "ofdb-clean"){
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.clean
-		} else if (args contains "ofdb-coverage"){
+		} else if (args contains "ofdb-coverage") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.coverage
+		} else if (args contains "watch-imdb") {
+			NewImdbMoviesUpdater.watchUpcomingMovies();
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}
