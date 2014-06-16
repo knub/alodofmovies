@@ -9,6 +9,7 @@ class CrawlifyWorker {
 
 	def execute(taskId: Long, params: Map[String, String]): TaskAnswer = {
 		val url = params("uri")
+		val graph = params("graph")
 
 		val file = UriFile(url, Crawler.downloadFile(new URL(url)), params.getOrElse("flag", ""))
 
@@ -18,7 +19,7 @@ class CrawlifyWorker {
 		val triplifier = new Triplifier
 		val triples = triplifier.triplify(fileName, content).map { _.toRdfTripleString() }
 
-		val answerMap: Map[String, String] = Map()
+		val answerMap: Map[String, String] = Map("graph" -> graph)
 		new TaskAnswer(taskId, answerMap, List(file), triples)
 	}
 
