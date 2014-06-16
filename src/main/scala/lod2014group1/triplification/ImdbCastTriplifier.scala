@@ -109,7 +109,8 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 						writer hasName name,
 						writer hasLabel name,
 						writer isA RdfPersonResource.writer,
-						writer isA RdfPersonResource.person
+						writer isA RdfPersonResource.person,
+						writer hasImdbUrl url
 					) ::: triples
 
 					credit match {
@@ -145,7 +146,8 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 					triples = List(
 						producer hasName name,
 						producer hasLabel name,
-						producer isA RdfPersonResource.person
+						producer isA RdfPersonResource.person,
+						producer hasImdbUrl url
 					) ::: triples
 
 					val job = getJob(credit)
@@ -245,7 +247,8 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 					triples = List (
 						person hasName name,
 						person hasLabel name,
-						person isA RdfPersonResource.person
+						person isA RdfPersonResource.person,
+						person hasImdbUrl url
 					) ::: triples
 
 					val job = getJob(credit)

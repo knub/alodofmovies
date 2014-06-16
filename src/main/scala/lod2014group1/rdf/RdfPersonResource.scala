@@ -56,7 +56,7 @@ object RdfPersonResource {
 
 class RdfPersonResource(resource: String) extends RdfResource(resource) with Logging {
 
-	def hasImdbUrl(url: String) = sameAs("http://imdb.com" + url)
+	def hasImdbUrl(id: String) = sameAs("http://imdb.com/name/" + id)
 
 	def born(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthDate"), RdfDate(date))
 
