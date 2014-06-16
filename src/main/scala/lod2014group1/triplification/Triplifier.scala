@@ -35,6 +35,7 @@ class Triplifier {
 				List()
 		} else if (fileName.contains("Actor")) {
 			val imdbId = fileName.split("/")(2)
+			println(fileName)
 			if (f.getName == "main.html")
 				new ImdbActorTriplifier(imdbId).triplify(content)
 			else

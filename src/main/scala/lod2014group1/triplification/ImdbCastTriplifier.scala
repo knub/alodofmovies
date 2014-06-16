@@ -172,9 +172,8 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 			if (row.select("a").isEmpty)
 				List()
 			else {
-				val imdbIdString = row.select("a").first.attr("href").split("\\?")(0)
-				val imdbId = imdbIdString.toInt
-				val actor = RdfResource(s"lod:MoviePerson$imdbId")
+				val imdbIdString = row.select("a").first.attr("href").split("\\?")(0).split("/").last
+				val actor = RdfResource(s"lod:MoviePerson$imdbIdString")
 
 				(actor hasImdbUrl imdbIdString) ::
 					extractActorImageTriples(actor, row.select(".primary_photo img").get(0)) :::
@@ -286,7 +285,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 
 
 	def getPersonResource(url: String): RdfResource = {
-		val id = url.replaceAll("\\D", "")
+		val id = url.split("\\?")(0).split("/").last
 		RdfResource(s"lod:MoviePerson$id")
 	}
 
