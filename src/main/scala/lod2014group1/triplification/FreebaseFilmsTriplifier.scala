@@ -17,43 +17,58 @@ import lod2014group1.rdf.RdfReleaseInfoResource
 import lod2014group1.rdf.RdfAwardResource
 import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.UriBuilder
 
 class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 	
-	val FREEBASE_URI = "www.freebase.com"
+	val FREEBASE_URI = "http://www.freebase.com"
 
 	protected val fileLog: Logger = LoggerFactory.getLogger("FreebaseFileLogger")
 	
 	def triplify(f: File): List[RdfTriple]= {
 		
 		
-		val (id, triples) = getId(f)
-		extractProperties(f, id)
+		val (id, movieResource, triples) = getId(f)
+		
+		(movieResource, id) match{
+			case (Some(movieResource), Some(id)) => extractProperties(f, id, movieResource)
+			case _ => {log.info(s"failed by id parsing ${f.getName()}")
+				List()
+			}
+		}
 	}
 	
-	def extractProperties(f: File, id: String): List[RdfTriple]={
+	def extractProperties(f: File, id: String, movieResource: RdfMovieResource): List[RdfTriple]={
 		val json = JsonParser.parse(new FileReader(f))
-		val r = RdfMovieResource.movieResourceFromRdfResource(RdfMovieResource.fromImdbId(id))
 				
 		val mapJsonToProperty = Map[List[String], String => RdfTriple](
 		//reduce list of strings
-				(List("property", "/common/topic/topic_equivalent_webpage", "values", "value") , r.sameAs(_: String)),
-				(List("property", "/common/topic/article", "values", "property", "/common/document/text" ,"values", "value"), r.hasShortSummary(_: String)),
-				(List("property", "/film/film/initial_release_date", "values", "value"), r.releasedInYear(_: String)),
-				(List("property", "/type/object/name", "values", "value"), r.hasTitle(_: String)),
-				(List("property", "/film/film/language", "values", "id"), r.shotInLanguage(_: String)),
-				(List("property", "/film/film/language", "values", "text"), r.shotInLanguage(_: String)),
-				(List("property", "/film/film/tagline", "values", "value"), r.hasTagline(_: String)),
-				(List("property", "/imdb/topic/title_id", "values", "value"), r.sameAs(_: String)), // --> id not resource
-		//		(List("property", "/film/film/metacritic_id", "values", "text"), r.shotInLanguage(_: String)),
+				(List("property", "/common/topic/topic_equivalent_webpage", "values", "value") , movieResource.sameAs(_: String)),
+				(List("property", "/common/topic/article", "values", "property", "/common/document/text" ,"values", "value"), movieResource.hasShortSummary(_: String)),
+				(List("property", "/film/film/initial_release_date", "values", "value"), movieResource.releasedInYear(_: String)),
+				(List("property", "/type/object/name", "values", "value"), movieResource.hasTitle(_: String)),
+				(List("property", "/type/object/name", "values", "value"), movieResource.hasLabel(_: String)),
+				(List("property", "/film/film/language", "values", "id"), movieResource.shotInLanguage(_: String)),
+				(List("property", "/film/film/language", "values", "text"), movieResource.shotInLanguage(_: String)),
+				(List("property", "/film/film/tagline", "values", "value"), movieResource.hasTagline(_: String)),
+				(List("property", "/film/film/netflix_id", "values", "value"), movieResource.hasNetflixId(_: String)), // --> id not resource
+				(List("property", "/film/film/nytimes_id", "values", "value"), movieResource.hasNytimesId(_: String)), // --> id not resource
+				(List("property", "/film/film/apple_movietrailer_id", "values", "value"), movieResource.hasAppleMovietrailerId(_: String)), // --> id not resource
+				(List("property", "/film/film/rottentomatoes_id", "values", "value"), movieResource.hasRottentomatoesId(_: String)), // --> id not resource
+				(List("property", "/film/film/traileraddict_id", "values", "value"), movieResource.hasTraileraddictId(_: String)), // --> id not resource
+				(List("property", "/film/film/fandango_id", "values", "value"), movieResource.hasFandangoId(_: String)), // --> id not resource
+				(List("property", "/film/film/metacritic_id", "values", "text"), movieResource.hasMetacriticId(_: String)),
+				(List("property", "/film/film/film_subject", "values", "text"), movieResource.hasSubject(_: String)),
 				//(List("property", "/common/topic/alias", "values", "value"), r.alsoKnownAs(_: RdfResource)),
-				(List("property", "/type/object/key", "values", "value"), r.hasKeyword(_: String))
+				(List("property", "/type/object/key", "values", "value"), movieResource.hasKeyword(_: String))
 				//(List("property", "/common/topic/notable_for", "values", "text"), r.hasStoryLine(_: String))
-						
-				
-				
 				///common/topic/image//	
 				//(List("property", "/film/film/production_companies", "values") , r.xxx(_: RdfResource)),
+				
+				//(List("property", "/film/film/gross_revenue", "values", "text"), r.hasRevenue(_: Integer)),
 
 				
 				)
@@ -67,14 +82,9 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		//TODO
 		// awards
 		// /film/film/rating - releaseInfo, getcountry
-		// /film/film/release_date_s
-		// /film/film/rottentomatoes_id
 		// /film/film/runtime --> more than 1 per movie, (cut versions, countries...) 
-		// /film/film/metacritic_id
 		// /film/film/soundtrack
-		// /film/film/starring
 		// /film/film/subjects
-		// /film/film/traileraddict_id --not important
 		// /film/film/trailers --> video?
 		// /media_common/netflix_title/netflix_genres
 		// /media_common/quotation_source/quotations
@@ -82,92 +92,95 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		// /type/object/name
 		// /film/film/personal_appearances
 		
-		val mapPersons = Map[List[String], RdfPersonResource => RdfTriple](
-				(List("property", "/film/film/film_art_direction_by", "values") , r.artDirector(_: RdfResource)),
-				(List("property", "/film/film/film_production_design_by", "values") , r.productionDesignBy(_: RdfResource)),
-				(List("property", "/film/film/film_set_decoration_by", "values") , r.setDecoratedBy(_: RdfResource)),
-				(List("property", "/film/film/music", "values") , r.musicBy(_: RdfResource)),
-				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , r.belongsToOtherCrew(_: RdfResource)),
-				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , r.belongsToOtherCrew(_: RdfResource)),
-				(List("property", "/film/film/produced_by", "values") , r.producedBy(_: RdfResource)),
-				(List("property", "/film/film/story_by", "values") , r.storyBy(_: RdfResource)),
-				(List("property", "/film/film/written_by", "values") , r.writtenBy(_: RdfResource)),
+		val mapPersons = Map[List[String], (RdfPersonResource => RdfTriple, Option[RdfResource], Option[String])](
+				//TODO check for rdfResource type
+				(List("property", "/film/film/film_art_direction_by", "values") , (movieResource.artDirector(_: RdfResource), Some(RdfPersonResource.director), Some("Art Director"))),
+				(List("property", "/film/film/film_production_design_by", "values") , (movieResource.productionDesignBy(_: RdfResource), None, Some("Production Desginer"))),
+				(List("property", "/film/film/film_set_decoration_by", "values") , (movieResource.setDesignedBy(_: RdfResource), Some(RdfPersonResource.setDesigner), Some("Set Decorater"))),
+				(List("property", "/film/film/music", "values") , (movieResource.musicBy(_: RdfResource), None, Some("Composer"))),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , (movieResource.belongsToOtherCrew(_: RdfResource), None, None)),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , (movieResource.belongsToOtherCrew(_: RdfResource), None, None)),
+				(List("property", "/film/film/produced_by", "values") , (movieResource.producedBy(_: RdfResource), Some(RdfPersonResource.producer), Some("Producer"))),
+				(List("property", "/film/film/story_by", "values") , (movieResource.storyBy(_: RdfResource), Some(RdfPersonResource.storyEditor), Some("Story Writer"))),
+				(List("property", "/film/film/written_by", "values") , (movieResource.writtenBy(_: RdfResource), None, Some("Writer"))),
 			//	(List("property", "/film/film/personal_appearances", "values", "property", "/film/personal_film_appearance/person", "values") , r.personal_appearnce(_: RdfResource)),
-				(List("property", "/film/film/film_casting_director", "values") , r.castingBy(_: RdfResource))
+				(List("property", "/film/film/film_casting_director", "values") , (movieResource.castingBy(_: RdfResource), None, Some("Casting Director")))
 				)
 				
 		triples = extract.extractPersons(json, mapPersons) ::: triples
-		println(triples)
-		val release = Map[List[String], (String, JValue) => Map[List[String], String => RdfTriple]](
+		
+		val compounds = Map[List[String], (String, JValue) => (Map[List[String], String => RdfTriple], List[RdfTriple])](
 				 (List("property", "/film/film/release_date_s", "values"), this.releaseInfoProps(_:String, _:JValue)),
 				 (List("property", "/award/award_nominated_work/award_nominations", "values"), this.awardsNominationProps(_:String, _:JValue)),
-				 (List("property", "/award/award_winning_work/awards_won", "values"), this.awardsWonProps(_:String, _:JValue)),
-				 (List("property", "/film/film/starring", "values"), this.starring(_:String, _:JValue))
-				 
+				 (List("property", "/award/award_winning_work/awards_won", "values"), this.awardsWonProps(_:String, _:JValue))
+			 
 		)
 		
-		val releaseInfo = extract.extractCompounds(json, id, release)
-		println(releaseInfo)
+		val releaseInfo = extract.extractCompounds(json, id, compounds)
 		triples = releaseInfo ::: triples
-		
-		println(extract.extractStarring(json, r))
-		List()
+		triples = extract.extractStarring(json, movieResource, id) ::: triples
+		println(triples)
+		triples
 	}
 	
-	def releaseInfoProps(movieUri:String, id:JValue): Map[List[String], String => RdfTriple] ={
+	def releaseInfoProps(movieUri:String, id:JValue): (Map[List[String], String => RdfTriple], List[RdfTriple]) ={
 		implicit val formats = net.liftweb.json.DefaultFormats
-		val releaseResource = RdfReleaseInfoResource.releaseInfoResourceFromRdfResource(RdfResource(s"${movieUri}/ReleaseInfo${id.extract[String]}"))
-		val properties = Map[List[String], String => RdfTriple](
-				//TODO ("/film/film_regional_release_date/film_release_distribution_medium", releaseResource.atDate(_:String)), 
-				(List("/film/film_regional_release_date/film_release_region", "values", "text"), releaseResource.country(_:String)),
-				(List("/film/film_regional_release_date/release_date", "values", "text"), releaseResource.atDate(_:String))
-			)
-		properties
+		val idvalue = id.extractOpt[String]
+		idvalue match {
+			case Some(idvalue) => {
+				val releaseResource = new RdfReleaseInfoResource(UriBuilder.getReleaseInfoUriFromFreebaseID(idvalue))
+				val properties = Map[List[String], String => RdfTriple](
+						(List("/film/film_regional_release_date/film_release_distribution_medium", "values","text"), releaseResource.medium(_:String)), 
+						(List("/film/film_regional_release_date/film_release_region", "values", "text"), releaseResource.country(_:String)),
+						(List("/film/film_regional_release_date/release_date", "values", "text"), releaseResource.atDate(_:String))
+						)
+				(properties, List(releaseResource isA RdfReleaseInfoResource.releaseInfo, releaseResource sameAs(UriBuilder.freebaseUri(idvalue))))		
+			}
+			case None => (Map[List[String], String => RdfTriple](), List())
+			
+		}
 	}
 
-	def awardsNominationProps(movieUri:String, id:JValue): Map[List[String], String => RdfTriple] ={
+	def awardsNominationProps(movieUri:String, id:JValue): (Map[List[String], String => RdfTriple], List[RdfTriple]) ={
 		implicit val formats = net.liftweb.json.DefaultFormats
-		val awardResource = RdfAwardResource.awardResourceFromRdfResource(RdfResource (s"${movieUri}/NAwards${id.extract[String]}"))
-		awardResource.hasOutcome("Nominated")
-		val properties = Map[List[String], String => RdfTriple](
-				(List("/award/award_nomination/award", "values", "text"), awardResource.inCategory(_:String)),
-				(List("/award/award_nomination/award_nominee", "values", "id"), awardResource.forFreebaseNominee(_:String)),
-				(List("/award/award_nomination/ceremony", "values", "text"), awardResource.hasName(_:String)),
-				(List("/award/award_nomination/year", "values", "text"), awardResource.inYear(_:String))
-			)
-		properties
+		val idvalue = id.extractOpt[String]
+		idvalue match {
+			case Some(idvalue) => {
+				val awardResource = new RdfAwardResource(UriBuilder.getAwardUriFromFreebaseID(idvalue))
+				val properties = Map[List[String], String => RdfTriple](
+						(List("/award/award_nomination/award", "values", "text"), awardResource.inCategory(_:String)),
+						(List("/award/award_nomination/award_nominee", "values", "id"), awardResource.forFreebaseNominee(_:String)),
+						(List("/award/award_nomination/ceremony", "values", "text"), awardResource.hasName(_:String)),
+						(List("/award/award_nomination/year", "values", "text"), awardResource.inYear(_:String))
+						)
+				(properties, List(awardResource isA RdfAwardResource.award, awardResource.hasOutcome("Nominated"), awardResource sameAs(UriBuilder.freebaseUri(idvalue))))	
+			}
+			case None => (Map[List[String], String => RdfTriple](), List())
+		}
 	}
 	
-	def awardsWonProps(movieUri:String, id:JValue): Map[List[String], String => RdfTriple] ={
+	def awardsWonProps(movieUri:String, id:JValue): (Map[List[String], String => RdfTriple], List[RdfTriple]) ={
 		implicit val formats = net.liftweb.json.DefaultFormats
-		val awardResource = RdfAwardResource.awardResourceFromRdfResource(RdfResource (s"${movieUri}/WAwards${id.extract[String]}"))
-		awardResource.hasOutcome("Honor")
-		val properties = Map[List[String], String => RdfTriple](
-				(List("/award/award_honor/award", "values", "text"), awardResource.inCategory(_:String)),
-				(List("/award/award_honor/award_winner", "values", "id"), awardResource.forFreebaseNominee(_:String)),
-				(List("/award/award_honor/ceremony", "values", "text"), awardResource.hasName(_:String)),
-				(List("/award/award_honor/year", "values", "text"), awardResource.inYear(_:String))
-			)
-		properties
+		val idvalue = id.extractOpt[String]
+		idvalue match {
+			case Some(idvalue) => {		
+				val awardResource = new RdfAwardResource(UriBuilder.getAwardUriFromFreebaseID(idvalue))
+				val properties = Map[List[String], String => RdfTriple](
+						(List("/award/award_honor/award", "values", "text"), awardResource.inCategory(_:String)),
+						(List("/award/award_honor/award_winner", "values", "id"), awardResource.forFreebaseNominee(_:String)),
+						(List("/award/award_honor/ceremony", "values", "text"), awardResource.hasName(_:String)),
+						(List("/award/award_honor/year", "values", "text"), awardResource.inYear(_:String))
+					)
+				(properties, List(awardResource isA RdfAwardResource.award, awardResource.hasOutcome("Honor"), awardResource sameAs(UriBuilder.freebaseUri(idvalue))))
+			}
+			case None => (Map[List[String], String => RdfTriple](), List())
+		}
 	}
-	
-	def starring(movieUri:String, id:JValue): Map[List[String], String => RdfTriple] ={
-		implicit val formats = net.liftweb.json.DefaultFormats
-		val awardResource = RdfAwardResource.awardResourceFromRdfResource(RdfResource (s"${movieUri}/WAwards${id.extract[String]}"))
-		awardResource.hasOutcome("Honor")
-		val properties = Map[List[String], String => RdfTriple](
-				(List("/award/award_honor/award", "values", "text"), awardResource.inCategory(_:String)),
-				(List("/award/award_honor/award_winner", "values", "id"), awardResource.forFreebaseNominee(_:String)),
-				(List("/award/award_honor/ceremony", "values", "text"), awardResource.hasName(_:String)),
-				(List("/award/award_honor/year", "values", "text"), awardResource.inYear(_:String))
-			)
-		properties
-	}
+
 	
 	
 	
-	def getId(f: File): (String,List[RdfTriple])= {
-		var triples: List[RdfTriple] = List()
+	def getId(f: File): (Option[String], Option[RdfMovieResource], List[RdfTriple])= {
 		
 		implicit val formats = net.liftweb.json.DefaultFormats
 		try{
@@ -179,30 +192,28 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				topicEquivalentWebpages = List[String](topicEquivalentWebpageJson.extract[String])
 			else topicEquivalentWebpages = topicEquivalentWebpageJson.extract[List[String]]
 			
-			var imdbId = getImdbIdFromImdbTag(json).getOrElse(getImdbIdFromWebpages(topicEquivalentWebpages).getOrElse(""))
+			val imdbId = getImdbIdFromImdbTag(json).getOrElse(getImdbIdFromWebpages(topicEquivalentWebpages).getOrElse(""))
 			
-			var id = ""
-			
-			if (imdbId != "") {
-							triples = RdfMovieResource.fromImdbId(imdbId).sameAs(FREEBASE_URI + freebaseId) :: triples// 
-							id = imdbId
-				} else {
-				id = idFromFreebaseId()
+			val (id, movieUri) = if (imdbId != "") {	 
+				(imdbId, UriBuilder.getMovieUriFromImdbID(imdbId))
+			} else {	
+				(freebaseId, UriBuilder.getMovieUriFromFreebaseID(freebaseId))
 			}
 			
-			getWikipediaFromWebpages(topicEquivalentWebpages)
-			
-			triples
-			(id,triples)
+			val movie = new RdfMovieResource(movieUri)
+			val triples = List( movie sameAs(UriBuilder.freebaseUri(freebaseId)),
+					movie isA RdfMovieResource.film
+					) 
+			println(id, movie)
+			(Some(id),Some(movie),triples)
 		} catch{
 			case e:net.liftweb.json.JsonParser$ParseException => {
 				//fileLog.info(s"ParseException:$freebaseId")
-				("",List())
+				(None, None, List())
 			}
 		}
 		
 	}
-	
 	
 	def getImdbIdFromImdbTag(json: JValue): Option[String] = {
 		implicit val formats = net.liftweb.json.DefaultFormats

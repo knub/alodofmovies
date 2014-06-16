@@ -164,4 +164,39 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def tmdbVoteAverage(voteAverage: Double): RdfTriple = buildTriple(RdfResource("lod:tmdbVoteAverage"), RdfDouble(voteAverage))
 
 	def tmdbVoteCount(voteCount: Integer): RdfTriple = buildTriple(RdfResource("lod:tmdbVoteCount"), RdfInteger(voteCount))
+	
+	def hasSoundtrack(soundtrack: String): RdfTriple = buildTriple(RdfResource("dbprop:soundtrack"), RdfString(soundtrack))
+	
+	def hasNetflixId (id:String): RdfTriple = buildTriple(RdfResource("/film/film/netflix_id"), RdfString(id))
+	
+	def hasNytimesId (id:String): RdfTriple = buildTriple(RdfResource("/film/film/nytimes_id"), RdfString(id))
+	
+	def hasMetacriticId (id:String): RdfTriple = buildTriple(RdfResource("/film/film/metacritic_id"), RdfString(id))
+	
+	def hasAppleMovietrailerId (id:String): RdfTriple = buildTriple(RdfResource("/film/film/apple_movietrailer_id"), RdfString(id))
+	
+	def hasRottentomatoesId (id:String): RdfTriple = buildTriple(RdfResource("/film/film/rottentomatoes_id"), RdfString(id))
+	
+	def hasTraileraddictId (id:String): RdfTriple = buildTriple(RdfResource("/film/film/traileraddict_id"), RdfString(id))
+	
+	def hasFandangoId (id:String): RdfTriple = buildTriple(RdfResource("/film/film/fandango_id"), RdfString(id))
+
+	def hasSubject (subject:String): RdfTriple = buildTriple(RdfResource("/film/film/subjects"), RdfString(subject))
+	
+
+	
+//personalAppearances 	/film/film/personal_appearances
+//dubbingPerformances 	/film/film/dubbing_performances
+//festival 	/film/film/film_festivals
+//
+//songs 	/film/film/songs
+//featuredSong 	/film/film/featured_song
+//filmFormat 	/film/film/film_format
+//preproduction 	/film/film/pre_production
+//filming 	/film/film/filming
+//postproduction 	/film/film/post_production
+//revenue 	/film/film/gross_revenue
+//executive_producer 	/film/film/executive_produced_by
+//castingDirector
+
 }

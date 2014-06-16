@@ -56,7 +56,7 @@ object Triplifier extends Logging {
 				triplifier.triplify(new File("data/IMDBMovie/tt0179184/main.html"))
 			case Config.Person.Rice =>
 				new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd"))
-				//new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))
+				new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))
 			case Config.Person.Dominik =>
 				val tmdbTriplifier = new TMDBFilmsTriplifier()
 				val tmdbFiles = new File("data/TMDBMoviesList/movie/").listFiles().filter( f => f.getName.endsWith(".json"))

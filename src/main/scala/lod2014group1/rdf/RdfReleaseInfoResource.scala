@@ -19,5 +19,6 @@ class RdfReleaseInfoResource(resource: String) extends RdfResource(resource) wit
 	def atDate(dateStr: String) = dateRes(dateStr)
 	def atDate(dateObj: DateTime) = dateRes(dateObj)
 	def withRating(rating: String): RdfTriple = buildTriple(RdfResource("dbpprop:ageRating"), RdfString(rating))
+	def medium(medium:String): RdfTriple = buildTriple(RdfResource("film/film_distribution_medium"), RdfString(medium))
 
 }

@@ -21,6 +21,7 @@ class BulkLoadWriter {
 			|@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 			|@prefix lod: <http://172.16.22.196/movie/> .
 			|@prefix freebase: <http://rdf.freebase.com/ns/> .
+			|@prefix freebaseURL: <http://rdf.freebase.com/ns/> .
 			""".stripMargin)
 
 	}
