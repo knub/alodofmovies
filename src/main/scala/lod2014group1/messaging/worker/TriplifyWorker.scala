@@ -12,9 +12,10 @@ class TriplifyWorker extends Worker {
 	def execute(taskId: Long, params: Map[String, String]): TaskAnswer = {
 		val fileName = params("fileName")
 		val content = params("content")
+		val graph = params("graph")
 
 		val triples = triplifier.triplify(fileName, content).map { _.toRdfTripleString() }
-		val answerMap: Map[String, String] = Map()
+		val answerMap: Map[String, String] = Map("graph" -> graph)
 
 		new TaskAnswer(taskId, answerMap, Nil, triples)
 	}

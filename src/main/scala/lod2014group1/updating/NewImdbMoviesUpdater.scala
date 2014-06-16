@@ -9,6 +9,7 @@ import lod2014group1.database.{Task, TaskDatabase}
 import org.joda.time.{Days, DateTime}
 import java.sql.Date
 import lod2014group1.messaging.TaskType
+import lod2014group1.Config
 
 class NewImdbMoviesUpdater() {
 
@@ -32,7 +33,7 @@ class NewImdbMoviesUpdater() {
 		val date = new Date(dt.toDate.getTime)
 
 		val taskList = ids.map { id =>
-			Task(0, TaskType.Crawlify.toString, date, 10, baseUri + id, false, "")
+			Task(0, TaskType.Crawlify.toString, date, 10, baseUri + id, false, "", Config.IMDB_GRAPH)
 		}
 
 		val database = new TaskDatabase

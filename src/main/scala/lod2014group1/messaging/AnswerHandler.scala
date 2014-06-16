@@ -4,28 +4,29 @@ import lod2014group1.rdf.{RdfTripleString, RdfTriple}
 import lod2014group1.database.{VirtuosoLocalDatabase, TaskDatabase}
 import scala.slick.driver.SQLiteDriver.simple._
 import lod2014group1.messaging.worker.{UriFile, TaskAnswer}
-import lod2014group1.Config
 import java.io.{File, PrintWriter}
 import org.slf4s.Logging
+import scala.collection.mutable
 import lod2014group1.crawling.UriToFilename
 
 class AnswerHandler extends Logging {
 
-	lazy val BULK_LOAD_SIZE = 1000000
+	lazy val BULK_LOAD_SIZE = 100000
 
 	val taskDatabase = new TaskDatabase
 	var filesToWrite: List[UriFile] = List()
-	var triplesToStore: List[RdfTripleString] = List()
+	val triplesToStore: mutable.Map[String, List[RdfTripleString]] = mutable.Map().withDefaultValue(List[RdfTripleString]())
 
 	val db = new VirtuosoLocalDatabase("http://172.16.22.196:8890/sparql")
 
 	def handleAnswer(answer: TaskAnswer): Unit = {
-		triplesToStore = triplesToStore ::: answer.triples
+		val graph = answer.header("graph")
 
-		println(triplesToStore.size)
-		if (triplesToStore.size > BULK_LOAD_SIZE) {
-			db.bulkLoad(triplesToStore, "http://hpi.uni-potsdam.de/lod2014group1-test")
-			triplesToStore = List()
+		triplesToStore(graph) = triplesToStore(graph) ::: answer.triples
+
+		if (triplesToStore(graph).size > BULK_LOAD_SIZE) {
+			db.bulkLoad(triplesToStore(graph), graph)
+			triplesToStore(graph) = List()
 		}
 
 		writeFiles(answer.files)

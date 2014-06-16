@@ -19,7 +19,7 @@ class BulkLoadWriter {
 			|@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 			|@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 			|@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-			|@prefix lod: <http://purl.org/hpi/movie#> .
+			|@prefix lod: <http://172.16.22.196/movie/> .
 			|@prefix freebase: <http://rdf.freebase.com/ns/> .
 			""".stripMargin)
 

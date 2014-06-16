@@ -11,7 +11,8 @@ object WorkerTask {
 		if (TaskType.withName(dbTask.taskType) == TaskType.Triplify)
 			WorkerTask(dbTask.taskType, dbTask.id, Map(
 				"fileName" -> dbTask.fileOrUrl,
-				"content" -> FileUtils.readFileToString(new File(s"${Config.DATA_FOLDER}/${dbTask.fileOrUrl}")))
+				"content" -> FileUtils.readFileToString(new File(s"${Config.DATA_FOLDER}/${dbTask.fileOrUrl}")),
+				"graph" -> dbTask.graph)
 			)
 		else if (TaskType.withName(dbTask.taskType) == TaskType.Crawl)
 			WorkerTask(dbTask.taskType, dbTask.id, Map("uri" -> dbTask.fileOrUrl))
