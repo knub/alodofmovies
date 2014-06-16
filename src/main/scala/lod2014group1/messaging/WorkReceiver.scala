@@ -31,19 +31,23 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 		var i = 0
 		while (true) {
 			i += 1
-			val delivery = consumer.nextDelivery()
-			val task = new String(delivery.getBody, "UTF-8").unpickle[WorkerTask]
+			val delivery = consumer.nextDelivery(5000)
+			if (delivery != null) {
+				val task = new String(delivery.getBody, "UTF-8").unpickle[WorkerTask]
 
-			log.info(s"Task received: ${task.`type`}, id: ${task.taskId}, params: ${task.params.-("content")}}" )
-			val answer = Try(forwardTask(task))
+				log.info(s"Task received: ${task.`type`}, id: ${task.taskId}, params: ${task.params.-("content")}}")
+				val answer = Try(forwardTask(task))
 
-			answer match {
-				case Success(a) =>
-					rpcClient.send(a)
-				case Failure(e) =>
-					log.error(e.getStackTraceString)
+				answer match {
+					case Success(a) =>
+						rpcClient.send(a)
+					case Failure(e) =>
+						log.error(e.getStackTraceString)
+				}
+				channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
+			} else {
+				log.warn("Timeouted.")
 			}
-			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 //			if (i % 10000 == 0)
 //				println(i)
 		}
