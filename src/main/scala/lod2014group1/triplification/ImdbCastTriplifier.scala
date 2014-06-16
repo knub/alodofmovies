@@ -104,13 +104,14 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 					}
 				} else {
 					val writer = getPersonResource(url)
+					val id = url.split("\\?")(0).split("/").last
 
 					triples = List(
 						writer hasName name,
 						writer hasLabel name,
 						writer isA RdfPersonResource.writer,
 						writer isA RdfPersonResource.person,
-						writer hasImdbUrl url
+						writer hasImdbUrl id
 					) ::: triples
 
 					credit match {
@@ -142,12 +143,13 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 					}
 				} else {
 					val producer = getPersonResource(url)
+					val id = url.split("\\?")(0).split("/").last
 
 					triples = List(
 						producer hasName name,
 						producer hasLabel name,
 						producer isA RdfPersonResource.person,
-						producer hasImdbUrl url
+						producer hasImdbUrl id
 					) ::: triples
 
 					val job = getJob(credit)
@@ -243,12 +245,13 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 					return List(RdfTriple(movie, RdfResource(property), RdfString(name)))
 				} else {
 					val person = getPersonResource(url)
+					val id = url.split("\\?")(0).split("/").last
 
 					triples = List (
 						person hasName name,
 						person hasLabel name,
 						person isA RdfPersonResource.person,
-						person hasImdbUrl url
+						person hasImdbUrl id
 					) ::: triples
 
 					val job = getJob(credit)
