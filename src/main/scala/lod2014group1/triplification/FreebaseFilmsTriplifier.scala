@@ -117,7 +117,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		val releaseInfo = extract.extractCompounds(json, id, compounds)
 		triples = releaseInfo ::: triples
 		triples = extract.extractStarring(json, movieResource, id) ::: triples
-		println(triples)
+		//println(triples)
 		triples
 	}
 	
@@ -202,7 +202,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 			val triples = List( movie sameAs(UriBuilder.freebaseUri(freebaseId)),
 					movie isA RdfMovieResource.film
 					) 
-			println(id, movie)
+			//println(id, movie)
 			(Some(id),Some(movie),triples)
 		} catch{
 			case e:net.liftweb.json.JsonParser$ParseException => {
@@ -238,7 +238,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		}else if (imdbEquivalents.size == 1){
 			val imdbIds = imdbEquivalents.head.split("/").filter(urlPart => urlPart.startsWith("tt"))
 			if (!imdbIds.isEmpty){
-				val id = idFromIdmId(imdbIds.head)
+				val id = imdbIds.head
 				val msg = s"equivalent freebase:$freebaseId"
 				//log.info(msg)
 //				fileLog.info(msg)
@@ -259,14 +259,4 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		//if (wikiEquivalents.size > 0) {fileLog.info("wiki equivalent")}
 		wikiEquivalents
 	}
-	
-	
-	def idFromFreebaseId(): String = {
-		s"m_${freebaseId.split("/").last}"
-	}
-	
-	def idFromIdmId(id:String): String = {
-		id.substring(2, id.length())
-	}
-
 }
