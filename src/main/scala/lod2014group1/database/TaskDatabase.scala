@@ -59,10 +59,14 @@ class TaskDatabase extends Logging {
 		}
 	}
 
-	def getNextNTasks(n: Int): List[Task] = {
+	def getNextNTasks(n: Int, offset: Int): List[Task] = {
 		database withSession { implicit session =>
-			tasks.sortBy(t => (t.dueDate, t.importance)).filter(!_.finished).take(n).list()
+			tasks.sortBy(t => (t.dueDate, t.importance)).filter(!_.finished).drop(offset).take(n).list()
 		}
+	}
+
+	def getNextNTasks(n: Int): List[Task] = {
+		getNextNTasks(n, 0)
 	}
 
 	def getNumberOfOpenTasks: Int = {

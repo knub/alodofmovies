@@ -5,26 +5,37 @@ import com.rabbitmq.client.AMQP.BasicProperties
 import scala.pickling._
 import json._
 import java.util.UUID
-import org.slf4s.{LoggerFactory, Logging}
+import org.slf4s._
 import scala.util.{Failure, Success, Try}
 import TaskType._
 import lod2014group1.messaging.worker._
 import scala.util.Success
 import scala.util.Failure
+import scala.util.Failure
+import lod2014group1.messaging.worker.TaskAnswer
+import scala.util.Success
 
 
 class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 
-	val log = LoggerFactory.getLogger("TaskAnswerLogger")
-	val connection = ConnectionBuilder.newConnection()
-	val channel = connection.createChannel()
-	channel.queueDeclare(taskQueueName, true, false, false, null)
-	channel.basicQos(1)
-	val consumer = new QueueingConsumer(channel)
-	channel.basicConsume(taskQueueName, false, consumer)
 	val workerAssignment = Map(Triplify -> classOf[TriplifyWorker], Crawl -> classOf[CrawlWorker])
+	var log: Logger = _
+	var consumer: QueueingConsumer = _
+	var rpcClient: RPCClient = _
+	var channel: Channel = _
+	var connection: Connection = _
 
-	val rpcClient = new RPCClient(answerQueueName)
+	def init(): Unit = {
+		log = LoggerFactory.getLogger("TaskAnswerLogger")
+		val connection = ConnectionBuilder.newConnection()
+		channel = connection.createChannel()
+		channel.queueDeclare(taskQueueName, true, false, false, null)
+		channel.basicQos(1)
+		val consumer = new QueueingConsumer(channel)
+		channel.basicConsume(taskQueueName, false, consumer)
+
+		rpcClient = new RPCClient(answerQueueName)
+	}
 
 	def listen() {
 		println("Waiting for messages. To exit press CTRL+C")
@@ -37,6 +48,7 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 
 				log.info(s"Task received: ${task.`type`}, id: ${task.taskId}, params: ${task.params.-("content")}}")
 				val answer = Try(forwardTask(task))
+
 
 				answer match {
 					case Success(a) =>

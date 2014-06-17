@@ -8,6 +8,7 @@ import lod2014group1.statistics.FreebaseToImdb
 import lod2014group1.database._
 import lod2014group1.rdf.RdfResource
 import lod2014group1.updating.NewImdbMoviesUpdater
+import lod2014group1.job_managing.OfflineTaskRunner
 
 object Main extends App with Logging {
 
@@ -23,6 +24,7 @@ object Main extends App with Logging {
     		tmdb.crawl
 		} else if (args contains "rabbit-worker") {
 			val worker = new WorkReceiver("tasks", "answers")
+			worker.init()
 			worker.listen()
 		} else if (args contains "rabbit-server") {
 			new Thread(new AmqpMessageListenerThread("answers")).start()
@@ -54,6 +56,9 @@ object Main extends App with Logging {
 		} else if (args contains "ofdb-coverage") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.coverage
+		} else if (args contains "offline-task-runner") {
+			val taskRunner = new OfflineTaskRunner()
+			taskRunner.runTasks(1000)
 		} else if (args contains "watch-imdb") {
 			NewImdbMoviesUpdater.watchUpcomingMovies();
 		} else {
