@@ -93,7 +93,17 @@ class RPCClient(rpcQueueName: String) extends Logging {
 		val corrId = UUID.randomUUID().toString
 		val props = new BasicProperties.Builder().correlationId(corrId).replyTo(replyQueueName).build()
 
-		channel.basicPublish("", rpcQueueName, props, taskAnswer.pickle.value.getBytes)
+		val pickled = taskAnswer.pickle.value.getBytes
+		try {
+			new String(pickled, "UTF-8").unpickle[TaskAnswer]
+		} catch {
+			case _: Throwable =>
+				println("It failed for")
+				println(taskAnswer.header)
+				println(taskAnswer.taskId)
+				println(taskAnswer.triples)
+		}
+		channel.basicPublish("", rpcQueueName, props, pickled)
 
 		var receivedAnswer = false
 		while (!receivedAnswer) {
