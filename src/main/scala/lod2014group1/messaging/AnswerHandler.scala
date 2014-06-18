@@ -2,7 +2,7 @@ package lod2014group1.messaging
 
 import lod2014group1.rdf.{RdfTripleString, RdfTriple}
 import lod2014group1.database.{VirtuosoLocalDatabase, TaskDatabase}
-import scala.slick.driver.SQLiteDriver.simple._
+import scala.slick.driver.MySQLDriver.simple._
 import lod2014group1.messaging.worker.{UriFile, TaskAnswer}
 import java.io.{File, PrintWriter}
 import org.slf4s.Logging
@@ -33,7 +33,7 @@ class AnswerHandler extends Logging {
 
 		taskDatabase.runInDatabase { tasks => implicit session =>
 			val row = tasks.filter(_.id === answer.taskId).map(_.finished)
-			row.update(1)
+			row.update(true)
 		}
 	}
 

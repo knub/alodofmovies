@@ -6,7 +6,7 @@ import org.slf4s.Logging
 import scala.slick.driver.MySQLDriver.simple._
 import scala.slick.jdbc.meta.MTable
 
-case class Task(id: Long, taskType: String, dueDate: Date, importance: Byte, fileOrUrl: String, finished: Int, flag: String, graph: String)
+case class Task(id: Long, taskType: String, dueDate: Date, importance: Byte, fileOrUrl: String, finished: Boolean, flag: String, graph: String)
 
 class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
 	def id         = column[Long]("task_id", O.PrimaryKey, O.AutoInc, O.DBType("BIGINT"))
@@ -14,7 +14,7 @@ class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
 	def dueDate    = column[Date]("due_date")
 	def importance = column[Byte]("importance")
 	def fileOrUrl  = column[String]("file")
-	def finished   = column[Int]("finished", O.DBType("TINYINT(1)"))
+	def finished   = column[Boolean]("finished")
 	def flag       = column[String]("flag")
 	def graph      = column[String]("graph")
 
@@ -64,7 +64,7 @@ class TaskDatabase extends Logging {
 
 	def getNextNTasks(n: Int, offset: Int): List[Task] = {
 		database withSession { implicit session =>
-			tasks.sortBy(t => (t.dueDate, t.importance)).filter(_.finished === 0).drop(offset).take(n).list()
+			tasks.sortBy(t => (t.dueDate, t.importance)).filter(!_.finished).drop(offset).take(n).list()
 		}
 	}
 
