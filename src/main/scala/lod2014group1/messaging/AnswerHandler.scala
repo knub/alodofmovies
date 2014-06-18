@@ -1,6 +1,6 @@
 package lod2014group1.messaging
 
-import lod2014group1.rdf.{RdfTripleString, RdfTriple}
+import lod2014group1.rdf.RdfTripleString
 import lod2014group1.database.{VirtuosoLocalDatabase, TaskDatabase}
 import scala.slick.driver.MySQLDriver.simple._
 import lod2014group1.messaging.worker.{UriFile, TaskAnswer}
