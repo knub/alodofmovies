@@ -9,6 +9,7 @@ import lod2014group1.database._
 import lod2014group1.rdf.RdfResource
 import lod2014group1.updating.NewImdbMoviesUpdater
 import lod2014group1.job_managing.OfflineTaskRunner
+import lod2014group1.merging.TmdbMerger
 
 object Main extends App with Logging {
 
@@ -61,6 +62,9 @@ object Main extends App with Logging {
 			taskRunner.runTasks(800000)
 		} else if (args contains "watch-imdb") {
 			NewImdbMoviesUpdater.watchUpcomingMovies();
+		} else if (args contains "merge-tmdb") {
+			val merger = new TmdbMerger()
+			merger.mergeTmdb();
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}
