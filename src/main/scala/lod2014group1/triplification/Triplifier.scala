@@ -73,6 +73,8 @@ object Triplifier extends Logging {
 				val part: List[RdfTriple] = tmdbFiles.flatMap( f => tmdbTriplifier.triplify(f)).toList
 				//println(part)
 				part
+			case Config.Person.Tim =>
+				new OfdbTriplifier(1).triplify()
 		}
 
 		triples.foreach(println)
