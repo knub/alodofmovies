@@ -13,16 +13,21 @@ class OfflineTaskRunner {
 	val taskDatabase = new TaskDatabase
 
 	def runTask(task: WorkerTask): Unit = {
-		val answer = workReceiver.forwardTask(task)
-		val pickled = answer.pickle.value.getBytes
-		try {
-			new String(pickled, "UTF-8").unpickle[TaskAnswer]
-		} catch {
-			case _: Throwable =>
-				println("It failed for")
-				println(answer.header)
-				println(answer.taskId)
-				println(answer.triples)
+		(1 to 1000).foreach { i =>
+			val answer = workReceiver.forwardTask(task)
+			val pickled = answer.pickle.value.getBytes
+			println("PICKLING")
+			try {
+				new String(pickled, "UTF-8").unpickle[TaskAnswer]
+			} catch {
+				case e: Throwable =>
+					println("It failed for")
+					println(answer.header)
+					println(answer.taskId)
+					println(answer.triples)
+					throw e
+			}
+			println(i)
 		}
 //		answerHandler.handleAnswer(answer)
 	}
