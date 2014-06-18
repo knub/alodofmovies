@@ -15,8 +15,10 @@ class TmdbMerger {
 	val g = Graph(edges: _*)
 
 	def mergeTmdb(): Unit = {
-		getObjectsFor("starring").foreach {
-			println(_)
+		getObjectsFor("starring").foreach { o =>
+			getObjectsFor("dbprop:name").foreach {
+				println(_)
+			}
 		}
 
 	}
