@@ -24,8 +24,11 @@ class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
 	def * = (id, taskType, dueDate, importance, fileOrUrl, finished, flag, graph) <>  (Task.tupled, Task.unapply)
 }
 class TaskDatabase extends Logging {
-	val DATABASE_NAME = "lod.db"
-	val database =  Database.forURL(s"jdbc:sqlite:${DATABASE_NAME}", driver = "org.sqlite.JDBC")
+	val DATABASE_NAME = "lod"
+	val database =  Database.forURL(s"jdbc:mysql://localhost:3306/$DATABASE_NAME",
+		driver = "com.mysql.jdbc.Driver",
+		user = "root",
+		password = "dba")
 
 	val tasks = TableQuery[TaskTable]
 	createTablesIfNotExist()
