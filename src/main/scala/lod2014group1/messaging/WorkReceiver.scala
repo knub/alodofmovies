@@ -16,21 +16,22 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 	val workerAssignment = Map(Triplify -> classOf[TriplifyWorker], Crawl -> classOf[CrawlWorker])
 	var log: Logger = _
 	var consumer: QueueingConsumer = _
-	var rpcClient: RPCClient = _
-	var channel: Channel = _
+	var listenChannel: Channel = _
+	var sendChannel: Channel = _
 	var connection: Connection = _
 	implicit val formats = net.liftweb.json.DefaultFormats
 
 	def init(): Unit = {
 		log = LoggerFactory.getLogger("TaskAnswerLogger")
 		val connection = ConnectionBuilder.newConnection()
-		channel = connection.createChannel()
-		channel.queueDeclare(taskQueueName, true, false, false, null)
-		channel.basicQos(1)
-		consumer = new QueueingConsumer(channel)
-		channel.basicConsume(taskQueueName, false, consumer)
+		listenChannel = connection.createChannel()
+		listenChannel.queueDeclare(taskQueueName, true, false, false, null)
+		listenChannel.basicQos(1)
+		consumer = new QueueingConsumer(listenChannel)
+		listenChannel.basicConsume(taskQueueName, false, consumer)
 
-		rpcClient = new RPCClient(answerQueueName)
+		sendChannel = connection.createChannel()
+		listenChannel.queueDeclare(answerQueueName, false, false, false, null)
 	}
 
 	def listen() {
@@ -47,11 +48,11 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 
 				answer match {
 					case Success(a) =>
-						rpcClient.send(a)
+						send(a)
 					case Failure(e) =>
 						log.error(e.getStackTraceString)
 				}
-				channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
+				listenChannel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 			} else {
 				log.warn("Timeouted.")
 			}
@@ -60,9 +61,27 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 		}
 	}
 
+	def send(taskAnswer: TaskAnswer): Unit = {
+		val compressed = write(taskAnswer).getBytes("UTF-8")
+		testUnpack(taskAnswer, compressed)
+		sendChannel.basicPublish("", answerQueueName, null, compressed)
+	}
+
+	def testUnpack(taskAnswer: TaskAnswer, compressed: Array[Byte]): Unit = {
+		try {
+			read[TaskAnswer](new String(compressed, "UTF-8"))
+		} catch {
+			case _: Throwable =>
+				println("It failed for")
+				println(taskAnswer.header)
+				println(taskAnswer.taskId)
+				println(taskAnswer.triples)
+		}
+	}
+
 	def close() {
-		rpcClient.close()
-		channel.close()
+		sendChannel.close()
+		listenChannel.close()
 		connection.close()
 	}
 
@@ -74,45 +93,5 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 			case e: Throwable => new DummyWorker
 		}
 		worker.execute(task.taskId, task.params)
-	}
-}
-
-class RPCClient(rpcQueueName: String) extends Logging {
-	private val connection = ConnectionBuilder.newConnection()
-	private val channel = connection.createChannel()
-	private val replyQueueName = channel.queueDeclare().getQueue
-	private val consumer = new QueueingConsumer(channel)
-	channel.basicConsume(replyQueueName, true, consumer)
-
-	implicit val formats = net.liftweb.json.DefaultFormats
-
-	def send(taskAnswer: TaskAnswer): Unit = {
-		val corrId = UUID.randomUUID().toString
-		val props = new BasicProperties.Builder().correlationId(corrId).replyTo(replyQueueName).build()
-
-		val pickled = write(taskAnswer).getBytes("UTF-8")
-		try {
-			read[TaskAnswer](new String(pickled, "UTF-8"))
-		} catch {
-			case _: Throwable =>
-				println("It failed for")
-				println(taskAnswer.header)
-				println(taskAnswer.taskId)
-				println(taskAnswer.triples)
-		}
-		channel.basicPublish("", rpcQueueName, props, pickled)
-
-		var receivedAnswer = false
-		while (!receivedAnswer) {
-			val delivery = consumer.nextDelivery()
-			if (delivery.getProperties.getCorrelationId == corrId) {
-				receivedAnswer = new String(delivery.getBody, "UTF-8") == "true"
-			}
-		}
-	}
-
-	def close() {
-		channel.close()
-		connection.close()
 	}
 }

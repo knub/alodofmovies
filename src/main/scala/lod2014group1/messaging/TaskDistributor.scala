@@ -44,12 +44,7 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable {
 		println("Awaiting RPC requests")
 		while (true) {
 			val delivery = consumer.nextDelivery()
-
 			handle(delivery.getBody)
-
-			val props = delivery.getProperties
-			val replyProps = new BasicProperties.Builder().correlationId(props.getCorrelationId).build()
-			channel.basicPublish("", props.getReplyTo, replyProps, "true".getBytes("UTF-8"))
 			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 		}
 	}
