@@ -58,7 +58,7 @@ object Main extends App with Logging {
 			ofdb.coverage
 		} else if (args contains "offline-task-runner") {
 			val taskRunner = new OfflineTaskRunner()
-			taskRunner.runTasks(1000)
+			taskRunner.runTasks(800000)
 		} else if (args contains "watch-imdb") {
 			NewImdbMoviesUpdater.watchUpcomingMovies();
 		} else {
