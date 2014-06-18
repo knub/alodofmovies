@@ -21,6 +21,7 @@ import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.UriBuilder
+import com.hp.hpl.jena.vocabulary.RDFTest
 
 class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 
@@ -117,9 +118,29 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		val releaseInfo = extract.extractCompounds(json, id, compounds)
 		triples = releaseInfo ::: triples
 		triples = extract.extractStarring(json, movieResource, id) ::: triples
+		
+		val resources = Map[List[String], Person => List[RdfTriple]](
+				(List("property", "/film/film/sequel", "values"), sequels(_:Person)),
+				(List("property", "/film/film/prequel", "values"), prequels(_:Person))
+		
+		)
+			
+			
+		extract.extractResources(json, resources)
+		
 		//println(triples)
 		triples
 	}
+	
+	def sequels (p:Person): List[RdfTriple] = {
+		//new RdfMovieResource()
+		List()
+	}
+	
+	def prequels (p:Person): List[RdfTriple] = {
+		List()
+	}
+	
 	
 	def releaseInfoProps(movieUri:String, id:JValue): (Map[List[String], String => RdfTriple], List[RdfTriple]) ={
 		implicit val formats = net.liftweb.json.DefaultFormats

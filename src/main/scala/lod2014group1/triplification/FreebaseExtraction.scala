@@ -104,6 +104,34 @@ class FreebaseExtraction() {
 		(person, triple ::: resourceTriple ::: jobTriple)
 	}
 	
+	def extractResources(json: JValue, values: Map[List[String], Person => List[RdfTriple]]): List[RdfTriple] = {
+		implicit val formats = net.liftweb.json.DefaultFormats
+		
+		values.flatMap(property => {
+			val test2 = json.values
+			val jsonValue = property._1.foldLeft(List(json)) { (acc, prop) =>
+				acc.flatMap { jfield =>
+					val obj = jfield \ prop
+					if (jfield.isInstanceOf[JObject] && obj.isInstanceOf[net.liftweb.json.JsonAST$JNothing$]){
+						List()
+					} else
+					if (obj.isInstanceOf[JArray])
+						obj.asInstanceOf[JArray].arr
+					else
+						List(obj)
+				}
+			}
+			
+			jsonValue.flatMap{value => 
+				val person = value.extract[Person]
+				property._2(person)
+			}.toList
+		}).toList
+	}
+	
+	
+	
+	
 	def extractCompounds(json: JValue, movieUri:String, properties: Map[List[String], (String, JValue) => (Map[List[String], String => RdfTriple], List[RdfTriple])]): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
 		
