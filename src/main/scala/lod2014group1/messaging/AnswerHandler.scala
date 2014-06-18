@@ -25,6 +25,7 @@ class AnswerHandler extends Logging {
 		triplesToStore(graph) = triplesToStore(graph) ::: answer.triples
 
 		if (triplesToStore(graph).size > BULK_LOAD_SIZE) {
+			println("Bulk-Loading.")
 			db.bulkLoad(triplesToStore(graph), graph)
 			triplesToStore(graph) = List()
 		}

@@ -13,23 +13,8 @@ class OfflineTaskRunner {
 	implicit val formats = net.liftweb.json.DefaultFormats
 
 	def runTask(task: WorkerTask): Unit = {
-		(1 to 1000).foreach { i =>
-			val answer = workReceiver.forwardTask(task)
-			val pickled = write(answer).getBytes("UTF-8")
-			println("PICKLING")
-			try {
-				read[TaskAnswer](new String(pickled, "UTF-8"))
-			} catch {
-				case e: Throwable =>
-					println("It failed for")
-					println(answer.header)
-					println(answer.taskId)
-					println(answer.triples)
-					throw e
-			}
-			println(i)
-		}
-//		answerHandler.handleAnswer(answer)
+		val answer = workReceiver.forwardTask(task)
+		answerHandler.handleAnswer(answer)
 	}
 
 	def runTasks(n: Int): Unit = {

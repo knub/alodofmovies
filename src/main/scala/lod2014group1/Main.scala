@@ -58,12 +58,7 @@ object Main extends App with Logging {
 			ofdb.coverage
 		} else if (args contains "offline-task-runner") {
 			val taskRunner = new OfflineTaskRunner()
-//			taskRunner.runTasks(800000)
-			val taskDatabase = new TaskDatabase
-			taskDatabase.runInDatabase { tasks => implicit session =>
-				val task: Task = tasks.filter { _.id === 13706.toLong }.first()
-				taskRunner.runTask(WorkerTask.fromDatabaseTask(task))
-			}
+			taskRunner.runTasks(800000)
 		} else if (args contains "watch-imdb") {
 			NewImdbMoviesUpdater.watchUpcomingMovies()
 		} else if (args contains "merge-tmdb") {
