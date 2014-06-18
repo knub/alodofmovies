@@ -29,7 +29,6 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable {
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
 	channel.queueDeclare(rpcQueueName, false, false, false, null)
-	channel.basicQos(1)
 	val consumer = new QueueingConsumer(channel)
 	channel.basicConsume(rpcQueueName, false, consumer)
 
