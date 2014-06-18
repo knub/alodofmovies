@@ -1,7 +1,7 @@
 package lod2014group1.triplification
 
 import java.io.{FileReader, File}
-import lod2014group1.rdf.{RdfPersonResource, RdfTriple}
+import lod2014group1.rdf.{UriBuilder, RdfPersonResource, RdfTriple}
 import net.liftweb.json.JsonParser
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.DateTime
@@ -15,8 +15,9 @@ class TMDBPersonTriplifier {
 		val formatter = DateTimeFormat.forPattern("YYYY-MM-dd")
 
 		val id = personJson.id
-		val person = new RdfPersonResource(s"http://www.themoviedb.org/person/${id}")
-		List(person isA RdfPersonResource.person, person hasLabel personJson.name) :::
+		val person = new RdfPersonResource(UriBuilder.getPersonUriFromTmdbId(id))
+		List(person isA RdfPersonResource.person, person hasLabel personJson.name,
+			person sameAs UriBuilder.getTmdbPersonUri(id)) :::
 			handleAlternativeNames(person, personJson.also_known_as) :::
 			addString(person.hasName(_: String), personJson.name) :::
 			addString(person.abstractContent(_: String), personJson.biography) :::
@@ -24,7 +25,7 @@ class TMDBPersonTriplifier {
 			addDate(person.died(_: DateTime), personJson.deathday) :::
 			addString(person.hasBirthPlace(_: String), personJson.place_of_birth) :::
 			addImdbId(person.sameAs(_: String), personJson.imdb_id) :::
-			addFreebaseId(person.sameAs(_: String), s"http://www.imdb.com/name/${personJson.imdb_id}")
+			addFreebaseId(person.sameAs(_: String), personJson.imdb_id)
 	}
 
 	def addString(predicate: String => RdfTriple, obj: String): List[RdfTriple] = {
@@ -47,7 +48,7 @@ class TMDBPersonTriplifier {
 
 	def addImdbId(predicate: String => RdfTriple, id: String): List[RdfTriple] = {
 		if (id != null && id != "" ){
-			List(predicate(s"lod:MoviePerson${id}"))
+			List(predicate(UriBuilder.getPersonUriFromImdbId(id)))
 		} else {
 			Nil
 		}
@@ -55,7 +56,7 @@ class TMDBPersonTriplifier {
 
 	def addFreebaseId(predicate: String => RdfTriple, id: String): List[RdfTriple] = {
 		if (id != null && id != "" ){
-			List(predicate(s"http://www.freebase.com/${id}"))
+			List(predicate(UriBuilder.getFreebaseUri(id)))
 		} else {
 			Nil
 		}

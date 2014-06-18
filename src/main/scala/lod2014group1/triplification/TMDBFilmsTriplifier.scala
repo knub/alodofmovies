@@ -30,8 +30,9 @@ class TMDBFilmsTriplifier {
 		} else {
 			""
 		}
-		val movie = new RdfMovieResource(s"https://www.themoviedb.org/movie/$id")
-		List(movie isA RdfMovieResource.film) :::
+		val movie = new RdfMovieResource(UriBuilder.getMovieUriFromTmdbId(id))
+		List(movie sameAs UriBuilder.getTmdbMovieUri(id),
+			movie isA RdfMovieResource.film) :::
 		addString(movie.label(_: String), mainJson.title) :::
 		addString(movie.sameAs(_: String), s"lod:Movie${mainJson.imdb_id}") :::
 		addBoolean(movie.isAdult(_: Boolean), mainJson.adult) :::
@@ -96,7 +97,7 @@ class TMDBFilmsTriplifier {
 
 	def addAlternativeTitles(movie: RdfMovieResource, id: Long, objs: List[TmdbTitle]): List[RdfTriple] = {
 		objs.zipWithIndex.flatMap { case(obj, i) =>
-			createAlternativeTitle(movie, new RdfAkaResource(s"https://www.themoviedb.org/movie/$id/Aka$i"), obj)
+			createAlternativeTitle(movie, new RdfAkaResource(UriBuilder.getAkaUriFromTmdbId(id, i)), obj)
 		}
 	}
 
@@ -107,7 +108,7 @@ class TMDBFilmsTriplifier {
 
 	def addReleaseInfo(movie: RdfMovieResource, id: Long, objs: List[TmdbCountry]): List[RdfTriple] = {
 		objs.zipWithIndex.flatMap { case(obj, i) =>
-			val releaseInfo = new RdfReleaseInfoResource(s"https://www.themoviedb.org/movie/$id/ReleaseInfo$i")
+			val releaseInfo = new RdfReleaseInfoResource(UriBuilder.getReleaseInfoUriFromTmdbId(id, i))
 			List(releaseInfo inCountry obj.iso_3166_1, releaseInfo ageRating obj.certification,
 					releaseInfo releasedOn obj.release_date, movie hasReleaseInfo releaseInfo,
 					releaseInfo hasLabel obj.release_date, releaseInfo isA RdfReleaseInfoResource.releaseInfo)
@@ -119,11 +120,12 @@ class TMDBFilmsTriplifier {
 	}
 
 	def handleCast(movie: RdfMovieResource, id: Long, member: TmdbCast): List[RdfTriple] = {
-		val actor = new RdfPersonResource(s"http://www.themoviedb.org/person/${member.id}")
+		val actor = new RdfPersonResource(UriBuilder.getPersonUriFromTmdbId(member.id))
 		val charName = member.character
-		val character = new RdfCharacterResource(s"lod:Character$charName")
-		val characterMovie = new RdfCharacterResource(s"https://www.themoviedb.org/movie/$id/Character$charName")
-		List(character name charName,
+		val character = new RdfCharacterResource(UriBuilder.getCharacterUriFromTmdbId(charName.replace(" ", "_")))
+		val characterMovie = new RdfCharacterResource(UriBuilder.getMovieCharacterUriFromTmdbId(id, charName.replace(" ", "_")))
+		List(actor sameAs UriBuilder.getTmdbPersonUri(member.id),
+			character name charName,
 			characterMovie name charName,
 			actor hasLabel member.name,
 		  character hasLabel charName,
@@ -145,7 +147,7 @@ class TMDBFilmsTriplifier {
 	}
 
 	def handleCrew(movie: RdfMovieResource, member: TmdbCrew): List[RdfTriple] = {
-		val person = new RdfPersonResource(s"http://www.themoviedb.org/person/${member.id}")
+		val person = new RdfPersonResource(UriBuilder.getPersonUriFromTmdbId(member.id))
 		val rel = (member.department, member.job) match {
 			case ("Directing", "Director") => movie directedBy person
 			case ("Directing", "Special Guest Director") => movie directedBy person
@@ -176,7 +178,8 @@ class TMDBFilmsTriplifier {
 		List(rel, person hasJob member.job,
 			person hasName member.name,
 			person label member.name,
-			person isA RdfPersonResource.person
+			person isA RdfPersonResource.person,
+			person sameAs UriBuilder.getTmdbPersonUri(member.id)
 		)
 	}
 
