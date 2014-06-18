@@ -104,7 +104,7 @@ class FreebaseExtraction() {
 		(person, triple ::: resourceTriple ::: jobTriple)
 	}
 	
-	def extractResources(json: JValue, values: Map[List[String], Person => List[RdfTriple]]): List[RdfTriple] = {
+	def extractResources(json: JValue, values: Map[List[String], (Person, RdfMovieResource) => List[RdfTriple]], movie: RdfMovieResource): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
 		
 		values.flatMap(property => {
@@ -124,7 +124,7 @@ class FreebaseExtraction() {
 			
 			jsonValue.flatMap{value => 
 				val person = value.extract[Person]
-				property._2(person)
+				property._2(person, movie)
 			}.toList
 		}).toList
 	}

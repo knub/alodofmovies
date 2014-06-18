@@ -58,16 +58,16 @@ object Triplifier extends Logging {
 				
 				var i = 0
 				val files = new File("data/Freebase/film/").listFiles()
-				files.flatMap{ file =>
-					val id = s"/m/${file.getName}"
-					//println(id)
-					i+=1
-					if (i %1000 == 0) println(i) 
-					new FreebaseFilmsTriplifier(id).triplify(file)
-				}.toList
+//				files.take(3).flatMap{ file =>
+//					val id = s"/m/${file.getName}"
+//					//println(id)
+//					i+=1
+//					if (i %1000 == 0) println(i) 
+//					new FreebaseFilmsTriplifier(id).triplify(file)
+//				}.toList
 				//new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd")) ::: 
-				//new FreebaseFilmsTriplifier("/m/0bnwv6").triplify(new File("data/Freebase/film/0bnwv6"))
-				List()
+				new FreebaseFilmsTriplifier("/m/047csmy").triplify(new File("data/Freebase/film/047csmy"))
+				//List()
 			case Config.Person.Dominik =>
 				val tmdbTriplifier = new TMDBFilmsTriplifier()
 				val tmdbFiles = new File("data/TMDBMoviesList/movie/").listFiles().filter( f => f.getName.endsWith(".json"))

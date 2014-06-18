@@ -22,6 +22,7 @@ import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.UriBuilder
 import com.hp.hpl.jena.vocabulary.RDFTest
+import lod2014group1.rdf.RdfTriple
 
 class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 
@@ -62,7 +63,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				(List("property", "/film/film/fandango_id", "values", "value"), movieResource.hasFandangoId(_: String)), // --> id not resource
 				(List("property", "/film/film/metacritic_id", "values", "text"), movieResource.hasMetacriticId(_: String)),
 				(List("property", "/film/film/film_subject", "values", "text"), movieResource.hasSubject(_: String)),
-				//(List("property", "/common/topic/alias", "values", "value"), r.alsoKnownAs(_: RdfResource)),
+				(List("property", "/common/topic/alias", "values", "value"), movieResource.hasAlternativeName(_:String)),
 				(List("property", "/type/object/key", "values", "value"), movieResource.hasKeyword(_: String))
 				//(List("property", "/common/topic/notable_for", "values", "text"), r.hasStoryLine(_: String))
 				///common/topic/image//	
@@ -103,7 +104,6 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				(List("property", "/film/film/produced_by", "values") , (movieResource.producedBy(_: RdfResource), Some(RdfPersonResource.producer), Some("Producer"))),
 				(List("property", "/film/film/story_by", "values") , (movieResource.storyBy(_: RdfResource), Some(RdfPersonResource.storyEditor), Some("Story Writer"))),
 				(List("property", "/film/film/written_by", "values") , (movieResource.writtenBy(_: RdfResource), None, Some("Writer"))),
-			//	(List("property", "/film/film/personal_appearances", "values", "property", "/film/personal_film_appearance/person", "values") , r.personal_appearnce(_: RdfResource)),
 				(List("property", "/film/film/film_casting_director", "values") , (movieResource.castingBy(_: RdfResource), None, Some("Casting Director")))
 				)
 				
@@ -119,28 +119,36 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		triples = releaseInfo ::: triples
 		triples = extract.extractStarring(json, movieResource, id) ::: triples
 		
-		val resources = Map[List[String], Person => List[RdfTriple]](
-				(List("property", "/film/film/sequel", "values"), sequels(_:Person)),
-				(List("property", "/film/film/prequel", "values"), prequels(_:Person))
-		
+		val resources = Map[List[String], (Person, RdfMovieResource) => List[RdfTriple]](
+				(List("property", "/film/film/sequel", "values"), sequels(_:Person, _:RdfMovieResource)),
+				(List("property", "/film/film/prequel", "values"), prequels(_:Person, _:RdfMovieResource))
 		)
 			
-			
-		extract.extractResources(json, resources)
+		extract.extractResources(json, resources, movieResource)
 		
 		//println(triples)
 		triples
 	}
 	
-	def sequels (p:Person): List[RdfTriple] = {
-		//new RdfMovieResource()
-		List()
+	def sequels (p:Person, movieResource: RdfMovieResource): List[RdfTriple] = {
+		val (movie, triple) = defineMovie(p)
+		movieResource.nextMovie(movie) :: triple 
 	}
 	
-	def prequels (p:Person): List[RdfTriple] = {
-		List()
+	def prequels (p:Person, movieResource: RdfMovieResource): List[RdfTriple] = {
+		val (movie, triple) = defineMovie(p)
+		movieResource.previousMovie(movie) :: triple 
 	}
 	
+	def defineMovie(p: Person): (RdfMovieResource, List[RdfTriple]) = {
+		val movie = new RdfMovieResource(UriBuilder.getFreebaseUri(p.id))
+		val triple = List(
+			movie.isA(RdfMovieResource.film),	
+			movie.hasName(p.text),
+			movie.hasLabel(p.text)
+		)
+		(movie, triple)
+	}
 	
 	def releaseInfoProps(movieUri:String, id:JValue): (Map[List[String], String => RdfTriple], List[RdfTriple]) ={
 		implicit val formats = net.liftweb.json.DefaultFormats
