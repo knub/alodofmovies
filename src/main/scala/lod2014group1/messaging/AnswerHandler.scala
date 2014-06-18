@@ -33,7 +33,7 @@ class AnswerHandler extends Logging {
 
 		taskDatabase.runInDatabase { tasks => implicit session =>
 			val row = tasks.filter(_.id === answer.taskId).map(_.finished)
-			row.update(true)
+			row.update(1)
 		}
 	}
 
