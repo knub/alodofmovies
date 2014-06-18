@@ -3,13 +3,13 @@ package lod2014group1.database
 import java.sql.Date
 import org.joda.time.DateTime
 import org.slf4s.Logging
-import scala.slick.driver.SQLiteDriver.simple._
+import scala.slick.driver.MySQLDriver.simple._
 import scala.slick.jdbc.meta.MTable
 
 case class Task(id: Long, taskType: String, dueDate: Date, importance: Byte, fileOrUrl: String, finished: Boolean, flag: String, graph: String)
 
 class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
-	def id         = column[Long]("task_id", O.PrimaryKey, O.AutoInc, O.DBType("INT"))
+	def id         = column[Long]("task_id", O.PrimaryKey, O.AutoInc, O.DBType("BIGINT"))
 	def taskType   = column[String]("task_type")
 	def dueDate    = column[Date]("due_date")
 	def importance = column[Byte]("importance")
