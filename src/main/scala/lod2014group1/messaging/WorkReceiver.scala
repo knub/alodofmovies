@@ -31,7 +31,7 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 		channel = connection.createChannel()
 		channel.queueDeclare(taskQueueName, true, false, false, null)
 		channel.basicQos(1)
-		val consumer = new QueueingConsumer(channel)
+		consumer = new QueueingConsumer(channel)
 		channel.basicConsume(taskQueueName, false, consumer)
 
 		rpcClient = new RPCClient(answerQueueName)
