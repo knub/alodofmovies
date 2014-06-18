@@ -15,7 +15,7 @@ class TaskDistributor() extends Logging {
 	channel.queueDeclare(taskQueueName, true, false, false, null)
 
 	def send(task: WorkerTask) {
-		channel.basicPublish("", taskQueueName, MessageProperties.PERSISTENT_TEXT_PLAIN, task.pickle.value.getBytes("UTF-8"))
+		channel.basicPublish("", taskQueueName, null, task.pickle.value.getBytes("UTF-8"))
 		log.debug(s"[x] Sent '${task.`type`}' to queue")
 	}
 
