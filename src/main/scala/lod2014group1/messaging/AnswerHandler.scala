@@ -17,6 +17,15 @@ class AnswerHandler extends Logging {
 	var filesToWrite: List[UriFile] = List()
 	val triplesToStore: mutable.Map[String, List[RdfTripleString]] = mutable.Map().withDefaultValue(List[RdfTripleString]())
 
+	var bulkLoadThread: Thread = _
+
+	class BulkLoadThread(triples: List[RdfTripleString], graph: String) extends Thread {
+		override def run() {
+			println("Bulk-Loading.")
+			db.bulkLoad(triples, graph)
+		}
+	}
+
 	val db = new VirtuosoLocalDatabase("http://172.16.22.196:8890/sparql")
 
 	def handleAnswer(answer: TaskAnswer): Unit = {
@@ -25,13 +34,16 @@ class AnswerHandler extends Logging {
 		triplesToStore(graph) = triplesToStore(graph) ::: answer.triples
 
 		if (triplesToStore(graph).size > BULK_LOAD_SIZE) {
-			println("Bulk-Loading.")
-			db.bulkLoad(triplesToStore(graph), graph)
+			if (bulkLoadThread != null)
+				bulkLoadThread.join()
+			bulkLoadThread = new BulkLoadThread(triplesToStore(graph), graph)
+			bulkLoadThread.start()
 			triplesToStore(graph) = List()
 		}
 
 		writeFiles(answer.files)
 
+		// TODO: Only set finished after bulk loading
 		taskDatabase.runInDatabase { tasks => implicit session =>
 			val row = tasks.filter(_.id === answer.taskId).map(_.finished)
 			row.update(true)
