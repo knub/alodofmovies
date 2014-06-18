@@ -1,5 +1,7 @@
 package lod2014group1.triplification
 
+
+// Movie case classes
 case class TmdbGenre(id: Long, name: String)
 case class TmdbCollection(id: Long, name: String, poster_path: String, backdrop_path: String)
 case class TmdbProductionCompanie(id: Long, name: String)
@@ -40,3 +42,11 @@ case class TmdbAppendJson(credits: TmdbCredits, keywords: TmdbKeywords, images: 
                           videos: TmdbVideo, alternative_titles: TmdbAlternateTitles, releases: TmdbReleases,
                           similar: TmdbSimilar
 	                         )
+
+
+// Person case classes
+case class TmdbExternalIds(imdb_id: String, freebase_mid: String, freebase_id: String, tvrage_id: Long)
+
+case class TmdbPersonJson(adult: Boolean, also_known_as: List[String], biography: String, birthday: String,
+													deathday: String, homepage: String, id: Long, imdb_id: String, name: String,
+	                        place_of_birth: String, popularity: Double, profile_path: String, external_ids: TmdbExternalIds)

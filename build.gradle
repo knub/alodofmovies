@@ -93,6 +93,11 @@ task watchImdb(type: JavaExec, dependsOn: [build]) {
     classpath = sourceSets.main.runtimeClasspath
     args = ['watch-imdb']
 }
+task offlineRunner(type: JavaExec, dependsOn: [build]) {
+    main = 'lod2014group1.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['offline-task-runner']
+}
 repositories {
 	mavenCentral()
 	flatDir {

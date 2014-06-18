@@ -73,9 +73,12 @@ object Triplifier extends Logging {
 				val tmdbFiles = new File("data/TMDBMoviesList/movie/").listFiles().filter( f => f.getName.endsWith(".json"))
 				log.info(s"Number of movies: ${tmdbFiles.size}")
 				//val tmdbFiles = List(new File("data/TMDBMoviesList/movie/550.json"))
+				//val tmdbFiles = List(new File("data/TMDBMoviesList/movie/13.json"))
 				val part: List[RdfTriple] = tmdbFiles.flatMap( f => tmdbTriplifier.triplify(f)).toList
-				println(part)
+				//println(part)
 				part
+			case Config.Person.Tim =>
+				new OfdbTriplifier(1).triplify()
 		}
 
 		triples.foreach(println)

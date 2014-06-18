@@ -89,7 +89,7 @@ class FreebaseExtraction() {
 	
 	def matchPersons(p: Person, resource: Option[RdfResource],job: Option[String]):(RdfPersonResource, List[RdfTriple]) = {
 		//TODO: match Persons and find right resource
-		val person = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseID(p.id))
+		val person = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseId(p.id))
 		val triple = List(person isA RdfPersonResource.actor,
 				person isA(RdfPersonResource.person),
 				person hasLabel p.text)
@@ -188,7 +188,7 @@ class FreebaseExtraction() {
 			
 			person match {
 				case Some(person) => {
-					val personResource = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseID(person.id))
+					val personResource = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseId(person.id))
 					
 					val triple = List(personResource isA RdfPersonResource.actor, personResource.hasName(person.text), personResource.hasLabel(person.text))
 					
@@ -197,8 +197,8 @@ class FreebaseExtraction() {
 					
 					val charactertriple = character match {
 						case Some(character) => {
-							val characterResource = new RdfCharacterResource(UriBuilder.getMovieCharacterUriFromFreebaseID(movieid, character.id))
-							val chaResource = new RdfCharacterResource(UriBuilder.getCharacterUriFromFreebaseID(character.id))
+							val characterResource = new RdfCharacterResource(UriBuilder.getMovieCharacterUriFromFreebaseId(movieid, character.id))
+							val chaResource = new RdfCharacterResource(UriBuilder.getCharacterUriFromFreebaseId(character.id))
 							List(characterResource isA RdfCharacterResource.character,
 								characterResource.hasName(character.text),
 								characterResource hasLabel character.text,
@@ -214,8 +214,8 @@ class FreebaseExtraction() {
 							specialPerformance match {
 								case Some(specialPerformance) => {
 									if (specialPerformance.text == "Him/Herself"){
-							val characterResource = new RdfCharacterResource(UriBuilder.getMovieCharacterUriFromFreebaseID(movieid, person.id))
-							val chaResource = new RdfCharacterResource(UriBuilder.getCharacterUriFromFreebaseID(person.id))
+							val characterResource = new RdfCharacterResource(UriBuilder.getMovieCharacterUriFromFreebaseId(movieid, person.id))
+							val chaResource = new RdfCharacterResource(UriBuilder.getCharacterUriFromFreebaseId(person.id))
 										List(characterResource isA RdfCharacterResource.character,
 												characterResource.hasName(person.text),
 												characterResource.inMovie(movie),
@@ -230,6 +230,7 @@ class FreebaseExtraction() {
 								case None => List()
 							}
 						}
+
 					}
 					charactertriple ::: triple
 				}
