@@ -7,23 +7,28 @@ import scalax.collection.Graph
 
 class TmdbMerger {
 
+	val tmdbTriplifier = new TMDBFilmsTriplifier
+	val triples = tmdbTriplifier.triplify(new File("data/TMDBMoviesList/movie/13.json"))
+	val edges = triples.map { triple =>
+		LDiEdge(triple.s, triple.o)(triple.p)
+	}
+	val g = Graph(edges: _*)
+
 	def mergeTmdb(): Unit = {
-		val tmdbTriplifier = new TMDBFilmsTriplifier
-		val triples = tmdbTriplifier.triplify(new File("data/TMDBMoviesList/movie/13.json"))
-
-		val edges = triples.map { triple =>
-			LDiEdge(triple.s, triple.o)(triple.p)
+		getObjectsFor("starring").foreach {
+			println(_)
 		}
 
-		val g = Graph(edges: _*)
+	}
 
+	def getObjectsFor(predicate: String): List[String] = {
 		val s = g.edges.filter { edge =>
-			edge.label.toString.contains("starring")
+			edge.label.toString.contains(predicate)
 		}
 
-		s.foreach { edge =>
-			println(edge.target)
-		}
+		s.map { edge =>
+			edge.target.toString()
+		}.toList
 	}
 
 }
