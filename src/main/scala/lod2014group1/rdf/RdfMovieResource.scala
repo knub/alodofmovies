@@ -37,7 +37,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def sameAsImdbUrl(id: String) = sameAs("http://imdb.com/title/" + id)
 
-	def alsoKnownAs(aka: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:alternativeNames"), aka)
+	def alsoKnownAs(aka: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:alternativeNames"), aka).addAlways
 
 	def hasReleaseInfo(releaseInfo: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:released"), releaseInfo)
 
@@ -49,7 +49,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def previousMovie(movie: RdfResource): RdfTriple = buildTriple(RdfResource("freebase:film/film/prequel"), movie)
 
-	def hasGenre(genre: String): RdfTriple = buildTriple(RdfResource("dbpprop:genre"), RdfString(genre))
+	def hasGenre(genre: String): RdfTriple = buildTriple(RdfResource("dbpprop:genre"), RdfString(genre)).addAlways
 
 	def shotInLanguage(language: String): RdfTriple = buildTriple(RdfResource("dbpprop:language"), RdfString(language))
 
@@ -62,7 +62,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def releasedOn(releaseDate: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:initialRelease"), RdfDate(releaseDate))
 	def releasedOn(releaseDate: String): RdfTriple = buildTriple(RdfResource("dbpprop:initialRelease"), RdfString(releaseDate))
 
-	def hasKeyword(keyword: String): RdfTriple = buildTriple(RdfResource("lod:keyword"), RdfString(keyword))
+	def hasKeyword(keyword: String): RdfTriple = buildTriple(RdfResource("lod:keyword"), RdfString(keyword)).addAlways
 
 	def directedBy(director: String): RdfTriple = buildTriple(RdfResource("dbpprop:director"), RdfString(director))
 	def directedBy(director: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:director"), director)
@@ -131,9 +131,9 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def distributedBy(distributor: String): RdfTriple = buildTriple(RdfResource("dbpprop:distributor"), RdfString(distributor))
 
-	def hasPhotos(photos: String): RdfTriple = buildTriple(RdfResource("dbpprop:hasPhotoCollection"), RdfUrl(photos))
+	def hasPhotos(photos: String): RdfTriple = buildTriple(RdfResource("dbpprop:hasPhotoCollection"), RdfUrl(photos)).addAlways
 
-	def hasVideo(video: String): RdfTriple = buildTriple(RdfResource("dbpprop:video"), RdfUrl(video))
+	def hasVideo(video: String): RdfTriple = buildTriple(RdfResource("dbpprop:video"), RdfUrl(video)).addAlways
 
 	def hasWebsite(website: String): RdfTriple = buildTriple(RdfResource("dbpprop:website"), RdfUrl(website))
 
@@ -145,13 +145,13 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 
 	def hasAspectRatio(ratio: String): RdfTriple = buildTriple(RdfResource("lod:aspectRatio"), RdfString(ratio))
 
-	def hasTagline(tagline: String): RdfTriple = buildTriple(RdfResource("dbpprop:tagline"), RdfString(tagline))
+	def hasTagline(tagline: String): RdfTriple = buildTriple(RdfResource("dbpprop:tagline"), RdfString(tagline)).addAlways
 
 	def hasOfdbVoteAverage(ofdbVoteAverage: String): RdfTriple = buildTriple(RdfResource("lod:OfdbVoteAverage"), RdfString(ofdbVoteAverage))
 
 	def hasOfdbVoteCount(ofdbVoteCount: String): RdfTriple = buildTriple(RdfResource("lod:OfdbVoteCount"), RdfString(ofdbVoteCount))
 	
-	def hasVersion(version: String): RdfTriple = buildTriple(RdfResource("dbpprop:version"), RdfString(version))
+	def hasVersion(version: String): RdfTriple = buildTriple(RdfResource("dbpprop:version"), RdfString(version)).addAlways
 
 	def hasRevenue(revenue: Integer): RdfTriple = buildTriple(RdfResource("dbpprop:revenue"), RdfInteger(revenue))
 
@@ -181,7 +181,7 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	
 	def hasFandangoId (id:String): RdfTriple = buildTriple(RdfResource("/film/film/fandango_id"), RdfString(id))
 
-	def hasSubject (subject:String): RdfTriple = buildTriple(RdfResource("/film/film/subjects"), RdfString(subject))
+	def hasSubject (subject:String): RdfTriple = buildTriple(RdfResource("/film/film/subjects"), RdfString(subject)).addAlways
 	
 
 	

@@ -70,5 +70,5 @@ class RdfPersonResource(resource: String) extends RdfResource(resource) with Log
 
 	def playsCharacter(character: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:character"), character)
 
-	def hasJob(job: String): RdfTriple = buildTriple(RdfResource("dbpprop:job"), RdfString(job))
+	def hasJob(job: String): RdfTriple = buildTriple(RdfResource("dbpprop:job"), RdfString(job)).addAlways
 }
