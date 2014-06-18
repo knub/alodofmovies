@@ -71,7 +71,7 @@ class NewImdbMoviesUpdater() {
 		val date = new Date(dt.toDate.getTime)
 
 		val taskList = ids.map { id =>
-			Task(0, TaskType.Crawlify.toString, date, 10, baseUri + id, false, "", Config.IMDB_GRAPH)
+			Task(0, TaskType.Crawlify.toString, date, 10, baseUri + id, 0, "", Config.IMDB_GRAPH)
 		}
 
 		val database = new TaskDatabase
