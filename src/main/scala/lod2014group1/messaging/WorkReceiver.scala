@@ -2,18 +2,13 @@ package lod2014group1.messaging
 
 import com.rabbitmq.client._
 import com.rabbitmq.client.AMQP.BasicProperties
-import scala.pickling._
-import json._
 import java.util.UUID
 import org.slf4s._
 import scala.util.{Failure, Success, Try}
 import TaskType._
 import lod2014group1.messaging.worker._
-import scala.util.Success
-import scala.util.Failure
-import scala.util.Failure
 import lod2014group1.messaging.worker.TaskAnswer
-import scala.util.Success
+import net.liftweb.json.Serialization.{read, write}
 
 
 class WorkReceiver(taskQueueName: String, answerQueueName: String) {
@@ -24,6 +19,7 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 	var rpcClient: RPCClient = _
 	var channel: Channel = _
 	var connection: Connection = _
+	implicit val formats = net.liftweb.json.DefaultFormats
 
 	def init(): Unit = {
 		log = LoggerFactory.getLogger("TaskAnswerLogger")
@@ -44,11 +40,10 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 			i += 1
 			val delivery = consumer.nextDelivery(5000)
 			if (delivery != null) {
-				val task = new String(delivery.getBody, "UTF-8").unpickle[WorkerTask]
+				val task = read[WorkerTask](new String(delivery.getBody, "UTF-8"))
 
 				log.info(s"Task received: ${task.`type`}, id: ${task.taskId}, params: ${task.params.-("content")}}")
 				val answer = Try(forwardTask(task))
-
 
 				answer match {
 					case Success(a) =>
@@ -89,13 +84,15 @@ class RPCClient(rpcQueueName: String) extends Logging {
 	private val consumer = new QueueingConsumer(channel)
 	channel.basicConsume(replyQueueName, true, consumer)
 
+	implicit val formats = net.liftweb.json.DefaultFormats
+
 	def send(taskAnswer: TaskAnswer): Unit = {
 		val corrId = UUID.randomUUID().toString
 		val props = new BasicProperties.Builder().correlationId(corrId).replyTo(replyQueueName).build()
 
-		val pickled = taskAnswer.pickle.value.getBytes
+		val pickled = write(taskAnswer).getBytes("UTF-8")
 		try {
-			new String(pickled, "UTF-8").unpickle[TaskAnswer]
+			read[TaskAnswer](new String(pickled, "UTF-8"))
 		} catch {
 			case _: Throwable =>
 				println("It failed for")
@@ -109,7 +106,7 @@ class RPCClient(rpcQueueName: String) extends Logging {
 		while (!receivedAnswer) {
 			val delivery = consumer.nextDelivery()
 			if (delivery.getProperties.getCorrelationId == corrId) {
-				receivedAnswer = new String(delivery.getBody, "UTF-8").unpickle[Boolean]
+				receivedAnswer = new String(delivery.getBody, "UTF-8") == "true"
 			}
 		}
 	}

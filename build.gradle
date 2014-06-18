@@ -126,7 +126,6 @@ dependencies {
 	compile 'com.typesafe.slick:slick_2.10:2.0.1'
 
 	compile 'com.rabbitmq:amqp-client:3.3.1'
-	compile 'org.scala-lang:scala-pickling_2.10:0.8.0'
 	compile 'com.typesafe:config:1.2.1'
 
     compile 'com.assembla.scala-incubator:graph-core_2.10:1.9.0'
