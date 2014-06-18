@@ -28,9 +28,7 @@ object Main extends App with Logging {
 			worker.init()
 			worker.listen()
 		} else if (args contains "rabbit-server") {
-			new Thread(new AmqpMessageListenerThread("answers")).start()
-			new Thread(new AmqpMessageListenerThread("answers")).start()
-			new Thread(new AmqpMessageListenerThread("answers")).start()
+			new Thread(new AmqpMessageListenerThread("answers")).run();
 		} else if (args contains "crawl-ofdb") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.crawl
