@@ -105,7 +105,7 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 
 	private def bulkLoad(graph: String): Unit = {
 		val file = createTempBulkLoadFile(graph)
-		isql.#<(new FileInputStream(file)).!!
+		println(isql.#<(new FileInputStream(file)).!!)
 		deleteTempBulkLoadFile(file)
 	}
 
