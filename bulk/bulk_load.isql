@@ -1,4 +1,4 @@
 delete from DB.DBA.load_list;
 ld_dir('/home/semmul1/alodofmovies/bulk', '*.bulk', '<graph>');
 rdf_loader_run();
-SELECT ll_file FROM DB.DBA.LOAD_LIST;
+SELECT ll_graph, ll_state, ll_error  FROM DB.DBA.LOAD_LIST;
