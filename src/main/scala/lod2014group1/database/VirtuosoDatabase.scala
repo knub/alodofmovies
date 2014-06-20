@@ -117,6 +117,7 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 	private def buildRdfFile(triples: List[RdfTripleString]) {
 		val f = new BufferedWriter(new FileWriter(bulkLoadFile))
 		writeFileHeader(f)
+		println(triples.size)
 		triples.foreach(triple => {
 			f.write(triple.toString() + "\n")
 		})
