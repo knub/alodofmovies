@@ -22,7 +22,7 @@ class OfflineTaskRunner {
 		tasks.zipWithIndex.foreach { case (task, i) =>
 				runTask(WorkerTask.fromDatabaseTask(task))
 				if (i % 100 == 0)
-					println(i)
+					println(task.id)
 		}
 	}
 

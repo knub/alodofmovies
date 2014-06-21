@@ -18,11 +18,19 @@ class AnswerHandler extends Logging {
 	val triplesToStore: mutable.Map[String, List[RdfTripleString]] = mutable.Map().withDefaultValue(List[RdfTripleString]())
 
 	var bulkLoadThread: Thread = _
+	var ids = List[Long]()
 
-	class BulkLoadThread(triples: List[RdfTripleString], graph: String) extends Thread {
+	class BulkLoadThread(triples: List[RdfTripleString], graph: String, ids: List[Long]) extends Thread {
 		override def run() {
 			println("Bulk-Loading.")
 			db.bulkLoad(triples, graph)
+
+			taskDatabase.runInDatabase { tasks => implicit session =>
+				ids.foreach { id =>
+					val row = tasks.filter(_.id === id).map(_.finished)
+					row.update(true)
+				}
+			}
 		}
 	}
 
@@ -32,22 +40,18 @@ class AnswerHandler extends Logging {
 		val graph = answer.header("graph")
 
 		triplesToStore(graph) = triplesToStore(graph) ::: answer.triples
+		ids = answer.taskId :: ids
 
 		if (triplesToStore(graph).size > BULK_LOAD_SIZE) {
 			if (bulkLoadThread != null)
 				bulkLoadThread.join()
-			bulkLoadThread = new BulkLoadThread(triplesToStore(graph), graph)
+			bulkLoadThread = new BulkLoadThread(triplesToStore(graph), graph, ids)
 			bulkLoadThread.start()
 			triplesToStore(graph) = List()
+			ids = List()
 		}
 
 		writeFiles(answer.files)
-
-		// TODO: Only set finished after bulk loading
-		taskDatabase.runInDatabase { tasks => implicit session =>
-			val row = tasks.filter(_.id === answer.taskId).map(_.finished)
-			row.update(true)
-		}
 	}
 
 	def writeFiles(files: List[UriFile]): Unit = {
