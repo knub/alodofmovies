@@ -6,7 +6,6 @@ import scalax.collection.edge.LDiEdge
 import scalax.collection.Graph
 import lod2014group1.database.{ResourceWithName, Queries}
 import org.apache.commons.lang3.StringUtils
-import lod2014group1.database.ActorsWithName
 
 class TmdbMerger {
 
@@ -43,22 +42,28 @@ class TmdbMerger {
 //		candidates.foreach(println)
 		var movieScores = Map[String, Double]()
 		candidates.foreach { candidate =>
-			val score = calculateActorOverlap("", candidate.resource) //TODO moviename
+			val score = calculateActorOverlap(triples, candidate.resource) //TODO moviename
 			movieScores += (candidate.resource -> score)
 		}
 	}
 
-	def calculateActorOverlap(movieUri:String, candidateUri:String): Double = {
+	def calculateActorOverlap(g: Graph[String, LDiEdge], candidateUri:String): Double = {
 		val treshhold = 5
-	
+		println("=========================")	
+		println("==movie")
+		val movieActors = getObjectsFor(g, "dbpprop:starring", "rdfs:label")
+		println(movieActors)
+		println("==candidates")
 		val candidateActors = Queries.getAllActorsOfMovie(candidateUri)
-		val movieActors = Queries.getAllActorsOfMovie(movieUri)
+		candidateActors.foreach(a =>  println(a.name))
 		
-		val matched_actors = movieActors.flatMap{ actor =>
-					val best_match = candidateActors.map(c_actor => StringUtils.getLevenshteinDistance(c_actor.name, actor.name)).min
-					if (best_match < treshhold) List(actor)
-					else List()
+		val matched_actors = movieActors.flatMap { actor =>
+			val best_match = candidateActors.map(c_actor => StringUtils.getLevenshteinDistance(c_actor.name, actor)).min
+			if (best_match < treshhold) List(actor)
+			else List()
 		} 
+		println("==match")
+		println(matched_actors)
 		matched_actors.size / movieActors.size
 	}
 
