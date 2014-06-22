@@ -1,6 +1,7 @@
 package lod2014group1.database
 
 import lod2014group1.Config
+import lod2014group1.merging.Merger
 
 
 case class ResourceWithName(resource: String, name: String)
@@ -8,9 +9,11 @@ case class ResourceWithName(resource: String, name: String)
 object Queries {
 
 	val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
-	
+
 	def main(args: Array[String]): Unit = {
-		getObjects("lod:Moviett0101527", "dbpprop:name")
+		val now = System.currentTimeMillis()
+		getAllMovieNames
+		println(System.currentTimeMillis() - now)
 	}
 
 	def getAllMovieNames: List[ResourceWithName] = {
@@ -60,8 +63,7 @@ object Queries {
 		extractResourcesWithNameFrom(query)
 	}
 
-
-	def extractResourcesWithNameFrom(query: String): List[ResourceWithName] = {
+	private def extractResourcesWithNameFrom(query: String): List[ResourceWithName] = {
 		val queryExecution = database.buildQuery(query)
 
 		var results: List[ResourceWithName] = List()
@@ -74,8 +76,8 @@ object Queries {
 		results
 	}
 
-	def getObjects(subject: String, predicate: String): List[String] = {
-		val query = s"$getAllPrefixe SELECT ?o WHERE { $subject $predicate ?o . }"
+	def existsTriple(subject: String, predicate: String): Boolean = {
+		val query = s"$getAllPrefixe SELECT ?o WHERE { <$subject> $predicate ?o . }"
 
 		val queryExecution = database.buildQuery(query)
 
@@ -85,10 +87,39 @@ object Queries {
 
 			results ::= o
 		})
-		results
+		
+		results.size == 0
 	}
 
-	def getAllPrefixe : String = {
+	def existsReleaseInfo(movieResource: String): Boolean = {
+		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type lod:ReleaseInfo . <$movieResource> dbpprop:released ?s . }"
+		existsResource(query)
+	}
+
+	def existsAka(movieResource: String): Boolean = {
+		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type lod:Aka . <$movieResource> dbpprop:alternativeNames ?s . }"
+		existsResource(query)
+	}
+
+//	def existsAward(movieResource: String): Boolean = {
+//		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Award . <$movieResource> dbpprop:alternativeNames ?s . }"
+//		existsResource(query)
+//	}
+
+	private def existsResource(query: String): Boolean = {
+		val queryExecution = database.buildQuery(query)
+
+		var results: List[String] = List()
+		database.query(queryExecution, { rs =>
+			val o = rs.get("s").toString
+
+			results ::= o
+		})
+
+		results.size == 0
+	}
+	
+	private def getAllPrefixe : String = {
 		"""
 		  |prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 		  |prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -102,4 +133,5 @@ object Queries {
 		  |
 		""".stripMargin
 	}
+
 }
