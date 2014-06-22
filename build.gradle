@@ -130,6 +130,7 @@ dependencies {
 
     compile 'com.assembla.scala-incubator:graph-core_2.10:1.9.0'
     compile 'org.scalaforge:scalax:0.1'
+	compile 'org.apache.commons:commons-lang3:3.3.2'
 
     //compile 'com.hp.hpl.jena:jena:2.6.4'
 	compile 'org.apache.jena:jena:2.11.1'

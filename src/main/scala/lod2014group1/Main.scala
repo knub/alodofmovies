@@ -63,7 +63,7 @@ object Main extends App with Logging {
 			NewImdbMoviesUpdater.watchUpcomingMovies()
 		} else if (args contains "merge-tmdb") {
 			val merger = new TmdbMerger()
-			merger.mergeTmdb()
+			merger.mergeForrestGump()
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}
