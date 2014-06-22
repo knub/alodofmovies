@@ -7,6 +7,8 @@ case class ResourceWithName(resource: String, name: String)
 
 object Queries {
 
+	val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
+	
 	def main(args: Array[String]): Unit = {
 		getObjects("lod:Moviett0101527", "dbpprop:name")
 	}
@@ -60,7 +62,6 @@ object Queries {
 
 
 	def extractResourcesWithNameFrom(query: String): List[ResourceWithName] = {
-		val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
 		val queryExecution = database.buildQuery(query)
 
 		var results: List[ResourceWithName] = List()
@@ -76,7 +77,6 @@ object Queries {
 	def getObjects(subject: String, predicate: String): List[String] = {
 		val query = s"$getAllPrefixe SELECT ?o WHERE { $subject $predicate ?o . }"
 
-		val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
 		val queryExecution = database.buildQuery(query)
 
 		var results: List[String] = List()
