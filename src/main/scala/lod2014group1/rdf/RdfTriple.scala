@@ -14,7 +14,7 @@ case class RdfResource(val uri: String) extends RdfObject {
 			uri
 	}
 
-	def isA(entity: RdfResource): RdfTriple = this.buildTriple(RdfResource("rdf:type"), entity).addAlways
+	def isA(entity: RdfResource): RdfTriple = this.buildTriple(RdfResource("rdf:type"), entity)
 	def isAn = isA _
 
 	def sameAs(url: String): RdfTriple = this.buildTriple(RdfResource("owl:sameAs"), RdfUrl(url)).addAlways

@@ -1,22 +1,19 @@
 package lod2014group1.database
 
-import com.hp.hpl.jena.query.QueryExecution
 import lod2014group1.Config
-import lod2014group1.rdf.{RdfString, RdfResource, RdfTriple, RdfObject}
 
 
-case class MovieWithName(resource: String, name: String)
-case class ActorsWithName(resource: String, name: String)
+case class ResourceWithName(resource: String, name: String)
 
 object Queries {
 
 	def main(args: Array[String]): Unit = {
-		getAllMovieNames().foreach(println)
+		getAllActorsOfMovie("http://purl.org/hpi/movie#Moviett0101527")
+		getAllMovieNames
+		getAllMovieNamesOfYear("1991")
 	}
 
-	def getAllMovieNames(): List[MovieWithName] = {
-		val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
-
+	def getAllMovieNames: List[ResourceWithName] = {
 		val query =
 			"""
 			  |prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -29,23 +26,10 @@ object Queries {
 			  |}
 			""".stripMargin
 
-		val queryExecution = database.buildQuery(query)
-
-		var results: List[MovieWithName] = List()
-
-		database.query(queryExecution, { rs =>
-			val s = rs.get("s").toString
-			val o = rs.get("o").toString
-
-			results ::= new MovieWithName(s, o)
-		})
-
-		results
+		extractResourcesWithNameFrom(query)
 	}
 
-	def getAllMovieNamesOfYear(year: String): List[MovieWithName] = {
-		val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
-
+	def getAllMovieNamesOfYear(year: String): List[ResourceWithName] = {
 		val query =
 			s"""
 			  |prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -54,17 +38,15 @@ object Queries {
 			  |
 			  |SELECT ?s ?o WHERE {
 			  |  ?s rdf:type dbpedia-owl:Film .
-			  |  ?s dbpprop:years $year .
+			  |  ?s dbpprop:years "$year" .
 			  |  ?s dbpprop:name ?o
 			  |}
 			""".stripMargin
 
-		List()
+		extractResourcesWithNameFrom(query)
 	}
 
-	def getAllActorsOfMovie(movie: String): List[ActorsWithName] = {
-		val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
-
+	def getAllActorsOfMovie(movie: String): List[ResourceWithName] = {
 		val query =
 			s"""
 			  |prefix dbpprop: <http://dbpedia.org/property/>
@@ -75,7 +57,22 @@ object Queries {
 			  |}
 			""".stripMargin
 
-		List()
+		extractResourcesWithNameFrom(query)
+	}
+
+
+	def extractResourcesWithNameFrom(query: String): List[ResourceWithName] = {
+		val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
+		val queryExecution = database.buildQuery(query)
+
+		var results: List[ResourceWithName] = List()
+		database.query(queryExecution, { rs =>
+			val s = rs.get("s").toString
+			val o = rs.get("o").toString
+
+			results ::= ResourceWithName(s, o)
+		})
+		results
 	}
 
 }
