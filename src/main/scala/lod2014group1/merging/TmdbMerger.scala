@@ -4,7 +4,7 @@ import java.io.File
 import lod2014group1.triplification.TmdbMovieTriplifier
 import scalax.collection.edge.LDiEdge
 import scalax.collection.Graph
-import lod2014group1.database.{MovieWithName, Queries}
+import lod2014group1.database.{ResourceWithName, Queries}
 import org.apache.commons.lang3.StringUtils
 
 class TmdbMerger {
@@ -21,7 +21,7 @@ class TmdbMerger {
 		merge(g)
 	}
 
-	def findCandidateMovies(g: Graph[String, LDiEdge]): List[MovieWithName] = {
+	def findCandidateMovies(g: Graph[String, LDiEdge]): List[ResourceWithName] = {
 		// TODO: Extract
 		val moviesInYear = Queries.getAllMovieNamesOfYear("1994")
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
