@@ -39,16 +39,19 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 		val poster = div.select(".image img").attr("src")
 		if (!poster.isEmpty) triples = (movie hasPoster poster) :: triples
 
-		val title = div.select(".header [itemprop=name]").text();
-		if (!title.isEmpty) triples = List(movie hasTitle title, movie hasLabel title) ::: triples
-
-		val originalTitleDiv = div.select("span.title-extra[itemprop=name]")
-		if (originalTitleDiv.size() == 1) {
-			val originalTitle = originalTitleDiv.first().ownText()
-			triples = List(movie hasOriginalTitle originalTitle) ::: triples
+		val titleDiv = div.select(".header span.itemprop[itemprop=name]")
+		if (titleDiv.size() == 1) {
+			val title = titleDiv.first().ownText()
+			if (!title.isEmpty) triples = List(movie hasTitle title, movie hasLabel title) ::: triples
 		}
 
-		val year = div.select(".header .nobr a").text();
+		val originalTitleDiv = div.select(".header span.title-extra[itemprop=name]")
+		if (originalTitleDiv.size() == 1) {
+			val originalTitle = originalTitleDiv.first().ownText()
+			if (!originalTitle.isEmpty) triples = List(movie hasOriginalTitle originalTitle) ::: triples
+		}
+
+		val year = div.select(".header .nobr a").text()
 		if (!year.isEmpty) triples = (movie releasedInYear year) :: triples
 
 		val runtime = div.select(".infobar [itemprop=duration]").text().split(" ")(0).replaceAll("\\D", "");
