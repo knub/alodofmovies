@@ -221,16 +221,20 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 			
 			val imdbId = getImdbIdFromImdbTag(json).getOrElse(getImdbIdFromWebpages(topicEquivalentWebpages).getOrElse(""))
 			
-			val (id, movieUri) = if (imdbId != "") {	 
-				(imdbId, UriBuilder.getMovieUriFromImdbId(imdbId))
+			val (id, movieUri, movieResource, samAsTriples) = if (imdbId != "") {	
+				val uri = UriBuilder.getMovieUriFromImdbId(imdbId)
+				val movie = new RdfMovieResource(uri)
+				(imdbId, uri, movie, List(movie sameAsImdbUrl(imdbId)))
 			} else {	
-				(freebaseId, UriBuilder.getMovieUriFromFreebaseId(freebaseId))
+				val uri = UriBuilder.getMovieUriFromImdbId(freebaseId)
+				val movie = new RdfMovieResource(uri)
+				(freebaseId, uri, movie , List())
 			}
 			
 			val movie = new RdfMovieResource(movieUri)
 			val triples = List( movie sameAs(UriBuilder.getFreebaseUri(freebaseId)),
 					movie isA RdfMovieResource.film
-					) 
+					) ::: samAsTriples
 			//println(id, movie)
 			(Some(id),Some(movie),triples)
 		} catch{
