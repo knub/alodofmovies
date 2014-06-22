@@ -21,7 +21,7 @@ class OfflineTaskRunner {
 		val tasks = taskDatabase.getNextNTasks(n, 10000)
 		tasks.zipWithIndex.foreach { case (task, i) =>
 				runTask(WorkerTask.fromDatabaseTask(task))
-				if (i % 100 == 0)
+				if (task.id % 100 == 0)
 					println(task.id)
 		}
 	}
