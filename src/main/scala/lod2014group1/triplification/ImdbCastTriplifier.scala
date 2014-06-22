@@ -153,7 +153,7 @@ class ImdbCastTriplifier(val imdbId: String) extends Logging {
 					) ::: triples
 
 					val job = getJob(credit)
-					if (credit != null)
+					if (job != null)
 						triples = (producer hasJob job) :: triples
 
 					val alternatvieName = getAlias(credit)
