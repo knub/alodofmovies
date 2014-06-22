@@ -1,13 +1,13 @@
 package lod2014group1.merging
 
 import java.io.File
-import lod2014group1.triplification.TMDBFilmsTriplifier
+import lod2014group1.triplification.TmdbMovieTriplifier
 import scalax.collection.edge.LDiEdge
 import scalax.collection.Graph
 
 class TmdbMerger {
 
-	val tmdbTriplifier = new TMDBFilmsTriplifier
+	val tmdbTriplifier = new TmdbMovieTriplifier
 	val triples = tmdbTriplifier.triplify(new File("data/TMDBMoviesList/movie/13.json"))
 	val edges = triples.map { triple =>
 		LDiEdge(triple.s, triple.o)(triple.p)

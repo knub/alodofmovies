@@ -6,7 +6,7 @@ import lod2014group1.rdf.RdfObject
 case class MovieWithName(resource: String, name: String)
 case class ActorsWithName(resource: String, name: String)
 
-class Queries {
+object Queries {
 
 	def getAllMovieNames: List[MovieWithName] = {
 		val query =
@@ -38,6 +38,7 @@ class Queries {
 			  |}
 			""".stripMargin
 
+		List()
 	}
 
 	def getAllActorsOfMovie(movie: String): List[ActorsWithName] = {
