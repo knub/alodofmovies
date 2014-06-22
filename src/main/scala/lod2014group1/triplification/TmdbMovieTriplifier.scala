@@ -7,19 +7,19 @@ import lod2014group1.rdf.RdfMovieResource._
 import lod2014group1.crawling.TMDBMoviesListCrawler
 import lod2014group1.rdf.RdfTriple
 
-object TMDBFilmsTriplifier {
+object TmdbMovieTriplifier {
 	val TmdbBaseUrl = "http://image.tmdb.org/t/p/original%s"
 	val YouTubeBaseUrl = "www.youtube.com/watch?v=%s"
 }
 
-class TMDBFilmsTriplifier {
+class TmdbMovieTriplifier {
 	val crawler = new TMDBMoviesListCrawler
 
 	def triplify(f: File): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
 		val mainJson: TmdbMainJson = JsonParser.parse(new FileReader(f)).extract[TmdbMainJson]
 		val appendJson: TmdbAppendJson = JsonParser.parse(new FileReader(f)).extract[TmdbAppendJson]
-		println(s"Movie id: ${mainJson.id} original_title: ${mainJson.original_title}")
+		//println(s"Movie id: ${mainJson.id} original_title: ${mainJson.original_title}")
 
 		//appendJson.credits.cast.foreach(person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)))
 		//appendJson.credits.crew.foreach(person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)))
@@ -55,9 +55,9 @@ class TMDBFilmsTriplifier {
 		addCast(movie, id, appendJson.credits.cast) :::
 		addCrew(movie, appendJson.credits.crew) :::
 		addList(movie.hasKeyword(_: String), appendJson.keywords.keywords.map { keyword => keyword.name }) :::
-		addList(movie.hasImage(_: String), appendJson.images.backdrops.map { image => TMDBFilmsTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
-		addList(movie.hasPoster(_: String), appendJson.images.posters.map { image => TMDBFilmsTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
-		addList(movie.hasVideo(_: String), appendJson.videos.results.map { video => TMDBFilmsTriplifier.YouTubeBaseUrl.format(video.key) } ) :::
+		addList(movie.hasImage(_: String), appendJson.images.backdrops.map { image => TmdbMovieTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
+		addList(movie.hasPoster(_: String), appendJson.images.posters.map { image => TmdbMovieTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
+		addList(movie.hasVideo(_: String), appendJson.videos.results.map { video => TmdbMovieTriplifier.YouTubeBaseUrl.format(video.key) } ) :::
 		addAlternativeTitles(movie, id, appendJson.alternative_titles.titles) :::
 		addReleaseInfo(movie, id, appendJson.releases.countries)
 	}

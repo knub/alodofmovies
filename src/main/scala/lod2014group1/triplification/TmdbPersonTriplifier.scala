@@ -6,7 +6,7 @@ import net.liftweb.json.JsonParser
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.DateTime
 
-class TMDBPersonTriplifier {
+class TmdbPersonTriplifier {
 
 	def triplify(f: File): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
