@@ -262,7 +262,8 @@ class OfdbTriplifier(val ofdbId: Integer) {
 						}
 					}
 				}
-			}}
+			}
+		}
 		}
 		triples
 	}

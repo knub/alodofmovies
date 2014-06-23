@@ -78,11 +78,13 @@ object Triplifier extends Logging {
 				//println(part)
 				part
 			case Config.Person.Tim =>
-				for (i <- 101 to 1000){
-					println(i)
-					new OfdbTriplifier(i).triplify()
+				var ofdbTriples: List[RdfTriple] = List()
+				for (i <- 1 to 100000){
+					ofdbTriples = new OfdbTriplifier(i).triplify() ::: ofdbTriples
+					if(i % 100 == 0)
+						println(s"$i Ofdb Movies triplified.")
 				}
-				List()
+				ofdbTriples
 		}
 
 		triples.foreach(println)
