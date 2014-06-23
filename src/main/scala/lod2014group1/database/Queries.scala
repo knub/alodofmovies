@@ -11,9 +11,7 @@ object Queries {
 	val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
 
 	def main(args: Array[String]): Unit = {
-		val now = System.currentTimeMillis()
-		getAllMovieNames
-		println(System.currentTimeMillis() - now)
+		println(getAllMovieNames.size)
 	}
 
 	def getAllMovieNames: List[ResourceWithName] = {
@@ -38,7 +36,6 @@ object Queries {
 		database.query(queryExecution, { rs =>
 			val s = rs.get("s").toString
 			val o = rs.get("o").toString
-
 			results ::= ResourceWithName(s, o)
 		})
 		results
@@ -69,9 +66,8 @@ object Queries {
 
 		var results: List[String] = List()
 		database.query(queryExecution, { rs =>
-			val o = rs.get("s").toString
-
-			results ::= o
+			val s = rs.get("s").toString
+			results ::= s
 		})
 		results.size == 0
 	}
@@ -83,7 +79,6 @@ object Queries {
 		var results: List[String] = List()
 		database.query(queryExecution, { rs =>
 			val o = rs.get("o").toString
-
 			results ::= o
 		})
 		results.size == 0
