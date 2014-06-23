@@ -36,11 +36,8 @@ class TmdbMerger {
 			val tripleGraph = new TripleGraph(triples)
 			val imdbMovie = merge(tripleGraph)
 			if (!imdbMovie.isEmpty) {
-				println(tripleGraph.getObjectsForPredicate("owl:sameAs"))
 				val imdbUrls = tripleGraph.getObjectsForPredicate("owl:sameAs").filter(p => p.contains("http://imdb.com/title/"))
 				if (imdbUrls.nonEmpty) {
-					println(imdbUrls.head)
-					println(imdbMovie.head._1)
 					if (imdbMovie.head._1.split("Movie").last == imdbUrls.head.split("/").last.split(">")(0))
 						matched ::= imdbMovie.head
 					else
