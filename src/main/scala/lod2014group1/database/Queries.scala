@@ -59,6 +59,11 @@ object Queries {
 		existsResource(query)
 	}
 
+	def existsPerson(movieResource: String, predicate: String): Boolean = {
+		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Person . <$movieResource> $predicate ?s . }"
+		existsResource(query)
+	}
+
 	private def existsResource(query: String): Boolean = {
 		val queryExecution = database.buildQuery(query)
 

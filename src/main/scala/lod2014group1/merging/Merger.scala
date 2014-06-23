@@ -18,7 +18,7 @@ object Merger {
 
 		triples.foreach{ triple =>
 			if (triple.addAlwaysFlag) {
-				additionalTriples ::= triple
+				additionalTriples ::= RdfTriple(RdfResource(resource), triple.p, triple.o)
 			} else {
 				// if a triple with a specific predicate already exists, do not add the triple
 				if (!Queries.existsTriple(resource, triple.p.toString())) {
@@ -59,5 +59,45 @@ object Merger {
 			additionalTriples ::= triple
 		}
 		additionalTriples
+	}
+
+	def mergeOtherPersons(imdbMovieResource: String, graph: TripleGraph): List[RdfTriple] = {
+		otherPersonList.flatMap{ personPredicate =>
+			val triple = graph.getTriplesForSubjectAndPredicate(imdbMovieResource, personPredicate)
+			mergeOtherPersonTriple(imdbMovieResource, triple, personPredicate)
+		}
+	}
+
+	private def mergeOtherPersonTriple(imdbMovieResource: String, personTriple: List[RdfTriple], predicate: String): List[RdfTriple] = {
+		if (Queries.existsPerson(imdbMovieResource, predicate)) {
+			return List()
+		}
+		addConnectionTriples(imdbMovieResource, personTriple, "dbpedia-owl:Person", predicate)
+	}
+
+	private def otherPersonList: List[String] = {
+		List(
+			"dbpprop:cinematography",
+			"dbpprop:music",
+			"dbpprop:casting",
+			"dbpprop:stunts/acting",
+			"dbpprop:productionDesign",
+			"dbpprop:productionManager",
+			"dbpprop:artDirector",
+			"dbpprop:otherCrew",
+			"dbpprop:director",
+			"dbpprop:writer",
+			"dbpprop:screenplay",
+			"dbpprop:story",
+			"dbpprop:author",
+			"dbpprop:producer",
+			"dbpprop:coProducer",
+			"dbpprop:setDecoator",
+			"dbpprop:makeUpArtist",
+			"dbpprop:specialEffects",
+			"dbpprop:visualEffects",
+			"dbpprop:editing",
+			"dbpprop:costume"
+		)
 	}
 }

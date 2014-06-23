@@ -1,6 +1,6 @@
 package lod2014group1.merging
 
-import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.{RdfResource, RdfTriple}
 import scalax.collection.edge.LDiEdge
 import scalax.collection.Graph
 
@@ -40,6 +40,27 @@ class TripleGraph(triples: List[RdfTriple]) {
 		}
 		s.map { edge =>
 			edge.target.toString()
+		}.toList
+	}
+
+	def getTriplesForSubjectAndPredicate(subject: String, predicate: String) : List[RdfTriple] = {
+		val s = g.edges.filter { edge =>
+			edge.source.toString() == subject &&
+				edge.label.toString.contains(predicate)
+		}
+
+		s.flatMap { edge =>
+			getTriplesForSubject(edge.target.toString())
+		}.toList
+	}
+
+	def getTriplesForSubject(subject: String) : List[RdfTriple] = {
+		val s = g.edges.filter { edge =>
+			edge.source.toString() == subject
+		}
+
+		s.map { edge =>
+			RdfTriple(RdfResource(edge.source.toString), RdfResource(edge.label.toString), RdfResource(edge.target.toString))
 		}.toList
 	}
 }
