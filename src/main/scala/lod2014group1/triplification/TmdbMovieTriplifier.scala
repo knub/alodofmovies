@@ -46,7 +46,7 @@ class TmdbMovieTriplifier {
 		addList(movie.country(_ : String), mainJson.production_countries.flatMap { country => List(country.iso_3166_1, country.name) } ) :::
 		addInteger(movie.hasRevenue(_ : Integer), mainJson.revenue) :::
 		addInteger(movie.lasts(_: Integer), mainJson.runtime) :::
-		addList(movie.shotInLanguage(_: String), mainJson.spoken_language.flatMap { language => List(language.iso_3166_1, language.name)}) :::
+		addList(movie.shotInLanguage(_: String), mainJson.spoken_language.flatMap { language => List(language.iso_3166_1, language.name)})
 		addString(movie.hasReleaseStatus(_: String), mainJson.status) :::
 		addString(movie.hasTagline(_: String), mainJson.tagline) :::
 		addString(movie.hasTitle(_: String), mainJson.title) :::
@@ -128,7 +128,6 @@ class TmdbMovieTriplifier {
 			character name charName,
 			characterMovie name charName,
 			actor hasLabel member.name,
-			actor hasName member.name,
 		  character hasLabel charName,
 		  characterMovie hasLabel charName,
 		  movie starring actor,
