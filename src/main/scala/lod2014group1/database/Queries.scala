@@ -29,6 +29,16 @@ object Queries {
 		extractResourcesWithNameFrom(query)
 	}
 
+	def getAllProducersOfMovie(movie: String): List[ResourceWithName] = {
+		val query = s"$getAllPrefixe SELECT * WHERE { <$movie> dbpprop:coProducer ?s . <$movie> dbpprop:producer ?s . ?s dbpprop:name ?o }"
+		extractResourcesWithNameFrom(query)
+	}
+
+	def getAllDirectorsOfMovie(movie: String): List[ResourceWithName] = {
+		val query = s"$getAllPrefixe SELECT * WHERE { <$movie> dbpprop:director ?s . ?s dbpprop:name ?o }"
+		extractResourcesWithNameFrom(query)
+	}
+
 	private def extractResourcesWithNameFrom(query: String): List[ResourceWithName] = {
 		val queryExecution = database.buildQuery(query)
 
