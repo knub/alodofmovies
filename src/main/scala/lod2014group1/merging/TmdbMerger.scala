@@ -13,7 +13,7 @@ class TmdbMerger {
 	val movieNames = Queries.getAllMovieNames
 
 	def mergeForrestGump(): Unit = {
-		val triples = tmdbTriplifier.triplify(new File("data/TMDBMoviesList/movie/13.json"))
+		val triples = tmdbTriplifier.triplify(new File("data/TMDBMoviesList/movie/9502.json"))
 		val tripleGraph = new TripleGraph(triples)
 		merge(tripleGraph)
 	}

@@ -2,7 +2,6 @@ package lod2014group1.merging
 
 import lod2014group1.rdf.{RdfResource, RdfTriple}
 import scalax.collection.edge.LDiEdge
-import scalax.collection.mutable.Graph
 
 class TripleGraph(triples: List[RdfTriple]) {
 	val edges = triples.map { triple =>
