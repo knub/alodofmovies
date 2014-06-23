@@ -19,8 +19,7 @@ class TripleGraph(triples: List[RdfTriple]) {
 		edges.find { edge =>
 			edge.label.toString == "rdf:type" &&
 				edge.target.toString == rdfType
-		}//.get.source.toString
-		"lod:TmdbMovie13"
+		}.get.source
 	}
 
 	def getObjectsFor(query1: String, query2: String): List[String] = {
@@ -34,38 +33,38 @@ class TripleGraph(triples: List[RdfTriple]) {
 			edge.label.toString.contains(predicate)
 		}
 		s.map { edge =>
-			edge.target.toString()
+			edge.target
 		}.toList
 	}
 
 	def getObjectsForSubjectAndPredicate(subject: String, predicate: String) : List[String] = {
 		val s = edges.filter { edge =>
-			edge.source.toString() == subject &&
+			edge.source == subject &&
 				edge.label.toString.contains(predicate)
 		}
 		s.map { edge =>
-			edge.target.toString()
+			edge.target
 		}.toList
 	}
 
 	def getTriplesForSubjectAndPredicate(subject: String, predicate: String) : List[RdfTriple] = {
 		val s = edges.filter { edge =>
-			edge.source.toString() == subject &&
+			edge.source == subject &&
 				edge.label.toString.contains(predicate)
 		}
 
 		s.flatMap { edge =>
-			getTriplesForSubject(edge.target.toString())
+			getTriplesForSubject(edge.target)
 		}.toList
 	}
 
 	def getTriplesForSubject(subject: String) : List[RdfTriple] = {
 		val s = edges.filter { edge =>
-			edge.source.toString() == subject
+			edge.source == subject
 		}
 
 		s.map { edge =>
-			RdfTriple(RdfResource(edge.source.toString), RdfResource(edge.label.toString), RdfResource(edge.target.toString))
+			RdfTriple(RdfResource(edge.source), RdfResource(edge.label.toString), RdfResource(edge.target))
 		}.toList
 	}
 }
