@@ -31,7 +31,9 @@ class TmdbMerger {
 		var newMatched   = List[(String, Double)]()
 		
 		val r = new Random(1000)
-		r.shuffle(dir.listFiles().toList).take(10).foreach { file => 	
+		(new File("data/TMDBMoviesList/movie/13.json") ::
+		 new File("data/TMDBMoviesList/movie/9502.json") ::
+			r.shuffle(dir.listFiles().toList).take(10)).foreach { file =>
 			val triples = tmdbTriplifier.triplify(file)
 			val tripleGraph = new TripleGraph(triples)
 			val imdbMovie = merge(tripleGraph)
@@ -46,7 +48,7 @@ class TmdbMerger {
 				else newMatched ::= imdbMovie.head
 			}
 			else
-				notMatched ::= file.getName()
+				notMatched ::= file.getName
 		}
 		
 		println()
@@ -106,7 +108,7 @@ class TmdbMerger {
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
 			val score = calculateActorOverlap(triples, candidate.resource) //TODO moviename
 			movieScores += (candidate.resource -> score)
-			if (i % 100 == 0)
+			if (i % 1000 == 0)
 				println(s"$i/${candidates.size}")
 		}
 		val bestMovies = movieScores.toList.sortBy { case (movie, score) => -score }.take(5).filter(_._2 > 0.9)
@@ -115,7 +117,6 @@ class TmdbMerger {
 	}
 
 	def calculateActorOverlap(g: TripleGraph, candidateUri: String): Double = {
-		val threshhold = 5
 		val currentActors = g.getObjectsFor("dbpprop:starring", "rdfs:label")
 		val cacheFile = new File(s"data/MergeMovieActor/${candidateUri.split("#")(1)}")
 		val candidateActors = if (cacheFile.exists()) {
@@ -134,9 +135,9 @@ class TmdbMerger {
 
 	def calculateProducerOverlap(g: TripleGraph, candidateUri: String): Double = {
 		val currentProducers = g.getObjectsFor("dbpprop:producer", "dbpprop:name") ::: g.getObjectsFor("dbpprop:coProducer", "dbpprop:name")
-		val canidateProducers = Queries.getAllProducersOfMovie(candidateUri)
+		val candidateProducer = Queries.getAllProducersOfMovie(candidateUri)
 
-		calculateOverlap(currentProducers, canidateProducers)
+		calculateOverlap(currentProducers, candidateProducer)
 	}
 
 	def calculateDirectorOverlap(g: TripleGraph, candidateUri: String): Double = {
@@ -147,7 +148,7 @@ class TmdbMerger {
 	}
 
 	private def calculateOverlap(currentObjects: List[String], canidateObjects: List[ResourceWithName]): Double = {
-		val threshhold = 5
+		val threshold = 5
 
 		if (canidateObjects.isEmpty)
 			return 0.0
@@ -157,7 +158,7 @@ class TmdbMerger {
 				StringUtils.getLevenshteinDistance(canidateObject.name, currentObject)
 			}.min
 
-			if (bestMatch < threshhold)
+			if (bestMatch < threshold)
 				List(currentObject)
 			else
 				List()
