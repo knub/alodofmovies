@@ -29,7 +29,9 @@ class TmdbMerger {
 		// TODO: Do not use only first
 		val movieName = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")(0)
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
-			StringUtils.getLevenshteinDistance(movieWithName.name, movieName) < 5
+			val l = StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
+//			println(f"$l, M1: #${movieWithName.name}#, M2: #$movieName#")
+			l < 5
 		}
 		(moviesInYear ::: moviesWithSimilarName).distinct
 	}
