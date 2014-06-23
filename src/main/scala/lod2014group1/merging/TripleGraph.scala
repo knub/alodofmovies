@@ -6,16 +6,22 @@ import scalax.collection.Graph
 
 class TripleGraph(triples: List[RdfTriple]) {
 	val edges = triples.map { triple =>
-		LDiEdge(triple.s.toString(), triple.o.toString)(triple.p.toString())
+		LDiEdge(triple.s.toString().trim, prepareString(triple.o.toString))(triple.p.toString())
 	}
+
+	def prepareString(s: String): String = {
+		if (s.head == "\"" && s.last == "\"")
+			s.stripPrefix("\"").stripSuffix("\"")
+		else s
+	}
+
 	val g = Graph(edges: _*)
 
 	def getObjectOfType(rdfType: String): String = {
 		g.edges.find { edge =>
 			edge.label.toString == "rdf:type" &&
 				edge.target.toString == rdfType
-		}//.get.source.toString
-		"lod:TmdbMovie13"
+		}.get.source.toString
 	}
 
 	def getObjectsFor(query1: String, query2: String): List[String] = {
