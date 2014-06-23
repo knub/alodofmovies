@@ -27,9 +27,11 @@ class TmdbMerger {
 
 		val movieResource = g.getObjectOfType("dbpedia-owl:Film")
 		// TODO: Do not use only first
-		val movieName = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")(0)
+		val currentMovieNames = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
-			val l = StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
+			val l = currentMovieNames.map { movieName =>
+				StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
+			}.min
 //			println(f"$l, M1: #${movieWithName.name}#, M2: #$movieName#")
 			l < 5
 		}
