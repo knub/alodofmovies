@@ -7,6 +7,8 @@ class RdfObject { }
 abstract class RdfLiteral extends RdfObject {}
 
 case class RdfInteger(lit: Integer) extends RdfLiteral {
+	if (lit == null)
+		throw new RuntimeException("lit is null.")
 	override def toString(): String = {
 		'"' + lit.toString + '"' + "^^<http://www.w3.org/2001/XMLSchema#integer>"
 	}
