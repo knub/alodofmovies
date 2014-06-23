@@ -10,7 +10,7 @@ class TripleGraph(triples: List[RdfTriple]) {
 	}
 
 	def prepareString(s: String): String = {
-		if (s.head == "\"" && s.last == "\"")
+		if (s.head == '"' && s.last == '"')
 			s.stripPrefix("\"").stripSuffix("\"")
 		else s
 	}
