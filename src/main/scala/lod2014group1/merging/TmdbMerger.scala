@@ -19,21 +19,21 @@ class TmdbMerger {
 	}
 
 	def findCandidateMovies(g: TripleGraph): List[ResourceWithName] = {
-		val years = g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease").map { yearString =>
-			val split = yearString.split("-")
-			split(0).replace("\"", "").toInt
-		}.distinct
-		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
+//		val years = g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease").map { yearString =>
+//			val split = yearString.split("-")
+//			split(0).replace("\"", "").toInt
+//		}.distinct
+		val moviesInYear = List()//years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
 
 		val movieResource = g.getObjectOfType("dbpedia-owl:Film")
-		// TODO: Do not use only first
 		val currentMovieNames = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
 			val l = currentMovieNames.map { movieName =>
-				StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
+				val l = StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
+//				println(f"$l, M1: #${movieWithName.name}#, M2: #$movieName#")
+				l
 			}.min
-//			println(f"$l, M1: #${movieWithName.name}#, M2: #$movieName#")
-			l < 5
+			l < 10
 		}
 		(moviesInYear ::: moviesWithSimilarName).distinct
 	}

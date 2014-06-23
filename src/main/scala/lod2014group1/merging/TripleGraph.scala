@@ -21,7 +21,8 @@ class TripleGraph(triples: List[RdfTriple]) {
 		g.edges.find { edge =>
 			edge.label.toString == "rdf:type" &&
 				edge.target.toString == rdfType
-		}.get.source.toString
+		}//.get.source.toString
+		"lod:TmdbMovie13"
 	}
 
 	def getObjectsFor(query1: String, query2: String): List[String] = {
