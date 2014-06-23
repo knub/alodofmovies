@@ -59,7 +59,7 @@ class OfdbTriplifier(val ofdbId: Integer) {
 			var imdbId = docString.split(imdbIdSplit, 2)(1).split("""\"""", 2)(0)
 			imdbId = imdbId.replace("?", "")
 			imdbId = "tt" + imdbId
-			val imdbUri = UriBuilder.getMovieUriFromImdbID(imdbId)
+			val imdbUri = UriBuilder.getMovieUriFromImdbId(imdbId)
 			triples = (movie sameAs imdbUri) :: triples
 		}
 		
