@@ -19,7 +19,7 @@ class OfflineTaskRunner extends Logging {
 	}
 
 	def runTasks(n: Int): Unit = {
-		val tasks = taskDatabase.getNextNTasks(n, 1586500)
+		val tasks = taskDatabase.getNextNTasks(n, 400000)
 		tasks.zipWithIndex.foreach { case (task, i) =>
 				runTask(WorkerTask.fromDatabaseTask(task))
 				if (task.id % 100 == 0)
