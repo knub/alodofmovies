@@ -27,7 +27,7 @@ class TmdbMerger {
 		val dir = new File("data/TMDBMoviesList/movie/")
 		var falseMatched = List[(String, Double)]()
 		var matched      = List[(String, Double)]()
-		var notMatched   = List[(String, Double)]()
+		var notMatched   = List[String]()
 		var newMatched   = List[(String, Double)]()
 		
 		val r = new Random(1000)
@@ -46,7 +46,7 @@ class TmdbMerger {
 				else newMatched ::= imdbMovie.head
 			}
 			else
-				notMatched ::= imdbMovie.head
+				notMatched ::= file.getName()
 		}
 		
 		println()
