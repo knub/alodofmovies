@@ -73,7 +73,11 @@ object Triplifier extends Logging {
 				println(part)
 				part
 			case Config.Person.Tim =>
-				new OfdbTriplifier(1).triplify()
+				for (i <- 101 to 1000){
+					println(i)
+					new OfdbTriplifier(i).triplify()
+				}
+				List()
 		}
 
 		triples.foreach(println)

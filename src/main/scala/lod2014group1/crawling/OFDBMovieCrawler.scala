@@ -41,7 +41,7 @@ class OFDBMovieCrawler extends Crawler {
 			val lastMovieIDCrawled = lastMovieIDCrawledString.trim().toInt
 			println(s"Last movie ID crawled: $lastMovieIDCrawled.")
 			val movieBasePath = s"${OFDBMovieCrawler.OFDB_PATH}/Movies"
-			for (i <- 9397 to lastMovieIDCrawled){
+			for (i <- 85 to 85){
 				val castPath = s"$movieBasePath/$i/Cast.html"
 				if (Files.exists(Paths.get(castPath))){
 					val castContent = Source.fromFile(castPath)(codec).mkString
