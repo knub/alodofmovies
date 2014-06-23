@@ -53,50 +53,42 @@ class TmdbMerger {
 	}
 
 	def calculateActorOverlap(g: TripleGraph, candidateUri: String): Double = {
-		val threshhold = 5
-		val movieActors = g.getObjectsFor("dbpprop:starring", "rdfs:label")
+		val currentActors = g.getObjectsFor("dbpprop:starring", "rdfs:label")
 		val candidateActors = Queries.getAllActorsOfMovie(candidateUri)
 
-		if (candidateActors.isEmpty)
-			return 0.0
-		
-		val matched_actors = movieActors.flatMap { actor =>
-			val best_match = candidateActors.map(c_actor => StringUtils.getLevenshteinDistance(c_actor.name, actor)).min
-			if (best_match < threshhold) List(actor)
-			else List()
-		} 
-		matched_actors.size.toDouble / movieActors.size
+		calculateOverlap(currentActors, candidateActors)
 	}
 
 	def calculateProducerOverlap(g: TripleGraph, candidateUri: String): Double = {
-		val threshhold = 5
-		val movieProducers = g.getObjectsFor("dbpprop:producer", "dbpprop:name") ::: g.getObjectsFor("dbpprop:coProducer", "dbpprop:name")
+		val currentProducers = g.getObjectsFor("dbpprop:producer", "dbpprop:name") ::: g.getObjectsFor("dbpprop:coProducer", "dbpprop:name")
 		val canidateProducers = Queries.getAllProducersOfMovie(candidateUri)
 
-		if (canidateProducers.isEmpty)
-			return 0.0
-
-		val matchedProducers = movieProducers.flatMap { producer =>
-			val best_match = canidateProducers.map(cProducer => StringUtils.getLevenshteinDistance(cProducer.name, producer)).min
-			if (best_match < threshhold) List(producer)
-			else List()
-		}
-		matchedProducers.size.toDouble / movieProducers.size
+		calculateOverlap(currentProducers, canidateProducers)
 	}
 
 	def calculateDirectorOverlap(g: TripleGraph, candidateUri: String): Double = {
-		val threshhold = 5
-		val movieDirectors = g.getObjectsFor("dbpprop:director", "dbpprop:name")
+		val currentDirectors = g.getObjectsFor("dbpprop:director", "dbpprop:name")
 		val canidateDirectors = Queries.getAllDirectorsOfMovie(candidateUri)
 
-		if (canidateDirectors.isEmpty)
+		calculateOverlap(currentDirectors, canidateDirectors)
+	}
+
+	private def calculateOverlap(currentObjects: List[String], canidateObjects: List[ResourceWithName]): Double = {
+		val threshhold = 5
+
+		if (canidateObjects.isEmpty)
 			return 0.0
 
-		val matchedDirectors = movieDirectors.flatMap { director =>
-			val best_match = canidateDirectors.map(cDirector => StringUtils.getLevenshteinDistance(cDirector.name, director)).min
-			if (best_match < threshhold) List(director)
-			else List()
+		val similarObjects = currentObjects.flatMap { currentObject =>
+			val bestMatch = canidateObjects.map { canidateObject =>
+				StringUtils.getLevenshteinDistance(canidateObject.name, currentObject)
+			}.min
+
+			if (bestMatch < threshhold)
+				List(currentObject)
+			else
+				List()
 		}
-		matchedDirectors.size.toDouble / movieDirectors.size
+		similarObjects.size.toDouble / currentObjects.size
 	}
 }
