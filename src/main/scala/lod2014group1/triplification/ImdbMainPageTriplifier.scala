@@ -157,7 +157,7 @@ class ImdbMainPageTriplifier(val imdbId: String) {
 						triples = (movie releasedOn date) :: triples
 					} catch {
 						case e: Exception =>
-							triples = (movie releasedOn dateStr) :: triples
+							triples = (movie releasedOnStringPart dateStr) :: triples
 					}
 				case "Filming Locations:" =>
 					if (block.select("span.see-more.inline").size == 0) {

@@ -60,7 +60,9 @@ class RdfMovieResource(resource: String) extends RdfResource(resource) with Logg
 	def scored(score: String): RdfTriple = buildTriple(RdfResource("lod:metascore"), RdfString(score))
 
 	def releasedOn(releaseDate: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:initialRelease"), RdfDate(releaseDate))
-	def releasedOn(releaseDate: String): RdfTriple = buildTriple(RdfResource("dbpprop:initialRelease"), RdfString(releaseDate))
+	def releasedOn(releaseDate: String): RdfTriple = buildTriple(RdfResource("dbpprop:initialRelease"), RdfDate( new DateTime (releaseDate)))
+	
+	def releasedOnStringPart(releaseDate: String): RdfTriple = buildTriple(RdfResource("dbpprop:initialRelease"), RdfString(releaseDate))
 
 	def hasKeyword(keyword: String): RdfTriple = buildTriple(RdfResource("lod:keyword"), RdfString(keyword)).addAlways
 
