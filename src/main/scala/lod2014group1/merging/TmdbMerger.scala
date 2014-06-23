@@ -2,10 +2,11 @@ package lod2014group1.merging
 
 import java.io.File
 import lod2014group1.triplification.TmdbMovieTriplifier
-import scalax.collection.edge.LDiEdge
-import scalax.collection.Graph
 import lod2014group1.database.{ResourceWithName, Queries}
 import org.apache.commons.lang3.StringUtils
+import scala.pickling._
+import json._
+import org.apache.commons.io.{FileUtils, IOUtils}
 
 class TmdbMerger {
 
@@ -53,8 +54,19 @@ class TmdbMerger {
 	}
 
 	def calculateActorOverlap(g: TripleGraph, candidateUri: String): Double = {
+		val threshhold = 5
 		val currentActors = g.getObjectsFor("dbpprop:starring", "rdfs:label")
-		val candidateActors = Queries.getAllActorsOfMovie(candidateUri)
+		val cacheFile = new File(s"data/MergeMovieActor/${candidateUri.split("#")(1)}")
+		val candidateActors = if (cacheFile.exists()) {
+			val json = FileUtils.readFileToString(cacheFile, "UTF-8")
+			json.unpickle[List[ResourceWithName]]
+		}
+		else {
+			val tmp = Queries.getAllActorsOfMovie(candidateUri)
+			val jsonString = tmp.pickle.value
+			FileUtils.writeStringToFile(cacheFile, jsonString, "UTF-8")
+			tmp
+		}
 
 		calculateOverlap(currentActors, candidateActors)
 	}
