@@ -34,12 +34,11 @@ class TmdbMerger {
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
 			StringUtils.getLevenshteinDistance(movieWithName.name, movieName) < 5
 		}
-		moviesInYear ::: moviesWithSimilarName
+		(moviesInYear ::: moviesWithSimilarName).distinct
 	}
 
 	def merge(triples: Graph[String, LDiEdge]): Unit = {
 		val candidates = findCandidateMovies(triples)
-//		candidates.foreach(println)
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
 			val score = calculateActorOverlap(triples, candidate.resource) //TODO moviename
@@ -49,30 +48,21 @@ class TmdbMerger {
 		}
 		println("The best movies are:")
 		movieScores.toList.sortBy { case (movie, score) => -score }.take(5).foreach(println)
-		val bestMovie = movieScores.maxBy { case (movie, score) => score }
 	}
 
 	def calculateActorOverlap(g: Graph[String, LDiEdge], candidateUri:String): Double = {
 		val threshhold = 5
-//		println("=========================")
-//		println("==movie")
 		val movieActors = getObjectsFor(g, "dbpprop:starring", "rdfs:label")
-//		println(movieActors)
-//		println("==candidates")
 		val candidateActors = Queries.getAllActorsOfMovie(candidateUri)
-//		println(candidateUri)
-//		candidateActors.foreach(a =>  println(a.name))
-		
+
 		if (candidateActors.isEmpty)
-			return 0.0;
+			return 0.0
 		
 		val matched_actors = movieActors.flatMap { actor =>
 			val best_match = candidateActors.map(c_actor => StringUtils.getLevenshteinDistance(c_actor.name, actor)).min
 			if (best_match < threshhold) List(actor)
 			else List()
 		} 
-//		println("==match")
-//		println(matched_actors)
 		matched_actors.size.toDouble / movieActors.size
 	}
 
