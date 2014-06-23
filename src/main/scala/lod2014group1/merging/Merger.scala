@@ -63,18 +63,25 @@ object Merger {
 		additionalTriples
 	}
 
-//	def mergeOtherPersons(imdbMovieResource: String, graph: TripleGraph): List[RdfTriple] = {
-//		otherPersonList.flatMap{ personPredicate =>
-//			val triple = graph.getTriplesForSubjectAndPredicate(imdbMovieResource, personPredicate)
-//			mergeOtherPersonTriple(imdbMovieResource, triple, personPredicate)
-//		}
-//	}
+	def mergeOtherPersons(imdbMovieResource: String, graph: TripleGraph): List[RdfTriple] = {
+		otherPersonList.flatMap{ personPredicate =>
+			val triple = graph.getTriplesForSubjectAndPredicate(imdbMovieResource, personPredicate)
+			mergeOtherPersonTriple(imdbMovieResource, triple, personPredicate)
+		}
+	}
 
 	private def mergeOtherPersonTriple(imdbMovieResource: String, personTriple: List[RdfTriple], predicate: String): List[RdfTriple] = {
 		if (Queries.existsPerson(imdbMovieResource, predicate)) {
 			return List()
 		}
-		addConnectionTriples(imdbMovieResource, personTriple, "dbpedia-owl:Person", predicate)
+		val triple = excludeTriple(personTriple, excludeOtherPersonTripleList)
+		addConnectionTriples(imdbMovieResource, triple, "dbpedia-owl:Person", predicate)
+	}
+
+	private def excludeTriple(triple: List[RdfTriple], excludeTriple: List[String]): List[RdfTriple] = {
+		triple.filter { t =>
+			!excludeTriple.contains(t.p.toString())
+		}
 	}
 
 	private def otherPersonList: List[String] = {
@@ -115,6 +122,12 @@ object Merger {
 	private def excludeActorTripleList: List[String] = {
 		List(
 			"dbpprop:character",
+			"lod:hasAward"
+		)
+	}
+
+	private def excludeOtherPersonTripleList: List[String] = {
+		List(
 			"lod:hasAward"
 		)
 	}
