@@ -24,6 +24,25 @@ object Queries {
 		extractResourcesWithNameFrom(query)
 	}
 
+	def getAllMovieNamesAroundYearWithRuntime(year: String, runtime: String): List[ResourceWithName] = {
+		val query = s"""
+				$getAllPrefixe
+				SELECT * WHERE {
+					?s rdf:type dbpedia-owl:Film .
+					?s dbpprop:years '$year' .
+					?s dbpprop:name ?o .
+		      ?s dbpprop:runtime ?r .
+				  FILTER(?r => ${addToRdfInteger(runtime, -5)}
+						&& ?r <= ${addToRdfInteger(runtime, 5)}
+				}
+		"""
+ 		extractResourcesWithNameFrom(query)
+	}
+
+	def addToRdfInteger(number: String, x: Int): Int = {
+		return (number.split("\"")(1).toInt - x)
+	}
+
 	def getAllActorsOfMovie(movie: String): List[ResourceWithName] = {
 		val query = s"$getAllPrefixe SELECT * WHERE { <$movie> dbpprop:starring ?s . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
