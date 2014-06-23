@@ -17,7 +17,13 @@ class TmdbMerger {
 	def mergeForrestGump(): Unit = {
 		val triples = tmdbTriplifier.triplify(new File("data/TMDBMoviesList/movie/9502.json"))
 		val tripleGraph = new TripleGraph(triples)
-		merge(tripleGraph)
+		val imdbMovie = merge(tripleGraph)
+		if (!imdbMovie.isEmpty){	
+			val movieResource = tripleGraph.getObjectOfType("dbpedia-owl:Film")
+			val movietriple = tripleGraph.getTriplesForSubject(movieResource)
+			Merger.mergeMovieTriple(imdbMovie.head._1, movietriple).foreach(println)
+			//TODO other Methods
+		}
 	}
 
 	def findCandidateMovies(g: TripleGraph): List[ResourceWithName] = {
@@ -41,7 +47,7 @@ class TmdbMerger {
 		(moviesInYear ::: moviesWithSimilarName).distinct
 	}
 
-	def merge(triples: TripleGraph): Unit = {
+	def merge(triples: TripleGraph): List[(String, Double)] = {
 		val candidates = findCandidateMovies(triples)
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
@@ -50,8 +56,10 @@ class TmdbMerger {
 			if (i % 100 == 0)
 				println(s"$i/${candidates.size}")
 		}
-		println("The best movies are:")
-		movieScores.toList.sortBy { case (movie, score) => -score }.take(5).foreach(println)
+		//println("The best movies are:")
+		val bestMovies = movieScores.toList.sortBy { case (movie, score) => -score }
+		bestMovies
+		//.take(5).foreach(println)
 	}
 
 	def calculateActorOverlap(g: TripleGraph, candidateUri: String): Double = {
