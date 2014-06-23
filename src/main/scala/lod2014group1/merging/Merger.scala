@@ -22,7 +22,7 @@ object Merger {
 			} else {
 				// if a triple with a specific predicate already exists, do not add the triple
 				if (!Queries.existsTriple(resource, triple.p.toString())) {
-					additionalTriples ::= triple
+					additionalTriples ::= RdfTriple(RdfResource(resource), triple.p, triple.o)
 				}
 			}
 		}
@@ -43,12 +43,12 @@ object Merger {
 		addConnectionTriples(imdbMovieResource, akaTriple, "lod:aka", "dbpprop:alternativeNames")
 	}
 
-//	def mergeAwardTriple(imdbMovieResource: String, awardTriple: List[RdfTriple]): List[RdfTriple] = {
-//		if (Queries.existsAward(imdbMovieResource)) {
-//			return List()
-//		}
-//		addConnectionTriples(imdbMovieResource, awardTriple, "dbpedia-owl:Award", "dbpprop:alternativeNames")
-//	}
+	def mergeAwardTriple(imdbMovieResource: String, awardTriple: List[RdfTriple]): List[RdfTriple] = {
+		if (Queries.existsAward(imdbMovieResource)) {
+			return List()
+		}
+		addConnectionTriples(imdbMovieResource, awardTriple, "dbpedia-owl:Award", "lod:hasAward")
+	}
 
 	private def addConnectionTriples(movieResource: String, triples: List[RdfTriple], resourceType: String, connectionProperty: String): List[RdfTriple] = {
 		var additionalTriples: List[RdfTriple] = List()

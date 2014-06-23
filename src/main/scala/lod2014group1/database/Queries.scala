@@ -17,49 +17,17 @@ object Queries {
 	}
 
 	def getAllMovieNames: List[ResourceWithName] = {
-		val query =
-			"""
-			  |prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-			  |prefix dbpprop: <http://dbpedia.org/property/>
-			  |prefix dbpedia-owl: <http://dbpedia.org/ontology/>
-			  |
-			  |SELECT ?s ?o WHERE {
-			  |  ?s rdf:type dbpedia-owl:Film .
-			  |  ?s dbpprop:name ?o
-			  |}
-			""".stripMargin
-
+		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllMovieNamesOfYear(year: String): List[ResourceWithName] = {
-		val query =
-			s"""
-			  |prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-			  |prefix dbpprop: <http://dbpedia.org/property/>
-			  |prefix dbpedia-owl: <http://dbpedia.org/ontology/>
-			  |
-			  |SELECT ?s ?o WHERE {
-			  |  ?s rdf:type dbpedia-owl:Film .
-			  |  ?s dbpprop:years "$year" .
-			  |  ?s dbpprop:name ?o
-			  |}
-			""".stripMargin
-
+		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:years $year . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllActorsOfMovie(movie: String): List[ResourceWithName] = {
-		val query =
-			s"""
-			  |prefix dbpprop: <http://dbpedia.org/property/>
-			  |
-			  |SELECT ?s ?o WHERE {
-			  |  <$movie> dbpprop:starring ?s .
-			  |  ?s dbpprop:name ?o
-			  |}
-			""".stripMargin
-
+		val query = s"$getAllPrefixe SELECT * WHERE { <$movie> dbpprop:starring ?s . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
@@ -76,21 +44,6 @@ object Queries {
 		results
 	}
 
-	def existsTriple(subject: String, predicate: String): Boolean = {
-		val query = s"$getAllPrefixe SELECT ?o WHERE { <$subject> $predicate ?o . }"
-
-		val queryExecution = database.buildQuery(query)
-
-		var results: List[String] = List()
-		database.query(queryExecution, { rs =>
-			val o = rs.get("o").toString
-
-			results ::= o
-		})
-		
-		results.size == 0
-	}
-
 	def existsReleaseInfo(movieResource: String): Boolean = {
 		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type lod:ReleaseInfo . <$movieResource> dbpprop:released ?s . }"
 		existsResource(query)
@@ -101,10 +54,10 @@ object Queries {
 		existsResource(query)
 	}
 
-//	def existsAward(movieResource: String): Boolean = {
-//		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Award . <$movieResource> dbpprop:alternativeNames ?s . }"
-//		existsResource(query)
-//	}
+	def existsAward(movieResource: String): Boolean = {
+		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Award . <$movieResource> lod:hasAward ?s . }"
+		existsResource(query)
+	}
 
 	private def existsResource(query: String): Boolean = {
 		val queryExecution = database.buildQuery(query)
@@ -115,7 +68,19 @@ object Queries {
 
 			results ::= o
 		})
+		results.size == 0
+	}
 
+	def existsTriple(subject: String, predicate: String): Boolean = {
+		val query = s"$getAllPrefixe SELECT ?o WHERE { <$subject> $predicate ?o . }"
+		val queryExecution = database.buildQuery(query)
+
+		var results: List[String] = List()
+		database.query(queryExecution, { rs =>
+			val o = rs.get("o").toString
+
+			results ::= o
+		})
 		results.size == 0
 	}
 	
