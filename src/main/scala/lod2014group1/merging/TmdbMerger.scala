@@ -41,7 +41,7 @@ class TmdbMerger {
 				if (imdbUrls.nonEmpty) {
 					println(imdbUrls.head)
 					println(imdbMovie.head._1)
-					if (imdbMovie.head._1.split("tt")(-1) == imdbUrls.head.split("title")(-1))
+					if (imdbMovie.head._1.split("Movie").last == imdbUrls.head.split("/").last.split(">")(0))
 						matched ::= imdbMovie.head
 					else
 						falseMatched ::= imdbMovie.head
@@ -51,11 +51,18 @@ class TmdbMerger {
 			else
 				notMatched ::= imdbMovie.head
 		}
+		
 		println()
 		println("matched:" + matched)
 		println("falseMatched" + falseMatched)
 		println("newMatched" + newMatched)
 		println("notMatched" + notMatched)
+		
+		println()		
+		println("matched:" + matched.size)
+		println("falseMatched" + falseMatched.size)
+		println("newMatched" + newMatched.size)
+		println("notMatched" + notMatched.size)
 	}
 	
 	def mergeTmdbMovie(file: File): Unit = {
