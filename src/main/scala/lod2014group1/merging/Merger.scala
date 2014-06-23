@@ -6,19 +6,21 @@ import lod2014group1.rdf.{RdfResource, RdfTriple}
 object Merger {
 
 	def mergeMovieTriple(imdbMovieResource: String, movieTriples: List[RdfTriple]): List[RdfTriple] = {
-		getAdditionalTriples(imdbMovieResource, movieTriples)
+		getAdditionalTriples(imdbMovieResource, movieTriples, excludeMovieTripleList)
 	}
 
 	def mergeActorTriple(imdbActorResource: String, actorTriples: List[RdfTriple]): List[RdfTriple] = {
-		getAdditionalTriples(imdbActorResource, actorTriples)
+		getAdditionalTriples(imdbActorResource, actorTriples, excludeActorTripleList)
 	}
 
-	private def getAdditionalTriples(resource: String, triples: List[RdfTriple]): List[RdfTriple] = {
+	private def getAdditionalTriples(resource: String, triples: List[RdfTriple], excludeTriples: List[String]): List[RdfTriple] = {
 		var additionalTriples: List[RdfTriple] = List()
 
-		triples.foreach{ triple =>
-			if (triple.addAlwaysFlag) {
-				additionalTriples ::= triple
+		triples.foreach { triple =>
+			if (excludeTriples.contains(triple.p.toString())) {
+				// do nothing
+			} else if (triple.addAlwaysFlag) {
+				additionalTriples ::= RdfTriple(RdfResource(resource), triple.p, triple.o)
 			} else {
 				// if a triple with a specific predicate already exists, do not add the triple
 				if (!Queries.existsTriple(resource, triple.p.toString())) {
@@ -43,12 +45,12 @@ object Merger {
 		addConnectionTriples(imdbMovieResource, akaTriple, "lod:aka", "dbpprop:alternativeNames")
 	}
 
-	def mergeAwardTriple(imdbMovieResource: String, awardTriple: List[RdfTriple]): List[RdfTriple] = {
-		if (Queries.existsAward(imdbMovieResource)) {
-			return List()
-		}
-		addConnectionTriples(imdbMovieResource, awardTriple, "dbpedia-owl:Award", "lod:hasAward")
-	}
+//	def mergeAwardTriple(imdbMovieResource: String, awardTriple: List[RdfTriple]): List[RdfTriple] = {
+//		if (Queries.existsAward(imdbMovieResource)) {
+//			return List()
+//		}
+//		addConnectionTriples(imdbMovieResource, awardTriple, "dbpedia-owl:Award", "lod:hasAward")
+//	}
 
 	private def addConnectionTriples(movieResource: String, triples: List[RdfTriple], resourceType: String, connectionProperty: String): List[RdfTriple] = {
 		var additionalTriples: List[RdfTriple] = List()
@@ -59,5 +61,74 @@ object Merger {
 			additionalTriples ::= triple
 		}
 		additionalTriples
+	}
+
+	def mergeOtherPersons(imdbMovieResource: String, graph: TripleGraph): List[RdfTriple] = {
+		otherPersonList.flatMap{ personPredicate =>
+			val triple = graph.getTriplesForSubjectAndPredicate(imdbMovieResource, personPredicate)
+			mergeOtherPersonTriple(imdbMovieResource, triple, personPredicate)
+		}
+	}
+
+	private def mergeOtherPersonTriple(imdbMovieResource: String, personTriple: List[RdfTriple], predicate: String): List[RdfTriple] = {
+		if (Queries.existsPerson(imdbMovieResource, predicate)) {
+			return List()
+		}
+		val triple = excludeTriple(personTriple, excludeOtherPersonTripleList)
+		addConnectionTriples(imdbMovieResource, triple, "dbpedia-owl:Person", predicate)
+	}
+
+	private def excludeTriple(triple: List[RdfTriple], excludeTriple: List[String]): List[RdfTriple] = {
+		triple.filter { t =>
+			!excludeTriple.contains(t.p.toString())
+		}
+	}
+
+	private def otherPersonList: List[String] = {
+		List(
+			"dbpprop:cinematography",
+			"dbpprop:music",
+			"dbpprop:casting",
+			"dbpprop:stunts/acting",
+			"dbpprop:productionDesign",
+			"dbpprop:productionManager",
+			"dbpprop:artDirector",
+			"dbpprop:otherCrew",
+			"dbpprop:director",
+			"dbpprop:writer",
+			"dbpprop:screenplay",
+			"dbpprop:story",
+			"dbpprop:author",
+			"dbpprop:producer",
+			"dbpprop:coProducer",
+			"dbpprop:setDecoator",
+			"dbpprop:makeUpArtist",
+			"dbpprop:specialEffects",
+			"dbpprop:visualEffects",
+			"dbpprop:editing",
+			"dbpprop:costume"
+		)
+	}
+
+	private def excludeMovieTripleList: List[String] = {
+		otherPersonList ::: List(
+			"dbpprop:starring",
+			"dbpprop:released",
+			"dbpprop:alternativeNames",
+			"lod:hasAward"
+		)
+	}
+
+	private def excludeActorTripleList: List[String] = {
+		List(
+			"dbpprop:character",
+			"lod:hasAward"
+		)
+	}
+
+	private def excludeOtherPersonTripleList: List[String] = {
+		List(
+			"lod:hasAward"
+		)
 	}
 }

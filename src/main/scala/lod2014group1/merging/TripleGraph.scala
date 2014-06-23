@@ -1,17 +1,22 @@
 package lod2014group1.merging
 
-import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.{RdfResource, RdfTriple}
 import scalax.collection.edge.LDiEdge
-import scalax.collection.Graph
+import scalax.collection.mutable.Graph
 
 class TripleGraph(triples: List[RdfTriple]) {
 	val edges = triples.map { triple =>
-		LDiEdge(triple.s.toString(), triple.o.toString)(triple.p.toString())
+		LDiEdge(triple.s.toString().trim, prepareString(triple.o.toString))(triple.p.toString())
 	}
-	val g = Graph(edges: _*)
+
+	def prepareString(s: String): String = {
+		if (s.head == '"' && s.last == '"')
+			s.stripPrefix("\"").stripSuffix("\"")
+		else s
+	}
 
 	def getObjectOfType(rdfType: String): String = {
-		g.edges.find { edge =>
+		edges.find { edge =>
 			edge.label.toString == "rdf:type" &&
 				edge.target.toString == rdfType
 		}//.get.source.toString
@@ -25,7 +30,7 @@ class TripleGraph(triples: List[RdfTriple]) {
 	}
 
 	def getObjectsForPredicate(predicate: String) : List[String] = {
-		val s = g.edges.filter { edge =>
+		val s = edges.filter { edge =>
 			edge.label.toString.contains(predicate)
 		}
 		s.map { edge =>
@@ -34,12 +39,33 @@ class TripleGraph(triples: List[RdfTriple]) {
 	}
 
 	def getObjectsForSubjectAndPredicate(subject: String, predicate: String) : List[String] = {
-		val s = g.edges.filter { edge =>
+		val s = edges.filter { edge =>
 			edge.source.toString() == subject &&
 				edge.label.toString.contains(predicate)
 		}
 		s.map { edge =>
 			edge.target.toString()
+		}.toList
+	}
+
+	def getTriplesForSubjectAndPredicate(subject: String, predicate: String) : List[RdfTriple] = {
+		val s = edges.filter { edge =>
+			edge.source.toString() == subject &&
+				edge.label.toString.contains(predicate)
+		}
+
+		s.flatMap { edge =>
+			getTriplesForSubject(edge.target.toString())
+		}.toList
+	}
+
+	def getTriplesForSubject(subject: String) : List[RdfTriple] = {
+		val s = edges.filter { edge =>
+			edge.source.toString() == subject
+		}
+
+		s.map { edge =>
+			RdfTriple(RdfResource(edge.source.toString), RdfResource(edge.label.toString), RdfResource(edge.target.toString))
 		}.toList
 	}
 }

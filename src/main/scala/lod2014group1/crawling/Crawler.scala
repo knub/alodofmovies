@@ -40,7 +40,7 @@ abstract class Crawler extends Logging {
 	 */
 	def getNewRandomWaitingTime(): Long = {
 		val d = Math.max(r.nextGaussian * 1 + 0.5, 0) * 1000
-		log.debug(s"Waited $d");
+		log.debug(s"Waited $d")
 		d.toLong
 		0
 	}
