@@ -25,6 +25,16 @@ class TmdbMovieTriplifier {
 //		appendJson.credits.crew.foreach { person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)) }
 
 		val id = mainJson.id
+//		val imdb_id = mainJson.imdb_id
+//		val tmpRun = if ( mainJson.runtime != 0 ) { 1 } else { 0 }
+//		val tmpC = if ( appendJson.credits.cast.size != 0 ) { 1 } else { 0 }
+//		val tmpP = if ( mainJson.production_companies.size != 0 ) { 1 } else { 0 }
+//		val tmpRev = if ( mainJson.revenue != 0 ) { 1 } else { 0 }
+//		val tmpB = if ( mainJson.budget != 0 ) { 1 } else { 0 }
+//		val tmp = tmpRun + tmpC + tmpP + tmpRev + tmpB
+//		if (imdb_id.equals("") && tmp > 2) {
+//			println(mainJson.original_title, id)
+//		}
 		val collection = if (mainJson.belongs_to_collection != null) {
 			mainJson.belongs_to_collection.name
 		} else {
@@ -76,7 +86,7 @@ class TmdbMovieTriplifier {
 	}
 
 	def addInteger(predicate: Integer => RdfTriple, obj: Integer): List[RdfTriple] = {
-		if ( obj != 0 ){
+		if ( obj != null && obj != 0 ){
 			List(predicate(obj))
 		} else {
 			Nil
