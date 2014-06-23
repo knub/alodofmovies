@@ -34,7 +34,7 @@ class TmdbMovieTriplifier {
 		List(movie sameAs UriBuilder.getTmdbMovieUri(id),
 			movie isA RdfMovieResource.film) :::
 		addString(movie.label(_: String), mainJson.title) :::
-		addString(movie.sameAs(_: String), s"lod:Movie${mainJson.imdb_id}") :::
+		addString(movie.sameAsImdbUrl(_: String), mainJson.imdb_id) :::
 		addBoolean(movie.isAdult(_: Boolean), mainJson.adult) :::
 		addString(movie.isPartOf(_: String), collection) :::
 		addString(movie.hasBudget(_: String), mainJson.budget.toString) :::
