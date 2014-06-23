@@ -109,7 +109,7 @@ class TmdbMerger {
 			if (i % 100 == 0)
 				println(s"$i/${candidates.size}")
 		}
-		val bestMovies = movieScores.toList.sortBy { case (movie, score) => -score }.take(5)
+		val bestMovies = movieScores.toList.sortBy { case (movie, score) => -score }.take(5).filter(_._2 > 0.9)
 		bestMovies.foreach(println)
 		bestMovies
 	}
