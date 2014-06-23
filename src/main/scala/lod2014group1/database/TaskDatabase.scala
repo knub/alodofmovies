@@ -3,13 +3,13 @@ package lod2014group1.database
 import java.sql.Date
 import org.joda.time.DateTime
 import org.slf4s.Logging
-import scala.slick.driver.SQLiteDriver.simple._
+import scala.slick.driver.MySQLDriver.simple._
 import scala.slick.jdbc.meta.MTable
 
 case class Task(id: Long, taskType: String, dueDate: Date, importance: Byte, fileOrUrl: String, finished: Boolean, flag: String, graph: String)
 
 class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
-	def id         = column[Long]("task_id", O.PrimaryKey, O.AutoInc, O.DBType("INTEGER"))
+	def id         = column[Long]("task_id", O.PrimaryKey, O.AutoInc, O.DBType("BIGINT"))
 	def taskType   = column[String]("task_type")
 	def dueDate    = column[Date]("due_date")
 	def importance = column[Byte]("importance")
@@ -24,8 +24,11 @@ class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
 	def * = (id, taskType, dueDate, importance, fileOrUrl, finished, flag, graph) <>  (Task.tupled, Task.unapply)
 }
 class TaskDatabase extends Logging {
-	val DATABASE_NAME = "lod.db"
-	val database =  Database.forURL(s"jdbc:sqlite:${DATABASE_NAME}", driver = "org.sqlite.JDBC")
+	val DATABASE_NAME = "lod"
+	val database =  Database.forURL(s"jdbc:mysql://localhost:3306/$DATABASE_NAME",
+		driver = "com.mysql.jdbc.Driver",
+		user = "root",
+		password = "dba")
 
 	val tasks = TableQuery[TaskTable]
 	createTablesIfNotExist()
@@ -61,7 +64,7 @@ class TaskDatabase extends Logging {
 
 	def getNextNTasks(n: Int, offset: Int): List[Task] = {
 		database withSession { implicit session =>
-			tasks.sortBy(t => (t.dueDate, t.importance)).filter(!_.finished).drop(offset).take(n).list()
+			tasks.sortBy(t => (t.dueDate, t.importance, t.id)).filter(!_.finished).drop(offset).take(n).list()
 		}
 	}
 

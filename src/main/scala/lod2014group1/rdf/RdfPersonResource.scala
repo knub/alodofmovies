@@ -58,7 +58,11 @@ class RdfPersonResource(resource: String) extends RdfResource(resource) with Log
 
 	def hasImdbUrl(id: String) = sameAs("http://imdb.com/name/" + id)
 
+	def hasFreebaseId(url: String) = sameAs("http://imdb.com" + url)
+
 	def born(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:birthDate"), RdfDate(date))
+
+	def died(date: DateTime): RdfTriple = buildTriple(RdfResource("dbpprop:died"), RdfDate(date))
 
 	def hasBirthName(name: String): RdfTriple = buildTriple(RdfResource("dbpprop:birthName"), RdfString(name))
 
@@ -66,5 +70,5 @@ class RdfPersonResource(resource: String) extends RdfResource(resource) with Log
 
 	def playsCharacter(character: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:character"), character)
 
-	def hasJob(job: String): RdfTriple = buildTriple(RdfResource("dbpprop:job"), RdfString(job))
+	def hasJob(job: String): RdfTriple = buildTriple(RdfResource("dbpprop:job"), RdfString(job)).addAlways
 }

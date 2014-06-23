@@ -2,20 +2,20 @@ package lod2014group1.messaging
 
 import com.rabbitmq.client._
 import com.rabbitmq.client.AMQP.BasicProperties
-import scala.pickling._
-import json._
 import org.slf4s._
 import org.slf4s.Logger
 import lod2014group1.messaging.worker.{WorkerTask, TaskAnswer}
+import net.liftweb.json.Serialization.{read, write}
 
 class TaskDistributor() extends Logging {
 	val taskQueueName = "tasks"
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
 	channel.queueDeclare(taskQueueName, true, false, false, null)
+	implicit val formats = net.liftweb.json.DefaultFormats
 
 	def send(task: WorkerTask) {
-		channel.basicPublish("", taskQueueName, MessageProperties.PERSISTENT_TEXT_PLAIN, task.pickle.value.getBytes("UTF-8"))
+		channel.basicPublish("", taskQueueName, null, write[WorkerTask](task).getBytes("UTF-8"))
 		log.debug(s"[x] Sent '${task.`type`}' to queue")
 	}
 
@@ -29,7 +29,6 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable {
 	val connection = ConnectionBuilder.newConnection()
 	val channel = connection.createChannel()
 	channel.queueDeclare(rpcQueueName, false, false, false, null)
-	channel.basicQos(1)
 	val consumer = new QueueingConsumer(channel)
 	channel.basicConsume(rpcQueueName, false, consumer)
 
@@ -38,16 +37,13 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable {
 	val answersLog: Logger = LoggerFactory.getLogger("TaskAnswerLogger")
 	val answerHandler = new AnswerHandler()
 
+	implicit val formats = net.liftweb.json.DefaultFormats
+
 	override def run(): Unit = {
 		println("Awaiting RPC requests")
 		while (true) {
 			val delivery = consumer.nextDelivery()
-
 			handle(delivery.getBody)
-
-			val props = delivery.getProperties
-			val replyProps = new BasicProperties.Builder().correlationId(props.getCorrelationId).build()
-			channel.basicPublish("", props.getReplyTo, replyProps, true.pickle.value.getBytes)
 			channel.basicAck(delivery.getEnvelope.getDeliveryTag, false)
 		}
 	}
@@ -58,7 +54,7 @@ class AmqpMessageListenerThread(rpcQueueName: String) extends Runnable {
 	}
 
 	def handle(messageBody: Array[Byte]): Unit = {
-		val answer = new String(messageBody, "UTF-8").unpickle[TaskAnswer]
+		val answer = read[TaskAnswer](new String(messageBody, "UTF-8"))
 		answersReceived += 1
 		answerHandler.handleAnswer(answer)
 

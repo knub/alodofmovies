@@ -93,6 +93,11 @@ task watchImdb(type: JavaExec, dependsOn: [build]) {
     classpath = sourceSets.main.runtimeClasspath
     args = ['watch-imdb']
 }
+task mergeTmdb(type: JavaExec, dependsOn: [build]) {
+    main = 'lod2014group1.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['merge-tmdb']
+}
 task offlineRunner(type: JavaExec, dependsOn: [build]) {
     main = 'lod2014group1.Main'
     classpath = sourceSets.main.runtimeClasspath
@@ -119,16 +124,19 @@ dependencies {
 
 	compile 'com.google.apis:google-api-services-freebase:v1-rev54-1.18.0-rc'
 	compile 'com.typesafe.slick:slick_2.10:2.0.1'
-	compile 'org.xerial:sqlite-jdbc:3.7.2'
 
 	compile 'com.rabbitmq:amqp-client:3.3.1'
-	compile 'org.scala-lang:scala-pickling_2.10:0.8.0'
 	compile 'com.typesafe:config:1.2.1'
 
-	//compile 'com.hp.hpl.jena:jena:2.6.4'
+    compile 'com.assembla.scala-incubator:graph-core_2.10:1.9.0'
+    compile 'org.scalaforge:scalax:0.1'
+	compile 'org.apache.commons:commons-lang3:3.3.2'
+
+    //compile 'com.hp.hpl.jena:jena:2.6.4'
 	compile 'org.apache.jena:jena:2.11.1'
 	// compile files('./lib/virtjdbc3.jar')
 	//compile name: 'virtjdbc3'
+	compile 'mysql:mysql-connector-java:5.1.31'
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 	compile('org.apache.jena:jena-arq:2.11.1') {
 		exclude group: 'org.slf4j', module: 'slf4j-log4j12'

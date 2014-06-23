@@ -21,6 +21,8 @@ import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.UriBuilder
+import com.hp.hpl.jena.vocabulary.RDFTest
+import lod2014group1.rdf.RdfTriple
 
 class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 
@@ -61,7 +63,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				(List("property", "/film/film/fandango_id", "values", "value"), movieResource.hasFandangoId(_: String)), // --> id not resource
 				(List("property", "/film/film/metacritic_id", "values", "text"), movieResource.hasMetacriticId(_: String)),
 				(List("property", "/film/film/film_subject", "values", "text"), movieResource.hasSubject(_: String)),
-				//(List("property", "/common/topic/alias", "values", "value"), r.alsoKnownAs(_: RdfResource)),
+				(List("property", "/common/topic/alias", "values", "value"), movieResource.hasAlternativeName(_:String)),
 				(List("property", "/type/object/key", "values", "value"), movieResource.hasKeyword(_: String))
 				//(List("property", "/common/topic/notable_for", "values", "text"), r.hasStoryLine(_: String))
 				///common/topic/image//	
@@ -102,7 +104,6 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 				(List("property", "/film/film/produced_by", "values") , (movieResource.producedBy(_: RdfResource), Some(RdfPersonResource.producer), Some("Producer"))),
 				(List("property", "/film/film/story_by", "values") , (movieResource.storyBy(_: RdfResource), Some(RdfPersonResource.storyEditor), Some("Story Writer"))),
 				(List("property", "/film/film/written_by", "values") , (movieResource.writtenBy(_: RdfResource), None, Some("Writer"))),
-			//	(List("property", "/film/film/personal_appearances", "values", "property", "/film/personal_film_appearance/person", "values") , r.personal_appearnce(_: RdfResource)),
 				(List("property", "/film/film/film_casting_director", "values") , (movieResource.castingBy(_: RdfResource), None, Some("Casting Director")))
 				)
 				
@@ -117,8 +118,36 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		val releaseInfo = extract.extractCompounds(json, id, compounds)
 		triples = releaseInfo ::: triples
 		triples = extract.extractStarring(json, movieResource, id) ::: triples
-		println(triples)
+		
+		val resources = Map[List[String], (Person, RdfMovieResource) => List[RdfTriple]](
+				(List("property", "/film/film/sequel", "values"), sequels(_:Person, _:RdfMovieResource)),
+				(List("property", "/film/film/prequel", "values"), prequels(_:Person, _:RdfMovieResource))
+		)
+			
+		extract.extractResources(json, resources, movieResource)
+		
+		//println(triples)
 		triples
+	}
+	
+	def sequels (p:Person, movieResource: RdfMovieResource): List[RdfTriple] = {
+		val (movie, triple) = defineMovie(p)
+		movieResource.nextMovie(movie) :: triple 
+	}
+	
+	def prequels (p:Person, movieResource: RdfMovieResource): List[RdfTriple] = {
+		val (movie, triple) = defineMovie(p)
+		movieResource.previousMovie(movie) :: triple 
+	}
+	
+	def defineMovie(p: Person): (RdfMovieResource, List[RdfTriple]) = {
+		val movie = new RdfMovieResource(UriBuilder.getFreebaseUri(p.id))
+		val triple = List(
+			movie.isA(RdfMovieResource.film),	
+			movie.hasName(p.text),
+			movie.hasLabel(p.text)
+		)
+		(movie, triple)
 	}
 	
 	def releaseInfoProps(movieUri:String, id:JValue): (Map[List[String], String => RdfTriple], List[RdfTriple]) ={
@@ -126,13 +155,13 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		val idvalue = id.extractOpt[String]
 		idvalue match {
 			case Some(idvalue) => {
-				val releaseResource = new RdfReleaseInfoResource(UriBuilder.getReleaseInfoUriFromFreebaseID(idvalue))
+				val releaseResource = new RdfReleaseInfoResource(UriBuilder.getReleaseInfoUriFromFreebaseId(idvalue))
 				val properties = Map[List[String], String => RdfTriple](
 						(List("/film/film_regional_release_date/film_release_distribution_medium", "values","text"), releaseResource.medium(_:String)), 
 						(List("/film/film_regional_release_date/film_release_region", "values", "text"), releaseResource.country(_:String)),
 						(List("/film/film_regional_release_date/release_date", "values", "text"), releaseResource.atDate(_:String))
 						)
-				(properties, List(releaseResource isA RdfReleaseInfoResource.releaseInfo, releaseResource sameAs(UriBuilder.freebaseUri(idvalue))))		
+				(properties, List(releaseResource isA RdfReleaseInfoResource.releaseInfo, releaseResource sameAs(UriBuilder.getFreebaseUri(idvalue))))
 			}
 			case None => (Map[List[String], String => RdfTriple](), List())
 			
@@ -144,14 +173,14 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		val idvalue = id.extractOpt[String]
 		idvalue match {
 			case Some(idvalue) => {
-				val awardResource = new RdfAwardResource(UriBuilder.getAwardUriFromFreebaseID(idvalue))
+				val awardResource = new RdfAwardResource(UriBuilder.getAwardUriFromFreebaseId(idvalue))
 				val properties = Map[List[String], String => RdfTriple](
 						(List("/award/award_nomination/award", "values", "text"), awardResource.inCategory(_:String)),
 						(List("/award/award_nomination/award_nominee", "values", "id"), awardResource.forFreebaseNominee(_:String)),
 						(List("/award/award_nomination/ceremony", "values", "text"), awardResource.hasName(_:String)),
 						(List("/award/award_nomination/year", "values", "text"), awardResource.inYear(_:String))
 						)
-				(properties, List(awardResource isA RdfAwardResource.award, awardResource.hasOutcome("Nominated"), awardResource sameAs(UriBuilder.freebaseUri(idvalue))))	
+				(properties, List(awardResource isA RdfAwardResource.award, awardResource.hasOutcome("Nominated"), awardResource sameAs(UriBuilder.getFreebaseUri(idvalue))))
 			}
 			case None => (Map[List[String], String => RdfTriple](), List())
 		}
@@ -162,14 +191,14 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		val idvalue = id.extractOpt[String]
 		idvalue match {
 			case Some(idvalue) => {		
-				val awardResource = new RdfAwardResource(UriBuilder.getAwardUriFromFreebaseID(idvalue))
+				val awardResource = new RdfAwardResource(UriBuilder.getAwardUriFromFreebaseId(idvalue))
 				val properties = Map[List[String], String => RdfTriple](
 						(List("/award/award_honor/award", "values", "text"), awardResource.inCategory(_:String)),
 						(List("/award/award_honor/award_winner", "values", "id"), awardResource.forFreebaseNominee(_:String)),
 						(List("/award/award_honor/ceremony", "values", "text"), awardResource.hasName(_:String)),
 						(List("/award/award_honor/year", "values", "text"), awardResource.inYear(_:String))
 					)
-				(properties, List(awardResource isA RdfAwardResource.award, awardResource.hasOutcome("Honor"), awardResource sameAs(UriBuilder.freebaseUri(idvalue))))
+				(properties, List(awardResource isA RdfAwardResource.award, awardResource.hasOutcome("Honor"), awardResource sameAs(UriBuilder.getFreebaseUri(idvalue))))
 			}
 			case None => (Map[List[String], String => RdfTriple](), List())
 		}
@@ -192,17 +221,21 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 			
 			val imdbId = getImdbIdFromImdbTag(json).getOrElse(getImdbIdFromWebpages(topicEquivalentWebpages).getOrElse(""))
 			
-			val (id, movieUri) = if (imdbId != "") {	 
-				(imdbId, UriBuilder.getMovieUriFromImdbID(imdbId))
+			val (id, movieUri, movieResource, samAsTriples) = if (imdbId != "") {	
+				val uri = UriBuilder.getMovieUriFromImdbId(imdbId)
+				val movie = new RdfMovieResource(uri)
+				(imdbId, uri, movie, List(movie sameAsImdbUrl(imdbId)))
 			} else {	
-				(freebaseId, UriBuilder.getMovieUriFromFreebaseID(freebaseId))
+				val uri = UriBuilder.getMovieUriFromImdbId(freebaseId)
+				val movie = new RdfMovieResource(uri)
+				(freebaseId, uri, movie , List())
 			}
 			
 			val movie = new RdfMovieResource(movieUri)
-			val triples = List( movie sameAs(UriBuilder.freebaseUri(freebaseId)),
+			val triples = List( movie sameAs(UriBuilder.getFreebaseUri(freebaseId)),
 					movie isA RdfMovieResource.film
-					) 
-			println(id, movie)
+					) ::: samAsTriples
+			//println(id, movie)
 			(Some(id),Some(movie),triples)
 		} catch{
 			case e:net.liftweb.json.JsonParser$ParseException => {
@@ -238,7 +271,7 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		}else if (imdbEquivalents.size == 1){
 			val imdbIds = imdbEquivalents.head.split("/").filter(urlPart => urlPart.startsWith("tt"))
 			if (!imdbIds.isEmpty){
-				val id = idFromIdmId(imdbIds.head)
+				val id = imdbIds.head
 				val msg = s"equivalent freebase:$freebaseId"
 				//log.info(msg)
 //				fileLog.info(msg)
@@ -259,14 +292,4 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		//if (wikiEquivalents.size > 0) {fileLog.info("wiki equivalent")}
 		wikiEquivalents
 	}
-	
-	
-	def idFromFreebaseId(): String = {
-		s"m_${freebaseId.split("/").last}"
-	}
-	
-	def idFromIdmId(id:String): String = {
-		id.substring(2, id.length())
-	}
-
 }

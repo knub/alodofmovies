@@ -11,6 +11,8 @@ object Config {
 	def TMDB_GRAPH = "http://172.16.22.196/tmdb"
 	def DBPEDIA_GRAPH = "http://172.16.22.196/dbpedia"
 
+	def SPARQL_ENDPOINT = "http://172.16.22.196:8890/sparql"
+
 	object Person extends Enumeration {
 		type Person = Value
 	    val Dominik, Rice, Stefan, Tanja, Tim, Server, RealServer = Value

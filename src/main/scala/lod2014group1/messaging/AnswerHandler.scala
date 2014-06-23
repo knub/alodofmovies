@@ -1,8 +1,8 @@
 package lod2014group1.messaging
 
-import lod2014group1.rdf.{RdfTripleString, RdfTriple}
+import lod2014group1.rdf.RdfTripleString
 import lod2014group1.database.{VirtuosoLocalDatabase, TaskDatabase}
-import scala.slick.driver.SQLiteDriver.simple._
+import scala.slick.driver.MySQLDriver.simple._
 import lod2014group1.messaging.worker.{UriFile, TaskAnswer}
 import java.io.{File, PrintWriter}
 import org.slf4s.Logging
@@ -17,24 +17,41 @@ class AnswerHandler extends Logging {
 	var filesToWrite: List[UriFile] = List()
 	val triplesToStore: mutable.Map[String, List[RdfTripleString]] = mutable.Map().withDefaultValue(List[RdfTripleString]())
 
+	var bulkLoadThread: Thread = _
+	var ids = List[Long]()
+
+	class BulkLoadThread(triples: List[RdfTripleString], graph: String, ids: List[Long]) extends Thread {
+		override def run() {
+			println("Bulk-Loading.")
+			db.bulkLoad(triples, graph)
+
+			taskDatabase.runInDatabase { tasks => implicit session =>
+				ids.foreach { id =>
+					val row = tasks.filter(_.id === id).map(_.finished)
+					row.update(true)
+				}
+			}
+		}
+	}
+
 	val db = new VirtuosoLocalDatabase("http://172.16.22.196:8890/sparql")
 
 	def handleAnswer(answer: TaskAnswer): Unit = {
 		val graph = answer.header("graph")
 
 		triplesToStore(graph) = triplesToStore(graph) ::: answer.triples
+		ids = answer.taskId :: ids
 
 		if (triplesToStore(graph).size > BULK_LOAD_SIZE) {
-			db.bulkLoad(triplesToStore(graph), graph)
+			if (bulkLoadThread != null)
+				bulkLoadThread.join()
+			bulkLoadThread = new BulkLoadThread(triplesToStore(graph), graph, ids)
+			bulkLoadThread.start()
 			triplesToStore(graph) = List()
+			ids = List()
 		}
 
 		writeFiles(answer.files)
-
-		taskDatabase.runInDatabase { tasks => implicit session =>
-			val row = tasks.filter(_.id === answer.taskId).map(_.finished)
-			row.update(true)
-		}
 	}
 
 	def writeFiles(files: List[UriFile]): Unit = {

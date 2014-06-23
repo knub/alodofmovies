@@ -6,21 +6,20 @@ import lod2014group1.rdf._
 import lod2014group1.rdf.RdfMovieResource._
 import lod2014group1.crawling.TMDBMoviesListCrawler
 import lod2014group1.rdf.RdfTriple
-import lod2014group1.rdf.RdfResource
 
-object TMDBFilmsTriplifier {
+object TmdbMovieTriplifier {
 	val TmdbBaseUrl = "http://image.tmdb.org/t/p/original%s"
 	val YouTubeBaseUrl = "www.youtube.com/watch?v=%s"
 }
 
-class TMDBFilmsTriplifier {
+class TmdbMovieTriplifier {
 	val crawler = new TMDBMoviesListCrawler
 
 	def triplify(f: File): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
 		val mainJson: TmdbMainJson = JsonParser.parse(new FileReader(f)).extract[TmdbMainJson]
 		val appendJson: TmdbAppendJson = JsonParser.parse(new FileReader(f)).extract[TmdbAppendJson]
-		println(s"Movie id: ${mainJson.id} original_title: ${mainJson.original_title}")
+		//println(s"Movie id: ${mainJson.id} original_title: ${mainJson.original_title}")
 
 		appendJson.credits.cast.foreach(person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)))
 		appendJson.credits.crew.foreach(person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)))
@@ -31,8 +30,9 @@ class TMDBFilmsTriplifier {
 		} else {
 			""
 		}
-		val movie = new RdfResource(s"https://www.themoviedb.org/movie/$id")
-
+		val movie = new RdfMovieResource(UriBuilder.getMovieUriFromTmdbId(id))
+		List(movie sameAs UriBuilder.getTmdbMovieUri(id),
+			movie isA RdfMovieResource.film) :::
 		addString(movie.label(_: String), mainJson.title) :::
 		addString(movie.sameAs(_: String), s"lod:Movie${mainJson.imdb_id}") :::
 		addBoolean(movie.isAdult(_: Boolean), mainJson.adult) :::
@@ -46,18 +46,18 @@ class TMDBFilmsTriplifier {
 		addList(movie.country(_ : String), mainJson.production_countries.flatMap { country => List(country.iso_3166_1, country.name) } ) :::
 		addInteger(movie.hasRevenue(_ : Integer), mainJson.revenue) :::
 		addInteger(movie.lasts(_: Integer), mainJson.runtime) :::
-		addList(movie.shotInLanguage(_: String), mainJson.spoken_language.flatMap { language => List(language.iso_3166_1, language.name)})
+		addList(movie.shotInLanguage(_: String), mainJson.spoken_language.flatMap { language => List(language.iso_3166_1, language.name)}) :::
 		addString(movie.hasReleaseStatus(_: String), mainJson.status) :::
 		addString(movie.hasTagline(_: String), mainJson.tagline) :::
 		addString(movie.hasTitle(_: String), mainJson.title) :::
 		addDouble(movie.tmdbVoteAverage(_: Double), mainJson.vote_average) :::
 		addInteger(movie.tmdbVoteCount(_: Integer), mainJson.vote_count) :::
-		//addCast
-		addCrew(movie, appendJson.credits.crew)
+		addCast(movie, id, appendJson.credits.cast) :::
+		addCrew(movie, appendJson.credits.crew) :::
 		addList(movie.hasKeyword(_: String), appendJson.keywords.keywords.map { keyword => keyword.name }) :::
-		addList(movie.hasImage(_: String), appendJson.images.backdrops.map { image => TMDBFilmsTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
-		addList(movie.hasPoster(_: String), appendJson.images.posters.map { image => TMDBFilmsTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
-		addList(movie.hasVideo(_: String), appendJson.videos.results.map { video => TMDBFilmsTriplifier.YouTubeBaseUrl.format(video.key) } ) :::
+		addList(movie.hasImage(_: String), appendJson.images.backdrops.map { image => TmdbMovieTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
+		addList(movie.hasPoster(_: String), appendJson.images.posters.map { image => TmdbMovieTriplifier.TmdbBaseUrl.format(image.file_path) }) :::
+		addList(movie.hasVideo(_: String), appendJson.videos.results.map { video => TmdbMovieTriplifier.YouTubeBaseUrl.format(video.key) } ) :::
 		addAlternativeTitles(movie, id, appendJson.alternative_titles.titles) :::
 		addReleaseInfo(movie, id, appendJson.releases.countries)
 	}
@@ -97,22 +97,48 @@ class TMDBFilmsTriplifier {
 
 	def addAlternativeTitles(movie: RdfMovieResource, id: Long, objs: List[TmdbTitle]): List[RdfTriple] = {
 		objs.zipWithIndex.flatMap { case(obj, i) =>
-			createAlternativeTitle(movie, new RdfAkaResource(s"https://www.themoviedb.org/movie/$id/Aka$i"), obj)
+			createAlternativeTitle(movie, new RdfAkaResource(UriBuilder.getAkaUriFromTmdbId(id, i)), obj)
 		}
 	}
 
 	def createAlternativeTitle(movie: RdfMovieResource, aka: RdfAkaResource, obj: TmdbTitle): List[RdfTriple] = {
 		List(aka inCountry obj.iso_3166_1, aka hasAkaName obj.title, movie alsoKnownAs aka,
-			aka hasLabel obj.title)
+			aka hasLabel obj.title, aka isAn RdfAkaResource.alternativeMovieName)
 	}
 
 	def addReleaseInfo(movie: RdfMovieResource, id: Long, objs: List[TmdbCountry]): List[RdfTriple] = {
 		objs.zipWithIndex.flatMap { case(obj, i) =>
-			val releaseInfo = new RdfReleaseInfoResource(s"https://www.themoviedb.org/movie/$id/ReleaseInfo$i")
+			val releaseInfo = new RdfReleaseInfoResource(UriBuilder.getReleaseInfoUriFromTmdbId(id, i))
 			List(releaseInfo inCountry obj.iso_3166_1, releaseInfo ageRating obj.certification,
 					releaseInfo releasedOn obj.release_date, movie hasReleaseInfo releaseInfo,
-					releaseInfo hasLabel obj.release_date)
+					releaseInfo hasLabel obj.release_date, releaseInfo isA RdfReleaseInfoResource.releaseInfo)
 		}.toList
+	}
+
+	def addCast(movie: RdfMovieResource, id: Long, cast: List[TmdbCast]): List[RdfTriple] = {
+		cast.flatMap { c => handleCast(movie, id, c)}
+	}
+
+	def handleCast(movie: RdfMovieResource, id: Long, member: TmdbCast): List[RdfTriple] = {
+		val actor = new RdfPersonResource(UriBuilder.getPersonUriFromTmdbId(member.id))
+		val charName = member.character
+		val character = new RdfCharacterResource(UriBuilder.getCharacterUriFromTmdbId(charName.replace(" ", "_")))
+		val characterMovie = new RdfCharacterResource(UriBuilder.getMovieCharacterUriFromTmdbId(id, charName.replace(" ", "_")))
+		List(actor sameAs UriBuilder.getTmdbPersonUri(member.id),
+			character name charName,
+			characterMovie name charName,
+			actor hasLabel member.name,
+			actor hasName member.name,
+		  character hasLabel charName,
+		  characterMovie hasLabel charName,
+		  movie starring actor,
+			characterMovie inMovie movie,
+		  actor playsCharacter characterMovie,
+		  characterMovie isSubclassOf character,
+			characterMovie isA RdfCharacterResource.character,
+			character isA RdfCharacterResource.character,
+			actor isAn RdfPersonResource.actor,
+			actor isA RdfPersonResource.person)
 	}
 
 	def addCrew(movie: RdfMovieResource, crew: List[TmdbCrew]): List[RdfTriple] = {
@@ -122,9 +148,7 @@ class TMDBFilmsTriplifier {
 	}
 
 	def handleCrew(movie: RdfMovieResource, member: TmdbCrew): List[RdfTriple] = {
-		val person = new RdfPersonResource(s"http://www.themoviedb.org/person/${member.id}")
-		val job = person hasJob member.job
-		val name = person hasName member.name
+		val person = new RdfPersonResource(UriBuilder.getPersonUriFromTmdbId(member.id))
 		val rel = (member.department, member.job) match {
 			case ("Directing", "Director") => movie directedBy person
 			case ("Directing", "Special Guest Director") => movie directedBy person
@@ -152,7 +176,12 @@ class TMDBFilmsTriplifier {
 			case ("Actors", "Actor") => movie starring person
 			case default => movie hasOtherCrew person
 		}
-		rel :: name :: job :: List()
+		List(rel, person hasJob member.job,
+			person hasName member.name,
+			person label member.name,
+			person isA RdfPersonResource.person,
+			person sameAs UriBuilder.getTmdbPersonUri(member.id)
+		)
 	}
 
 }

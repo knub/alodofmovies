@@ -89,7 +89,7 @@ class FreebaseExtraction() {
 	
 	def matchPersons(p: Person, resource: Option[RdfResource],job: Option[String]):(RdfPersonResource, List[RdfTriple]) = {
 		//TODO: match Persons and find right resource
-		val person = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseID(p.id))
+		val person = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseId(p.id))
 		val triple = List(person isA RdfPersonResource.actor,
 				person isA(RdfPersonResource.person),
 				person hasLabel p.text)
@@ -103,6 +103,34 @@ class FreebaseExtraction() {
 		}
 		(person, triple ::: resourceTriple ::: jobTriple)
 	}
+	
+	def extractResources(json: JValue, values: Map[List[String], (Person, RdfMovieResource) => List[RdfTriple]], movie: RdfMovieResource): List[RdfTriple] = {
+		implicit val formats = net.liftweb.json.DefaultFormats
+		
+		values.flatMap(property => {
+			val test2 = json.values
+			val jsonValue = property._1.foldLeft(List(json)) { (acc, prop) =>
+				acc.flatMap { jfield =>
+					val obj = jfield \ prop
+					if (jfield.isInstanceOf[JObject] && obj.isInstanceOf[net.liftweb.json.JsonAST$JNothing$]){
+						List()
+					} else
+					if (obj.isInstanceOf[JArray])
+						obj.asInstanceOf[JArray].arr
+					else
+						List(obj)
+				}
+			}
+			
+			jsonValue.flatMap{value => 
+				val person = value.extract[Person]
+				property._2(person, movie)
+			}.toList
+		}).toList
+	}
+	
+	
+	
 	
 	def extractCompounds(json: JValue, movieUri:String, properties: Map[List[String], (String, JValue) => (Map[List[String], String => RdfTriple], List[RdfTriple])]): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
@@ -156,51 +184,59 @@ class FreebaseExtraction() {
 		
 		jsonValueList.flatMap{starringJson => 
 			val actorJson = starringJson \ "/film/performance/actor" \ "values"
-			val person = actorJson.extract[Person]
-			val personResource = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseID(person.id))
+			val person = actorJson.extractOpt[Person]
 			
-			val triple = List(personResource isA RdfPersonResource.actor, personResource.hasName(person.text), personResource.hasLabel(person.text))
-			
-			val characterJson = starringJson \ "/film/performance/character" \ "values"
-			val character = characterJson.extractOpt[Person]
-			
-			val charactertriple = character match {
-				case Some(character) => {
-					val characterResource = new RdfCharacterResource(UriBuilder.getMovieCharacterUriFromFreebaseID(movieid, character.id))
-					val chaResource = new RdfCharacterResource(UriBuilder.getCharacterUriFromFreebaseID(character.id))
-					List(characterResource isA RdfCharacterResource.character,
-						characterResource.hasName(character.text),
-						characterResource hasLabel character.text,
-						characterResource.inMovie(movie),
-						characterResource.playedBy(personResource),
-						chaResource isA(RdfCharacterResource.character),
-						chaResource hasLabel character.text,
-						characterResource.isSubclassOf(chaResource))
-				}
-				case None => {
-					val specialPerformanceJson = starringJson \ "/film/performance/special_performance_type" \ "values"
-					val specialPerformance = specialPerformanceJson.extractOpt[Person]
-					specialPerformance match {
-						case Some(specialPerformance) => {
-							if (specialPerformance.text == "Him/Herself"){
-					val characterResource = new RdfCharacterResource(UriBuilder.getMovieCharacterUriFromFreebaseID(movieid, person.id))
-					val chaResource = new RdfCharacterResource(UriBuilder.getCharacterUriFromFreebaseID(person.id))
-								List(characterResource isA RdfCharacterResource.character,
-										characterResource.hasName(person.text),
-										characterResource.inMovie(movie),
-										characterResource hasLabel person.text,
-										characterResource.playedBy(personResource),
-										chaResource isA RdfCharacterResource.character,
-										chaResource hasLabel person.text,
-										characterResource.isSubclassOf(chaResource)
-								)
-							} else List()
-						} 
-						case None => List()
+			person match {
+				case Some(person) => {
+					val personResource = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseId(person.id))
+					
+					val triple = List(personResource isA RdfPersonResource.actor, personResource.hasName(person.text), personResource.hasLabel(person.text))
+					
+					val characterJson = starringJson \ "/film/performance/character" \ "values"
+					val character = characterJson.extractOpt[Person]
+					
+					val charactertriple = character match {
+						case Some(character) => {
+							val characterResource = new RdfCharacterResource(UriBuilder.getMovieCharacterUriFromFreebaseId(movieid, character.id))
+							val chaResource = new RdfCharacterResource(UriBuilder.getCharacterUriFromFreebaseId(character.id))
+							List(characterResource isA RdfCharacterResource.character,
+								characterResource.hasName(character.text),
+								characterResource hasLabel character.text,
+								characterResource.inMovie(movie),
+								characterResource.playedBy(personResource),
+								chaResource isA(RdfCharacterResource.character),
+								chaResource hasLabel character.text,
+								characterResource.isSubclassOf(chaResource))
+						}
+						case None => {
+							val specialPerformanceJson = starringJson \ "/film/performance/special_performance_type" \ "values"
+							val specialPerformance = specialPerformanceJson.extractOpt[Person]
+							specialPerformance match {
+								case Some(specialPerformance) => {
+									if (specialPerformance.text == "Him/Herself"){
+							val characterResource = new RdfCharacterResource(UriBuilder.getMovieCharacterUriFromFreebaseId(movieid, person.id))
+							val chaResource = new RdfCharacterResource(UriBuilder.getCharacterUriFromFreebaseId(person.id))
+										List(characterResource isA RdfCharacterResource.character,
+												characterResource.hasName(person.text),
+												characterResource.inMovie(movie),
+												characterResource hasLabel person.text,
+												characterResource.playedBy(personResource),
+												chaResource isA RdfCharacterResource.character,
+												chaResource hasLabel person.text,
+												characterResource.isSubclassOf(chaResource)
+										)
+									} else List()
+								} 
+								case None => List()
+							}
+						}
+
 					}
+					charactertriple ::: triple
 				}
+				
+			case None => List()
 			}
-			charactertriple ::: triple
 		}	
 	}
 	

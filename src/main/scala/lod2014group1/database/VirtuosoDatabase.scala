@@ -105,7 +105,7 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 
 	private def bulkLoad(graph: String): Unit = {
 		val file = createTempBulkLoadFile(graph)
-		isql.#<(new FileInputStream(file)).!!
+		println(isql.#<(new FileInputStream(file)).!!)
 		deleteTempBulkLoadFile(file)
 	}
 
@@ -117,6 +117,7 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 	private def buildRdfFile(triples: List[RdfTripleString]) {
 		val f = new BufferedWriter(new FileWriter(bulkLoadFile))
 		writeFileHeader(f)
+		println(triples.size)
 		triples.foreach(triple => {
 			f.write(triple.toString() + "\n")
 		})
@@ -136,6 +137,7 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 			  |@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 			  |@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 			  |@prefix lod: <http://purl.org/hpi/movie#> .
+			  |@prefix category: <http://dbpedia.org/resource/Category:> .
 			  |@prefix freebase: <http://rdf.freebase.com/ns/> .
 			""".stripMargin)
 	}
