@@ -4,8 +4,9 @@ import lod2014group1.messaging.worker.{TaskAnswer, WorkerTask}
 import lod2014group1.messaging.{WorkReceiver, AnswerHandler}
 import lod2014group1.database.TaskDatabase
 import net.liftweb.json.Serialization.{read, write}
+import org.slf4s.Logging
 
-class OfflineTaskRunner {
+class OfflineTaskRunner extends Logging {
 
 	val answerHandler = new AnswerHandler
 	val workReceiver = new WorkReceiver(null, null)
@@ -18,11 +19,11 @@ class OfflineTaskRunner {
 	}
 
 	def runTasks(n: Int): Unit = {
-		val tasks = taskDatabase.getNextNTasks(n, 10000)
+		val tasks = taskDatabase.getNextNTasks(n, 1586500)
 		tasks.zipWithIndex.foreach { case (task, i) =>
 				runTask(WorkerTask.fromDatabaseTask(task))
 				if (task.id % 100 == 0)
-					println(task.id)
+					log.info(task.id.toString)
 		}
 	}
 

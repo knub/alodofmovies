@@ -1,5 +1,6 @@
 package lod2014group1.messaging
 
+
 import lod2014group1.rdf.RdfTripleString
 import lod2014group1.database.{VirtuosoLocalDatabase, TaskDatabase}
 import scala.slick.driver.MySQLDriver.simple._
@@ -23,13 +24,19 @@ class AnswerHandler extends Logging {
 	class BulkLoadThread(triples: List[RdfTripleString], graph: String, ids: List[Long]) extends Thread {
 		override def run() {
 			println("Bulk-Loading.")
-			db.bulkLoad(triples, graph)
+			try {
+				db.bulkLoad(triples, graph)
 
-			taskDatabase.runInDatabase { tasks => implicit session =>
-				ids.foreach { id =>
-					val row = tasks.filter(_.id === id).map(_.finished)
-					row.update(true)
+				taskDatabase.runInDatabase { tasks => implicit session =>
+					ids.foreach { id =>
+						val row = tasks.filter(_.id === id).map(_.finished)
+						row.update(true)
+					}
 				}
+			} catch {
+				case e: Throwable =>
+					println("Error while bulk loading. Ignore for now.")
+					return
 			}
 		}
 	}
