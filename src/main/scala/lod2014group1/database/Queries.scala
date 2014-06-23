@@ -23,7 +23,6 @@ object Queries {
 
 	def getAllMovieNamesOfYear(year: String): List[ResourceWithName] = {
 		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:years '$year' . ?s dbpprop:name ?o }"
-		println(query)
 		extractResourcesWithNameFrom(query)
 	}
 

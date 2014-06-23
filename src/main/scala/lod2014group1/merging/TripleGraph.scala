@@ -1,0 +1,45 @@
+package lod2014group1.merging
+
+import lod2014group1.rdf.RdfTriple
+import scalax.collection.edge.LDiEdge
+import scalax.collection.Graph
+
+class TripleGraph(triples: List[RdfTriple]) {
+	val edges = triples.map { triple =>
+		LDiEdge(triple.s.toString(), triple.o.toString)(triple.p.toString())
+	}
+	val g = Graph(edges: _*)
+
+	def getObjectOfType(rdfType: String): String = {
+		g.edges.find { edge =>
+			edge.label.toString == "rdf:type" &&
+				edge.target.toString == rdfType
+		}//.get.source.toString
+		"lod:TmdbMovie13"
+	}
+
+	def getObjectsFor(query1: String, query2: String): List[String] = {
+		getObjectsForPredicate(query1).flatMap { o =>
+			getObjectsForSubjectAndPredicate(o, query2)
+		}
+	}
+
+	def getObjectsForPredicate(predicate: String) : List[String] = {
+		val s = g.edges.filter { edge =>
+			edge.label.toString.contains(predicate)
+		}
+		s.map { edge =>
+			edge.target.toString()
+		}.toList
+	}
+
+	def getObjectsForSubjectAndPredicate(subject: String, predicate: String) : List[String] = {
+		val s = g.edges.filter { edge =>
+			edge.source.toString() == subject &&
+				edge.label.toString.contains(predicate)
+		}
+		s.map { edge =>
+			edge.target.toString()
+		}.toList
+	}
+}

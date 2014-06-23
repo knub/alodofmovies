@@ -14,30 +14,27 @@ class TmdbMerger {
 
 	def mergeForrestGump(): Unit = {
 		val triples = tmdbTriplifier.triplify(new File("data/TMDBMoviesList/movie/13.json"))
-		val edges = triples.map { triple =>
-			LDiEdge(triple.s.toString(), triple.o.toString)(triple.p.toString())
-		}
-		val g = Graph(edges: _*)
-		merge(g)
+		val tripleGraph = new TripleGraph(triples)
+		merge(tripleGraph)
 	}
 
-	def findCandidateMovies(g: Graph[String, LDiEdge]): List[ResourceWithName] = {
-		val years = getObjectsFor(g, "dbpprop:released", "dbpprop:initialRelease").map { yearString =>
+	def findCandidateMovies(g: TripleGraph): List[ResourceWithName] = {
+		val years = g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease").map { yearString =>
 			val split = yearString.split("-")
 			split(0).replace("\"", "").toInt
 		}.distinct
 		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
 
-		val movieResource = getObjectOfType(g, "dbpedia-owl:Film")
+		val movieResource = g.getObjectOfType("dbpedia-owl:Film")
 		// TODO: Do not use only first
-		val movieName = getObjectsForSubjectAndPredicate(g, movieResource, "dbpprop:name")(0)
+		val movieName = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")(0)
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
 			StringUtils.getLevenshteinDistance(movieWithName.name, movieName) < 5
 		}
 		(moviesInYear ::: moviesWithSimilarName).distinct
 	}
 
-	def merge(triples: Graph[String, LDiEdge]): Unit = {
+	def merge(triples: TripleGraph): Unit = {
 		val candidates = findCandidateMovies(triples)
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
@@ -50,9 +47,9 @@ class TmdbMerger {
 		movieScores.toList.sortBy { case (movie, score) => -score }.take(5).foreach(println)
 	}
 
-	def calculateActorOverlap(g: Graph[String, LDiEdge], candidateUri:String): Double = {
+	def calculateActorOverlap(g: TripleGraph, candidateUri:String): Double = {
 		val threshhold = 5
-		val movieActors = getObjectsFor(g, "dbpprop:starring", "rdfs:label")
+		val movieActors = g.getObjectsFor("dbpprop:starring", "rdfs:label")
 		val candidateActors = Queries.getAllActorsOfMovie(candidateUri)
 
 		if (candidateActors.isEmpty)
@@ -65,37 +62,4 @@ class TmdbMerger {
 		} 
 		matched_actors.size.toDouble / movieActors.size
 	}
-
-	def getObjectOfType(g: Graph[String, LDiEdge], rdfType: String): String = {
-		g.edges.find { edge =>
-			edge.label.toString == "rdf:type" &&
-			edge.target.toString == rdfType
-		}//.get.source.toString
-		"lod:TmdbMovie13"
-	}
-
-	def getObjectsFor(g: Graph[String, LDiEdge], query1: String, query2: String): List[String] = {
-		getObjectsForPredicate(g, query1).flatMap { o =>
-			getObjectsForSubjectAndPredicate(g, o, query2)
-		}
-	}
-
-	def getObjectsForPredicate(g: Graph[String, LDiEdge], predicate: String) : List[String] = {
-		val s = g.edges.filter { edge =>
-			edge.label.toString.contains(predicate)
-		}
-		s.map { edge =>
-			edge.target.toString()
-		}.toList
-	}
-	def getObjectsForSubjectAndPredicate(g: Graph[String, LDiEdge], subject: String, predicate: String) : List[String] = {
-		val s = g.edges.filter { edge =>
-			edge.source.toString() == subject &&
-				edge.label.toString.contains(predicate)
-		}
-		s.map { edge =>
-			edge.target.toString()
-		}.toList
-	}
-
 }
