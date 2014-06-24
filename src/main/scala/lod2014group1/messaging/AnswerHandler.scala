@@ -50,10 +50,10 @@ class AnswerHandler extends Logging {
 		ids = answer.taskId :: ids
 
 		if (triplesToStore(graph).size > BULK_LOAD_SIZE) {
-			if (bulkLoadThread != null)
-				bulkLoadThread.join()
+			//if (bulkLoadThread != null)
+			//	bulkLoadThread.join()
 			bulkLoadThread = new BulkLoadThread(triplesToStore(graph), graph, ids)
-			bulkLoadThread.start()
+			bulkLoadThread.run()
 			triplesToStore(graph) = List()
 			ids = List()
 		}
