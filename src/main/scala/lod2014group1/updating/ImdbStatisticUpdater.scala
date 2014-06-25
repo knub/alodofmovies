@@ -61,7 +61,7 @@ object ImdbStatisticUpdater {
 
 			try {
 				val content = Crawler.downloadFile(new URL(url))
-				new Triplifier().triplify(filePath, content)
+				new TriplifyDistributor().triplify(filePath, content)
 			} catch {
 				case e: Exception =>
 					println(url + " throws error.")
