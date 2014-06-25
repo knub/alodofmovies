@@ -23,27 +23,31 @@ import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.UriBuilder
 import com.hp.hpl.jena.vocabulary.RDFTest
 import lod2014group1.rdf.RdfTriple
+import org.apache.commons.io.FileUtils
 
-class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
+class FreebaseFilmsTriplifier() extends Triplifier with Logging {
 
 	protected val fileLog: Logger = LoggerFactory.getLogger("FreebaseFileLogger")
 	
-	def triplify(f: File): List[RdfTriple]= {
-		
-		val (id, movieResource, triples) = getId(f)
+	def triplify(file: File): List[RdfTriple] = {
+		val freebaseId = s"/m/${file.getName()}"
+		triplify(FileUtils.readFileToString(file))
+	}
+	
+	def triplify(content: String): List[RdfTriple]= {
+		val (id, movieResource, triples) = getId(content)
 		
 		val proptriples = (movieResource, id) match{
-			case (Some(movieResource), Some(id)) => extractProperties(f, id, movieResource)
-			case _ => {log.info(s"failed by id parsing ${f.getName()}")
+			case (Some(movieResource), Some(id)) => extractProperties(content, id, movieResource)
+			case _ => {log.info(s"failed by id parsing ${id}")
 				List()
 			}
 		}
-		
 		triples:::proptriples
 	}
 	
-	def extractProperties(f: File, id: String, movieResource: RdfMovieResource): List[RdfTriple]={
-		val json = JsonParser.parse(new FileReader(f))
+	def extractProperties(content: String, id: String, movieResource: RdfMovieResource): List[RdfTriple]={
+		val json = JsonParser.parse(content)
 				
 		val mapJsonToProperty = Map[List[String], String => RdfTriple](
 				(List("property", "/common/topic/topic_equivalent_webpage", "values", "value") , movieResource.sameAs(_: String)),
@@ -190,11 +194,13 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 		}
 	}
 
-	def getId(f: File): (Option[String], Option[RdfMovieResource], List[RdfTriple])= {
+	def getId(content: String): (Option[String], Option[RdfMovieResource], List[RdfTriple])= {
 		
 		implicit val formats = net.liftweb.json.DefaultFormats
 		try{
-			val json = JsonParser.parse(new FileReader(f))
+			val json = JsonParser.parse(content)
+			
+			val freebaseId = (json\\"/type/object/mid"\"values"\"value").extract[String]
 			
 			val tEWebpageJson = json\\"/common/topic/topic_equivalent_webpage"\"values"\"value"
 			var webpages = List[String]()
@@ -232,7 +238,6 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 			val rawImdb = json\\"/imdb/topic/title_id"\"values"\"value"
 			try{
 				val imdb = rawImdb.extract[String]
-				//fileLog.info(s"imdb freebase:$freebaseId")
 				Some (imdb)	
 			}
 			catch {
@@ -252,7 +257,6 @@ class FreebaseFilmsTriplifier(val freebaseId: String) extends Logging {
 			val imdbIds = imdbEquivalents.head.split("/").filter(urlPart => urlPart.startsWith("tt"))
 			if (!imdbIds.isEmpty){
 				val id = imdbIds.head
-				val msg = s"equivalent freebase:$freebaseId"
 				Some(id)
 			} else {
 				None

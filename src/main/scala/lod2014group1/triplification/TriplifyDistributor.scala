@@ -7,6 +7,7 @@ import org.apache.commons.io.FileUtils
 import lod2014group1.crawling.ImdbMovieCrawler
 import scala.collection.JavaConversions._
 import org.slf4s.Logging
+import lod2014group1.triplification.FreebaseFilmsTriplifier
 
 class TriplifyDistributor {
 
@@ -66,7 +67,7 @@ object TriplifyDistributor extends Logging {
 //					new FreebaseFilmsTriplifier(id).triplify(file)
 //				}.toList
 				//new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd")) ::: 
-				new FreebaseFilmsTriplifier("/m/047csmy").triplify(new File("data/Freebase/film/047csmy"))
+				(new FreebaseFilmsTriplifier).triplify(new File("data/Freebase/film/047csmy"))
 				//List()
 			case Config.Person.Dominik =>
 				val tmdbTriplifier = new TmdbMovieTriplifier()

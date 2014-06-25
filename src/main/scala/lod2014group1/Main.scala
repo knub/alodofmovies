@@ -8,6 +8,7 @@ import lod2014group1.merging.MovieMatcher
 import lod2014group1.updating.ImdbStatisticUpdater
 import lod2014group1.job_managing.OfflineTaskRunner
 import java.io.File
+import lod2014group1.triplification.FreebaseFilmsTriplifier
 
 object Main extends App with Logging {
 
@@ -51,8 +52,15 @@ object Main extends App with Logging {
 			ImdbStatisticUpdater.watchExistingMovie()
 		} else if (args contains "merge-tmdb") {
 			val merger = new MovieMatcher()
-			val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
-			merger.runStatistic(tmdbDir, new TmdbMovieTriplifier())
+
+			I.am match {
+				case Config.Person.Rice =>
+					val dir = new File (s"${Config.DATA_FOLDER}/Freebase/film/")
+					merger.runStatistic(dir, new FreebaseFilmsTriplifier())
+				case default => 
+					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
+					merger.runStatistic(tmdbDir, new TmdbMovieTriplifier())
+			}
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}
