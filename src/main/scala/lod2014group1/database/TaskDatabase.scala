@@ -25,7 +25,7 @@ class TaskTable(tag: Tag) extends Table[Task](tag, "tasks") {
 }
 class TaskDatabase extends Logging {
 	val DATABASE_NAME = "lod"
-	val database =  Database.forURL(s"jdbc:mysql://localhost:3306/$DATABASE_NAME",
+	val database =  Database.forURL(s"jdbc:mysql://172.16.22.196:3306/$DATABASE_NAME",
 		driver = "com.mysql.jdbc.Driver",
 		user = "root",
 		password = "dba")
@@ -41,8 +41,6 @@ class TaskDatabase extends Logging {
 				if (MTable.getTables(tableName).list.isEmpty) {
 					log.info(s"Creating table $tableName")
 					table.ddl.create
-				} else {
-					log.info(s"Table $tableName already exists.")
 				}
 			}
 		}
@@ -75,6 +73,12 @@ class TaskDatabase extends Logging {
 	def getNumberOfOpenTasks: Int = {
 		database withSession { implicit session =>
 			tasks.length.run
+		}
+	}
+
+	def hasTasks(imdbId: String): Boolean = {
+		database withSession { implicit session =>
+			tasks.filter { t => t.fileOrUrl like s"%$imdbId%" }.exists.run
 		}
 	}
 

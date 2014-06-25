@@ -19,8 +19,8 @@ object Main extends App with Logging {
 		} else if (args contains "crawl-imdb") {
 			Crawler.crawl
 		} else if (args contains "crawl-tmdb") {
-    		val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
-    		tmdb.crawl
+      val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
+      tmdb.crawl
 		} else if (args contains "rabbit-worker") {
 			val worker = new WorkReceiver("tasks", "answers")
 			worker.init()
