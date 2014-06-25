@@ -33,42 +33,46 @@ class MovieMatcher {
 		cs.candidate.split("Movie").last
 	}
 
+	case class ResultIds(score: Double, origin: String, matched: String, correct: String)
+
 	def runStatistic(dir: File, triplifier: Triplifier): Unit = {
-		var falseMatched = List[CandidateScore]()
-		var trueMatched  = List[CandidateScore]()
+		var falseMatched = List[ResultIds]()
+		var trueMatched  = List[ResultIds]()
 
-		var notInDb      = List[String]()
-		var noCandidate  = List[String]()
+		var notInDb      = List[ResultIds]()
+		var noCandidate  = List[ResultIds]()
+		var notMatched   = List[ResultIds]()
+
 		var noImdbId     = List[String]()
-		var notMatched   = List[String]()
 
-		val r = new Random(1000)
+		val r = new Random(1001)
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
 		testSet.foreach { file =>
 			val triples = triplifier.triplify(FileUtils.readFileToString(file))
 			val tripleGraph = new TripleGraph(triples)
-			val imdbMovie = merge(tripleGraph)
-			val imdbId = getImdbId(tripleGraph)
 
-			val candidatIds = imdbMovie.map { c => getImdbId(c) }
+			val candidates = merge(tripleGraph)
+			val candidateIds = candidates.map { c => getImdbId(c) }
+			val bestMovie = candidates.head
+			val bestMovieImdbId = getImdbId(bestMovie)
+			val imdbId = getImdbId(tripleGraph)
 
 			if (imdbId == null) {
 				noImdbId ::= file.getName
 			} else {
-				if (imdbMovie.isEmpty) {
+				if (candidates.filter(minScore).isEmpty) {
 					if (taskDb.hasTasks(imdbId)) {
-						notInDb ::= file.getName
-					} else if (!candidatIds.exists( c => c.equals(imdbId))) {
-						noCandidate ::= file.getName
+						notInDb ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
+					} else if (!candidateIds.exists( c => c.equals(imdbId))) {
+						noCandidate ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
 					} else {
-						notMatched ::= file.getName
+						notMatched ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
 					}
 				} else {
-					val bestMovie = imdbMovie.head
-					if (getImdbId(bestMovie) == imdbId)
-						trueMatched ::= bestMovie
+					if (bestMovieImdbId == imdbId)
+						trueMatched ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
 					else
-						falseMatched ::= bestMovie
+						falseMatched ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
 				}
 			}
 		}
@@ -84,6 +88,10 @@ class MovieMatcher {
 		println("Precision = matched correctly/(test set size - not in database - no imdb id)")
 		val precision = trueMatched.size.toDouble / (testSet.size - notInDb.size - noImdbId.size)
 		println(s"Precision = $precision")
+	}
+
+	def minScore(cs: CandidateScore): Boolean = {
+		cs.score > ACTOR_OVERLAP_MINIMUM
 	}
 	
 	def mergeTmdbMovie(file: File): Unit = {
@@ -148,7 +156,7 @@ class MovieMatcher {
 				println(movie.candidate.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/") + " with score "  + movie.score)
 			}
 		}
-		bestMovies.filter { _.score > ACTOR_OVERLAP_MINIMUM }
+		bestMovies
 	}
 
 	def calculateActorOverlap(g: TripleGraph, candidateUri: String): Double = {
