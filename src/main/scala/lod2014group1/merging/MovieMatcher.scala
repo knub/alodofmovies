@@ -145,7 +145,7 @@ class MovieMatcher {
 		if (bestMovies(0).score < ACTOR_OVERLAP_MINIMUM) {
 			println("Could not find a single match. Here are the best five matches:")
 			bestMovies.take(5).foreach { movie =>
-				println(movie.candidate.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/"))
+				println(movie.candidate.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/") + " with score "  + movie.score)
 			}
 		}
 		bestMovies.filter { _.score > ACTOR_OVERLAP_MINIMUM }
