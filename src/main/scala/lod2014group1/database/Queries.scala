@@ -5,7 +5,7 @@ import lod2014group1.merging.Merger
 import org.joda.time.DateTime
 
 
-case class ResourceWithName(resource: String, name: String)
+case class ResourceWithName(var resource: String, var name: String)
 
 object Queries {
 

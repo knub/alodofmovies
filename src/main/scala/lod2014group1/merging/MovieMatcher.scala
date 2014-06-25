@@ -74,7 +74,7 @@ class MovieMatcher {
 				}
 			}
 		}
-		
+//		.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/")
 		println(s"There were ${testSet.size} files.")
 		println(s"${trueMatched.size} were matched correctly.")
 		println(s"${falseMatched.size} were matched incorrectly: ${falseMatched}.")
@@ -116,12 +116,13 @@ class MovieMatcher {
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
 			val l = currentMovieNames.map { movieName =>
 				val l = StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
-//				println(f"$l, M1: #${movieWithName.name}#, M2: #$movieName#")
 				l
 			}.min
 			l < CANDIDATE_MOVIE_LEVENSHTEIN
 		}
-		(moviesInYear ::: moviesWithSimilarName).distinct
+		val allCandidates = (moviesInYear ::: moviesWithSimilarName).distinct
+			
+		allCandidates
 	}
 
 	case class CandidateScore(candidate: String, score: Double)
@@ -134,8 +135,6 @@ class MovieMatcher {
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
 			val score = calculateActorOverlap(triples, candidate.resource)
 			movieScores += (candidate.resource -> score)
-//			if (i % 1000 == 0)
-//				println(s"$i/${candidates.size}")
 		}
 		val bestMovies = movieScores.toList.map(CandidateScore.tupled).sortBy(-_.score)
 		if (bestMovies.isEmpty)
