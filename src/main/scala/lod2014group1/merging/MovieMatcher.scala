@@ -77,10 +77,14 @@ class MovieMatcher {
 		println(s"There were ${testSet.size} files.")
 		println(s"${trueMatched.size} were matched correctly.")
 		println(s"${falseMatched.size} were matched incorrectly: ${falseMatched}.")
-		println(s"${notInDb.size} were not matched because no task exists.")
+		println(s"${notInDb.size} were not matched because we do not have it in our database.")
 		println(s"${noCandidate.size} were not matched and are not candidates: ${noCandidate}.")
 		println(s"${notMatched.size} were not matched for unknown reasons: ${notMatched}.")
 		println(s"${noImdbId.size} had no imdb id.")
+		println()
+		println("Precision = matched correctly/(test set size - not in database - no imdb id)")
+		val precision = trueMatched.size.toDouble / (testSet.size - notInDb.size - noImdbId.size)
+		println(s"Precision = $precision")
 	}
 	
 	def mergeTmdbMovie(file: File): Unit = {
@@ -106,7 +110,8 @@ class MovieMatcher {
 			val split = yearString.split("-")
 			split(0).replace("\"", "").toInt
 		}.distinct
-		println(years)
+		if (years.isEmpty)
+			println("No years found.")
 		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
 
 		val movieResource = g.getObjectOfType("dbpedia-owl:Film")
