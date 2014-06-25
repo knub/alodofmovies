@@ -93,11 +93,12 @@ class MovieMatcher {
 			val split = yearString.split("-")
 			split(0).replace("\"", "").toInt
 		}.distinct
+		println(years)
 		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
-//		val moviesInYear = List()
 
 		val movieResource = g.getObjectOfType("dbpedia-owl:Film")
 		val currentMovieNames = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")
+		println(s"Movie: ${currentMovieNames(0)}")
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
 			val l = currentMovieNames.map { movieName =>
 				val l = StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
@@ -114,14 +115,17 @@ class MovieMatcher {
 
 	def merge(triples: TripleGraph): List[CandidateScore] = {
 		val candidates = findCandidateMovies(triples)
+		println(s"Found ${candidates.size} triples.")
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
 			val score = calculateActorOverlap(triples, candidate.resource)
 			movieScores += (candidate.resource -> score)
-			if (i % 1000 == 0)
-				println(s"$i/${candidates.size}")
+//			if (i % 1000 == 0)
+//				println(s"$i/${candidates.size}")
 		}
-		val bestMovies = movieScores.toList.map(CandidateScore.tupled(_)).sortBy(-_.score).take(5)
+		val bestMovies = movieScores.toList.map(CandidateScore.tupled).sortBy(-_.score).take(5)
+		if (bestMovies.nonEmpty)
+			return List()
 		if (bestMovies(0).score < ACTOR_OVERLAP_MINIMUM) {
 			bestMovies.foreach(println)
 		}
