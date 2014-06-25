@@ -41,7 +41,7 @@ object Queries {
 	}
 
 	def addToRdfInteger(number: String, x: Int): Int = {
-		return (number.split("\"")(1).toInt - x)
+		number.split("\"")(1).toInt - x
 	}
 
 	def getAllActorsOfMovie(movie: String): List[ResourceWithName] = {
