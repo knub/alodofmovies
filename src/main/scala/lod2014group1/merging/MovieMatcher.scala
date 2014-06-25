@@ -7,10 +7,14 @@ import org.apache.commons.lang3.StringUtils
 import scala.pickling._
 import json._
 import org.apache.commons.io.{FileUtils, IOUtils}
-import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.{UriBuilder, RdfTriple}
 import scala.util.Random
 
 class MovieMatcher {
+	// TODO use orginial_title
+	// TODO use more to calc score (e.g. original_title distance)
+	// TODO candidate movies more criteria -> calc score and take top 100
+	// TODO find bugs (e.g. freebase)
 
 	val ACTOR_OVERLAP_MINIMUM       = 0.8
 	val ACTOR_OVERLAP_LEVENSHTEIN   = 5
@@ -33,7 +37,28 @@ class MovieMatcher {
 		cs.candidate.split("Movie").last
 	}
 
-	case class ResultIds(score: Double, origin: String, matched: String, correct: String)
+	case class ResultIds(origin: String, score: Double, matched: String, correct: String) {
+		override def toString(): String = {
+			val originUri = if (origin forall Character.isDigit) {
+				UriBuilder.getTmdbMovieUri(origin)
+			}	else {
+				UriBuilder.getFreebaseUri(origin)
+			}
+			if (score == 0.0) {
+				f"$originUri%75s"
+			} else {
+				val matchedUri = UriBuilder.getImdbMovieUri(matched)
+
+				if (matched == correct) {
+					f"$originUri%75s matched with top score: $score%.3f correclty to $matchedUri"
+				} else {
+					val correctUri = UriBuilder.getImdbMovieUri(correct)
+					f"$originUri%45s matched with top score: $score%.3f to $matchedUri should be $correctUri"
+				}
+			}
+
+		}
+	}
 
 	def runStatistic(dir: File, triplifier: Triplifier): Unit = {
 		var falseMatched    = List[ResultIds]()
@@ -41,7 +66,7 @@ class MovieMatcher {
 
 		var notInDb         = List[ResultIds]()
 		var notInCandidate  = List[ResultIds]()
-		var noCandidates    = List[String]()
+		var noCandidates    = List[ResultIds]()
 		var notMatched      = List[ResultIds]()
 
 		var noImdbId        = List[String]()
@@ -52,43 +77,48 @@ class MovieMatcher {
 			val triples = triplifier.triplify(FileUtils.readFileToString(file))
 			val tripleGraph = new TripleGraph(triples)
 
+			val fileId = file.getName.replace(".json", "")
 			val candidates = merge(tripleGraph)
 			val candidateIds = candidates.map { c => getImdbId(c) }
 			val imdbId = getImdbId(tripleGraph)
 
 			if (imdbId == null) {
-				noImdbId ::= file.getName
+				noImdbId ::= fileId
 			} else if (candidates.size == 0) {
-				noCandidates ::= file.getName
+				noCandidates ::= new ResultIds(fileId, 0.0, "", "")
 			} else {
 				val bestMovie = candidates.head
 				val bestMovieImdbId = getImdbId(bestMovie)
 
 				if (candidates.filter(minScore).isEmpty) {
 					if (taskDb.hasTasks(imdbId)) {
-						notInDb ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
+						notInDb ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 					} else if (!candidateIds.exists( c => c.equals(imdbId))) {
-						notInCandidate ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
+						notInCandidate ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 					} else {
-						notMatched ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
+						notMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 					}
 				} else {
 					if (bestMovieImdbId == imdbId)
-						trueMatched ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
+						trueMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 					else
-						falseMatched ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
+						falseMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 				}
 			}
 		}
 
-		println(s"There were ${testSet.size} files.")
-		println(s"${trueMatched.size} were matched correctly.")
-		println(s"${falseMatched.size} were matched incorrectly: ${falseMatched}.")
-		println(s"${notInDb.size} were not matched because we do not have it in our database.")
-		println(s"${notInCandidate.size} were not matched and are not candidates: ${notInCandidate}.")
-		println(s"${noCandidates.size} were not matched and no candidates were found.")
-		println(s"${notMatched.size} were not matched for unknown reasons: ${notMatched}.")
-		println(s"${noImdbId.size} had no imdb id.")
+		println(f"${testSet.size}%4s files: ")
+		println(f"${trueMatched.size}%4s were matched correctly.")
+		println(f"${falseMatched.size}%4s were matched incorrectly:")
+		falseMatched.foreach(println)
+		println(f"${notInDb.size}%4s were not matched because we do not have it in our database.")
+		println(f"${notInCandidate.size}%4s were not matched and are not candidates:")
+		notInCandidate.foreach(println)
+		println(f"${noCandidates.size}%4s were not matched and no candidates were found:")
+		noCandidates.foreach(println)
+		println(f"${notMatched.size}%4s were not matched for unknown reasons:")
+		notMatched.foreach(println)
+		println(f"${noImdbId.size}%4s had no imdb id.")
 		println()
 		println("Precision = matched correctly/(test set size - not in database - no imdb id)")
 		val precision = trueMatched.size.toDouble / (testSet.size - notInDb.size - noImdbId.size)

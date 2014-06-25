@@ -57,8 +57,20 @@ object UriBuilder {
 		s"lod:FreebaseAward$id"
 	}
 
+	def getImdbMovieUri(id: String): String = {
+		s"http://www.imdb.com/title/$id"
+	}
+
 	def getFreebaseUri(id: String): String = {
 		s"http://www.freebase.com/$id"
+	}
+
+	def getTmdbMovieUri(id: String): String = {
+		s"https://www.themoviedb.org/movie/$id"
+	}
+
+	def getTmdbPersonUri(id: String): String = {
+		s"https://www.themoviedb.org/person/$id"
 	}
 	
 	def getTmdbMovieUri(id: Long): String = {
