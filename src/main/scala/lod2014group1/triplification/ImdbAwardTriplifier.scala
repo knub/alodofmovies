@@ -11,7 +11,7 @@ import lod2014group1.rdf._
 import lod2014group1.rdf
 import java.lang.ArrayIndexOutOfBoundsException
 
-class ImdbAwardTriplifier(val imdbId: String) {
+class ImdbAwardTriplifier(val imdbId: String) extends Triplifier {
 
 	var name = ""
 	var country = ""

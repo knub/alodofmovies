@@ -9,7 +9,7 @@ import scala.collection.JavaConversions._
 import lod2014group1.rdf.RdfMovieResource._
 import org.joda.time.format.DateTimeFormat
 
-class ImdbMainPageTriplifier(val imdbId: String) {
+class ImdbMainPageTriplifier(val imdbId: String)  extends Triplifier {
 
 	val movie = RdfResource(s"lod:Movie$imdbId")
 

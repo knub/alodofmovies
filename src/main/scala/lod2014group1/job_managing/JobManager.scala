@@ -1,7 +1,7 @@
 package lod2014group1.job_managing
 
 import org.slf4s.Logging
-import lod2014group1.triplification.Triplifier
+import lod2014group1.triplification.TriplifyDistributor
 import java.io.File
 import lod2014group1.Config
 import lod2014group1.database._
@@ -13,7 +13,7 @@ object JobManager extends App with Logging {
 	}
 
 	def createBulkLoadFile(fileType: String): Unit = {
-		val triplifier = new Triplifier
+		val triplifier = new TriplifyDistributor
 		val database = new TaskDatabase
 		val bulkLoadWriter = new BulkLoadWriter
 		bulkLoadWriter.newFile(s"$fileType.bulk")

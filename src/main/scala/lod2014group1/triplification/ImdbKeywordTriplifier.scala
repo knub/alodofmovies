@@ -10,7 +10,7 @@ import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfMovieResource._
 
-class ImdbKeywordTriplifier(val imdbId: String) {
+class ImdbKeywordTriplifier(val imdbId: String) extends Triplifier {
 
 	def triplify(content: String): List[RdfTriple] = {
 		val doc = Jsoup.parse(content)

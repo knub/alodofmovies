@@ -6,11 +6,11 @@ import net.liftweb.json.JsonParser
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.DateTime
 
-class TmdbPersonTriplifier {
+class TmdbPersonTriplifier extends Triplifier {
 
-	def triplify(f: File): List[RdfTriple] = {
+	def triplify(content: String): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
-		val personJson: TmdbPersonJson = JsonParser.parse(new FileReader(f)).extract[TmdbPersonJson]
+		val personJson: TmdbPersonJson = JsonParser.parse(content).extract[TmdbPersonJson]
 
 		val formatter = DateTimeFormat.forPattern("YYYY-MM-dd")
 

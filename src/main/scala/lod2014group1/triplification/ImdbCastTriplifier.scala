@@ -14,7 +14,7 @@ import org.jsoup.select.Elements
 import org.slf4s.Logging
 import org.apache.commons.io.FileUtils
 
-class ImdbCastTriplifier(val imdbId: String) extends Logging {
+class ImdbCastTriplifier(val imdbId: String) extends Triplifier with Logging {
 
 	val movie = RdfResource(s"lod:Movie$imdbId")
 

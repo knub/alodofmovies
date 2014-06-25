@@ -2,15 +2,16 @@ package lod2014group1
 import lod2014group1.crawling.Crawler
 import org.slf4s.Logging
 import lod2014group1.apis._
-import lod2014group1.triplification.Triplifier
+import lod2014group1.triplification.{TmdbMovieTriplifier, TriplifyDistributor}
 import lod2014group1.messaging._
 import lod2014group1.statistics.FreebaseToImdb
 import lod2014group1.database._
 import lod2014group1.updating.NewImdbMoviesUpdater
-import lod2014group1.merging.TmdbMerger
+import lod2014group1.merging.MovieMatcher
 import scala.slick.driver.MySQLDriver.simple._
 import lod2014group1.job_managing.OfflineTaskRunner
 import lod2014group1.messaging.worker.WorkerTask
+import java.io.File
 
 object Main extends App with Logging {
 
@@ -18,7 +19,7 @@ object Main extends App with Logging {
 		log.debug("Started.")
 		log.info("Arguments: " + args.toList)
 		if (args contains "triplify") {
-			Triplifier.go()
+			TriplifyDistributor.go()
 		} else if (args contains "crawl-imdb") {
 			Crawler.crawl
 		} else if (args contains "crawl-tmdb") {
@@ -33,13 +34,6 @@ object Main extends App with Logging {
 		} else if (args contains "crawl-ofdb") {
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.crawl
-		} else if(args contains "freebase-stats"){
-			val stat = new FreebaseToImdb
-			stat.matchFreebase()
-			stat.getStatistic()
-		} else if (args contains "freebase-actors"){
-			val freebase = new FreebaseAPI
-			freebase.loadAllActorIds()
 		} else if (args contains "freebase") {
 		  val freebase = new lod2014group1.crawling.FreebaseFilmCrawler()
 		  //freebase.getAllNotImdbMovies
@@ -47,9 +41,6 @@ object Main extends App with Logging {
 		  //freebase.getExampleRdf
 		  //freebase.loadAllFilmId
 		  freebase.crawl
-		} else if (args contains "dbpedia") {
-			val dbpedia = new DBpediaAPI()
-			dbpedia getAllTriplesFor "http://dbpedia.org/resource/Despicable_Me"
 		} else if (args contains "ofdb-clean"){
 			val ofdb = new lod2014group1.crawling.OFDBMovieCrawler()
 			ofdb.clean
@@ -62,8 +53,9 @@ object Main extends App with Logging {
 		} else if (args contains "watch-imdb") {
 			NewImdbMoviesUpdater.watchUpcomingMovies()
 		} else if (args contains "merge-tmdb") {
-			val merger = new TmdbMerger()
-			merger.runStatistic();
+			val merger = new MovieMatcher()
+			val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
+			merger.runStatistic(tmdbDir, new TmdbMovieTriplifier())
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}

@@ -6,35 +6,32 @@ import lod2014group1.rdf._
 import lod2014group1.rdf.RdfMovieResource._
 import lod2014group1.crawling.TMDBMoviesListCrawler
 import lod2014group1.rdf.RdfTriple
+import org.apache.commons.io.FileUtils
 
 object TmdbMovieTriplifier {
 	val TmdbBaseUrl = "http://image.tmdb.org/t/p/original%s"
 	val YouTubeBaseUrl = "www.youtube.com/watch?v=%s"
 }
 
-class TmdbMovieTriplifier {
+class TmdbMovieTriplifier extends Triplifier {
 	val crawler = new TMDBMoviesListCrawler
 
-	def triplify(f: File): List[RdfTriple] = {
+	def triplify(file: File): List[RdfTriple] = {
+		triplify(FileUtils.readFileToString(file))
+
+	}
+	def triplify(content: String): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
-		val mainJson: TmdbMainJson = JsonParser.parse(new FileReader(f)).extract[TmdbMainJson]
-		val appendJson: TmdbAppendJson = JsonParser.parse(new FileReader(f)).extract[TmdbAppendJson]
+
+		val mainJson: TmdbMainJson = JsonParser.parse(content).extract[TmdbMainJson]
+		val appendJson: TmdbAppendJson = JsonParser.parse(content).extract[TmdbAppendJson]
+
 		//println(s"Movie id: ${mainJson.id} original_title: ${mainJson.original_title}")
 
 //		appendJson.credits.cast.foreach { person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)) }
 //		appendJson.credits.crew.foreach { person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)) }
 
 		val id = mainJson.id
-//		val imdb_id = mainJson.imdb_id
-//		val tmpRun = if ( mainJson.runtime != 0 ) { 1 } else { 0 }
-//		val tmpC = if ( appendJson.credits.cast.size != 0 ) { 1 } else { 0 }
-//		val tmpP = if ( mainJson.production_companies.size != 0 ) { 1 } else { 0 }
-//		val tmpRev = if ( mainJson.revenue != 0 ) { 1 } else { 0 }
-//		val tmpB = if ( mainJson.budget != 0 ) { 1 } else { 0 }
-//		val tmp = tmpRun + tmpC + tmpP + tmpRev + tmpB
-//		if (imdb_id.equals("") && tmp > 2) {
-//			println(mainJson.original_title, id)
-//		}
 		val collection = if (mainJson.belongs_to_collection != null) {
 			mainJson.belongs_to_collection.name
 		} else {

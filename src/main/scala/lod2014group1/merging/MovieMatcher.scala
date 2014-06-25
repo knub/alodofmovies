@@ -1,7 +1,7 @@
 package lod2014group1.merging
 
 import java.io.File
-import lod2014group1.triplification.TmdbMovieTriplifier
+import lod2014group1.triplification.{Triplifier, TmdbMovieTriplifier}
 import lod2014group1.database.{ResourceWithName, Queries}
 import org.apache.commons.lang3.StringUtils
 import scala.pickling._
@@ -11,7 +11,7 @@ import lod2014group1.rdf.RdfTriple
 import scala.collection.JavaConversions._
 import scala.util.Random
 
-class TmdbMerger {
+class MovieMatcher {
 
 	val tmdbTriplifier = new TmdbMovieTriplifier
 	val movieNames = Queries.getAllMovieNames
@@ -23,24 +23,21 @@ class TmdbMerger {
 		mergeTmdbMovie(file)
 	}
 
-	def runStatistic(): Unit = {
-		val dir = new File("data/TMDBMoviesList/movie/")
-		var falseMatched = List[(String, Double)]()
-		var matched      = List[(String, Double)]()
+	def runStatistic(dir: File, triplifier: Triplifier): Unit = {
+		var falseMatched = List[CandidateScore]()
+		var matched      = List[CandidateScore]()
 		var notMatched   = List[String]()
-		var newMatched   = List[(String, Double)]()
+		var newMatched   = List[CandidateScore]()
 		
 		val r = new Random(1000)
-		(new File("data/TMDBMoviesList/movie/13.json") ::
-		 new File("data/TMDBMoviesList/movie/9502.json") ::
-			r.shuffle(dir.listFiles().toList).take(10)).foreach { file =>
+		r.shuffle(dir.listFiles().toList).take(10).foreach { file =>
 			val triples = tmdbTriplifier.triplify(file)
 			val tripleGraph = new TripleGraph(triples)
 			val imdbMovie = merge(tripleGraph)
 			if (!imdbMovie.isEmpty) {
 				val imdbUrls = tripleGraph.getObjectsForPredicate("owl:sameAs").filter(p => p.contains("http://imdb.com/title/"))
 				if (imdbUrls.nonEmpty) {
-					if (imdbMovie.head._1.split("Movie").last == imdbUrls.head.split("/").last.split(">")(0))
+					if (imdbMovie.head.candidate.split("Movie").last == imdbUrls.head.split("/").last.split(">")(0))
 						matched ::= imdbMovie.head
 					else
 						falseMatched ::= imdbMovie.head
@@ -75,8 +72,8 @@ class TmdbMerger {
 		if (!imdbMovie.isEmpty){	
 			val movieResource = tripleGraph.getObjectOfType("dbpedia-owl:Film")
 			val movietriple = tripleGraph.getTriplesForSubject(movieResource)
-			Merger.mergeMovieTriple(imdbMovie.head._1, movietriple).foreach(println)
-			//TODO other Methods
+			Merger.mergeMovieTriple(imdbMovie.head.candidate, movietriple).foreach(println)
+			// TODO: Try other methods
 		}
 		
 	}
@@ -102,18 +99,22 @@ class TmdbMerger {
 		(moviesInYear ::: moviesWithSimilarName).distinct
 	}
 
-	def merge(triples: TripleGraph): List[(String, Double)] = {
+	case class CandidateScore(candidate: String, score: Double)
+
+	def merge(triples: TripleGraph): List[CandidateScore] = {
 		val candidates = findCandidateMovies(triples)
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
-			val score = calculateActorOverlap(triples, candidate.resource) //TODO moviename
+			val score = calculateActorOverlap(triples, candidate.resource)
 			movieScores += (candidate.resource -> score)
 			if (i % 1000 == 0)
 				println(s"$i/${candidates.size}")
 		}
-		val bestMovies = movieScores.toList.sortBy { case (movie, score) => -score }.take(5).filter(_._2 > 0.9)
-		bestMovies.foreach(println)
-		bestMovies
+		val bestMovies = movieScores.toList.map(CandidateScore.tupled(_)).sortBy(-_.score).take(5)
+		if (bestMovies(0).score < 0.8) {
+			bestMovies.foreach(println)
+		}
+		bestMovies.filter { _.score > 0.8}
 	}
 
 	def calculateActorOverlap(g: TripleGraph, candidateUri: String): Double = {

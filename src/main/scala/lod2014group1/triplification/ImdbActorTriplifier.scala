@@ -10,7 +10,7 @@ import lod2014group1.rdf.RdfMovieResource._
 import org.joda.time.format.{DateTimeFormat, DateTimeFormatter}
 import org.joda.time.DateTime
 
-class ImdbActorTriplifier(val imdbId: String) {
+class ImdbActorTriplifier(val imdbId: String) extends Triplifier {
 
 	def triplify(content: String): List[RdfTriple] = {
 		var triples: List[RdfTriple] = List()
