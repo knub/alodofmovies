@@ -25,7 +25,7 @@ class UpdateScheduler {
 		timer.schedule(new TimerTask() {
 			@Override
 			def run() {
-				imdbUpdater.createCralifyTaskForNewMovies()
+				imdbUpdater.updateComingSoonMovies()
 			}
 		}, UpdateScheduler.MIDNIGHT, UpdateScheduler.ONCE_PER_DAY)
 	}

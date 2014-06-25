@@ -1,48 +1,23 @@
 package lod2014group1.updating
 
-import java.io.{FileWriter, PrintWriter, File}
-import lod2014group1.rdf.{RdfResource, RdfTriple}
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import scala.collection.JavaConversions._
-import lod2014group1.database.{Task, TaskDatabase}
-import org.joda.time.{Days, DateTime}
-import java.sql.Date
-import lod2014group1.messaging.TaskType
-import lod2014group1.Config
+import org.joda.time.DateTime
 import lod2014group1.crawling.Crawler
 import java.net.URL
-import org.joda.time.format.DateTimeFormat
 
-object ImdbComingSoonMovieUpdater {
-	val BASEURL = "http://www.imdb.com/movies-coming-soon"
-}
 
-class ImdbComingSoonMovieUpdater() {
+class ImdbComingSoonMovieUpdater() extends ImdbUpdater {
 
-	def createCralifyTaskForNewMovies(): Unit = {
+	def updateComingSoonMovies(): Unit = {
 		val contents = crawlComingSoonPage()
+
 		val ids = contents.flatMap{ content =>
 			getNewMovieIds(content)
 		}
-		addCrawlifyTasksFor(ids)
-	}
 
-	private def addCrawlifyTasksFor(ids: List[String]): Unit = {
-		val movieBaseUrl = "http://www.imdb.com/title/tt"
-
-		// task should be done the following day
-		val dt = new DateTime()
-		val date = new Date(dt.toDate.getTime)
-
-		// create crawlify tasks
-		val taskList = ids.map { id =>
-			Task(0, TaskType.Crawlify.toString, date, 10, movieBaseUrl + id, false, "", Config.IMDB_GRAPH)
-		}
-
-		// add tasks to database
-		val database = new TaskDatabase
-		database.insertAll(taskList)
+		createCrawlifyTasks(ids, "")
 	}
 
 	private def getNewMovieIds(content: String): List[String] = {
@@ -69,7 +44,7 @@ class ImdbComingSoonMovieUpdater() {
 		}
 
 		dates.flatMap { date =>
-			val url = s"${ImdbComingSoonMovieUpdater.BASEURL}/$date"
+			val url = s"${ImdbUpdater.COMING_SOON_BASE_URL}/$date"
 			List(Crawler.downloadFile(new URL(url)))
 		}
 	}

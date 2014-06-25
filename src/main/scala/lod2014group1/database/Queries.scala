@@ -2,6 +2,7 @@ package lod2014group1.database
 
 import lod2014group1.Config
 import lod2014group1.merging.Merger
+import org.joda.time.DateTime
 
 
 case class ResourceWithName(resource: String, name: String)
@@ -111,6 +112,31 @@ object Queries {
 			results ::= o
 		})
 		results.size == 0
+	}
+
+	def getMovieIdsInTimeRange(fromDate: DateTime, toDate: DateTime): List[String] = {
+		val fromYear = fromDate.getYear - 1
+		val toYear = toDate.getYear + 1
+
+		val query =	s"""
+			   $getAllPrefixe
+				SELECT ?s ?year WHERE {
+					?s rdf:type dbpedia-owl:Film .
+					?s dbpprop:years ?yearString .
+						BIND (xsd:integer(?yearString) AS ?year) .
+					FILTER (?year > $fromYear) .
+					FILTER (?year < $toYear) .
+				}
+			"""
+		val queryExecution = database.buildQuery(query)
+
+		var results: List[String] = List()
+		database.query(queryExecution, { rs =>
+			println(rs.get("year").toString)
+			val s = rs.get("s").toString
+			results ::= s.takeRight(9)
+		})
+		results
 	}
 	
 	private def getAllPrefixe : String = {
