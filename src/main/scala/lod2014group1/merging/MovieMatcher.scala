@@ -8,7 +8,6 @@ import scala.pickling._
 import json._
 import org.apache.commons.io.{FileUtils, IOUtils}
 import lod2014group1.rdf.RdfTriple
-import scala.collection.JavaConversions._
 import scala.util.Random
 
 class MovieMatcher {
@@ -74,7 +73,7 @@ class MovieMatcher {
 				}
 			}
 		}
-//		.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/")
+
 		println(s"There were ${testSet.size} files.")
 		println(s"${trueMatched.size} were matched correctly.")
 		println(s"${falseMatched.size} were matched incorrectly: ${falseMatched}.")
@@ -141,7 +140,9 @@ class MovieMatcher {
 			return List()
 		if (bestMovies(0).score < ACTOR_OVERLAP_MINIMUM) {
 			println("Could not find a single match. Here are the best five matches:")
-			bestMovies.take(5).foreach(println)
+			bestMovies.take(5).foreach { movie =>
+				println(movie.candidate.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/"))
+			}
 		}
 		bestMovies.filter { _.score > ACTOR_OVERLAP_MINIMUM }
 	}
