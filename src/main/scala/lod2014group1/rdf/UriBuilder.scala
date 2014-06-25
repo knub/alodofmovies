@@ -68,4 +68,12 @@ object UriBuilder {
 	def getTmdbPersonUri(id: Long): String = {
 		s"https://www.themoviedb.org/person/$id"
 	}
+	
+	def getOfdbMovieUri(id: String): String = {
+		s"http://www.ofdb.de/film/$id,"
+	}
+	
+	def getOfdbPersonUri(id: String): String = {
+		s"lod:PersonOFDB$id"
+	}
 }

@@ -50,7 +50,11 @@ object UriToFilename {
 			// OFDB
 			case uri if uri.startsWith("http://www.ofdb.de/film/)") =>
 				val id = uri.split("/").last
-				s"$dir/OFDB/movie/$id/main.html"
+				s"$dir/OFDB/Movies/$id/film.html"
+			
+			case uri if uri.startsWith("http://www.ofdb.de/view.php?page=film_detail") =>
+				val id = uri.split("/").last
+				s"$dir/OFDB/Movies/$id/cast.html"
 
 			case _ =>
 				""

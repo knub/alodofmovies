@@ -15,6 +15,7 @@ import lod2014group1.rdf.RdfAkaResource._
 import lod2014group1.rdf.RdfMovieResource._
 import lod2014group1.rdf.RdfPersonResource._
 import lod2014group1.rdf.RdfCharacterResource._
+import lod2014group1.rdf.UriBuilder
 import org.joda.time.DateTime
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
 import lod2014group1.rdf
@@ -22,9 +23,9 @@ import scala.io.Codec
 import java.nio.charset.CodingErrorAction
 import lod2014group1.rdf.UriBuilder
 
-class OfdbTriplifier(val ofdbId: Integer) {
+class OfdbTriplifier(val ofdbId: String) {
 	val OFDB_PATH = s"${Config.DATA_FOLDER}/OFDB"
-	val movie = movieResourceFromRdfResource(RdfResource(s"lod:MovieOFDB$ofdbId"))
+	val movie = movieResourceFromRdfResource(RdfResource(UriBuilder.getOfdbMovieUri(ofdbId)))
 	implicit val codec = Codec("UTF-8")
 	codec.onMalformedInput(CodingErrorAction.REPLACE)
 	codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
@@ -33,8 +34,17 @@ class OfdbTriplifier(val ofdbId: Integer) {
 	
 	def triplify(): List[RdfTriple] = {
 		var triples: List[RdfTriple] = List()
-		triples = triplifyFilm()
-		triples = triplifyCast() ::: triples
+		
+		
+		if (!Files.exists(Paths.get(filmPath))){
+			println(s"$filmPath not found. Could not triplify.")
+			return triples
+		}
+		val docString = Source.fromFile(filmPath)(codec).mkString
+		
+		
+		triples = triplifyFilm(docString)
+		triples = triplifyCast(docString) ::: triples
 		val triplesSize = triples.size - 1
 		//for (k <- 0 to triplesSize){
 		//	println(triples(k).toString)
@@ -42,14 +52,8 @@ class OfdbTriplifier(val ofdbId: Integer) {
 		triples
 	}
 
-	def triplifyFilm(): List[RdfTriple] = {		
+	def triplifyFilm(docString : String): List[RdfTriple] = {	
 		var triples: List[RdfTriple] = List()
-		
-		if (!Files.exists(Paths.get(filmPath))){
-			println(s"$filmPath not found. Could not triplify.")
-			return triples
-		}
-		val docString = Source.fromFile(filmPath)(codec).mkString
 		
 		if(docString.contains("Unter dieser ID existiert kein Film."))
 			return triples
@@ -59,8 +63,7 @@ class OfdbTriplifier(val ofdbId: Integer) {
 			var imdbId = docString.split(imdbIdSplit, 2)(1).split("""\"""", 2)(0)
 			imdbId = imdbId.replace("?", "")
 			imdbId = "tt" + imdbId
-			val imdbUri = UriBuilder.getMovieUriFromImdbId(imdbId)
-			triples = (movie sameAs imdbUri) :: triples
+			triples = movie.sameAsImdbUrl(imdbId) :: triples
 		}
 		
 		val titleSplit = """<h1 itemprop="name"><font face="Arial,Helvetica,sans-serif" size="3"><b>"""
@@ -135,14 +138,8 @@ class OfdbTriplifier(val ofdbId: Integer) {
 		triples
 	}
 	
-	def triplifyCast(): List[RdfTriple] = {		
+	def triplifyCast(docString : String): List[RdfTriple] = {		
 		var triples: List[RdfTriple] = List()
-		
-		if (!Files.exists(Paths.get(castPath))){
-			println(s"$filmPath not found. Could not triplify.")
-			return triples
-		}
-		val docString = Source.fromFile(castPath)(codec).mkString
 		
 		if(docString.contains("Unter dieser ID existiert kein Film."))
 			return triples
@@ -185,7 +182,7 @@ class OfdbTriplifier(val ofdbId: Integer) {
 							personName = personName.split("""</a>""")(0)
 						}
 						if (!personName.equals("")){
-							val currentPerson = personResourceFromRdfResource(RdfResource(s"lod:PersonOFDB$personName"))
+							val currentPerson = personResourceFromRdfResource(RdfResource(UriBuilder.getOfdbPersonUri(removeSpecialCharacters(personName))))
 						
 							triples = (currentPerson isA person) :: triples
 							triples = (currentPerson hasName personName) :: triples
@@ -239,13 +236,15 @@ class OfdbTriplifier(val ofdbId: Integer) {
 									if (role.contains("""\(""")){
 										role = role.split("""\(""", 2)(0).trim()
 									}
-									val currentCharacter = characterInfoResourceFromRdfResource(RdfResource(s"lod:CharacterOFDB$role"))
-									val currentCharacterMovie = characterInfoResourceFromRdfResource(RdfResource(s"lod:MovieOFDB$ofdbId/CharacterOFDB$role"))
+									val currentCharacter = characterInfoResourceFromRdfResource(RdfResource(s"lod:CharacterOFDB${removeSpecialCharacters(role)}"))
+									val currentCharacterMovie = characterInfoResourceFromRdfResource(RdfResource(s"lod:MovieOFDB$ofdbId/CharacterOFDB${removeSpecialCharacters(role)}"))
 									triples = (currentCharacterMovie inMovie movie) :: triples
 									triples = (currentPerson playsCharacter currentCharacterMovie) :: triples
 									triples = (currentCharacterMovie isSubclassOf currentCharacter) :: triples
 									triples = (currentCharacter hasLabel role) :: triples
+									triples = (currentCharacter hasName role) :: triples
 									triples = (currentCharacterMovie hasLabel s"$role in OFDB Movie $ofdbId") :: triples
+									triples = (currentCharacterMovie hasName role) :: triples
 								}
 							}
 						
@@ -266,5 +265,10 @@ class OfdbTriplifier(val ofdbId: Integer) {
 		}
 		}
 		triples
+	}
+	
+	def removeSpecialCharacters(string: String) : String = {
+		var nonSpaceString = string.replaceAll("[^a-zA-Z0-9]", "");
+		nonSpaceString
 	}
 }

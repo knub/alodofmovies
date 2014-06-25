@@ -20,24 +20,30 @@ class TriplifyDistributor {
 		if (fileName.contains("IMDBMovie")) {
 			val imdbId = fileName.split("/")(1)
 			if (f.getName == "fullcredits.html")
-				new ImdbCastTriplifier(imdbId).triplify(content)
+				return new ImdbCastTriplifier(imdbId).triplify(content)
 			else if (f.getName == "locations.html")
-				new ImdbLocationTriplifier(imdbId).triplify(content)
+				return new ImdbLocationTriplifier(imdbId).triplify(content)
 			else if (f.getName == "keywords.html")
-				new ImdbKeywordTriplifier(imdbId).triplify(content)
+				return new ImdbKeywordTriplifier(imdbId).triplify(content)
 			else if (f.getName == "awards.html")
-				new ImdbAwardTriplifier(imdbId).triplify(content)
+				return new ImdbAwardTriplifier(imdbId).triplify(content)
 			else if (f.getName == "releaseinfo.html")
-				new ImdbReleaseInfoTriplifier(imdbId).triplify(content)
+				return new ImdbReleaseInfoTriplifier(imdbId).triplify(content)
 			else if (f.getName == "main.html")
-				new ImdbMainPageTriplifier(imdbId).triplify(content)
+				return new ImdbMainPageTriplifier(imdbId).triplify(content)
 		} else if (fileName.contains("Actor")) {
 			val imdbId = fileName.split("/")(1)
 			if (f.getName == "main.html")
-				new ImdbActorTriplifier(imdbId).triplify(content)
+				return new ImdbActorTriplifier(imdbId).triplify(content)
+		} else if (fileName.contains("OFDB/Movies")){
+			val ofdbId = fileName.split("/", 3)(1)
+			if (fileName.contains("film.html"))
+				return new OfdbTriplifier(ofdbId).triplifyFilm(content)
+			else if (fileName.contains("cast.html"))
+				return new OfdbTriplifier(ofdbId).triplifyCast(content)
 		}
 		throw new RuntimeException("Could not find triplifier.")
-	}
+	} 
 }
 
 object TriplifyDistributor extends Logging {
@@ -73,12 +79,13 @@ object TriplifyDistributor extends Logging {
 				part
 			case Config.Person.Tim =>
 				var ofdbTriples: List[RdfTriple] = List()
-				for (i <- 1 to 100000){
-					ofdbTriples = new OfdbTriplifier(i).triplify() ::: ofdbTriples
-					if(i % 100 == 0)
-						println(s"$i Ofdb Movies triplified.")
+				for (i <- 1 to 1){
+				val ofdbTriplifier = new OfdbTriplifier(i.toString())
+					ofdbTriples = ofdbTriplifier.triplify() ::: ofdbTriples
+					if(i % 10 == 0) 	println(s"$i Ofdb Movies triplified.")
 				}
 				ofdbTriples
+				//List()
 		}
 
 		triples.foreach(println)
