@@ -103,6 +103,11 @@ task offlineRunner(type: JavaExec, dependsOn: [build]) {
     classpath = sourceSets.main.runtimeClasspath
     args = ['offline-task-runner']
 }
+task updateDaily(type: JavaExec, dependsOn: [build]) {
+    main = 'lod2014group1.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['update-daily']
+}
 repositories {
 	mavenCentral()
 	flatDir {

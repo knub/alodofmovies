@@ -166,6 +166,25 @@ object Queries {
 				};
 			"""
 
+//		SELECT ?resource ?p ?o
+//		WHERE {
+//			{
+//				?resource ?p ?o
+//					{
+//						SELECT ?resource
+//						WHERE
+//						{
+//							<http://purl.org/hpi/movie#Moviett1986914> ?p ?resource .
+//								FILTER (strStarts(str(?resource), "http://purl.org/hpi/movie#"))
+//						}
+//					}
+//			}
+//			UNION
+//			{
+//				BIND (<http://purl.org/hpi/movie#Moviett1986914> as ?resource) ?resource ?p ?o .
+//			}
+//		}
+
 		val update = UpdateFactory.create(query)
 		val uExec =	UpdateExecutionFactory.createRemote(update, Config.SPARQL_ENDPOINT)
 		uExec.execute()

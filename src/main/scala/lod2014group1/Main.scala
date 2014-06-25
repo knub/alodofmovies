@@ -5,7 +5,7 @@ import org.slf4s.Logging
 import lod2014group1.triplification.{TmdbMovieTriplifier, TriplifyDistributor}
 import lod2014group1.messaging._
 import lod2014group1.merging.MovieMatcher
-import lod2014group1.updating.ImdbStatisticUpdater
+import lod2014group1.updating.{UpdateScheduler, ImdbStatisticUpdater}
 import lod2014group1.job_managing.OfflineTaskRunner
 import java.io.File
 import lod2014group1.triplification.FreebaseFilmsTriplifier
@@ -62,6 +62,8 @@ object Main extends App with Logging {
 					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
 					merger.runStatistic(tmdbDir, new TmdbMovieTriplifier())
 			}
+		} else if (args contains "update-daily") {
+			new UpdateScheduler().update()
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}

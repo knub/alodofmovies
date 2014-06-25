@@ -11,10 +11,6 @@ object ImdbUpdater {
 	val COMING_SOON_BASE_URL = "http://www.imdb.com/movies-coming-soon"
 	val IMDB_PAGES = List("", "fullcredits", "locations", "keywords", "awards", "releaseinfo")
 	val MOVE_BASE_URI = "http://www.imdb.com/title/"
-
-	def main(args: Array[String]): Unit = {
-		new ImdbExistingMovieUpdater().dupdateFiveYearOldMovies()
-	}
 }
 
 class ImdbUpdater {
