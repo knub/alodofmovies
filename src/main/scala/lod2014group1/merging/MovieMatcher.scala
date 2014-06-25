@@ -124,7 +124,7 @@ class MovieMatcher {
 //				println(s"$i/${candidates.size}")
 		}
 		val bestMovies = movieScores.toList.map(CandidateScore.tupled).sortBy(-_.score).take(5)
-		if (bestMovies.nonEmpty)
+		if (bestMovies.isEmpty)
 			return List()
 		if (bestMovies(0).score < ACTOR_OVERLAP_MINIMUM) {
 			bestMovies.foreach(println)
