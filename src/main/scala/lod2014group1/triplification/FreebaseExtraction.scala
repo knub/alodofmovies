@@ -33,16 +33,11 @@ object FreebaseExtraction {
 }
 
 case class Person (text:String, id:String)
-case class Persons (obj: List[Person])
-//case class Crew (crew: List)
 
 class FreebaseExtraction() {
-	val FREEBASE_URI = "http://www.freebase.com"
 		
 	def extractListString(json: JValue, values: Map[List[String], String => RdfTriple]): List[RdfTriple] = {
-		
 		implicit val formats = net.liftweb.json.DefaultFormats
-		//var triples = List[RdfTriple]()
 		
 		values.flatMap( property => {
 			val jsonValue = property._1.foldLeft(json)((acc, prop) => acc \ prop)
@@ -88,7 +83,6 @@ class FreebaseExtraction() {
 	
 	
 	def matchPersons(p: Person, resource: Option[RdfResource],job: Option[String]):(RdfPersonResource, List[RdfTriple]) = {
-		//TODO: match Persons and find right resource
 		val person = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseId(p.id))
 		val triple = List(person isA RdfPersonResource.actor,
 				person isA(RdfPersonResource.person),
