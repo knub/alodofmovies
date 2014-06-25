@@ -8,6 +8,7 @@ import org.joda.time.DateTime
 object UpdateScheduler {
 	val ONCE_PER_DAY = 1000 * 60 // * 60 * 24
 	val MIDNIGHT = 	getDate
+	val NOW = 0
 
 	private def getDate: Date = {
 		val tomorrow = new DateTime().plusDays(1)
@@ -27,7 +28,7 @@ class UpdateScheduler {
 			def run() {
 				imdbUpdater.updateComingSoonMovies()
 			}
-		}, UpdateScheduler.MIDNIGHT, UpdateScheduler.ONCE_PER_DAY)
+		}, UpdateScheduler.NOW, UpdateScheduler.ONCE_PER_DAY)
 	}
 
 }
