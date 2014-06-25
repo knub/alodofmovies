@@ -1,16 +1,12 @@
 package lod2014group1
+
 import lod2014group1.crawling.Crawler
 import org.slf4s.Logging
-import lod2014group1.apis._
 import lod2014group1.triplification.{TmdbMovieTriplifier, TriplifyDistributor}
 import lod2014group1.messaging._
-import lod2014group1.statistics.FreebaseToImdb
-import lod2014group1.database._
-import lod2014group1.updating.NewImdbMoviesUpdater
 import lod2014group1.merging.MovieMatcher
-import scala.slick.driver.MySQLDriver.simple._
+import lod2014group1.updating.ImdbStatisticUpdater
 import lod2014group1.job_managing.OfflineTaskRunner
-import lod2014group1.messaging.worker.WorkerTask
 import java.io.File
 
 object Main extends App with Logging {
@@ -51,7 +47,8 @@ object Main extends App with Logging {
 			val taskRunner = new OfflineTaskRunner()
 			taskRunner.runTasks(800000)
 		} else if (args contains "watch-imdb") {
-			NewImdbMoviesUpdater.watchUpcomingMovies()
+			ImdbStatisticUpdater.watchUpcomingMovies()
+			ImdbStatisticUpdater.watchExistingMovie()
 		} else if (args contains "merge-tmdb") {
 			val merger = new MovieMatcher()
 			val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
