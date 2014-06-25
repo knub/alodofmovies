@@ -2,7 +2,7 @@ package lod2014group1.merging
 
 import java.io.File
 import lod2014group1.triplification.{Triplifier, TmdbMovieTriplifier}
-import lod2014group1.database.{ResourceWithName, Queries}
+import lod2014group1.database.{TaskDatabase, ResourceWithName, Queries}
 import org.apache.commons.lang3.StringUtils
 import scala.pickling._
 import json._
@@ -20,6 +20,7 @@ class MovieMatcher {
 
 	val tmdbTriplifier = new TmdbMovieTriplifier
 	val movieNames = Queries.getAllMovieNames
+	val taskDb = new TaskDatabase()
 	new File(s"data/MergeMovieActor/").mkdir()
 
 	def getImdbId(g: TripleGraph): String = {
@@ -37,21 +38,33 @@ class MovieMatcher {
 		var falseMatched = List[CandidateScore]()
 		var trueMatched  = List[CandidateScore]()
 
+		var notInDb      = List[String]()
+		var noCandidate  = List[String]()
 		var noImdbId     = List[String]()
 		var notMatched   = List[String]()
 
 		val r = new Random(1000)
-		val testSet =  r.shuffle(dir.listFiles().toList).take(TEST_SET_SIZE)
+		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
+
 		testSet.foreach { file =>
 			val triples = tmdbTriplifier.triplify(file)
 			val tripleGraph = new TripleGraph(triples)
 			val imdbMovie = merge(tripleGraph)
 			val imdbId = getImdbId(tripleGraph)
+
+			val candidatIds = imdbMovie.map { c => getImdbId(c) }
+
 			if (imdbId == null) {
 				noImdbId ::= file.getName
 			} else {
 				if (imdbMovie.isEmpty) {
-					notMatched ::= file.getName
+					if (taskDb.hasTasks(imdbId)) {
+						notInDb ::= file.getName
+					} else if (!candidatIds.exists( c => c.equals(imdbId))) {
+						noCandidate ::= file.getName
+					} else {
+						notMatched ::= file.getName
+					}
 				} else {
 					val bestMovie = imdbMovie.head
 					if (getImdbId(bestMovie) == imdbId)
@@ -64,8 +77,10 @@ class MovieMatcher {
 		
 		println(s"There were ${testSet.size} files.")
 		println(s"${trueMatched.size} were matched correctly.")
-		println(s"${falseMatched.size} were matched incorrectly")
-		println(s"${notMatched.size} were not matched at all.")
+		println(s"${falseMatched.size} were matched incorrectly: ${falseMatched}.")
+		println(s"${notInDb.size} were not matched because no task exists.")
+		println(s"${noCandidate.size} were not matched and are not candidates: ${noCandidate}.")
+		println(s"${notMatched.size} were not matched for unknown reasons: ${notMatched}.")
 		println(s"${noImdbId.size} had no imdb id.")
 	}
 	
@@ -122,11 +137,12 @@ class MovieMatcher {
 //			if (i % 1000 == 0)
 //				println(s"$i/${candidates.size}")
 		}
-		val bestMovies = movieScores.toList.map(CandidateScore.tupled).sortBy(-_.score).take(5)
+		val bestMovies = movieScores.toList.map(CandidateScore.tupled).sortBy(-_.score)
 		if (bestMovies.isEmpty)
 			return List()
 		if (bestMovies(0).score < ACTOR_OVERLAP_MINIMUM) {
-			bestMovies.foreach(println)
+			println("Could not find a single match. Here are the best five matches:")
+			bestMovies.take(5).foreach(println)
 		}
 		bestMovies.filter { _.score > ACTOR_OVERLAP_MINIMUM }
 	}
