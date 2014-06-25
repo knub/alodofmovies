@@ -105,17 +105,9 @@ class MovieMatcher {
 
 
 	def findCandidateMovies(g: TripleGraph): List[ResourceWithName] = {
-		val years = g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease").map { yearString =>
-			val split = yearString.split("-")
-			split(0).replace("\"", "").toInt
-		}.distinct
-		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
-
 		val movieResource = g.getObjectOfType("dbpedia-owl:Film")
 		val currentMovieNames = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")
 		println(s"========== Movie: ${currentMovieNames(0)} ==========")
-		if (years.isEmpty)
-			println("No years found.")
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
 			val l = currentMovieNames.map { movieName =>
 				val l = StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
@@ -123,6 +115,14 @@ class MovieMatcher {
 			}.min
 			l < CANDIDATE_MOVIE_LEVENSHTEIN
 		}
+
+		val years = g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease").map { yearString =>
+			val split = yearString.split("-")
+			split(0).replace("\"", "").toInt
+		}.distinct
+		if (years.isEmpty)
+			println("No years found.")
+		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
 		val allCandidates = (moviesInYear ::: moviesWithSimilarName).distinct
 			
 		allCandidates
