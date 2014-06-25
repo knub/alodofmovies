@@ -13,6 +13,10 @@ import scala.util.Random
 
 class MovieMatcher {
 
+	val ACTOR_OVERLAP_MINIMUM       = 0.8
+	val ACTOR_OVERLAP_LEVENSHTEIN   = 5
+	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
+
 	val tmdbTriplifier = new TmdbMovieTriplifier
 	val movieNames = Queries.getAllMovieNames
 	new File(s"data/MergeMovieActor/").mkdir()
@@ -78,6 +82,7 @@ class MovieMatcher {
 		
 	}
 
+
 	def findCandidateMovies(g: TripleGraph): List[ResourceWithName] = {
 		val years = g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease").map { yearString =>
 			val split = yearString.split("-")
@@ -94,12 +99,13 @@ class MovieMatcher {
 //				println(f"$l, M1: #${movieWithName.name}#, M2: #$movieName#")
 				l
 			}.min
-			l < 5
+			l < CANDIDATE_MOVIE_LEVENSHTEIN
 		}
 		(moviesInYear ::: moviesWithSimilarName).distinct
 	}
 
 	case class CandidateScore(candidate: String, score: Double)
+
 
 	def merge(triples: TripleGraph): List[CandidateScore] = {
 		val candidates = findCandidateMovies(triples)
@@ -111,10 +117,10 @@ class MovieMatcher {
 				println(s"$i/${candidates.size}")
 		}
 		val bestMovies = movieScores.toList.map(CandidateScore.tupled(_)).sortBy(-_.score).take(5)
-		if (bestMovies(0).score < 0.8) {
+		if (bestMovies(0).score < ACTOR_OVERLAP_MINIMUM) {
 			bestMovies.foreach(println)
 		}
-		bestMovies.filter { _.score > 0.8}
+		bestMovies.filter { _.score > ACTOR_OVERLAP_MINIMUM }
 	}
 
 	def calculateActorOverlap(g: TripleGraph, candidateUri: String): Double = {
@@ -148,18 +154,16 @@ class MovieMatcher {
 		calculateOverlap(currentDirectors, canidateDirectors)
 	}
 
-	private def calculateOverlap(currentObjects: List[String], canidateObjects: List[ResourceWithName]): Double = {
-		val threshold = 5
-
-		if (canidateObjects.isEmpty)
+	private def calculateOverlap(currentObjects: List[String], candidateObjects: List[ResourceWithName]): Double = {
+		if (candidateObjects.isEmpty)
 			return 0.0
 
 		val similarObjects = currentObjects.flatMap { currentObject =>
-			val bestMatch = canidateObjects.map { canidateObject =>
+			val bestMatch = candidateObjects.map { canidateObject =>
 				StringUtils.getLevenshteinDistance(canidateObject.name, currentObject)
 			}.min
 
-			if (bestMatch < threshold)
+			if (bestMatch < ACTOR_OVERLAP_LEVENSHTEIN)
 				List(currentObject)
 			else
 				List()
