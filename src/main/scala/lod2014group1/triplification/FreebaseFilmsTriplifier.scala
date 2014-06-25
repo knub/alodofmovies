@@ -116,7 +116,7 @@ class FreebaseFilmsTriplifier() extends Triplifier with Logging {
 				(List("property", "/film/film/prequel", "values"), prequels(_:Person, _:RdfMovieResource))
 		)
 		
-		triples //::: extract.extractResources(json, sequences, movieResource)		
+		triples ::: extract.extractResources(json, sequences, movieResource)		
 	}
 	
 	def sequels (p:Person, movieResource: RdfMovieResource): List[RdfTriple] = {

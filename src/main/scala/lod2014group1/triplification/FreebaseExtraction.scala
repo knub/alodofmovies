@@ -40,7 +40,6 @@ class FreebaseExtraction() {
 		implicit val formats = net.liftweb.json.DefaultFormats
 		
 		values.flatMap { property =>
-			println(s"Looping over $property")
 			val jsonValue = property._1.foldLeft(json)((acc, prop) => acc \ prop)
 			val props = jsonValue.extractOpt[List[String]]
 			val l = props match {
@@ -50,7 +49,6 @@ class FreebaseExtraction() {
 					List(property._2(prop))
 				}
 			}
-			println(s"List result for $property is $l")
 			l
 		}.toList.reverse
 
