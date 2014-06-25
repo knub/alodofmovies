@@ -16,53 +16,58 @@ class MovieMatcher {
 	val ACTOR_OVERLAP_MINIMUM       = 0.8
 	val ACTOR_OVERLAP_LEVENSHTEIN   = 5
 	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
+	val TEST_SET_SIZE               = 10
 
 	val tmdbTriplifier = new TmdbMovieTriplifier
 	val movieNames = Queries.getAllMovieNames
 	new File(s"data/MergeMovieActor/").mkdir()
 
-	def mergeForrestGump(): Unit = {
-	//	val file = new File("data/TMDBMoviesList/movie/9502.json")
-		val file = new File("data/TMDBMoviesList/movie/13.json")
-		mergeTmdbMovie(file)
+	def getImdbId(g: TripleGraph): String = {
+		val sameAsTriples = g.getObjectsForPredicate("owl:sameAs").filter(p => p.contains("http://imdb.com/title/"))
+		if (sameAsTriples.isEmpty)
+			return null
+		sameAsTriples.head.split("/").last.split(">")(0)
+	}
+
+	def getImdbId(cs: CandidateScore): String = {
+		cs.candidate.split("Movie").last
 	}
 
 	def runStatistic(dir: File, triplifier: Triplifier): Unit = {
 		var falseMatched = List[CandidateScore]()
-		var matched      = List[CandidateScore]()
+		var trueMatched  = List[CandidateScore]()
+
+		var noImdbId     = List[String]()
 		var notMatched   = List[String]()
-		var newMatched   = List[CandidateScore]()
-		
+
 		val r = new Random(1000)
-		r.shuffle(dir.listFiles().toList).take(10).foreach { file =>
+		val testSet =  r.shuffle(dir.listFiles().toList).take(TEST_SET_SIZE)
+		testSet.foreach { file =>
 			val triples = tmdbTriplifier.triplify(file)
 			val tripleGraph = new TripleGraph(triples)
 			val imdbMovie = merge(tripleGraph)
-			if (!imdbMovie.isEmpty) {
-				val imdbUrls = tripleGraph.getObjectsForPredicate("owl:sameAs").filter(p => p.contains("http://imdb.com/title/"))
-				if (imdbUrls.nonEmpty) {
-					if (imdbMovie.head.candidate.split("Movie").last == imdbUrls.head.split("/").last.split(">")(0))
-						matched ::= imdbMovie.head
-					else
-						falseMatched ::= imdbMovie.head
-				}
-				else newMatched ::= imdbMovie.head
+			val imdbId = getImdbId(tripleGraph)
+			if (imdbId == null) {
+				noImdbId ::= file.getName
+				return
 			}
-			else
+
+			if (imdbMovie.isEmpty) {
 				notMatched ::= file.getName
+			} else {
+				val bestMovie = imdbMovie.head
+				if (getImdbId(bestMovie) == imdbId)
+					trueMatched ::= bestMovie
+				else
+					falseMatched ::= bestMovie
+			}
 		}
 		
-		println()
-		println("matched:" + matched)
-		println("falseMatched" + falseMatched)
-		println("newMatched" + newMatched)
-		println("notMatched" + notMatched)
-		
-		println()		
-		println("matched:" + matched.size)
-		println("falseMatched" + falseMatched.size)
-		println("newMatched" + newMatched.size)
-		println("notMatched" + notMatched.size)
+		println(s"There were ${testSet.size} files.")
+		println(s"${trueMatched.size} were matched correctly.")
+		println(s"${falseMatched.size} were matched incorrectly")
+		println(s"${notMatched.size} were not matched at all.")
+		println(s"${noImdbId.size} had no imdb id.")
 	}
 	
 	def mergeTmdbMovie(file: File): Unit = {
