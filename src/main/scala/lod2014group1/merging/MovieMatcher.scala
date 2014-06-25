@@ -109,13 +109,13 @@ class MovieMatcher {
 			val split = yearString.split("-")
 			split(0).replace("\"", "").toInt
 		}.distinct
-		if (years.isEmpty)
-			println("No years found.")
 		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
 
 		val movieResource = g.getObjectOfType("dbpedia-owl:Film")
 		val currentMovieNames = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")
 		println(s"========== Movie: ${currentMovieNames(0)} ==========")
+		if (years.isEmpty)
+			println("No years found.")
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
 			val l = currentMovieNames.map { movieName =>
 				val l = StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
