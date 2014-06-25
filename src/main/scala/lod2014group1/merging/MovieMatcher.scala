@@ -46,7 +46,6 @@ class MovieMatcher {
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
 		testSet.foreach { file =>
 			val triples = triplifier.triplify(FileUtils.readFileToString(file))
-			println(triples)
 			val tripleGraph = new TripleGraph(triples)
 			val imdbMovie = merge(tripleGraph)
 			val imdbId = getImdbId(tripleGraph)
