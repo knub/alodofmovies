@@ -68,11 +68,11 @@ class MovieMatcher {
 		var notInCandidate  = List[ResultIds]()
 		var noCandidates    = List[ResultIds]()
 		var notMatched      = List[ResultIds]()
-
 		var noImdbId        = List[String]()
 
 		val r = new Random(1001)
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
+//		val testSet = dir.listFiles().filter(f => f.getName().contains("0bdjd"))
 		testSet.foreach { file =>
 			val triples = triplifier.triplify(FileUtils.readFileToString(file))
 			val tripleGraph = new TripleGraph(triples)
@@ -159,13 +159,14 @@ class MovieMatcher {
 			l < CANDIDATE_MOVIE_LEVENSHTEIN
 		}
 
-		val years = g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease").map { yearString =>
+		val years = (g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease")::: g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:initialRelease")).map { yearString =>
 			val split = yearString.split("-")
 			split(0).replace("\"", "").toInt
 		}.distinct
 		if (years.isEmpty)
 			println("No years found.")
 		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
+//		val moviesInYear = List()
 		val allCandidates = (moviesInYear ::: moviesWithSimilarName).distinct
 			
 		allCandidates

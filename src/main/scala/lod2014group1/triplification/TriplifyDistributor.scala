@@ -66,7 +66,7 @@ object TriplifyDistributor extends Logging {
 //					new FreebaseFilmsTriplifier(id).triplify(file)
 //				}.toList
 				//new FreebaseFilmsTriplifier("/m/0bdjd").triplify(new File("data/Freebase/film/0bdjd")) ::: 
-				(new FreebaseFilmsTriplifier).triplify(new File("data/Freebase/film/047csmy"))
+				(new FreebaseFilmsTriplifier).triplify(new File("data/Freebase/film/0nd2mj_"))
 				//List()
 			case Config.Person.Dominik =>
 				val tmdbTriplifier = new TmdbMovieTriplifier()

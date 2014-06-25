@@ -27,9 +27,7 @@ import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.UriBuilder
 
 object FreebaseExtraction {
-	
 
-	
 }
 
 case class Person (text:String, id:String)
@@ -130,7 +128,7 @@ class FreebaseExtraction() {
 	def extractCompounds(json: JValue, movieUri:String, properties: List[(List[String], (String, JValue) => (Map[List[String], String => RdfTriple], List[RdfTriple]))]): List[RdfTriple] = {
 		implicit val formats = net.liftweb.json.DefaultFormats
 		
-		
+
 		val t: List[RdfTriple] = properties.flatMap {value => 
 			val compounds = value._1.foldLeft(json){ (acc, prop) =>	acc \ prop}
 			val compoundList = if (compounds.isInstanceOf[JArray])
@@ -185,7 +183,7 @@ class FreebaseExtraction() {
 				case Some(person) => {
 					val personResource = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseId(person.id))
 					
-					val triple = List(personResource isA RdfPersonResource.actor, personResource.hasName(person.text), personResource.hasLabel(person.text))
+					val triple = List(personResource isA RdfPersonResource.actor, personResource.hasName(person.text), personResource.hasLabel(person.text), movie starring personResource)
 					
 					val characterJson = starringJson \ "/film/performance/character" \ "values"
 					val character = characterJson.extractOpt[Person]
@@ -201,7 +199,8 @@ class FreebaseExtraction() {
 								characterResource.playedBy(personResource),
 								chaResource isA(RdfCharacterResource.character),
 								chaResource hasLabel character.text,
-								characterResource.isSubclassOf(chaResource))
+								characterResource.isSubclassOf(chaResource),
+								personResource.playsCharacter(characterResource))
 						}
 						case None => {
 							val specialPerformanceJson = starringJson \ "/film/performance/special_performance_type" \ "values"

@@ -54,7 +54,7 @@ class FreebaseFilmsTriplifier() extends Triplifier with Logging {
 				(List("property", "/type/object/name", "values", "value"), movieResource.hasLabel(_: String)),
 				(List("property", "/common/topic/topic_equivalent_webpage", "values", "value") , movieResource.sameAs(_: String)),
 				(List("property", "/common/topic/article", "values", "property", "/common/document/text" ,"values", "value"), movieResource.hasShortSummary(_: String)),
-				(List("property", "/film/film/initial_release_date", "values", "value"), movieResource.releasedInYear(_: String)),
+				(List("property", "/film/film/initial_release_date", "values", "value"), movieResource.releasedOn(_: String)),
 				(List("property", "/film/film/language", "values", "id"), movieResource.shotInLanguage(_: String)),
 				(List("property", "/film/film/language", "values", "text"), movieResource.shotInLanguage(_: String)),
 				(List("property", "/film/film/tagline", "values", "value"), movieResource.hasTagline(_: String)),
@@ -153,7 +153,6 @@ class FreebaseFilmsTriplifier() extends Triplifier with Logging {
 				(properties, List(releaseResource isA RdfReleaseInfoResource.releaseInfo, releaseResource sameAs(UriBuilder.getFreebaseUri(idvalue))))
 			}
 			case None => (Map[List[String], String => RdfTriple](), List())
-			
 		}
 	}
 

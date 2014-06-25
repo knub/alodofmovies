@@ -62,7 +62,7 @@ object UriBuilder {
 	}
 
 	def getFreebaseUri(id: String): String = {
-		s"http://www.freebase.com/$id"
+		s"http://www.freebase.com$id"
 	}
 
 	def getTmdbMovieUri(id: String): String = {
