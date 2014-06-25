@@ -49,17 +49,16 @@ class MovieMatcher {
 			val imdbId = getImdbId(tripleGraph)
 			if (imdbId == null) {
 				noImdbId ::= file.getName
-				return
-			}
-
-			if (imdbMovie.isEmpty) {
-				notMatched ::= file.getName
 			} else {
-				val bestMovie = imdbMovie.head
-				if (getImdbId(bestMovie) == imdbId)
-					trueMatched ::= bestMovie
-				else
-					falseMatched ::= bestMovie
+				if (imdbMovie.isEmpty) {
+					notMatched ::= file.getName
+				} else {
+					val bestMovie = imdbMovie.head
+					if (getImdbId(bestMovie) == imdbId)
+						trueMatched ::= bestMovie
+					else
+						falseMatched ::= bestMovie
+				}
 			}
 		}
 		
