@@ -204,6 +204,9 @@ class MovieMatcher {
 			else
 				List()
 		}
-		similarObjects.size.toDouble / currentObjects.size
+		if (currentObjects.isEmpty)
+			0.0
+		else
+			similarObjects.size.toDouble / currentObjects.size
 	}
 }
