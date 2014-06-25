@@ -115,7 +115,7 @@ class MovieMatcher {
 
 	def merge(triples: TripleGraph): List[CandidateScore] = {
 		val candidates = findCandidateMovies(triples)
-		println(s"Found ${candidates.size} triples.")
+		println(s"Found ${candidates.size} candidates.")
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
 			val score = calculateActorOverlap(triples, candidate.resource)
