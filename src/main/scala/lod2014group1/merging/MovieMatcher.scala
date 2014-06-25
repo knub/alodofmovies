@@ -36,14 +36,15 @@ class MovieMatcher {
 	case class ResultIds(score: Double, origin: String, matched: String, correct: String)
 
 	def runStatistic(dir: File, triplifier: Triplifier): Unit = {
-		var falseMatched = List[ResultIds]()
-		var trueMatched  = List[ResultIds]()
+		var falseMatched    = List[ResultIds]()
+		var trueMatched     = List[ResultIds]()
 
-		var notInDb      = List[ResultIds]()
-		var noCandidate  = List[ResultIds]()
-		var notMatched   = List[ResultIds]()
+		var notInDb         = List[ResultIds]()
+		var notInCandidate  = List[ResultIds]()
+		var noCandidates    = List[String]()
+		var notMatched      = List[ResultIds]()
 
-		var noImdbId     = List[String]()
+		var noImdbId        = List[String]()
 
 		val r = new Random(1001)
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
@@ -53,18 +54,21 @@ class MovieMatcher {
 
 			val candidates = merge(tripleGraph)
 			val candidateIds = candidates.map { c => getImdbId(c) }
-			val bestMovie = candidates.head
-			val bestMovieImdbId = getImdbId(bestMovie)
 			val imdbId = getImdbId(tripleGraph)
 
 			if (imdbId == null) {
 				noImdbId ::= file.getName
+			} else if (candidates.size == 0) {
+				noCandidates ::= file.getName
 			} else {
+				val bestMovie = candidates.head
+				val bestMovieImdbId = getImdbId(bestMovie)
+
 				if (candidates.filter(minScore).isEmpty) {
 					if (taskDb.hasTasks(imdbId)) {
 						notInDb ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
 					} else if (!candidateIds.exists( c => c.equals(imdbId))) {
-						noCandidate ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
+						notInCandidate ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
 					} else {
 						notMatched ::= new ResultIds(bestMovie.score, file.getName, bestMovieImdbId, imdbId)
 					}
@@ -81,7 +85,8 @@ class MovieMatcher {
 		println(s"${trueMatched.size} were matched correctly.")
 		println(s"${falseMatched.size} were matched incorrectly: ${falseMatched}.")
 		println(s"${notInDb.size} were not matched because we do not have it in our database.")
-		println(s"${noCandidate.size} were not matched and are not candidates: ${noCandidate}.")
+		println(s"${notInCandidate.size} were not matched and are not candidates: ${notInCandidate}.")
+		println(s"${noCandidates.size} were not matched and no candidates were found.")
 		println(s"${notMatched.size} were not matched for unknown reasons: ${notMatched}.")
 		println(s"${noImdbId.size} had no imdb id.")
 		println()
