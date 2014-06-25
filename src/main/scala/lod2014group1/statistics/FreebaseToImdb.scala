@@ -24,7 +24,7 @@ class FreebaseToImdb extends Logging{
 		while (id != null){
 			if (!processedIds.contains(id)){
 				val file = determineFileName(id)
-				val triplifier = new FreebaseFilmsTriplifier(id)
+				val triplifier = new FreebaseFilmsTriplifier()
 				triplifier.triplify(file)
 			}
 			
@@ -68,7 +68,6 @@ class FreebaseToImdb extends Logging{
 		log.info(s"multiple matches possible: $multiplePossibilities")
 		log.info(s"wrong imdb given: $wrongIdGiven")
 		log.info(s"wiki: $wikimatch") 
-		
 	}
 	
 }

@@ -7,7 +7,6 @@ import org.apache.commons.io.FileUtils
 import lod2014group1.crawling.ImdbMovieCrawler
 import scala.collection.JavaConversions._
 import org.slf4s.Logging
-import lod2014group1.triplification.FreebaseFilmsTriplifier
 
 class TriplifyDistributor {
 

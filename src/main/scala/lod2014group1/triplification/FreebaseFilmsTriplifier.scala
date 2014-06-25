@@ -30,7 +30,6 @@ class FreebaseFilmsTriplifier() extends Triplifier with Logging {
 	protected val fileLog: Logger = LoggerFactory.getLogger("FreebaseFileLogger")
 	
 	def triplify(file: File): List[RdfTriple] = {
-		val freebaseId = s"/m/${file.getName()}"
 		triplify(FileUtils.readFileToString(file))
 	}
 	
@@ -49,12 +48,13 @@ class FreebaseFilmsTriplifier() extends Triplifier with Logging {
 	def extractProperties(content: String, id: String, movieResource: RdfMovieResource): List[RdfTriple]={
 		val json = JsonParser.parse(content)
 				
-		val mapJsonToProperty = Map[List[String], String => RdfTriple](
+		val mapJsonToProperty = List[(List[String], String => RdfTriple)](
+				(List("property", "/type/object/name", "values", "value"), movieResource.hasTitle(_: String)),
+				(List("property", "/type/object/name", "values", "value"), movieResource.hasName(_: String)),
+				(List("property", "/type/object/name", "values", "value"), movieResource.hasLabel(_: String)),
 				(List("property", "/common/topic/topic_equivalent_webpage", "values", "value") , movieResource.sameAs(_: String)),
 				(List("property", "/common/topic/article", "values", "property", "/common/document/text" ,"values", "value"), movieResource.hasShortSummary(_: String)),
 				(List("property", "/film/film/initial_release_date", "values", "value"), movieResource.releasedInYear(_: String)),
-				(List("property", "/type/object/name", "values", "value"), movieResource.hasTitle(_: String)),
-				(List("property", "/type/object/name", "values", "value"), movieResource.hasLabel(_: String)),
 				(List("property", "/film/film/language", "values", "id"), movieResource.shotInLanguage(_: String)),
 				(List("property", "/film/film/language", "values", "text"), movieResource.shotInLanguage(_: String)),
 				(List("property", "/film/film/tagline", "values", "value"), movieResource.hasTagline(_: String)),
@@ -68,8 +68,7 @@ class FreebaseFilmsTriplifier() extends Triplifier with Logging {
 				(List("property", "/film/film/film_subject", "values", "text"), movieResource.hasSubject(_: String)),
 				(List("property", "/common/topic/alias", "values", "value"), movieResource.hasAlternativeName(_:String)),
 				(List("property", "/type/object/key", "values", "value"), movieResource.hasKeyword(_: String))
-		)
-		
+		)		
 		val extract = new FreebaseExtraction
 		
 		var triples = extract.extractListString(json, mapJsonToProperty)
@@ -87,37 +86,37 @@ class FreebaseFilmsTriplifier() extends Triplifier with Logging {
 		// /type/object/name
 		// /film/film/personal_appearances
 		
-		val mapPersons = Map[List[String], (RdfPersonResource => RdfTriple, Option[RdfResource], Option[String])](
-				(List("property", "/film/film/film_art_direction_by", "values") , (movieResource.artDirector(_: RdfResource), Some(RdfPersonResource.director), Some("Art Director"))),
-				(List("property", "/film/film/film_production_design_by", "values") , (movieResource.productionDesignBy(_: RdfResource), None, Some("Production Desginer"))),
-				(List("property", "/film/film/film_set_decoration_by", "values") , (movieResource.setDecoratedBy(_: RdfResource), Some(RdfPersonResource.setDesigner), Some("Set Decorater"))),
-				(List("property", "/film/film/music", "values") , (movieResource.musicBy(_: RdfResource), None, Some("Composer"))),
-				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , (movieResource.hasOtherCrew(_: RdfResource), None, None)),
-				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , (movieResource.hasOtherCrew(_: RdfResource), None, None)),
-				(List("property", "/film/film/produced_by", "values") , (movieResource.producedBy(_: RdfResource), Some(RdfPersonResource.producer), Some("Producer"))),
-				(List("property", "/film/film/story_by", "values") , (movieResource.storyBy(_: RdfResource), Some(RdfPersonResource.storyEditor), Some("Story Writer"))),
-				(List("property", "/film/film/written_by", "values") , (movieResource.writtenBy(_: RdfResource), None, Some("Writer"))),
-				(List("property", "/film/film/film_casting_director", "values") , (movieResource.castingBy(_: RdfResource), None, Some("Casting Director")))
+		val mapPersons = List[(List[String], RdfPersonResource => RdfTriple, Option[RdfResource], Option[String])](
+				(List("property", "/film/film/film_art_direction_by", "values") , movieResource.artDirector(_: RdfResource), Some(RdfPersonResource.director), Some("Art Director")),
+				(List("property", "/film/film/film_production_design_by", "values") , movieResource.productionDesignBy(_: RdfResource), None, Some("Production Desginer")),
+				(List("property", "/film/film/film_set_decoration_by", "values") , movieResource.setDecoratedBy(_: RdfResource), Some(RdfPersonResource.setDesigner), Some("Set Decorater")),
+				(List("property", "/film/film/music", "values") , movieResource.musicBy(_: RdfResource), None, Some("Composer")),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/crewmember", "values") , movieResource.hasOtherCrew(_: RdfResource), None, None),
+				(List("property", "/film/film/other_crew", "values", "property", "/film/film_crew_gig/film_crew_role", "values") , movieResource.hasOtherCrew(_: RdfResource), None, None),
+				(List("property", "/film/film/produced_by", "values") , movieResource.producedBy(_: RdfResource), Some(RdfPersonResource.producer), Some("Producer")),
+				(List("property", "/film/film/story_by", "values") , movieResource.storyBy(_: RdfResource), Some(RdfPersonResource.storyEditor), Some("Story Writer")),
+				(List("property", "/film/film/written_by", "values") , movieResource.writtenBy(_: RdfResource), None, Some("Writer")),
+				(List("property", "/film/film/film_casting_director", "values") , movieResource.castingBy(_: RdfResource), None, Some("Casting Director"))
 		)
 				
-		triples = extract.extractPersons(json, mapPersons) ::: triples
+		triples = triples ::: extract.extractPersons(json, mapPersons)
 		
-		val compoundList = Map[List[String], (String, JValue) => (Map[List[String], String => RdfTriple], List[RdfTriple])](
+		val compoundList = List[(List[String], (String, JValue) => (Map[List[String], String => RdfTriple], List[RdfTriple]))](
 				 (List("property", "/film/film/release_date_s", "values"), this.releaseInfoProps(_:String, _:JValue)),
 				 (List("property", "/award/award_nominated_work/award_nominations", "values"), this.awardsNominationProps(_:String, _:JValue)),
 				 (List("property", "/award/award_winning_work/awards_won", "values"), this.awardsWonProps(_:String, _:JValue))
 		)
 		
 		val compounds = extract.extractCompounds(json, id, compoundList)
-		triples = compounds ::: triples
-		triples = extract.extractStarring(json, movieResource, id) ::: triples
+		triples = triples ::: compounds
+		triples = triples ::: extract.extractStarring(json, movieResource, id) 
 		
-		val sequences = Map[List[String], (Person, RdfMovieResource) => List[RdfTriple]](
+		val sequences = List[(List[String], (Person, RdfMovieResource) => List[RdfTriple])](
 				(List("property", "/film/film/sequel", "values"), sequels(_:Person, _:RdfMovieResource)),
 				(List("property", "/film/film/prequel", "values"), prequels(_:Person, _:RdfMovieResource))
 		)
-			
-		triples ::: extract.extractResources(json, sequences, movieResource)		
+		
+		triples //::: extract.extractResources(json, sequences, movieResource)		
 	}
 	
 	def sequels (p:Person, movieResource: RdfMovieResource): List[RdfTriple] = {
