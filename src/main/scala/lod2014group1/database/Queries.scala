@@ -1,5 +1,6 @@
 package lod2014group1.database
 
+import com.hp.hpl.jena.update.{UpdateExecutionFactory, UpdateFactory}
 import lod2014group1.Config
 import lod2014group1.merging.Merger
 import org.joda.time.DateTime
@@ -152,6 +153,22 @@ object Queries {
 		  |prefix freebase: <http://rdf.freebase.com/ns/>
 		  |
 		""".stripMargin
+	}
+
+
+	def deleteTriplesForMovie(movieId: String, graph: String) {
+		val query =	s"""
+			   $getAllPrefixe
+				DELETE FROM GRAPH <$graph> { ?s ?p ?o }
+				WHERE
+				{ GRAPH  <$graph>
+					{ lod:Movie$movieId ?p ?o . }
+				};
+			"""
+
+		val update = UpdateFactory.create(query)
+		val uExec =	UpdateExecutionFactory.createRemote(update, Config.SPARQL_ENDPOINT)
+		uExec.execute()
 	}
 
 }
