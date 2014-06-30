@@ -42,7 +42,7 @@ class TriplifyDistributor {
 			else if (fileName.contains("cast.html"))
 				return new OfdbTriplifier(ofdbId).triplifyCast(content)
 		}
-		throw new RuntimeException("Could not find triplifier.")
+		throw new RuntimeException(s"Could not find triplifier for file $fileName.")
 	} 
 }
 
