@@ -26,7 +26,7 @@ class ImdbComingSoonMovieUpdater() extends ImdbUpdater {
 
 		var ids: List[String] = List()
 		movieIdTags.foreach { movieId: Element =>
-			ids = movieId.attr("href").split("/")(2).substring(2) :: ids
+			ids = movieId.attr("href").split("/")(2) :: ids
 		}
 		ids
 	}
