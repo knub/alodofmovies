@@ -34,7 +34,7 @@ class UpdateScheduler {
 			def run() {
 				imdbUpcomingUpdater.updateComingSoonMovies()
 			}
-		}, UpdateScheduler.MIDNIGHT, UpdateScheduler.ONCE_PER_DAY)
+		}, UpdateScheduler.NOW, UpdateScheduler.ONCE_PER_DAY)
 
 		// Weekly Tasks
 		timer.schedule(new TimerTask() {
@@ -42,7 +42,7 @@ class UpdateScheduler {
 			def run() {
 				imdbExistingUpdater.updateOneYearOldMovies()
 			}
-		}, UpdateScheduler.MIDNIGHT, UpdateScheduler.ONCE_PER_WEEK)
+		}, UpdateScheduler.NOW, UpdateScheduler.ONCE_PER_WEEK)
 
 //		// Monthly Tasks
 //		timer.schedule(new TimerTask() {
