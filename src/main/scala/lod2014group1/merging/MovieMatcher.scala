@@ -19,7 +19,7 @@ class MovieMatcher {
 	val ACTOR_OVERLAP_MINIMUM       = 0.8
 	val ACTOR_OVERLAP_LEVENSHTEIN   = 5
 	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
-	val TEST_SET_SIZE               = 10
+	val TEST_SET_SIZE               = 1000
 
 	val tmdbTriplifier = new TmdbMovieTriplifier
 	val movieNames = Queries.getAllMovieNames
