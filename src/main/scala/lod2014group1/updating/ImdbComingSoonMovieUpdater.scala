@@ -1,5 +1,6 @@
 package lod2014group1.updating
 
+import lod2014group1.Config
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import scala.collection.JavaConversions._
@@ -17,7 +18,7 @@ class ImdbComingSoonMovieUpdater() extends ImdbUpdater {
 			getNewMovieIds(content)
 		}
 
-		createCrawlifyTasks(ids, "")
+		createCrawlifyTasks(ids, Config.DELETE_FIRST_FLAG)
 	}
 
 	private def getNewMovieIds(content: String): List[String] = {

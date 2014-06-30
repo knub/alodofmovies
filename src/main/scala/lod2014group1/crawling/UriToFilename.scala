@@ -6,7 +6,6 @@ import lod2014group1.Config
 object UriToFilename {
 
 	def parse(file: UriFile): String = {
-		val dir = Config.DATA_FOLDER
 
 		file.uri match {
 			// Freebase
@@ -16,9 +15,9 @@ object UriToFilename {
 				// or a actor from the url
 				file.flag match {
 					case "actor" =>
-						s"$dir/freebase/person/$id/main.json"
+						s"freebase/person/$id/main.json"
 					case "movie" =>
-						s"$dir/freebase/movie/$id/main.json"
+						s"freebase/movie/$id/main.json"
 					case _ =>
 						""
 				}
@@ -26,11 +25,11 @@ object UriToFilename {
 			// TMDB
 			case uri if uri.startsWith("http://www.themoviedb.org/movie/") =>
 				val id = uri.split("/").last
-				s"$dir/themoviedb/movie/$id/main.json"
+				s"themoviedb/movie/$id/main.json"
 
 			case uri if uri.startsWith("http://www.themoviedb.org/person/") =>
 				val id = uri.split("/").last
-				s"$dir/themoviedb/person/$id/main.json"
+				s"themoviedb/person/$id/main.json"
 
 			// IMDB
 			case uri if uri.startsWith("http://www.imdb.com/title/") =>
@@ -41,20 +40,20 @@ object UriToFilename {
 					imdbFileName = "main.html"
 				else
 					imdbFileName = imdbFileName.split("\\?")(0) + ".html"
-				s"$dir/IMDBMovie/$id/$imdbFileName"
+				s"IMDBMovie/$id/$imdbFileName"
 
 			case uri if uri.startsWith("http://www.imdb.com/name/") =>
 				val id = uri.split("/").last
-				s"$dir/Actor/$id/main.html"
+				s"Actor/$id/main.html"
 
 			// OFDB
 			case uri if uri.startsWith("http://www.ofdb.de/film/") =>
 				val id = uri.split("/").last
-				s"$dir/OFDB/Movies/$id/film.html"
+				s"OFDB/Movies/$id/film.html"
 			
 			case uri if uri.startsWith("http://www.ofdb.de/view.php?page=film_detail") =>
 				val id = uri.split("/").last
-				s"$dir/OFDB/Movies/$id/cast.html"
+				s"OFDB/Movies/$id/cast.html"
 
 			case _ =>
 				""
