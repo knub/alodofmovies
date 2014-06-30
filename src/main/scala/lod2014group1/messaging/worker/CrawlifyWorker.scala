@@ -6,7 +6,7 @@ import lod2014group1.database.Queries
 import lod2014group1.triplification.TriplifyDistributor
 
 
-class CrawlifyWorker {
+class CrawlifyWorker extends Worker {
 
 	def execute(taskId: Long, params: Map[String, String]): TaskAnswer = {
 		val url = params("uri")
