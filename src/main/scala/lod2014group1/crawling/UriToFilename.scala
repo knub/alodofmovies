@@ -10,7 +10,7 @@ object UriToFilename {
 
 		file.uri match {
 			// Freebase
-			case uri if uri.startsWith("http://www.freebase.com/)") =>
+			case uri if uri.startsWith("http://www.freebase.com/") =>
 				val id = uri.split("/").last
 				// special flag for freebase, because for freebase we cannot determine whether its a movie
 				// or a actor from the url
@@ -24,16 +24,16 @@ object UriToFilename {
 				}
 
 			// TMDB
-			case uri if uri.startsWith("http://www.themoviedb.org/movie/)") =>
+			case uri if uri.startsWith("http://www.themoviedb.org/movie/") =>
 				val id = uri.split("/").last
 				s"$dir/themoviedb/movie/$id/main.json"
 
-			case uri if uri.startsWith("http://www.themoviedb.org/person/)") =>
+			case uri if uri.startsWith("http://www.themoviedb.org/person/") =>
 				val id = uri.split("/").last
 				s"$dir/themoviedb/person/$id/main.json"
 
 			// IMDB
-			case uri if uri.startsWith("http://www.imdb.com/title/)") =>
+			case uri if uri.startsWith("http://www.imdb.com/title/") =>
 				val uriSplit = uri.split("/")
 				val id = uriSplit(2).substring(2)
 				var imdbFileName = uriSplit.last
@@ -43,12 +43,12 @@ object UriToFilename {
 					imdbFileName = imdbFileName.split("?")(0) + ".html"
 				s"$dir/IMDBMovie/$id/$imdbFileName"
 
-			case uri if uri.startsWith("http://www.imdb.com/name/)") =>
+			case uri if uri.startsWith("http://www.imdb.com/name/") =>
 				val id = uri.split("/").last
 				s"$dir/Actor/$id/main.html"
 
 			// OFDB
-			case uri if uri.startsWith("http://www.ofdb.de/film/)") =>
+			case uri if uri.startsWith("http://www.ofdb.de/film/") =>
 				val id = uri.split("/").last
 				s"$dir/OFDB/Movies/$id/film.html"
 			
