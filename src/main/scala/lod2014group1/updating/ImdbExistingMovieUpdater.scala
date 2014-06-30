@@ -17,7 +17,7 @@ class ImdbExistingMovieUpdater extends ImdbUpdater {
 	}
 
 	// update monthly
-	def dupdateFiveYearOldMovies() {
+	def updateFiveYearOldMovies() {
 		val currentDate = new DateTime()
 		val dateOneYearAgo = new DateTime().plusYears(-5)
 
