@@ -133,7 +133,6 @@ object Queries {
 
 		var results: List[String] = List()
 		database.query(queryExecution, { rs =>
-			println(rs.get("year").toString)
 			val s = rs.get("s").toString
 			results ::= s.takeRight(9)
 		})

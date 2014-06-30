@@ -39,16 +39,21 @@ class ImdbMainPageTriplifier(val imdbId: String)  extends Triplifier {
 		val poster = div.select(".image img").attr("src")
 		if (!poster.isEmpty) triples = (movie hasPoster poster) :: triples
 
+		var title = ""
 		val titleDiv = div.select(".header span.itemprop[itemprop=name]")
 		if (titleDiv.size() == 1) {
-			val title = titleDiv.first().ownText()
+			title = titleDiv.first().ownText()
 			if (!title.isEmpty) triples = List(movie hasTitle title, movie hasLabel title) ::: triples
 		}
 
 		val originalTitleDiv = div.select(".header span.title-extra[itemprop=name]")
 		if (originalTitleDiv.size() == 1) {
 			val originalTitle = originalTitleDiv.first().ownText()
-			if (!originalTitle.isEmpty) triples = List(movie hasOriginalTitle originalTitle) ::: triples
+
+			if (!originalTitle.isEmpty)
+				triples = List(movie hasOriginalTitle originalTitle) ::: triples
+			else
+				triples = List(movie hasOriginalTitle title) ::: triples
 		}
 
 		val year = div.select(".header .nobr a").text()
