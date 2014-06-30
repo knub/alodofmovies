@@ -15,12 +15,8 @@ class CrawlifyWorker extends Worker {
 
 		val file = UriFile(url, Crawler.downloadFile(new URL(url)), params.getOrElse("flag", ""))
 
-		println(s"File: $url")
-
 		val fileName = UriToFilename.parse(file)
 		val content = file.fileContent
-
-		println(s"Filename: $fileName")
 
 		val triplifier = new TriplifyDistributor
 		val triples = triplifier.triplify(fileName, content).map { _.toRdfTripleString() }
