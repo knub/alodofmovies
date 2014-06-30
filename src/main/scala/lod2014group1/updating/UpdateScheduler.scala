@@ -6,7 +6,7 @@ import org.joda.time.DateTime
 
 
 object UpdateScheduler {
-	val ONCE_PER_DAY = 1000 * 60 // * 60 * 24
+	val ONCE_PER_DAY = 1000 * 60 * 60 * 24
 	val MIDNIGHT = 	getDate
 	val NOW = 0
 
