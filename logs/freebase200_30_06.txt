@@ -1,0 +1,1130 @@
+:compileJava UP-TO-DATE
+:compileScala
+:processResources UP-TO-DATE
+:classes
+:jar
+:assemble
+:compileTestJava UP-TO-DATE
+:compileTestScala UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:check UP-TO-DATE
+:build
+:mergeTmdb
+[INFO ] lod2014group1.Main$ - 13:16 - Arguments: List(merge-tmdb)
+Note: Using http://172.16.22.196:8890/sparql as remote database.
+[INFO ] o.a.h.i.c.SystemDefaultHttpClient - 13:16 - I/O exception (java.net.NoRouteToHostException) caught when connecting to {}->http://172.16.22.196:8890: No route to host
+[INFO ] o.a.h.i.c.SystemDefaultHttpClient - 13:16 - Retrying connect to {}->http://172.16.22.196:8890
+[INFO ] o.a.h.i.c.SystemDefaultHttpClient - 13:17 - I/O exception (java.net.NoRouteToHostException) caught when connecting to {}->http://172.16.22.196:8890: No route to host
+[INFO ] o.a.h.i.c.SystemDefaultHttpClient - 13:17 - Retrying connect to {}->http://172.16.22.196:8890
+========== Movie: Tapeheads ==========
+Found 3269 candidates.
+========== Movie: Reunion ==========
+Found 3786 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0098197 with score 0.75
+www.imdb.com/title/tt0098067 with score 0.25
+www.imdb.com/title/tt1861309 with score 0.25
+www.imdb.com/title/tt0099143 with score 0.25
+www.imdb.com/title/tt2241475 with score 0.25
+========== Movie: Blackout ==========
+Found 3006 candidates.
+========== Movie: 내 남자의 순이 ==========
+No years found.
+Found 0 candidates.
+========== Movie: Barbary Pirate ==========
+Found 1642 candidates.
+========== Movie: Rudolph's Revenge ==========
+No years found.
+Found 0 candidates.
+========== Movie: I Want More ==========
+Found 2822 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0177492 with score 0.5
+www.imdb.com/title/tt0258647 with score 0.5
+www.imdb.com/title/tt0151466 with score 0.5
+www.imdb.com/title/tt0077779 with score 0.5
+www.imdb.com/title/tt2771684 with score 0.5
+========== Movie: Alone Crying Star ==========
+No years found.
+Found 0 candidates.
+========== Movie: The Dummy Talks ==========
+Found 1238 candidates.
+========== Movie: Dito sa Pitong Gatang ==========
+Found 3348 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0289052 with score 0.0
+www.imdb.com/title/tt0237182 with score 0.0
+www.imdb.com/title/tt0440594 with score 0.0
+www.imdb.com/title/tt0104857 with score 0.0
+www.imdb.com/title/tt0105213 with score 0.0
+========== Movie: Law and Order ==========
+Found 1565 candidates.
+========== Movie: Moonshine Movies Presents: AV:X.10: Mixmasters: Episode 5 ==========
+Found 3744 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0390983 with score 0.0
+www.imdb.com/title/tt0372582 with score 0.0
+www.imdb.com/title/tt0321473 with score 0.0
+www.imdb.com/title/tt0373668 with score 0.0
+www.imdb.com/title/tt0316665 with score 0.0
+========== Movie: Best of the 1990s Vol. 2 ==========
+Found 3595 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0125664 with score 0.16326530612244897
+www.imdb.com/title/tt0126916 with score 0.16326530612244897
+www.imdb.com/title/tt0202260 with score 0.12244897959183673
+www.imdb.com/title/tt0139194 with score 0.12244897959183673
+www.imdb.com/title/tt0165643 with score 0.10204081632653061
+========== Movie: Craig Huxley: Chasing Rain ==========
+Found 3574 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0245348 with score 0.25
+www.imdb.com/title/tt1315330 with score 0.25
+www.imdb.com/title/tt0271624 with score 0.25
+www.imdb.com/title/tt0168856 with score 0.25
+www.imdb.com/title/tt0201726 with score 0.25
+========== Movie: Eraserheads: The Reunion Concert ==========
+Found 5695 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0888693 with score 0.0
+www.imdb.com/title/tt1333130 with score 0.0
+www.imdb.com/title/tt1034303 with score 0.0
+www.imdb.com/title/tt1931389 with score 0.0
+www.imdb.com/title/tt1086793 with score 0.0
+========== Movie: The Hypocrites ==========
+Found 1501 candidates.
+========== Movie: Guilty by Suspicion ==========
+Found 3350 candidates.
+========== Movie: Sangharsham ==========
+Found 2928 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0334061 with score 0.0
+www.imdb.com/title/tt0334293 with score 0.0
+www.imdb.com/title/tt0314543 with score 0.0
+www.imdb.com/title/tt0081312 with score 0.0
+www.imdb.com/title/tt0082462 with score 0.0
+========== Movie: Fried dragon fish ==========
+Found 3210 candidates.
+========== Movie: Three's Not a Crowd ==========
+Found 3576 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0293291 with score 0.0
+www.imdb.com/title/tt0202502 with score 0.0
+www.imdb.com/title/tt0272822 with score 0.0
+www.imdb.com/title/tt0214659 with score 0.0
+www.imdb.com/title/tt0288866 with score 0.0
+========== Movie: Princess Betrayal ==========
+Found 8678 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2637978 with score 0.0
+www.imdb.com/title/tt2642442 with score 0.0
+www.imdb.com/title/tt2290803 with score 0.0
+www.imdb.com/title/tt3387712 with score 0.0
+www.imdb.com/title/tt2608224 with score 0.0
+========== Movie: Otobüs Neriman ==========
+Found 2958 candidates.
+========== Movie: Jiken kisha: Kage naki otoko ==========
+Found 2175 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0156344 with score 0.0
+www.imdb.com/title/tt0051665 with score 0.0
+www.imdb.com/title/tt0259325 with score 0.0
+www.imdb.com/title/tt1620685 with score 0.0
+www.imdb.com/title/tt0161421 with score 0.0
+========== Movie: Milton Nascimento: A Sede do Peixe ==========
+Found 3423 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0120115 with score 0.0
+www.imdb.com/title/tt0274409 with score 0.0
+www.imdb.com/title/tt0117188 with score 0.0
+www.imdb.com/title/tt0124777 with score 0.0
+www.imdb.com/title/tt3570576 with score 0.0
+========== Movie: The Pine Tree in the Mountain ==========
+Found 3082 candidates.
+========== Movie: My Little Hero ==========
+Found 8685 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2637978 with score 0.0
+www.imdb.com/title/tt2642442 with score 0.0
+www.imdb.com/title/tt2290803 with score 0.0
+www.imdb.com/title/tt3387712 with score 0.0
+www.imdb.com/title/tt2608224 with score 0.0
+========== Movie: La infame ==========
+Found 1976 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0046730 with score 0.0
+www.imdb.com/title/tt0157118 with score 0.0
+www.imdb.com/title/tt1111918 with score 0.0
+www.imdb.com/title/tt0047203 with score 0.0
+www.imdb.com/title/tt0047401 with score 0.0
+========== Movie: Triangles ==========
+Found 8208 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt3522704 with score 0.0
+www.imdb.com/title/tt2514038 with score 0.0
+www.imdb.com/title/tt2354395 with score 0.0
+www.imdb.com/title/tt1681372 with score 0.0
+www.imdb.com/title/tt2407870 with score 0.0
+========== Movie: Don't Waste Your Money On Protein Powders, Watch Experimental Movies II ==========
+No years found.
+Found 0 candidates.
+========== Movie: Sinner Take All ==========
+Found 1766 candidates.
+========== Movie: Kesh Malek ==========
+Found 3195 candidates.
+========== Movie: This Little Piggy Stayed Home ==========
+Found 3744 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0390983 with score 0.0
+www.imdb.com/title/tt0372582 with score 0.0
+www.imdb.com/title/tt0321473 with score 0.0
+www.imdb.com/title/tt0373668 with score 0.0
+www.imdb.com/title/tt0316665 with score 0.0
+========== Movie: Waxing Gibbous ==========
+Found 3743 candidates.
+========== Movie: Daddies 1 ==========
+Found 6779 candidates.
+========== Movie: Love Songs 2 ==========
+Found 4370 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0376633 with score 0.2
+www.imdb.com/title/tt0360717 with score 0.2
+www.imdb.com/title/tt0470801 with score 0.2
+www.imdb.com/title/tt0374923 with score 0.2
+www.imdb.com/title/tt0420941 with score 0.2
+========== Movie: Shadows in the Dark: The Val Lewton Legacy ==========
+No years found.
+Found 0 candidates.
+========== Movie: Mangina ==========
+Found 5727 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0468863 with score 0.0
+www.imdb.com/title/tt1000129 with score 0.0
+www.imdb.com/title/tt0400447 with score 0.0
+www.imdb.com/title/tt1863338 with score 0.0
+www.imdb.com/title/tt1111918 with score 0.0
+========== Movie: Gırgıriyede Cümbüş Var ==========
+Found 3031 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0494952 with score 0.5
+www.imdb.com/title/tt0466653 with score 0.5
+www.imdb.com/title/tt0494816 with score 0.25
+www.imdb.com/title/tt0086566 with score 0.25
+www.imdb.com/title/tt0494823 with score 0.25
+========== Movie: Giraftaar ==========
+Found 3825 candidates.
+========== Movie: Under Lock and Key ==========
+Found 3168 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0110442 with score 0.2222222222222222
+www.imdb.com/title/tt0109891 with score 0.2222222222222222
+www.imdb.com/title/tt0110053 with score 0.1111111111111111
+www.imdb.com/title/tt0110593 with score 0.1111111111111111
+www.imdb.com/title/tt0109830 with score 0.1111111111111111
+========== Movie: High Noon ==========
+Found 1833 candidates.
+========== Movie: The Colleen Bawn ==========
+No years found.
+Found 3 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0176620 with score 0.0
+www.imdb.com/title/tt0346779 with score 0.0
+www.imdb.com/title/tt0325479 with score 0.0
+========== Movie: Vampires ==========
+Found 3221 candidates.
+========== Movie: Himmatwala ==========
+Found 3050 candidates.
+========== Movie: Yellow Aria ==========
+Found 3093 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0334542 with score 0.0
+www.imdb.com/title/tt0409069 with score 0.0
+www.imdb.com/title/tt0092107 with score 0.0
+www.imdb.com/title/tt0090693 with score 0.0
+www.imdb.com/title/tt0101562 with score 0.0
+========== Movie: Springfield Rifle ==========
+Found 1796 candidates.
+========== Movie: Stag Party ==========
+Found 3451 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0145971 with score 0.3333333333333333
+www.imdb.com/title/tt0167359 with score 0.3333333333333333
+www.imdb.com/title/tt0165499 with score 0.3333333333333333
+www.imdb.com/title/tt0167429 with score 0.3333333333333333
+www.imdb.com/title/tt0120633 with score 0.3333333333333333
+========== Movie: I Dutifully Report ==========
+Found 2205 candidates.
+========== Movie: Merchant of Death ==========
+Found 3424 candidates.
+========== Movie: Bill Curran Design: Industrial Philadelphia ==========
+No years found.
+Found 0 candidates.
+========== Movie: Bar Girls ==========
+Found 3261 candidates.
+========== Movie: Nakagawa Jun Kyōju no Inbina Hibi ==========
+Found 5695 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt3505780 with score 0.5
+www.imdb.com/title/tt1964467 with score 0.5
+www.imdb.com/title/tt1344107 with score 0.5
+www.imdb.com/title/tt1155696 with score 0.5
+www.imdb.com/title/tt1222310 with score 0.5
+========== Movie: 4 for Texas ==========
+Found 2260 candidates.
+========== Movie: The Hell : Two kind of Life ==========
+No years found.
+Found 0 candidates.
+========== Movie: Taking Chance ==========
+Found 6778 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1050002 with score 0.2
+www.imdb.com/title/tt1326221 with score 0.2
+www.imdb.com/title/tt1268161 with score 0.2
+www.imdb.com/title/tt1380281 with score 0.13333333333333333
+www.imdb.com/title/tt0790627 with score 0.13333333333333333
+========== Movie: Snow White and the Seven Dwarfs ==========
+Found 1736 candidates.
+========== Movie: Flora ==========
+Found 7967 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0173931 with score 0.0
+www.imdb.com/title/tt0342102 with score 0.0
+www.imdb.com/title/tt0343211 with score 0.0
+www.imdb.com/title/tt0098431 with score 0.0
+www.imdb.com/title/tt0317081 with score 0.0
+========== Movie: Arrastre ==========
+Found 8788 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2637978 with score 0.0
+www.imdb.com/title/tt2642442 with score 0.0
+www.imdb.com/title/tt2290803 with score 0.0
+www.imdb.com/title/tt3387712 with score 0.0
+www.imdb.com/title/tt2608224 with score 0.0
+========== Movie: Xemoland ==========
+Found 7852 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2273537 with score 0.5
+www.imdb.com/title/tt1572194 with score 0.5
+www.imdb.com/title/tt1753649 with score 0.5
+www.imdb.com/title/tt1183930 with score 0.5
+www.imdb.com/title/tt2040383 with score 0.5
+========== Movie: Destino Imortal ==========
+Found 7042 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1546420 with score 0.0
+www.imdb.com/title/tt1851998 with score 0.0
+www.imdb.com/title/tt1817136 with score 0.0
+www.imdb.com/title/tt1743264 with score 0.0
+www.imdb.com/title/tt2463166 with score 0.0
+========== Movie: Sôka, mô kimi wa inai no ka ==========
+Found 6769 candidates.
+========== Movie: Roaring Six Guns ==========
+Found 1737 candidates.
+========== Movie: Black Knights 2 ==========
+Found 3789 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0285547 with score 0.0
+www.imdb.com/title/tt0258000 with score 0.0
+www.imdb.com/title/tt0356321 with score 0.0
+www.imdb.com/title/tt0343991 with score 0.0
+www.imdb.com/title/tt0344498 with score 0.0
+========== Movie: Sengottai ==========
+Found 3274 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0305714 with score 0.4444444444444444
+www.imdb.com/title/tt0458928 with score 0.3333333333333333
+www.imdb.com/title/tt0356211 with score 0.3333333333333333
+www.imdb.com/title/tt0117374 with score 0.3333333333333333
+www.imdb.com/title/tt0319500 with score 0.3333333333333333
+========== Movie: Nenjirukkum Varai ==========
+Found 4734 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0876291 with score 0.5833333333333334
+www.imdb.com/title/tt0455829 with score 0.5
+www.imdb.com/title/tt1248236 with score 0.5
+www.imdb.com/title/tt0843327 with score 0.5
+www.imdb.com/title/tt0488381 with score 0.5
+========== Movie: InuYasha the Movie: Fire on the Mystic Island ==========
+Found 3865 candidates.
+========== Movie: Trail to Vengeance ==========
+Found 1032 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0037883 with score 0.0
+www.imdb.com/title/tt0297205 with score 0.0
+www.imdb.com/title/tt0037962 with score 0.0
+www.imdb.com/title/tt0240829 with score 0.0
+www.imdb.com/title/tt0240638 with score 0.0
+========== Movie: Wayne Shorter: Live at Montreux 1996 ==========
+Found 3239 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0116213 with score 0.2857142857142857
+www.imdb.com/title/tt0116723 with score 0.2857142857142857
+www.imdb.com/title/tt0117400 with score 0.2857142857142857
+www.imdb.com/title/tt0112612 with score 0.14285714285714285
+www.imdb.com/title/tt0115906 with score 0.14285714285714285
+========== Movie: Alabama Moon ==========
+Found 6771 candidates.
+========== Movie: Dear Octopus ==========
+Found 1238 candidates.
+========== Movie: Nobody's Child ==========
+Found 3875 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0386005 with score 0.5
+www.imdb.com/title/tt0358135 with score 0.16666666666666666
+www.imdb.com/title/tt0364725 with score 0.16666666666666666
+www.imdb.com/title/tt0427017 with score 0.16666666666666666
+www.imdb.com/title/tt0212712 with score 0.16666666666666666
+========== Movie: Destroyer ==========
+Found 1297 candidates.
+========== Movie: Enemies of Laughter ==========
+Found 3574 candidates.
+========== Movie: You Are Not I ==========
+Found 7734 candidates.
+========== Movie: The Last Frontier ==========
+Found 1928 candidates.
+========== Movie: Moments ==========
+Found 3476 candidates.
+========== Movie: Goliath ==========
+Found 6178 candidates.
+========== Movie: Muchacho que vas cantando ==========
+Found 3082 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2040514 with score 0.0
+www.imdb.com/title/tt0257893 with score 0.0
+www.imdb.com/title/tt0177412 with score 0.0
+www.imdb.com/title/tt0067331 with score 0.0
+www.imdb.com/title/tt0204788 with score 0.0
+========== Movie: The Story of the Yardbirds ==========
+Found 5695 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0454941 with score 0.4
+www.imdb.com/title/tt1297456 with score 0.4
+www.imdb.com/title/tt0906783 with score 0.4
+www.imdb.com/title/tt0469903 with score 0.4
+www.imdb.com/title/tt1059786 with score 0.4
+========== Movie: Don't Be a Sucker! ==========
+Found 1238 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0035957 with score 0.6666666666666666
+www.imdb.com/title/tt0036553 with score 0.3333333333333333
+www.imdb.com/title/tt0035771 with score 0.3333333333333333
+www.imdb.com/title/tt0035828 with score 0.3333333333333333
+www.imdb.com/title/tt0036755 with score 0.3333333333333333
+========== Movie: The Butterfly Effect ==========
+Found 8148 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt3522704 with score 0.0
+www.imdb.com/title/tt2514038 with score 0.0
+www.imdb.com/title/tt2354395 with score 0.0
+www.imdb.com/title/tt1681372 with score 0.0
+www.imdb.com/title/tt2407870 with score 0.0
+========== Movie: Rumble in the Bronx ==========
+Found 3195 candidates.
+========== Movie: Dirty Laundry ==========
+Found 8150 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt3522704 with score 0.0
+www.imdb.com/title/tt2514038 with score 0.0
+www.imdb.com/title/tt2354395 with score 0.0
+www.imdb.com/title/tt1681372 with score 0.0
+www.imdb.com/title/tt2407870 with score 0.0
+========== Movie: Sunlight, Moonlight, Earth ==========
+Found 8678 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2637978 with score 0.0
+www.imdb.com/title/tt2642442 with score 0.0
+www.imdb.com/title/tt2290803 with score 0.0
+www.imdb.com/title/tt3387712 with score 0.0
+www.imdb.com/title/tt2608224 with score 0.0
+========== Movie: Hot Rain ==========
+Found 3327 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0321999 with score 0.25
+www.imdb.com/title/tt0106217 with score 0.0
+www.imdb.com/title/tt0354103 with score 0.0
+www.imdb.com/title/tt1874652 with score 0.0
+www.imdb.com/title/tt0049334 with score 0.0
+========== Movie: Virtual Love ==========
+Found 3214 candidates.
+========== Movie: Fear and Trembling ==========
+Found 3744 candidates.
+========== Movie: Nelson Mandela: Free at Last ==========
+Found 3502 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2106366 with score 0.0
+www.imdb.com/title/tt0320360 with score 0.0
+www.imdb.com/title/tt0097863 with score 0.0
+www.imdb.com/title/tt0099187 with score 0.0
+www.imdb.com/title/tt0100013 with score 0.0
+========== Movie: Brave ==========
+Found 7745 candidates.
+========== Movie: Charlie Rich: In Concert ==========
+Found 4364 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0395461 with score 0.0
+www.imdb.com/title/tt2093170 with score 0.0
+www.imdb.com/title/tt0479256 with score 0.0
+www.imdb.com/title/tt2196596 with score 0.0
+www.imdb.com/title/tt0436982 with score 0.0
+========== Movie: The Laughing Cavalier ==========
+Found 2058 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0007783 with score 0.0
+www.imdb.com/title/tt0193160 with score 0.0
+www.imdb.com/title/tt0175676 with score 0.0
+www.imdb.com/title/tt0008217 with score 0.0
+www.imdb.com/title/tt0008777 with score 0.0
+========== Movie: Damage Done ==========
+Found 5700 candidates.
+========== Movie: Vaghti hame khaabim ==========
+Found 6769 candidates.
+========== Movie: Semesta Mendukung ==========
+Found 7733 candidates.
+========== Movie: Traitor ==========
+Found 6252 candidates.
+========== Movie: Bang the Drum Slowly ==========
+Found 2843 candidates.
+========== Movie: Black Sabbath: Masters from the Vaults: Cross Purposes ==========
+Found 3865 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0360009 with score 0.5
+www.imdb.com/title/tt0327162 with score 0.5
+www.imdb.com/title/tt1373259 with score 0.5
+www.imdb.com/title/tt0293508 with score 0.5
+www.imdb.com/title/tt0407937 with score 0.25
+========== Movie: Sword of the Dragon Gate ==========
+Found 3022 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0192107 with score 0.4
+www.imdb.com/title/tt1315594 with score 0.2
+www.imdb.com/title/tt0202328 with score 0.2
+www.imdb.com/title/tt0202132 with score 0.2
+www.imdb.com/title/tt1400376 with score 0.2
+========== Movie: John Deere Financial 2 ==========
+Found 8145 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt3522704 with score 0.0
+www.imdb.com/title/tt2514038 with score 0.0
+www.imdb.com/title/tt2354395 with score 0.0
+www.imdb.com/title/tt1681372 with score 0.0
+www.imdb.com/title/tt2407870 with score 0.0
+========== Movie: The Marshal of Windy Hollow ==========
+Found 2978 candidates.
+========== Movie: ...And She Chose Hell ==========
+Found 2158 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0186851 with score 0.0
+www.imdb.com/title/tt0051128 with score 0.0
+www.imdb.com/title/tt0050861 with score 0.0
+www.imdb.com/title/tt0213981 with score 0.0
+www.imdb.com/title/tt0398244 with score 0.0
+========== Movie: Invasion ==========
+Found 6947 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1278070 with score 0.0
+www.imdb.com/title/tt1125297 with score 0.0
+www.imdb.com/title/tt1127896 with score 0.0
+www.imdb.com/title/tt1338681 with score 0.0
+www.imdb.com/title/tt1583382 with score 0.0
+========== Movie: Banksy's Coming for Dinner ==========
+Found 6769 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1050002 with score 0.6666666666666666
+www.imdb.com/title/tt1273229 with score 0.3333333333333333
+www.imdb.com/title/tt1206486 with score 0.3333333333333333
+www.imdb.com/title/tt1463448 with score 0.3333333333333333
+www.imdb.com/title/tt1266029 with score 0.3333333333333333
+========== Movie: The Girl Who Never Was ==========
+Found 22 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2617142 with score 0.0
+www.imdb.com/title/tt3043176 with score 0.0
+www.imdb.com/title/tt3249388 with score 0.0
+www.imdb.com/title/tt3243874 with score 0.0
+www.imdb.com/title/tt2460594 with score 0.0
+========== Movie: Suzanne ==========
+Found 3494 candidates.
+========== Movie: Razorback ==========
+Found 3056 candidates.
+========== Movie: In Sight ==========
+Found 8746 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2637978 with score 0.0
+www.imdb.com/title/tt2642442 with score 0.0
+www.imdb.com/title/tt2290803 with score 0.0
+www.imdb.com/title/tt3387712 with score 0.0
+www.imdb.com/title/tt2608224 with score 0.0
+========== Movie: Santana EP ==========
+Found 3767 candidates.
+========== Movie: Moby Dick ==========
+Found 2827 candidates.
+========== Movie: A Farewell to the Land ==========
+Found 3022 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0133192 with score 0.75
+www.imdb.com/title/tt0084227 with score 0.25
+www.imdb.com/title/tt0128766 with score 0.25
+www.imdb.com/title/tt1196187 with score 0.25
+www.imdb.com/title/tt0324514 with score 0.25
+========== Movie: Le Beau Mariage ==========
+Found 3022 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0082053 with score 0.5
+www.imdb.com/title/tt0229025 with score 0.25
+www.imdb.com/title/tt0234546 with score 0.25
+www.imdb.com/title/tt0191033 with score 0.25
+www.imdb.com/title/tt0083734 with score 0.25
+========== Movie: 2003 Le Mans Official Review ==========
+Found 3744 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0390983 with score 0.0
+www.imdb.com/title/tt0372582 with score 0.0
+www.imdb.com/title/tt0321473 with score 0.0
+www.imdb.com/title/tt0373668 with score 0.0
+www.imdb.com/title/tt0316665 with score 0.0
+========== Movie: 기막힌 사내들 ==========
+No years found.
+Found 0 candidates.
+========== Movie: Case 219 ==========
+Found 7053 candidates.
+========== Movie: Rambles ==========
+Found 3798 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0110919 with score 0.0
+www.imdb.com/title/tt0342102 with score 0.0
+www.imdb.com/title/tt0231630 with score 0.0
+www.imdb.com/title/tt0219295 with score 0.0
+www.imdb.com/title/tt0239103 with score 0.0
+========== Movie: Motorhead: 25 & Alive: Boneshaker ==========
+Found 3574 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0293291 with score 0.0
+www.imdb.com/title/tt0202502 with score 0.0
+www.imdb.com/title/tt0272822 with score 0.0
+www.imdb.com/title/tt0214659 with score 0.0
+www.imdb.com/title/tt0288866 with score 0.0
+========== Movie: Roommates ==========
+Found 3787 candidates.
+========== Movie: Kochaj albo rzuc ==========
+Found 2744 candidates.
+========== Movie: Inside Islam: What a Billion Muslims Really Think ==========
+Found 7042 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1546420 with score 0.0
+www.imdb.com/title/tt1851998 with score 0.0
+www.imdb.com/title/tt1817136 with score 0.0
+www.imdb.com/title/tt1743264 with score 0.0
+www.imdb.com/title/tt2463166 with score 0.0
+========== Movie: Back to 1942 ==========
+Found 8153 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2113822 with score 0.625
+www.imdb.com/title/tt2802196 with score 0.375
+www.imdb.com/title/tt2290645 with score 0.3125
+www.imdb.com/title/tt2165735 with score 0.3125
+www.imdb.com/title/tt2046152 with score 0.3125
+========== Movie: Strapped for Cash ==========
+Found 3574 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0122459 with score 0.4
+www.imdb.com/title/tt0266549 with score 0.4
+www.imdb.com/title/tt0183505 with score 0.4
+www.imdb.com/title/tt0190611 with score 0.2
+www.imdb.com/title/tt0215545 with score 0.2
+========== Movie: Impotenti esistenziali ==========
+Found 6769 candidates.
+========== Movie: Quest for Love ==========
+No years found.
+Found 2 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2073154 with score 0.0
+www.imdb.com/title/tt0255537 with score 0.0
+========== Movie: The Equation Of Love ==========
+Found 8145 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt3522704 with score 0.0
+www.imdb.com/title/tt2514038 with score 0.0
+www.imdb.com/title/tt2354395 with score 0.0
+www.imdb.com/title/tt1681372 with score 0.0
+www.imdb.com/title/tt2407870 with score 0.0
+========== Movie: The Pain of Lusatia ==========
+Found 3183 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0173931 with score 0.0
+www.imdb.com/title/tt0343211 with score 0.0
+www.imdb.com/title/tt0098431 with score 0.0
+www.imdb.com/title/tt0317081 with score 0.0
+www.imdb.com/title/tt0229008 with score 0.0
+========== Movie: Salamah ==========
+Found 2672 candidates.
+========== Movie: The Last Hungry Cat ==========
+Found 2323 candidates.
+========== Movie: The Stick ==========
+Found 3617 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0017345 with score 0.0
+www.imdb.com/title/tt2344676 with score 0.0
+www.imdb.com/title/tt1754708 with score 0.0
+www.imdb.com/title/tt0090902 with score 0.0
+www.imdb.com/title/tt0114397 with score 0.0
+========== Movie: Perils of the Royal Mounted ==========
+Found 1365 candidates.
+========== Movie: Three Blind Mice ==========
+Found 5696 candidates.
+========== Movie: Mind Body Spirit: Tropical Aquarium ==========
+Found 4733 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0963925 with score 0.0
+www.imdb.com/title/tt0426490 with score 0.0
+www.imdb.com/title/tt1155445 with score 0.0
+www.imdb.com/title/tt0808336 with score 0.0
+www.imdb.com/title/tt0427461 with score 0.0
+========== Movie: Saikin-rettō ==========
+Found 6769 candidates.
+========== Movie: Tea Date ==========
+No years found.
+Found 147 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0173301 with score 0.0
+www.imdb.com/title/tt0873886 with score 0.0
+www.imdb.com/title/tt0119637 with score 0.0
+www.imdb.com/title/tt0361793 with score 0.0
+www.imdb.com/title/tt2677560 with score 0.0
+========== Movie: Raajneeti ==========
+Found 7055 candidates.
+========== Movie: The Invincible Gladiator ==========
+Found 2323 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0056027 with score 0.7777777777777778
+www.imdb.com/title/tt0054892 with score 0.2222222222222222
+www.imdb.com/title/tt0055488 with score 0.2222222222222222
+www.imdb.com/title/tt0055867 with score 0.2222222222222222
+www.imdb.com/title/tt0054809 with score 0.2222222222222222
+========== Movie: Wolvesbayne ==========
+Found 6770 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1328910 with score 0.1509433962264151
+www.imdb.com/title/tt1045772 with score 0.11320754716981132
+www.imdb.com/title/tt1050002 with score 0.09433962264150944
+www.imdb.com/title/tt1001508 with score 0.09433962264150944
+www.imdb.com/title/tt1216489 with score 0.09433962264150944
+========== Movie: Sangeet ==========
+Found 4307 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0105313 with score 0.6
+www.imdb.com/title/tt0102200 with score 0.5
+www.imdb.com/title/tt0101437 with score 0.5
+www.imdb.com/title/tt0105166 with score 0.5
+www.imdb.com/title/tt0104098 with score 0.4
+========== Movie: Dil Ka Kya Kasoor ==========
+Found 3348 candidates.
+========== Movie: El productor ==========
+Found 4739 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0963925 with score 0.0
+www.imdb.com/title/tt0426490 with score 0.0
+www.imdb.com/title/tt1155445 with score 0.0
+www.imdb.com/title/tt0808336 with score 0.0
+www.imdb.com/title/tt0427461 with score 0.0
+========== Movie: Barefoot ==========
+Found 8256 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2151849 with score 0.2
+www.imdb.com/title/tt2112103 with score 0.13333333333333333
+www.imdb.com/title/tt1921111 with score 0.06666666666666667
+www.imdb.com/title/tt2465246 with score 0.06666666666666667
+www.imdb.com/title/tt3090618 with score 0.06666666666666667
+========== Movie: The Yodeling Farmer ==========
+Found 7733 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0473122 with score 0.6666666666666666
+www.imdb.com/title/tt1727261 with score 0.6666666666666666
+www.imdb.com/title/tt2070703 with score 0.6666666666666666
+www.imdb.com/title/tt1959452 with score 0.6666666666666666
+www.imdb.com/title/tt1828260 with score 0.0
+========== Movie: The Treeworker ==========
+Found 7043 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1546420 with score 0.0
+www.imdb.com/title/tt1851998 with score 0.0
+www.imdb.com/title/tt1817136 with score 0.0
+www.imdb.com/title/tt1743264 with score 0.0
+www.imdb.com/title/tt2463166 with score 0.0
+========== Movie: Thy Will Be Done ==========
+Found 7045 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1546420 with score 0.0
+www.imdb.com/title/tt1851998 with score 0.0
+www.imdb.com/title/tt1817136 with score 0.0
+www.imdb.com/title/tt1743264 with score 0.0
+www.imdb.com/title/tt2463166 with score 0.0
+========== Movie: Mario the Magician ==========
+Found 5695 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0830924 with score 0.5333333333333333
+www.imdb.com/title/tt0469640 with score 0.13333333333333333
+www.imdb.com/title/tt1092021 with score 0.13333333333333333
+www.imdb.com/title/tt1210096 with score 0.06666666666666667
+www.imdb.com/title/tt0960144 with score 0.06666666666666667
+========== Movie: The Spirit of John Lennon ==========
+Found 4733 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0963925 with score 0.0
+www.imdb.com/title/tt0426490 with score 0.0
+www.imdb.com/title/tt1155445 with score 0.0
+www.imdb.com/title/tt0808336 with score 0.0
+www.imdb.com/title/tt0427461 with score 0.0
+========== Movie: Friday and Clyde ==========
+No years found.
+Found 0 candidates.
+========== Movie: Marie Antoinette ==========
+Found 4366 candidates.
+========== Movie: Lov na mamuta ==========
+Found 2448 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0058085 with score 0.0
+www.imdb.com/title/tt0280071 with score 0.0
+www.imdb.com/title/tt0398216 with score 0.0
+www.imdb.com/title/tt0185786 with score 0.0
+www.imdb.com/title/tt0217434 with score 0.0
+========== Movie: Cyborg Conquest ==========
+Found 6769 candidates.
+========== Movie: Grahanam ==========
+Found 4291 candidates.
+========== Movie: 1999 NCAA Division I: Men's Wrestling National Championship ==========
+Found 3595 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0190322 with score 0.0
+www.imdb.com/title/tt0296173 with score 0.0
+www.imdb.com/title/tt0335442 with score 0.0
+www.imdb.com/title/tt0193467 with score 0.0
+www.imdb.com/title/tt0197292 with score 0.0
+========== Movie: The Bass Player: A Song For Dad ==========
+Found 6769 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1278070 with score 0.0
+www.imdb.com/title/tt1125297 with score 0.0
+www.imdb.com/title/tt1127896 with score 0.0
+www.imdb.com/title/tt1338681 with score 0.0
+www.imdb.com/title/tt1583382 with score 0.0
+========== Movie: Peter Gabriel: Growing up on Tour: A Family Portrait ==========
+Found 3744 candidates.
+========== Movie: The Sender ==========
+Found 3900 candidates.
+========== Movie: Paper Tiger ==========
+Found 2768 candidates.
+========== Movie: The Movie from the Future ==========
+Found 3574 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0118710 with score 0.6666666666666666
+www.imdb.com/title/tt0175142 with score 0.5555555555555556
+www.imdb.com/title/tt0217630 with score 0.5555555555555556
+www.imdb.com/title/tt0344838 with score 0.5555555555555556
+www.imdb.com/title/tt0202487 with score 0.5555555555555556
+========== Movie: Barbie Boy ==========
+Found 8169 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2532920 with score 0.5
+www.imdb.com/title/tt2048889 with score 0.25
+www.imdb.com/title/tt2278988 with score 0.25
+www.imdb.com/title/tt1756447 with score 0.25
+www.imdb.com/title/tt1734586 with score 0.25
+========== Movie: K-9000 ==========
+Found 3382 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0102667 with score 0.125
+www.imdb.com/title/tt0105717 with score 0.125
+www.imdb.com/title/tt0331281 with score 0.125
+www.imdb.com/title/tt0099859 with score 0.125
+www.imdb.com/title/tt0104247 with score 0.125
+========== Movie: I Wish ==========
+Found 8177 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1650453 with score 0.75
+www.imdb.com/title/tt1870432 with score 0.125
+www.imdb.com/title/tt1798188 with score 0.125
+www.imdb.com/title/tt1916708 with score 0.125
+www.imdb.com/title/tt1743724 with score 0.08333333333333333
+========== Movie: Japanese Super Idols Vol. 28 ==========
+Found 3865 candidates.
+========== Movie: Paradise, Hawaiian Style ==========
+Found 2575 candidates.
+========== Movie: The Boulder Buddies: Adventures in Learning: Fun with ABCs and 123s ==========
+Found 4364 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0206113 with score 0.3333333333333333
+www.imdb.com/title/tt1432046 with score 0.3333333333333333
+www.imdb.com/title/tt0490892 with score 0.3333333333333333
+www.imdb.com/title/tt0476982 with score 0.3333333333333333
+www.imdb.com/title/tt0471018 with score 0.3333333333333333
+========== Movie: Pachito Rex: I'm Leaving But Not for Good ==========
+Found 3743 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0180734 with score 0.0
+www.imdb.com/title/tt1606284 with score 0.0
+www.imdb.com/title/tt0301799 with score 0.0
+www.imdb.com/title/tt0349676 with score 0.0
+www.imdb.com/title/tt0292542 with score 0.0
+========== Movie: Shucking the Curve ==========
+Found 3439 candidates.
+========== Movie: Chinna Jameen ==========
+Found 3210 candidates.
+========== Movie: From The Ground Up ==========
+Found 8679 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2637978 with score 0.0
+www.imdb.com/title/tt2642442 with score 0.0
+www.imdb.com/title/tt2290803 with score 0.0
+www.imdb.com/title/tt3387712 with score 0.0
+www.imdb.com/title/tt2608224 with score 0.0
+========== Movie: Dancehall Bashment ==========
+Found 3789 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0349748 with score 0.08333333333333333
+www.imdb.com/title/tt0297162 with score 0.08333333333333333
+www.imdb.com/title/tt0277790 with score 0.08333333333333333
+www.imdb.com/title/tt0373234 with score 0.08333333333333333
+www.imdb.com/title/tt0392798 with score 0.08333333333333333
+========== Movie: Duel Before Nightfall ==========
+Found 7733 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2210871 with score 0.3333333333333333
+www.imdb.com/title/tt1204342 with score 0.3333333333333333
+www.imdb.com/title/tt1327196 with score 0.3333333333333333
+www.imdb.com/title/tt1828260 with score 0.0
+www.imdb.com/title/tt2043888 with score 0.0
+========== Movie: The Blooms of Banjeli ==========
+No years found.
+Found 0 candidates.
+========== Movie: Balancing Act ==========
+Found 8145 candidates.
+========== Movie: A Second Knock at the Door ==========
+No years found.
+Found 0 candidates.
+========== Movie: Destino de un capricho ==========
+Found 2978 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0184048 with score 0.0
+www.imdb.com/title/tt0248396 with score 0.0
+www.imdb.com/title/tt0311970 with score 0.0
+www.imdb.com/title/tt0199021 with score 0.0
+www.imdb.com/title/tt0068717 with score 0.0
+========== Movie: NO QUALITY FOR HEROES BY PAOLO FRANCHI ==========
+No years found.
+Found 0 candidates.
+========== Movie: The Gallant Fool ==========
+Found 1485 candidates.
+========== Movie: Women at West Point ==========
+Found 2958 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0078843 with score 0.3333333333333333
+www.imdb.com/title/tt2035523 with score 0.3333333333333333
+www.imdb.com/title/tt0078740 with score 0.3333333333333333
+www.imdb.com/title/tt0079631 with score 0.3333333333333333
+www.imdb.com/title/tt0079271 with score 0.3333333333333333
+========== Movie: Baller Blockin ==========
+Found 3574 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0183505 with score 0.5
+www.imdb.com/title/tt0215129 with score 0.25
+www.imdb.com/title/tt0215545 with score 0.25
+www.imdb.com/title/tt0181536 with score 0.25
+www.imdb.com/title/tt0315253 with score 0.25
+========== Movie: Elephants ==========
+Found 5721 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0373028 with score 0.14285714285714285
+www.imdb.com/title/tt0914380 with score 0.14285714285714285
+www.imdb.com/title/tt3171746 with score 0.14285714285714285
+www.imdb.com/title/tt0972857 with score 0.14285714285714285
+www.imdb.com/title/tt0989760 with score 0.14285714285714285
+========== Movie: Aizaugusa gravi viegli krist ==========
+Found 3081 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0334542 with score 0.0
+www.imdb.com/title/tt0409069 with score 0.0
+www.imdb.com/title/tt0092107 with score 0.0
+www.imdb.com/title/tt0090693 with score 0.0
+www.imdb.com/title/tt0101562 with score 0.0
+========== Movie: Ningen ==========
+Found 10590 candidates.
+========== Movie: 고독이 몸부림칠 때 ==========
+No years found.
+Found 0 candidates.
+========== Movie: Flower, the Boy, the Librarian ==========
+Found 3239 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0377383 with score 0.0
+www.imdb.com/title/tt0180575 with score 0.0
+www.imdb.com/title/tt0355212 with score 0.0
+www.imdb.com/title/tt0115580 with score 0.0
+www.imdb.com/title/tt0115879 with score 0.0
+========== Movie: The Making of Anatomy of a Murder ==========
+Found 2175 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0156344 with score 0.0
+www.imdb.com/title/tt0051665 with score 0.0
+www.imdb.com/title/tt0259325 with score 0.0
+www.imdb.com/title/tt1620685 with score 0.0
+www.imdb.com/title/tt0161421 with score 0.0
+========== Movie: The Sound of One Hand Clapping ==========
+Found 3439 candidates.
+========== Movie: Mauá - O Imperador e o Rei ==========
+Found 3595 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0218430 with score 0.7333333333333333
+www.imdb.com/title/tt3063892 with score 0.13333333333333333
+www.imdb.com/title/tt0131369 with score 0.13333333333333333
+www.imdb.com/title/tt0173450 with score 0.13333333333333333
+www.imdb.com/title/tt0140352 with score 0.13333333333333333
+========== Movie: Three on the Road ==========
+Found 3350 candidates.
+========== Movie: Star 80 ==========
+Found 3299 candidates.
+========== Movie: Secrets of the Dead: Lost Ships of Rome ==========
+Found 7042 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1546420 with score 0.0
+www.imdb.com/title/tt1851998 with score 0.0
+www.imdb.com/title/tt1817136 with score 0.0
+www.imdb.com/title/tt1743264 with score 0.0
+www.imdb.com/title/tt2463166 with score 0.0
+========== Movie: Water's Journey: The Hidden Rivers of Florida ==========
+Found 3744 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0120607 with score 0.3333333333333333
+www.imdb.com/title/tt0325537 with score 0.3333333333333333
+www.imdb.com/title/tt0325352 with score 0.3333333333333333
+www.imdb.com/title/tt0332220 with score 0.3333333333333333
+www.imdb.com/title/tt0384792 with score 0.3333333333333333
+========== Movie: Naam O Nishan ==========
+Found 3193 candidates.
+========== Movie: The Silver Fox Collection: Demon Strike ==========
+Found 2958 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0079483 with score 0.5
+www.imdb.com/title/tt0079247 with score 0.5
+www.imdb.com/title/tt0077770 with score 0.5
+www.imdb.com/title/tt0165554 with score 0.5
+www.imdb.com/title/tt0079042 with score 0.5
+========== Movie: Dark Horse ==========
+Found 7802 candidates.
+========== Movie: The Ambassador's Wife ==========
+Found 6769 candidates.
+========== Movie: Being Jewish in France ==========
+Found 4923 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0907301 with score 0.0
+www.imdb.com/title/tt0989878 with score 0.0
+www.imdb.com/title/tt0780621 with score 0.0
+www.imdb.com/title/tt1015239 with score 0.0
+www.imdb.com/title/tt1285004 with score 0.0
+========== Movie: Parchhain ==========
+Found 3631 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0213981 with score 0.5
+www.imdb.com/title/tt0272651 with score 0.5
+www.imdb.com/title/tt0251320 with score 0.5
+www.imdb.com/title/tt0280465 with score 0.5
+www.imdb.com/title/tt0358004 with score 0.5
+========== Movie: Bikhod & Bi Jahat ==========
+Found 8145 candidates.
+========== Movie: The Art of Conducting: Legendary Conductors of a Golden Era ==========
+Found 3239 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0377383 with score 0.0
+www.imdb.com/title/tt0180575 with score 0.0
+www.imdb.com/title/tt0355212 with score 0.0
+www.imdb.com/title/tt0115580 with score 0.0
+www.imdb.com/title/tt0115879 with score 0.0
+========== Movie: Macbeth II: The Themes of Macbeth ==========
+Found 2447 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0058085 with score 0.0
+www.imdb.com/title/tt0280071 with score 0.0
+www.imdb.com/title/tt0398216 with score 0.0
+www.imdb.com/title/tt0185786 with score 0.0
+www.imdb.com/title/tt0217434 with score 0.0
+========== Movie: Mido Mashakel ==========
+Found 3744 candidates.
+========== Movie: Learn Chinese with Billy and Benboo: Beginners' Level 1: Vol. 1 ==========
+Found 3865 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0468863 with score 0.0
+www.imdb.com/title/tt1000129 with score 0.0
+www.imdb.com/title/tt0400447 with score 0.0
+www.imdb.com/title/tt1863338 with score 0.0
+www.imdb.com/title/tt0391300 with score 0.0
+========== Movie: Lustful Eyes ==========
+Found 3168 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0110919 with score 0.0
+www.imdb.com/title/tt0342102 with score 0.0
+www.imdb.com/title/tt0219295 with score 0.0
+www.imdb.com/title/tt0239103 with score 0.0
+www.imdb.com/title/tt0353780 with score 0.0
+ 200 files: 
+  62 were matched correctly.
+  11 were matched incorrectly:
+            http://www.freebase.com/m/0b3l5hb matched with top score: 1.000 to http://www.imdb.com/title/tt0993841 should be http://www.imdb.com/title/tt1365581
+            http://www.freebase.com/m/0b7l4bm matched with top score: 1.000 to http://www.imdb.com/title/tt0144029 should be http://www.imdb.com/title/tt0120837
+            http://www.freebase.com/m/0hr6_jn matched with top score: 1.000 to http://www.imdb.com/title/tt0482389 should be http://www.imdb.com/title/tt0317237
+            http://www.freebase.com/m/0crrrt2 matched with top score: 1.000 to http://www.imdb.com/title/tt0378260 should be http://www.imdb.com/title/tt0412792
+            http://www.freebase.com/m/0crxs7r matched with top score: 1.000 to http://www.imdb.com/title/tt0395251 should be http://www.imdb.com/title/tt0863028
+            http://www.freebase.com/m/04lgl0j matched with top score: 1.000 to http://www.imdb.com/title/tt0055458 should be http://www.imdb.com/title/tt0055072
+            http://www.freebase.com/m/0y5jgd1 matched with top score: 1.000 to http://www.imdb.com/title/tt1451635 should be http://www.imdb.com/title/tt1416722
+            http://www.freebase.com/m/03wg5tn matched with top score: 1.000 to http://www.imdb.com/title/tt2402342 should be http://www.imdb.com/title/tt0452823
+            http://www.freebase.com/m/0t_n5c8 matched with top score: 1.000 to http://www.imdb.com/title/tt1236410 should be http://www.imdb.com/title/tt1394379
+            http://www.freebase.com/m/0cs44jg matched with top score: 1.000 to http://www.imdb.com/title/tt0051751 should be http://www.imdb.com/title/tt0050853
+            http://www.freebase.com/m/0gksjz4 matched with top score: 1.000 to http://www.imdb.com/title/tt0256956 should be http://www.imdb.com/title/tt0106967
+  28 were not matched because we do not have it in our database.
+  33 were not matched and are not candidates:
+                                          http://www.freebase.com/m/0g4pn_4
+                                          http://www.freebase.com/m/0cry6s5
+                                          http://www.freebase.com/m/04f2l4r
+            http://www.freebase.com/m/0gksqlj matched with top score: 0.143 to http://www.imdb.com/title/tt0373028 should be http://www.imdb.com/title/tt1291635
+            http://www.freebase.com/m/0bc2vpp matched with top score: 0.333 to http://www.imdb.com/title/tt0078843 should be http://www.imdb.com/title/tt0080146
+            http://www.freebase.com/m/0gm78xx matched with top score: 0.333 to http://www.imdb.com/title/tt2210871 should be http://www.imdb.com/title/tt2002652
+                                          http://www.freebase.com/m/0_gq0_3
+            http://www.freebase.com/m/04_0c6n matched with top score: 0.125 to http://www.imdb.com/title/tt0102667 should be http://www.imdb.com/title/tt0102177
+            http://www.freebase.com/m/0zfg082 matched with top score: 0.500 to http://www.imdb.com/title/tt2532920 should be http://www.imdb.com/title/tt2308491
+             http://www.freebase.com/m/0h3lsz matched with top score: 0.667 to http://www.imdb.com/title/tt0118710 should be http://www.imdb.com/title/tt0422773
+                                          http://www.freebase.com/m/07q9bq5
+                                          http://www.freebase.com/m/0c0nj5k
+            http://www.freebase.com/m/0xn0_18 matched with top score: 0.200 to http://www.imdb.com/title/tt2151849 should be http://www.imdb.com/title/tt2204550
+                                          http://www.freebase.com/m/0cgzkr3
+            http://www.freebase.com/m/05p3q7f matched with top score: 0.151 to http://www.imdb.com/title/tt1328910 should be http://www.imdb.com/title/tt1266121
+                                          http://www.freebase.com/m/0gkrtyk
+                                          http://www.freebase.com/m/0gy7r8n
+                                         http://www.freebase.com/m/010bx9pl
+                                          http://www.freebase.com/m/0jyn8zn
+                                          http://www.freebase.com/m/0crt9q7
+                                         http://www.freebase.com/m/010gdrtq
+                                          http://www.freebase.com/m/0zbm9nm
+             http://www.freebase.com/m/0cjwwz matched with top score: 0.667 to http://www.imdb.com/title/tt0035957 should be http://www.imdb.com/title/tt0275310
+                                          http://www.freebase.com/m/0b6d8rn
+            http://www.freebase.com/m/0g4q55_ matched with top score: 0.500 to http://www.imdb.com/title/tt2273537 should be http://www.imdb.com/title/tt2395036
+                                          http://www.freebase.com/m/0_yvpsq
+                                          http://www.freebase.com/m/0gmlgh9
+            http://www.freebase.com/m/05fbl8f matched with top score: 0.200 to http://www.imdb.com/title/tt1050002 should be http://www.imdb.com/title/tt1019454
+            http://www.freebase.com/m/09gn527 matched with top score: 0.500 to http://www.imdb.com/title/tt3505780 should be http://www.imdb.com/title/tt1219147
+                                          http://www.freebase.com/m/0gfsywb
+                                          http://www.freebase.com/m/0b660n0
+                                          http://www.freebase.com/m/0crw4_y
+                                          http://www.freebase.com/m/0crx44p
+   4 were not matched and no candidates were found:
+                                          http://www.freebase.com/m/0gkts87
+                                          http://www.freebase.com/m/0yp0z0w
+                                          http://www.freebase.com/m/0pclwhs
+                                          http://www.freebase.com/m/0r5vh7y
+   0 were not matched for unknown reasons:
+  62 had no imdb id.
+
+Precision = matched correctly/(test set size - not in database - no imdb id)
+Precision = 0.5636363636363636
+
+BUILD SUCCESSFUL
+
+Total time: 2 hrs 15 mins 13.474 secs
