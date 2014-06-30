@@ -22,7 +22,7 @@ class ImdbUpdater {
 		val taskList = movieIds.flatMap { id =>
 			val url = ImdbUpdater.MOVE_BASE_URI + id + "/"
 			ImdbUpdater.IMDB_PAGES.map { page =>
-				Task(0, TaskType.Crawlify.toString, date, 10, url + page, false, flag, Config.IMDB_DAILY_GRAPH)
+				Task(0, TaskType.Crawlify.toString, date, 10, url + page, false, flag, Config.IMDB_UPDATING_GRAPH)
 			}
 		}
 
