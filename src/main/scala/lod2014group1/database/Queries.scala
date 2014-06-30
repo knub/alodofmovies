@@ -139,7 +139,37 @@ object Queries {
 		})
 		results
 	}
-	
+
+	def deleteTriplesForMovie(movieId: String, graph: String) {
+		val query =	s"""
+			   $getAllPrefixe
+				DELETE FROM GRAPH <$graph> { ?resource ?p ?o }
+				WHERE
+				{
+				  {
+					?resource ?p ?o
+					{
+					  SELECT ?resource WHERE
+					  {
+						lod:Movie$movieId ?p ?resource .
+						FILTER (strStarts(str(?resource), "http://purl.org/hpi/movie#"))
+					  }
+					}
+				  }
+				  UNION
+				  {
+					BIND (lod:Movie$movieId as ?resource) ?resource ?p ?o .
+				  }
+				};
+			"""
+
+		println(query)
+
+		//val update = UpdateFactory.create(query)
+		//val uExec =	UpdateExecutionFactory.createRemote(update, Config.SPARQL_ENDPOINT)
+		//uExec.execute()
+	}
+
 	private def getAllPrefixe : String = {
 		"""
 		  |prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -153,41 +183,6 @@ object Queries {
 		  |prefix freebase: <http://rdf.freebase.com/ns/>
 		  |
 		""".stripMargin
-	}
-
-
-	def deleteTriplesForMovie(movieId: String, graph: String) {
-		val query =	s"""
-			   $getAllPrefixe
-				DELETE FROM GRAPH <$graph> { ?s ?p ?o }
-				WHERE
-				{ GRAPH  <$graph>
-					{ lod:Movie$movieId ?p ?o . }
-				};
-			"""
-
-//		SELECT ?resource ?p ?o
-//		WHERE {
-//			{
-//				?resource ?p ?o
-//					{
-//						SELECT ?resource
-//						WHERE
-//						{
-//							<http://purl.org/hpi/movie#Moviett1986914> ?p ?resource .
-//								FILTER (strStarts(str(?resource), "http://purl.org/hpi/movie#"))
-//						}
-//					}
-//			}
-//			UNION
-//			{
-//				BIND (<http://purl.org/hpi/movie#Moviett1986914> as ?resource) ?resource ?p ?o .
-//			}
-//		}
-
-		val update = UpdateFactory.create(query)
-		val uExec =	UpdateExecutionFactory.createRemote(update, Config.SPARQL_ENDPOINT)
-		uExec.execute()
 	}
 
 }
