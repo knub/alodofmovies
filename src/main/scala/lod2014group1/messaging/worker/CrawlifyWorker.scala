@@ -17,7 +17,7 @@ class CrawlifyWorker extends Worker {
 
 		println(s"File: $url")
 
-		val fileName = UriToFilename.parse(file.uri)
+		val fileName = UriToFilename.parse(file)
 		val content = file.fileContent
 
 		println(s"Filename: $fileName")
