@@ -19,7 +19,7 @@ class MovieMatcher {
 	val ACTOR_OVERLAP_MINIMUM       = 0.8
 	val ACTOR_OVERLAP_LEVENSHTEIN   = 5
 	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
-	val TEST_SET_SIZE               = 10
+	val TEST_SET_SIZE               = 200
 
 	val tmdbTriplifier = new TmdbMovieTriplifier
 	val movieNames = Queries.getAllMovieNames
@@ -42,7 +42,7 @@ class MovieMatcher {
 			val originUri = if (origin forall Character.isDigit) {
 				UriBuilder.getTmdbMovieUri(origin)
 			}	else {
-				UriBuilder.getFreebaseUri(origin)
+				UriBuilder.getFreebaseUri(s"/m/$origin")
 			}
 			if (score == 0.0) {
 				f"$originUri%75s"
@@ -70,7 +70,7 @@ class MovieMatcher {
 		var notMatched      = List[ResultIds]()
 		var noImdbId        = List[String]()
 
-		val r = new Random(1001)
+		val r = new Random(1000)
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
 //		val testSet = dir.listFiles().filter(f => f.getName().contains("0bdjd"))
 		testSet.foreach { file =>
