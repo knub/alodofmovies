@@ -70,7 +70,7 @@ object TriplifyDistributor extends Logging {
 				//List()
 			case Config.Person.Dominik =>
 				val tmdbTriplifier = new TmdbMovieTriplifier()
-				val tmdbFiles = new File("data/TMDBMoviesList/movie/").listFiles().filter( f => f.getName.endsWith(".json"))
+				val tmdbFiles = new File("data/TMDBMoviesList/movie/").listFiles().filter( f => f.getName.endsWith(".json") && f.getName.startsWith("8"))
 				log.info(s"Number of movies: ${tmdbFiles.size}")
 				//val tmdbFiles = List(new File("data/TMDBMoviesList/movie/550.json"))
 				//val tmdbFiles = List(new File("data/TMDBMoviesList/movie/13.json"))

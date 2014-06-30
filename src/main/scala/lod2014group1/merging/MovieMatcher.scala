@@ -45,13 +45,13 @@ class MovieMatcher {
 			}	else {
 				UriBuilder.getFreebaseUri(s"/m/$origin")
 			}
-			if (score == 0.0) {
-				f"$originUri%75s"
+			if (score == -1.0) {
+				f"$originUri%45s"
 			} else {
 				val matchedUri = UriBuilder.getImdbMovieUri(matched)
 
 				if (matched == correct) {
-					f"$originUri%75s matched with top score: $score%.3f correclty to $matchedUri"
+					f"$originUri%45s matched with top score: $score%.3f correclty to $matchedUri"
 				} else {
 					val correctUri = UriBuilder.getImdbMovieUri(correct)
 					f"$originUri%45s matched with top score: $score%.3f to $matchedUri should be $correctUri"
@@ -86,7 +86,7 @@ class MovieMatcher {
 			if (imdbId == null) {
 				noImdbId ::= fileId
 			} else if (candidates.size == 0) {
-				noCandidates ::= new ResultIds(fileId, 0.0, "", "")
+				noCandidates ::= new ResultIds(fileId, -1.0, "", "")
 			} else {
 				val bestMovie = candidates.head
 				val bestMovieImdbId = getImdbId(bestMovie)
