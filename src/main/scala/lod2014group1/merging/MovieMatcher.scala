@@ -19,7 +19,7 @@ class MovieMatcher {
 	val ACTOR_OVERLAP_MINIMUM       = 0.8
 	val ACTOR_OVERLAP_LEVENSHTEIN   = 5
 	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
-	val TEST_SET_SIZE               = 1000
+	val TEST_SET_SIZE               = 100
 
 
 	val tmdbTriplifier = new TmdbMovieTriplifier
@@ -92,7 +92,7 @@ class MovieMatcher {
 				val bestMovieImdbId = getImdbId(bestMovie)
 
 				if (candidates.filter(minScore).isEmpty) {
-					if (taskDb.hasTasks(imdbId)) {
+					if (!taskDb.hasTasks(imdbId)) {
 						notInDb ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 					} else if (!candidateIds.exists( c => c.equals(imdbId))) {
 						notInCandidate ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
