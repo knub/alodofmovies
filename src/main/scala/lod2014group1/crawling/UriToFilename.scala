@@ -35,12 +35,12 @@ object UriToFilename {
 			// IMDB
 			case uri if uri.startsWith("http://www.imdb.com/title/") =>
 				val uriSplit = uri.split("/")
-				val id = uriSplit(2).substring(2)
+				val id = uriSplit(4)
 				var imdbFileName = uriSplit.last
-				if (imdbFileName.isEmpty)
+				if (imdbFileName.equals(id))
 					imdbFileName = "main.html"
 				else
-					imdbFileName = imdbFileName.split("?")(0) + ".html"
+					imdbFileName = imdbFileName.split("\\?")(0) + ".html"
 				s"$dir/IMDBMovie/$id/$imdbFileName"
 
 			case uri if uri.startsWith("http://www.imdb.com/name/") =>
