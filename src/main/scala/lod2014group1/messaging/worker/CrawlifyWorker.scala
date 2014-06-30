@@ -15,9 +15,9 @@ class CrawlifyWorker extends Worker {
 
 		val file = UriFile(url, Crawler.downloadFile(new URL(url)), params.getOrElse("flag", ""))
 
-		println(s"File: $file")
+		println(s"File: $url")
 
-		val fileName = UriToFilename.parse(file)
+		val fileName = UriToFilename.parse(file.uri)
 		val content = file.fileContent
 
 		println(s"Filename: $fileName")
