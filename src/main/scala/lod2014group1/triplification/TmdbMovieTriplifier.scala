@@ -28,8 +28,8 @@ class TmdbMovieTriplifier extends Triplifier {
 
 		println(s"Movie id: ${mainJson.id} original_title: ${mainJson.original_title}")
 
-		appendJson.credits.cast.foreach { person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)) }
-		appendJson.credits.crew.foreach { person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)) }
+//		appendJson.credits.cast.foreach { person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)) }
+//		appendJson.credits.crew.foreach { person => crawler.getFile(TMDBMoviesListCrawler.PERSON_URL.format(person.id)) }
 
 		val id = mainJson.id
 		val collection = if (mainJson.belongs_to_collection != null) {

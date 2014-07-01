@@ -9,6 +9,7 @@ import json._
 import org.apache.commons.io.{FileUtils, IOUtils}
 import lod2014group1.rdf.{UriBuilder, RdfTriple}
 import scala.util.Random
+import scala.slick.lifted.Functions
 
 class MovieMatcher {
 	// TODO use orginial_title
@@ -17,7 +18,7 @@ class MovieMatcher {
 	// TODO find bugs (e.g. freebase)
 
 	val ACTOR_OVERLAP_MINIMUM       = 0.8
-	val ACTOR_OVERLAP_LEVENSHTEIN   = 5
+	val ACTOR_OVERLAP_LEVENSHTEIN   = 3
 	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
 	val TEST_SET_SIZE               = 100
 
@@ -73,7 +74,6 @@ class MovieMatcher {
 
 		val r = new Random(1000)
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
-//		val testSet = dir.listFiles().filter(f => f.getName().contains("0bdjd"))
 		testSet.foreach { file =>
 			val triples = triplifier.triplify(FileUtils.readFileToString(file))
 			val tripleGraph = new TripleGraph(triples)
@@ -129,7 +129,7 @@ class MovieMatcher {
 		println(s"Precision = $precision")
 		println("F-measure = (2 * Precision * Recall) / (Precision + Recall)")
 		val fMeasure = (2 * precision * recall) / (precision + recall)
-		println("F-measure = $fMeasure")
+		println(s"F-measure = $fMeasure")
 	}
 
 	def minScore(cs: CandidateScore): Boolean = {
@@ -138,10 +138,10 @@ class MovieMatcher {
 	
 	def mergeTmdbMovie(file: File): Unit = {
 		val triples = tmdbTriplifier.triplify(file)
-		getMergedTriple(triples)
+		mergeTriples(triples)
 	}
 	
-	def getMergedTriple(triples: List[RdfTriple]): Unit = {
+	def mergeTriples(triples: List[RdfTriple]): Unit = {
 		val tripleGraph = new TripleGraph(triples)
 		val imdbMovie = merge(tripleGraph)
 		if (!imdbMovie.isEmpty){	
@@ -150,7 +150,6 @@ class MovieMatcher {
 			Merger.mergeMovieTriple(imdbMovie.head.candidate, movietriple).foreach(println)
 			// TODO: Try other methods
 		}
-		
 	}
 
 
@@ -173,9 +172,10 @@ class MovieMatcher {
 		if (years.isEmpty)
 			println("No years found.")
 		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
-//		val moviesInYear = List()
+
 		val allCandidates = (moviesInYear ::: moviesWithSimilarName).distinct
-			
+//		val allCandidates = moviesWithSimilarName.distinct
+
 		allCandidates
 	}
 
@@ -186,13 +186,8 @@ class MovieMatcher {
 		println(s"Found ${candidates.size} candidates.")
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
-			val score = calculateActorOverlap(triples, candidate.resource)
-			if (score == 1.0) {
-				println(s"Actor-Score: $score")
-				println(s"Producer-Score: ${calculateProducerOverlap(triples, candidate.resource)}")
-				println(s"Writer-Score: ${calculateWriterOverlap(triples, candidate.resource)}")
-				println(s"Director-Score: ${calculateDirectorOverlap(triples, candidate.resource)}")
-			}
+			val overlaps: List[(TripleGraph, String) => Double] = List(calculateActorOverlap, calculateWriterOverlap, calculateDirectorOverlap, calculateProducerOverlap)
+			val score = avg(overlaps.map(_(triples, candidate.resource)).filter(_ != -1.0))
 			movieScores += (candidate.resource -> score)
 		}
 		val bestMovies = movieScores.toList.map(CandidateScore.tupled).sortBy(-_.score)
@@ -205,6 +200,10 @@ class MovieMatcher {
 			}
 		}
 		bestMovies
+	}
+
+	def avg(l: List[Double]): Double = {
+		l.sum / l.size.toDouble
 	}
 
 	def calculateActorOverlap(g: TripleGraph, candidateUri: String): Double = {
@@ -227,6 +226,8 @@ class MovieMatcher {
 
 	def calculateProducerOverlap(g: TripleGraph, candidateUri: String): Double = {
 		val currentProducers = g.getObjectsFor("dbpprop:producer", "dbpprop:name") ::: g.getObjectsFor("dbpprop:coProducer", "dbpprop:name")
+		if (currentProducers.isEmpty)
+			return -1.0
 		val candidateProducer = Queries.getAllProducersOfMovie(candidateUri)
 
 		calculateOverlap(currentProducers, candidateProducer)
@@ -234,12 +235,16 @@ class MovieMatcher {
 
 	def calculateDirectorOverlap(g: TripleGraph, candidateUri: String): Double = {
 		val currentDirectors = g.getObjectsFor("dbpprop:director", "dbpprop:name")
+		if (currentDirectors.isEmpty)
+			return -1.0
 		val canidateDirectors = Queries.getAllDirectorsOfMovie(candidateUri)
 
 		calculateOverlap(currentDirectors, canidateDirectors)
 	}
 	def calculateWriterOverlap(g: TripleGraph, candidateUri: String): Double = {
 		val currentWriters = g.getObjectsFor("dbpprop:writer", "dbpprop:name")
+		if (currentWriters.isEmpty)
+			return -1.0
 		val candidateWriters = Queries.getAllWritersOfMovie(candidateUri)
 
 		calculateOverlap(currentWriters, candidateWriters)
