@@ -108,11 +108,13 @@ class MovieMatcher(val triplifier: Triplifier) {
 		val tripleGraph = new TripleGraph(triples)
 		val imdbId = getImdbId(tripleGraph)
 		if (imdbId == null) {
+			println("No IMDB ID. Skip.")
 			noImdbId ::= fileId
 			return
 		}
 		if (!taskDb.hasTasks(imdbId)) {
-			notInDb ::= new ResultIds(fileId, null, null, imdbId)
+			println("Not in DB. Skip.")
+			notInDb ::= new ResultIds(fileId, 0.0, null, imdbId)
 			return
 		}
 
