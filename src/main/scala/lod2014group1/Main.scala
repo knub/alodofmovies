@@ -52,16 +52,17 @@ object Main extends App with Logging {
 			ImdbStatisticUpdater.watchUpcomingMovies()
 			ImdbStatisticUpdater.watchExistingMovie()
 		} else if (args contains "merge-tmdb") {
-			val merger = new MovieMatcher()
 
 			I.am match {
 				case Config.Person.Rice =>
 					val dir = new File (s"${Config.DATA_FOLDER}/Freebase/film/")
-					merger.runStatistic(dir, new FreebaseFilmsTriplifier())
+					val merger = new MovieMatcher(new FreebaseFilmsTriplifier())
+					merger.runStatistic(dir)
 					return
 				case default => 
 					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
-					merger.runStatistic(tmdbDir, new TmdbMovieTriplifier())
+					val merger = new MovieMatcher(new TmdbMovieTriplifier())
+					merger.runStatistic(tmdbDir)
 			}
 		} else if (args contains "update-daily") {
 			new UpdateScheduler().update()

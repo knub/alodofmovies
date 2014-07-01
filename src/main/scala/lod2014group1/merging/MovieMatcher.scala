@@ -11,7 +11,7 @@ import lod2014group1.rdf.{UriBuilder, RdfTriple}
 import scala.util.Random
 import scala.slick.lifted.Functions
 
-class MovieMatcher {
+class MovieMatcher(val triplifier: Triplifier) {
 	// TODO use orginial_title
 	// TODO use more to calc score (e.g. original_title distance)
 	// TODO candidate movies more criteria -> calc score and take top 100
@@ -63,52 +63,18 @@ class MovieMatcher {
 		}
 	}
 
-	def runStatistic(dir: File, triplifier: Triplifier): Unit = {
-		var falseMatched    = List[ResultIds]()
-		var trueMatched     = List[ResultIds]()
+	var falseMatched    = List[ResultIds]()
+	var trueMatched     = List[ResultIds]()
+	var notInDb         = List[ResultIds]()
+	var notInCandidate  = List[ResultIds]()
+	var noCandidates    = List[ResultIds]()
+	var notMatched      = List[ResultIds]()
+	var noImdbId        = List[String]()
 
-		var notInDb         = List[ResultIds]()
-		var notInCandidate  = List[ResultIds]()
-		var noCandidates    = List[ResultIds]()
-		var notMatched      = List[ResultIds]()
-		var noImdbId        = List[String]()
-
+	def runStatistic(dir: File): Unit = {
 		val r = new Random(1001)
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
-		testSet.zipWithIndex.foreach { case (file, i) =>
-			val triples = triplifier.triplify(FileUtils.readFileToString(file))
-			val tripleGraph = new TripleGraph(triples)
-
-			val fileId = file.getName.replace(".json", "")
-			println(i)
-			val candidates = merge(tripleGraph)
-			val candidateIds = candidates.map { c => getImdbId(c) }
-			val imdbId = getImdbId(tripleGraph)
-
-			if (imdbId == null) {
-				noImdbId ::= fileId
-			} else if (candidates.size == 0) {
-				noCandidates ::= new ResultIds(fileId, -1.0, "", "")
-			} else {
-				val bestMovie = candidates.head
-				val bestMovieImdbId = getImdbId(bestMovie)
-
-				if (candidates.filter(minScore).isEmpty) {
-					if (!taskDb.hasTasks(imdbId)) {
-						notInDb ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
-					} else if (!candidateIds.exists( c => c.equals(imdbId))) {
-						notInCandidate ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
-					} else {
-						notMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
-					}
-				} else {
-					if (bestMovieImdbId == imdbId)
-						trueMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
-					else
-						falseMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
-				}
-			}
-		}
+		testSet.zipWithIndex.foreach(mergeMovie)
 
 		println(f"${testSet.size}%4s files: ")
 		println(f"${trueMatched.size}%4s were matched correctly.")
@@ -128,10 +94,52 @@ class MovieMatcher {
 		println(s"Precision = $precision")
 		println("Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)")
 		val recall = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size + noCandidates.size + notInCandidate.size + notMatched.size)
-		println(s"Precision = $precision")
+		println(s"Precision = $recall")
 		println("F-measure = (2 * Precision * Recall) / (Precision + Recall)")
 		val fMeasure = (2 * precision * recall) / (precision + recall)
 		println(s"F-measure = $fMeasure")
+	}
+
+	def mergeMovie(t: (File, Int)): Unit = {
+		val (file, i) = t
+		val fileId = file.getName.replace(".json", "")
+
+		val triples = triplifier.triplify(FileUtils.readFileToString(file))
+		val tripleGraph = new TripleGraph(triples)
+		val imdbId = getImdbId(tripleGraph)
+		if (imdbId == null) {
+			noImdbId ::= fileId
+			return
+		}
+		if (!taskDb.hasTasks(imdbId)) {
+			notInDb ::= new ResultIds(fileId, null, null, imdbId)
+			return
+		}
+
+		println(i)
+		val candidates = merge(tripleGraph)
+		val candidateIds = candidates.map { c => getImdbId(c) }
+
+		if (candidates.size == 0) {
+			noCandidates ::= new ResultIds(fileId, -1.0, "", "")
+		} else {
+			val bestMovie = candidates.head
+			val bestMovieImdbId = getImdbId(bestMovie)
+
+			if (candidates.filter(minScore).isEmpty) {
+				if (!candidateIds.exists( c => c.equals(imdbId))) {
+					notInCandidate ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
+				} else {
+					notMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
+				}
+			} else {
+				if (bestMovieImdbId == imdbId)
+					trueMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
+				else
+					falseMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
+			}
+		}
+
 	}
 
 	def minScore(cs: CandidateScore): Boolean = {
