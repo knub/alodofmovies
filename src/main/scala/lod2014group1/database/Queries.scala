@@ -7,6 +7,7 @@ import org.joda.time.DateTime
 
 
 case class ResourceWithName(var resource: String, var name: String)
+case class ResourceWithOriginalName(resource: String, originalTitle: String, name: String)
 
 object Queries {
 
@@ -27,9 +28,18 @@ object Queries {
 	}
 
 	def getAllMoviesWithOriginalTitles: List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:originalTitle ?o}"
-		extractResourcesWithNameFrom(query)
+		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:originalTitle ?o . ?s dbpprop:name ?name}"
 
+		val queryExecution = database.buildQuery(query)
+
+		var results: List[ResourceWithOriginalName] = List()
+		database.query(queryExecution, { rs =>
+			val s = rs.get("s").toString
+			val o = rs.get("o").toString
+			val name = rs.get("name").toString
+			results ::= ResourceWithOriginalName(s, o, name)
+		})
+		results
 	}
 
 	def getAllMovieNamesOfYear(year: String): List[ResourceWithName] = {
