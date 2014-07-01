@@ -20,7 +20,8 @@ class MovieMatcher {
 	val ACTOR_OVERLAP_MINIMUM       = 0.8
 	val ACTOR_OVERLAP_LEVENSHTEIN   = 3
 	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
-	val TEST_SET_SIZE               = 100
+	val TEST_SET_SIZE             = 5
+	// val TEST_SET_SIZE               = 750
 
 
 	val tmdbTriplifier = new TmdbMovieTriplifier
@@ -72,13 +73,14 @@ class MovieMatcher {
 		var notMatched      = List[ResultIds]()
 		var noImdbId        = List[String]()
 
-		val r = new Random(1000)
+		val r = new Random(1001)
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
-		testSet.foreach { file =>
+		testSet.zipWithIndex.foreach { case (file, i) =>
 			val triples = triplifier.triplify(FileUtils.readFileToString(file))
 			val tripleGraph = new TripleGraph(triples)
 
 			val fileId = file.getName.replace(".json", "")
+			println(i)
 			val candidates = merge(tripleGraph)
 			val candidateIds = candidates.map { c => getImdbId(c) }
 			val imdbId = getImdbId(tripleGraph)
