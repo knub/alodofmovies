@@ -2,7 +2,7 @@ package lod2014group1.database
 
 import com.hp.hpl.jena.query._
 import com.hp.hpl.jena.graph._
-import virtuoso.jena.driver.VirtGraph
+import virtuoso.jena.driver.{VirtuosoQueryExecutionFactory, VirtGraph}
 import lod2014group1.rdf._
 import scala.collection.mutable.Map
 import scala.sys.process._
@@ -160,7 +160,7 @@ class VirtuosoRemoteDatabase(sparqlEndpoint: String) extends VirtuosoDatabase {
 	val g = new VirtGraph("http://172.16.22.196/imdb", "jdbc:virtuoso://172.16.22.196:1111", "dba", "dba")
 	def buildQuery(queryString: String): QueryExecution = {
 		val query: Query = QueryFactory.create(queryString.replace("FROM <graph>", ""))
-		QueryExecutionFactory.sparqlService(sparqlEndpoint, query)
+		VirtuosoQueryExecutionFactory.create(query, g)
 	}
 
 	def deleteTriples(uri: String, property: String, obj: String): Unit = {
