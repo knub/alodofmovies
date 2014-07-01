@@ -62,12 +62,29 @@ object Queries {
 	}
 
 	def getAllProducersOfMovie(movie: String): List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { <$movie> dbpprop:coProducer ?s . <$movie> dbpprop:producer ?s . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * WHERE { { <$movie> dbpprop:coProducer ?s } UNION { <$movie> dbpprop:producer ?s } . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllDirectorsOfMovie(movie: String): List[ResourceWithName] = {
 		val query = s"$getAllPrefixe SELECT * WHERE { <$movie> dbpprop:director ?s . ?s dbpprop:name ?o }"
+		extractResourcesWithNameFrom(query)
+	}
+	def getAllWritersOfMovie(movie: String): List[ResourceWithName] = {
+		val query =
+			s"""
+			   |$getAllPrefixe
+			   |SELECT * WHERE {
+			   |   { <$movie> dbpprop:screenplay ?s }
+			   |   UNION
+			   |   { <$movie> dbpprop:author ?s }
+			   |   UNION
+			   |   { <$movie> dbpprop:writer ?s }
+			   |   UNION
+			   |   { <$movie> dbpprop:story ?s } .
+			   |   ?s dbpprop:name ?o
+			   |}
+			 """.stripMargin
 		extractResourcesWithNameFrom(query)
 	}
 
@@ -213,9 +230,11 @@ object Queries {
         }
 			}
 		"""
-		val update = UpdateFactory.create(query)
-		val uExec =	UpdateExecutionFactory.createRemote(update, Config.SPARQL_ENDPOINT + "/statements")
-		uExec.execute()
+		database.buildDeleteQuery(movieResource, "", "")
+//		val update = UpdateFactory.create(query)
+//		val uExec = UpdateExecutionFactory.createRemote(update, Config.SPARQL_ENDPOINT + "/statements")
+//		uExec.execute()
 	}
+
 
 }

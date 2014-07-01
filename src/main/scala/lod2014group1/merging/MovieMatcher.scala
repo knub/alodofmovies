@@ -39,7 +39,7 @@ class MovieMatcher {
 	}
 
 	case class ResultIds(origin: String, score: Double, matched: String, correct: String) {
-		override def toString(): String = {
+		override def toString: String = {
 			val originUri = if (origin forall Character.isDigit) {
 				UriBuilder.getTmdbMovieUri(origin)
 			}	else {
@@ -181,13 +181,18 @@ class MovieMatcher {
 
 	case class CandidateScore(candidate: String, score: Double)
 
-
 	def merge(triples: TripleGraph): List[CandidateScore] = {
 		val candidates = findCandidateMovies(triples)
 		println(s"Found ${candidates.size} candidates.")
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
 			val score = calculateActorOverlap(triples, candidate.resource)
+			if (score == 1.0) {
+				println(s"Actor-Score: $score")
+				println(s"Producer-Score: ${calculateProducerOverlap(triples, candidate.resource)}")
+				println(s"Writer-Score: ${calculateWriterOverlap(triples, candidate.resource)}")
+				println(s"Director-Score: ${calculateDirectorOverlap(triples, candidate.resource)}")
+			}
 			movieScores += (candidate.resource -> score)
 		}
 		val bestMovies = movieScores.toList.map(CandidateScore.tupled).sortBy(-_.score)
@@ -203,7 +208,8 @@ class MovieMatcher {
 	}
 
 	def calculateActorOverlap(g: TripleGraph, candidateUri: String): Double = {
-		val currentActors = g.getObjectsFor("dbpprop:starring", "rdfs:label")
+		val currentActors    = g.getObjectsFor("dbpprop:starring", "rdfs:label")
+
 		val cacheFile = new File(s"data/MergeMovieActor/${candidateUri.split("#")(1)}")
 		val candidateActors = if (cacheFile.exists()) {
 			val json = FileUtils.readFileToString(cacheFile, "UTF-8")
@@ -231,6 +237,12 @@ class MovieMatcher {
 		val canidateDirectors = Queries.getAllDirectorsOfMovie(candidateUri)
 
 		calculateOverlap(currentDirectors, canidateDirectors)
+	}
+	def calculateWriterOverlap(g: TripleGraph, candidateUri: String): Double = {
+		val currentWriters = g.getObjectsFor("dbpprop:writer", "dbpprop:name")
+		val candidateWriters = Queries.getAllWritersOfMovie(candidateUri)
+
+		calculateOverlap(currentWriters, candidateWriters)
 	}
 
 	private def calculateOverlap(currentObjects: List[String], candidateObjects: List[ResourceWithName]): Double = {

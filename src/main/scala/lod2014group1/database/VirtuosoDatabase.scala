@@ -1,6 +1,8 @@
 package lod2014group1.database
 
 import com.hp.hpl.jena.query._
+import com.hp.hpl.jena.graph._
+import virtuoso.jena.driver.VirtGraph
 import lod2014group1.rdf._
 import scala.collection.mutable.Map
 import scala.sys.process._
@@ -9,6 +11,15 @@ import org.apache.commons.io.FileUtils
 import lod2014group1.rdf.RdfString
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
+import com.hp.hpl.jena.update._
+import lod2014group1.rdf.RdfString
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf.RdfTripleString
+import lod2014group1.rdf.RdfString
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.RdfResource
+import lod2014group1.rdf.RdfTripleString
 
 abstract class VirtuosoDatabase {
 	def connectToDatabase
@@ -55,7 +66,7 @@ abstract class VirtuosoDatabase {
 	}
 
 	def queryKeyToMap(query: QueryExecution, queryKey: String): Map[String, List[String]] = {
-		var results: Map[String, List[String]] = Map()
+		val results: Map[String, List[String]] = Map()
 		var keys: List[String] = List()
 		val queryResult = query.execSelect
 		while (queryResult.hasNext) {
@@ -146,9 +157,17 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 
 class VirtuosoRemoteDatabase(sparqlEndpoint: String) extends VirtuosoDatabase {
 	println("Note: Using %s as remote database.".format(sparqlEndpoint))
+	val g = new VirtGraph("http://172.16.22.196/imdb", "jdbc:virtuoso://172.16.22.196:1111", "dba", "dba")
 	def buildQuery(queryString: String): QueryExecution = {
 		val query: Query = QueryFactory.create(queryString.replace("FROM <graph>", ""))
-			QueryExecutionFactory.sparqlService(sparqlEndpoint, query)
+		QueryExecutionFactory.sparqlService(sparqlEndpoint, query)
+	}
+
+	def buildDeleteQuery(uri: String, property: String, obj: String): Unit = {
+		val n1 = Node.createURI(uri)
+		val n2 = Node.createURI(property)
+		val n3 = Node.createLiteral(obj)
+		g.delete(new Triple(n1, n2, n3))
 	}
 
 	def closeConnection = {}

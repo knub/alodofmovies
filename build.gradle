@@ -153,4 +153,6 @@ dependencies {
 		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
 	}
 	compile 'jline:jline:2.11'
+	compile files('./lib/virt_jena2.jar')
+	compile files('./lib/virtjdbc4.jar')
 }
