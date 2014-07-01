@@ -68,9 +68,9 @@ object Main extends App with Logging {
 		} else if (args contains "fixx") {
 			val taskDb = new TaskDatabase
 			val oldResources = Queries.getAllMoviesWithOriginalTitles
-			oldResources.take(1).map(_.resource).zipWithIndex.foreach { case (resource, index) =>
-				Queries.deleteNameAndOriginalTitleTriples("http://172.16.22.196/imdb", resource)
-				taskDb.resetTasks(resource.split("movie#Movie")(1))
+			oldResources.zipWithIndex.foreach { case (resource, index) =>
+				Queries.deleteNameAndOriginalTitleTriples(resource)
+				taskDb.resetTasks(resource.resource.split("movie#Movie")(1))
 				if (index % 5 == 0) println(index)
 			}
 		} else {

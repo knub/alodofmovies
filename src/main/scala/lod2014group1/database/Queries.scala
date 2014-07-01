@@ -27,7 +27,7 @@ object Queries {
 		extractResourcesWithNameFrom(query)
 	}
 
-	def getAllMoviesWithOriginalTitles: List[ResourceWithName] = {
+	def getAllMoviesWithOriginalTitles: List[ResourceWithOriginalName] = {
 		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:originalTitle ?o . ?s dbpprop:name ?name}"
 
 		val queryExecution = database.buildQuery(query)
@@ -222,28 +222,9 @@ object Queries {
 		""".stripMargin
 	}
 
-	def deleteNameAndOriginalTitleTriples(graph: String, movieResource: String) {
-		val query = s"""
-			$getAllPrefixe
-			DELETE { ?s ?p ?o }
-			WHERE {
-        {
-          BIND (<$movieResource> as ?s)
-          BIND (dbpprop:name as ?p)
-          ?s ?p ?o .
-        }
-        UNION
-        {
-          BIND (<$movieResource> as ?s)
-          BIND (dbpprop:originalTitle as ?p)
-          ?s ?p ?o .
-        }
-			}
-		"""
-		database.buildDeleteQuery(movieResource, "", "")
-//		val update = UpdateFactory.create(query)
-//		val uExec = UpdateExecutionFactory.createRemote(update, Config.SPARQL_ENDPOINT + "/statements")
-//		uExec.execute()
+	def deleteNameAndOriginalTitleTriples(resource: ResourceWithOriginalName) {
+		database.deleteTriples(resource.resource, "http://dbpedia.org/property/originalTitle", resource.originalTitle)
+		database.deleteTriples(resource.resource, "http://dbpedia.org/property/name", resource.name)
 	}
 
 

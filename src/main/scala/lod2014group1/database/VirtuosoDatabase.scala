@@ -163,7 +163,7 @@ class VirtuosoRemoteDatabase(sparqlEndpoint: String) extends VirtuosoDatabase {
 		QueryExecutionFactory.sparqlService(sparqlEndpoint, query)
 	}
 
-	def buildDeleteQuery(uri: String, property: String, obj: String): Unit = {
+	def deleteTriples(uri: String, property: String, obj: String): Unit = {
 		val n1 = Node.createURI(uri)
 		val n2 = Node.createURI(property)
 		val n3 = Node.createLiteral(obj)
