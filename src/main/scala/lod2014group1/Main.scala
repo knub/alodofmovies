@@ -69,8 +69,8 @@ object Main extends App with Logging {
 			val taskDb = new TaskDatabase
 			val oldResources = Queries.getAllMoviesWithOriginalTitles
 			oldResources.zipWithIndex.foreach { case (resource, index) =>
-				Queries.deleteNameAndOriginalTitleTriples(resource)
 				taskDb.resetTasks(resource.resource.split("movie#Movie")(1))
+				Queries.deleteNameAndOriginalTitleTriples(resource)
 				if (index % 5 == 0) println(index)
 			}
 		} else {
