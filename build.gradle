@@ -108,6 +108,11 @@ task updateDaily(type: JavaExec, dependsOn: [build]) {
     classpath = sourceSets.main.runtimeClasspath
     args = ['update-daily']
 }
+task fixx(type: JavaExec, dependsOn: [build]) {
+    main = 'lod2014group1.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['fixx']
+}
 repositories {
 	mavenCentral()
 	flatDir {

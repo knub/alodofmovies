@@ -1,6 +1,7 @@
 package lod2014group1
 
 import lod2014group1.crawling.Crawler
+import lod2014group1.database.{TaskDatabase, Queries}
 import org.slf4s.Logging
 import lod2014group1.triplification.{TmdbMovieTriplifier, TriplifyDistributor}
 import lod2014group1.messaging._
@@ -64,6 +65,14 @@ object Main extends App with Logging {
 			}
 		} else if (args contains "update-daily") {
 			new UpdateScheduler().update()
+		} else if (args contains "fixx") {
+			val taskDb = new TaskDatabase
+			val oldResources = Queries.getAllMoviesWithOriginalTitles
+			oldResources.map(_.resource).zipWithIndex.foreach { case (resource, index) =>
+				Queries.deleteNameAndOriginalTitleTriples("http://172.16.22.196/imdb", resource)
+				taskDb.resetTasks(resource.split("movie#Movie")(1))
+				if (index % 5 == 0) println(index)
+			}
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}

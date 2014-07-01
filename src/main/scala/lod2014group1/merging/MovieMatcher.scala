@@ -121,9 +121,15 @@ class MovieMatcher {
 		notMatched.foreach(println)
 		println(f"${noImdbId.size}%4s had no imdb id.")
 		println()
-		println("Precision = matched correctly/(test set size - not in database - no imdb id)")
-		val precision = trueMatched.size.toDouble / (testSet.size - notInDb.size - noImdbId.size)
+		println("Precision = matched correctly/(correctly + incorrectly)")
+		val precision = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size)
 		println(s"Precision = $precision")
+		println("Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)")
+		val recall = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size + noCandidates.size + notInCandidate.size + notMatched.size)
+		println(s"Precision = $precision")
+		println("F-measure = (2 * Precision * Recall) / (Precision + Recall)")
+		val fMeasure = (2 * precision * recall) / (precision + recall)
+		println("F-measure = $fMeasure")
 	}
 
 	def minScore(cs: CandidateScore): Boolean = {

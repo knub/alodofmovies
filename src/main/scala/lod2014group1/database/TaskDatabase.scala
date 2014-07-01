@@ -82,6 +82,11 @@ class TaskDatabase extends Logging {
 		}
 	}
 
+	def resetTasks(imdbId: String) {
+		database withSession { implicit session =>
+			tasks.filter { t => t.fileOrUrl === s"IMDBMovie/$imdbId/main.html" }.map(_.finished).update(false)
+		}
+	}
 
 	def insert(task: Task): Unit = {
 		database withSession { implicit session =>

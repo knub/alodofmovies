@@ -21,6 +21,17 @@ object Queries {
 		extractResourcesWithNameFrom(query)
 	}
 
+	def getAllMovieOriginalNames: List[ResourceWithName] = {
+		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:originalTitle ?o }"
+		extractResourcesWithNameFrom(query)
+	}
+
+	def getAllMoviesWithOriginalTitles: List[ResourceWithName] = {
+		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:originalTitle ?o}"
+		extractResourcesWithNameFrom(query)
+
+	}
+
 	def getAllMovieNamesOfYear(year: String): List[ResourceWithName] = {
 		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:years '$year' . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
@@ -182,6 +193,29 @@ object Queries {
 		  |prefix freebase: <http://rdf.freebase.com/ns/>
 		  |
 		""".stripMargin
+	}
+
+	def deleteNameAndOriginalTitleTriples(graph: String, movieResource: String) {
+		val query = s"""
+			$getAllPrefixe
+			DELETE { ?s ?p ?o }
+			WHERE {
+        {
+          BIND (<$movieResource> as ?s)
+          BIND (dbpprop:name as ?p)
+          ?s ?p ?o .
+        }
+        UNION
+        {
+          BIND (<$movieResource> as ?s)
+          BIND (dbpprop:originalTitle as ?p)
+          ?s ?p ?o .
+        }
+			}
+		"""
+		val update = UpdateFactory.create(query)
+		val uExec =	UpdateExecutionFactory.createRemote(update, Config.SPARQL_ENDPOINT + "/statements")
+		uExec.execute()
 	}
 
 }
