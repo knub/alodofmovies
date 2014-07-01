@@ -47,29 +47,36 @@ class MovieMatcher(val triplifier: Triplifier) {
 			}	else {
 				UriBuilder.getFreebaseUri(s"/m/$origin")
 			}
-			if (score == -1.0) {
-				f"$originUri%45s"
-			} else {
-				val matchedUri = UriBuilder.getImdbMovieUri(matched)
-
-				if (matched == correct) {
-					f"$originUri%45s matched with top score: $score%.3f correclty to $matchedUri"
+			if (correct != null){
+				val correctUri = UriBuilder.getImdbMovieUri(correct)
+				if ((score == -1.0 || matched == null)) {
+					f"$originUri%45s was not matched but should be $correctUri"
 				} else {
-					val correctUri = UriBuilder.getImdbMovieUri(correct)
-					f"$originUri%45s matched with top score: $score%.3f to $matchedUri should be $correctUri"
+					if (matched.equals(correct)) {
+						f"$originUri%45s matched with top score: $score%.3f correclty to $correctUri"
+					} else {
+						val matchedUri = UriBuilder.getImdbMovieUri(matched)
+						f"$originUri%45s matched with top score: $score%.3f to $matchedUri should be $correctUri"
+					}
+				}
+			} else {
+				if (matched != null) {
+					val matchedUri = UriBuilder.getImdbMovieUri(matched)
+					f"$originUri%45s matched with top score: $score%.3f to $matchedUri correct movie unknown"
+				} else {
+					f"$originUri%45s was not matched"
 				}
 			}
-
 		}
 	}
 
 	var falseMatched    = List[ResultIds]()
 	var trueMatched     = List[ResultIds]()
-	var notInDb         = List[ResultIds]()
 	var notInCandidate  = List[ResultIds]()
 	var noCandidates    = List[ResultIds]()
 	var notMatched      = List[ResultIds]()
 	var noImdbId        = List[String]()
+	var notInDb         = List[String]()
 
 	def runStatistic(dir: File): Unit = {
 		val r = new Random(1001)
@@ -114,7 +121,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		}
 		if (!taskDb.hasTasks(imdbId)) {
 			println("Not in DB. Skip.")
-			notInDb ::= new ResultIds(fileId, 0.0, null, imdbId)
+			notInDb ::= fileId
 			return
 		}
 
@@ -123,7 +130,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		val candidateIds = candidates.map { c => getImdbId(c) }
 
 		if (candidates.size == 0) {
-			noCandidates ::= new ResultIds(fileId, -1.0, "", "")
+			noCandidates ::= new ResultIds(fileId, -1.0, null, imdbId)
 		} else {
 			val bestMovie = candidates.head
 			val bestMovieImdbId = getImdbId(bestMovie)
