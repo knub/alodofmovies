@@ -49,10 +49,14 @@ class MovieMatcher(val triplifier: Triplifier) {
 					f"$originUri%45s was not matched but should be $correctUri"
 				} else {
 					if (matched.equals(correct)) {
-						f"$originUri%45s matched with top score: $score%.3f correctly to $correctUri"
+						if (score > ACTOR_OVERLAP_MINIMUM) {
+							f"$originUri%45s has top score: $score%.3f and matched correctly to $correctUri"
+						} else {
+							f"$originUri%45s has low top score: $score%.3f but would be matched correctly to $correctUri"
+						}
 					} else {
 						val matchedUri = UriBuilder.getImdbMovieUri(matched)
-						f"$originUri%45s matched with top score: $score%.3f to $matchedUri should be $correctUri"
+						f"$originUri%45s was matched with top score: $score%.3f to $matchedUri should be $correctUri"
 					}
 				}
 			} else {
@@ -60,7 +64,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 					val matchedUri = UriBuilder.getImdbMovieUri(matched)
 					f"$originUri%45s matched with top score: $score%.3f to $matchedUri correct movie unknown"
 				} else {
-					f"$originUri%45s was not matched"
+					f"$originUri%45s was not matched and correct movie unknown"
 				}
 			}
 		}
