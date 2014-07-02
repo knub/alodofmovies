@@ -59,7 +59,7 @@ class ImdbMainPageTriplifier(val imdbId: String)  extends Triplifier {
 		val year = div.select(".header .nobr a").text()
 		if (!year.isEmpty) triples = (movie releasedInYear year) :: triples
 
-		val runtime = div.select(".infobar [itemprop=duration]").text().split(" ")(0).replaceAll("\\D", "");
+		val runtime = div.select(".infobar [itemprop=duration]").text().split(" ")(0).replaceAll("\\D", "")
 		if (!runtime.isEmpty) triples = (movie lasts runtime.toInt) :: triples
 
 		val ageRating = div.select(".infobar [itemprop=contentRating]").attr("content")
@@ -77,10 +77,10 @@ class ImdbMainPageTriplifier(val imdbId: String)  extends Triplifier {
 			if (!metascore.isEmpty) triples = (movie scored metascore) :: triples
 		}
 
-		val rating = div.select(".star-box-details [itemprop=ratingValue]").text();
+		val rating = div.select(".star-box-details [itemprop=ratingValue]").text()
 		if (!rating.isEmpty) triples = (movie rated rating) :: triples
 
-		val description = div.select("p[itemprop=description]").text();
+		val description = div.select("p[itemprop=description]").text()
 		if (!description.isEmpty) triples = (movie hasShortSummary description) :: triples
 
 		triples

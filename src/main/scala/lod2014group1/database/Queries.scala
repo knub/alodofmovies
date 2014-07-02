@@ -1,9 +1,14 @@
 package lod2014group1.database
 
+import com.hp.hpl.jena.graph.{Triple, Node}
+import com.hp.hpl.jena.shared.DeleteDeniedException
 import com.hp.hpl.jena.update.{UpdateExecutionFactory, UpdateFactory}
+import com.hp.hpl.jena.util.iterator.ExtendedIterator
 import lod2014group1.Config
 import lod2014group1.merging.Merger
 import org.joda.time.DateTime
+import virtuoso.jena.driver.VirtGraph
+import scala.collection.JavaConversions._
 
 
 case class ResourceWithName(var resource: String, var name: String)
@@ -14,7 +19,7 @@ object Queries {
 	val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
 
 	def main(args: Array[String]): Unit = {
-		println(getAllMovieNames.size)
+		deleteTriplesForMovie("http://purl.org/hpi/movie#Moviett0365907", "http://172.16.22.196/imdb-updating")
 	}
 
 	def getAllMovieNames: List[ResourceWithName] = {
@@ -177,34 +182,42 @@ object Queries {
 		results
 	}
 
-	def deleteTriplesForMovie(movieId: String, graph: String) {
-		val query =	s"""
-			   $getAllPrefixe
-				DELETE FROM GRAPH <$graph> { ?resource ?p ?o }
-				WHERE
-				{
-				  {
-					?resource ?p ?o
-					{
-					  SELECT ?resource WHERE
-					  {
-						lod:Movie$movieId ?p ?resource .
-						FILTER (strStarts(str(?resource), "http://purl.org/hpi/movie#"))
-					  }
-					}
-				  }
-				  UNION
-				  {
-					BIND (lod:Movie$movieId as ?resource) ?resource ?p ?o .
-				  }
-				};
-			"""
+	def deleteNameAndOriginalTitleTriples(resource: ResourceWithOriginalName) {
+		database.deleteTriples(resource.resource, "http://dbpedia.org/property/originalTitle", resource.originalTitle)
+		database.deleteTriples(resource.resource, "http://dbpedia.org/property/name", resource.name)
+	}
 
-		println(query)
+	def deleteTriplesForMovie(movieResource: String, graphName: String) {
+		val graph = new VirtGraph(graphName, "jdbc:virtuoso://172.16.22.196:1111", "dba", "dba")
 
-		//val update = UpdateFactory.create(query)
-		//val uExec =	UpdateExecutionFactory.createRemote(update, Config.SPARQL_ENDPOINT)
-		//uExec.execute()
+		// get all triples of the movie resource
+		val iterator: ExtendedIterator[com.hp.hpl.jena.graph.Triple] = graph.find(Node.createURI(movieResource), Node.ANY, Node.ANY)
+		var triplesToDelete: List[com.hp.hpl.jena.graph.Triple] = iterator.toList.toList
+
+		// get all resources (award, aka, releaseInfo, character) of the movie
+		val otherResources = triplesToDelete.filter{ triple: com.hp.hpl.jena.graph.Triple =>
+			triple.getObject.toString.startsWith(movieResource)
+		}.toList
+
+		// get all triples of other resources
+		triplesToDelete = triplesToDelete ::: otherResources.flatMap{ res =>
+			graph.find(Node.createURI(res.getObject.toString), Node.ANY, Node.ANY).toList
+		}
+
+		// get all triples which point to the movie or one of the other resources
+		triplesToDelete = triplesToDelete ::: otherResources.flatMap{ res =>
+			graph.find(Node.ANY, Node.ANY, Node.createURI(res.getObject.toString)).toList
+		}
+
+		// delete all triples
+		triplesToDelete.foreach { triple =>
+			try {
+				graph.delete(triple)
+			} catch {
+				case e: DeleteDeniedException =>
+					println(s"Could not delete trpile ${triple.toString}")
+			}
+		}
 	}
 
 	private def getAllPrefixe : String = {
@@ -221,11 +234,5 @@ object Queries {
 		  |
 		""".stripMargin
 	}
-
-	def deleteNameAndOriginalTitleTriples(resource: ResourceWithOriginalName) {
-		database.deleteTriples(resource.resource, "http://dbpedia.org/property/originalTitle", resource.originalTitle)
-		database.deleteTriples(resource.resource, "http://dbpedia.org/property/name", resource.name)
-	}
-
 
 }

@@ -24,12 +24,10 @@ class CrawlifyWorker extends Worker {
 
 		if (flag.equals(Config.DELETE_FIRST_FLAG) && fileName.contains("IMDBMovie")) {
 			val imdbId = fileName.split("/")(1)
-			Queries.deleteTriplesForMovie(imdbId, graph)
+			Queries.deleteTriplesForMovie(s"http://purl.org/hpi/movie#Movie$imdbId", graph)
 		}
 
 		val answerMap: Map[String, String] = Map("graph" -> graph)
 		new TaskAnswer(taskId, answerMap, List(file), triples)
 	}
-
-
 }
