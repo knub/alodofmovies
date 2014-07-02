@@ -172,12 +172,17 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 	def findCandidateMovies(g: TripleGraph): List[ResourceWithName] = {
 		val movieResource = g.getObjectOfType("dbpedia-owl:Film")
-		val currentMovieNames = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")
+		val currentMovieOriginalTitles = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:originalTitle")
+		val currentMovieTitles = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")
+
+		val currentMovieNames = (currentMovieTitles ::: currentMovieOriginalTitles).distinct
+		currentMovieNames.foreach(println)
+
+
 		println(s"========== Movie: ${currentMovieNames(0)} ==========")
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
 			val l = currentMovieNames.map { movieName =>
-				val l = StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
-				l
+				StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
 			}.min
 			l < CANDIDATE_MOVIE_LEVENSHTEIN
 		}
