@@ -86,13 +86,13 @@ class MovieMatcher(val triplifier: Triplifier) {
 		println(f"${trueMatched.size}%4s were matched correctly.")
 		println(f"${falseMatched.size}%4s were matched incorrectly:")
 		falseMatched.foreach(println)
-		println(f"${notInDb.size}%4s were not matched because we do not have it in our database.")
 		println(f"${notInCandidate.size}%4s were not matched and are not candidates:")
 		notInCandidate.foreach(println)
 		println(f"${noCandidates.size}%4s were not matched and no candidates were found:")
 		noCandidates.foreach(println)
 		println(f"${notMatched.size}%4s were not matched for unknown reasons:")
 		notMatched.foreach(println)
+		println(f"${notInDb.size}%4s were not matched because we do not have it in our database.")
 		println(f"${noImdbId.size}%4s had no imdb id.")
 		println()
 		println("Precision = matched correctly/(correctly + incorrectly)")
@@ -243,8 +243,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 	def calculateProducerOverlap(g: TripleGraph, candidateUri: String): Double = {
 		val currentProducers = g.getObjectsFor("dbpprop:producer", "dbpprop:name") ::: g.getObjectsFor("dbpprop:coProducer", "dbpprop:name")
-		if (currentProducers.isEmpty)
-			return -1.0
 		val candidateProducer = Queries.getAllProducersOfMovie(candidateUri)
 
 		calculateOverlap(currentProducers, candidateProducer)
@@ -252,24 +250,21 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 	def calculateDirectorOverlap(g: TripleGraph, candidateUri: String): Double = {
 		val currentDirectors = g.getObjectsFor("dbpprop:director", "dbpprop:name")
-		if (currentDirectors.isEmpty)
-			return -1.0
 		val canidateDirectors = Queries.getAllDirectorsOfMovie(candidateUri)
 
 		calculateOverlap(currentDirectors, canidateDirectors)
 	}
+
 	def calculateWriterOverlap(g: TripleGraph, candidateUri: String): Double = {
 		val currentWriters = g.getObjectsFor("dbpprop:writer", "dbpprop:name")
-		if (currentWriters.isEmpty)
-			return -1.0
 		val candidateWriters = Queries.getAllWritersOfMovie(candidateUri)
 
 		calculateOverlap(currentWriters, candidateWriters)
 	}
 
 	private def calculateOverlap(currentObjects: List[String], candidateObjects: List[ResourceWithName]): Double = {
-		if (candidateObjects.isEmpty)
-			return 0.0
+		if (candidateObjects.isEmpty || currentObjects.isEmpty)
+			return -1.0
 
 		val similarObjects = currentObjects.flatMap { currentObject =>
 			val bestMatch = candidateObjects.map { canidateObject =>
