@@ -1,0 +1,2557 @@
+:compileJava UP-TO-DATE
+:compileScala UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:jar UP-TO-DATE
+:assemble UP-TO-DATE
+:compileTestJava UP-TO-DATE
+:compileTestScala UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:check UP-TO-DATE
+:build UP-TO-DATE
+:mergeTmdb
+[INFO ] lod2014group1.Main$ - 19:48 - Arguments: List(merge-tmdb)
+Note: Using http://172.16.22.196:8890/sparql as remote database.
+Movie id: 85131 original_title: L'elisir d'amore
+Not in DB. Skip.
+Movie id: 269809 original_title: Mayil Paarai
+No IMDB ID. Skip.
+Movie id: 14069 original_title: Toki o kakeru shôjo
+2
+========== Movie: The Girl Who Leapt Through Time ==========
+Found 4 candidates.
+Movie id: 4930 original_title: House of Cards
+3
+========== Movie: House of Cards ==========
+Found 20 candidates.
+Movie id: 227135 original_title: Aquadro
+4
+========== Movie: Aquadro ==========
+Found 100 candidates.
+Movie id: 114191 original_title: Guitar Legends EXPO '92 at Sevilla - The Blues Night
+No IMDB ID. Skip.
+Movie id: 144639 original_title: The Anger
+6
+========== Movie: The Anger ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1437265 with score 0.0
+www.imdb.com/title/tt1190072 with score 0.0
+www.imdb.com/title/tt0023404 with score 0.0
+www.imdb.com/title/tt0028595 with score 0.0
+www.imdb.com/title/tt0032215 with score 0.0
+Movie id: 86704 original_title: Cave In
+Not in DB. Skip.
+Movie id: 252295 original_title: Duke
+8
+========== Movie: Duke ==========
+Found 100 candidates.
+Movie id: 270786 original_title: Angst
+No IMDB ID. Skip.
+Movie id: 220121 original_title: Violent Women
+10
+========== Movie: Violent Women ==========
+Found 8 candidates.
+Movie id: 137418 original_title: 在浮城的角落唱首歌
+No IMDB ID. Skip.
+Movie id: 231229 original_title: The Only Man
+Not in DB. Skip.
+Movie id: 28886 original_title: La sangre de Nostradamus
+13
+========== Movie: La sangre de Nostradamus ==========
+Found 1 candidates.
+Movie id: 96872 original_title: Superstar Goofy
+14
+========== Movie: Superstar Goofy ==========
+Found 1 candidates.
+Movie id: 260318 original_title: Gang Of Ghosts
+15
+========== Movie: Gang Of Ghosts ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0339091 with score 0.0
+Movie id: 54014 original_title: Mondo Enduro
+No IMDB ID. Skip.
+Movie id: 3517 original_title: Tunten lügen nicht
+Not in DB. Skip.
+Movie id: 197420 original_title: High School - Teenager Piss Orgy
+No IMDB ID. Skip.
+Movie id: 99294 original_title: Live at Braehead
+No IMDB ID. Skip.
+Movie id: 85557 original_title: The Body Beneath
+20
+========== Movie: The Body Beneath ==========
+Found 3 candidates.
+Movie id: 179315 original_title: Housequake
+Not in DB. Skip.
+Movie id: 140176 original_title: Amanda & The Alien
+Not in DB. Skip.
+Movie id: 265813 original_title: Ponto Final
+23
+========== Movie: Ponto Final ==========
+Found 2 candidates.
+Movie id: 127084 original_title: Sonata Arctica - Live In Finland
+No IMDB ID. Skip.
+Movie id: 261303 original_title: Padikkadha Pannaiyar
+No IMDB ID. Skip.
+Movie id: 70302 original_title: I Love a Man in Uniform
+26
+========== Movie: I Love a Man in Uniform ==========
+Found 1 candidates.
+Movie id: 190892 original_title: Pink Project - Live in Ahoy
+No IMDB ID. Skip.
+Movie id: 138617 original_title: Explosions in the Sky at Coachella
+No IMDB ID. Skip.
+Movie id: 9525 original_title: Suburbicon
+Not in DB. Skip.
+Movie id: 16300 original_title: Down to Earth
+30
+========== Movie: Down to Earth ==========
+Found 7 candidates.
+Movie id: 128595 original_title: Catene
+31
+========== Movie: Chains ==========
+Found 100 candidates.
+Movie id: 112128 original_title: Sandai
+No IMDB ID. Skip.
+Movie id: 65226 original_title: Dieudonné - Tout Seul
+No IMDB ID. Skip.
+Movie id: 270604 original_title: Angry White Man
+34
+========== Movie: Angry White Man ==========
+Found 1 candidates.
+Movie id: 29269 original_title: トニー滝谷
+35
+========== Movie: Tony Takitani ==========
+Found 1 candidates.
+Movie id: 113396 original_title: Carrière, 250 metros
+Not in DB. Skip.
+Movie id: 242757 original_title: The Haumana
+37
+========== Movie: The Haumana ==========
+Found 57 candidates.
+Movie id: 265554 original_title: Fragmentos da Vida
+Not in DB. Skip.
+Movie id: 66209 original_title: Perils Of The Sentimental Swordsman
+39
+========== Movie: Perils Of The Sentimental Swordsman ==========
+Found 0 candidates.
+Movie id: 112627 original_title: Sheesha
+40
+========== Movie: Sheesha ==========
+Found 100 candidates.
+Movie id: 80850 original_title: Goin' to Town
+41
+========== Movie: Goin' to Town ==========
+Found 2 candidates.
+Movie id: 86149 original_title: The Attic
+42
+========== Movie: The Attic ==========
+Found 100 candidates.
+Movie id: 220816 original_title: Out of Darkness
+Not in DB. Skip.
+Movie id: 100608 original_title: TesseracT: Concealing Fate Live In The Studio
+No IMDB ID. Skip.
+Movie id: 46959 original_title: 3615 code Père Noël
+45
+========== Movie: Deadly Games ==========
+Found 41 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0096741 with score 0.7560975609756098
+www.imdb.com/title/tt0083803 with score 0.024390243902439025
+www.imdb.com/title/tt2226325 with score 0.024390243902439025
+www.imdb.com/title/tt0075921 with score 0.0
+www.imdb.com/title/tt0094969 with score 0.0
+Movie id: 13198 original_title: Wristcutters: A Love Story
+46
+========== Movie: Wristcutters: A Love Story ==========
+Found 1 candidates.
+Movie id: 31109 original_title: Sesame Street: Fiesta
+No IMDB ID. Skip.
+Movie id: 196738 original_title: Inside: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb'
+Not in DB. Skip.
+Movie id: 34794 original_title: The St  Francisville Experiment
+49
+========== Movie: The St  Francisville Experiment ==========
+Found 1 candidates.
+Movie id: 88867 original_title: Ra-Ba-Ru
+50
+========== Movie: Ra-Ba-Ru ==========
+Found 7 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0167224 with score 0.0
+www.imdb.com/title/tt1314367 with score 0.0
+www.imdb.com/title/tt1099226 with score 0.0
+www.imdb.com/title/tt0355929 with score 0.0
+www.imdb.com/title/tt0249904 with score 0.0
+Movie id: 108613 original_title: Nightmare
+No IMDB ID. Skip.
+Movie id: 31504 original_title: Little Big League
+52
+========== Movie: Little Big League ==========
+Found 1 candidates.
+Movie id: 26562 original_title: Robert Newman: The Dependence Day Video
+Not in DB. Skip.
+Movie id: 268174 original_title: BFFs
+54
+========== Movie: BFFs ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1235548 with score 0.0
+www.imdb.com/title/tt0042220 with score 0.0
+www.imdb.com/title/tt0317219 with score 0.0
+www.imdb.com/title/tt0312462 with score 0.0
+www.imdb.com/title/tt0827499 with score 0.0
+Movie id: 142131 original_title: Ctrl+Alt+Compete
+Not in DB. Skip.
+Movie id: 76129 original_title: Les Givrés
+56
+========== Movie: Les Givrés ==========
+Found 18 candidates.
+Movie id: 75679 original_title: Nada sô sô
+57
+========== Movie: Tears for You ==========
+Found 1 candidates.
+Movie id: 180853 original_title: Chashme Baddoor
+58
+========== Movie: Chashme Baddoor ==========
+Found 3 candidates.
+Movie id: 202487 original_title: Iron Angel
+59
+========== Movie: Iron Angel ==========
+Found 34 candidates.
+Movie id: 27464 original_title: O.C. and Stiggs
+60
+========== Movie: O.C. and Stiggs ==========
+Found 1 candidates.
+Movie id: 100640 original_title: How to Fly the P-47 - Pilot Familiarization
+Not in DB. Skip.
+Movie id: 25741 original_title: Niko: Lentäjän poika
+62
+========== Movie: The Flight Before Christmas ==========
+Found 1 candidates.
+Movie id: 269829 original_title: Alfred Dorfer - heim.at
+No IMDB ID. Skip.
+Movie id: 266180 original_title: Die Letzten werden die Ersten sein
+64
+========== Movie: Die Letzten werden die Ersten sein ==========
+Found 1 candidates.
+Movie id: 173525 original_title: Down To Earth
+65
+========== Movie: Down To Earth ==========
+Found 7 candidates.
+Movie id: 216549 original_title: 10 Days Out: Blues from the Backroads
+Not in DB. Skip.
+Movie id: 18009 original_title: Leprechaun 2
+67
+========== Movie: Leprechaun 2 ==========
+Found 2 candidates.
+Movie id: 271615 original_title: Loser
+No IMDB ID. Skip.
+Movie id: 235037 original_title: Akeldama
+No IMDB ID. Skip.
+Movie id: 232703 original_title: Kong Frederik VIII's ankomst til Berlin
+Not in DB. Skip.
+Movie id: 27004 original_title: Ca$h
+71
+========== Movie: Ca$h ==========
+Found 100 candidates.
+Movie id: 96998 original_title: Lads & Jockeys
+Not in DB. Skip.
+Movie id: 53418 original_title: One A.M.
+Not in DB. Skip.
+Movie id: 233032 original_title: Jôfu to mesu
+74
+========== Movie: Jôfu to mesu ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2367252 with score 0.7073170731707317
+Movie id: 147748 original_title: 6/64: Mama und Papa (Materialaktion Otto Mühl)
+Not in DB. Skip.
+Movie id: 104165 original_title: Ana Popovic: Ana
+No IMDB ID. Skip.
+Movie id: 137644 original_title: The Rise and Fall of the Great Lakes
+Not in DB. Skip.
+Movie id: 169324 original_title: Le chien jaune
+78
+========== Movie: Le chien jaune ==========
+Found 3 candidates.
+Movie id: 223899 original_title: 4Closed
+Not in DB. Skip.
+Movie id: 111037 original_title: The Second Time Around
+80
+========== Movie: The Second Time Around ==========
+Found 1 candidates.
+Movie id: 50071 original_title: Sweetgrass
+Not in DB. Skip.
+Movie id: 167047 original_title: marc ristori d'une seconde à l'autre le film
+No IMDB ID. Skip.
+Movie id: 236656 original_title: The Hungry Goat
+Not in DB. Skip.
+Movie id: 139890 original_title: Uma Aventura Animal
+No IMDB ID. Skip.
+Movie id: 253848 original_title: 抹茶之恋味
+85
+========== Movie: A West Lake Moment ==========
+Found 0 candidates.
+Movie id: 262554 original_title: Sattapadi Kutram
+No IMDB ID. Skip.
+Movie id: 239414 original_title: Dead at the Box Office
+87
+========== Movie: Dead at the Box Office ==========
+Found 1 candidates.
+Movie id: 109482 original_title: Hercules Against the Barbarian
+No IMDB ID. Skip.
+Movie id: 80004 original_title: Herpers
+Not in DB. Skip.
+Movie id: 261260 original_title: Duello nella sila
+90
+========== Movie: Duel of Fire ==========
+Found 18 candidates.
+Movie id: 7364 original_title: Sahara
+91
+========== Movie: Sahara ==========
+Found 100 candidates.
+Movie id: 32472 original_title: W.A.S.P: The Sting
+No IMDB ID. Skip.
+Movie id: 191629 original_title: N’apcaz Şimdi?
+93
+========== Movie: N’apcaz Şimdi? ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2415904 with score 0.7142857142857143
+Movie id: 3171 original_title: Bambi Meets Godzilla
+Not in DB. Skip.
+Movie id: 7992 original_title: It's A Free World...
+95
+========== Movie: It's A Free World... ==========
+Found 1 candidates.
+Movie id: 141265 original_title: Not in My Family
+Not in DB. Skip.
+Movie id: 219418 original_title: Pandora and the Magic Box
+97
+========== Movie: Pandora and the Magic Box ==========
+Found 1 candidates.
+Movie id: 137307 original_title: Vuelve el ojo de vidrio
+98
+========== Movie: Vuelve el ojo de vidrio ==========
+Found 1 candidates.
+Movie id: 89821 original_title: Yadosagashi
+Not in DB. Skip.
+Movie id: 21906 original_title: Gupt: The Hidden Truth
+100
+========== Movie: Gupt: The Hidden Truth ==========
+Found 1 candidates.
+Movie id: 56277 original_title: Dong kai ji
+101
+========== Movie: All Men Are Brothers ==========
+Found 8 candidates.
+Movie id: 49540 original_title: Pickin' and Grinnin'
+102
+========== Movie: Pickin' and Grinnin' ==========
+Found 1 candidates.
+Movie id: 192707 original_title: Red Hot Chili Peppers Rock Im Pott
+No IMDB ID. Skip.
+Movie id: 262020 original_title: Take Off
+Not in DB. Skip.
+Movie id: 86260 original_title: Le Miroir à deux faces
+105
+========== Movie: The Mirror Has Two Faces ==========
+Found 2 candidates.
+Movie id: 173127 original_title: Ghost's Lover
+106
+========== Movie: Ghost's Lover ==========
+Found 2 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0050431 with score 0.0
+www.imdb.com/title/tt0093088 with score 0.0
+Movie id: 66575 original_title: Poison: Video Hits
+No IMDB ID. Skip.
+Movie id: 36886 original_title: Schulmädchen-Report 4. Teil: Was Eltern oft verzweifeln läßt
+108
+========== Movie: Schoolgirl Report Vol.4: What Drives Parents to Despair ==========
+Found 1 candidates.
+Movie id: 200029 original_title: Athili Sathibabu LKG
+109
+========== Movie: Athili Sathibabu LKG ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1258121 with score 0.7560975609756098
+Movie id: 227179 original_title: WWF Undertaker - This Is My Yard
+No IMDB ID. Skip.
+Movie id: 166316 original_title: Danger Lights
+111
+========== Movie: Danger Lights ==========
+Found 10 candidates.
+Movie id: 187432 original_title: Facets of Love
+112
+========== Movie: Facets of Love ==========
+Found 12 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0287927 with score 0.0
+www.imdb.com/title/tt0235386 with score 0.0
+www.imdb.com/title/tt0184557 with score 0.0
+www.imdb.com/title/tt0108510 with score 0.0
+www.imdb.com/title/tt0128531 with score 0.0
+Movie id: 228185 original_title: Muita Calma Nessa Hora 2
+113
+========== Movie: Muita Calma Nessa Hora 2 ==========
+Found 1 candidates.
+Movie id: 248747 original_title: Ёлки 3
+114
+========== Movie: Yolki 3 ==========
+Found 100 candidates.
+Movie id: 69272 original_title: Grim
+No IMDB ID. Skip.
+Movie id: 229684 original_title: Die Boxerin
+116
+========== Movie: Die Boxerin ==========
+Found 24 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0402016 with score 0.7560975609756098
+www.imdb.com/title/tt0480733 with score 0.0
+www.imdb.com/title/tt0273475 with score 0.0
+www.imdb.com/title/tt0451936 with score 0.0
+www.imdb.com/title/tt0136488 with score 0.0
+Movie id: 251040 original_title: Stacked
+No IMDB ID. Skip.
+Movie id: 264256 original_title: Elmo's World: Babies, Dogs & More
+Not in DB. Skip.
+Movie id: 255840 original_title: Just Tell Me You Love Me
+119
+========== Movie: Just Tell Me You Love Me ==========
+Found 1 candidates.
+Movie id: 86736 original_title: Latin Booty
+No IMDB ID. Skip.
+Movie id: 107320 original_title: Kral Ubu
+121
+========== Movie: Kral Ubu ==========
+Found 13 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0116798 with score 0.047619047619047616
+www.imdb.com/title/tt1057927 with score 0.0
+www.imdb.com/title/tt0820100 with score 0.0
+www.imdb.com/title/tt2913910 with score 0.0
+www.imdb.com/title/tt0345529 with score 0.0
+Movie id: 190618 original_title: High Diving Scene
+Not in DB. Skip.
+Movie id: 78484 original_title: The Bounty Man
+Not in DB. Skip.
+Movie id: 144804 original_title: Zhit
+124
+========== Movie: Living ==========
+Found 100 candidates.
+Movie id: 190980 original_title: A Few Tales of Hard Times: Chapter 4 - The Name
+Not in DB. Skip.
+Movie id: 247446 original_title: At Zije Republika
+126
+========== Movie: Long Live the Republic ==========
+Found 1 candidates.
+Movie id: 257802 original_title: Sinkholes: Swallowed Alive
+Not in DB. Skip.
+Movie id: 183520 original_title: Sweet Dreams Intermingled with Nightmares
+Not in DB. Skip.
+Movie id: 130986 original_title: Incredibly Small
+129
+========== Movie: Incredibly Small ==========
+Found 1 candidates.
+Movie id: 203860 original_title: The North Pole Deception
+Not in DB. Skip.
+Movie id: 50089 original_title: hibotan bakuto
+131
+========== Movie: Red Peony Gambler ==========
+Found 1 candidates.
+Movie id: 255573 original_title: Murder: No Apparent Motive
+Not in DB. Skip.
+Movie id: 265766 original_title: Hard Rider
+Not in DB. Skip.
+Movie id: 249075 original_title: Catching Out
+Not in DB. Skip.
+Movie id: 183533 original_title: The Elusive Pimpernel
+135
+========== Movie: The Elusive Pimpernel ==========
+Found 2 candidates.
+Movie id: 20591 original_title: Cradle of Fear
+Not in DB. Skip.
+Movie id: 246745 original_title: Skipper. Scoop
+Not in DB. Skip.
+Movie id: 43562 original_title: Along the Great Divide
+138
+========== Movie: Along the Great Divide ==========
+Found 2 candidates.
+Movie id: 259633 original_title: Dr Jekyll and Mr Hyde
+Not in DB. Skip.
+Movie id: 258259 original_title: Alles wat we wilden
+Not in DB. Skip.
+Movie id: 40655 original_title: The Bannen Way
+141
+========== Movie: The Bannen Way ==========
+Found 4 candidates.
+Movie id: 98056 original_title: An Unseen Enemy
+Not in DB. Skip.
+Movie id: 51476 original_title: Shoot to Kill
+143
+========== Movie: Shoot to Kill ==========
+Found 14 candidates.
+Movie id: 173570 original_title: The Cop
+144
+========== Movie: The Cop ==========
+Found 100 candidates.
+Movie id: 81803 original_title: Primo amore
+145
+========== Movie: First Love ==========
+Found 78 candidates.
+Movie id: 178664 original_title: Noi Vivi
+146
+========== Movie: We the Living ==========
+Found 25 candidates.
+Movie id: 31197 original_title: Team Picture
+147
+========== Movie: Team Picture ==========
+Found 4 candidates.
+Movie id: 133666 original_title: D@bbe 2
+148
+========== Movie: D@bbe 2 ==========
+Found 34 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1560950 with score 0.6190476190476191
+www.imdb.com/title/tt3279464 with score 0.0
+www.imdb.com/title/tt1375789 with score 0.0
+www.imdb.com/title/tt0111706 with score 0.0
+www.imdb.com/title/tt0018834 with score 0.0
+Movie id: 140698 original_title: The Mystery of Charles Dickens
+Not in DB. Skip.
+Movie id: 272065 original_title: Elmo Visits the Fire House
+Not in DB. Skip.
+Movie id: 61950 original_title: The Fine Art of Love: Mine Ha-Ha
+151
+========== Movie: The Fine Art of Love: Mine Ha-Ha ==========
+Found 1 candidates.
+Movie id: 27423 original_title: ล่า-ท้า-ผี
+152
+========== Movie: Ghost Game ==========
+Found 49 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0093088 with score 0.0
+www.imdb.com/title/tt0022932 with score 0.0
+www.imdb.com/title/tt0007998 with score 0.0
+www.imdb.com/title/tt2785162 with score 0.0
+www.imdb.com/title/tt0094909 with score 0.0
+Movie id: 225129 original_title: Nihon rettou: Ikimonotachi no monogatari
+Not in DB. Skip.
+Movie id: 107838 original_title: Hubert von Goisern: Grenzenlos
+Not in DB. Skip.
+Movie id: 255817 original_title: 新同居时代
+155
+========== Movie: In Between ==========
+Found 11 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0209039 with score 0.047619047619047616
+www.imdb.com/title/tt0886502 with score 0.024390243902439025
+www.imdb.com/title/tt0479071 with score 0.024390243902439025
+www.imdb.com/title/tt0102105 with score 0.024390243902439025
+www.imdb.com/title/tt0183246 with score 0.0
+Movie id: 56405 original_title: Vénus noire
+156
+========== Movie: Black Venus ==========
+Found 53 candidates.
+Movie id: 108704 original_title: Forbidden Zone : Alien Abduction
+157
+========== Movie: Forbidden Zone : Alien Abduction ==========
+Found 0 candidates.
+Movie id: 80295 original_title: Frühreifen-Report
+158
+========== Movie: 14 and Under ==========
+Found 4 candidates.
+Movie id: 255279 original_title: 六福喜事
+159
+========== Movie: Hello Babies ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0276063 with score 0.0
+www.imdb.com/title/tt0379235 with score 0.0
+www.imdb.com/title/tt3103342 with score 0.0
+www.imdb.com/title/tt1408311 with score 0.0
+www.imdb.com/title/tt0133044 with score 0.0
+Movie id: 11881 original_title: Miracle on 34th Street
+160
+========== Movie: Miracle on 34th Street ==========
+Found 3 candidates.
+Movie id: 171384 original_title: Dhenikaina Ready
+161
+========== Movie: Dhenikaina Ready ==========
+Found 1 candidates.
+Movie id: 7873 original_title: Harsh Times
+162
+========== Movie: Harsh Times ==========
+Found 15 candidates.
+Movie id: 159045 original_title: The Strange Love of Molly Louvain
+163
+========== Movie: The Strange Love of Molly Louvain ==========
+Found 1 candidates.
+Movie id: 252836 original_title: Pra lá do Mundo
+Not in DB. Skip.
+Movie id: 234015 original_title: Maruhi jorô zankoku shokujigoku
+No IMDB ID. Skip.
+Movie id: 114508 original_title: Black Fox: The Rise and Fall of Adolf Hitler
+Not in DB. Skip.
+Movie id: 28401 original_title: Agonizando en el crimen
+167
+========== Movie: Agonizando en el crimen ==========
+Found 1 candidates.
+Movie id: 143164 original_title: Janis Joplin - Live
+No IMDB ID. Skip.
+Movie id: 32835 original_title: Led Zeppelin - DVD
+No IMDB ID. Skip.
+Movie id: 161104 original_title: 3 Nuts in Search of a Bolt
+170
+========== Movie: 3 Nuts in Search of a Bolt ==========
+Found 1 candidates.
+Movie id: 7279 original_title: Search for the Jewel of Polaris: Mysterious Museum
+Not in DB. Skip.
+Movie id: 151544 original_title: Adriana
+Not in DB. Skip.
+Movie id: 233511 original_title: Jôji no Atoshimatsu
+173
+========== Movie: Jôji no Atoshimatsu ==========
+Found 1 candidates.
+Movie id: 79729 original_title: Donor Unknown
+Not in DB. Skip.
+Movie id: 261272 original_title: Hvorfor flygte fra det du ved du ikke kan flygte fra? Fordi du er en kujon
+Not in DB. Skip.
+Movie id: 96030 original_title: La familia Vila
+176
+========== Movie: La familia Vila ==========
+Found 1 candidates.
+Movie id: 16237 original_title: Teen Titans: Trouble in Tokyo
+Not in DB. Skip.
+Movie id: 243693 original_title: Midnight Rider: The Gregg Allman Story
+178
+========== Movie: Midnight Rider: The Gregg Allman Story ==========
+Found 0 candidates.
+Movie id: 211930 original_title: Omiros
+179
+========== Movie: Hostage ==========
+Found 100 candidates.
+Movie id: 176058 original_title: Volevamo essere gli U2
+180
+========== Movie: Volevamo essere gli U2 ==========
+Found 1 candidates.
+Movie id: 52140 original_title: So glücklich war ich noch nie
+181
+========== Movie: I've Never Been Happier ==========
+Found 1 candidates.
+Movie id: 83964 original_title: Linkin Park: Frat Party at the Pankake Festival
+Not in DB. Skip.
+Movie id: 71871 original_title: Pat Metheny Group: The Way Up - Live
+No IMDB ID. Skip.
+Movie id: 108811 original_title: San chuen lao see II: Sik ji ngoc gwai
+184
+========== Movie: A Wicked Ghost II: The Fear ==========
+Found 1 candidates.
+Movie id: 176843 original_title: S.C.U.M.
+No IMDB ID. Skip.
+Movie id: 82952 original_title: Miu kai sup yi siu
+186
+========== Movie: The Prince of Temple Street ==========
+Found 1 candidates.
+Movie id: 199533 original_title: Die tödlichen Träume
+187
+========== Movie: Die tödlichen Träume ==========
+Found 1 candidates.
+Movie id: 129535 original_title: Play Girl
+188
+========== Movie: Play Girl ==========
+Found 100 candidates.
+Movie id: 265318 original_title: Alien Workshop - Timecode
+No IMDB ID. Skip.
+Movie id: 165388 original_title: Chain Reaction 3
+No IMDB ID. Skip.
+Movie id: 146731 original_title: Hot Cross Bunny
+Not in DB. Skip.
+Movie id: 28471 original_title: Bon Jovi: Live At Madison Square Garden
+Not in DB. Skip.
+Movie id: 77001 original_title: Viva Zapatero!
+Not in DB. Skip.
+Movie id: 193087 original_title: Border Vengeance
+194
+========== Movie: Border Vengeance ==========
+Found 7 candidates.
+Movie id: 221767 original_title: La cripta e l'incubo
+195
+========== Movie: La cripta e l'incubo ==========
+Found 1 candidates.
+Movie id: 73719 original_title: Hero's Blood
+196
+========== Movie: Hero's Blood ==========
+Found 6 candidates.
+Movie id: 14973 original_title: The Colt
+Not in DB. Skip.
+Movie id: 26677 original_title: The Video Dead
+Not in DB. Skip.
+Movie id: 161371 original_title: How Did You Get In? We Didn't See You Leave
+199
+========== Movie: How Did You Get In? We Didn't See You Leave ==========
+Found 0 candidates.
+Movie id: 156249 original_title: Diabel
+Not in DB. Skip.
+Movie id: 146090 original_title: Dr. Slump and Arale-chan: N-cha! Penguin Village is Swelling Then Fair
+No IMDB ID. Skip.
+Movie id: 23638 original_title: Dust to Glory
+Not in DB. Skip.
+Movie id: 67586 original_title: The Clock Store
+Not in DB. Skip.
+Movie id: 50863 original_title: Call of the Cuckoo
+Not in DB. Skip.
+Movie id: 273297 original_title: Themes Of Inspiration
+Not in DB. Skip.
+Movie id: 231658 original_title: WCW Bash at the Beach 2000
+Not in DB. Skip.
+Movie id: 115058 original_title: Wild Nights: A night Underwater
+No IMDB ID. Skip.
+Movie id: 266482 original_title: Hallowe'en Party
+No IMDB ID. Skip.
+Movie id: 72752 original_title: Rising Son: The Legend of Skateboarder Christian Hosoi
+Not in DB. Skip.
+Movie id: 83521 original_title: The Lifestyle
+Not in DB. Skip.
+Movie id: 230858 original_title: El loro y el cisne
+211
+========== Movie: The Parrot and the Swan ==========
+Found 1 candidates.
+Movie id: 172454 original_title: Aral. El mar perdido
+Not in DB. Skip.
+Movie id: 180779 original_title: Operation Cupcake
+Not in DB. Skip.
+Movie id: 228805 original_title: Detective Conan: Private Eye in the Distant Sea
+214
+========== Movie: Detective Conan: Private Eye in the Distant Sea ==========
+Found 0 candidates.
+Movie id: 144974 original_title: Poslednji krug u Monci
+215
+========== Movie: The Last Lap at Monza ==========
+Found 1 candidates.
+Movie id: 139387 original_title: Un sussurro nel buio
+216
+========== Movie: A Whisper in the Dark ==========
+Found 2 candidates.
+Movie id: 208123 original_title: Marian Burns: Live In Paihia 2009
+No IMDB ID. Skip.
+Movie id: 99640 original_title: Väter
+218
+========== Movie: I'm The Father ==========
+Found 100 candidates.
+Movie id: 182554 original_title: Hell's Crossroads
+219
+========== Movie: Hell's Crossroads ==========
+Found 2 candidates.
+Movie id: 171827 original_title: Der tote Taucher im Wald
+220
+========== Movie: Der tote Taucher im Wald ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0235826 with score 0.42350332594235035
+Movie id: 756 original_title: Fantasia
+221
+========== Movie: Fantasia ==========
+Found 100 candidates.
+Movie id: 252074 original_title: The Blue Mansion
+222
+========== Movie: The Blue Mansion ==========
+Found 6 candidates.
+Movie id: 176951 original_title: Algo de Bom
+No IMDB ID. Skip.
+Movie id: 170512 original_title: Lust for Frankenstein
+No IMDB ID. Skip.
+Movie id: 169723 original_title: Keb 'Mo' - Jazz a Vienne
+No IMDB ID. Skip.
+Movie id: 61497 original_title: Bushido - Deutschland gib mir ein Mic
+No IMDB ID. Skip.
+Movie id: 93663 original_title: Tourist Trade
+Not in DB. Skip.
+Movie id: 209266 original_title: Exit Marrakech
+228
+========== Movie: Exit Marrakech ==========
+Found 2 candidates.
+Movie id: 199765 original_title: King Midas
+Not in DB. Skip.
+Movie id: 148777 original_title: In Vogue: The Editor’s Eye
+Not in DB. Skip.
+Movie id: 25132 original_title: Shorts
+231
+========== Movie: Shorts ==========
+Found 100 candidates.
+Movie id: 265086 original_title: Oh What A Night! A Musical Tribute To Frankie Valli & The Four Seasons
+No IMDB ID. Skip.
+Movie id: 52151 original_title: Umut
+233
+========== Movie: Umut ==========
+Found 100 candidates.
+Movie id: 38751 original_title: The Man Who Cheated Himself
+234
+========== Movie: The Man Who Cheated Himself ==========
+Found 2 candidates.
+Movie id: 71390 original_title: Удачный обмен
+No IMDB ID. Skip.
+Movie id: 57254 original_title: Danielson: A Family Movie (or, Make a Joyful Noise Here)
+Not in DB. Skip.
+Movie id: 126253 original_title: Canary
+237
+========== Movie: Canary ==========
+Found 100 candidates.
+Movie id: 57103 original_title: The Best of Everything
+238
+========== Movie: The Best of Everything ==========
+Found 1 candidates.
+Movie id: 24171 original_title: Daratt
+239
+========== Movie: Dry Season ==========
+Found 100 candidates.
+Movie id: 196906 original_title: Eunmaneun oji anhneunda
+240
+========== Movie: Silver Stallion ==========
+Found 3 candidates.
+Movie id: 190355 original_title: Peter Maffay - Heute vor dreissig Jahren
+No IMDB ID. Skip.
+Movie id: 137100 original_title: La ruleta de los sueños
+Not in DB. Skip.
+Movie id: 17658 original_title: Je l'aimais
+243
+========== Movie: Someone I Loved ==========
+Found 6 candidates.
+Movie id: 189973 original_title: Nihon-ichi Momotarô
+Not in DB. Skip.
+Movie id: 271266 original_title: Millowitsch Theater - Das Mädchen aus dem Fahrstuhl
+Not in DB. Skip.
+Movie id: 237346 original_title: Hula Hula Land
+Not in DB. Skip.
+Movie id: 34276 original_title: First Men In The Moon
+247
+========== Movie: First Men In The Moon ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0058100 with score 0.4878048780487805
+Movie id: 238906 original_title: Feather Your Nest
+248
+========== Movie: Feather Your Nest ==========
+Found 1 candidates.
+Movie id: 146129 original_title: Три сестры
+No IMDB ID. Skip.
+Movie id: 85967 original_title: The Young Nurses
+250
+========== Movie: The Young Nurses ==========
+Found 3 candidates.
+Movie id: 30180 original_title: Hype!
+Not in DB. Skip.
+Movie id: 203813 original_title: Lari
+252
+========== Movie: Lari ==========
+Found 100 candidates.
+Movie id: 85779 original_title: Kenneth Anger's Hollywood Babylon
+Not in DB. Skip.
+Movie id: 51652 original_title: NANA MIZUKI LIVE FIGHTER-BLUE SIDE-
+No IMDB ID. Skip.
+Movie id: 14846 original_title: Little Black Book
+255
+========== Movie: Little Black Book ==========
+Found 1 candidates.
+Movie id: 77241 original_title: Bir Avuç Deniz
+256
+========== Movie: Bir Avuç Deniz ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1807984 with score 0.5121951219512195
+Movie id: 158011 original_title: The Call
+257
+========== Movie: The Call ==========
+Found 100 candidates.
+Movie id: 249209 original_title: Ginger
+258
+========== Movie: Ginger ==========
+Found 100 candidates.
+Movie id: 220252 original_title: Regina Roma
+259
+========== Movie: Regina Roma ==========
+Found 2 candidates.
+Movie id: 53817 original_title: Pax
+260
+========== Movie: Pax ==========
+Found 100 candidates.
+Movie id: 270997 original_title: Szilveszter
+Not in DB. Skip.
+Movie id: 29572 original_title: The Man Who Cried
+262
+========== Movie: The Man Who Cried ==========
+Found 9 candidates.
+Movie id: 178130 original_title: Bad History
+No IMDB ID. Skip.
+Movie id: 27595 original_title: Charlie & Boots
+264
+========== Movie: Charlie & Boots ==========
+Found 1 candidates.
+Movie id: 258954 original_title: Codo con codo
+265
+========== Movie: Codo con codo ==========
+Found 1 candidates.
+Movie id: 54194 original_title: Koko, le gorille qui parle
+Not in DB. Skip.
+Movie id: 139837 original_title: Max Is Missing
+Not in DB. Skip.
+Movie id: 128757 original_title: 3 Chinesen mit dem Kontrabass
+268
+========== Movie: Three Chinamen with a Double Bass ==========
+Found 1 candidates.
+Movie id: 258170 original_title: The Girl and the Gambler
+269
+========== Movie: The Girl and the Gambler ==========
+Found 2 candidates.
+Movie id: 158741 original_title: In Celebration
+270
+========== Movie: In Celebration ==========
+Found 1 candidates.
+Movie id: 4513 original_title: 30 Days of Night
+271
+========== Movie: 30 Days of Night ==========
+Found 1 candidates.
+Movie id: 249424 original_title: Pokémon: Mewtwo - Prologue to Awakening
+No IMDB ID. Skip.
+Movie id: 42045 original_title: Sweet Dreams
+273
+========== Movie: Sweet Dreams ==========
+Found 25 candidates.
+Movie id: 260357 original_title: Die Beunruhigung
+No IMDB ID. Skip.
+Movie id: 204839 original_title: The Stepdaughter
+Not in DB. Skip.
+Movie id: 93770 original_title: Savage Man Savage Beast
+Not in DB. Skip.
+Movie id: 162538 original_title: The Metaphor
+Not in DB. Skip.
+Movie id: 48834 original_title: Liam
+278
+========== Movie: Liam ==========
+Found 100 candidates.
+Movie id: 188423 original_title: Excursion to the Moon
+Not in DB. Skip.
+Movie id: 168806 original_title: Monica Z
+280
+========== Movie: Waltz for Monica ==========
+Found 75 candidates.
+Movie id: 162223 original_title: The Wild Chase
+Not in DB. Skip.
+Movie id: 41257 original_title: The Silver Chair
+Not in DB. Skip.
+Movie id: 37659 original_title: When You're Strange
+Not in DB. Skip.
+Movie id: 11338 original_title: Into the Night
+284
+========== Movie: Into the Night ==========
+Found 20 candidates.
+Movie id: 106006 original_title: Living with Michael Jackson: A Tonight Special
+Not in DB. Skip.
+Movie id: 252988 original_title: Birthday Suit with Scars and Defects
+No IMDB ID. Skip.
+Movie id: 46729 original_title: Fetching Cody
+287
+========== Movie: Fetching Cody ==========
+Found 2 candidates.
+Movie id: 76662 original_title: Goldfrapp: Wonderful Electric - Live in London
+288
+========== Movie: Goldfrapp: Wonderful Electric - Live in London ==========
+Found 0 candidates.
+Movie id: 264081 original_title: Mighty Jack
+Not in DB. Skip.
+Movie id: 45640 original_title: Enjoy
+No IMDB ID. Skip.
+Movie id: 77620 original_title: Rat Uzivo
+291
+========== Movie: War Live ==========
+Found 100 candidates.
+Movie id: 87601 original_title: Six Aces
+No IMDB ID. Skip.
+Movie id: 79523 original_title: Pornochic 17 - Tarra White
+Not in DB. Skip.
+Movie id: 209267 original_title: 御鑓拝借
+No IMDB ID. Skip.
+Movie id: 47277 original_title: Mother Teresa of Calcutta
+Not in DB. Skip.
+Movie id: 106867 original_title: The Barbarian
+296
+========== Movie: The Barbarian ==========
+Found 24 candidates.
+Movie id: 65870 original_title: Rigamortis: A Zombie Love Story
+Not in DB. Skip.
+Movie id: 157436 original_title: Seizing Me
+298
+========== Movie: Seizing Me ==========
+Found 6 candidates.
+Movie id: 22241 original_title: Firaaq
+299
+========== Movie: Firaaq ==========
+Found 100 candidates.
+Movie id: 147517 original_title: My Lunch With Quentin Crisp
+Not in DB. Skip.
+Movie id: 27629 original_title: Here Comes the Groom
+301
+========== Movie: Here Comes the Groom ==========
+Found 7 candidates.
+Movie id: 215341 original_title: Lipstick Camera
+302
+========== Movie: Lipstick Camera ==========
+Found 1 candidates.
+Movie id: 198214 original_title: Ring Of Fire
+Not in DB. Skip.
+Movie id: 116254 original_title: Beauty in darkness - vol VI
+No IMDB ID. Skip.
+Movie id: 76890 original_title: Garou  Routes
+No IMDB ID. Skip.
+Movie id: 256199 original_title: First Period
+306
+========== Movie: First Period ==========
+Found 8 candidates.
+Movie id: 132288 original_title: La demolición
+307
+========== Movie: La demolición ==========
+Found 6 candidates.
+Movie id: 111343 original_title: ayngaran digital musical bluray 1
+No IMDB ID. Skip.
+Movie id: 264740 original_title: Mobília em Casa – Móveis Coloniais de Acaju e a Cidade
+No IMDB ID. Skip.
+Movie id: 234919 original_title: The Long Hope
+Not in DB. Skip.
+Movie id: 132688 original_title: War Zone: WWII off North Carolina's Outer Banks Part 2
+No IMDB ID. Skip.
+Movie id: 205715 original_title: To Die For
+No IMDB ID. Skip.
+Movie id: 26965 original_title: The Captain's Summit
+Not in DB. Skip.
+Movie id: 237203 original_title: Česká RAPublika
+No IMDB ID. Skip.
+Movie id: 272387 original_title: En levande själ
+Not in DB. Skip.
+Movie id: 237403 original_title: Wu long jiao yi
+316
+========== Movie: Iron Head ==========
+Found 34 candidates.
+Movie id: 92813 original_title: Assmonster: The Making of a Horror Movie
+Not in DB. Skip.
+Movie id: 26538 original_title: Jack Frost
+Not in DB. Skip.
+Movie id: 272270 original_title: Canaan
+319
+========== Movie: Canaan ==========
+Found 100 candidates.
+Movie id: 161593 original_title: Fire! Fire!
+Not in DB. Skip.
+Movie id: 103904 original_title: Mr. Rock n Roll: The Alan Freed Story
+Not in DB. Skip.
+Movie id: 259942 original_title: Foute Vrienden
+Not in DB. Skip.
+Movie id: 205408 original_title: Bowfire - Live in Concert
+No IMDB ID. Skip.
+Movie id: 54793 original_title: Public Speaking
+Not in DB. Skip.
+Movie id: 51248 original_title: 11-11-11
+325
+========== Movie: 11-11-11 ==========
+Found 5 candidates.
+Movie id: 79276 original_title: Dangerous Brothers Present: World of Danger
+Not in DB. Skip.
+Movie id: 242930 original_title: Beauty and the Bandit
+327
+========== Movie: Beauty and the Bandit ==========
+Found 7 candidates.
+Movie id: 61348 original_title: The Lost Valentine
+Not in DB. Skip.
+Movie id: 39479 original_title: Love Crimes
+329
+========== Movie: Love Crimes ==========
+Found 53 candidates.
+Movie id: 21463 original_title: Roja
+330
+========== Movie: Roja ==========
+Found 100 candidates.
+Movie id: 23172 original_title: The Spy Next Door
+331
+========== Movie: The Spy Next Door ==========
+Found 10 candidates.
+Movie id: 87077 original_title: 1920 Bitwa Warszawska
+332
+========== Movie: Battle Of Warsaw 1920 ==========
+Found 1 candidates.
+Movie id: 37744 original_title: Rocketship X-M
+333
+========== Movie: Rocketship X-M ==========
+Found 1 candidates.
+Movie id: 129078 original_title: Sette pistole per i MacGregor
+334
+========== Movie: Seven Guns for the MacGregors ==========
+Found 0 candidates.
+Movie id: 2083 original_title: Guitar Men: The Darkest Secret of Rock 'n Roll
+Not in DB. Skip.
+Movie id: 165165 original_title: It Shouldn't Happen To A Dog
+No IMDB ID. Skip.
+Movie id: 66836 original_title: Cold War
+Not in DB. Skip.
+Movie id: 46216 original_title: Katsuni: Dirty Me
+Not in DB. Skip.
+Movie id: 270924 original_title: Rio 50 Degrees: Carry on CaRIOca
+Not in DB. Skip.
+Movie id: 42823 original_title: Возвращение блудного мужа
+No IMDB ID. Skip.
+Movie id: 63930 original_title: Muzhskoy sezon. Barkhatnaya revolyutsiya
+341
+========== Movie: Law of Corruption ==========
+Found 1 candidates.
+Movie id: 108769 original_title: Lyckantropen
+Not in DB. Skip.
+Movie id: 78642 original_title: Pazhassi Raja
+Not in DB. Skip.
+Movie id: 78536 original_title: Sfinga
+Not in DB. Skip.
+Movie id: 235657 original_title: Busy Little Bears
+Not in DB. Skip.
+Movie id: 272269 original_title: Sacred Stage: The Mariinsky Theater
+Not in DB. Skip.
+Movie id: 82562 original_title: Dolf Jansen: Oudejaars 2010
+No IMDB ID. Skip.
+Movie id: 34077 original_title: The Giant Gila Monster
+348
+========== Movie: The Giant Gila Monster ==========
+Found 1 candidates.
+Movie id: 36640 original_title: One Last Dance
+349
+========== Movie: One Last Dance ==========
+Found 20 candidates.
+Movie id: 110040 original_title: Salako
+350
+========== Movie: Salako ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0253623 with score 0.6825396825396824
+www.imdb.com/title/tt1538521 with score 0.0
+www.imdb.com/title/tt3206112 with score 0.0
+www.imdb.com/title/tt0447419 with score 0.0
+www.imdb.com/title/tt0267900 with score 0.0
+Movie id: 87083 original_title: P.O.W. The Escape
+351
+========== Movie: P.O.W. The Escape ==========
+Found 0 candidates.
+Movie id: 73231 original_title: Black XXX-Mas
+Not in DB. Skip.
+Movie id: 80086 original_title: The Son of Monte Cristo
+353
+========== Movie: The Son of Monte Cristo ==========
+Found 6 candidates.
+Movie id: 20372 original_title: Ni liv
+354
+========== Movie: Nine Lives ==========
+Found 100 candidates.
+Movie id: 112236 original_title: The Dolby Experience
+No IMDB ID. Skip.
+Movie id: 256306 original_title: Bing Du
+356
+========== Movie: Ice Poison ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0470963 with score 0.0
+www.imdb.com/title/tt0375606 with score 0.0
+www.imdb.com/title/tt0470388 with score 0.0
+www.imdb.com/title/tt0377109 with score 0.0
+www.imdb.com/title/tt0146490 with score 0.0
+Movie id: 138501 original_title: 3 Américas
+357
+========== Movie: 3 Américas ==========
+Found 13 candidates.
+Movie id: 72649 original_title: My Father My Lord
+358
+========== Movie: My Father My Lord ==========
+Found 0 candidates.
+Movie id: 239673 original_title: Melnā vēža spīlēs
+No IMDB ID. Skip.
+Movie id: 93715 original_title: Butchered
+Not in DB. Skip.
+Movie id: 165389 original_title: Chain Reaction 5
+No IMDB ID. Skip.
+Movie id: 166294 original_title: The Singing Sap
+Not in DB. Skip.
+Movie id: 36773 original_title: The Third Miracle
+363
+========== Movie: The Third Miracle ==========
+Found 1 candidates.
+Movie id: 50129 original_title: 11'e 10 Kala
+364
+========== Movie: 10 to 11 ==========
+Found 8 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1422184 with score 0.4878048780487805
+www.imdb.com/title/tt2042432 with score 0.0
+www.imdb.com/title/tt0065361 with score 0.0
+www.imdb.com/title/tt0380155 with score 0.0
+www.imdb.com/title/tt0156246 with score 0.0
+Movie id: 157048 original_title: Hawkwind: Solstice at Stonehenge
+No IMDB ID. Skip.
+Movie id: 45162 original_title: Superman/Batman: Apocalypse
+Not in DB. Skip.
+Movie id: 182843 original_title: Mortacci
+367
+========== Movie: Mortacci ==========
+Found 100 candidates.
+Movie id: 24355 original_title: The Mystery of the Black Mummy
+Not in DB. Skip.
+Movie id: 62923 original_title: Pochi no kokuhaku
+369
+========== Movie: Confessions of a Dog ==========
+Found 4 candidates.
+Movie id: 30463 original_title: Party Favors
+370
+========== Movie: Party Favors ==========
+Found 3 candidates.
+Movie id: 31681 original_title: Hell in the Pacific
+371
+========== Movie: Hell in the Pacific ==========
+Found 1 candidates.
+Movie id: 56653 original_title: Sombre
+372
+========== Movie: Sombre ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0166808 with score 0.6747967479674796
+www.imdb.com/title/tt0135811 with score 0.0
+www.imdb.com/title/tt0306080 with score 0.0
+www.imdb.com/title/tt0174935 with score 0.0
+www.imdb.com/title/tt0320410 with score 0.0
+Movie id: 218688 original_title: UMMAH - Unter Freunden
+373
+========== Movie: UMMAH - Unter Freunden ==========
+Found 1 candidates.
+Movie id: 168246 original_title: Jabardasth
+374
+========== Movie: Jabardasth ==========
+Found 7 candidates.
+Movie id: 207235 original_title: The Meaning of Making 'The Meaning of Life'
+Not in DB. Skip.
+Movie id: 94190 original_title: Flawed
+No IMDB ID. Skip.
+Movie id: 171959 original_title: Unter Menschen
+Not in DB. Skip.
+Movie id: 81223 original_title: Brunet wieczorową porą
+378
+========== Movie: Brunet Will Call ==========
+Found 1 candidates.
+Movie id: 102038 original_title: Bombers B-52
+379
+========== Movie: Bombers B-52 ==========
+Found 1 candidates.
+Movie id: 12501 original_title: The Big Country
+380
+========== Movie: The Big Country ==========
+Found 15 candidates.
+Movie id: 179710 original_title: Skull World
+Not in DB. Skip.
+Movie id: 118906 original_title: Los canallas
+382
+========== Movie: Los canallas ==========
+Found 7 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0294428 with score 0.7560975609756098
+www.imdb.com/title/tt1497622 with score 0.024390243902439025
+www.imdb.com/title/tt0056899 with score 0.0
+www.imdb.com/title/tt0193076 with score 0.0
+www.imdb.com/title/tt0021707 with score 0.0
+Movie id: 139671 original_title: Vendeta
+383
+========== Movie: Vendeta ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2361567 with score 0.6747967479674796
+www.imdb.com/title/tt0153502 with score 0.0
+www.imdb.com/title/tt0064680 with score 0.0
+www.imdb.com/title/tt0070166 with score 0.0
+www.imdb.com/title/tt0118069 with score 0.0
+Movie id: 60807 original_title: Kick
+384
+========== Movie: Kick ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1579592 with score 0.6825396825396824
+www.imdb.com/title/tt1305803 with score 0.31746031746031744
+www.imdb.com/title/tt0138531 with score 0.047619047619047616
+www.imdb.com/title/tt1323605 with score 0.0
+www.imdb.com/title/tt1617207 with score 0.0
+Movie id: 13497 original_title: Drumline
+385
+========== Movie: Drumline ==========
+Found 100 candidates.
+Movie id: 117909 original_title: ¿Quién soy yo?
+386
+========== Movie: ¿Quién soy yo? ==========
+Found 1 candidates.
+Movie id: 28657 original_title: Baby Einstein: Baby's Favorite Places
+Not in DB. Skip.
+Movie id: 76180 original_title: Empire of Dreams: The Story of the Star Wars Trilogy
+Not in DB. Skip.
+Movie id: 57053 original_title: Cookies & Cream
+389
+========== Movie: Cookies & Cream ==========
+Found 1 candidates.
+Movie id: 11293 original_title: Paper Moon
+390
+========== Movie: Paper Moon ==========
+Found 37 candidates.
+Movie id: 235222 original_title: The Rolling Stones: Sweet Summer Sun - Hyde Park Live
+391
+========== Movie: The Rolling Stones: Sweet Summer Sun - Hyde Park Live ==========
+Found 0 candidates.
+Movie id: 101651 original_title: The Third Secret
+392
+========== Movie: The Third Secret ==========
+Found 9 candidates.
+Movie id: 28835 original_title: Dr. M schlägt zu
+393
+========== Movie: Dr. M schlägt zu ==========
+Found 1 candidates.
+Movie id: 109502 original_title: Ahí Viene Martín Corona
+394
+========== Movie: Ahí Viene Martín Corona ==========
+Found 1 candidates.
+Movie id: 16227 original_title: Dark Passage
+395
+========== Movie: Dark Passage ==========
+Found 12 candidates.
+Movie id: 203958 original_title: Una sombra ya pronto serás
+396
+========== Movie: A Shadow You Soon Will Be ==========
+Found 1 candidates.
+Movie id: 126212 original_title: Private Matador 8: Anal Revenge
+Not in DB. Skip.
+Movie id: 122753 original_title: Pon un hombre en tu vida
+398
+========== Movie: Pon un hombre en tu vida ==========
+Found 1 candidates.
+Movie id: 51328 original_title: Black Balled 6 - Under the Hood
+No IMDB ID. Skip.
+Movie id: 230286 original_title: Self Service
+Not in DB. Skip.
+Movie id: 269698 original_title: Hart to Hart: Secrets of the Hart
+Not in DB. Skip.
+Movie id: 74360 original_title: São Paulo, Sociedade Anônima
+402
+========== Movie: São Paulo, Sociedade Anônima ==========
+Found 1 candidates.
+Movie id: 242668 original_title: The Contender
+403
+========== Movie: The Contender ==========
+Found 34 candidates.
+Movie id: 198085 original_title: Vilddyr
+Not in DB. Skip.
+Movie id: 14811 original_title: Fiddler on the Roof
+405
+========== Movie: Fiddler on the Roof ==========
+Found 2 candidates.
+Movie id: 236177 original_title: A Star Is Hatched
+Not in DB. Skip.
+Movie id: 106169 original_title: Emilie Richards - Für immer Neuseeland
+Not in DB. Skip.
+Movie id: 165378 original_title: Lost in Limehouse
+Not in DB. Skip.
+Movie id: 112025 original_title: 我们天上见
+409
+========== Movie: We'll Meet in Heaven ==========
+Found 0 candidates.
+Movie id: 81720 original_title: Gangster Story
+410
+========== Movie: Gangster Story ==========
+Found 5 candidates.
+Movie id: 111390 original_title: Stars In My Crown
+411
+========== Movie: Stars In My Crown ==========
+Found 1 candidates.
+Movie id: 118005 original_title: Carried Away
+412
+========== Movie: Carried Away ==========
+Found 5 candidates.
+Movie id: 38321 original_title: Priest
+413
+========== Movie: Priest ==========
+Found 100 candidates.
+Movie id: 210571 original_title: The Deep
+Not in DB. Skip.
+Movie id: 219561 original_title: Marvo Movie
+Not in DB. Skip.
+Movie id: 30449 original_title: Imago mortis
+416
+========== Movie: Imago mortis ==========
+Found 3 candidates.
+Movie id: 80699 original_title: Julie
+417
+========== Movie: Miss Julie ==========
+Found 100 candidates.
+Movie id: 236600 original_title: Woodman, Spare That Tree
+Not in DB. Skip.
+Movie id: 184381 original_title: The Caretaker's Daughter
+Not in DB. Skip.
+Movie id: 49258 original_title: クイール
+420
+========== Movie: Quill:  The Life of a Guide Dog ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0276063 with score 0.0
+www.imdb.com/title/tt0379235 with score 0.0
+www.imdb.com/title/tt3103342 with score 0.0
+www.imdb.com/title/tt1408311 with score 0.0
+www.imdb.com/title/tt0133044 with score 0.0
+Movie id: 52503 original_title: Julian Clary Live: Lord of the Mince
+No IMDB ID. Skip.
+Movie id: 37484 original_title: I Love Trouble
+422
+========== Movie: I Love Trouble ==========
+Found 3 candidates.
+Movie id: 53195 original_title: WWE WrestleMania IV
+Not in DB. Skip.
+Movie id: 237453 original_title: One New York Night
+424
+========== Movie: One New York Night ==========
+Found 1 candidates.
+Movie id: 234713 original_title: Heap Big Hepcat
+Not in DB. Skip.
+Movie id: 106863 original_title: Razza violenta
+426
+========== Movie: The Violent Breed ==========
+Found 7 candidates.
+Movie id: 66638 original_title: Soldier Girls
+Not in DB. Skip.
+Movie id: 240599 original_title: The Gambling Terror
+428
+========== Movie: The Gambling Terror ==========
+Found 2 candidates.
+Movie id: 15557 original_title: Grand Canyon Adventure: River at Risk
+Not in DB. Skip.
+Movie id: 12811 original_title: La terra degli uomini rossi
+430
+========== Movie: Birdwatchers ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt3326038 with score 0.024390243902439025
+Movie id: 193239 original_title: Tracce di vita amorosa
+431
+========== Movie: Traces of an Amorous Life ==========
+Found 1 candidates.
+Movie id: 72931 original_title: Tartaren iz Taraskona
+Not in DB. Skip.
+Movie id: 99180 original_title: A Norml Life
+Not in DB. Skip.
+Movie id: 66581 original_title: Queensryche: Building Empires
+Not in DB. Skip.
+Movie id: 117051 original_title: Chukkallo Chandrudu
+435
+========== Movie: Chukkallo Chandrudu ==========
+Found 1 candidates.
+Movie id: 195104 original_title: Rome, cortège au mariage du prince de Naples
+Not in DB. Skip.
+Movie id: 31462 original_title: Moving Violations
+437
+========== Movie: Moving Violations ==========
+Found 2 candidates.
+Movie id: 52583 original_title: Mabeobui seong
+438
+========== Movie: Sex of Magic ==========
+Found 2 candidates.
+Movie id: 86575 original_title: World War III
+Not in DB. Skip.
+Movie id: 272503 original_title: Extreme Fairy Tales
+No IMDB ID. Skip.
+Movie id: 70072 original_title: Politics of Love
+441
+========== Movie: Politics of Love ==========
+Found 2 candidates.
+Movie id: 129613 original_title: Wir sind das Volk - Liebe kennt keine Grenzen
+Not in DB. Skip.
+Movie id: 171507 original_title: Strange Weather
+443
+========== Movie: Strange Weather ==========
+Found 1 candidates.
+Movie id: 39524 original_title: De overval
+444
+========== Movie: The Silent Raid ==========
+Found 22 candidates.
+Movie id: 13867 original_title: Baby Einstein: Baby Galileo
+Not in DB. Skip.
+Movie id: 194200 original_title: Guang Dong shi hu
+446
+========== Movie: Ten Tigers of Shaolin ==========
+Found 1 candidates.
+Movie id: 175906 original_title: 1:99 Shorts
+No IMDB ID. Skip.
+Movie id: 235569 original_title: Princesse Masha
+448
+========== Movie: Princesse Masha ==========
+Found 2 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0018287 with score 0.7154471544715447
+www.imdb.com/title/tt0189027 with score 0.0
+Movie id: 215554 original_title: Pata Nahi Rab Kehdeyan Rangan Ch Raazi
+No IMDB ID. Skip.
+Movie id: 198531 original_title: Delitto d'amore
+450
+========== Movie: Somewhere Beyond Love ==========
+Found 5 candidates.
+Movie id: 52506 original_title: Limbo
+451
+========== Movie: Limbo ==========
+Found 100 candidates.
+Movie id: 18615 original_title: Fur: An Imaginary Portrait of Diane Arbus
+452
+========== Movie: Fur: An Imaginary Portrait of Diane Arbus ==========
+Found 1 candidates.
+Movie id: 189219 original_title: Orléans
+453
+========== Movie: Orléans ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2332686 with score 0.6747967479674796
+www.imdb.com/title/tt0293886 with score 0.0
+www.imdb.com/title/tt3387600 with score 0.0
+www.imdb.com/title/tt0257935 with score 0.0
+www.imdb.com/title/tt0083575 with score 0.0
+Movie id: 115120 original_title: Anna og Lotte - Gør Hvad De Vil
+No IMDB ID. Skip.
+Movie id: 14424 original_title: Sex and Death 101
+455
+========== Movie: Sex and Death 101 ==========
+Found 1 candidates.
+Movie id: 271449 original_title: College Boy: Indochine
+Not in DB. Skip.
+Movie id: 102711 original_title: Un traje blanco
+457
+========== Movie: Miracle of the White Suit ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0049874 with score 0.6747967479674796
+Movie id: 271062 original_title: I Used to Love Her
+458
+========== Movie: I Used to Love Her ==========
+Found 1 candidates.
+Movie id: 226630 original_title: Blackout
+Not in DB. Skip.
+Movie id: 268935 original_title: Alphonso Bow
+460
+========== Movie: Alphonso Bow ==========
+Found 1 candidates.
+Movie id: 49829 original_title: The Passing
+Not in DB. Skip.
+Movie id: 233587 original_title: A Summer Day's Dream
+Not in DB. Skip.
+Movie id: 397 original_title: French Kiss
+463
+========== Movie: French Kiss ==========
+Found 12 candidates.
+Movie id: 229216 original_title: Blomstrande tider
+464
+========== Movie: Blomstrande tider ==========
+Found 1 candidates.
+Movie id: 38228 original_title: Colors_LIVE
+No IMDB ID. Skip.
+Movie id: 97636 original_title: Terror Inside
+466
+========== Movie: Terror Inside ==========
+Found 3 candidates.
+Movie id: 194940 original_title: Les Filles du Père Noël
+No IMDB ID. Skip.
+Movie id: 6177 original_title: Sisi und der Kaiserkuß
+468
+========== Movie: Sisi und der Kaiserkuß ==========
+Found 1 candidates.
+Movie id: 222204 original_title: French Without Tears
+469
+========== Movie: French Without Tears ==========
+Found 1 candidates.
+Movie id: 62378 original_title: Кукарача
+Not in DB. Skip.
+Movie id: 13191 original_title: War, Inc.
+471
+========== Movie: War, Inc. ==========
+Found 5 candidates.
+Movie id: 13245 original_title: Atanarjuat
+472
+========== Movie: The Fast Runner ==========
+Found 22 candidates.
+Movie id: 44999 original_title: Casino Jack and the United States of Money
+Not in DB. Skip.
+Movie id: 41490 original_title: Yuet gwong bo hup
+474
+========== Movie: Just Another Pandora's Box ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1612143 with score 0.33797909407665505
+Movie id: 120272 original_title: Lung Neaw Visits His Neighbours
+Not in DB. Skip.
+Movie id: 120220 original_title: Lay Down Your Arms
+Not in DB. Skip.
+Movie id: 22472 original_title: Insecurity
+477
+========== Movie: Insecurity ==========
+Found 11 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1265599 with score 0.7619047619047619
+www.imdb.com/title/tt0359954 with score 0.0
+www.imdb.com/title/tt0477086 with score 0.0
+www.imdb.com/title/tt0290669 with score 0.0
+www.imdb.com/title/tt2070703 with score 0.0
+Movie id: 168423 original_title: Der Atmende Gott
+Not in DB. Skip.
+Movie id: 153856 original_title: Mes plus beaux contes - le vilain petit canard
+No IMDB ID. Skip.
+Movie id: 513 original_title: Fire
+480
+========== Movie: Fire ==========
+Found 100 candidates.
+Movie id: 49265 original_title: Alien Uprising
+Not in DB. Skip.
+Movie id: 45139 original_title: Jesus
+482
+========== Movie: Jesus ==========
+Found 100 candidates.
+Movie id: 159457 original_title: Death to the Tinman
+Not in DB. Skip.
+Movie id: 134078 original_title: Belmondo, itinéraire...
+Not in DB. Skip.
+Movie id: 80857 original_title: Rupan sansei: Russia yori ai o komete
+Not in DB. Skip.
+Movie id: 220838 original_title: Hollow
+Not in DB. Skip.
+Movie id: 245826 original_title: Avándaro
+Not in DB. Skip.
+Movie id: 219345 original_title: Grief
+488
+========== Movie: Grief ==========
+Found 100 candidates.
+Movie id: 148963 original_title: Episode 4 - Pride of Our Nation (June - August 1944)
+Not in DB. Skip.
+Movie id: 132055 original_title: Jacques Leonard, el payo Chac
+Not in DB. Skip.
+Movie id: 38096 original_title: Last Summer
+491
+========== Movie: Last Summer ==========
+Found 27 candidates.
+Movie id: 41860 original_title: Fatwa
+492
+========== Movie: Fatwa ==========
+Found 100 candidates.
+Movie id: 17171 original_title: The Assassination of Jesse James: Death of an Outlaw
+Not in DB. Skip.
+Movie id: 11172 original_title: Music and Lyrics
+494
+========== Movie: Music and Lyrics ==========
+Found 1 candidates.
+Movie id: 51817 original_title: Zona Zamfirova
+495
+========== Movie: Zamfir's Zona ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0326449 with score 0.42073170731707316
+Movie id: 58196 original_title: Alton Ellis - In Memoriam 1938-2008 - Live At The Jazz Cafe, London
+No IMDB ID. Skip.
+Movie id: 157620 original_title: Japan in Cherry Blossom Time
+Not in DB. Skip.
+Movie id: 100259 original_title: My Favorite Spy
+498
+========== Movie: My Favorite Spy ==========
+Found 5 candidates.
+Movie id: 175112 original_title: The Pirate Fairy
+499
+========== Movie: The Pirate Fairy ==========
+Found 0 candidates.
+Movie id: 28666 original_title: The Woman Chaser
+500
+========== Movie: The Woman Chaser ==========
+Found 4 candidates.
+Movie id: 28678 original_title: La guerra del ferro - Ironmaster
+501
+========== Movie: La guerra del ferro - Ironmaster ==========
+Found 1 candidates.
+Movie id: 38779 original_title: Operatiunea 'Monstrul'
+502
+========== Movie: Operatiunea 'Monstrul' ==========
+Found 1 candidates.
+Movie id: 248188 original_title: Чертёнок №13
+No IMDB ID. Skip.
+Movie id: 36945 original_title: The Vagina Monologues
+Not in DB. Skip.
+Movie id: 37559 original_title: Fanfan la tulipe
+505
+========== Movie: Fanfan la tulipe ==========
+Found 3 candidates.
+Movie id: 157042 original_title: Him and Me
+506
+========== Movie: Him and Me ==========
+Found 23 candidates.
+Movie id: 203760 original_title: Appassionate
+507
+========== Movie: Appassionate ==========
+Found 8 candidates.
+Movie id: 231222 original_title: O Médium
+508
+========== Movie: O Médium ==========
+Found 19 candidates.
+Movie id: 48823 original_title: Leave 'Em Laughing
+Not in DB. Skip.
+Movie id: 146168 original_title: NightThirst
+Not in DB. Skip.
+Movie id: 259426 original_title: Auf Winnetous Spuren durch Kroatien
+No IMDB ID. Skip.
+Movie id: 179644 original_title: A Fallible Girl
+512
+========== Movie: A Fallible Girl ==========
+Found 1 candidates.
+Movie id: 194143 original_title: Giovanni Improtta
+513
+========== Movie: Giovanni Improtta ==========
+Found 1 candidates.
+Movie id: 162762 original_title: Manga: Kômori
+Not in DB. Skip.
+Movie id: 55494 original_title: Niskavuori
+515
+========== Movie: Niskavuori ==========
+Found 2 candidates.
+Movie id: 45944 original_title: The Unidentified
+516
+========== Movie: The Unidentified ==========
+Found 3 candidates.
+Movie id: 257252 original_title: Staryy Naezdnik
+517
+========== Movie: The Old Jockey ==========
+Found 3 candidates.
+Movie id: 210304 original_title: Fudge-a-mania
+Not in DB. Skip.
+Movie id: 216750 original_title: 48 People Who Should be Dead In Hollywood
+No IMDB ID. Skip.
+Movie id: 60971 original_title: Ankokugai no bijo
+520
+========== Movie: Underworld Beauty ==========
+Found 2 candidates.
+Movie id: 168907 original_title: Nerven
+521
+========== Movie: Nerven ==========
+Found 100 candidates.
+Movie id: 19954 original_title: 'Weird Al' Yankovic: (There's No) Going Home
+Not in DB. Skip.
+Movie id: 259566 original_title: Top Gear: Burma Special
+No IMDB ID. Skip.
+Movie id: 28384 original_title: Husbands and Wives
+524
+========== Movie: Husbands and Wives ==========
+Found 4 candidates.
+Movie id: 262899 original_title: Every Everything: The Music, Life & Times of Grant Hart
+Not in DB. Skip.
+Movie id: 53104 original_title: Orgasm Inc.
+Not in DB. Skip.
+Movie id: 72771 original_title: The Man Is Armed
+527
+========== Movie: The Man Is Armed ==========
+Found 1 candidates.
+Movie id: 40399 original_title: Acústico MTV - Engenheiros do Hawaii
+No IMDB ID. Skip.
+Movie id: 43030 original_title: Cash McCall
+529
+========== Movie: Cash McCall ==========
+Found 10 candidates.
+Movie id: 121844 original_title: Pirate Tape
+Not in DB. Skip.
+Movie id: 157268 original_title: Death Doll
+531
+========== Movie: Death Doll ==========
+Found 65 candidates.
+Movie id: 167956 original_title: Fist of Jesus
+Not in DB. Skip.
+Movie id: 206926 original_title: Le Grand Complot
+No IMDB ID. Skip.
+Movie id: 65213 original_title: Smart Girls Don't Talk
+534
+========== Movie: Smart Girls Don't Talk ==========
+Found 1 candidates.
+Movie id: 220393 original_title: Sioux City Sue
+535
+========== Movie: Sioux City Sue ==========
+Found 2 candidates.
+Movie id: 2044 original_title: The Lake House
+536
+========== Movie: The Lake House ==========
+Found 35 candidates.
+Movie id: 198997 original_title: 11 synantiseis me ton patera mou
+537
+========== Movie: 11 Meetings with My Father ==========
+Found 1 candidates.
+Movie id: 107784 original_title: Scooter: The Big Mash Up
+No IMDB ID. Skip.
+Movie id: 15090 original_title: Icebreaker
+539
+========== Movie: Icebreaker ==========
+Found 11 candidates.
+Movie id: 96935 original_title: The Naked Maja
+540
+========== Movie: The Naked Maja ==========
+Found 20 candidates.
+Movie id: 53368 original_title: Making a Living
+Not in DB. Skip.
+Movie id: 202949 original_title: Botinada - A Origem do Punk no Brasil
+No IMDB ID. Skip.
+Movie id: 4599 original_title: Raising Helen
+543
+========== Movie: Raising Helen ==========
+Found 6 candidates.
+Movie id: 100 original_title: Lock, Stock and Two Smoking Barrels
+544
+========== Movie: Lock, Stock and Two Smoking Barrels ==========
+Found 1 candidates.
+Movie id: 264283 original_title: Never Not Part 2
+No IMDB ID. Skip.
+Movie id: 56183 original_title: Mean People Suck
+Not in DB. Skip.
+Movie id: 45058 original_title: The World Sinks Except Japan
+547
+========== Movie: The World Sinks Except Japan ==========
+Found 0 candidates.
+Movie id: 62268 original_title: Maxwell Saves the Day
+Not in DB. Skip.
+Movie id: 85641 original_title: Day Of The Nightmare
+549
+========== Movie: Day Of The Nightmare ==========
+Found 1 candidates.
+Movie id: 252372 original_title: Primeiro Batalhão Ferroviário
+Not in DB. Skip.
+Movie id: 152143 original_title: The Winning Season
+Not in DB. Skip.
+Movie id: 226251 original_title: Jumpin' at the Boneyard
+552
+========== Movie: Jumpin' at the Boneyard ==========
+Found 1 candidates.
+Movie id: 43156 original_title: Pacquiao: The Movie
+553
+========== Movie: Pacquiao: The Movie ==========
+Found 1 candidates.
+Movie id: 264168 original_title: Deutschmänner
+Not in DB. Skip.
+Movie id: 217028 original_title: Inside the Law
+555
+========== Movie: Inside the Law ==========
+Found 9 candidates.
+Movie id: 105697 original_title: Il segreto del bosco vecchio
+556
+========== Movie: Il segreto del bosco vecchio ==========
+Found 1 candidates.
+Movie id: 144482 original_title: Stunt Games
+557
+========== Movie: Stunt Games ==========
+Found 12 candidates.
+Movie id: 189112 original_title: Made in Sweden For Export
+No IMDB ID. Skip.
+Movie id: 132583 original_title: The Right to Love: An American Family
+Not in DB. Skip.
+Movie id: 166452 original_title: Bitwa pod Wiedniem
+560
+========== Movie: September Eleven 1683 ==========
+Found 0 candidates.
+Movie id: 90601 original_title: Jun Natsumi -- Karate Girl Debut
+No IMDB ID. Skip.
+Movie id: 10769 original_title: The Brazilian Job
+Not in DB. Skip.
+Movie id: 193441 original_title: Private Potter
+563
+========== Movie: Private Potter ==========
+Found 8 candidates.
+Movie id: 269458 original_title: Editie speciala
+564
+========== Movie: Editie speciala ==========
+Found 1 candidates.
+Movie id: 36754 original_title: The Snorkel
+565
+========== Movie: The Snorkel ==========
+Found 98 candidates.
+Movie id: 212522 original_title: Mickey's Movies
+Not in DB. Skip.
+Movie id: 197166 original_title: Sprucin' Up
+Not in DB. Skip.
+Movie id: 123482 original_title: 20 Years of Nuclear Blast
+No IMDB ID. Skip.
+Movie id: 266152 original_title: Loyal Opposition
+569
+========== Movie: Loyal Opposition ==========
+Found 1 candidates.
+Movie id: 235391 original_title: Poop Goes the Weasel
+Not in DB. Skip.
+Movie id: 262828 original_title: Hong Shi Zi
+571
+========== Movie: Red Persimmon ==========
+Found 12 candidates.
+Movie id: 192189 original_title: Dressed to Fire
+572
+========== Movie: Dressed to Fire ==========
+Found 6 candidates.
+Movie id: 73311 original_title: Szelíd teremtés - A Frankenstein-terv
+573
+========== Movie: Tender Son - The Frankenstein Project ==========
+Found 1 candidates.
+Movie id: 227587 original_title: What Killed the Mega Beasts?
+Not in DB. Skip.
+Movie id: 182432 original_title: Tek dou bou
+575
+========== Movie: Lucky Encounter ==========
+Found 2 candidates.
+Movie id: 258809 original_title: Broadway Bad
+576
+========== Movie: Broadway Bad ==========
+Found 13 candidates.
+Movie id: 231209 original_title: Foreigner - Soundstage
+No IMDB ID. Skip.
+Movie id: 257374 original_title: Apám beájulna
+578
+========== Movie: Apám beájulna ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0370294 with score 0.6747967479674796
+Movie id: 222875 original_title: Rumble in the Streets
+579
+========== Movie: Rumble in the Streets ==========
+Found 1 candidates.
+Movie id: 221470 original_title: Die Ärzte - Hurricane Festival
+No IMDB ID. Skip.
+Movie id: 55689 original_title: Baba Yaga
+581
+========== Movie: Baby Yaga, Devil Witch ==========
+Found 56 candidates.
+Movie id: 34388 original_title: Funeral in Berlin
+582
+========== Movie: Funeral in Berlin ==========
+Found 1 candidates.
+Movie id: 258971 original_title: A Viúva Valentina
+583
+========== Movie: A Viúva Valentina ==========
+Found 1 candidates.
+Movie id: 246114 original_title: A Raiz do Coração
+584
+========== Movie: A Root of the Heart ==========
+Found 2 candidates.
+Movie id: 57749 original_title: The Clinic
+585
+========== Movie: The Clinic ==========
+Found 100 candidates.
+Movie id: 187304 original_title: If It's Loud It's Cool Bonus - Bingin Bits
+No IMDB ID. Skip.
+Movie id: 245104 original_title: Lila Lili
+587
+========== Movie: Lila Lili ==========
+Found 25 candidates.
+Movie id: 50580 original_title: K3 en het Magische Medaillon
+588
+========== Movie: K3 en het Magische Medaillon ==========
+Found 1 candidates.
+Movie id: 217292 original_title: Honeymoon for One
+Not in DB. Skip.
+Movie id: 145284 original_title: Husbonden
+Not in DB. Skip.
+Movie id: 231336 original_title: La paralytique
+Not in DB. Skip.
+Movie id: 251994 original_title: Reach Me
+592
+========== Movie: Reach Me ==========
+Found 77 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0472553 with score 0.0
+www.imdb.com/title/tt0030655 with score 0.0
+www.imdb.com/title/tt1375789 with score 0.0
+www.imdb.com/title/tt2287973 with score 0.0
+www.imdb.com/title/tt0247253 with score 0.0
+Movie id: 252732 original_title: Tajemství Lesní země
+Not in DB. Skip.
+Movie id: 77873 original_title: Au plus près du paradis
+594
+========== Movie: Nearest to Heaven ==========
+Found 1 candidates.
+Movie id: 266499 original_title: Vennela
+595
+========== Movie: Vennela ==========
+Found 100 candidates.
+Movie id: 9821 original_title: The Mighty
+596
+========== Movie: The Mighty ==========
+Found 100 candidates.
+Movie id: 72432 original_title: Puncture
+597
+========== Movie: Puncture ==========
+Found 100 candidates.
+Movie id: 45974 original_title: The Halloween Tree
+Not in DB. Skip.
+Movie id: 118258 original_title: The Great Profile
+599
+========== Movie: The Great Profile ==========
+Found 5 candidates.
+Movie id: 184345 original_title: A Haunted House 2
+600
+========== Movie: A Haunted House 2 ==========
+Found 4 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2243537 with score 0.6968641114982578
+www.imdb.com/title/tt2498034 with score 0.0
+www.imdb.com/title/tt0032572 with score 0.0
+www.imdb.com/title/tt2161373 with score 0.0
+Movie id: 189857 original_title: Flim Flam Films
+Not in DB. Skip.
+Movie id: 75724 original_title: Gritos en el pasillo
+602
+========== Movie: Screaming in the hallway ==========
+Found 1 candidates.
+Movie id: 41094 original_title: 9 és 1/2 randi
+603
+========== Movie: 9 és 1/2 randi ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1052342 with score 0.6747967479674796
+Movie id: 270855 original_title: El Khoroug
+604
+========== Movie: Cairo Exit ==========
+Found 15 candidates.
+Movie id: 70964 original_title: Board Heads
+605
+========== Movie: Board Heads ==========
+Found 5 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt1151386 with score 0.0
+www.imdb.com/title/tt2332639 with score 0.0
+www.imdb.com/title/tt1339099 with score 0.0
+www.imdb.com/title/tt0251860 with score 0.0
+www.imdb.com/title/tt1273207 with score 0.0
+Movie id: 73894 original_title: The Pusher
+606
+========== Movie: The Pusher ==========
+Found 100 candidates.
+Movie id: 52224 original_title: Moto 2: The Movie
+No IMDB ID. Skip.
+Movie id: 202530 original_title: Hurricane Sword
+608
+========== Movie: Hurricane Sword ==========
+Found 4 candidates.
+Movie id: 132152 original_title: Madrid
+Not in DB. Skip.
+Movie id: 85900 original_title: Women Seeking Women Volume 70
+Not in DB. Skip.
+Movie id: 243549 original_title: They Had to See Paris
+611
+========== Movie: They Had to See Paris ==========
+Found 1 candidates.
+Movie id: 27360 original_title: King's Ransom
+612
+========== Movie: King's Ransom ==========
+Found 4 candidates.
+Movie id: 177359 original_title: India v Australia at Mohali, 3rd Test, Mar 14-18, 2013
+No IMDB ID. Skip.
+Movie id: 9275 original_title: Death to Smoochy
+614
+========== Movie: Death to Smoochy ==========
+Found 1 candidates.
+Movie id: 257846 original_title: Video Game
+Not in DB. Skip.
+Movie id: 110561 original_title: Bear Nation
+Not in DB. Skip.
+Movie id: 37319 original_title: The Adventures of Brer Rabbit
+Not in DB. Skip.
+Movie id: 264550 original_title: Generación Spielberg
+618
+========== Movie: Generation Spielberg ==========
+Found 1 candidates.
+Movie id: 209603 original_title: Tillman
+Not in DB. Skip.
+Movie id: 32287 original_title: The Greatest 2009
+No IMDB ID. Skip.
+Movie id: 60825 original_title: Mr. St. Nick
+Not in DB. Skip.
+Movie id: 257315 original_title: Scorpion Spring
+622
+========== Movie: Scorpion Spring ==========
+Found 1 candidates.
+Movie id: 200825 original_title: Le clan des veuves
+Not in DB. Skip.
+Movie id: 30748 original_title: The Hereafter
+624
+========== Movie: The Hereafter ==========
+Found 29 candidates.
+Movie id: 191285 original_title: The young and the restless
+No IMDB ID. Skip.
+Movie id: 228939 original_title: Hearts of Hot Shots! Part Deux—A Filmmaker's Apology
+Not in DB. Skip.
+Movie id: 110619 original_title: Geetanjali
+627
+========== Movie: Geetanjali ==========
+Found 13 candidates.
+Movie id: 136671 original_title: First Contact
+Not in DB. Skip.
+Movie id: 26203 original_title: Blink
+629
+========== Movie: Blink ==========
+Found 100 candidates.
+Movie id: 262654 original_title: General Crack
+630
+========== Movie: General Crack ==========
+Found 4 candidates.
+Movie id: 136593 original_title: Crosstalk
+631
+========== Movie: Crosstalk ==========
+Found 51 candidates.
+Movie id: 37873 original_title: Shinsengumi
+632
+========== Movie: Shinsengumi: Assassins of Honor ==========
+Found 6 candidates.
+Movie id: 90075 original_title: Kdyby...
+Not in DB. Skip.
+Movie id: 25796 original_title: That Old Feeling
+634
+========== Movie: That Old Feeling ==========
+Found 1 candidates.
+Movie id: 239400 original_title: Fury at Smugglers' Bay
+635
+========== Movie: Fury at Smugglers' Bay ==========
+Found 1 candidates.
+Movie id: 250630 original_title: Stereotype
+No IMDB ID. Skip.
+Movie id: 166165 original_title: Cinema Hong Kong: The Beauties of the Shaw Studio
+Not in DB. Skip.
+Movie id: 271396 original_title: Half a Man
+Not in DB. Skip.
+Movie id: 242683 original_title: Zaza
+639
+========== Movie: Zaza ==========
+Found 100 candidates.
+Movie id: 135834 original_title: Patsy, Mi Amor
+640
+========== Movie: Patsy, My Love ==========
+Found 3 candidates.
+Movie id: 220809 original_title: The Phone Call
+Not in DB. Skip.
+Movie id: 259457 original_title: Miss Mommy
+No IMDB ID. Skip.
+Movie id: 217218 original_title: Search and Destroy: Iggy & The Stooges' Raw Power
+Not in DB. Skip.
+Movie id: 49913 original_title: Bolivia
+644
+========== Movie: Bolivia ==========
+Found 100 candidates.
+Movie id: 59077 original_title: A Female Cabby in Sidi Bel-Abbes
+Not in DB. Skip.
+Movie id: 254181 original_title: Someone's Wife In The Boat Of Someone's Husband
+646
+========== Movie: Someone's Wife In The Boat Of Someone's Husband ==========
+Found 1 candidates.
+Movie id: 225973 original_title: El mago
+647
+========== Movie: El mago ==========
+Found 100 candidates.
+Movie id: 86285 original_title: Hard Country
+648
+========== Movie: Hard Country ==========
+Found 22 candidates.
+Movie id: 137906 original_title: Kokkuri-san
+No IMDB ID. Skip.
+Movie id: 173908 original_title: Sunlight Jr.
+650
+========== Movie: Sunlight Jr. ==========
+Found 1 candidates.
+Movie id: 269844 original_title: Maru Visaranai
+No IMDB ID. Skip.
+Movie id: 11807 original_title: Jab We Met
+652
+========== Movie: Jab We Met ==========
+Found 2 candidates.
+Movie id: 57764 original_title: C Eriksson solo
+No IMDB ID. Skip.
+Movie id: 270008 original_title: Vive la baleine
+Not in DB. Skip.
+Movie id: 70336 original_title: Dream 15
+No IMDB ID. Skip.
+Movie id: 219498 original_title: Foxy Pup
+Not in DB. Skip.
+Movie id: 42567 original_title: David and Bathsheba
+657
+========== Movie: David and Bathsheba ==========
+Found 1 candidates.
+Movie id: 261037 original_title: Miss Meadows
+658
+========== Movie: Miss Meadows ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0017159 with score 0.0
+Movie id: 261267 original_title: Champions: A Love Story
+Not in DB. Skip.
+Movie id: 56327 original_title: ٢٤ ساعة حب
+No IMDB ID. Skip.
+Movie id: 122815 original_title: Upheaval
+Not in DB. Skip.
+Movie id: 234384 original_title: Zip Zip Hooray!
+Not in DB. Skip.
+Movie id: 209058 original_title: O Boneco Rebelde
+663
+========== Movie: O Boneco Rebelde ==========
+Found 2 candidates.
+Movie id: 193489 original_title: Bullets for Breakfast
+664
+========== Movie: Bullets for Breakfast ==========
+Found 2 candidates.
+Movie id: 184661 original_title: An Elephant Never Forgets
+Not in DB. Skip.
+Movie id: 133826 original_title: UFC 152: Jones vs. Belfort
+No IMDB ID. Skip.
+Movie id: 244919 original_title: A Story of Healing
+Not in DB. Skip.
+Movie id: 4766 original_title: La Maison
+668
+========== Movie: La Maison ==========
+Found 68 candidates.
+Movie id: 10493 original_title: Dead Calm
+669
+========== Movie: Dead Calm ==========
+Found 100 candidates.
+Movie id: 54766 original_title: Honey Baby
+670
+========== Movie: Honey Baby ==========
+Found 33 candidates.
+Movie id: 120814 original_title: Eyes of the Underworld
+671
+========== Movie: Eyes of the Underworld ==========
+Found 6 candidates.
+Movie id: 149026 original_title: T.R. Baskin
+672
+========== Movie: T.R. Baskin ==========
+Found 1 candidates.
+Movie id: 120460 original_title: Wo kou de zong ji
+673
+========== Movie: The Sword Identity ==========
+Found 1 candidates.
+Movie id: 204877 original_title: Das Traumhotel: Afrika
+No IMDB ID. Skip.
+Movie id: 81635 original_title: Musanilgi
+675
+========== Movie: The Journals of Musan ==========
+Found 28 candidates.
+Movie id: 208717 original_title: Året Var 1961
+No IMDB ID. Skip.
+Movie id: 66147 original_title: Remous
+677
+========== Movie: Remous ==========
+Found 100 candidates.
+Movie id: 157397 original_title: Jak Narkotyk
+678
+========== Movie: Jak Narkotyk ==========
+Found 1 candidates.
+Movie id: 204890 original_title: Hotel Exotica
+679
+========== Movie: Hotel Exotica ==========
+Found 1 candidates.
+Movie id: 48284 original_title: Alice and huck
+Not in DB. Skip.
+Movie id: 236831 original_title: Warclouds in the Pacific
+Not in DB. Skip.
+Movie id: 186490 original_title: La Terrible aventure du Dr. Faust
+No IMDB ID. Skip.
+Movie id: 143317 original_title: Jonah Sing-Along Songs and More!
+No IMDB ID. Skip.
+Movie id: 221842 original_title: She's Ann
+No IMDB ID. Skip.
+Movie id: 113822 original_title: whesross
+No IMDB ID. Skip.
+Movie id: 236274 original_title: The Barnyard Brat
+Not in DB. Skip.
+Movie id: 187412 original_title: Himmelfahrtskommando
+687
+========== Movie: Himmelfahrtskommando ==========
+Found 3 candidates.
+Movie id: 60876 original_title: Asslicious 2
+Not in DB. Skip.
+Movie id: 121037 original_title: 寻堡奇遇2
+No IMDB ID. Skip.
+Movie id: 272148 original_title: Darna at Ding
+690
+========== Movie: Darna and Ding ==========
+Found 1 candidates.
+Movie id: 21118 original_title: Waking Up in Reno
+691
+========== Movie: Waking Up in Reno ==========
+Found 1 candidates.
+Movie id: 254854 original_title: Transmission
+Not in DB. Skip.
+Movie id: 211033 original_title: Secret City
+Not in DB. Skip.
+Movie id: 39810 original_title: Hot Wheels AcceleRacers, Vol. 3 - Breaking Point
+No IMDB ID. Skip.
+Movie id: 121214 original_title: Don Van Vliet: Some YoYo Stuff
+Not in DB. Skip.
+Movie id: 260242 original_title: Cin(T)a
+696
+========== Movie: Cin(T)a ==========
+Found 100 candidates.
+Movie id: 59237 original_title: Des pissenlits par la racine
+697
+========== Movie: Salad by the Roots ==========
+Found 1 candidates.
+Movie id: 28241 original_title: Les Contes d'Hoffmann
+No IMDB ID. Skip.
+Movie id: 84728 original_title: Black Girl
+699
+========== Movie: Black Girl ==========
+Found 100 candidates.
+Movie id: 23424 original_title: Command Performance
+700
+========== Movie: Command Performance ==========
+Found 3 candidates.
+Movie id: 272397 original_title: Silmandé - Tourbillon
+701
+========== Movie: Silmandé - Tourbillon ==========
+Found 1 candidates.
+Movie id: 80694 original_title: My Life with Caroline
+702
+========== Movie: My Life with Caroline ==========
+Found 1 candidates.
+Movie id: 97305 original_title: Sonnensystem
+703
+========== Movie: Sonnensystem ==========
+Found 2 candidates.
+Movie id: 226981 original_title: Pirate 12: Hells Belles
+Not in DB. Skip.
+Movie id: 195845 original_title: A Measure Of The Sin
+705
+========== Movie: A Measure Of The Sin ==========
+Found 1 candidates.
+Movie id: 94664 original_title: Így jöttem
+706
+========== Movie: My Way Home ==========
+Found 9 candidates.
+Movie id: 189484 original_title: Boz Salkyn
+707
+========== Movie: Pure Coolness ==========
+Found 2 candidates.
+Movie id: 5172 original_title: The Astronaut Farmer
+708
+========== Movie: The Astronaut Farmer ==========
+Found 1 candidates.
+Movie id: 60956 original_title: Final Engagement
+Not in DB. Skip.
+Movie id: 84089 original_title: La mano de Dio
+710
+========== Movie: Maradona, the Hand of God ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0355744 with score 0.0
+Movie id: 65751 original_title: Kyo - Kyosphere
+No IMDB ID. Skip.
+Movie id: 47694 original_title: Feng yue
+712
+========== Movie: Temptress Moon ==========
+Found 100 candidates.
+Movie id: 23048 original_title: Hot Tub Time Machine
+713
+========== Movie: Hot Tub Time Machine ==========
+Found 1 candidates.
+Movie id: 81235 original_title: Kid Monk Baroni
+714
+========== Movie: Kid Monk Baroni ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0044796 with score 0.5121951219512195
+Movie id: 149383 original_title: Hellfire: A Journey from Hiroshima
+Not in DB. Skip.
+Movie id: 80692 original_title: De Boezemvriend
+716
+========== Movie: De Boezemvriend ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0083673 with score 0.0
+Movie id: 88107 original_title: Double Trouble
+No IMDB ID. Skip.
+Movie id: 40422 original_title: Acústico MTV - Ira!
+No IMDB ID. Skip.
+Movie id: 246329 original_title: Adventures In Anal
+Not in DB. Skip.
+Movie id: 130377 original_title: The Perfect Setup
+Not in DB. Skip.
+Movie id: 70756 original_title: Swans
+721
+========== Movie: Swans ==========
+Found 100 candidates.
+Movie id: 160268 original_title: Jiken
+722
+========== Movie: The Incident ==========
+Found 100 candidates.
+Movie id: 83437 original_title: Когда деревья были большими
+723
+========== Movie: Kogda derevya byli bolshimi ==========
+Found 1 candidates.
+Movie id: 128763 original_title: Drux Flux
+Not in DB. Skip.
+Movie id: 73523 original_title: Willkommen zuhause
+Not in DB. Skip.
+Movie id: 47682 original_title: Dead on Time
+Not in DB. Skip.
+Movie id: 71861 original_title: Mike Portnoy - In Constant Motion
+No IMDB ID. Skip.
+Movie id: 80896 original_title: Schützenliesel
+728
+========== Movie: Schützenliesel ==========
+Found 2 candidates.
+Movie id: 248860 original_title: Shot Heard 'Round the World
+Not in DB. Skip.
+Movie id: 24129 original_title: Den enfaldige mördaren
+730
+========== Movie: The Simple-Minded Murderer ==========
+Found 1 candidates.
+Movie id: 18806 original_title: Bells of San Angelo
+731
+========== Movie: Bells of San Angelo ==========
+Found 1 candidates.
+Movie id: 52679 original_title: The Last Command
+732
+========== Movie: The Last Command ==========
+Found 24 candidates.
+Movie id: 84440 original_title: The Babysitter 5
+No IMDB ID. Skip.
+Movie id: 268905 original_title: Wilder Westen inclusive
+No IMDB ID. Skip.
+Movie id: 119151 original_title: Kyofu joshikôkô: Furyo monzetsu guruupu
+735
+========== Movie: Terrifying Girls High School: Delinquent Convulsion Group ==========
+Found 1 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt0959477 with score 0.7560975609756098
+Movie id: 228307 original_title: Empty Spaces
+Not in DB. Skip.
+Movie id: 149709 original_title: Mel Brooks Strikes Back!
+Not in DB. Skip.
+Movie id: 259814 original_title: Debbie Does Dallas
+No IMDB ID. Skip.
+Movie id: 205401 original_title: Sandwich
+739
+========== Movie: Sandwich ==========
+Found 100 candidates.
+Could not find a single match. Here are the best five matches:
+www.imdb.com/title/tt2089788 with score 0.047619047619047616
+www.imdb.com/title/tt0430202 with score 0.024390243902439025
+www.imdb.com/title/tt0194331 with score 0.0
+www.imdb.com/title/tt2897298 with score 0.0
+www.imdb.com/title/tt0164217 with score 0.0
+Movie id: 36244 original_title: Gokudo kuroshakai
+740
+========== Movie: Rainy Dog ==========
+Found 25 candidates.
+Movie id: 265925 original_title: Klettermaxe
+741
+========== Movie: Klettermaxe ==========
+Found 3 candidates.
+Movie id: 213016 original_title: Movie-Town
+Not in DB. Skip.
+Movie id: 165954 original_title: Yi ge mo sheng nu ren de lai xin
+743
+========== Movie: Letter from an Unknown Woman ==========
+Found 2 candidates.
+Movie id: 120442 original_title: Behind the Green Lights
+744
+========== Movie: Behind the Green Lights ==========
+Found 2 candidates.
+Movie id: 13872 original_title: Baby Einstein: Baby Noah
+Not in DB. Skip.
+Movie id: 80553 original_title: Limp Bizkit - Rock Im Park 2001
+No IMDB ID. Skip.
+Movie id: 74499 original_title: Аплодисменты, аплодисменты...
+747
+========== Movie: Aplodismenty, Aplodismenty... ==========
+Found 1 candidates.
+Movie id: 139725 original_title: Quand je serai petit
+748
+========== Movie: Twice Upon a Time ==========
+Found 10 candidates.
+Movie id: 197821 original_title: Shadowed
+749
+========== Movie: Shadowed ==========
+Found 100 candidates.
+ 750 files: 
+ 320 were matched correctly.
+   3 were matched incorrectly:
+       https://www.themoviedb.org/movie/11338 was matched with top score: 1.000 to http://www.imdb.com/title/tt0248108 should be http://www.imdb.com/title/tt0089346
+      https://www.themoviedb.org/movie/178664 was matched with top score: 1.000 to http://www.imdb.com/title/tt0092194 should be http://www.imdb.com/title/tt0035130
+      https://www.themoviedb.org/movie/228185 was matched with top score: 0.976 to http://www.imdb.com/title/tt1781866 should be http://www.imdb.com/title/tt2216536
+  16 were not matched and are not candidates:
+       https://www.themoviedb.org/movie/84089 was matched with top score: 0.000 to http://www.imdb.com/title/tt0355744 should be http://www.imdb.com/title/tt0465737
+      https://www.themoviedb.org/movie/261037 was matched with top score: 0.000 to http://www.imdb.com/title/tt0017159 should be http://www.imdb.com/title/tt3128900
+       https://www.themoviedb.org/movie/70964 was matched with top score: 0.000 to http://www.imdb.com/title/tt1151386 should be http://www.imdb.com/title/tt0159270
+      https://www.themoviedb.org/movie/184345 was matched with top score: 0.697 to http://www.imdb.com/title/tt2243537 should be http://www.imdb.com/title/tt2828996
+      https://www.themoviedb.org/movie/251994 was matched with top score: 0.000 to http://www.imdb.com/title/tt0472553 should be http://www.imdb.com/title/tt0959306
+       https://www.themoviedb.org/movie/12811 was matched with top score: 0.024 to http://www.imdb.com/title/tt3326038 should be http://www.imdb.com/title/tt1054674
+       https://www.themoviedb.org/movie/49258 was matched with top score: 0.000 to http://www.imdb.com/title/tt0276063 should be http://www.imdb.com/title/tt0400761
+      https://www.themoviedb.org/movie/256306 was matched with top score: 0.000 to http://www.imdb.com/title/tt0470963 should be http://www.imdb.com/title/tt3420534
+      https://www.themoviedb.org/movie/255279 was matched with top score: 0.000 to http://www.imdb.com/title/tt0276063 should be http://www.imdb.com/title/tt3456464
+      https://www.themoviedb.org/movie/255817 was matched with top score: 0.048 to http://www.imdb.com/title/tt0209039 should be http://www.imdb.com/title/tt0109471
+       https://www.themoviedb.org/movie/27423 was matched with top score: 0.000 to http://www.imdb.com/title/tt0093088 should be http://www.imdb.com/title/tt0817928
+      https://www.themoviedb.org/movie/187432 was matched with top score: 0.000 to http://www.imdb.com/title/tt0287927 should be http://www.imdb.com/title/tt0070049
+      https://www.themoviedb.org/movie/173127 was matched with top score: 0.000 to http://www.imdb.com/title/tt0050431 should be http://www.imdb.com/title/tt0087319
+      https://www.themoviedb.org/movie/268174 was matched with top score: 0.000 to http://www.imdb.com/title/tt1235548 should be http://www.imdb.com/title/tt2375278
+      https://www.themoviedb.org/movie/260318 was matched with top score: 0.000 to http://www.imdb.com/title/tt0339091 should be http://www.imdb.com/title/tt3531604
+      https://www.themoviedb.org/movie/144639 was matched with top score: 0.000 to http://www.imdb.com/title/tt1437265 should be http://www.imdb.com/title/tt1867601
+  15 were not matched and no candidates were found:
+      https://www.themoviedb.org/movie/166452 was not matched but should be http://www.imdb.com/title/tt1899285
+       https://www.themoviedb.org/movie/45058 was not matched but should be http://www.imdb.com/title/tt0844678
+      https://www.themoviedb.org/movie/175112 was not matched but should be http://www.imdb.com/title/tt2483260
+      https://www.themoviedb.org/movie/112025 was not matched but should be http://www.imdb.com/title/tt1515202
+      https://www.themoviedb.org/movie/235222 was not matched but should be http://www.imdb.com/title/tt3233548
+       https://www.themoviedb.org/movie/72649 was not matched but should be http://www.imdb.com/title/tt1002765
+       https://www.themoviedb.org/movie/87083 was not matched but should be http://www.imdb.com/title/tt0091713
+      https://www.themoviedb.org/movie/129078 was not matched but should be http://www.imdb.com/title/tt0059706
+       https://www.themoviedb.org/movie/76662 was not matched but should be http://www.imdb.com/title/tt1820755
+      https://www.themoviedb.org/movie/228805 was not matched but should be http://www.imdb.com/title/tt3303446
+      https://www.themoviedb.org/movie/161371 was not matched but should be http://www.imdb.com/title/tt0087877
+      https://www.themoviedb.org/movie/243693 was not matched but should be http://www.imdb.com/title/tt2835050
+      https://www.themoviedb.org/movie/108704 was not matched but should be http://www.imdb.com/title/tt0115500
+      https://www.themoviedb.org/movie/253848 was not matched but should be http://www.imdb.com/title/tt0453323
+       https://www.themoviedb.org/movie/66209 was not matched but should be http://www.imdb.com/title/tt0083735
+  29 were not matched for unknown reasons:
+      https://www.themoviedb.org/movie/205401 has low top score: 0.048 but would be matched correctly to http://www.imdb.com/title/tt2089788
+      https://www.themoviedb.org/movie/119151 has low top score: 0.756 but would be matched correctly to http://www.imdb.com/title/tt0959477
+       https://www.themoviedb.org/movie/80692 has low top score: 0.000 but would be matched correctly to http://www.imdb.com/title/tt0083673
+       https://www.themoviedb.org/movie/81235 has low top score: 0.512 but would be matched correctly to http://www.imdb.com/title/tt0044796
+       https://www.themoviedb.org/movie/41094 has low top score: 0.675 but would be matched correctly to http://www.imdb.com/title/tt1052342
+      https://www.themoviedb.org/movie/257374 has low top score: 0.675 but would be matched correctly to http://www.imdb.com/title/tt0370294
+       https://www.themoviedb.org/movie/51817 has low top score: 0.421 but would be matched correctly to http://www.imdb.com/title/tt0326449
+       https://www.themoviedb.org/movie/22472 has low top score: 0.762 but would be matched correctly to http://www.imdb.com/title/tt1265599
+       https://www.themoviedb.org/movie/41490 has low top score: 0.338 but would be matched correctly to http://www.imdb.com/title/tt1612143
+      https://www.themoviedb.org/movie/102711 has low top score: 0.675 but would be matched correctly to http://www.imdb.com/title/tt0049874
+      https://www.themoviedb.org/movie/189219 has low top score: 0.675 but would be matched correctly to http://www.imdb.com/title/tt2332686
+      https://www.themoviedb.org/movie/235569 has low top score: 0.715 but would be matched correctly to http://www.imdb.com/title/tt0018287
+       https://www.themoviedb.org/movie/60807 has low top score: 0.683 but would be matched correctly to http://www.imdb.com/title/tt1579592
+      https://www.themoviedb.org/movie/139671 has low top score: 0.675 but would be matched correctly to http://www.imdb.com/title/tt2361567
+      https://www.themoviedb.org/movie/118906 has low top score: 0.756 but would be matched correctly to http://www.imdb.com/title/tt0294428
+       https://www.themoviedb.org/movie/56653 has low top score: 0.675 but would be matched correctly to http://www.imdb.com/title/tt0166808
+       https://www.themoviedb.org/movie/50129 has low top score: 0.488 but would be matched correctly to http://www.imdb.com/title/tt1422184
+      https://www.themoviedb.org/movie/110040 has low top score: 0.683 but would be matched correctly to http://www.imdb.com/title/tt0253623
+       https://www.themoviedb.org/movie/77241 has low top score: 0.512 but would be matched correctly to http://www.imdb.com/title/tt1807984
+       https://www.themoviedb.org/movie/34276 has low top score: 0.488 but would be matched correctly to http://www.imdb.com/title/tt0058100
+      https://www.themoviedb.org/movie/171827 has low top score: 0.424 but would be matched correctly to http://www.imdb.com/title/tt0235826
+      https://www.themoviedb.org/movie/133666 has low top score: 0.619 but would be matched correctly to http://www.imdb.com/title/tt1560950
+      https://www.themoviedb.org/movie/107320 has low top score: 0.048 but would be matched correctly to http://www.imdb.com/title/tt0116798
+      https://www.themoviedb.org/movie/229684 has low top score: 0.756 but would be matched correctly to http://www.imdb.com/title/tt0402016
+      https://www.themoviedb.org/movie/200029 has low top score: 0.756 but would be matched correctly to http://www.imdb.com/title/tt1258121
+      https://www.themoviedb.org/movie/191629 has low top score: 0.714 but would be matched correctly to http://www.imdb.com/title/tt2415904
+      https://www.themoviedb.org/movie/233032 has low top score: 0.707 but would be matched correctly to http://www.imdb.com/title/tt2367252
+       https://www.themoviedb.org/movie/88867 was matched with top score: 0.000 to http://www.imdb.com/title/tt0167224 should be http://www.imdb.com/title/tt1314367
+       https://www.themoviedb.org/movie/46959 has low top score: 0.756 but would be matched correctly to http://www.imdb.com/title/tt0096741
+ 239 were not matched because we do not have it in our database.
+ 128 had no imdb id.
+
+Precision = matched correctly/(correctly + incorrectly)
+Precision = 0.9907120743034056
+Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)
+Recall = 0.835509138381201
+F1-measure = (2 * Precision * Recall) / (Precision + Recall)
+F1-measure = 0.9065155807365438
+F2-measure = (5 * Precision * Recall) / (4 * Precision + Recall)
+F2-measure = 0.862533692722372
+
+BUILD SUCCESSFUL
+
+Total time: 15 mins 38.892 secs
