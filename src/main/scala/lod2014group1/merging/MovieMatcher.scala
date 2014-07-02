@@ -14,11 +14,6 @@ import lod2014group1.database.ResourceWithName
 import lod2014group1.rdf.RdfTriple
 
 class MovieMatcher(val triplifier: Triplifier) {
-	// TODO use orginial_title
-	// TODO use more to calc score (e.g. original_title distance)
-	// TODO candidate movies more criteria -> calc score and take top 100
-	// TODO find bugs (e.g. freebase)
-
 	val ACTOR_OVERLAP_MINIMUM       = 0.8
 	val ACTOR_OVERLAP_LEVENSHTEIN   = 3
 	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
@@ -182,28 +177,29 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 
 		println(s"========== Movie: ${currentMovieNames(0)} ==========")
-		val moviesWithSimilarName = movieNames.filter { movieWithName =>
+		val moviesWithSimilarName = movieNames.map { movieWithName =>
 			val names = List(movieWithName.name, movieWithName.originalTitle).filter(_ != null).distinct
 			val l = names.map { name =>
 				currentMovieNames.map { movieName =>
 					StringUtils.getLevenshteinDistance(name, movieName)
 				}.min
 			}.min
-			l < CANDIDATE_MOVIE_LEVENSHTEIN
+			(movieWithName, l)
 		}
 
-		val years = (g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease")::: g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:initialRelease")).map { yearString =>
-			val split = yearString.split("-")
-			split(0).replace("\"", "").toInt
-		}.distinct
-		if (years.isEmpty)
-			println("No years found.")
-		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
+		moviesWithSimilarName.filter(_._2 < CANDIDATE_MOVIE_LEVENSHTEIN).sortBy(_._2).take(100).map(_._1)
 
+//		val years = (g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease")::: g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:initialRelease")).map { yearString =>
+//			val split = yearString.split("-")
+//			split(0).replace("\"", "").toInt
+//		}.distinct
+//		if (years.isEmpty)
+//			println("No years found.")
+//		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
 //		val allCandidates = (moviesInYear ::: moviesWithSimilarName).distinct
-		val allCandidates = moviesWithSimilarName.distinct
+//		val allCandidates = moviesWithSimilarName.distinct
 
-		allCandidates
+//		allCandidates
 	}
 
 	case class CandidateScore(candidate: String, score: Double)
