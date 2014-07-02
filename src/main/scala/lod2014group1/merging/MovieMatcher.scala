@@ -12,13 +12,15 @@ import scala.util.Random
 import lod2014group1.database.ResourceWithName
 import lod2014group1.rdf.RdfTriple
 import java.text.Normalizer
+import java.util.Date
 
 class MovieMatcher(val triplifier: Triplifier) {
 	var ACTOR_OVERLAP_MINIMUM       = 0.8
 	var ACTOR_OVERLAP_LEVENSHTEIN   = 3
 	var CANDIDATE_MOVIE_LEVENSHTEIN = 5
-	var CANDIDATE_SET_SIZE          = 100
+	var CANDIDATE_SET_SIZE          = 10
 	var TEST_SET_SIZE               = 750
+	var RANDOM                      = 1001
 	var VERBOSE                     = true
 
 
@@ -79,7 +81,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 	var notInDb         = List[String]()
 
 	def runStatistic(dir: File): Unit = {
-		val r = new Random(1001)
+		val r = new Random(RANDOM)
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
 		try {
 			testSet.zipWithIndex.foreach(mergeMovie)
@@ -124,19 +126,20 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 		val triples = triplifier.triplify(FileUtils.readFileToString(file))
 		val tripleGraph = new TripleGraph(triples)
-		val imdbId = tripleGraph.getImdbId
+		val imdbId = tripleGraph.getImdbId()
 		if (imdbId == null) {
-			log("No IMDB ID. Skip.")
+//			log("No IMDB ID. Skip.")
 			noImdbId ::= fileId
 			return
 		}
 		if (!taskDb.hasTasks(imdbId)) {
-			log("Not in DB. Skip.")
+//			log("Not in DB. Skip.")
 			notInDb ::= fileId
 			return
 		}
 
-		log(i)
+		if (i % 1000 == 0)
+			log(f"$i%5s " + new Date().toString)
 		val candidates = merge(tripleGraph)
 		val candidateIds = candidates.map { c => getImdbId(c) }
 
@@ -176,7 +179,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		if (!imdbMovie.isEmpty){	
 			val movieResource = tripleGraph.getObjectOfType("dbpedia-owl:Film")
 			val movietriple = tripleGraph.getTriplesForSubject(movieResource)
-			Merger.mergeMovieTriple(imdbMovie.head.candidate, movietriple).foreach(log)
+//			Merger.mergeMovieTriple(imdbMovie.head.candidate, movietriple).foreach(log)
 			// TODO: Try other methods
 		}
 	}
@@ -195,7 +198,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 	def findCandidateMovies(g: TripleGraph): List[ResourceWithNameAndOriginalTitle] = {
 		val currentMovieNames = extractAllMovieNamesFromGraph(g)
 
-		log(s"========== Movie: ${currentMovieNames(0)} ==========")
+//		log(s"========== Movie: ${currentMovieNames(0)} ==========")
 		val moviesWithSimilarName = movieNames.map { movieWithName =>
 			val names = extractMovieNamesFromResource(movieWithName)
 			val l = names.map { name =>
@@ -225,7 +228,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 	def merge(triples: TripleGraph): List[CandidateScore] = {
 		val candidates = findCandidateMovies(triples)
-		log(s"Found ${candidates.size} candidates.")
+//		log(s"Found ${candidates.size} candidates.")
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
 			val scoringFunctions: List[(TripleGraph, ResourceWithNameAndOriginalTitle) => Double] = List(
@@ -247,9 +250,9 @@ class MovieMatcher(val triplifier: Triplifier) {
 		if (bestMovies.isEmpty)
 			return List()
 		if (bestMovies(0).score < ACTOR_OVERLAP_MINIMUM) {
-			log("Could not find a single match. Here are the best five matches:")
+//			log("Could not find a single match. Here are the best five matches:")
 			bestMovies.take(5).foreach { movie =>
-				log(movie.candidate.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/") + " with score "  + movie.score)
+//				log(movie.candidate.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/") + " with score "  + movie.score)
 			}
 		}
 		bestMovies

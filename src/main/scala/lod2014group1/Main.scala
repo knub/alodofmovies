@@ -59,13 +59,18 @@ object Main extends App with Logging {
 					merger.runStatistic(dir)
 				case _ =>
 					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
-					(10 to (100, 10)).foreach { size =>
-						println(s"=== Using the $size best candidate movies ===")
-						val merger = new MovieMatcher(new TmdbMovieTriplifier())
-						merger.VERBOSE = false
-						merger.CANDIDATE_SET_SIZE = size
-						merger.runStatistic(tmdbDir)
-					}
+					val merger = new MovieMatcher(new TmdbMovieTriplifier())
+					merger.VERBOSE = true
+					merger.RANDOM = 1002
+					merger.TEST_SET_SIZE = 7000
+					merger.runStatistic(tmdbDir)
+//					(10 to (100, 10)).foreach { size =>
+//						println(s"=== Using the $size best candidate movies ===")
+//						val merger = new MovieMatcher(new TmdbMovieTriplifier())
+//						merger.VERBOSE = false
+//						merger.CANDIDATE_SET_SIZE = size
+//						time(merger.runStatistic(tmdbDir))
+//					}
 			}
 		} else if (args contains "update") {
 			new UpdateScheduler().update()
@@ -81,6 +86,18 @@ object Main extends App with Logging {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}
 		log.debug("Finished.")
+	}
+
+
+	def time[R](block: => R): Double = {
+		val start = System.nanoTime()
+		val result = block
+		val end = System.nanoTime()
+		val time = (end - start) / 1000 / 1000 / 1000
+		val min = time / 60
+		val sec = time - min * 60
+		println(s"Took $min min $sec s.")
+		time
 	}
 }
 
