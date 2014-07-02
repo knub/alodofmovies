@@ -36,6 +36,13 @@ object WorkerTask {
 				"graph" -> dbTask.flag
 			))
 
+		else if (TaskType.withName(dbTask.taskType) == TaskType.Crawlifymerge)
+			WorkerTask(dbTask.taskType, dbTask.id, Map(
+				"uri" -> dbTask.fileOrUrl,
+				"graph" -> dbTask.graph,
+				"flag" -> dbTask.flag
+			))
+
 		else
 			throw new RuntimeException("Not handled yet.")
 
