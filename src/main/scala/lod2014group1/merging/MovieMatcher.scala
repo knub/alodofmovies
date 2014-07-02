@@ -81,7 +81,14 @@ class MovieMatcher(val triplifier: Triplifier) {
 	def runStatistic(dir: File): Unit = {
 		val r = new Random(1001)
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
-		testSet.zipWithIndex.foreach(mergeMovie)
+		try {
+			testSet.zipWithIndex.foreach(mergeMovie)
+		} catch {
+			case e: Throwable =>
+				println("Early abort because of:")
+				println(e.printStackTrace())
+				println(e)
+		}
 
 		log(f"${testSet.size}%4s files: ")
 		log(f"${trueMatched.size}%4s were matched correctly.")
