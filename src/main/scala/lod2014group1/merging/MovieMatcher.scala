@@ -20,9 +20,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 	val ACTOR_OVERLAP_MINIMUM       = 0.8
 	val ACTOR_OVERLAP_LEVENSHTEIN   = 3
 	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
-//	val TEST_SET_SIZE             = 5
-	// val TEST_SET_SIZE               = 750
-	val TEST_SET_SIZE               = 200
+	val TEST_SET_SIZE               = 750
 
 
 	val tmdbTriplifier = new TmdbMovieTriplifier
@@ -206,7 +204,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		println(s"Found ${candidates.size} candidates.")
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
-			val overlaps: List[(TripleGraph, String) => Double] = List(calculateActorOverlap, calculateWriterOverlap, calculateDirectorOverlap, calculateProducerOverlap)
+			val overlaps: List[(TripleGraph, String) => Double] = List(calculateActorOverlap, calculateDirectorOverlap)
 			val score = avg(overlaps.map(_(triples, candidate.resource)).filter(_ != -1.0))
 			movieScores += (candidate.resource -> score)
 		}
