@@ -48,7 +48,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 			}
 			if (correct != null){
 				val correctUri = UriBuilder.getImdbMovieUri(correct)
-				if ((score == -1.0 || matched == null)) {
+				if (score == -1.0 || matched == null) {
 					f"$originUri%45s was not matched but should be $correctUri"
 				} else {
 					if (matched.equals(correct)) {
@@ -147,7 +147,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 					falseMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 			}
 		}
-
 	}
 
 	def minScore(cs: CandidateScore): Boolean = {
