@@ -52,14 +52,24 @@ class AnswerHandler extends Logging {
 		if (triplesToStore(graph).size > BULK_LOAD_SIZE) {
 			//if (bulkLoadThread != null)
 			//	bulkLoadThread.join()
-			bulkLoadThread = new BulkLoadThread(triplesToStore(graph), graph, ids)
-			bulkLoadThread.run()
-			triplesToStore(graph) = List()
-			ids = List()
+			finish(graph)
 		}
 
 		writeFiles(answer.files)
 	}
+
+	def finish(graph: String): Unit = {
+		bulkLoadThread = new BulkLoadThread(triplesToStore(graph), graph, ids)
+		bulkLoadThread.run()
+		triplesToStore(graph) = List()
+		ids = List()
+	}
+	def finish(): Unit = {
+		triplesToStore.keys.foreach { graph =>
+			finish(graph)
+		}
+	}
+
 
 	def writeFiles(files: List[UriFile]): Unit = {
 		files.foreach { file: UriFile =>

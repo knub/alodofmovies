@@ -25,6 +25,7 @@ class OfflineTaskRunner extends Logging {
 				if (task.id % 100 == 0)
 					log.info(task.id.toString)
 		}
+		answerHandler.finish
 	}
 
 }
