@@ -97,9 +97,13 @@ class MovieMatcher(val triplifier: Triplifier) {
 		println("Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)")
 		val recall = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size + noCandidates.size + notInCandidate.size + notMatched.size)
 		println(s"Recall = $recall")
-		println("F-measure = (2 * Precision * Recall) / (Precision + Recall)")
-		val fMeasure = (2 * precision * recall) / (precision + recall)
-		println(s"F-measure = $fMeasure")
+		println("F1-measure = (2 * Precision * Recall) / (Precision + Recall)")
+		val f1Measure = (2 * precision * recall) / (precision + recall)
+		println(s"F1-measure = $f1Measure")
+
+		println("F2-measure = (5 * Precision * Recall) / (4 * Precision + Recall)")
+		val f2Measure = (5 * precision * recall) / (4 * precision + recall)
+		println(s"F2-measure = $f2Measure")
 	}
 
 	def mergeMovie(t: (File, Int)): Unit = {
