@@ -54,7 +54,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 					f"$originUri%45s was not matched but should be $correctUri"
 				} else {
 					if (matched.equals(correct)) {
-						f"$originUri%45s matched with top score: $score%.3f correclty to $correctUri"
+						f"$originUri%45s matched with top score: $score%.3f correctly to $correctUri"
 					} else {
 						val matchedUri = UriBuilder.getImdbMovieUri(matched)
 						f"$originUri%45s matched with top score: $score%.3f to $matchedUri should be $correctUri"
@@ -230,7 +230,10 @@ class MovieMatcher(val triplifier: Triplifier) {
 	}
 
 	def avg(l: List[Double]): Double = {
-		l.sum / l.size.toDouble
+		if (l.isEmpty)
+			0.0
+		else
+			l.sum / l.size.toDouble
 	}
 
 	def calculateActorOverlap(g: TripleGraph, candidateUri: String): Double = {
@@ -278,7 +281,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 		val similarObjects = currentObjects.flatMap { currentObject =>
 			val bestMatch = candidateObjects.map { canidateObject =>
-				StringUtils.getLevenshteinDistance(canidateObject.name, currentObject)
+				StringUtils.getLevenshteinDistance(sortName(canidateObject.name), sortName(currentObject))
 			}.min
 
 			if (bestMatch < ACTOR_OVERLAP_LEVENSHTEIN)
@@ -290,5 +293,9 @@ class MovieMatcher(val triplifier: Triplifier) {
 			0.0
 		else
 			similarObjects.size.toDouble / currentObjects.size
+	}
+
+	def sortName(name: String): String = {
+		name.split(" ").sorted.mkString(" ")
 	}
 }
