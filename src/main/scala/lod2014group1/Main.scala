@@ -52,7 +52,6 @@ object Main extends App with Logging {
 			ImdbStatisticUpdater.watchUpcomingMovies()
 			ImdbStatisticUpdater.watchExistingMovie()
 		} else if (args contains "merge-tmdb") {
-
 			I.am match {
 				case Config.Person.Rice =>
 					val dir = new File (s"${Config.DATA_FOLDER}/Freebase/film/")
@@ -64,7 +63,7 @@ object Main extends App with Logging {
 					val merger = new MovieMatcher(new TmdbMovieTriplifier())
 					merger.runStatistic(tmdbDir)
 			}
-		} else if (args contains "update-daily") {
+		} else if (args contains "update") {
 			new UpdateScheduler().update()
 		} else if (args contains "fixx") {
 //			val taskDb = new TaskDatabase
