@@ -164,9 +164,9 @@ class VirtuosoRemoteDatabase(sparqlEndpoint: String) extends VirtuosoDatabase {
 	}
 
 	def deleteTriples(uri: String, property: String, obj: String): Unit = {
-		val n1 = Node.createURI(uri)
-		val n2 = Node.createURI(property)
-		val n3 = Node.createLiteral(obj)
+		val n1 = NodeFactory.createURI(uri)
+		val n2 = NodeFactory.createURI(property)
+		val n3 = NodeFactory.createLiteral(obj)
 		g.delete(new Triple(n1, n2, n3))
 	}
 

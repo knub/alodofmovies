@@ -1,6 +1,6 @@
 package lod2014group1.database
 
-import com.hp.hpl.jena.graph.{NodeFactory, Node}
+import com.hp.hpl.jena.graph.{NodeFactory, Triple, Node}
 import com.hp.hpl.jena.shared.DeleteDeniedException
 import com.hp.hpl.jena.util.iterator.ExtendedIterator
 import lod2014group1.Config
@@ -196,7 +196,7 @@ object Queries {
 		val graph = new VirtGraph(graphName, "jdbc:virtuoso://172.16.22.196:1111", "dba", "dba")
 
 		// get all triples of the movie resource
-		val iterator: ExtendedIterator[com.hp.hpl.jena.graph.Triple] = graph.find(Node.createURI(movieResource), Node.ANY, Node.ANY)
+		val iterator: ExtendedIterator[com.hp.hpl.jena.graph.Triple] = graph.find(NodeFactory.createURI(movieResource), Node.ANY, Node.ANY)
 		var triplesToDelete: List[com.hp.hpl.jena.graph.Triple] = iterator.toList.toList
 
 		// get all resources (award, aka, releaseInfo, character) of the movie
@@ -206,12 +206,12 @@ object Queries {
 
 		// get all triples of other resources
 		triplesToDelete = triplesToDelete ::: otherResources.flatMap{ res =>
-			graph.find(Node.createURI(res.getObject.toString), Node.ANY, Node.ANY).toList
+			graph.find(NodeFactory.createURI(res.getObject.toString), Node.ANY, Node.ANY).toList
 		}
 
 		// get all triples which point to the movie or one of the other resources
 		triplesToDelete = triplesToDelete ::: otherResources.flatMap{ res =>
-			graph.find(Node.ANY, Node.ANY, Node.createURI(res.getObject.toString)).toList
+			graph.find(Node.ANY, Node.ANY, NodeFactory.createURI(res.getObject.toString)).toList
 		}
 
 		// delete all triples
