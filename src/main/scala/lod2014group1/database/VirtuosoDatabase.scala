@@ -156,7 +156,7 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 
 
 class VirtuosoRemoteDatabase(sparqlEndpoint: String) extends VirtuosoDatabase {
-	println("Note: Using %s as remote database.".format(sparqlEndpoint))
+//	println("Note: Using %s as remote database.".format(sparqlEndpoint))
 	val g = new VirtGraph("http://172.16.22.196/imdb", "jdbc:virtuoso://172.16.22.196:1111", "dba", "dba")
 	def buildQuery(queryString: String): QueryExecution = {
 		val query: Query = QueryFactory.create(queryString.replace("FROM <graph>", ""))
