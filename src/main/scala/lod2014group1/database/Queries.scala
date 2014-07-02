@@ -1,6 +1,6 @@
 package lod2014group1.database
 
-import com.hp.hpl.jena.graph.Node
+import com.hp.hpl.jena.graph.{NodeFactory, Node}
 import com.hp.hpl.jena.shared.DeleteDeniedException
 import com.hp.hpl.jena.util.iterator.ExtendedIterator
 import lod2014group1.Config
@@ -192,11 +192,6 @@ object Queries {
 		results
 	}
 
-	def deleteNameAndOriginalTitleTriples(resource: ResourceWithNameAndOriginalTitle): Unit = {
-		database.deleteTriples(resource.resource, "http://dbpedia.org/property/originalTitle", resource.originalTitle)
-		database.deleteTriples(resource.resource, "http://dbpedia.org/property/name", resource.name)
-	}
-
 	def deleteTriplesForMovie(movieResource: String, graphName: String) {
 		val graph = new VirtGraph(graphName, "jdbc:virtuoso://172.16.22.196:1111", "dba", "dba")
 
@@ -245,7 +240,7 @@ object Queries {
 		""".stripMargin
 	}
 
-	def deleteNameAndOriginalTitleTriples(resource: ResourceWithNameAndOriginalTitle) {
+	def deleteNameAndOriginalTitleTriples(resource: ResourceWithNameAndOriginalTitle): Unit = {
 		database.deleteTriples(resource.resource, "http://dbpedia.org/property/originalTitle", resource.originalTitle)
 		database.deleteTriples(resource.resource, "http://dbpedia.org/property/name", resource.name)
 	}

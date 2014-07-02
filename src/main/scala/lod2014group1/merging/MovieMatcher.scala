@@ -183,9 +183,11 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 		println(s"========== Movie: ${currentMovieNames(0)} ==========")
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
-			val names = List(movieWithName.name, movieWithName.originalTitle).filter(_ != null)
-			val l = currentMovieNames.map { movieName =>
-				StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
+			val names = List(movieWithName.name, movieWithName.originalTitle).filter(_ != null).distinct
+			val l = names.map { name =>
+				currentMovieNames.map { movieName =>
+					StringUtils.getLevenshteinDistance(name, movieName)
+				}.min
 			}.min
 			l < CANDIDATE_MOVIE_LEVENSHTEIN
 		}
