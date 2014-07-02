@@ -20,6 +20,13 @@ class TripleGraph(triples: List[RdfTriple]) {
 				edge.target.toString == rdfType
 		}.get.source
 	}
+	
+	def getObjectListOfType(rdfType: String): List[String] = {
+		edges.filter { edge =>
+			edge.label.toString == "rdf:type" &&
+				edge.target.toString == rdfType
+		}.map {o => o.source}
+	}
 
 	def getObjectsFor(query1: String, query2: String): List[String] = {
 		getObjectsForPredicate(query1).flatMap { o =>
@@ -45,6 +52,7 @@ class TripleGraph(triples: List[RdfTriple]) {
 			edge.target
 		}.toList
 	}
+	
 
 	def getTriplesForSubjectAndPredicate(subject: String, predicate: String) : List[RdfTriple] = {
 		val s = edges.filter { edge =>
@@ -56,6 +64,17 @@ class TripleGraph(triples: List[RdfTriple]) {
 			getTriplesForSubject(edge.target)
 		}.toList
 	}
+	
+	def getTriplesForSubjectAndObject(subject: String, objectString: String) : List[RdfTriple] = {
+		val s = edges.filter { edge =>
+			edge.source == subject &&
+				edge.target == objectString
+		}
+
+		s.map { edge =>
+			RdfTriple(RdfResource(edge.source), RdfResource(edge.label.toString), RdfResource(edge.target))
+		}.toList
+	}
 
 	def getTriplesForSubject(subject: String) : List[RdfTriple] = {
 		val s = edges.filter { edge =>
@@ -65,5 +84,12 @@ class TripleGraph(triples: List[RdfTriple]) {
 		s.map { edge =>
 			RdfTriple(RdfResource(edge.source), RdfResource(edge.label.toString), RdfResource(edge.target))
 		}.toList
+	}
+	
+	def getImdbId(): String = {
+		val sameAsTriples = getObjectsForPredicate("owl:sameAs").filter(p => p.contains("http://imdb.com/title/"))
+		if (sameAsTriples.isEmpty)
+			return null
+		sameAsTriples.head.split("/").last.split(">")(0)
 	}
 }

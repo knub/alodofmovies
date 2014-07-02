@@ -15,7 +15,9 @@ object Config {
 	def SPARQL_ENDPOINT = "http://172.16.22.196:8890/sparql"
 
 	def DELETE_FIRST_FLAG = "deleteFirst"
-
+		
+	def LOD_PREFIX = "http://purl.org/hpi/movie#"	
+		
 	object Person extends Enumeration {
 		type Person = Value
 	    val Dominik, Rice, Stefan, Tanja, Tim, Server, RealServer = Value

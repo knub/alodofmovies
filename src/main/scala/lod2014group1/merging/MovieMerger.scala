@@ -1,0 +1,51 @@
+package lod2014group1.merging
+
+import lod2014group1.rdf.RdfTriple
+import lod2014group1.rdf.UriBuilder
+import lod2014group1.database.Queries
+import org.apache.commons.lang3.StringUtils
+import lod2014group1.triplification.FreebaseFilmsTriplifier
+import lod2014group1.Config
+import java.io.File
+
+object MovieMerger extends App{
+	
+	def merge(triples: List[RdfTriple]): List[RdfTriple] = {
+		val tripleGraph = new TripleGraph(triples)
+		val imdbId = tripleGraph.getImdbId
+		
+		if (imdbId == null) return List()
+		
+		val movieResource = tripleGraph.getObjectOfType("dbpedia-owl:Film")
+		val movieTriple = tripleGraph.getTriplesForSubject(movieResource)
+		val imdbResource = UriBuilder.getMovieUriFromImdbIdWithoutPrefix(imdbId)
+		val movieTripleToLoad = Merger.mergeMovieTriple(imdbResource, movieTriple)
+		
+		val personResources = tripleGraph.getObjectListOfType("dbpedia-owl:Person").distinct
+		val imdbPersons = Queries.getAllActorsOfMovie(imdbResource)
+		
+		movieTripleToLoad ::: personResources.flatMap{personResource => 
+			val personName = tripleGraph.getObjectsForSubjectAndPredicate(personResource, "dbpprop:name").head
+			val personTriples = tripleGraph.getTriplesForSubject(personResource)
+			val personMovieTriple = tripleGraph.getTriplesForSubjectAndObject(movieResource, personResource)
+			imdbPersons.flatMap{imdbPerson =>
+				if (areActorNamesEqual(imdbPerson.name, personName)){
+					Merger.mergeActorTriple(imdbPerson.resource, personTriples) ::: Merger.replaceSubjectAndObject(imdbResource, imdbPerson.resource, personMovieTriple)
+					//TODO Charakter if not exists
+				} else List()
+			}
+		}
+	}
+	
+	def areActorNamesEqual(imdbActorName : String, actorName : String): Boolean = {
+		imdbActorName == actorName
+	}
+	
+	override def main(args: Array[String]): Unit = {
+		val triple = (new FreebaseFilmsTriplifier).triplify(new File(s"${Config.DATA_FOLDER}/Freebase/0bdjd"))
+		//triple.foreach(println)
+		println("==================================================")
+		merge (triple).foreach(println)
+	}
+	
+}

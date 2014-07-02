@@ -85,6 +85,7 @@ class FreebaseExtraction() {
 		val person = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseId(p.id))
 		val triple = List(person isA RdfPersonResource.actor,
 				person isA(RdfPersonResource.person),
+				person hasName p.text,
 				person hasLabel p.text)
 		val resourceTriple = resource match {
 			case Some(resource) => List(person isA resource)
@@ -183,7 +184,7 @@ class FreebaseExtraction() {
 				case Some(person) => {
 					val personResource = new RdfPersonResource(UriBuilder.getPersonUriFromFreebaseId(person.id))
 					
-					val triple = List(personResource isA RdfPersonResource.actor, personResource.hasName(person.text), personResource.hasLabel(person.text), movie starring personResource)
+					val triple = List(personResource isA RdfPersonResource.actor, personResource isA RdfPersonResource.person, personResource.hasName(person.text), personResource.hasLabel(person.text), movie starring personResource)
 					
 					val characterJson = starringJson \ "/film/performance/character" \ "values"
 					val character = characterJson.extractOpt[Person]

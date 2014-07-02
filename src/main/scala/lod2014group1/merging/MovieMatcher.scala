@@ -20,17 +20,11 @@ class MovieMatcher(val triplifier: Triplifier) {
 	val TEST_SET_SIZE               = 750
 
 
+
 	val tmdbTriplifier = new TmdbMovieTriplifier
 	val movieNames = Queries.getAllMoviesWithNameAndOriginalTitles
 	val taskDb = new TaskDatabase()
 	new File(s"data/MergeMovieActor/").mkdir()
-
-	def getImdbId(g: TripleGraph): String = {
-		val sameAsTriples = g.getObjectsForPredicate("owl:sameAs").filter(p => p.contains("http://imdb.com/title/"))
-		if (sameAsTriples.isEmpty)
-			return null
-		sameAsTriples.head.split("/").last.split(">")(0)
-	}
 
 	def getImdbId(cs: CandidateScore): String = {
 		cs.candidate.split("Movie").last
@@ -113,7 +107,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 		val triples = triplifier.triplify(FileUtils.readFileToString(file))
 		val tripleGraph = new TripleGraph(triples)
-		val imdbId = getImdbId(tripleGraph)
+		val imdbId = tripleGraph.getImdbId
 		if (imdbId == null) {
 			println("No IMDB ID. Skip.")
 			noImdbId ::= fileId
