@@ -59,9 +59,13 @@ object Main extends App with Logging {
 					merger.runStatistic(dir)
 				case _ =>
 					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
-					val merger = new MovieMatcher(new TmdbMovieTriplifier())
-					merger.VERBOSE = false
-					merger.runStatistic(tmdbDir)
+					(10 to (100, 10)).foreach { size =>
+						println(s"=== Using the $size best candidate movies ===")
+						val merger = new MovieMatcher(new TmdbMovieTriplifier())
+						merger.VERBOSE = false
+						merger.CANDIDATE_SET_SIZE = size
+						merger.runStatistic(tmdbDir)
+					}
 			}
 		} else if (args contains "update") {
 			new UpdateScheduler().update()

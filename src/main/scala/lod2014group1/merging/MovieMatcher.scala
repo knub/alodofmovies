@@ -17,6 +17,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 	var ACTOR_OVERLAP_MINIMUM       = 0.8
 	var ACTOR_OVERLAP_LEVENSHTEIN   = 3
 	var CANDIDATE_MOVIE_LEVENSHTEIN = 5
+	var CANDIDATE_SET_SIZE          = 100
 	var TEST_SET_SIZE               = 750
 	var VERBOSE                     = true
 
@@ -198,7 +199,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 			(movieWithName, l)
 		}
 
-		moviesWithSimilarName.filter(_._2 < CANDIDATE_MOVIE_LEVENSHTEIN).sortBy(_._2).take(100).map(_._1)
+		moviesWithSimilarName.filter(_._2 < CANDIDATE_MOVIE_LEVENSHTEIN).sortBy(_._2).take(CANDIDATE_SET_SIZE).map(_._1)
 
 //		val years = (g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease")::: g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:initialRelease")).map { yearString =>
 //			val split = yearString.split("-")
