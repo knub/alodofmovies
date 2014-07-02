@@ -13,7 +13,7 @@ import net.liftweb.json.Serialization.{read, write}
 
 class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 
-	val workerAssignment = Map(Triplify -> classOf[TriplifyWorker], Crawl -> classOf[CrawlWorker], Crawlify -> classOf[CrawlifyWorker])
+	val workerAssignment = Map(Triplify -> classOf[TriplifyWorker], Crawl -> classOf[CrawlWorker], Crawlify -> classOf[CrawlifyWorker], Triplimerge -> classOf[TriplimergeWorker])
 	var log: Logger = _
 	var consumer: QueueingConsumer = _
 	var listenChannel: Channel = _

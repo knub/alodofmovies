@@ -29,6 +29,13 @@ object WorkerTask {
 				"flag" -> dbTask.flag
 			))
 
+		else if (TaskType.withName(dbTask.taskType) == TaskType.Triplimerge)
+			WorkerTask(dbTask.taskType, dbTask.id, Map(
+				"fileName" -> dbTask.fileOrUrl,
+				"content" -> dbTask.graph,
+				"graph" -> dbTask.flag
+			))
+
 		else
 			throw new RuntimeException("Not handled yet.")
 
