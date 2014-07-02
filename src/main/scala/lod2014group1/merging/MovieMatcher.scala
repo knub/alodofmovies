@@ -122,6 +122,9 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 	def mergeMovie(t: (File, Int)): Unit = {
 		val (file, i) = t
+
+		if (i % 1000 == 0)
+			log(f"$i%5s " + new Date().toString)
 		val fileId = file.getName.replace(".json", "")
 
 		val triples = triplifier.triplify(FileUtils.readFileToString(file))
@@ -137,9 +140,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 			notInDb ::= fileId
 			return
 		}
-
-		if (i % 1000 == 0)
-			log(f"$i%5s " + new Date().toString)
 		val candidates = merge(tripleGraph)
 		val candidateIds = candidates.map { c => getImdbId(c) }
 
