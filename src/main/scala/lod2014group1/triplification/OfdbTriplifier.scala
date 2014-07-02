@@ -23,37 +23,25 @@ import scala.io.Codec
 import java.nio.charset.CodingErrorAction
 import lod2014group1.rdf.UriBuilder
 
-class OfdbTriplifier(val ofdbId: String) {
-	val OFDB_PATH = s"${Config.DATA_FOLDER}/OFDB"
-	val movie = movieResourceFromRdfResource(RdfResource(UriBuilder.getOfdbMovieUri(ofdbId)))
-	implicit val codec = Codec("UTF-8")
-	codec.onMalformedInput(CodingErrorAction.REPLACE)
-	codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
-	val filmPath = s"${OFDB_PATH}/Movies/$ofdbId/Film.html"
-	val castPath = s"${OFDB_PATH}/Movies/$ofdbId/Cast.html"
+class OfdbTriplifier extends Triplifier {
 	
-	def triplify(): List[RdfTriple] = {
+	def triplify(docString : String): List[RdfTriple] = {
 		var triples: List[RdfTriple] = List()
 		
+		if (docString.contains("""<h1 itemprop="name">"""))
+			triples = triplifyFilm(docString)
 		
-		if (!Files.exists(Paths.get(filmPath))){
-			println(s"$filmPath not found. Could not triplify.")
-			return triples
-		}
-		val docString = Source.fromFile(filmPath)(codec).mkString
-		
-		
-		triples = triplifyFilm(docString)
-		triples = triplifyCast(docString) ::: triples
-		val triplesSize = triples.size - 1
-		//for (k <- 0 to triplesSize){
-		//	println(triples(k).toString)
-		//}
+		else if (docString.contains("""value="Zurück zur Hauptseite""""))
+			triples = triplifyCast(docString) ::: triples
+			
 		triples
 	}
 
 	def triplifyFilm(docString : String): List[RdfTriple] = {	
 		var triples: List[RdfTriple] = List()
+		
+		val ofdbId = docString.split("""bewertung&fid=""", 2)(1).split("""">""", 2)(0)
+		var movie = movieResourceFromRdfResource(RdfResource(UriBuilder.getOfdbMovieUri(ofdbId)))
 		
 		if(docString.contains("Unter dieser ID existiert kein Film."))
 			return triples
@@ -139,6 +127,11 @@ class OfdbTriplifier(val ofdbId: String) {
 	}
 	
 	def triplifyCast(docString : String): List[RdfTriple] = {		
+		val ofdbId = docString.split("""onClick="javascript:document.location='film/""", 2)(1).split(",", 2)(0)
+		
+		val movie = movieResourceFromRdfResource(RdfResource(UriBuilder.getOfdbMovieUri(ofdbId)))
+		
+		
 		var triples: List[RdfTriple] = List()
 		
 		if(docString.contains("Unter dieser ID existiert kein Film."))

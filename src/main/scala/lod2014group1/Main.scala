@@ -3,7 +3,7 @@ package lod2014group1
 import lod2014group1.crawling.Crawler
 import lod2014group1.database.{DatabasePopulator, TaskDatabase, Queries}
 import org.slf4s.Logging
-import lod2014group1.triplification.{TmdbMovieTriplifier, TriplifyDistributor}
+import lod2014group1.triplification.{TmdbMovieTriplifier, TriplifyDistributor, OfdbTriplifier}
 import lod2014group1.messaging._
 import lod2014group1.merging.{MovieMerger, MovieMatcher}
 import lod2014group1.updating.{UpdateScheduler, ImdbStatisticUpdater}
@@ -76,6 +76,11 @@ object Main extends App with Logging {
 						}
 					}
 			}
+		} else if (args contains "merge-ofdb") {
+			val dir = new File (s"${Config.DATA_FOLDER}/OFDB/movies/")
+			val merger = new MovieMatcher(new OfdbTriplifier())
+			merger.runStatistic(dir)
+			return
 		} else if (args contains "update") {
 			new UpdateScheduler().update()
     } else if (args contains "populateMerge") {

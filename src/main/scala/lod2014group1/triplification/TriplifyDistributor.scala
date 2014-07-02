@@ -7,6 +7,9 @@ import org.apache.commons.io.FileUtils
 import lod2014group1.crawling.ImdbMovieCrawler
 import scala.collection.JavaConversions._
 import org.slf4s.Logging
+import scala.io.Codec
+import java.nio.charset.CodingErrorAction
+import scala.io.Source
 
 class TriplifyDistributor {
 
@@ -38,18 +41,12 @@ class TriplifyDistributor {
 				return new ImdbActorTriplifier(imdbId).triplify(content)
 
 		} else if (fileName.contains("OFDB/Movies")){
-			val ofdbId = fileName.split("/", 3)(1)
-			if (fileName.contains("film.html"))
-				return new OfdbTriplifier(ofdbId).triplifyFilm(content)
-			else if (fileName.contains("cast.html"))
-				return new OfdbTriplifier(ofdbId).triplifyCast(content)
-
-    } else if (fileName.contains("Freebase")){
-      val triplifier = new FreebaseFilmsTriplifier()
-      return triplifier.triplify(content)
-    }
-
-		throw new RuntimeException(s"Could not find triplifier for file $fileName.")
+			return new OfdbTriplifier().triplify(content)
+		} else if (fileName.contains("Freebase")){
+			val triplifier = new FreebaseFilmsTriplifier()
+			return triplifier.triplify(content)
+		}
+	throw new RuntimeException(s"Could not find triplifier for file $fileName.")
 	} 
 }
 
@@ -86,10 +83,19 @@ object TriplifyDistributor extends Logging {
 				part
 			case Config.Person.Tim =>
 				var ofdbTriples: List[RdfTriple] = List()
-				for (i <- 1 to 1){
-				val ofdbTriplifier = new OfdbTriplifier(i.toString())
-					ofdbTriples = ofdbTriplifier.triplify() ::: ofdbTriples
-					if(i % 10 == 0) 	println(s"$i Ofdb Movies triplified.")
+				implicit val codec = Codec("UTF-8")
+				codec.onMalformedInput(CodingErrorAction.REPLACE)
+				codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
+	
+				for (ofdbId <- 10166 to 10166){
+					val ofdbTriplifier = new OfdbTriplifier()
+					val filmPath = s"${Config.DATA_FOLDER}/OFDB/Movies/$ofdbId/Film.html"
+					val castPath = s"${Config.DATA_FOLDER}/OFDB/Movies/$ofdbId/Cast.html"
+					val filmString = Source.fromFile(filmPath)(codec).mkString
+					ofdbTriples = ofdbTriplifier.triplify(filmString) ::: ofdbTriples
+					val castString = Source.fromFile(castPath)(codec).mkString
+					ofdbTriples = ofdbTriplifier.triplify(castString) ::: ofdbTriples
+					if(ofdbId % 10 == 0) 	println(s"$ofdbId Ofdb Movies triplified.")
 				}
 				ofdbTriples
 				//List()
