@@ -6,22 +6,26 @@ import lod2014group1.database._
 import org.apache.commons.lang3.StringUtils
 import scala.pickling._
 import json._
-import org.apache.commons.io.{FileUtils, IOUtils}
-import lod2014group1.rdf.{UriBuilder, RdfTriple}
+import org.apache.commons.io.FileUtils
+import lod2014group1.rdf.UriBuilder
 import scala.util.Random
-import scala.slick.lifted.Functions
 import lod2014group1.database.ResourceWithName
 import lod2014group1.rdf.RdfTriple
 import java.text.Normalizer
 
 class MovieMatcher(val triplifier: Triplifier) {
-	val ACTOR_OVERLAP_MINIMUM       = 0.8
-	val ACTOR_OVERLAP_LEVENSHTEIN   = 3
-	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
-	val TEST_SET_SIZE               = 750
+	var ACTOR_OVERLAP_MINIMUM       = 0.8
+	var ACTOR_OVERLAP_LEVENSHTEIN   = 3
+	var CANDIDATE_MOVIE_LEVENSHTEIN = 5
+	var TEST_SET_SIZE               = 750
+	var VERBOSE                     = true
 
 
-
+	def log(): Unit = {}
+	def log(s: Any): Unit = {
+		if (VERBOSE)
+			println(s.toString)
+	}
 	val tmdbTriplifier = new TmdbMovieTriplifier
 	val movieNames = Queries.getAllMoviesWithNameAndOriginalTitles
 	val taskDb = new TaskDatabase()
@@ -78,30 +82,30 @@ class MovieMatcher(val triplifier: Triplifier) {
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
 		testSet.zipWithIndex.foreach(mergeMovie)
 
-		println(f"${testSet.size}%4s files: ")
-		println(f"${trueMatched.size}%4s were matched correctly.")
-		println(f"${falseMatched.size}%4s were matched incorrectly:")
-		falseMatched.foreach(println)
-		println(f"${notInCandidate.size}%4s were not matched and are not candidates:")
-		notInCandidate.foreach(println)
-		println(f"${noCandidates.size}%4s were not matched and no candidates were found:")
-		noCandidates.foreach(println)
-		println(f"${notMatched.size}%4s were not matched for unknown reasons:")
-		notMatched.foreach(println)
-		println(f"${notInDb.size}%4s were not matched because we do not have it in our database.")
-		println(f"${noImdbId.size}%4s had no imdb id.")
-		println()
-		println("Precision = matched correctly/(correctly + incorrectly)")
+		log(f"${testSet.size}%4s files: ")
+		log(f"${trueMatched.size}%4s were matched correctly.")
+		log(f"${falseMatched.size}%4s were matched incorrectly:")
+		falseMatched.foreach(log)
+		log(f"${notInCandidate.size}%4s were not matched and are not candidates:")
+		notInCandidate.foreach(log)
+		log(f"${noCandidates.size}%4s were not matched and no candidates were found:")
+		noCandidates.foreach(log)
+		log(f"${notMatched.size}%4s were not matched for unknown reasons:")
+		notMatched.foreach(log)
+		log(f"${notInDb.size}%4s were not matched because we do not have it in our database.")
+		log(f"${noImdbId.size}%4s had no imdb id.")
+		log()
+		log("Precision = matched correctly/(correctly + incorrectly)")
 		val precision = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size)
-		println(s"Precision = $precision")
-		println("Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)")
+		println(s"Precision    = $precision")
+		log("Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)")
 		val recall = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size + noCandidates.size + notInCandidate.size + notMatched.size)
-		println(s"Recall = $recall")
-		println("F1-measure = (2 * Precision * Recall) / (Precision + Recall)")
+		println(s"Recall       = $recall")
+		log("F1-measure = (2 * Precision * Recall) / (Precision + Recall)")
 		val f1Measure = (2 * precision * recall) / (precision + recall)
-		println(s"F1-measure = $f1Measure")
+		println(s"F1-measure   = $f1Measure")
 
-		println("F0.5-measure = (1.25 * Precision * Recall) / (0.25 * Precision + Recall)")
+		log("F0.5-measure = (1.25 * Precision * Recall) / (0.25 * Precision + Recall)")
 		val f05Measure = (1.25 * precision * recall) / (0.25 * precision + recall)
 		println(s"F0.5-measure = $f05Measure")
 	}
@@ -114,17 +118,17 @@ class MovieMatcher(val triplifier: Triplifier) {
 		val tripleGraph = new TripleGraph(triples)
 		val imdbId = tripleGraph.getImdbId
 		if (imdbId == null) {
-			println("No IMDB ID. Skip.")
+			log("No IMDB ID. Skip.")
 			noImdbId ::= fileId
 			return
 		}
 		if (!taskDb.hasTasks(imdbId)) {
-			println("Not in DB. Skip.")
+			log("Not in DB. Skip.")
 			notInDb ::= fileId
 			return
 		}
 
-		println(i)
+		log(i)
 		val candidates = merge(tripleGraph)
 		val candidateIds = candidates.map { c => getImdbId(c) }
 
@@ -164,7 +168,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		if (!imdbMovie.isEmpty){	
 			val movieResource = tripleGraph.getObjectOfType("dbpedia-owl:Film")
 			val movietriple = tripleGraph.getTriplesForSubject(movieResource)
-			Merger.mergeMovieTriple(imdbMovie.head.candidate, movietriple).foreach(println)
+			Merger.mergeMovieTriple(imdbMovie.head.candidate, movietriple).foreach(log)
 			// TODO: Try other methods
 		}
 	}
@@ -183,7 +187,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 	def findCandidateMovies(g: TripleGraph): List[ResourceWithNameAndOriginalTitle] = {
 		val currentMovieNames = extractAllMovieNamesFromGraph(g)
 
-		println(s"========== Movie: ${currentMovieNames(0)} ==========")
+		log(s"========== Movie: ${currentMovieNames(0)} ==========")
 		val moviesWithSimilarName = movieNames.map { movieWithName =>
 			val names = extractMovieNamesFromResource(movieWithName)
 			val l = names.map { name =>
@@ -201,7 +205,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 //			split(0).replace("\"", "").toInt
 //		}.distinct
 //		if (years.isEmpty)
-//			println("No years found.")
+//			log("No years found.")
 //		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
 //		val allCandidates = (moviesInYear ::: moviesWithSimilarName).distinct
 //		val allCandidates = moviesWithSimilarName.distinct
@@ -213,7 +217,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 	def merge(triples: TripleGraph): List[CandidateScore] = {
 		val candidates = findCandidateMovies(triples)
-		println(s"Found ${candidates.size} candidates.")
+		log(s"Found ${candidates.size} candidates.")
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
 			val scoringFunctions: List[(TripleGraph, ResourceWithNameAndOriginalTitle) => Double] = List(
@@ -235,9 +239,9 @@ class MovieMatcher(val triplifier: Triplifier) {
 		if (bestMovies.isEmpty)
 			return List()
 		if (bestMovies(0).score < ACTOR_OVERLAP_MINIMUM) {
-			println("Could not find a single match. Here are the best five matches:")
+			log("Could not find a single match. Here are the best five matches:")
 			bestMovies.take(5).foreach { movie =>
-				println(movie.candidate.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/") + " with score "  + movie.score)
+				log(movie.candidate.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/") + " with score "  + movie.score)
 			}
 		}
 		bestMovies
