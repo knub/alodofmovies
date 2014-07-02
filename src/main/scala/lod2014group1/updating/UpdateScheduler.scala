@@ -36,29 +36,29 @@ class UpdateScheduler {
 			}
 		}, UpdateScheduler.NOW, UpdateScheduler.ONCE_PER_DAY)
 
-		// Weekly Tasks
-		timer.schedule(new TimerTask() {
-			@Override
-			def run() {
-				imdbExistingUpdater.updateOneYearOldMovies()
-			}
-		}, UpdateScheduler.NOW, UpdateScheduler.ONCE_PER_WEEK)
-
-		// Monthly Tasks
-		timer.schedule(new TimerTask() {
-			@Override
-			def run() {
-				imdbExistingUpdater.updateFiveYearOldMovies()
-			}
-		}, UpdateScheduler.MIDNIGHT, UpdateScheduler.ONCE_PER_MONTH)
-
-		// Yearly Tasks
-		timer.schedule(new TimerTask() {
-			@Override
-			def run() {
-				imdbExistingUpdater.updateFiveToTwentyFiveYearOldMovies()
-			}
-		}, UpdateScheduler.MIDNIGHT, UpdateScheduler.ONCE_PER_YEAR)
+//		// Weekly Tasks
+//		timer.schedule(new TimerTask() {
+//			@Override
+//			def run() {
+//				imdbExistingUpdater.updateOneYearOldMovies()
+//			}
+//		}, UpdateScheduler.NOW, UpdateScheduler.ONCE_PER_WEEK)
+//
+//		// Monthly Tasks
+//		timer.schedule(new TimerTask() {
+//			@Override
+//			def run() {
+//				imdbExistingUpdater.updateFiveYearOldMovies()
+//			}
+//		}, UpdateScheduler.MIDNIGHT, UpdateScheduler.ONCE_PER_MONTH)
+//
+//		// Yearly Tasks
+//		timer.schedule(new TimerTask() {
+//			@Override
+//			def run() {
+//				imdbExistingUpdater.updateFiveToTwentyFiveYearOldMovies()
+//			}
+//		}, UpdateScheduler.MIDNIGHT, UpdateScheduler.ONCE_PER_YEAR)
 	}
 
 }

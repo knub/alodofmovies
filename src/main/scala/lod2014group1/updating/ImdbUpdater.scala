@@ -29,6 +29,8 @@ class ImdbUpdater {
 		// add tasks to database
 		val database = new TaskDatabase
 		database.insertAll(taskList)
+
+		println(s"Created ${taskList.size} Crawlify Tasks.")
 	}
 
 }
