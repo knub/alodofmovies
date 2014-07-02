@@ -2,7 +2,7 @@ package lod2014group1.merging
 
 import java.io.File
 import lod2014group1.triplification.{Triplifier, TmdbMovieTriplifier}
-import lod2014group1.database.{TaskDatabase, ResourceWithName, Queries}
+import lod2014group1.database._
 import org.apache.commons.lang3.StringUtils
 import scala.pickling._
 import json._
@@ -10,6 +10,8 @@ import org.apache.commons.io.{FileUtils, IOUtils}
 import lod2014group1.rdf.{UriBuilder, RdfTriple}
 import scala.util.Random
 import scala.slick.lifted.Functions
+import lod2014group1.database.ResourceWithName
+import lod2014group1.rdf.RdfTriple
 
 class MovieMatcher(val triplifier: Triplifier) {
 	// TODO use orginial_title
@@ -24,7 +26,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 
 	val tmdbTriplifier = new TmdbMovieTriplifier
-	val movieNames = Queries.getAllMovieNames
+	val movieNames = Queries.getAllMoviesWithNameAndOriginalTitles
 	val taskDb = new TaskDatabase()
 	new File(s"data/MergeMovieActor/").mkdir()
 
@@ -170,7 +172,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 	}
 
 
-	def findCandidateMovies(g: TripleGraph): List[ResourceWithName] = {
+	def findCandidateMovies(g: TripleGraph): List[ResourceWithNameAndOriginalTitle] = {
 		val movieResource = g.getObjectOfType("dbpedia-owl:Film")
 		val currentMovieOriginalTitles = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:originalTitle")
 		val currentMovieTitles = g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:name")
@@ -181,6 +183,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 		println(s"========== Movie: ${currentMovieNames(0)} ==========")
 		val moviesWithSimilarName = movieNames.filter { movieWithName =>
+			val names = List(movieWithName.name, movieWithName.originalTitle).filter(_ != null)
 			val l = currentMovieNames.map { movieName =>
 				StringUtils.getLevenshteinDistance(movieWithName.name, movieName)
 			}.min
@@ -195,8 +198,8 @@ class MovieMatcher(val triplifier: Triplifier) {
 			println("No years found.")
 		val moviesInYear = years.flatMap { year => Queries.getAllMovieNamesOfYear(year.toString) }
 
-		val allCandidates = (moviesInYear ::: moviesWithSimilarName).distinct
-//		val allCandidates = moviesWithSimilarName.distinct
+//		val allCandidates = (moviesInYear ::: moviesWithSimilarName).distinct
+		val allCandidates = moviesWithSimilarName.distinct
 
 		allCandidates
 	}

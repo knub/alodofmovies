@@ -68,7 +68,7 @@ object Main extends App with Logging {
 			new UpdateScheduler().update()
 		} else if (args contains "fixx") {
 //			val taskDb = new TaskDatabase
-//			val oldResources = Queries.getAllMoviesWithOriginalTitles
+//			val oldResources = Queries.getAllMoviesWithNameAndOriginalTitles
 //			oldResources.zipWithIndex.foreach { case (resource, index) =>
 //				taskDb.resetTasks(resource.resource.split("movie#Movie")(1))
 //				Queries.deleteNameAndOriginalTitleTriples(resource)

@@ -1,18 +1,16 @@
 package lod2014group1.database
 
-import com.hp.hpl.jena.graph.{Triple, Node}
+import com.hp.hpl.jena.graph.Node
 import com.hp.hpl.jena.shared.DeleteDeniedException
-import com.hp.hpl.jena.update.{UpdateExecutionFactory, UpdateFactory}
 import com.hp.hpl.jena.util.iterator.ExtendedIterator
 import lod2014group1.Config
-import lod2014group1.merging.Merger
 import org.joda.time.DateTime
 import virtuoso.jena.driver.VirtGraph
 import scala.collection.JavaConversions._
 
 
 case class ResourceWithName(var resource: String, var name: String)
-case class ResourceWithOriginalName(resource: String, originalTitle: String, name: String)
+case class ResourceWithNameAndOriginalTitle(resource: String, originalTitle: String, name: String)
 
 object Queries {
 
@@ -32,17 +30,29 @@ object Queries {
 		extractResourcesWithNameFrom(query)
 	}
 
-	def getAllMoviesWithOriginalTitles: List[ResourceWithOriginalName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:originalTitle ?o . ?s dbpprop:name ?name}"
+	def getAllMoviesWithNameAndOriginalTitles: List[ResourceWithNameAndOriginalTitle] = {
+		val query = s"""
+				$getAllPrefixe
+				SELECT * WHERE {
+					?s rdf:type dbpedia-owl:Film .
+					?s dbpprop:name ?name .
+					OPTIONAL { ?s dbpprop:originalTitle ?original } .
+				}
+		"""
 
 		val queryExecution = database.buildQuery(query)
-
-		var results: List[ResourceWithOriginalName] = List()
+		var results: List[ResourceWithNameAndOriginalTitle] = List()
 		database.query(queryExecution, { rs =>
 			val s = rs.get("s").toString
-			val o = rs.get("o").toString
 			val name = rs.get("name").toString
-			results ::= ResourceWithOriginalName(s, o, name)
+			var original = if (rs.varNames().toList.contains("original"))
+				rs.get("original").toString
+			else
+				null
+			if (original != null) {
+				original = original.substring(1, original.size - 1)
+			}
+			results ::= ResourceWithNameAndOriginalTitle(s, original, name)
 		})
 		results
 	}
@@ -182,7 +192,7 @@ object Queries {
 		results
 	}
 
-	def deleteNameAndOriginalTitleTriples(resource: ResourceWithOriginalName) {
+	def deleteNameAndOriginalTitleTriples(resource: ResourceWithNameAndOriginalTitle): Unit = {
 		database.deleteTriples(resource.resource, "http://dbpedia.org/property/originalTitle", resource.originalTitle)
 		database.deleteTriples(resource.resource, "http://dbpedia.org/property/name", resource.name)
 	}
@@ -235,4 +245,8 @@ object Queries {
 		""".stripMargin
 	}
 
+	def deleteNameAndOriginalTitleTriples(resource: ResourceWithNameAndOriginalTitle) {
+		database.deleteTriples(resource.resource, "http://dbpedia.org/property/originalTitle", resource.originalTitle)
+		database.deleteTriples(resource.resource, "http://dbpedia.org/property/name", resource.name)
+	}
 }
