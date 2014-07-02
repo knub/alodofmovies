@@ -20,8 +20,9 @@ class MovieMatcher(val triplifier: Triplifier) {
 	val ACTOR_OVERLAP_MINIMUM       = 0.8
 	val ACTOR_OVERLAP_LEVENSHTEIN   = 3
 	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
-	val TEST_SET_SIZE             = 5
+//	val TEST_SET_SIZE             = 5
 	// val TEST_SET_SIZE               = 750
+	val TEST_SET_SIZE               = 200
 
 
 	val tmdbTriplifier = new TmdbMovieTriplifier
@@ -101,7 +102,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		println(s"Precision = $precision")
 		println("Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)")
 		val recall = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size + noCandidates.size + notInCandidate.size + notMatched.size)
-		println(s"Precision = $recall")
+		println(s"Recall = $recall")
 		println("F-measure = (2 * Precision * Recall) / (Precision + Recall)")
 		val fMeasure = (2 * precision * recall) / (precision + recall)
 		println(s"F-measure = $fMeasure")
