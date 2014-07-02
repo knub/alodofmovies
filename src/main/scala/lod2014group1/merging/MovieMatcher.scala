@@ -101,9 +101,9 @@ class MovieMatcher(val triplifier: Triplifier) {
 		val f1Measure = (2 * precision * recall) / (precision + recall)
 		println(s"F1-measure = $f1Measure")
 
-		println("F2-measure = (5 * Precision * Recall) / (4 * Precision + Recall)")
-		val f2Measure = (5 * precision * recall) / (4 * precision + recall)
-		println(s"F2-measure = $f2Measure")
+		println("F0.5-measure = (1.25 * Precision * Recall) / (0.25 * Precision + Recall)")
+		val f05Measure = (1.25 * precision * recall) / (0.25 * precision + recall)
+		println(s"F0.5-measure = $f05Measure")
 	}
 
 	def mergeMovie(t: (File, Int)): Unit = {
