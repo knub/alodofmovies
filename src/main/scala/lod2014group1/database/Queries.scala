@@ -17,7 +17,7 @@ object Queries {
 	val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
 
 	def main(args: Array[String]): Unit = {
-		deleteTriplesForMovie("http://purl.org/hpi/movie#Moviett0365907", "http://172.16.22.196/imdb-updating")
+		deleteTriplesForMovie(s"${Config.LOD_PREFIX}Moviett0365907", "http://172.16.22.196/imdb-updating")
 	}
 
 	def getAllMovieNames: List[ResourceWithName] = {
@@ -226,7 +226,7 @@ object Queries {
 	}
 
 	private def getAllPrefixe : String = {
-		"""
+		s"""
 		  |prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 		  |prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 		  |prefix dbpprop: <http://dbpedia.org/property/>
@@ -234,7 +234,7 @@ object Queries {
 		  |prefix dcterms: <http://dublincore.org/2010/10/11/dcterms.rdf#>
 		  |prefix dbpedia-owl: <http://dbpedia.org/ontology/>
 		  |prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-		  |prefix lod: <http://purl.org/hpi/movie#>
+		  |prefix lod: <${Config.LOD_PREFIX}>
 		  |prefix freebase: <http://rdf.freebase.com/ns/>
 		  |
 		""".stripMargin

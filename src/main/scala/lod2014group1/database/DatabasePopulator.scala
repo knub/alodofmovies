@@ -19,13 +19,14 @@ class DatabasePopulator extends Logging {
 		log.info("Started grabbing files.")
 		val movieFiles = FileUtils.listFiles(movieDir, null, true).toList
 		log.info("Grabbed files.")
-		val db = new TaskDatabase
-		movieFiles.grouped(BATCH_INSERT_SIZE).zipWithIndex.foreach { case (movieFilesBatch, i) =>
-			db.insertAll(movieFilesBatch.map { f =>
-				Task(0, TaskType.Triplify.toString, date(2014, 6, 30), 5.toByte, f.getCanonicalPath.split("/data/")(1), false, "", Config.IMDB_GRAPH)
-			}: _*)
-			log.info("%8d/%d".format(i * BATCH_INSERT_SIZE, movieFiles.size))
-		}
+//		val db = new TaskDatabase
+//		movieFiles.grouped(BATCH_INSERT_SIZE).zipWithIndex.foreach { case (movieFilesBatch, i) =>
+//			db.insertAll(movieFilesBatch.map { f =>
+//				// CHECK GRAPH BEFORE COMMENTING IN!!!
+//				Task(0, TaskType.Triplify.toString, date(2014, 6, 30), 5.toByte, f.getCanonicalPath.split("/data/")(1), false, "", Config.IMDB_GRAPH)
+//			}: _*)
+//			log.info("%8d/%d".format(i * BATCH_INSERT_SIZE, movieFiles.size))
+//		}
 	}
 
 	private def date(year: Int, month: Int, day: Int): Date = {

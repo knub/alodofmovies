@@ -46,7 +46,7 @@ class TaskDatabase extends Logging {
 		}
 	}
 
-	def runInDatabase(proc: TableQuery[TaskTable] => Session => Unit): Unit = {
+	def runInDatabase[A](proc: TableQuery[TaskTable] => Session => A): A = {
 		database withSession { session =>
 			proc(tasks)(session)
 		}

@@ -12,7 +12,7 @@ import lod2014group1.crawling.UriToFilename
 
 class AnswerHandler extends Logging {
 
-	lazy val BULK_LOAD_SIZE = 100000
+	lazy val BULK_LOAD_SIZE = 1000000
 
 	val taskDatabase = new TaskDatabase
 	var filesToWrite: List[UriFile] = List()

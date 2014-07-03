@@ -20,6 +20,7 @@ import lod2014group1.rdf.RdfString
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfTripleString
+import lod2014group1.Config
 
 abstract class VirtuosoDatabase {
 	def connectToDatabase
@@ -137,7 +138,7 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 
 	private def writeFileHeader(f: BufferedWriter): Unit = {
 		f.write(
-			"""
+			s"""
 			  |@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 			  |@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 			  |@prefix dbpprop: <http://dbpedia.org/property/> .
@@ -147,7 +148,7 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 			  |@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 			  |@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 			  |@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-			  |@prefix lod: <http://purl.org/hpi/movie#> .
+			  |@prefix lod: <${Config.LOD_PREFIX}> .
 			  |@prefix category: <http://dbpedia.org/resource/Category:> .
 			  |@prefix freebase: <http://rdf.freebase.com/ns/> .
 			""".stripMargin)

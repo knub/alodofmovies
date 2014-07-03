@@ -28,7 +28,7 @@ class CrawlifymergeWorker extends Worker {
 
 //		if (flag.equals(Config.DELETE_FIRST_FLAG)) {
 //			val imdbId = fileName.split("/")(1)
-//			Queries.deleteTriplesForMovie(s"http://purl.org/hpi/movie#Movie$imdbId", graph)
+//			Queries.deleteTriplesForMovie(s"${Config.LOD_PREFIX}Movie$imdbId", graph)
 //		}
 
 		val answerMap: Map[String, String] = Map("graph" -> graph)

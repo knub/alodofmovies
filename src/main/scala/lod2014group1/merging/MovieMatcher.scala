@@ -13,6 +13,7 @@ import lod2014group1.database.ResourceWithName
 import lod2014group1.rdf.RdfTriple
 import java.text.Normalizer
 import java.util.Date
+import lod2014group1.Config
 
 class MovieMatcher(val triplifier: Triplifier) {
 	var ACTOR_OVERLAP_MINIMUM       = 0.8
@@ -252,7 +253,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		if (bestMovies(0).score < ACTOR_OVERLAP_MINIMUM) {
 //			log("Could not find a single match. Here are the best five matches:")
 			bestMovies.take(5).foreach { movie =>
-//				log(movie.candidate.replace("http://purl.org/hpi/movie#Movie", "www.imdb.com/title/") + " with score "  + movie.score)
+//				log(movie.candidate.replace(s"${Config.LOD_PREFIX}Movie", "www.imdb.com/title/") + " with score "  + movie.score)
 			}
 		}
 		bestMovies
