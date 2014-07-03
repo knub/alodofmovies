@@ -48,7 +48,9 @@ class ImdbMainPageTriplifier(val imdbId: String)  extends Triplifier {
 
 		val originalTitleDiv = div.select(".header span.title-extra[itemprop=name]")
 		if (originalTitleDiv.size() == 1) {
-			val originalTitle = originalTitleDiv.first().ownText()
+			var originalTitle = originalTitleDiv.first().ownText()
+			if (originalTitle.head == '"' && originalTitle.last == '"')
+				originalTitle = originalTitle.drop(1).dropRight(1)
 
 			if (!originalTitle.isEmpty)
 				triples = List(movie hasOriginalTitle originalTitle) ::: triples
