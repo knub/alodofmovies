@@ -21,19 +21,19 @@ object Queries {
 	}
 
 	def getAllMovieNames: List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllMovieOriginalNames: List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:originalTitle ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:originalTitle ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllMoviesWithNameAndOriginalTitles: List[ResourceWithNameAndOriginalTitle] = {
 		val query = s"""
 				$getAllPrefixe
-				SELECT * WHERE {
+				SELECT * FROM <${Config.IMDB_GRAPH}> WHERE {
 					?s rdf:type dbpedia-owl:Film .
 					?s dbpprop:name ?name .
 					OPTIONAL { ?s dbpprop:originalTitle ?original } .
@@ -58,14 +58,14 @@ object Queries {
 	}
 
 	def getAllMovieNamesOfYear(year: String): List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:years '$year' . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:years '$year' . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllMovieNamesAroundYearWithRuntime(year: String, runtime: String): List[ResourceWithName] = {
 		val query = s"""
 				$getAllPrefixe
-				SELECT * WHERE {
+				SELECT * FROM <${Config.IMDB_GRAPH}> WHERE {
 					?s rdf:type dbpedia-owl:Film .
 					?s dbpprop:years '$year' .
 					?s dbpprop:name ?o .
@@ -82,24 +82,24 @@ object Queries {
 	}
 
 	def getAllActorsOfMovie(movie: String): List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { <$movie> dbpprop:starring ?s . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { <$movie> dbpprop:starring ?s . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllProducersOfMovie(movie: String): List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { { <$movie> dbpprop:coProducer ?s } UNION { <$movie> dbpprop:producer ?s } . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { { <$movie> dbpprop:coProducer ?s } UNION { <$movie> dbpprop:producer ?s } . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllDirectorsOfMovie(movie: String): List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { <$movie> dbpprop:director ?s . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { <$movie> dbpprop:director ?s . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 	def getAllWritersOfMovie(movie: String): List[ResourceWithName] = {
 		val query =
 			s"""
 			   |$getAllPrefixe
-			   |SELECT * WHERE {
+			   |SELECT * FROM <${Config.IMDB_GRAPH}> WHERE {
 			   |   { <$movie> dbpprop:screenplay ?s }
 			   |   UNION
 			   |   { <$movie> dbpprop:author ?s }
@@ -126,22 +126,22 @@ object Queries {
 	}
 
 	def existsReleaseInfo(movieResource: String): Boolean = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type lod:ReleaseInfo . <$movieResource> dbpprop:released ?s . }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type lod:ReleaseInfo . <$movieResource> dbpprop:released ?s . }"
 		existsResource(query)
 	}
 
 	def existsAka(movieResource: String): Boolean = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type lod:Aka . <$movieResource> dbpprop:alternativeNames ?s . }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type lod:Aka . <$movieResource> dbpprop:alternativeNames ?s . }"
 		existsResource(query)
 	}
 
 	def existsAward(movieResource: String): Boolean = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Award . <$movieResource> lod:hasAward ?s . }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type dbpedia-owl:Award . <$movieResource> lod:hasAward ?s . }"
 		existsResource(query)
 	}
 
 	def existsPerson(movieResource: String, predicate: String): Boolean = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Person . <$movieResource> $predicate ?s . }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type dbpedia-owl:Person . <$movieResource> $predicate ?s . }"
 		existsResource(query)
 	}
 
