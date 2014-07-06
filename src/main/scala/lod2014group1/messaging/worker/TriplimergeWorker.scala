@@ -4,7 +4,7 @@ import java.net.URL
 import java.sql.Date
 import lod2014group1.Config
 import lod2014group1.crawling.{UriToFilename, Crawler}
-import lod2014group1.database.{Task, Queries}
+import lod2014group1.database.{TaskDatabase, Task, Queries}
 import lod2014group1.merging.MovieMerger
 import lod2014group1.messaging.TaskType
 import lod2014group1.triplification.TriplifyDistributor
@@ -27,7 +27,10 @@ class TriplimergeWorker extends Worker{
 	
 	    if (mergedTriples.isEmpty && !flag.equals("no matching")) {
         val date = new Date(new DateTime().toDate.getTime)
-        Task(0, TaskType.Match.toString, date, 5, fileName, true, "", graph)
+        val task = Task(0, TaskType.Match.toString, date, 5, fileName, true, "", graph)
+
+        val database = new TaskDatabase
+        database.insert(task)
 	    }
 	
 		val answerMap: Map[String, String] = Map("graph" -> graph)
