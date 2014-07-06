@@ -19,16 +19,16 @@ class OfflineTaskRunner extends Logging {
 	}
 
 	def runTasks(n: Int): Unit = {
-		println("NOTE:")
-		println("----------------------------")
-		println("The OfflineTaskRunner currently only runs Triplify tasks on the imdb-new graph.")
-		println("----------------------------")
-
-		val tasks =  taskDatabase.runInDatabase { tasks => implicit session =>
-			tasks.sortBy(t => t.id).filter { task =>
-				task.graph === "http://172.16.22.196/imdb-new" && !task.finished && task.taskType === "Triplify"
-			}.take(n).list()
-		}
+//		println("NOTE:")
+//		println("----------------------------")
+//		println("The OfflineTaskRunner currently only runs Triplify tasks on the imdb-new graph.")
+//		println("----------------------------")
+//
+//		val tasks =  taskDatabase.runInDatabase { tasks => implicit session =>
+//			tasks.sortBy(t => t.id).filter { task =>
+//				task.graph === "http://172.16.22.196/imdb-new" && !task.finished && task.taskType === "Triplify"
+//			}.take(n).list()
+//		}
 		tasks.zipWithIndex.foreach { case (task, i) =>
 				runTask(WorkerTask.fromDatabaseTask(task))
 				if (task.id % 1000 == 0)
