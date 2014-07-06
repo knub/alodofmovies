@@ -5,4 +5,6 @@ set datafile separator "\t"
 set pm3d
 set palette
 set key autotitle columnhead
-splot "2014-07-06_01.tsv" using 1:2:5 w lines title columnhead
+plot "2014-07-06_01.tsv" using 2:3 title "precision", \
+"2014-07-06_01.tsv" using 2:4 title "recall", \
+"2014-07-06_01.tsv" using 2:5 title "f1-measure"
