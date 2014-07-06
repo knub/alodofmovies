@@ -48,6 +48,7 @@ class AnswerHandler extends Logging {
 		val graph = answer.header("graph")
 
 		triplesToStore(graph) = triplesToStore(graph) ::: answer.triples
+    println(s"${graph}: ${triplesToStore(graph).size}")
 		ids = answer.taskId :: ids
 
 		if (triplesToStore(graph).size > BULK_LOAD_SIZE) {
