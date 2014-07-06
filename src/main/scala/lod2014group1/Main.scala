@@ -68,7 +68,7 @@ object Main extends App with Logging {
 						println(s"=== Using minimum overlap of ${overlap * 100}% ===")
 						val merger = new MovieMatcher(new TmdbMovieTriplifier())
 						merger.VERBOSE = false
-						merger.TEST_SET_SIZE = 2000
+						merger.TEST_SET_SIZE = 10
 						merger.ACTOR_OVERLAP_MINIMUM = overlap
 						time(merger.runStatistic(tmdbDir))
 						}

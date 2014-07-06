@@ -83,7 +83,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 	def runStatistic(dir: File): Unit = {
 		val r = new Random(RANDOM)
-		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
+		val testSet =  r.shuffle(dir.listFiles().toList.filter(_.getName == "3490.json").sortBy(_.getName)).take(TEST_SET_SIZE)
 		try {
 			testSet.zipWithIndex.foreach(mergeMovie)
 		} catch {
