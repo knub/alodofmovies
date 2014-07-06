@@ -93,10 +93,10 @@ task watchImdb(type: JavaExec, dependsOn: [build]) {
     classpath = sourceSets.main.runtimeClasspath
     args = ['watch-imdb']
 }
-task mergeTmdb(type: JavaExec, dependsOn: [build]) {
+task merge(type: JavaExec, dependsOn: [build]) {
     main = 'lod2014group1.Main'
     classpath = sourceSets.main.runtimeClasspath
-    args = ['merge-tmdb']
+    args = ['merge']
 }
 task offlineRunner(type: JavaExec, dependsOn: [build]) {
     main = 'lod2014group1.Main'

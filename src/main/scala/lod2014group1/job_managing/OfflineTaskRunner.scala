@@ -1,9 +1,9 @@
 package lod2014group1.job_managing
 
-import lod2014group1.messaging.worker.{TaskAnswer, WorkerTask}
+import lod2014group1.messaging.worker.WorkerTask
 import lod2014group1.messaging.{WorkReceiver, AnswerHandler}
 import lod2014group1.database.TaskDatabase
-import net.liftweb.json.Serialization.{read, write}
+import scala.slick.driver.MySQLDriver.simple._
 import org.slf4s.Logging
 
 class OfflineTaskRunner extends Logging {
@@ -19,13 +19,22 @@ class OfflineTaskRunner extends Logging {
 	}
 
 	def runTasks(n: Int): Unit = {
-		val tasks = taskDatabase.getNextNTasks(n, 0)
+		println("NOTE:")
+		println("----------------------------")
+		println("The OfflineTaskRunner currently only runs Triplify tasks on the imdb-new graph.")
+		println("----------------------------")
+
+		val tasks =  taskDatabase.runInDatabase { tasks => implicit session =>
+			tasks.sortBy(t => t.id).filter { task =>
+				task.graph === "http://172.16.22.196/imdb-new" && !task.finished && task.taskType === "Triplify"
+			}.take(n).list()
+		}
 		tasks.zipWithIndex.foreach { case (task, i) =>
 				runTask(WorkerTask.fromDatabaseTask(task))
-				if (task.id % 100 == 0)
+				if (task.id % 1000 == 0)
 					log.info(task.id.toString)
 		}
-		answerHandler.finish
+		answerHandler.finish()
 	}
 
 }

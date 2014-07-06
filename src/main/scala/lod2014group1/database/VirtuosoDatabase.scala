@@ -20,6 +20,7 @@ import lod2014group1.rdf.RdfString
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.RdfResource
 import lod2014group1.rdf.RdfTripleString
+import lod2014group1.Config
 
 abstract class VirtuosoDatabase {
 	def connectToDatabase
@@ -137,7 +138,7 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 
 	private def writeFileHeader(f: BufferedWriter): Unit = {
 		f.write(
-			"""
+			s"""
 			  |@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 			  |@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 			  |@prefix dbpprop: <http://dbpedia.org/property/> .
@@ -147,7 +148,7 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 			  |@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 			  |@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 			  |@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-			  |@prefix lod: <http://purl.org/hpi/movie#> .
+			  |@prefix lod: <${Config.LOD_PREFIX}> .
 			  |@prefix category: <http://dbpedia.org/resource/Category:> .
 			  |@prefix freebase: <http://rdf.freebase.com/ns/> .
 			""".stripMargin)
@@ -156,10 +157,10 @@ class VirtuosoLocalDatabase(sparqlEndpoint: String) extends VirtuosoRemoteDataba
 
 
 class VirtuosoRemoteDatabase(sparqlEndpoint: String) extends VirtuosoDatabase {
-	println("Note: Using %s as remote database.".format(sparqlEndpoint))
+//	println("Note: Using %s as remote database.".format(sparqlEndpoint))
 	val g = new VirtGraph("http://172.16.22.196/imdb", "jdbc:virtuoso://172.16.22.196:1111", "dba", "dba")
 	def buildQuery(queryString: String): QueryExecution = {
-		val query: Query = QueryFactory.create(queryString.replace("FROM <graph>", ""))
+		val query: Query = QueryFactory.create(queryString)
 		VirtuosoQueryExecutionFactory.create(query, g)
 	}
 
@@ -172,29 +173,4 @@ class VirtuosoRemoteDatabase(sparqlEndpoint: String) extends VirtuosoDatabase {
 
 	def closeConnection = {}
 	def connectToDatabase = {}
-
-	private def allTriplesFor(queryExecution: QueryExecution, uri: String): List[RdfTriple] = {
-		var results: List[RdfTriple] = List()
-
-		query(queryExecution, rs => {
-			val p = rs.get("p").toString
-			val o = rs.get("o")
-			val obj = if (o.isResource)
-				RdfResource(o.toString)
-			else
-				RdfString(o.toString)
-			val t = RdfTriple(RdfResource(uri), RdfResource(p), obj)
-			results ::= t
-		})
-		results
-	}
-
-
-	def allTriplesFor(url: String): List[RdfTriple] = allTriplesFor(url, url, List(url))
-	def allTriplesFor(searchForUrl: String, saveAsUrl: String, visitedUris: List[String]): List[RdfTriple] = {
-		val queryExecution = buildQuery("SELECT * FROM <graph> WHERE {" + searchForUrl + " ?p ?o}")
-		val results: List[RdfTriple] = allTriplesFor(queryExecution, saveAsUrl)
-
-		results
-	}
 }

@@ -1,8 +1,14 @@
 package lod2014group1.rdf
 
+import lod2014group1.Config
+
 object UriBuilder {
 	def getMovieUriFromImdbId(id : String): String = {
 		s"lod:Movie$id"
+	}
+	
+	def getMovieUriFromImdbIdWithoutPrefix(id : String): String = {
+		s"${Config.LOD_PREFIX}Movie$id"
 	}
 	
 	def getMovieUriFromFreebaseId(id : String): String = {

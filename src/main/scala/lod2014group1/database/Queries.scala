@@ -17,23 +17,23 @@ object Queries {
 	val database = new VirtuosoRemoteDatabase(Config.SPARQL_ENDPOINT)
 
 	def main(args: Array[String]): Unit = {
-		deleteTriplesForMovie("http://purl.org/hpi/movie#Moviett0365907", "http://172.16.22.196/imdb-updating")
+		deleteTriplesForMovie(s"${Config.LOD_PREFIX}Moviett0365907", "http://172.16.22.196/imdb-updating")
 	}
 
 	def getAllMovieNames: List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllMovieOriginalNames: List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:originalTitle ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:originalTitle ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllMoviesWithNameAndOriginalTitles: List[ResourceWithNameAndOriginalTitle] = {
 		val query = s"""
 				$getAllPrefixe
-				SELECT * WHERE {
+				SELECT * FROM <${Config.IMDB_GRAPH}> WHERE {
 					?s rdf:type dbpedia-owl:Film .
 					?s dbpprop:name ?name .
 					OPTIONAL { ?s dbpprop:originalTitle ?original } .
@@ -58,14 +58,14 @@ object Queries {
 	}
 
 	def getAllMovieNamesOfYear(year: String): List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:years '$year' . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type dbpedia-owl:Film . ?s dbpprop:years '$year' . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllMovieNamesAroundYearWithRuntime(year: String, runtime: String): List[ResourceWithName] = {
 		val query = s"""
 				$getAllPrefixe
-				SELECT * WHERE {
+				SELECT * FROM <${Config.IMDB_GRAPH}> WHERE {
 					?s rdf:type dbpedia-owl:Film .
 					?s dbpprop:years '$year' .
 					?s dbpprop:name ?o .
@@ -82,24 +82,24 @@ object Queries {
 	}
 
 	def getAllActorsOfMovie(movie: String): List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { <$movie> dbpprop:starring ?s . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { <$movie> dbpprop:starring ?s . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllProducersOfMovie(movie: String): List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { { <$movie> dbpprop:coProducer ?s } UNION { <$movie> dbpprop:producer ?s } . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { { <$movie> dbpprop:coProducer ?s } UNION { <$movie> dbpprop:producer ?s } . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 
 	def getAllDirectorsOfMovie(movie: String): List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * WHERE { <$movie> dbpprop:director ?s . ?s dbpprop:name ?o }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { <$movie> dbpprop:director ?s . ?s dbpprop:name ?o }"
 		extractResourcesWithNameFrom(query)
 	}
 	def getAllWritersOfMovie(movie: String): List[ResourceWithName] = {
 		val query =
 			s"""
 			   |$getAllPrefixe
-			   |SELECT * WHERE {
+			   |SELECT * FROM <${Config.IMDB_GRAPH}> WHERE {
 			   |   { <$movie> dbpprop:screenplay ?s }
 			   |   UNION
 			   |   { <$movie> dbpprop:author ?s }
@@ -126,22 +126,22 @@ object Queries {
 	}
 
 	def existsReleaseInfo(movieResource: String): Boolean = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type lod:ReleaseInfo . <$movieResource> dbpprop:released ?s . }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type lod:ReleaseInfo . <$movieResource> dbpprop:released ?s . }"
 		existsResource(query)
 	}
 
 	def existsAka(movieResource: String): Boolean = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type lod:Aka . <$movieResource> dbpprop:alternativeNames ?s . }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type lod:Aka . <$movieResource> dbpprop:alternativeNames ?s . }"
 		existsResource(query)
 	}
 
 	def existsAward(movieResource: String): Boolean = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Award . <$movieResource> lod:hasAward ?s . }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type dbpedia-owl:Award . <$movieResource> lod:hasAward ?s . }"
 		existsResource(query)
 	}
 
 	def existsPerson(movieResource: String, predicate: String): Boolean = {
-		val query = s"$getAllPrefixe SELECT * WHERE { ?s rdf:type dbpedia-owl:Person . <$movieResource> $predicate ?s . }"
+		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { ?s rdf:type dbpedia-owl:Person . <$movieResource> $predicate ?s . }"
 		existsResource(query)
 	}
 
@@ -226,7 +226,7 @@ object Queries {
 	}
 
 	private def getAllPrefixe : String = {
-		"""
+		s"""
 		  |prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 		  |prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 		  |prefix dbpprop: <http://dbpedia.org/property/>
@@ -234,7 +234,7 @@ object Queries {
 		  |prefix dcterms: <http://dublincore.org/2010/10/11/dcterms.rdf#>
 		  |prefix dbpedia-owl: <http://dbpedia.org/ontology/>
 		  |prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-		  |prefix lod: <http://purl.org/hpi/movie#>
+		  |prefix lod: <${Config.LOD_PREFIX}>
 		  |prefix freebase: <http://rdf.freebase.com/ns/>
 		  |
 		""".stripMargin

@@ -11,6 +11,7 @@ object Merger {
 
 	def mergeActorTriple(imdbActorResource: String, actorTriples: List[RdfTriple]): List[RdfTriple] = {
 		getAdditionalTriples(imdbActorResource, actorTriples, excludeActorTripleList)
+		//starring
 	}
 
 	private def getAdditionalTriples(resource: String, triples: List[RdfTriple], excludeTriples: List[String]): List[RdfTriple] = {
@@ -19,14 +20,18 @@ object Merger {
 		triples.foreach { triple =>
 			if (excludeTriples.contains(triple.p.toString())) {
 				// do nothing
-			} else if (triple.addAlwaysFlag) {
-				additionalTriples ::= RdfTriple(RdfResource(resource), triple.p, triple.o)
 			} else {
-				// if a triple with a specific predicate already exists, do not add the triple
-				if (!Queries.existsTriple(resource, triple.p.toString())) {
 					additionalTriples ::= RdfTriple(RdfResource(resource), triple.p, triple.o)
-				}
 			}
+		}
+		additionalTriples
+	}
+	
+	def replaceSubjectAndObject(subjectResource: String, objectResource: String, triples: List[RdfTriple]): List[RdfTriple] = {
+		var additionalTriples: List[RdfTriple] = List()
+
+		triples.foreach { triple =>
+					additionalTriples ::= RdfTriple(RdfResource(subjectResource), triple.p, RdfResource(objectResource))
 		}
 		additionalTriples
 	}
@@ -90,7 +95,7 @@ object Merger {
 			"dbpprop:music",
 			"dbpprop:casting",
 			"dbpprop:stunts/acting",
-			"dbpprop:productionDesign",
+			"dbpprop:productionDesigner",
 			"dbpprop:productionManager",
 			"dbpprop:artDirector",
 			"dbpprop:otherCrew",
@@ -106,7 +111,9 @@ object Merger {
 			"dbpprop:specialEffects",
 			"dbpprop:visualEffects",
 			"dbpprop:editing",
-			"dbpprop:costume"
+			"dbpprop:costume",
+			"dbpprop:setDecorator",
+			"dbpprop:otherCrew"
 		)
 	}
 
