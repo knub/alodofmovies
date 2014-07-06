@@ -1,11 +1,14 @@
 package lod2014group1.messaging.worker
 
-import java.net.URL
 import java.sql.Date
+<<<<<<< HEAD
 import lod2014group1.Config
 import lod2014group1.crawling.{UriToFilename, Crawler}
 import lod2014group1.database.{TaskDatabase, Task, Queries}
 import lod2014group1.merging.MovieMerger
+=======
+import lod2014group1.database.{Task, Queries}
+>>>>>>> Corrected indentation.
 import lod2014group1.messaging.TaskType
 import lod2014group1.triplification.TriplifyDistributor
 import lod2014group1.merging.MovieMerger
@@ -18,7 +21,7 @@ class TriplimergeWorker extends Worker{
 		val fileName = params("fileName")
 		val content = params("content")
 		val graph = params("graph")
-    val flag = params("flag")
+		val flag = params("flag")
 
 		val triplifier = new TriplifyDistributor
 		val triples = triplifier.triplify(fileName, content)
