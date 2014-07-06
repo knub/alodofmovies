@@ -1,6 +1,7 @@
 package lod2014group1.messaging
 
 
+import lod2014group1.Config
 import lod2014group1.rdf.RdfTripleString
 import lod2014group1.database.{VirtuosoLocalDatabase, TaskDatabase}
 import scala.slick.driver.MySQLDriver.simple._
@@ -73,9 +74,12 @@ class AnswerHandler extends Logging {
 
 	def writeFiles(files: List[UriFile]): Unit = {
 		files.foreach { file: UriFile =>
-			val fileName = UriToFilename.parse(file)
+			var fileName = UriToFilename.parse(file)
 
-			if (fileName != "")
+      if (!fileName.startsWith(Config.DATA_FOLDER))
+        fileName = Config.DATA_FOLDER + "/" + fileName
+
+			if (!fileName.isEmpty)
 				writeFileContent(file.fileContent, fileName)
 			else
 				log.error(s"WARNING: URI ${file.uri} not supported!")
