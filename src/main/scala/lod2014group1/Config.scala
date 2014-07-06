@@ -5,7 +5,7 @@ object Config {
 	def TMDB_API_KEY = "./config/tmdb.api-key"
 	def FREEBASE_API_KEY = "./config/freebase.api-key"
 
-	def IMDB_GRAPH = "http://172.16.22.196/imdb"
+	def IMDB_GRAPH = "http://172.16.22.196/imdb-new"
 	def IMDB_NEW_GRAPH = "http://172.16.22.196/imdb-new"
 	def IMDB_UPDATING_GRAPH = "http://172.16.22.196/imdb-updating"
 	def FREEBASE_GRAPH = "http://172.16.22.196/freebase"

@@ -59,7 +59,7 @@ object Main extends App with Logging {
 					merger.runStatistic(dir)
 				case _ =>
 					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
-//					val merger = new MovieMatcher(new TmdbMovieTriplifier())
+					val merger = new MovieMatcher(new TmdbMovieTriplifier())
 //					merger.VERBOSE = false
 //					merger.RANDOM = 1001
 //					merger.TEST_SET_SIZE = 10
