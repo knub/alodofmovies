@@ -1,11 +1,11 @@
 set terminal svg
-set output "multiline.svg"
+set output "match-with-varying-actor-overlap-2014-07-06.svg"
 set style data lines
 set title "Parameter evaluation for ACTOR_OVERLAP_MINIMUM"
 set datafile separator "\t"
-set pm3d
 set palette
 set key autotitle columnhead
-plot "2014-07-06_01.tsv" using 2:3 title "precision", \
-"2014-07-06_01.tsv" using 2:4 title "recall", \
-"2014-07-06_01.tsv" using 2:5 title "f1-measure"
+plot "match-with-varying-actor-overlap-2014-07-06.tsv" using 1:2 title "precision", \
+"match-with-varying-actor-overlap-2014-07-06.tsv" using 1:3 title "recall", \
+"match-with-varying-actor-overlap-2014-07-06.tsv" using 1:4 title "f1-measure", \
+"match-with-varying-actor-overlap-2014-07-06.tsv" using 1:5 title "f0.5-measure"
