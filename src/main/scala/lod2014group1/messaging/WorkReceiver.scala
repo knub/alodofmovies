@@ -18,7 +18,8 @@ class WorkReceiver(taskQueueName: String, answerQueueName: String) {
 		Crawl -> classOf[CrawlWorker],
 		Crawlify -> classOf[CrawlifyWorker],
 		Triplimerge -> classOf[TriplimergeWorker],
-		Crawlifymerge -> classOf[CrawlifymergeWorker]
+		Crawlifymerge -> classOf[CrawlifymergeWorker],
+    Match -> classOf[MatchWorker]
 	)
 	var log: Logger = _
 	var consumer: QueueingConsumer = _
