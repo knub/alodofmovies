@@ -1,4 +1,5 @@
-set terminal wxt persist
+set terminal svg
+set output "multiline.svg"
 set style data lines
 set title "Parameter evaluation for ACTOR_OVERLAP_MINIMUM"
 set datafile separator "\t"
