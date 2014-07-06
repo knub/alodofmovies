@@ -45,7 +45,7 @@ class DatabasePopulator extends Logging {
     val date = new Date(new DateTime().toDate.getTime)
 
     val taskList = freebaseDir.listFiles.map { file: File =>
-      val filePath = file.getPath
+      val filePath = file.getPath.replace("data/", "")
       Task(0, TaskType.Triplimerge.toString, date, 5, filePath, false, "movie", Config.FREEBASE_GRAPH)
     }.toList
 
@@ -59,7 +59,7 @@ class DatabasePopulator extends Logging {
     val date = new Date(new DateTime().toDate.getTime)
 
     val taskList = ofdbDir.listFiles.flatMap { file: File =>
-      val filePath = file.getPath
+      val filePath = file.getPath.replace("data/", "")
         List(
           Task(0, TaskType.Triplimerge.toString, date, 5, filePath + "/Film.html", false, "", Config.OFDB_GRAPH),
           Task(0, TaskType.Triplimerge.toString, date, 5, filePath + "/Cast.html", false, "", Config.OFDB_GRAPH)
@@ -76,7 +76,8 @@ class DatabasePopulator extends Logging {
     val date = new Date(new DateTime().toDate.getTime)
 
     val taskList = tmdbDir.listFiles.map { file: File =>
-      Task(0, TaskType.Triplimerge.toString, date, 5, file.getPath, false, "", Config.TMDB_GRAPH)
+      val filePath = file.getPath.replace("data/", "")
+      Task(0, TaskType.Triplimerge.toString, date, 5, filePath, false, "", Config.TMDB_GRAPH)
     }.toList
 
     // add tasks to database
