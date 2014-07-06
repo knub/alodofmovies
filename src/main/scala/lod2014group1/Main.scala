@@ -59,16 +59,17 @@ object Main extends App with Logging {
 					merger.runStatistic(dir)
 				case _ =>
 					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
-					val merger = new MovieMatcher(new TmdbMovieTriplifier())
-					merger.VERBOSE = false
-					merger.RANDOM = 1001
-					merger.TEST_SET_SIZE = 10
-					merger.runStatistic(tmdbDir)
+//					val merger = new MovieMatcher(new TmdbMovieTriplifier())
+//					merger.VERBOSE = false
+//					merger.RANDOM = 1001
+//					merger.TEST_SET_SIZE = 10
+//					merger.runStatistic(tmdbDir)
 					(0.0 to (1.0, 0.2)).foreach { overlap =>
 						(0 to (5, 1)).foreach { distance =>
 							println(s"=== Using a actor name distance of $distance and minimum overlap of ${overlap * 100}% ===")
 							val merger = new MovieMatcher(new TmdbMovieTriplifier())
 							merger.VERBOSE = false
+							merger.TEST_SET_SIZE = 100
 							merger.ACTOR_OVERLAP_MINIMUM = overlap
 							merger.ACTOR_OVERLAP_LEVENSHTEIN = distance
 							time(merger.runStatistic(tmdbDir))

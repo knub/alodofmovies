@@ -52,7 +52,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 					f"$originUri%45s was not matched but should be $correctUri"
 				} else {
 					if (matched.equals(correct)) {
-						if (score > ACTOR_OVERLAP_MINIMUM) {
+						if (minScore(score)) {
 							f"$originUri%45s has top score: $score%.3f and matched correctly to $correctUri"
 						} else {
 							f"$originUri%45s has low top score: $score%.3f but would be matched correctly to $correctUri"
@@ -166,7 +166,11 @@ class MovieMatcher(val triplifier: Triplifier) {
 	}
 
 	def minScore(cs: CandidateScore): Boolean = {
-		cs.score > ACTOR_OVERLAP_MINIMUM
+		minScore(cs.score)
+	}
+
+	def minScore(score: Double): Boolean = {
+		score >= ACTOR_OVERLAP_MINIMUM
 	}
 	
 	def mergeTmdbMovie(file: File): Unit = {
@@ -210,7 +214,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 			(movieWithName, l)
 		}
 
-		moviesWithSimilarName.filter(_._2 < CANDIDATE_MOVIE_LEVENSHTEIN).sortBy(_._2).take(CANDIDATE_SET_SIZE).map(_._1)
+		moviesWithSimilarName.filter(_._2 <= CANDIDATE_MOVIE_LEVENSHTEIN).sortBy(_._2).take(CANDIDATE_SET_SIZE).map(_._1)
 
 //		val years = (g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease")::: g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:initialRelease")).map { yearString =>
 //			val split = yearString.split("-")
@@ -250,7 +254,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		val bestMovies = movieScores.toList.map(CandidateScore.tupled).sortBy(-_.score)
 		if (bestMovies.isEmpty)
 			return List()
-		if (bestMovies(0).score < ACTOR_OVERLAP_MINIMUM) {
+		if (minScore(bestMovies(0))) {
 //			log("Could not find a single match. Here are the best five matches:")
 			bestMovies.take(5).foreach { movie =>
 //				log(movie.candidate.replace(s"${Config.LOD_PREFIX}Movie", "www.imdb.com/title/") + " with score "  + movie.score)
@@ -329,7 +333,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 				StringUtils.getLevenshteinDistance(sortName(canidateObject.name), sortName(currentObject))
 			}.min
 
-			if (bestMatch < ACTOR_OVERLAP_LEVENSHTEIN)
+			if (bestMatch <= ACTOR_OVERLAP_LEVENSHTEIN)
 				List(currentObject)
 			else
 				List()
