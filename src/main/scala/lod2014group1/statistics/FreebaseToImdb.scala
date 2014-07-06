@@ -12,7 +12,7 @@ class FreebaseToImdb extends Logging{
 	val logFile = "freebaselogFile.log"
 	
 	def matchFreebase() = {
-		val br = new BufferedReader(new FileReader(FreebaseAPI.movieListFile));
+		val br = new BufferedReader(new FileReader(FreebaseAPI.movieListFile))
 		var id = br.readLine()
 
 		val source = scala.io.Source.fromFile(logFile)
