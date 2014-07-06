@@ -35,9 +35,9 @@ class DatabasePopulator extends Logging {
 	}
 
   def populateMergeTasks(): Unit = {
-    mergeFreebase()
+    //mergeFreebase()
     mergeOfdb()
-    mergeTmdb()
+    //mergeTmdb()
   }
 
   private def mergeFreebase() {
