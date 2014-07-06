@@ -17,8 +17,8 @@ import lod2014group1.Config
 
 class MovieMatcher(val triplifier: Triplifier) {
 	var ACTOR_OVERLAP_MINIMUM       = 0.8
-	var ACTOR_OVERLAP_LEVENSHTEIN   = 3
-	var CANDIDATE_MOVIE_LEVENSHTEIN = 5
+	var ACTOR_OVERLAP_LEVENSHTEIN   = 2
+	var CANDIDATE_MOVIE_LEVENSHTEIN = 4
 	var CANDIDATE_SET_SIZE          = 10
 	var TEST_SET_SIZE               = 750
 	var RANDOM                      = 1001
