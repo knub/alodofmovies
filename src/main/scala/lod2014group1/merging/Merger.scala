@@ -11,76 +11,44 @@ object Merger {
 
 	def mergeActorTriple(imdbActorResource: String, actorTriples: List[RdfTriple]): List[RdfTriple] = {
 		getAdditionalTriples(imdbActorResource, actorTriples, excludeActorTripleList)
-		//starring
-	}
-
-	private def getAdditionalTriples(resource: String, triples: List[RdfTriple], excludeTriples: List[String]): List[RdfTriple] = {
-		var additionalTriples: List[RdfTriple] = List()
-
-		triples.foreach { triple =>
-			if (excludeTriples.contains(triple.p.toString())) {
-				// do nothing
-			} else {
-					additionalTriples ::= RdfTriple(RdfResource(resource), triple.p, triple.o)
-			}
-		}
-		additionalTriples
-	}
-	
-	def replaceSubjectAndObject(subjectResource: String, objectResource: String, triples: List[RdfTriple]): List[RdfTriple] = {
-		var additionalTriples: List[RdfTriple] = List()
-
-		triples.foreach { triple =>
-					additionalTriples ::= RdfTriple(RdfResource(subjectResource), triple.p, RdfResource(objectResource))
-		}
-		additionalTriples
 	}
 
 	def mergeReleaseInfoTriple(imdbMovieResource: String, releaseInfoTriple: List[RdfTriple]): List[RdfTriple] = {
-//		if (Queries.existsReleaseInfo(imdbMovieResource)) {
-//			return List()
-//		}
-		addConnectionTriples(imdbMovieResource, releaseInfoTriple, "lod:ReleaseInfo", "dbpprop:released")
+		addConnectionTripleToMovie(imdbMovieResource, releaseInfoTriple, "lod:ReleaseInfo", "dbpprop:released")
 	}
 
 	def mergeAkaTriple(imdbMovieResource: String, akaTriple: List[RdfTriple]): List[RdfTriple] = {
-//		if (Queries.existsAka(imdbMovieResource)) {
-//			return List()
-//		}
-		addConnectionTriples(imdbMovieResource, akaTriple, "lod:aka", "dbpprop:alternativeNames")
+		addConnectionTripleToMovie(imdbMovieResource, akaTriple, "lod:aka", "dbpprop:alternativeNames")
 	}
 
-//	def mergeAwardTriple(imdbMovieResource: String, awardTriple: List[RdfTriple]): List[RdfTriple] = {
-//		if (Queries.existsAward(imdbMovieResource)) {
-//			return List()
-//		}
-//		addConnectionTriples(imdbMovieResource, awardTriple, "dbpedia-owl:Award", "lod:hasAward")
-//	}
+  def replaceSubjectAndObject(subjectResource: String, objectResource: String, triples: List[RdfTriple]): List[RdfTriple] = {
+    var additionalTriples: List[RdfTriple] = List()
+    triples.foreach { triple =>
+      additionalTriples ::= RdfTriple(RdfResource(subjectResource), triple.p, RdfResource(objectResource))
+    }
+    additionalTriples
+  }
 
-	private def addConnectionTriples(movieResource: String, triples: List[RdfTriple], resourceType: String, connectionProperty: String): List[RdfTriple] = {
+  private def getAdditionalTriples(resource: String, triples: List[RdfTriple], excludeTriples: List[String]): List[RdfTriple] = {
+    var additionalTriples: List[RdfTriple] = List()
+    triples.foreach { triple =>
+      if (!excludeTriples.contains(triple.p.toString())) {
+        additionalTriples ::= RdfTriple(RdfResource(resource), triple.p, triple.o)
+      }
+    }
+    additionalTriples
+  }
+
+	private def addConnectionTripleToMovie(movieResource: String, triples: List[RdfTriple], resourceType: String, connectionProperty: String): List[RdfTriple] = {
 		var additionalTriples: List[RdfTriple] = List()
-		triples.foreach{ triple =>
+
+		triples.foreach { triple =>
 			if (triple.p.toString().equals("rdf:type") && triple.o.toString.equals(resourceType)) {
 				additionalTriples ::= new RdfTriple(RdfResource(movieResource), RdfResource(connectionProperty), triple.s)
 			}
 			additionalTriples ::= triple
 		}
 		additionalTriples
-	}
-
-	def mergeOtherPersons(imdbMovieResource: String, graph: TripleGraph): List[RdfTriple] = {
-		otherPersonList.flatMap{ personPredicate =>
-			val triple = graph.getTriplesForSubjectAndPredicate(imdbMovieResource, personPredicate)
-			mergeOtherPersonTriple(imdbMovieResource, triple, personPredicate)
-		}
-	}
-
-	private def mergeOtherPersonTriple(imdbMovieResource: String, personTriple: List[RdfTriple], predicate: String): List[RdfTriple] = {
-		if (Queries.existsPerson(imdbMovieResource, predicate)) {
-			return List()
-		}
-		val triple = excludeTriple(personTriple, excludeOtherPersonTripleList)
-		addConnectionTriples(imdbMovieResource, triple, "dbpedia-owl:Person", predicate)
 	}
 
 	private def excludeTriple(triple: List[RdfTriple], excludeTriple: List[String]): List[RdfTriple] = {

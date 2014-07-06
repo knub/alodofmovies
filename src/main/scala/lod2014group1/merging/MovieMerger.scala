@@ -2,12 +2,9 @@ package lod2014group1.merging
 
 import java.sql.Date
 
-import lod2014group1.messaging.TaskType
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.UriBuilder
 import lod2014group1.database.{TaskDatabase, Task, Queries}
-import org.apache.commons.lang3.StringUtils
-import lod2014group1.triplification.FreebaseFilmsTriplifier
 import lod2014group1.Config
 import java.io.File
 
@@ -17,46 +14,50 @@ object MovieMerger extends App{
 	
 	def merge(triples: List[RdfTriple]): List[RdfTriple] = {
 		val tripleGraph = new TripleGraph(triples)
+
 		val imdbId = tripleGraph.getImdbId
-		
-		if (imdbId == null) return List()
+		if (imdbId == null) {
+      // TODO match movie
+      return List()
+    }
 		
 		val movieResource = tripleGraph.getObjectOfType("dbpedia-owl:Film")
 		val movieTriple = tripleGraph.getTriplesForSubject(movieResource)
 		val imdbResource = UriBuilder.getMovieUriFromImdbIdWithoutPrefix(imdbId)
 		
-		
 		val releaseInfoTriple = getTriple(tripleGraph, imdbResource, "lod:ReleaseInfo", Merger.mergeReleaseInfoTriple(_:String, _:List[RdfTriple]))
 		val akaTriple = getTriple(tripleGraph, imdbResource, "lod:Aka", Merger.mergeAkaTriple(_:String, _:List[RdfTriple]))
-		val awardTriple = getTriple(tripleGraph, imdbResource, "dbpedia-owl:Award", Merger.mergeAkaTriple(_:String, _:List[RdfTriple]))
+    // TODO merge award
+    //	val awardTriple = getTriple(tripleGraph, imdbResource, "dbpedia-owl:Award", Merger.mergeAkaTriple(_:String, _:List[RdfTriple]))
 		
-		val movieTripleToLoad = Merger.mergeMovieTriple(imdbResource, movieTriple) ::: releaseInfoTriple ::: akaTriple //::: awardTriple
+		val movieTriplesToLoad = Merger.mergeMovieTriple(imdbResource, movieTriple) ::: releaseInfoTriple ::: akaTriple
 		
 		val personResources = tripleGraph.getObjectListOfType("dbpedia-owl:Person").distinct
 		val imdbPersons = Queries.getAllActorsOfMovie(imdbResource)
 		
-		movieTripleToLoad ::: personResources.flatMap{personResource => 
+		movieTriplesToLoad ::: personResources.flatMap { personResource =>
 			val personName = tripleGraph.getObjectsForSubjectAndPredicate(personResource, "dbpprop:name").head
 			val personTriples = tripleGraph.getTriplesForSubject(personResource)
 			val personMovieTriple = tripleGraph.getTriplesForSubjectAndObject(movieResource, personResource)
-			imdbPersons.flatMap{imdbPerson =>
-				if (areActorNamesEqual(imdbPerson.name, personName)){
+
+			imdbPersons.flatMap { imdbPerson =>
+				if (areActorNamesEqual(imdbPerson.name, personName)) {
 					Merger.mergeActorTriple(imdbPerson.resource, personTriples) ::: Merger.replaceSubjectAndObject(imdbResource, imdbPerson.resource, personMovieTriple)
-					//TODO Charakter if not exist
-					
-				} else List()
+					//TODO merge charakter
+				} else
+          List()
 			}
 		}
 	}
 	
-	def getTriple(tripleGraph: TripleGraph, imdbResource:String, objectType:String, method: (String, List[RdfTriple]) => List[RdfTriple]): List[RdfTriple] = {
+	private def getTriple(tripleGraph: TripleGraph, imdbResource:String, objectType:String, method: (String, List[RdfTriple]) => List[RdfTriple]): List[RdfTriple] = {
 		val resources = tripleGraph.getObjectListOfType(objectType)
 		resources.flatMap{ resource =>
 			method(imdbResource, tripleGraph.getTriplesForSubject(resource))
 		}
 	}
 	
-	def areActorNamesEqual(imdbActorName : String, actorName : String): Boolean = {
+	private def areActorNamesEqual(imdbActorName : String, actorName : String): Boolean = {
 		imdbActorName == actorName
 	}
 	
@@ -77,7 +78,6 @@ object MovieMerger extends App{
 
     val taskList = freebaseDir.listFiles.map { file: File =>
       val filePath = file.getPath
-      println(filePath)
       //Task(0, TaskType.Triplimerge.toString, date, 5, filePath, false, "movie", Config.FREEBASE_GRAPH)
     }
 
