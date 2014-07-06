@@ -17,7 +17,7 @@ class ImdbMoviesListCrawler extends Crawler with Logging {
 	def crawl: Unit = {
 		log.debug("Start.")
 		// first movie ever: 1894
-		val years = ((1894 to 2013) diff List(1895, 1896)).reverse
+		val years = 2014 to 2014
 
 
 		years.foreach { year =>
