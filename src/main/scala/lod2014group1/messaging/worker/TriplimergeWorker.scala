@@ -18,13 +18,14 @@ class TriplimergeWorker extends Worker{
 		val fileName = params("fileName")
 		val content = params("content")
 		val graph = params("graph")
+    val flag = params("flag")
 
 		val triplifier = new TriplifyDistributor
 		val triples = triplifier.triplify(fileName, content)
 
 	    val mergedTriples = MovieMerger.merge(triples).map { _.toRdfTripleString() }
 	
-	    if (mergedTriples.isEmpty) {
+	    if (mergedTriples.isEmpty && !flag.equals("no matching")) {
         val date = new Date(new DateTime().toDate.getTime)
         Task(0, TaskType.Match.toString, date, 5, fileName, true, "", graph)
 	    }

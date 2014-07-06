@@ -61,8 +61,8 @@ class DatabasePopulator extends Logging {
     val taskList = ofdbDir.listFiles.flatMap { file: File =>
       val filePath = file.getPath.replace("data/", "")
         List(
-          Task(0, TaskType.Triplimerge.toString, date, 5, filePath + "/Film.html", false, "", Config.OFDB_GRAPH),
-          Task(0, TaskType.Triplimerge.toString, date, 5, filePath + "/Cast.html", false, "", Config.OFDB_GRAPH)
+          Task(0, TaskType.Triplimerge.toString, date, 5, filePath + "/Film.html", false, "no matching", Config.OFDB_GRAPH),
+          Task(0, TaskType.Triplimerge.toString, date, 5, filePath + "/Cast.html", false, "no matching", Config.OFDB_GRAPH)
         )
     }.toList
 
