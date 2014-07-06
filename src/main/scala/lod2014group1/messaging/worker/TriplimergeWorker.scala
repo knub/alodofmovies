@@ -17,9 +17,9 @@ class TriplimergeWorker extends Worker{
 		val graph = params("graph")
 
 		val triplifier = new TriplifyDistributor
-		val triples = triplifier.triplify(fileName, content).map { _.toRdfTripleString() }
+		val triples = triplifier.triplify(fileName, content)
 
-		val mergedTriples = MovieMerger.merge(triples)
+    val mergedTriples = MovieMerger.merge(triples).map { _.toRdfTripleString() }
 
     if (mergedTriples.isEmpty) {
       // create new match task

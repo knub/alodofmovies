@@ -22,9 +22,9 @@ class CrawlifymergeWorker extends Worker {
 		val content = file.fileContent
 
 		val triplifier = new TriplifyDistributor
-		val triples = triplifier.triplify(fileName, content).map { _.toRdfTripleString() }
+		val triples = triplifier.triplify(fileName, content)
 
-    val mergedTriples = MovieMerger.merge(triples)
+    val mergedTriples = MovieMerger.merge(triples).map { _.toRdfTripleString() }
 
 //		if (flag.equals(Config.DELETE_FIRST_FLAG)) {
 //			val id = fileName.split("/")(1)
