@@ -1,7 +1,7 @@
 package lod2014group1
 
 import lod2014group1.crawling.Crawler
-import lod2014group1.database.{TaskDatabase, Queries}
+import lod2014group1.database.{DatabasePopulator, TaskDatabase, Queries}
 import org.slf4s.Logging
 import lod2014group1.triplification.{TmdbMovieTriplifier, TriplifyDistributor}
 import lod2014group1.messaging._
@@ -78,10 +78,9 @@ object Main extends App with Logging {
 			}
 		} else if (args contains "update") {
 			new UpdateScheduler().update()
-    } else if (args contains "mergeAll") {
-      MovieMerger.mergeFreebase()
-      MovieMerger.mergeOfdb()
-      MovieMerger.mergeTmdb()
+    } else if (args contains "populateMerge") {
+      val populator = new DatabasePopulator()
+      populator.populateMergeTasks()
 		} else if (args contains "fixx") {
 //			val taskDb = new TaskDatabase
 //			val oldResources = Queries.getAllMoviesWithNameAndOriginalTitles

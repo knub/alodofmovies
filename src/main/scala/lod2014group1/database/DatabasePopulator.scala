@@ -33,4 +33,54 @@ class DatabasePopulator extends Logging {
 		new Date(new DateTime(year, month, day, 0, 0).toDate.getTime)
 
 	}
+
+  def populateMergeTasks(): Unit = {
+    mergeFreebase()
+    mergeOfdb()
+    mergeTmdb()
+  }
+
+  private def mergeFreebase() {
+    val freebaseDir = new File(s"${Config.DATA_FOLDER}/Freebase/film/")
+    val date = new Date(new DateTime().toDate.getTime)
+
+    val taskList = freebaseDir.listFiles.map { file: File =>
+      val filePath = file.getPath
+      Task(0, TaskType.Triplimerge.toString, date, 5, filePath, false, "movie", Config.FREEBASE_GRAPH)
+    }.toList
+
+    // add tasks to database
+    val database = new TaskDatabase
+    database.insertAll(taskList)
+  }
+
+  private def mergeOfdb() {
+    val ofdbDir = new File(s"${Config.DATA_FOLDER}/OFDB/Movies/")
+    val date = new Date(new DateTime().toDate.getTime)
+
+    val taskList = ofdbDir.listFiles.flatMap { file: File =>
+      val filePath = file.getPath
+        List(
+          Task(0, TaskType.Triplimerge.toString, date, 5, filePath + "/Film.html", false, "", Config.OFDB_GRAPH),
+          Task(0, TaskType.Triplimerge.toString, date, 5, filePath + "/Cast.html", false, "", Config.OFDB_GRAPH)
+        )
+    }.toList
+
+    // add tasks to database
+    val database = new TaskDatabase
+    database.insertAll(taskList)
+  }
+
+  private def mergeTmdb() {
+    val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie/")
+    val date = new Date(new DateTime().toDate.getTime)
+
+    val taskList = tmdbDir.listFiles.map { file: File =>
+      Task(0, TaskType.Triplimerge.toString, date, 5, file.getPath, false, "", Config.TMDB_GRAPH)
+    }.toList
+
+    // add tasks to database
+    val database = new TaskDatabase
+    database.insertAll(taskList)
+  }
 }
