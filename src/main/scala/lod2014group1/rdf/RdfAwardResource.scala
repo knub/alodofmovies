@@ -24,7 +24,7 @@ class RdfAwardResource(resource: String) extends RdfResource(resource) with Logg
 
 	def forNominee(nominee: RdfResource): RdfTriple = buildTriple(RdfResource("dbpprop:nominee"), nominee)
 	
-	def forFreebaseNominee (id:String): RdfTriple = this.forNominee(new RdfPersonResource("www.freebase.com" + id))
+	def forFreebaseNominee (id:String): RdfTriple = this.forNominee(new RdfPersonResource(UriBuilder.getFreebaseUri(id)))
 
 	def withRole(role: String): RdfTriple = buildTriple(RdfResource("lod:role"), RdfString(role))
 }

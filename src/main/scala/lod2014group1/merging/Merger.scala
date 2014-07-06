@@ -37,16 +37,16 @@ object Merger {
 	}
 
 	def mergeReleaseInfoTriple(imdbMovieResource: String, releaseInfoTriple: List[RdfTriple]): List[RdfTriple] = {
-		if (Queries.existsReleaseInfo(imdbMovieResource)) {
-			return List()
-		}
+//		if (Queries.existsReleaseInfo(imdbMovieResource)) {
+//			return List()
+//		}
 		addConnectionTriples(imdbMovieResource, releaseInfoTriple, "lod:ReleaseInfo", "dbpprop:released")
 	}
 
 	def mergeAkaTriple(imdbMovieResource: String, akaTriple: List[RdfTriple]): List[RdfTriple] = {
-		if (Queries.existsAka(imdbMovieResource)) {
-			return List()
-		}
+//		if (Queries.existsAka(imdbMovieResource)) {
+//			return List()
+//		}
 		addConnectionTriples(imdbMovieResource, akaTriple, "lod:aka", "dbpprop:alternativeNames")
 	}
 

@@ -179,7 +179,7 @@ def getLastMovieIDCrawled(): Integer = {
 	val lastMovieFilePath = s"${OFDBMovieCrawler.OFDB_PATH}/OFDBLastMovie.txt"
 	if (!Files.exists(Paths.get(lastMovieFilePath)))
 		scala.tools.nsc.io.File(lastMovieFilePath).writeAll("0")
-	val lastMovieIDCrawled = Source.fromFile(lastMovieFilePath)(codec).mkString.toInt
+	val lastMovieIDCrawled = Source.fromFile(lastMovieFilePath)(codec).mkString.trim().toInt
 	println(s"Last movie ID crawled: $lastMovieIDCrawled.")
 	return lastMovieIDCrawled
 	}
