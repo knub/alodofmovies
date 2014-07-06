@@ -1,14 +1,7 @@
 package lod2014group1.messaging.worker
 
 import java.sql.Date
-<<<<<<< HEAD
-import lod2014group1.Config
-import lod2014group1.crawling.{UriToFilename, Crawler}
-import lod2014group1.database.{TaskDatabase, Task, Queries}
-import lod2014group1.merging.MovieMerger
-=======
-import lod2014group1.database.{Task, Queries}
->>>>>>> Corrected indentation.
+import lod2014group1.database.{TaskDatabase, Task}
 import lod2014group1.messaging.TaskType
 import lod2014group1.triplification.TriplifyDistributor
 import lod2014group1.merging.MovieMerger
