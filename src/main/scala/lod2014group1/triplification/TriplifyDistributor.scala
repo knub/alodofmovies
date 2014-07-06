@@ -31,17 +31,24 @@ class TriplifyDistributor {
 				return new ImdbReleaseInfoTriplifier(imdbId).triplify(content)
 			else if (f.getName == "main.html")
 				return new ImdbMainPageTriplifier(imdbId).triplify(content)
+
 		} else if (fileName.contains("Actor")) {
 			val imdbId = fileName.split("/")(1)
 			if (f.getName == "main.html")
 				return new ImdbActorTriplifier(imdbId).triplify(content)
+
 		} else if (fileName.contains("OFDB/Movies")){
 			val ofdbId = fileName.split("/", 3)(1)
 			if (fileName.contains("film.html"))
 				return new OfdbTriplifier(ofdbId).triplifyFilm(content)
 			else if (fileName.contains("cast.html"))
 				return new OfdbTriplifier(ofdbId).triplifyCast(content)
-		}
+
+    } else if (fileName.contains("Freebase")){
+      val triplifier = new FreebaseFilmsTriplifier()
+      return triplifier.triplify(content)
+    }
+
 		throw new RuntimeException(s"Could not find triplifier for file $fileName.")
 	} 
 }

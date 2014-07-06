@@ -14,10 +14,8 @@ object UriToFilename {
 				// special flag for freebase, because for freebase we cannot determine whether its a movie
 				// or a actor from the url
 				file.flag match {
-					case "actor" =>
-						s"freebase/person/$id/main.json"
 					case "movie" =>
-						s"freebase/movie/$id/main.json"
+						s"Freebase/film/$id"
 					case _ =>
 						""
 				}
@@ -25,11 +23,11 @@ object UriToFilename {
 			// TMDB
 			case uri if uri.startsWith("http://www.themoviedb.org/movie/") =>
 				val id = uri.split("/").last
-				s"themoviedb/movie/$id/main.json"
+				s"TMDBMoviesList/movie/$id.json"
 
 			case uri if uri.startsWith("http://www.themoviedb.org/person/") =>
 				val id = uri.split("/").last
-				s"themoviedb/person/$id/main.json"
+        s"TMDBMoviesList/person/$id.json"
 
 			// IMDB
 			case uri if uri.startsWith("http://www.imdb.com/title/") =>
@@ -49,11 +47,11 @@ object UriToFilename {
 			// OFDB
 			case uri if uri.startsWith("http://www.ofdb.de/film/") =>
 				val id = uri.split("/").last
-				s"OFDB/Movies/$id/film.html"
+				s"OFDB/Movies/$id/Film.html"
 			
 			case uri if uri.startsWith("http://www.ofdb.de/view.php?page=film_detail") =>
 				val id = uri.split("/").last
-				s"OFDB/Movies/$id/cast.html"
+				s"OFDB/Movies/$id/Cast.html"
 
 			case _ =>
 				""

@@ -5,7 +5,7 @@ import lod2014group1.database.{TaskDatabase, Queries}
 import org.slf4s.Logging
 import lod2014group1.triplification.{TmdbMovieTriplifier, TriplifyDistributor}
 import lod2014group1.messaging._
-import lod2014group1.merging.MovieMatcher
+import lod2014group1.merging.{MovieMerger, MovieMatcher}
 import lod2014group1.updating.{UpdateScheduler, ImdbStatisticUpdater}
 import lod2014group1.job_managing.OfflineTaskRunner
 import java.io.File
@@ -74,6 +74,10 @@ object Main extends App with Logging {
 			}
 		} else if (args contains "update") {
 			new UpdateScheduler().update()
+    } else if (args contains "mergeAll") {
+      MovieMerger.mergeFreebase()
+      MovieMerger.mergeOfdb()
+      MovieMerger.mergeTmdb()
 		} else if (args contains "fixx") {
 //			val taskDb = new TaskDatabase
 //			val oldResources = Queries.getAllMoviesWithNameAndOriginalTitles
