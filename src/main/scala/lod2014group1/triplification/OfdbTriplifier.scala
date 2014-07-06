@@ -31,7 +31,7 @@ class OfdbTriplifier extends Triplifier {
 		if (docString.contains("""<h1 itemprop="name">"""))
 			triples = triplifyFilm(docString)
 		
-		else if (docString.contains("""value="Zurück zur Hauptseite""""))
+		else if (docString.contains("""value="ck zur Hauptseite""""))
 			triples = triplifyCast(docString) ::: triples
 			
 		triples
@@ -66,7 +66,7 @@ class OfdbTriplifier extends Triplifier {
 			val altTitlesParts = docString.split(altTitlesSplit, 2)(1).split("""</li></ul>""", 2)(0).split("""<b>""")
 			for (i <- 1 to altTitlesParts.length - 1){
 				var altTitle = ""
-				altTitle = altTitlesParts(i).split("""</b>""", 2)(0).trim();
+				altTitle = altTitlesParts(i).split("""</b>""", 2)(0).trim()
 				triples = (movie hasAlternativeName altTitle) :: triples
 			}
 		}
@@ -261,7 +261,7 @@ class OfdbTriplifier extends Triplifier {
 	}
 	
 	def removeSpecialCharacters(string: String) : String = {
-		var nonSpaceString = string.replaceAll("[^a-zA-Z0-9]", "");
+		var nonSpaceString = string.replaceAll("[^a-zA-Z0-9]", "")
 		nonSpaceString
 	}
 }

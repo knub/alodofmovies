@@ -16,7 +16,6 @@ import java.util.Date
 import lod2014group1.Config
 
 class MovieMatcher(val triplifier: Triplifier) {
-<<<<<<< HEAD
 	var ACTOR_OVERLAP_MINIMUM       = 0.8
 	var ACTOR_OVERLAP_LEVENSHTEIN   = 2
 	var CANDIDATE_MOVIE_LEVENSHTEIN = 4
@@ -31,20 +30,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 		if (VERBOSE)
 			println(s.toString)
 	}
-=======
-	// TODO use orginial_title
-	// TODO use more to calc score (e.g. original_title distance)
-	// TODO candidate movies more criteria -> calc score and take top 100
-	// TODO find bugs (e.g. freebase)
-
-	val ACTOR_OVERLAP_MINIMUM       = 0.8
-	val ACTOR_OVERLAP_LEVENSHTEIN   = 3
-	val CANDIDATE_MOVIE_LEVENSHTEIN = 5
-	val TEST_SET_SIZE             = 10
-	// val TEST_SET_SIZE               = 750
-
-
->>>>>>> rewrote OfdbTriplifier to comply with Triplifier standard
 	val tmdbTriplifier = new TmdbMovieTriplifier
 	val movieNames = Queries.getAllMoviesWithNameAndOriginalTitles
 	val taskDb = new TaskDatabase()
@@ -97,7 +82,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 	var notInDb         = List[String]()
 
 	def runStatistic(dir: File): Unit = {
-<<<<<<< HEAD
 		val r = new Random(RANDOM)
 		val testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
 		try {
@@ -123,39 +107,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 		log(f"${noImdbId.size}%4s had no imdb id.")
 		log()
 		log("Precision = matched correctly/(correctly + incorrectly)")
-=======
-		val r = new Random(1001)
-		var testSet =  r.shuffle(dir.listFiles().toList.sortBy(_.getName)).take(TEST_SET_SIZE)
-		
-		if (dir.getAbsolutePath().contains("OFDB")) {
-			testSet = List[java.io.File]()
-			//for ( i <- 1 to 1 ) {
-			for ( i <- 1 to TEST_SET_SIZE) {
-				val ofdbId = r.nextInt(100000)
-				if (new File(s"${dir.getAbsolutePath()}\\$ofdbId\\film.html").exists())
-					println("File exists.")
-				testSet = new File(s"${dir.getAbsolutePath()}\\$ofdbId\\film.html") :: testSet
-				//testSet = new File(s"${dir.getAbsolutePath()}\\$ofdbId\\cast.html") :: testSet
-			}
-		}
-		
-		testSet.zipWithIndex.foreach(mergeMovie)
-
-		println(f"${testSet.size}%4s files: ")
-		println(f"${trueMatched.size}%4s were matched correctly.")
-		println(f"${falseMatched.size}%4s were matched incorrectly:")
-		falseMatched.foreach(println)
-		println(f"${notInDb.size}%4s were not matched because we do not have it in our database.")
-		println(f"${notInCandidate.size}%4s were not matched and are not candidates:")
-		notInCandidate.foreach(println)
-		println(f"${noCandidates.size}%4s were not matched and no candidates were found:")
-		noCandidates.foreach(println)
-		println(f"${notMatched.size}%4s were not matched for unknown reasons:")
-		notMatched.foreach(println)
-		println(f"${noImdbId.size}%4s had no imdb id.")
-		println()
-		println("Precision = matched correctly/(correctly + incorrectly)")
->>>>>>> rewrote OfdbTriplifier to comply with Triplifier standard
 		val precision = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size)
 		println(s"Precision    = $precision")
 		log("Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)")
