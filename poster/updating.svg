@@ -157,7 +157,7 @@
      inkscape:cx="779.86166"
      inkscape:cy="317.35796"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer1"
      showgrid="false"
      width="1052.36px"
      fit-margin-bottom="-0.4"
@@ -196,7 +196,7 @@
     <g
        id="g4742"
        transform="matrix(1.6938894,0,0,1.0547271,-368.27447,132.41064)"
-       style="fill:#009100;fill-opacity:0.72906405">
+       style="fill:#009100;fill-opacity:0.72906404;stroke-width:0.07481478;stroke-miterlimit:4;stroke-dasharray:none">
       <rect
          ry="82.380219"
          rx="51.295353"
@@ -205,7 +205,7 @@
          height="648.55103"
          width="1010.1525"
          id="rect4562-6"
-         style="fill:#009100;fill-opacity:0.72906405;fill-rule:nonzero;stroke:#000000;stroke-width:1.49629568999999996;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+         style="fill:#009100;fill-opacity:0.72906404;fill-rule:nonzero;stroke:#000000;stroke-width:0.07481478;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
     </g>
   </g>
   <g
@@ -213,8 +213,7 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-308.2677)"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <g
        id="g27"
        style="color:#ffffff;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
@@ -932,7 +931,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon156"
-                     points="108.6,414.8 119.2,414.8 119.2,333.1 108.6,333.1 " />
+                     points="119.2,333.1 108.6,333.1 108.6,414.8 119.2,414.8 " />
                 </g>
                 <path
                    style="fill:#000000;fill-opacity:1;stroke:none"
@@ -945,7 +944,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon162"
-                     points="150.5,414.8 161.1,414.8 161.1,313.8 150.5,313.8 " />
+                     points="161.1,313.8 150.5,313.8 150.5,414.8 161.1,414.8 " />
                 </g>
                 <path
                    style="fill:#000000;fill-opacity:1;stroke:none"
@@ -958,7 +957,7 @@
                   <polygon
                      style="fill:#3f8f04;fill-opacity:1;stroke:none"
                      id="polygon168"
-                     points="192.4,414.8 203,414.8 203,184.5 192.4,184.5 " />
+                     points="203,184.5 192.4,184.5 192.4,414.8 203,414.8 " />
                 </g>
                 <path
                    style="fill:#000000;stroke:#ff0000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
@@ -971,7 +970,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon174"
-                     points="234.4,414.8 244.9,414.8 244.9,353.7 234.4,353.7 " />
+                     points="244.9,353.7 234.4,353.7 234.4,414.8 244.9,414.8 " />
                 </g>
                 <path
                    style="fill:#000000;fill-opacity:1;stroke:none"
@@ -984,7 +983,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon180"
-                     points="276.3,414.8 286.9,414.8 286.9,382.9 276.3,382.9 " />
+                     points="286.9,382.9 276.3,382.9 276.3,414.8 286.9,414.8 " />
                 </g>
                 <path
                    style="fill:#000000;fill-opacity:1;stroke:none"
@@ -997,7 +996,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon186"
-                     points="318.2,414.8 328.8,414.8 328.8,73.7 318.2,73.7 " />
+                     points="328.8,73.7 318.2,73.7 318.2,414.8 328.8,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:none"
@@ -1010,7 +1009,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon192"
-                     points="360.1,414.8 370.7,414.8 370.7,223.6 360.1,223.6 " />
+                     points="370.7,223.6 360.1,223.6 360.1,414.8 370.7,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:none"
@@ -1023,7 +1022,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon198"
-                     points="402.1,414.8 412.6,414.8 412.6,337.7 402.1,337.7 " />
+                     points="412.6,337.7 402.1,337.7 402.1,414.8 412.6,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:none"
@@ -1036,7 +1035,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon204"
-                     points="444,414.8 454.6,414.8 454.6,236.9 444,236.9 " />
+                     points="454.6,236.9 444,236.9 444,414.8 454.6,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:none"
@@ -1049,7 +1048,7 @@
                   <polygon
                      style="fill:none;stroke:none"
                      id="polygon210"
-                     points="485.9,414.8 496.5,414.8 496.5,345.7 485.9,345.7 " />
+                     points="496.5,345.7 485.9,345.7 485.9,414.8 496.5,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:#ff0000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
@@ -1062,7 +1061,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon216"
-                     points="527.8,414.8 538.4,414.8 538.4,381.5 527.8,381.5 " />
+                     points="538.4,381.5 527.8,381.5 527.8,414.8 538.4,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:none"
@@ -1086,7 +1085,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon227"
-                     points="119.1,414.8 129.6,414.8 129.6,408.7 119.1,408.7 " />
+                     points="129.6,408.7 119.1,408.7 119.1,414.8 129.6,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1099,7 +1098,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon233"
-                     points="161,414.8 171.6,414.8 171.6,408.7 161,408.7 " />
+                     points="171.6,408.7 161,408.7 161,414.8 171.6,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1112,7 +1111,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon239"
-                     points="202.9,414.8 213.5,414.8 213.5,321.8 202.9,321.8 " />
+                     points="213.5,321.8 202.9,321.8 202.9,414.8 213.5,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1125,7 +1124,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon245"
-                     points="244.8,414.8 255.4,414.8 255.4,412 244.8,412 " />
+                     points="255.4,412 244.8,412 244.8,414.8 255.4,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1138,7 +1137,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon251"
-                     points="286.8,414.8 297.3,414.8 297.3,413.4 286.8,413.4 " />
+                     points="297.3,413.4 286.8,413.4 286.8,414.8 297.3,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1151,7 +1150,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon257"
-                     points="328.7,414.8 339.3,414.8 339.3,383.5 328.7,383.5 " />
+                     points="339.3,383.5 328.7,383.5 328.7,414.8 339.3,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1164,7 +1163,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon263"
-                     points="370.6,414.8 381.2,414.8 381.2,396.8 370.6,396.8 " />
+                     points="381.2,396.8 370.6,396.8 370.6,414.8 381.2,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1177,7 +1176,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon269"
-                     points="412.5,414.8 423.1,414.8 423.1,366.9 412.5,366.9 " />
+                     points="423.1,366.9 412.5,366.9 412.5,414.8 423.1,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1190,7 +1189,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon275"
-                     points="454.5,414.8 465,414.8 465,400.1 454.5,400.1 " />
+                     points="465,400.1 454.5,400.1 454.5,414.8 465,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1203,7 +1202,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon281"
-                     points="496.4,414.8 507,414.8 507,398.1 496.4,398.1 " />
+                     points="507,398.1 496.4,398.1 496.4,414.8 507,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1216,7 +1215,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon287"
-                     points="538.3,414.8 548.9,414.8 548.9,413.4 538.3,413.4 " />
+                     points="548.9,413.4 538.3,413.4 538.3,414.8 548.9,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1628,7 +1627,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon156-9"
-                     points="108.6,333.1 108.6,414.8 119.2,414.8 119.2,333.1 " />
+                     points="119.2,414.8 119.2,333.1 108.6,333.1 108.6,414.8 " />
                 </g>
                 <path
                    style="fill:#000000;fill-opacity:1;stroke:none"
@@ -1641,7 +1640,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon162-9"
-                     points="150.5,313.8 150.5,414.8 161.1,414.8 161.1,313.8 " />
+                     points="161.1,414.8 161.1,313.8 150.5,313.8 150.5,414.8 " />
                 </g>
                 <path
                    style="fill:#000000;fill-opacity:1;stroke:none"
@@ -1654,7 +1653,7 @@
                   <polygon
                      style="fill:#3f8f04;fill-opacity:1;stroke:none"
                      id="polygon168-3"
-                     points="192.4,184.5 192.4,414.8 203,414.8 203,184.5 " />
+                     points="203,414.8 203,184.5 192.4,184.5 192.4,414.8 " />
                 </g>
                 <path
                    style="fill:#000000;stroke:#ff0000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
@@ -1667,7 +1666,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon174-6"
-                     points="234.4,353.7 234.4,414.8 244.9,414.8 244.9,353.7 " />
+                     points="244.9,414.8 244.9,353.7 234.4,353.7 234.4,414.8 " />
                 </g>
                 <path
                    style="fill:#000000;fill-opacity:1;stroke:none"
@@ -1680,7 +1679,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon180-1"
-                     points="276.3,382.9 276.3,414.8 286.9,414.8 286.9,382.9 " />
+                     points="286.9,414.8 286.9,382.9 276.3,382.9 276.3,414.8 " />
                 </g>
                 <path
                    style="fill:#000000;fill-opacity:1;stroke:none"
@@ -1693,7 +1692,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon186-8"
-                     points="318.2,73.7 318.2,414.8 328.8,414.8 328.8,73.7 " />
+                     points="328.8,414.8 328.8,73.7 318.2,73.7 318.2,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:none"
@@ -1706,7 +1705,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon192-3"
-                     points="360.1,223.6 360.1,414.8 370.7,414.8 370.7,223.6 " />
+                     points="370.7,414.8 370.7,223.6 360.1,223.6 360.1,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:none"
@@ -1719,7 +1718,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon198-7"
-                     points="402.1,337.7 402.1,414.8 412.6,414.8 412.6,337.7 " />
+                     points="412.6,414.8 412.6,337.7 402.1,337.7 402.1,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:none"
@@ -1732,7 +1731,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon204-7"
-                     points="444,236.9 444,414.8 454.6,414.8 454.6,236.9 " />
+                     points="454.6,414.8 454.6,236.9 444,236.9 444,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:none"
@@ -1745,7 +1744,7 @@
                   <polygon
                      style="fill:none;stroke:none"
                      id="polygon210-4"
-                     points="485.9,345.7 485.9,414.8 496.5,414.8 496.5,345.7 " />
+                     points="496.5,414.8 496.5,345.7 485.9,345.7 485.9,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:#ff0000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
@@ -1758,7 +1757,7 @@
                   <polygon
                      style="fill:#ff0000"
                      id="polygon216-2"
-                     points="527.8,381.5 527.8,414.8 538.4,414.8 538.4,381.5 " />
+                     points="538.4,414.8 538.4,381.5 527.8,381.5 527.8,414.8 " />
                 </g>
                 <path
                    style="fill:#000004;fill-opacity:1;stroke:none"
@@ -1782,7 +1781,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon227-4"
-                     points="119.1,408.7 119.1,414.8 129.6,414.8 129.6,408.7 " />
+                     points="129.6,414.8 129.6,408.7 119.1,408.7 119.1,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1795,7 +1794,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon233-0"
-                     points="161,408.7 161,414.8 171.6,414.8 171.6,408.7 " />
+                     points="171.6,414.8 171.6,408.7 161,408.7 161,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1808,7 +1807,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon239-4"
-                     points="202.9,321.8 202.9,414.8 213.5,414.8 213.5,321.8 " />
+                     points="213.5,414.8 213.5,321.8 202.9,321.8 202.9,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1821,7 +1820,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon245-9"
-                     points="244.8,412 244.8,414.8 255.4,414.8 255.4,412 " />
+                     points="255.4,414.8 255.4,412 244.8,412 244.8,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1834,7 +1833,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon251-9"
-                     points="286.8,413.4 286.8,414.8 297.3,414.8 297.3,413.4 " />
+                     points="297.3,414.8 297.3,413.4 286.8,413.4 286.8,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1847,7 +1846,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon257-5"
-                     points="328.7,383.5 328.7,414.8 339.3,414.8 339.3,383.5 " />
+                     points="339.3,414.8 339.3,383.5 328.7,383.5 328.7,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1860,7 +1859,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon263-0"
-                     points="370.6,396.8 370.6,414.8 381.2,414.8 381.2,396.8 " />
+                     points="381.2,414.8 381.2,396.8 370.6,396.8 370.6,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1873,7 +1872,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon269-6"
-                     points="412.5,366.9 412.5,414.8 423.1,414.8 423.1,366.9 " />
+                     points="423.1,414.8 423.1,366.9 412.5,366.9 412.5,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1886,7 +1885,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon275-3"
-                     points="454.5,400.1 454.5,414.8 465,414.8 465,400.1 " />
+                     points="465,414.8 465,400.1 454.5,400.1 454.5,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1899,7 +1898,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon281-1"
-                     points="496.4,398.1 496.4,414.8 507,414.8 507,398.1 " />
+                     points="507,414.8 507,398.1 496.4,398.1 496.4,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
@@ -1912,7 +1911,7 @@
                   <polygon
                      style="fill:#cccccc;stroke:none"
                      id="polygon287-4"
-                     points="538.3,413.4 538.3,414.8 548.9,414.8 548.9,413.4 " />
+                     points="548.9,414.8 548.9,413.4 538.3,413.4 538.3,414.8 " />
                 </g>
                 <path
                    style="fill:#cccccc;stroke:none"
