@@ -196,11 +196,11 @@ class MovieMatcher(val triplifier: Triplifier) {
 		(currentMovieTitles ::: currentMovieOriginalTitles).distinct
 	}
 
-	def extractMovieNamesFromResource(movieWithName: ResourceWithNameAndOriginalTitle): List[String] = {
+	def extractMovieNamesFromResource(movieWithName: ResourceWithNameAndOriginalTitleAndYear): List[String] = {
 		List(movieWithName.name, movieWithName.originalTitle).filter(_ != null).distinct
 	}
 
-	def findCandidateMovies(g: TripleGraph): List[ResourceWithNameAndOriginalTitle] = {
+	def findCandidateMovies(g: TripleGraph): List[ResourceWithNameAndOriginalTitleAndYear] = {
 		val currentMovieNames = extractAllMovieNamesFromGraph(g)
 
 //		log(s"========== Movie: ${currentMovieNames(0)} ==========")
@@ -236,10 +236,10 @@ class MovieMatcher(val triplifier: Triplifier) {
 //		log(s"Found ${candidates.size} candidates.")
 		var movieScores = Map[String, Double]()
 		candidates.zipWithIndex.foreach { case (candidate, i) =>
-			val scoringFunctions: List[(TripleGraph, ResourceWithNameAndOriginalTitle) => Double] = List(
+			val scoringFunctions: List[(TripleGraph, ResourceWithNameAndOriginalTitleAndYear) => Double] = List(
 				calculateActorOverlap,
 				calculateDirectorOverlap,
-				nameSimilarity
+				nameAndYearSimilarity
 			)
 			val weights = List(20, 20, 1)
 
@@ -272,23 +272,29 @@ class MovieMatcher(val triplifier: Triplifier) {
 		}.sum / weightSum.toDouble
 	}
 
-	def nameSimilarity(g: TripleGraph, candidate: ResourceWithNameAndOriginalTitle): Double = {
+	def nameAndYearSimilarity(g: TripleGraph, candidate: ResourceWithNameAndOriginalTitleAndYear): Double = {
 		val externalNames = extractAllMovieNamesFromGraph(g)
 		val imdbNames     = extractMovieNamesFromResource(candidate)
 
+		val movieResource = g.getObjectOfType("dbpedia-owl:Film")
+		val years = (g.getObjectsFor("dbpprop:released", "dbpprop:initialRelease")::: g.getObjectsForSubjectAndPredicate(movieResource, "dbpprop:initialRelease")).map { yearString =>
+			val split = yearString.split("-")
+			split(0).replace("\"", "").toInt
+		}.distinct
+		val yearScore = if (years.contains(candidate.year)) 1.0 else 0.0
 		val cross = for { x <- externalNames; y <- imdbNames } yield (x, y)
 		val matchExists = cross.exists { case (name1, name2) =>
 			Normalizer.normalize(name1, Normalizer.Form.NFD) == Normalizer.normalize(name2, Normalizer.Form.NFD)
 		}
 		if (matchExists)
-			1.0
+			yearScore * 1.0
 		else
 			0.0
 	}
-	def calculateActorOverlap(g: TripleGraph, candidate: ResourceWithNameAndOriginalTitle): Double = {
+	def calculateActorOverlap(g: TripleGraph, candidate: ResourceWithNameAndOriginalTitleAndYear): Double = {
 		val currentActors    = g.getObjectsFor("dbpprop:starring", "rdfs:label")
 
-		val cacheFile = new File(s"data/MergeMovieActor/${candidate.resource.split("#")(1)}")
+		val cacheFile = new File(s"data/MergeMovieActor/${candidate.resource.split("imdb-new/")(1)}")
 		val candidateActors = if (cacheFile.exists()) {
 			val json = FileUtils.readFileToString(cacheFile, "UTF-8")
 			json.unpickle[List[ResourceWithName]]
@@ -310,7 +316,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		calculateOverlap(currentProducers, candidateProducer)
 	}
 
-	def calculateDirectorOverlap(g: TripleGraph, candidate: ResourceWithNameAndOriginalTitle): Double = {
+	def calculateDirectorOverlap(g: TripleGraph, candidate: ResourceWithNameAndOriginalTitleAndYear): Double = {
 		val currentDirectors = g.getObjectsFor("dbpprop:director", "dbpprop:name")
 		val canidateDirectors = Queries.getAllDirectorsOfMovie(candidate.resource)
 

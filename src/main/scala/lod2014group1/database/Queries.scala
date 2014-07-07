@@ -10,7 +10,7 @@ import scala.collection.JavaConversions._
 
 
 case class ResourceWithName(var resource: String, var name: String)
-case class ResourceWithNameAndOriginalTitle(resource: String, originalTitle: String, name: String)
+case class ResourceWithNameAndOriginalTitleAndYear(resource: String, originalTitle: String, name: String, year: Int)
 
 object Queries {
 
@@ -30,31 +30,32 @@ object Queries {
 		extractResourcesWithNameFrom(query)
 	}
 
-	def getAllMoviesWithNameAndOriginalTitles: List[ResourceWithNameAndOriginalTitle] = {
+	def getAllMoviesWithNameAndOriginalTitles: List[ResourceWithNameAndOriginalTitleAndYear] = {
 		val query = s"""
 				$getAllPrefixe
 				SELECT * FROM <${Config.IMDB_GRAPH}> WHERE {
 					?s rdf:type dbpedia-owl:Film .
 					?s dbpprop:name ?name .
+					?s dbpprop:years ?year .
 					OPTIONAL { ?s dbpprop:originalTitle ?original } .
 				}
 		"""
 
 		val queryExecution = database.buildQuery(query)
-		var results: List[ResourceWithNameAndOriginalTitle] = List()
+		var results: List[ResourceWithNameAndOriginalTitleAndYear] = List()
 		database.query(queryExecution, { rs =>
 			val s = rs.get("s").toString
 			val name = rs.get("name").toString
-			var original = if (rs.varNames().toList.contains("original"))
+			val year = rs.get("year").toString.toInt
+			val original = if (rs.varNames().toList.contains("original"))
 				rs.get("original").toString
 			else
 				null
-			if (original != null) {
-				original = original.substring(1, original.size - 1)
-			}
-			results ::= ResourceWithNameAndOriginalTitle(s, original, name)
+			results ::= ResourceWithNameAndOriginalTitleAndYear(s, original, name, year)
 		})
-		results
+		results.filter { rwnaotay =>
+			!rwnaotay.resource.contains("http://purl.org/hpi/m")
+		}
 	}
 
 	def getAllMovieNamesOfYear(year: String): List[ResourceWithName] = {
@@ -240,7 +241,7 @@ object Queries {
 		""".stripMargin
 	}
 
-	def deleteNameAndOriginalTitleTriples(resource: ResourceWithNameAndOriginalTitle): Unit = {
+	def deleteNameAndOriginalTitleTriples(resource: ResourceWithNameAndOriginalTitleAndYear): Unit = {
 		database.deleteTriples(resource.resource, "http://dbpedia.org/property/originalTitle", resource.originalTitle)
 		database.deleteTriples(resource.resource, "http://dbpedia.org/property/name", resource.name)
 	}

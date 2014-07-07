@@ -84,7 +84,7 @@ class ImdbAwardTriplifier(val imdbId: String) extends Triplifier {
 
 		if (roleSibling != null) {
 			if (roleSibling.hasClass("production_role")) {
-				role = roleSibling.text();
+				role = roleSibling.text()
 				detailSibling = roleSibling
 			}
 		}
