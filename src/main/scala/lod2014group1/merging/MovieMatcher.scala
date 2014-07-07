@@ -207,8 +207,9 @@ class MovieMatcher(val triplifier: Triplifier) {
 		val moviesWithSimilarName = movieNames.map { movieWithName =>
 			val names = extractMovieNamesFromResource(movieWithName)
 			val l = names.map { name =>
+				val normalizedName = Normalizer.normalize(name, Normalizer.Form.NFD)
 				currentMovieNames.map { movieName =>
-					StringUtils.getLevenshteinDistance(name, movieName)
+					StringUtils.getLevenshteinDistance(normalizedName, Normalizer.normalize(movieName, Normalizer.Form.NFD))
 				}.min
 			}.min
 			(movieWithName, l)
@@ -333,7 +334,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 	private def calculateOverlap(currentObjects: List[String], candidateObjects: List[ResourceWithName]): Double = {
 		if (candidateObjects.isEmpty || currentObjects.isEmpty)
-			return -1.0
+			return SCORE_THRESHOLD
 
 		val similarObjects = currentObjects.flatMap { currentObject =>
 			val bestMatch = candidateObjects.map { canidateObject =>
