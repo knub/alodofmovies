@@ -16,7 +16,7 @@ import java.util.Date
 import lod2014group1.Config
 
 class MovieMatcher(val triplifier: Triplifier) {
-	var ACTOR_OVERLAP_MINIMUM       = 0.8
+	var SCORE_THRESHOLD             = 0.3
 	var ACTOR_OVERLAP_LEVENSHTEIN   = 2
 	var CANDIDATE_MOVIE_LEVENSHTEIN = 4
 	var CANDIDATE_SET_SIZE          = 10
@@ -158,7 +158,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 				}
 			} else {
 				if (bestMovieImdbId == imdbId)
-					trueMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
+					trueMatched  ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 				else
 					falseMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 			}
@@ -170,7 +170,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 	}
 
 	def minScore(score: Double): Boolean = {
-		score >= ACTOR_OVERLAP_MINIMUM
+		score > SCORE_THRESHOLD
 	}
 	
 	def mergeTmdbMovie(file: File): Unit = {
@@ -283,13 +283,14 @@ class MovieMatcher(val triplifier: Triplifier) {
 		}.distinct
 		val yearScore = if (years.contains(candidate.year)) 1.0 else 0.0
 		val cross = for { x <- externalNames; y <- imdbNames } yield (x, y)
-		val matchExists = cross.exists { case (name1, name2) =>
+		val nameScore = if (cross.exists { case (name1, name2) =>
 			Normalizer.normalize(name1, Normalizer.Form.NFD) == Normalizer.normalize(name2, Normalizer.Form.NFD)
-		}
-		if (matchExists)
-			yearScore * 1.0
+		}) 1.0 else 0.0
+		val sum = List(yearScore, nameScore).sum
+		if (sum == 1.0)
+			SCORE_THRESHOLD
 		else
-			0.0
+			sum / 2.0
 	}
 	def calculateActorOverlap(g: TripleGraph, candidate: ResourceWithNameAndOriginalTitleAndYear): Double = {
 		val currentActors    = g.getObjectsFor("dbpprop:starring", "rdfs:label")
