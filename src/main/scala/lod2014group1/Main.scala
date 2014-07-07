@@ -69,7 +69,7 @@ object Main extends App with Logging {
 						val merger = new MovieMatcher(new TmdbMovieTriplifier())
 						merger.VERBOSE = false
 						merger.TEST_SET_SIZE = 2000
-						merger.ACTOR_OVERLAP_MINIMUM = overlap
+						merger.SCORE_THRESHOLD = overlap
 						time(merger.runStatistic(tmdbDir))
 						}
 			}
