@@ -32,8 +32,6 @@ class TriplimergeWorker extends Worker {
       database.insert(task)
     }
 
-    println(s"Send to Answer Handler ${mergedTriples.size} triples")
-
     val answerMap: Map[String, String] = Map("graph" -> graph)
     new TaskAnswer(taskId, answerMap, Nil, mergedTriples)
   }
