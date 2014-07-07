@@ -8,7 +8,7 @@ import lod2014group1.merging.MovieMerger
 import org.joda.time.DateTime
 
 
-class TriplimergeWorker extends Worker{
+class TriplimergeWorker extends Worker {
 
 	def execute(taskId: Long, params: Map[String, String]): TaskAnswer = {
 		val fileName = params("fileName")
