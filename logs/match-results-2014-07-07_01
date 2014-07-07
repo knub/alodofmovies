@@ -1,0 +1,239 @@
+:compileJava UP-TO-DATE
+:compileScala UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:jar UP-TO-DATE
+:assemble UP-TO-DATE
+:compileTestJava UP-TO-DATE
+:compileTestScala UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:check UP-TO-DATE
+:build UP-TO-DATE
+:merge
+[INFO ] lod2014group1.Main$ - 13:18 - Arguments: List(merge)
+    0 Mon Jul 07 13:18:17 CEST 2014
+ 1000 Mon Jul 07 13:42:20 CEST 2014
+ 2000 Mon Jul 07 14:05:34 CEST 2014
+ 3000 Mon Jul 07 14:28:47 CEST 2014
+4000 files: 
+1829 were matched correctly.
+  10 were matched incorrectly:
+      https://www.themoviedb.org/movie/173876 was matched with top score: 0.300 to http://www.imdb.com/title/tt0019693 should be http://www.imdb.com/title/tt0278976
+       https://www.themoviedb.org/movie/19609 was matched with top score: 0.366 to http://www.imdb.com/title/tt0301214 should be http://www.imdb.com/title/tt0757353
+      https://www.themoviedb.org/movie/160476 was matched with top score: 0.300 to http://www.imdb.com/title/tt0278828 should be http://www.imdb.com/title/tt0220078
+      https://www.themoviedb.org/movie/240153 was matched with top score: 0.300 to http://www.imdb.com/title/tt0102920 should be http://www.imdb.com/title/tt3265450
+      https://www.themoviedb.org/movie/189192 was matched with top score: 0.300 to http://www.imdb.com/title/tt1064830 should be http://www.imdb.com/title/tt0037482
+      https://www.themoviedb.org/movie/245332 was matched with top score: 0.300 to http://www.imdb.com/title/tt0418819 should be http://www.imdb.com/title/tt0426577
+       https://www.themoviedb.org/movie/54403 was matched with top score: 0.300 to http://www.imdb.com/title/tt1201101 should be http://www.imdb.com/title/tt1284572
+      https://www.themoviedb.org/movie/184345 was matched with top score: 0.697 to http://www.imdb.com/title/tt2243537 should be http://www.imdb.com/title/tt2828996
+      https://www.themoviedb.org/movie/178664 was matched with top score: 0.641 to http://www.imdb.com/title/tt0092194 should be http://www.imdb.com/title/tt0035130
+      https://www.themoviedb.org/movie/228185 was matched with top score: 0.976 to http://www.imdb.com/title/tt1781866 should be http://www.imdb.com/title/tt2216536
+  67 were not matched and are not candidates:
+      https://www.themoviedb.org/movie/105919 was matched with top score: 0.000 to http://www.imdb.com/title/tt0098258 should be http://www.imdb.com/title/tt0071319
+      https://www.themoviedb.org/movie/187692 was matched with top score: 0.146 to http://www.imdb.com/title/tt1343387 should be http://www.imdb.com/title/tt0073314
+       https://www.themoviedb.org/movie/71951 was matched with top score: 0.146 to http://www.imdb.com/title/tt0112833 should be http://www.imdb.com/title/tt2375045
+      https://www.themoviedb.org/movie/106463 was matched with top score: 0.146 to http://www.imdb.com/title/tt0122122 should be http://www.imdb.com/title/tt0121621
+      https://www.themoviedb.org/movie/107824 was matched with top score: 0.154 to http://www.imdb.com/title/tt0070572 should be http://www.imdb.com/title/tt0078123
+      https://www.themoviedb.org/movie/110916 was matched with top score: 0.293 to http://www.imdb.com/title/tt0107362 should be http://www.imdb.com/title/tt0194727
+      https://www.themoviedb.org/movie/250538 was matched with top score: 0.007 to http://www.imdb.com/title/tt1910608 should be http://www.imdb.com/title/tt2652092
+      https://www.themoviedb.org/movie/249937 was matched with top score: 0.000 to http://www.imdb.com/title/tt0050874 should be http://www.imdb.com/title/tt2835536
+      https://www.themoviedb.org/movie/234701 was matched with top score: 0.007 to http://www.imdb.com/title/tt2244642 should be http://www.imdb.com/title/tt2779932
+      https://www.themoviedb.org/movie/184845 was matched with top score: 0.293 to http://www.imdb.com/title/tt0050857 should be http://www.imdb.com/title/tt2298465
+      https://www.themoviedb.org/movie/211258 was matched with top score: 0.146 to http://www.imdb.com/title/tt0145570 should be http://www.imdb.com/title/tt2692538
+      https://www.themoviedb.org/movie/173041 was matched with top score: 0.146 to http://www.imdb.com/title/tt0187039 should be http://www.imdb.com/title/tt0092091
+      https://www.themoviedb.org/movie/159211 was matched with top score: 0.000 to http://www.imdb.com/title/tt0089122 should be http://www.imdb.com/title/tt2378191
+      https://www.themoviedb.org/movie/152524 was matched with top score: 0.007 to http://www.imdb.com/title/tt0319531 should be http://www.imdb.com/title/tt0229021
+      https://www.themoviedb.org/movie/117029 was matched with top score: 0.000 to http://www.imdb.com/title/tt1579885 should be http://www.imdb.com/title/tt1194104
+       https://www.themoviedb.org/movie/48785 was matched with top score: 0.146 to http://www.imdb.com/title/tt0264808 should be http://www.imdb.com/title/tt0396816
+      https://www.themoviedb.org/movie/193231 was matched with top score: 0.293 to http://www.imdb.com/title/tt0008754 should be http://www.imdb.com/title/tt1606589
+      https://www.themoviedb.org/movie/172428 was matched with top score: 0.154 to http://www.imdb.com/title/tt1959539 should be http://www.imdb.com/title/tt1039614
+      https://www.themoviedb.org/movie/202432 was matched with top score: 0.000 to http://www.imdb.com/title/tt0478195 should be http://www.imdb.com/title/tt0048295
+      https://www.themoviedb.org/movie/220152 was matched with top score: 0.293 to http://www.imdb.com/title/tt0069254 should be http://www.imdb.com/title/tt25245
+       https://www.themoviedb.org/movie/84032 was matched with top score: 0.007 to http://www.imdb.com/title/tt0810891 should be http://www.imdb.com/title/tt0030457
+      https://www.themoviedb.org/movie/171717 was matched with top score: 0.000 to http://www.imdb.com/title/tt0330338 should be http://www.imdb.com/title/tt2056508
+      https://www.themoviedb.org/movie/250447 was matched with top score: 0.000 to http://www.imdb.com/title/tt0022934 should be http://www.imdb.com/title/tt0495634
+      https://www.themoviedb.org/movie/256771 was matched with top score: 0.154 to http://www.imdb.com/title/tt1375562 should be http://www.imdb.com/title/tt2950330
+       https://www.themoviedb.org/movie/45391 was matched with top score: 0.293 to http://www.imdb.com/title/tt0064382 should be http://www.imdb.com/title/tt0304098
+       https://www.themoviedb.org/movie/61139 was matched with top score: 0.293 to http://www.imdb.com/title/tt1455633 should be http://www.imdb.com/title/tt0402874
+      https://www.themoviedb.org/movie/195764 was matched with top score: 0.293 to http://www.imdb.com/title/tt0258192 should be http://www.imdb.com/title/tt0057246
+        https://www.themoviedb.org/movie/8697 was matched with top score: 0.293 to http://www.imdb.com/title/tt1504313 should be http://www.imdb.com/title/tt0127357
+      https://www.themoviedb.org/movie/258496 was matched with top score: 0.146 to http://www.imdb.com/title/tt0322019 should be http://www.imdb.com/title/tt0348233
+      https://www.themoviedb.org/movie/152449 was matched with top score: 0.000 to http://www.imdb.com/title/tt0282803 should be http://www.imdb.com/title/tt2425294
+      https://www.themoviedb.org/movie/134016 was matched with top score: 0.000 to http://www.imdb.com/title/tt1153117 should be http://www.imdb.com/title/tt2391732
+      https://www.themoviedb.org/movie/182335 was matched with top score: 0.293 to http://www.imdb.com/title/tt0339091 should be http://www.imdb.com/title/tt0107437
+      https://www.themoviedb.org/movie/270561 was matched with top score: 0.000 to http://www.imdb.com/title/tt1943014 should be http://www.imdb.com/title/tt3174226
+       https://www.themoviedb.org/movie/42546 was matched with top score: 0.000 to http://www.imdb.com/title/tt1748278 should be http://www.imdb.com/title/tt1841594
+      https://www.themoviedb.org/movie/220655 was matched with top score: 0.007 to http://www.imdb.com/title/tt0095379 should be http://www.imdb.com/title/tt0184649
+       https://www.themoviedb.org/movie/75004 was matched with top score: 0.146 to http://www.imdb.com/title/tt0235682 should be http://www.imdb.com/title/tt1773020
+      https://www.themoviedb.org/movie/101990 was matched with top score: 0.000 to http://www.imdb.com/title/tt0093062 should be http://www.imdb.com/title/tt0837786
+      https://www.themoviedb.org/movie/236033 was matched with top score: 0.293 to http://www.imdb.com/title/tt0165110 should be http://www.imdb.com/title/tt0054685
+       https://www.themoviedb.org/movie/93447 was matched with top score: 0.007 to http://www.imdb.com/title/tt0089997 should be http://www.imdb.com/title/tt1307009
+       https://www.themoviedb.org/movie/90629 was matched with top score: 0.293 to http://www.imdb.com/title/tt1018950 should be http://www.imdb.com/title/tt1997606
+      https://www.themoviedb.org/movie/272461 was matched with top score: 0.293 to http://www.imdb.com/title/tt1223290 should be http://www.imdb.com/title/tt0083233
+      https://www.themoviedb.org/movie/118442 was matched with top score: 0.007 to http://www.imdb.com/title/tt0119582 should be http://www.imdb.com/title/tt0120115
+      https://www.themoviedb.org/movie/271115 was matched with top score: 0.293 to http://www.imdb.com/title/tt0216966 should be http://www.imdb.com/title/tt3742524
+      https://www.themoviedb.org/movie/114922 was matched with top score: 0.000 to http://www.imdb.com/title/tt0086261 should be http://www.imdb.com/title/tt0810082
+      https://www.themoviedb.org/movie/256057 was matched with top score: 0.146 to http://www.imdb.com/title/tt0174796 should be http://www.imdb.com/title/tt3499048
+      https://www.themoviedb.org/movie/246449 was matched with top score: 0.000 to http://www.imdb.com/title/tt0189340 should be http://www.imdb.com/title/tt2475846
+       https://www.themoviedb.org/movie/54969 was matched with top score: 0.000 to http://www.imdb.com/title/tt0231427 should be http://www.imdb.com/title/tt0118931
+      https://www.themoviedb.org/movie/244260 was matched with top score: 0.000 to http://www.imdb.com/title/tt0031576 should be http://www.imdb.com/title/tt3125220
+       https://www.themoviedb.org/movie/51798 was matched with top score: 0.000 to http://www.imdb.com/title/tt0404254 should be http://www.imdb.com/title/tt1997605
+      https://www.themoviedb.org/movie/102741 was matched with top score: 0.000 to http://www.imdb.com/title/tt2389344 should be http://www.imdb.com/title/tt0038717
+      https://www.themoviedb.org/movie/212198 was matched with top score: 0.000 to http://www.imdb.com/title/tt3307320 should be http://www.imdb.com/title/tt0028052
+      https://www.themoviedb.org/movie/136835 was matched with top score: 0.026 to http://www.imdb.com/title/tt1885265 should be http://www.imdb.com/title/tt2011159
+       https://www.themoviedb.org/movie/84089 was matched with top score: 0.000 to http://www.imdb.com/title/tt0355744 should be http://www.imdb.com/title/tt0465737
+      https://www.themoviedb.org/movie/261037 was matched with top score: 0.000 to http://www.imdb.com/title/tt0017159 should be http://www.imdb.com/title/tt3128900
+       https://www.themoviedb.org/movie/70964 was matched with top score: 0.293 to http://www.imdb.com/title/tt2332639 should be http://www.imdb.com/title/tt0159270
+      https://www.themoviedb.org/movie/251994 was matched with top score: 0.146 to http://www.imdb.com/title/tt0247778 should be http://www.imdb.com/title/tt0959306
+       https://www.themoviedb.org/movie/12811 was matched with top score: 0.007 to http://www.imdb.com/title/tt3326038 should be http://www.imdb.com/title/tt1054674
+       https://www.themoviedb.org/movie/49258 was matched with top score: 0.146 to http://www.imdb.com/title/tt2325771 should be http://www.imdb.com/title/tt0400761
+      https://www.themoviedb.org/movie/256306 was matched with top score: 0.146 to http://www.imdb.com/title/tt1813183 should be http://www.imdb.com/title/tt3420534
+      https://www.themoviedb.org/movie/255279 was matched with top score: 0.146 to http://www.imdb.com/title/tt2325771 should be http://www.imdb.com/title/tt3456464
+      https://www.themoviedb.org/movie/255817 was matched with top score: 0.154 to http://www.imdb.com/title/tt0209039 should be http://www.imdb.com/title/tt0109471
+       https://www.themoviedb.org/movie/27423 was matched with top score: 0.146 to http://www.imdb.com/title/tt1552030 should be http://www.imdb.com/title/tt0817928
+      https://www.themoviedb.org/movie/187432 was matched with top score: 0.146 to http://www.imdb.com/title/tt0008849 should be http://www.imdb.com/title/tt0070049
+      https://www.themoviedb.org/movie/173127 was matched with top score: 0.146 to http://www.imdb.com/title/tt0050431 should be http://www.imdb.com/title/tt0087319
+      https://www.themoviedb.org/movie/268174 was matched with top score: 0.146 to http://www.imdb.com/title/tt0208009 should be http://www.imdb.com/title/tt2375278
+      https://www.themoviedb.org/movie/260318 was matched with top score: 0.000 to http://www.imdb.com/title/tt0339091 should be http://www.imdb.com/title/tt3531604
+      https://www.themoviedb.org/movie/144639 was matched with top score: 0.293 to http://www.imdb.com/title/tt0007528 should be http://www.imdb.com/title/tt1867601
+  95 were not matched and no candidates were found:
+      https://www.themoviedb.org/movie/257385 was not matched but should be http://www.imdb.com/title/tt0057199
+      https://www.themoviedb.org/movie/106734 was not matched but should be http://www.imdb.com/title/tt0058861
+      https://www.themoviedb.org/movie/211166 was not matched but should be http://www.imdb.com/title/tt1456606
+      https://www.themoviedb.org/movie/143047 was not matched but should be http://www.imdb.com/title/tt0117508
+      https://www.themoviedb.org/movie/259958 was not matched but should be http://www.imdb.com/title/tt2977090
+       https://www.themoviedb.org/movie/81298 was not matched but should be http://www.imdb.com/title/tt2097245
+      https://www.themoviedb.org/movie/187397 was not matched but should be http://www.imdb.com/title/tt0455755
+      https://www.themoviedb.org/movie/142789 was not matched but should be http://www.imdb.com/title/tt0094280
+      https://www.themoviedb.org/movie/260099 was not matched but should be http://www.imdb.com/title/tt2589156
+      https://www.themoviedb.org/movie/210791 was not matched but should be http://www.imdb.com/title/tt3224024
+      https://www.themoviedb.org/movie/106702 was not matched but should be http://www.imdb.com/title/tt0311595
+      https://www.themoviedb.org/movie/250994 was not matched but should be http://www.imdb.com/title/tt0419879
+       https://www.themoviedb.org/movie/36728 was not matched but should be http://www.imdb.com/title/tt1481363
+       https://www.themoviedb.org/movie/90934 was not matched but should be http://www.imdb.com/title/tt0111764
+      https://www.themoviedb.org/movie/216228 was not matched but should be http://www.imdb.com/title/tt1999225
+      https://www.themoviedb.org/movie/112594 was not matched but should be http://www.imdb.com/title/tt0082762
+       https://www.themoviedb.org/movie/57500 was not matched but should be http://www.imdb.com/title/tt1606636
+      https://www.themoviedb.org/movie/157321 was not matched but should be http://www.imdb.com/title/tt0123927
+       https://www.themoviedb.org/movie/88613 was not matched but should be http://www.imdb.com/title/tt0944119
+      https://www.themoviedb.org/movie/104765 was not matched but should be http://www.imdb.com/title/tt0323774
+       https://www.themoviedb.org/movie/57661 was not matched but should be http://www.imdb.com/title/tt0119513
+      https://www.themoviedb.org/movie/224155 was not matched but should be http://www.imdb.com/title/tt0228038
+      https://www.themoviedb.org/movie/107610 was not matched but should be http://www.imdb.com/title/tt0201157
+      https://www.themoviedb.org/movie/198736 was not matched but should be http://www.imdb.com/title/tt1583288
+       https://www.themoviedb.org/movie/16780 was not matched but should be http://www.imdb.com/title/tt0110978
+       https://www.themoviedb.org/movie/65009 was not matched but should be http://www.imdb.com/title/tt0054700
+       https://www.themoviedb.org/movie/97943 was not matched but should be http://www.imdb.com/title/tt0106378
+       https://www.themoviedb.org/movie/76257 was not matched but should be http://www.imdb.com/title/tt0098694
+      https://www.themoviedb.org/movie/173080 was not matched but should be http://www.imdb.com/title/tt0093115
+      https://www.themoviedb.org/movie/143115 was not matched but should be http://www.imdb.com/title/tt0131337
+      https://www.themoviedb.org/movie/198451 was not matched but should be http://www.imdb.com/title/tt0095833
+       https://www.themoviedb.org/movie/59275 was not matched but should be http://www.imdb.com/title/tt0475179
+      https://www.themoviedb.org/movie/259271 was not matched but should be http://www.imdb.com/title/tt0091586
+       https://www.themoviedb.org/movie/29852 was not matched but should be http://www.imdb.com/title/tt0070694
+      https://www.themoviedb.org/movie/254772 was not matched but should be http://www.imdb.com/title/tt2258285
+       https://www.themoviedb.org/movie/25764 was not matched but should be http://www.imdb.com/title/tt0473028
+      https://www.themoviedb.org/movie/182754 was not matched but should be http://www.imdb.com/title/tt0054238
+      https://www.themoviedb.org/movie/252171 was not matched but should be http://www.imdb.com/title/tt2326554
+       https://www.themoviedb.org/movie/83453 was not matched but should be http://www.imdb.com/title/tt0082931
+      https://www.themoviedb.org/movie/265849 was not matched but should be http://www.imdb.com/title/tt3409392
+      https://www.themoviedb.org/movie/188717 was not matched but should be http://www.imdb.com/title/tt2757456
+      https://www.themoviedb.org/movie/191767 was not matched but should be http://www.imdb.com/title/tt0067920
+      https://www.themoviedb.org/movie/107828 was not matched but should be http://www.imdb.com/title/tt0074521
+      https://www.themoviedb.org/movie/102166 was not matched but should be http://www.imdb.com/title/tt0488893
+      https://www.themoviedb.org/movie/113787 was not matched but should be http://www.imdb.com/title/tt0371310
+      https://www.themoviedb.org/movie/208802 was not matched but should be http://www.imdb.com/title/tt0846033
+      https://www.themoviedb.org/movie/271780 was not matched but should be http://www.imdb.com/title/tt2171927
+      https://www.themoviedb.org/movie/137394 was not matched but should be http://www.imdb.com/title/tt2339529
+      https://www.themoviedb.org/movie/254131 was not matched but should be http://www.imdb.com/title/tt2387575
+       https://www.themoviedb.org/movie/36593 was not matched but should be http://www.imdb.com/title/tt0110622
+      https://www.themoviedb.org/movie/147498 was not matched but should be http://www.imdb.com/title/tt0098667
+      https://www.themoviedb.org/movie/147164 was not matched but should be http://www.imdb.com/title/tt0103135
+       https://www.themoviedb.org/movie/11452 was not matched but should be http://www.imdb.com/title/tt0283111
+      https://www.themoviedb.org/movie/249072 was not matched but should be http://www.imdb.com/title/tt0296625
+       https://www.themoviedb.org/movie/93569 was not matched but should be http://www.imdb.com/title/tt0429009
+      https://www.themoviedb.org/movie/145667 was not matched but should be http://www.imdb.com/title/tt0072238
+       https://www.themoviedb.org/movie/66949 was not matched but should be http://www.imdb.com/title/tt0077941
+       https://www.themoviedb.org/movie/41043 was not matched but should be http://www.imdb.com/title/tt0110719
+      https://www.themoviedb.org/movie/143756 was not matched but should be http://www.imdb.com/title/tt0061541
+      https://www.themoviedb.org/movie/240893 was not matched but should be http://www.imdb.com/title/tt3007240
+       https://www.themoviedb.org/movie/60060 was not matched but should be http://www.imdb.com/title/tt0200126
+       https://www.themoviedb.org/movie/29379 was not matched but should be http://www.imdb.com/title/tt1425938
+       https://www.themoviedb.org/movie/95002 was not matched but should be http://www.imdb.com/title/tt0137706
+      https://www.themoviedb.org/movie/204755 was not matched but should be http://www.imdb.com/title/tt2403867
+      https://www.themoviedb.org/movie/204423 was not matched but should be http://www.imdb.com/title/tt0230686
+       https://www.themoviedb.org/movie/86675 was not matched but should be http://www.imdb.com/title/tt0088088
+      https://www.themoviedb.org/movie/266965 was not matched but should be http://www.imdb.com/title/tt0279335
+      https://www.themoviedb.org/movie/148409 was not matched but should be http://www.imdb.com/title/tt0321641
+      https://www.themoviedb.org/movie/167638 was not matched but should be http://www.imdb.com/title/tt1743696
+       https://www.themoviedb.org/movie/35010 was not matched but should be http://www.imdb.com/title/tt1119199
+      https://www.themoviedb.org/movie/165540 was not matched but should be http://www.imdb.com/title/tt0979951
+      https://www.themoviedb.org/movie/114733 was not matched but should be http://www.imdb.com/title/tt0079872
+      https://www.themoviedb.org/movie/271073 was not matched but should be http://www.imdb.com/title/tt0097145
+      https://www.themoviedb.org/movie/214260 was not matched but should be http://www.imdb.com/title/tt0069539
+       https://www.themoviedb.org/movie/78391 was not matched but should be http://www.imdb.com/title/tt0080680
+      https://www.themoviedb.org/movie/268854 was not matched but should be http://www.imdb.com/title/tt3422094
+      https://www.themoviedb.org/movie/255302 was not matched but should be http://www.imdb.com/title/tt3505950
+      https://www.themoviedb.org/movie/120629 was not matched but should be http://www.imdb.com/title/tt0163669
+      https://www.themoviedb.org/movie/253560 was not matched but should be http://www.imdb.com/title/tt2949590
+       https://www.themoviedb.org/movie/44262 was not matched but should be http://www.imdb.com/title/tt1814671
+      https://www.themoviedb.org/movie/166452 was not matched but should be http://www.imdb.com/title/tt1899285
+       https://www.themoviedb.org/movie/45058 was not matched but should be http://www.imdb.com/title/tt0844678
+      https://www.themoviedb.org/movie/175112 was not matched but should be http://www.imdb.com/title/tt2483260
+      https://www.themoviedb.org/movie/112025 was not matched but should be http://www.imdb.com/title/tt1515202
+      https://www.themoviedb.org/movie/235222 was not matched but should be http://www.imdb.com/title/tt3233548
+       https://www.themoviedb.org/movie/72649 was not matched but should be http://www.imdb.com/title/tt1002765
+       https://www.themoviedb.org/movie/87083 was not matched but should be http://www.imdb.com/title/tt0091713
+      https://www.themoviedb.org/movie/129078 was not matched but should be http://www.imdb.com/title/tt0059706
+       https://www.themoviedb.org/movie/76662 was not matched but should be http://www.imdb.com/title/tt1820755
+      https://www.themoviedb.org/movie/228805 was not matched but should be http://www.imdb.com/title/tt3303446
+      https://www.themoviedb.org/movie/161371 was not matched but should be http://www.imdb.com/title/tt0087877
+      https://www.themoviedb.org/movie/243693 was not matched but should be http://www.imdb.com/title/tt2835050
+      https://www.themoviedb.org/movie/108704 was not matched but should be http://www.imdb.com/title/tt0115500
+      https://www.themoviedb.org/movie/253848 was not matched but should be http://www.imdb.com/title/tt0453323
+       https://www.themoviedb.org/movie/66209 was not matched but should be http://www.imdb.com/title/tt0083735
+  27 were not matched for unknown reasons:
+      https://www.themoviedb.org/movie/100872 has low top score: 0.293 but would be matched correctly to http://www.imdb.com/title/tt0131200
+      https://www.themoviedb.org/movie/185832 has low top score: 0.187 but would be matched correctly to http://www.imdb.com/title/tt0088106
+       https://www.themoviedb.org/movie/78840 has low top score: 0.292 but would be matched correctly to http://www.imdb.com/title/tt0305952
+       https://www.themoviedb.org/movie/92310 has low top score: 0.293 but would be matched correctly to http://www.imdb.com/title/tt0125035
+       https://www.themoviedb.org/movie/66333 has low top score: 0.251 but would be matched correctly to http://www.imdb.com/title/tt0402738
+       https://www.themoviedb.org/movie/66327 was matched with top score: 0.293 to http://www.imdb.com/title/tt0318424 should be http://www.imdb.com/title/tt0187204
+      https://www.themoviedb.org/movie/137214 was matched with top score: 0.293 to http://www.imdb.com/title/tt0258660 should be http://www.imdb.com/title/tt0021924
+       https://www.themoviedb.org/movie/64119 has low top score: 0.293 but would be matched correctly to http://www.imdb.com/title/tt0230656
+       https://www.themoviedb.org/movie/55334 has low top score: 0.024 but would be matched correctly to http://www.imdb.com/title/tt1415224
+      https://www.themoviedb.org/movie/204175 has low top score: 0.171 but would be matched correctly to http://www.imdb.com/title/tt0061854
+       https://www.themoviedb.org/movie/37570 has low top score: 0.251 but would be matched correctly to http://www.imdb.com/title/tt1513713
+       https://www.themoviedb.org/movie/41380 has low top score: 0.268 but would be matched correctly to http://www.imdb.com/title/tt0085211
+       https://www.themoviedb.org/movie/71306 has low top score: 0.024 but would be matched correctly to http://www.imdb.com/title/tt1773269
+      https://www.themoviedb.org/movie/104279 has low top score: 0.171 but would be matched correctly to http://www.imdb.com/title/tt1147669
+      https://www.themoviedb.org/movie/230826 has low top score: 0.250 but would be matched correctly to http://www.imdb.com/title/tt0102263
+       https://www.themoviedb.org/movie/55076 has low top score: 0.293 but would be matched correctly to http://www.imdb.com/title/tt0348062
+       https://www.themoviedb.org/movie/79326 has low top score: 0.170 but would be matched correctly to http://www.imdb.com/title/tt1921162
+      https://www.themoviedb.org/movie/105904 was matched with top score: 0.293 to http://www.imdb.com/title/tt2165999 should be http://www.imdb.com/title/tt0311792
+      https://www.themoviedb.org/movie/148845 has low top score: 0.171 but would be matched correctly to http://www.imdb.com/title/tt0015861
+       https://www.themoviedb.org/movie/93882 was matched with top score: 0.293 to http://www.imdb.com/title/tt0258439 should be http://www.imdb.com/title/tt1673662
+       https://www.themoviedb.org/movie/75640 has low top score: 0.220 but would be matched correctly to http://www.imdb.com/title/tt1862472
+       https://www.themoviedb.org/movie/86839 was matched with top score: 0.293 to http://www.imdb.com/title/tt0231121 should be http://www.imdb.com/title/tt0110155
+      https://www.themoviedb.org/movie/166747 has low top score: 0.171 but would be matched correctly to http://www.imdb.com/title/tt2650548
+       https://www.themoviedb.org/movie/81365 has low top score: 0.024 but would be matched correctly to http://www.imdb.com/title/tt0197042
+      https://www.themoviedb.org/movie/205401 has low top score: 0.171 but would be matched correctly to http://www.imdb.com/title/tt2089788
+      https://www.themoviedb.org/movie/107320 has low top score: 0.171 but would be matched correctly to http://www.imdb.com/title/tt0116798
+       https://www.themoviedb.org/movie/88867 was matched with top score: 0.293 to http://www.imdb.com/title/tt1099226 should be http://www.imdb.com/title/tt1314367
+1254 were not matched because we do not have it in our database.
+ 718 had no imdb id.
+Precision = matched correctly/(correctly + incorrectly)
+Precision    = 0.9945622620989668
+Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)
+Recall       = 0.9018737672583826
+F1-measure = (2 * Precision * Recall) / (Precision + Recall)
+F1-measure   = 0.9459529350918023
+F0.5-measure = (1.25 * Precision * Recall) / (0.25 * Precision + Recall)
+F0.5-measure = 0.974531116794544
+
+BUILD SUCCESSFUL
+
+Total time: 1 hrs 34 mins 43.306 secs
+
