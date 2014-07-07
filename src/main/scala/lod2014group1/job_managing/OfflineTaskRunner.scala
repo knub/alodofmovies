@@ -22,7 +22,7 @@ class OfflineTaskRunner extends Logging {
 //		val tasks =  taskDatabase.runInDatabase { tasks => implicit session =>
 //			tasks.sortBy(t => t.id).take(n).list()
 //		}
-		val tasks = taskDatabase.getNextNTasks(100, 0)
+		val tasks = taskDatabase.getNextNTasks(n, 0)
 
 		tasks.zipWithIndex.foreach { case (task, i) =>
 				runTask(WorkerTask.fromDatabaseTask(task))

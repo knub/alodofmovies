@@ -50,8 +50,6 @@ object MovieMerger extends App{
 			}
 		}
 
-    println(s"$imdbId: Final triple size: ${movieTriplesToLoad.size}")
-
     movieTriplesToLoad
 	}
 	
