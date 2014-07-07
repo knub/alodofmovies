@@ -32,8 +32,9 @@ object WorkerTask {
 		else if (TaskType.withName(dbTask.taskType) == TaskType.Triplimerge)
 			WorkerTask(dbTask.taskType, dbTask.id, Map(
 				"fileName" -> dbTask.fileOrUrl,
-				"content" -> dbTask.graph,
-				"graph" -> dbTask.flag
+				"content" -> FileUtils.readFileToString(new File(s"${Config.DATA_FOLDER}/${dbTask.fileOrUrl}")),
+				"graph" -> dbTask.graph,
+        "flag" -> dbTask.flag
 			))
 
 		else if (TaskType.withName(dbTask.taskType) == TaskType.Crawlifymerge)
