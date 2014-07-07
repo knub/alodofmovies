@@ -83,8 +83,14 @@ object Queries {
 	}
 
 	def getAllActorsOfMovie(movie: String): List[ResourceWithName] = {
-		val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { <$movie> dbpprop:starring ?s . ?s dbpprop:name ?o }"
-		extractResourcesWithNameFrom(query)
+    val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { <$movie> dbpprop:starring ?s . ?s dbpprop:name ?o }"
+    try {
+      extractResourcesWithNameFrom(query)
+    } catch {
+      case e: Exception =>
+        println(query)
+        List( )
+    }
 	}
 
 	def getAllProducersOfMovie(movie: String): List[ResourceWithName] = {
