@@ -84,13 +84,7 @@ object Queries {
 
 	def getAllActorsOfMovie(movie: String): List[ResourceWithName] = {
     val query = s"$getAllPrefixe SELECT * FROM <${Config.IMDB_GRAPH}> WHERE { <$movie> dbpprop:starring ?s . ?s dbpprop:name ?o }"
-    try {
-      extractResourcesWithNameFrom(query)
-    } catch {
-      case e: Exception =>
-        println(query)
-        List( )
-    }
+    extractResourcesWithNameFrom(query)
 	}
 
 	def getAllProducersOfMovie(movie: String): List[ResourceWithName] = {
@@ -121,15 +115,21 @@ object Queries {
 	}
 
 	private def extractResourcesWithNameFrom(query: String): List[ResourceWithName] = {
-		val queryExecution = database.buildQuery(query)
+    try {
+      val queryExecution = database.buildQuery(query)
 
-		var results: List[ResourceWithName] = List()
-		database.query(queryExecution, { rs =>
-			val s = rs.get("s").toString
-			val o = rs.get("o").toString
-			results ::= ResourceWithName(s, o)
-		})
-		results
+      var results: List[ResourceWithName] = List()
+      database.query(queryExecution, { rs =>
+        val s = rs.get("s").toString
+        val o = rs.get("o").toString
+        results ::= ResourceWithName(s, o)
+      })
+      results
+    } catch {
+      case e: Exception =>
+        println(query)
+        throw e
+    }
 	}
 
 	def existsReleaseInfo(movieResource: String): Boolean = {

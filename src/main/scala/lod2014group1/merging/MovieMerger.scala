@@ -18,7 +18,6 @@ object MovieMerger extends App{
 		val imdbId = tripleGraph.getImdbId
 		if (imdbId == null) {
       // TODO match movie
-      println("no IMDB id")
       return List()
     }
 		
@@ -32,8 +31,6 @@ object MovieMerger extends App{
     //	val awardTriple = getTriple(tripleGraph, imdbResource, "dbpedia-owl:Award", Merger.mergeAkaTriple(_:String, _:List[RdfTriple]))
 		
 		val movieTriplesToLoad = Merger.mergeMovieTriple(imdbResource, movieTriple) ::: releaseInfoTriple ::: akaTriple
-		println(s"Triple size after merge Movie Triples: ${movieTriplesToLoad.size}")
-
 
 		val personResources = tripleGraph.getObjectListOfType("dbpedia-owl:Person").distinct
 		val imdbPersons = Queries.getAllActorsOfMovie(imdbResource)
@@ -51,8 +48,6 @@ object MovieMerger extends App{
           List()
 			}
 		}
-
-    println(s"Final triple size: ${movieTriplesToLoad.size}")
 
     movieTriplesToLoad
 	}
