@@ -1,14 +1,14 @@
 package lod2014group1.merging
 
 import java.sql.Date
-
 import lod2014group1.rdf.RdfTriple
 import lod2014group1.rdf.UriBuilder
 import lod2014group1.database.{TaskDatabase, Task, Queries}
 import lod2014group1.Config
 import java.io.File
-
 import org.joda.time.DateTime
+import lod2014group1.triplification.FreebaseFilmsTriplifier
+import lod2014group1.triplification.TmdbMovieTriplifier
 
 object MovieMerger extends App{
 	
@@ -70,6 +70,7 @@ object MovieMerger extends App{
 	
 	override def main(args: Array[String]): Unit = {
 //		val triple = (new FreebaseFilmsTriplifier).triplify(new File(s"${Config.DATA_FOLDER}/Freebase/0bdjd"))
+////		val triple = (new TmdbMovieTriplifier).triplify(new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie/13.json"))
 //		//triple.foreach(println)
 //		println("==================================================")
 //		merge (triple).foreach(println)

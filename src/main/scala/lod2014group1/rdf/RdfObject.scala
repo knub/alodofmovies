@@ -31,7 +31,8 @@ case class RdfDate(lit: DateTime) extends RdfLiteral {
 }
 case class RdfString(lit: String) extends RdfLiteral {
 	override def toString: String = {
-		'"' + lit.replace("\"", "\\\"") + '"'
+		""" """" + lit.replace("\"", "\\\"") + '"'
+
 	}
 }
 
