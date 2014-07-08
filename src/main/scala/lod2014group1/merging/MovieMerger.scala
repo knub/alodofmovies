@@ -18,7 +18,6 @@ object MovieMerger extends App{
 		val imdbId = tripleGraph.getImdbId
 		if (imdbId == null) {
       // TODO match movie
-      println("no IMDB id")
       return List()
     }
 		

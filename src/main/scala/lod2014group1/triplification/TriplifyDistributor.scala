@@ -42,11 +42,17 @@ class TriplifyDistributor {
 
 		} else if (fileName.contains("OFDB/Movies")){
 			return new OfdbTriplifier().triplify(content)
+
 		} else if (fileName.contains("Freebase")){
 			val triplifier = new FreebaseFilmsTriplifier()
 			return triplifier.triplify(content)
-		}
-	throw new RuntimeException(s"Could not find triplifier for file $fileName.")
+
+    } else if (fileName.contains("TMDB")){
+      val triplifier = new TmdbMovieTriplifier()
+      return triplifier.triplify(content)
+    }
+
+	  throw new RuntimeException(s"Could not find triplifier for file $fileName.")
 	} 
 }
 
