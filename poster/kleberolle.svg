@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.2 r9819"
    version="1.1"
    id="svg28100"
    height="297mm"
    width="210mm"
-   sodipodi:docname="New document 15">
+   sodipodi:docname="kleberolle.svg">
   <defs
      id="defs3" />
   <sodipodi:namedview
@@ -25,15 +25,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="-467.67566"
-     inkscape:cy="880.85612"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="-338.76652"
+     inkscape:cy="706.02802"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1014"
+     inkscape:window-width="1440"
+     inkscape:window-height="786"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      showguides="true"
      inkscape:guide-bbox="true">
@@ -47,7 +47,7 @@
        id="guide28180" />
     <sodipodi:guide
        orientation="0,1"
-       position="-541.78572,889.64286"
+       position="-474.64286,847.14286"
        id="guide28182" />
     <sodipodi:guide
        orientation="0,1"
@@ -55,7 +55,7 @@
        id="guide28184" />
     <sodipodi:guide
        orientation="0,1"
-       position="-410.71429,793.92857"
+       position="-224.28571,777.14286"
        id="guide28188" />
     <sodipodi:guide
        orientation="0,1"
@@ -65,6 +65,14 @@
        orientation="1,0"
        position="-296.78571,889.64286"
        id="guide28486" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="-615.71429,944.28571"
+       id="guide2996" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="-573.92857,1015.3571"
+       id="guide2998" />
   </sodipodi:namedview>
   <metadata
      id="metadata4">
@@ -74,7 +82,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -106,13 +114,11 @@
          d="m -381.8542,180.72343 c -8.60228,-2.1808 -15.43386,-9.749 -16.67277,-18.4705 -1.86485,-13.1282 8.5753,-25.1396 21.85115,-25.1396 9.93984,0 18.88163,6.8917 21.46669,16.5449 0.78402,2.9275 0.7345,8.5764 -0.1,11.4175 -2.07252,7.0559 -7.64768,12.8494 -14.66313,15.2375 -2.91572,0.9925 -8.78563,1.1952 -11.88197,0.4102 l 0,0 z"
          style="fill:#e9ddaf;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" />
     </g>
-    <rect
+    <path
        style="fill:#d3bc5f;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       d="m -732.14286,108.07646 158.21429,-71.071377 0,237.857087 -158.21429,-69.64286 z"
        id="rect28490"
-       width="158.21429"
-       height="148.21428"
-       x="-455"
-       y="82.362183"
-       rx="0" />
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
   </g>
 </svg>
