@@ -91,6 +91,8 @@ class TripleGraph(triples: List[RdfTriple]) {
 		if (sameAsTriples.isEmpty)
 			return null
 
+    pritnln(sameAsTriples)
+
     sameAsTriples.head.split("http://www.imdb.com/title/").last.substring(0, 9)
 	}
 }

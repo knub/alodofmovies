@@ -25,7 +25,7 @@ object MovieMerger extends App{
 		val movieTriple = tripleGraph.getTriplesForSubject(movieResource)
 		val imdbResource = UriBuilder.getMovieUriFromImdbIdWithoutPrefix(imdbId)
 		
-		val relreaseInfoTriple = getTriple(tripleGraph, imdbResource, "lod:ReleaseInfo", Merger.mergeReleaseInfoTriple(_:String, _:List[RdfTriple]))
+      val relreaseInfoTriple = getTriple(tripleGraph, imdbResource, "lod:ReleaseInfo", Merger.mergeReleaseInfoTriple(_:String, _:List[RdfTriple]))
 		val akaTriple = getTriple(tripleGraph, imdbResource, "lod:Aka", Merger.mergeAkaTriple(_:String, _:List[RdfTriple]))
     // TODO merge award
     //	val awardTriple = getTriple(tripleGraph, imdbResource, "dbpedia-owl:Awad", Merger.mergeAkaTriple(_:String, _:List[RdfTriple]))
