@@ -15,7 +15,7 @@
    id="svg3296"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Discussion.svg"
+   sodipodi:docname="Discussion-Outlook.svg"
    enable-background="new">
   <defs
      id="defs3298">
@@ -166,7 +166,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -392,30 +392,38 @@
          y="74.09449" /></text>
     <text
        xml:space="preserve"
-       style="font-size:28px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       x="215.02113"
-       y="83.989487"
-       id="text3448"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="247.95348"
+       y="45.730492"
+       id="text3448-7"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan3450"
-         x="215.02113"
-         y="83.989487">– Improve matching algorithm</tspan><tspan
+         id="tspan3450-7"
+         x="247.95348"
+         y="45.730492">– Improve matching algorithm</tspan><tspan
          sodipodi:role="line"
-         x="215.02113"
-         y="118.98949"
-         id="tspan3452">– Include more data sources (e.g. data sources, which contains Indian movies)</tspan><tspan
+         x="247.95348"
+         y="80.730492"
+         id="tspan8414">– Improve merging of movies</tspan><tspan
          sodipodi:role="line"
-         x="215.02113"
-         y="153.98949"
-         id="tspan3454">– Connect to DBpedia</tspan><tspan
+         x="247.95348"
+         y="115.73049"
+         id="tspan3452-7">– Include more data sources </tspan><tspan
          sodipodi:role="line"
-         x="215.02113"
-         y="188.98949"
-         id="tspan3458">– Include information about TV films and TV series</tspan><tspan
+         x="247.95348"
+         y="150.73048"
+         id="tspan8262">    (e.g. data sources, which contains Indian movies)</tspan><tspan
          sodipodi:role="line"
-         x="215.02113"
-         y="223.98949"
-         id="tspan3456">– Implement updating algorithm for all data sources</tspan></text>
+         x="247.95348"
+         y="185.73048"
+         id="tspan3454-1">– Connect to DBpedia</tspan><tspan
+         sodipodi:role="line"
+         x="247.95348"
+         y="220.73048"
+         id="tspan3458-3">– Include information about TV films and TV series</tspan><tspan
+         sodipodi:role="line"
+         x="247.95348"
+         y="255.73048"
+         id="tspan3456-1">– Implement updating algorithm for all data sources</tspan></text>
   </g>
 </svg>
