@@ -25,7 +25,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.2357779"
      inkscape:cx="380.25265"
-     inkscape:cy="499.58862"
+     inkscape:cy="349.7213"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -284,7 +284,7 @@
            width="169.93344"
            id="rect3098" /></flowRegion><flowPara
          id="flowPara3100">Evaluation was done on Movies, wehere we have a ground truth in our test set.</flowPara></flowRoot>    <flowRoot
-       transform="matrix(1.0132895,0,0,1.0132895,25.313921,-158.36517)"
+       transform="matrix(1.0132895,0,0,1.0132895,-308.88853,-39.411756)"
        style="font-size:22px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
        id="flowRoot3102"
        xml:space="preserve"><flowRegion
@@ -292,11 +292,15 @@
            style="font-size:22px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
            y="544.98944"
            x="75.256241"
-           height="255.47845"
-           width="260.23978"
+           height="562.93713"
+           width="406.38248"
            id="rect3106" /></flowRegion><flowPara
          id="flowPara3108">Test set: TMDB-Movies, which have a imdb_id set in the JSON file.</flowPara><flowPara
-         id="flowPara3114">We compare our match result with the ground truth from the TMDB file.</flowPara></flowRoot>    <text
+         id="flowPara3114">We compare our match result with the ground truth from the TMDB file.</flowPara><flowPara
+         id="flowPara3189">Of 2028 movies, we:</flowPara><flowPara
+         id="flowPara3177">matched 1829 correctly</flowPara><flowPara
+         id="flowPara3179">matched 10 incorrectly</flowPara><flowPara
+         id="flowPara3187">did not match 189</flowPara></flowRoot>    <text
        sodipodi:linespacing="125%"
        id="text3110"
        y="566.83807"
@@ -856,7 +860,7 @@
            height="72.668854"
            x="116.15572"
            y="633.51495" /></flowRegion><flowPara
-         id="flowPara5098"></flowPara></flowRoot>    <flowRoot
+         id="flowPara5098" /></flowRoot>    <flowRoot
        transform="matrix(0.47178004,0,0,0.47178004,346.18477,501.81921)"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
        id="flowRoot8383-47"
