@@ -93,6 +93,8 @@ class TripleGraph(triples: List[RdfTriple]) {
 
     println(sameAsTriples)
 
-    sameAsTriples.head.split("http://www.imdb.com/title/").last.substring(0, 9)
+    val id = sameAsTriples.head.split("http://www.imdb.com/title/").last.substring(0, 9)
+    println(id)
+    id
 	}
 }
