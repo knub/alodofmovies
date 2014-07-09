@@ -36,8 +36,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="413.78143"
-     inkscape:cy="569.06156"
+     inkscape:cx="301.01408"
+     inkscape:cy="835.17825"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -86,9 +86,9 @@
            y="279.50504" /></flowRegion><flowPara
          id="flowPara3147"
          style="font-weight:bold;-inkscape-font-specification:Roboto Slab Bold">Problems matching only by name:</flowPara><flowPara
-         id="flowPara3151">– Different movie same name: </flowPara><flowPara
-         id="flowPara3078">         The Avengers (2012) vs. The Avengers(1998)</flowPara><flowPara
-         id="flowPara3153">– Same movie different names:</flowPara><flowPara
+         id="flowPara3151">– Different movies, same name: </flowPara><flowPara
+         id="flowPara3078">         The Avengers (2012) vs. The Avengers (1998)</flowPara><flowPara
+         id="flowPara3153">– Same movie, different names:</flowPara><flowPara
          id="flowPara3155">          Batman vs. Badman</flowPara><flowPara
          id="flowPara3157">          The Internship vs. Prakti.com</flowPara><flowPara
          id="flowPara3159">          The Italian Job vs. Italian Job, The</flowPara></flowRoot>    <flowRoot
@@ -135,7 +135,7 @@
            y="558.07648" /></flowRegion><flowPara
          id="flowPara4072"><flowSpan
    style="font-weight:bold;-inkscape-font-specification:Roboto Slab Bold"
-   id="flowSpan3084">Solution: </flowSpan>Actor Overlap with threshold</flowPara></flowRoot>    <text
+   id="flowSpan3084">Solution: </flowSpan>Actor overlap with threshold</flowPara></flowRoot>    <text
        xml:space="preserve"
        style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
        x="-48.57143"
@@ -637,7 +637,7 @@
            height="19.999939"
            x="102.85714"
            y="666.64789" /></flowRegion><flowPara
-         id="flowPara3485">Original Movie</flowPara></flowRoot>    <g
+         id="flowPara3485">Original movie</flowPara></flowRoot>    <g
        id="g4063"
        transform="matrix(0.99997853,-0.00655313,0.00655313,0.99997853,-63.452493,12.683052)">
       <rect
@@ -2304,36 +2304,36 @@
        xml:space="preserve"
        id="flowRoot3479-2"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       transform="translate(-25.71133,-116.21695)"><flowRegion
+       transform="translate(-27.447658,-116.21695)"><flowRegion
          id="flowRegion3481-9"><rect
            id="rect3483-3"
            width="117.14286"
            height="19.999939"
            x="102.85714"
            y="666.64789" /></flowRegion><flowPara
-         id="flowPara3485-4">100%</flowPara></flowRoot>    <flowRoot
+         id="flowPara3485-4">100 %</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3479-2-2"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       transform="translate(48.086766,-116.18268)"><flowRegion
+       transform="translate(46.350438,-116.18268)"><flowRegion
          id="flowRegion3481-9-7"><rect
            id="rect3483-3-0"
            width="117.14286"
            height="19.999939"
            x="102.85714"
            y="666.64789" /></flowRegion><flowPara
-         id="flowPara3485-4-6">30%</flowPara></flowRoot>    <flowRoot
+         id="flowPara3485-4-6">30 %</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3479-2-21"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       transform="translate(119.1705,-116.23948)"><flowRegion
+       transform="translate(117.43417,-116.23948)"><flowRegion
          id="flowRegion3481-9-9"><rect
            id="rect3483-3-7"
            width="117.14286"
            height="19.999939"
            x="102.85714"
            y="666.64789" /></flowRegion><flowPara
-         id="flowPara3485-4-5">0%</flowPara></flowRoot>    <g
+         id="flowPara3485-4-5">0 %</flowPara></flowRoot>    <g
        id="g5496"
        transform="translate(-1.6713935,0)">
       <flowRoot
@@ -2593,5 +2593,16 @@
        d="M 598.0103,480.45085 555.07883,437.51937"
        id="path5534-5"
        inkscape:connector-curvature="0" />
-  </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3479-2-1"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       transform="translate(-7.2606995,-92.969076)"><flowRegion
+         id="flowRegion3481-9-97"><rect
+           id="rect3483-3-5"
+           width="117.14286"
+           height="19.999939"
+           x="102.85714"
+           y="666.64789" /></flowRegion><flowPara
+         id="flowPara3485-4-8">Threshold</flowPara></flowRoot>  </g>
 </svg>
