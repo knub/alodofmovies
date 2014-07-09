@@ -87,12 +87,15 @@ class TripleGraph(triples: List[RdfTriple]) {
 	}
 	
 	def getImdbId(): String = {
-		val sameAsTriples = getObjectsForPredicate("owl:sameAs").filter(p => p.contains("http://imdb.com/title/"))
+		val sameAsTriples = getObjectsForPredicate("owl:sameAs").filter(p => p.contains("imdb.com/title/"))
 		if (sameAsTriples.isEmpty)
 			return null
 
-    pritnln(sameAsTriples)
+    val id = sameAsTriples.head.split("imdb.com/title/").last.substring(0, 9)
 
-    sameAsTriples.head.split("http://www.imdb.com/title/").last.substring(0, 9)
+    if (id.matches("tt[0-9]{7}"))
+      id
+    else
+      null
 	}
 }
