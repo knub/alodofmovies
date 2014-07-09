@@ -56,6 +56,9 @@ object Main extends App with Logging {
 				case Config.Person.Rice =>
 					val dir = new File (s"${Config.DATA_FOLDER}/Freebase/film/")
 					val merger = new MovieMatcher(new FreebaseFilmsTriplifier())
+					merger.VERBOSE = true
+					merger.RANDOM = 1001
+					merger.TEST_SET_SIZE = 4000
 					merger.runStatistic(dir)
 				case _ =>
 					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
