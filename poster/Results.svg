@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.87382693"
-     inkscape:cx="430.68375"
-     inkscape:cy="466.10328"
+     inkscape:cx="917.97934"
+     inkscape:cy="430.49018"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -143,6 +143,69 @@
          width="1"
          height="1" />
     </defs>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter4853"
+       inkscape:label="Drop Shadow">
+      <feFlood
+         id="feFlood4855"
+         flood-opacity="0.5"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite4857"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur4859"
+         stdDeviation="2"
+         result="blur" />
+      <feOffset
+         id="feOffset4861"
+         dx="4"
+         dy="4"
+         result="offset" />
+      <feComposite
+         id="feComposite4863"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+    <filter
+       id="filter5569"
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow">
+      <feFlood
+         id="feFlood5571"
+         flood-opacity="0.2"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite5573"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur5575"
+         in="composite"
+         stdDeviation="1"
+         result="blur" />
+      <feOffset
+         id="feOffset5577"
+         dx="3"
+         dy="3"
+         result="offset" />
+      <feComposite
+         id="feComposite5579"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
   </defs>
   <metadata
      id="metadata8327">
@@ -506,7 +569,14 @@
          id="flowPara3114-4"
          style="font-size:33.37879562px;text-align:center;text-anchor:middle">Determining the best threshold for the</flowPara><flowPara
          id="flowPara4492"
-         style="font-size:33.37879562px;text-align:center;text-anchor:middle">actor overlap, when a match is recognized. Tests in 5% steps. You can see, that a threshold of ~ 70 % yields the best results.</flowPara></flowRoot>    <flowRoot
+         style="font-size:33.37879562px;text-align:center;text-anchor:middle">actor overlap, when a match is recognized. Tests in 5% steps. You can see, that a threshold of ~ 70 % yields the best results.</flowPara></flowRoot>    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:0.52941165;stroke-dasharray:none"
+       id="rect4820"
+       width="393.67917"
+       height="166.69662"
+       x="1237.2269"
+       y="155.89195" />
+    <flowRoot
        transform="matrix(0.57522921,0,0,0.57522921,377.72536,145.54828)"
        style="font-size:41.72249876px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
        id="flowRoot8383-9"
@@ -556,30 +626,6 @@
            x="116.15572"
            y="633.51495" /></flowRegion><flowPara
          id="flowPara5098" /></flowRoot>    <flowRoot
-       transform="matrix(0.47178004,0,0,0.47178004,45.026937,643.71301)"
-       style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
-       id="flowRoot8383-47"
-       xml:space="preserve"><flowRegion
-         id="flowRegion8385-9"><rect
-           style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
-           y="409.50504"
-           x="140"
-           height="291.39066"
-           width="642.61078"
-           id="rect8387-9" /></flowRegion><flowPara
-         id="flowPara3279">Not in candidates</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.47178004,0,0,0.47178004,45.026937,697.88559)"
-       style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
-       id="flowRoot8383-47-4-3"
-       xml:space="preserve"><flowRegion
-         id="flowRegion8385-9-5-2"><rect
-           style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
-           y="409.50504"
-           x="140"
-           height="102.71638"
-           width="608.3064"
-           id="rect8387-9-0-1" /></flowRegion><flowPara
-         id="flowPara5373">No candidates</flowPara></flowRoot>    <flowRoot
        transform="matrix(0.65799869,0,0,0.65799869,-348.88618,-128.20212)"
        style="font-size:33.43471527px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
        id="flowRoot3102-7"
@@ -593,32 +639,35 @@
            id="rect3106-5" /></flowRegion><flowPara
          id="flowPara3187-3">Note:</flowPara><flowPara
          id="flowPara3269">This values might be biased by the fact, that we only match those movies, where we already have an IMDB id from TMDB.</flowPara><flowPara
-         id="flowPara3273">It could be, that these movies are maintained better than the ones without a IMDB id.</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.47178004,0,0,0.47178004,42.953695,754.04756)"
-       style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
-       id="flowRoot8383-47-4-3-1"
-       xml:space="preserve"><flowRegion
-         id="flowRegion8385-9-5-2-4"><rect
-           style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
-           y="409.50504"
-           x="140"
-           height="102.71638"
-           width="608.3064"
-           id="rect8387-9-0-1-9" /></flowRegion><flowPara
-         id="flowPara5373-8">Threshold to high</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.57522921,0,0,0.57522921,149.14906,600.33797)"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       id="flowRoot8383-4-9"
-       xml:space="preserve"><flowRegion
-         id="flowRegion8385-7-9"><rect
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-           y="409.50504"
-           x="140"
-           height="314.28574"
-           width="568.57141"
-           id="rect8387-5-0" /></flowRegion><flowPara
-         id="flowPara8403-9-8"
-         style="text-align:center;text-anchor:middle">67</flowPara></flowRoot>    <flowRoot
+         id="flowPara3273">It could be, that these movies are maintained better than the ones without a IMDB id.</flowPara></flowRoot>    <g
+       id="g4843">
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot8383-47"
+         style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+         transform="matrix(0.47178004,0,0,0.47178004,45.026937,643.71301)"><flowRegion
+           id="flowRegion8385-9"><rect
+             id="rect8387-9"
+             width="642.61078"
+             height="291.39066"
+             x="140"
+             y="409.50504"
+             style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic" /></flowRegion><flowPara
+           id="flowPara3279">Not in candidates</flowPara></flowRoot>      <flowRoot
+         xml:space="preserve"
+         id="flowRoot8383-4-9"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+         transform="matrix(0.57522921,0,0,0.57522921,149.14906,600.33797)"><flowRegion
+           id="flowRegion8385-7-9"><rect
+             id="rect8387-5-0"
+             width="568.57141"
+             height="314.28574"
+             x="140"
+             y="409.50504"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab" /></flowRegion><flowPara
+           style="text-align:center;text-anchor:middle"
+           id="flowPara8403-9-8">67</flowPara></flowRoot>    </g>
+    <flowRoot
        transform="matrix(0.57522921,0,0,0.57522921,-191.4619,591.92164)"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
        id="flowRoot8383-4-9-0"
@@ -632,32 +681,94 @@
            id="rect8387-5-0-1" /></flowRegion><flowPara
          id="flowPara8395-6-2-7"
          style="text-align:center;text-anchor:middle" /><flowPara
-         id="flowPara8403-9-8-4" /></flowRoot>    <flowRoot
-       transform="matrix(0.57522921,0,0,0.57522921,148.42233,715.3772)"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       id="flowRoot8383-4-9-48"
-       xml:space="preserve"><flowRegion
-         id="flowRegion8385-7-9-30"><rect
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-           y="409.50504"
-           x="140"
-           height="314.28574"
-           width="568.57141"
-           id="rect8387-5-0-55" /></flowRegion><flowPara
-         id="flowPara8395-6-2-5"
-         style="text-align:center;text-anchor:middle">27</flowPara><flowPara
-         id="flowPara8403-9-8-6" /></flowRoot>    <flowRoot
-       transform="matrix(0.57522921,0,0,0.57522921,149.14906,654.43383)"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       id="flowRoot8383-4-9-8"
-       xml:space="preserve"><flowRegion
-         id="flowRegion8385-7-9-2"><rect
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-           y="409.50504"
-           x="140"
-           height="314.28574"
-           width="568.57141"
-           id="rect8387-5-0-2" /></flowRegion><flowPara
-         id="flowPara8403-9-8-5"
-         style="text-align:center;text-anchor:middle">95</flowPara></flowRoot>  </g>
+         id="flowPara8403-9-8-4" /></flowRoot>    <g
+       id="g4822"
+       transform="translate(0,-8)">
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot8383-47-4-3-1"
+         style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+         transform="matrix(0.47178004,0,0,0.47178004,42.953695,732.04756)"><flowRegion
+           id="flowRegion8385-9-5-2-4"><rect
+             id="rect8387-9-0-1-9"
+             width="608.3064"
+             height="102.71638"
+             x="140"
+             y="409.50504"
+             style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic" /></flowRegion><flowPara
+           id="flowPara5373-8">Threshold to high</flowPara></flowRoot>      <flowRoot
+         xml:space="preserve"
+         id="flowRoot8383-4-9-48"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+         transform="matrix(0.57522921,0,0,0.57522921,148.42233,693.3772)"><flowRegion
+           id="flowRegion8385-7-9-30"><rect
+             id="rect8387-5-0-55"
+             width="568.57141"
+             height="314.28574"
+             x="140"
+             y="409.50504"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab" /></flowRegion><flowPara
+           style="text-align:center;text-anchor:middle"
+           id="flowPara8395-6-2-5">27</flowPara><flowPara
+           id="flowPara8403-9-8-6" /></flowRoot>    </g>
+    <g
+       id="g4833"
+       transform="translate(0,3.1118774)">
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot8383-47-4-3"
+         style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+         transform="matrix(0.47178004,0,0,0.47178004,45.026937,681.88559)"><flowRegion
+           id="flowRegion8385-9-5-2"><rect
+             id="rect8387-9-0-1"
+             width="608.3064"
+             height="102.71638"
+             x="140"
+             y="409.50504"
+             style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic" /></flowRegion><flowPara
+           id="flowPara5373">No candidates</flowPara></flowRoot>      <flowRoot
+         xml:space="preserve"
+         id="flowRoot8383-4-9-8"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+         transform="matrix(0.57522921,0,0,0.57522921,149.14906,638.43383)"><flowRegion
+           id="flowRegion8385-7-9-2"><rect
+             id="rect8387-5-0-2"
+             width="568.57141"
+             height="314.28574"
+             x="140"
+             y="409.50504"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab" /></flowRegion><flowPara
+           style="text-align:center;text-anchor:middle"
+           id="flowPara8403-9-8-5">95</flowPara></flowRoot>    </g>
+    <path
+       style="fill:#d4d4d4;fill-opacity:0.26274510000000001;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-opacity:0.52941165000000001;stroke-dasharray:none;filter:url(#filter5569)"
+       d="m 1184.4199,783.26515 301.9636,0 -12.9473,12.42601 12.9473,11.73349 -10.5197,12.54274 10.5197,15.3749 -11.7335,8.0921 11.7335,11.7718 -301.9636,0 10.5196,-11.3672 -10.5196,-11.7335 13.3519,-14.9704 -13.3519,-12.54266 12.9473,-10.51969 z"
+       id="rect4817"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccc" />
+    <path
+       style="fill:#d4d4d4;fill-opacity:0.2627451;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-opacity:0.52941165;stroke-dasharray:none;filter:url(#filter4853)"
+       d="m 1185.6674,955.73892 301.9636,0 -12.9473,12.42601 12.9473,11.73349 -10.5197,12.54274 10.5197,15.37494 -11.7335,8.0921 11.7335,11.7718 -301.9636,0 10.5197,-11.3672 -10.5197,-11.7335 13.3519,-14.97044 -13.3519,-12.54266 12.9473,-10.51969 z"
+       id="rect4817-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccc" />
+    <path
+       style="fill:#d4d4d4;fill-opacity:0.2627451;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-opacity:0.52941165;stroke-dasharray:none"
+       d="m 1201.6888,599.83321 301.9636,0 -12.9473,12.42601 12.9473,11.73349 -10.5197,12.54274 10.5197,15.3749 -11.7335,8.0921 11.7335,11.7718 -301.9636,0 10.5196,-11.3672 -10.5196,-11.7335 13.3519,-14.9704 -13.3519,-12.54266 12.9473,-10.51969 z"
+       id="rect4817-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccc" />
+    <path
+       style="fill:#d4d4d4;fill-opacity:0.2627451;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-opacity:0.52941165;stroke-dasharray:none"
+       d="m 1206.2663,488.82725 301.9636,0 -12.9473,12.42601 12.9473,11.73349 -10.5197,12.54274 10.5197,15.3749 -11.7335,8.0921 11.7335,11.7718 -301.9636,0 10.5196,-11.3672 -10.5196,-11.7335 13.3519,-14.9704 -13.3519,-12.54266 12.9473,-10.51969 z"
+       id="rect4817-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccc" />
+    <path
+       style="fill:#d4d4d4;fill-opacity:0.2627451;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-opacity:0.52941165;stroke-dasharray:none"
+       d="m 1201.6888,375.5325 301.9636,0 -12.9473,12.42601 12.9473,11.73349 -10.5197,12.54274 10.5197,15.3749 -11.7335,8.0921 11.7335,11.7718 -301.9636,0 10.5196,-11.3672 -10.5196,-11.7335 13.3519,-14.9704 -13.3519,-12.54266 12.9473,-10.51969 z"
+       id="rect4817-62"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccc" />
+  </g>
 </svg>
