@@ -91,6 +91,11 @@ class TripleGraph(triples: List[RdfTriple]) {
 		if (sameAsTriples.isEmpty)
 			return null
 
-    sameAsTriples.head.split("imdb.com/title/").last.substring(0, 9)
+    val id = sameAsTriples.head.split("imdb.com/title/").last.substring(0, 9)
+
+    if (id.matches("tt[0-9]{7}"))
+      id
+    else
+      null
 	}
 }
