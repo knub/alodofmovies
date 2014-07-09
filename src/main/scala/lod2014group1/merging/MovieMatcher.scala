@@ -159,9 +159,9 @@ class MovieMatcher(val triplifier: Triplifier) {
 					notMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 				}
 			} else {
-				if (bestMovieImdbId == imdbId)
-					trueMatched  ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
-				else
+				if (bestMovieImdbId == imdbId) {
+					trueMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
+				} else
 					falseMatched ::= new ResultIds(fileId, bestMovie.score, bestMovieImdbId, imdbId)
 			}
 		}
