@@ -1114,7 +1114,7 @@
            style="font-size:22px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
            y="251.108"
            x="205.0052"
-           sodipodi:role="line">How often does a new released movie </tspan><tspan
+           sodipodi:role="line">How often does a newly released movie </tspan><tspan
            id="tspan3369"
            style="font-size:22px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
            y="278.608"
@@ -2056,6 +2056,6 @@
          sodipodi:role="line"
          x="218.52058"
          y="97.923904"
-         id="tspan4205-2">Creates new tasks to crawl and triplify IMDB movies, which should be updated.</tspan></text>
+         id="tspan4205-2">Crawls and triplifies IMDB movies, which should be updated.</tspan></text>
   </g>
 </svg>
