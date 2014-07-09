@@ -91,10 +91,6 @@ class TripleGraph(triples: List[RdfTriple]) {
 		if (sameAsTriples.isEmpty)
 			return null
 
-    println(sameAsTriples)
-
-    val id = sameAsTriples.head.split("imdb.com/title/").last.substring(0, 9)
-    println(id)
-    id
+    sameAsTriples.head.split("imdb.com/title/").last.substring(0, 9)
 	}
 }
