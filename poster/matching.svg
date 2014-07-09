@@ -35,9 +35,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="446.13942"
-     inkscape:cy="712.99134"
+     inkscape:zoom="1.4"
+     inkscape:cx="413.78143"
+     inkscape:cy="569.06156"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -92,17 +92,17 @@
          id="flowPara3155">          Batman vs. Badman</flowPara><flowPara
          id="flowPara3157">          The Internship vs. Prakti.com</flowPara><flowPara
          id="flowPara3159">          The Italian Job vs. Italian Job, The</flowPara></flowRoot>    <flowRoot
-       transform="translate(-30.692934,337.76732)"
+       transform="translate(-30.692934,315.76732)"
        xml:space="preserve"
        id="flowRoot3141-3"
        style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"><flowRegion
          id="flowRegion3143-8"><rect
            id="rect3145-3"
-           width="654.28571"
-           height="55.714283"
+           width="652.85712"
+           height="125.71429"
            x="55.714287"
            y="280.93359" /></flowRegion><flowPara
-         id="flowPara3214">To refine search name and year similarity is additionally used.</flowPara></flowRoot>    <flowRoot
+         id="flowPara5576">Several overlaps (actor, director, producer, writer) are combined with certain weights. To refine the matching, name and year similarity are used additionally.</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot4048"
        style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Roboto Slab;font-style:normal;font-weight:normal;font-size:22px;line-height:125%;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:Roboto Slab;font-stretch:normal;font-variant:normal"><flowRegion
@@ -160,19 +160,19 @@
     <text
        xml:space="preserve"
        style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       x="438.58041"
+       x="472.58041"
        y="309.61087"
        id="text4082-6-3-0-6"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="438.58041"
+         x="472.58041"
          y="309.61087"
          id="tspan5939-9">2. Calculate overlap</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot5985"
        style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       transform="translate(-322.52458,-392.73975)"><flowRegion
+       transform="translate(-322.52458,-418.73975)"><flowRegion
          id="flowRegion5987"><rect
            id="rect5989"
            width="379.84924"
@@ -658,7 +658,7 @@
          height="45.235905"
          width="54.180916"
          id="rect12552-55-5-9-8-1-2"
-         style="fill:#00789c;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+         style="fill:#dd6108;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
       <rect
          transform="matrix(0.99996603,0.0082431,-0.0082431,0.99996603,0,0)"
          rx="1.71875"
@@ -912,7 +912,7 @@
              height="45.983387"
              width="55.076202"
              id="rect12552-55-5-9-8-1"
-             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+             style="fill:#f6a800;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
           <rect
              rx="1.7471507"
              ry="0.762393"
@@ -1112,24 +1112,24 @@
     </g>
     <g
        id="g4645"
-       transform="translate(6.4285715,11.937152)">
+       transform="translate(30.672232,77.597068)">
       <flowRoot
          style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
          id="flowRoot3479-5"
          xml:space="preserve"
          transform="translate(335.11097,-285.62727)"><flowRegion
            id="flowRegion3481-2"><rect
-             style="text-align:center;text-anchor:middle"
+             style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1"
              y="666.64789"
              x="102.85714"
              height="58.571342"
              width="90"
              id="rect3483-2" /></flowRegion><flowPara
-           style="text-align:center;text-anchor:middle;fill:#006400;fill-opacity:1"
+           style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1"
            id="flowPara3485-7">Tom Hanks</flowPara><flowPara
-           style="text-align:center;text-anchor:middle;fill:#b1063a;fill-opacity:1"
+           style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1"
            id="flowPara3772">Robin Wright</flowPara><flowPara
-           style="text-align:center;text-anchor:middle;fill:#b1063a;fill-opacity:1"
+           style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1"
            id="flowPara3774">Peter Dobson </flowPara></flowRoot>      <g
          transform="matrix(0.98374453,5.3072134e-5,-5.3072134e-5,0.98374453,-1356.4754,-78.423852)"
          id="g18860-7">
@@ -1356,7 +1356,7 @@
     </g>
     <g
        id="g4609"
-       transform="translate(-19.642857,11.987286)">
+       transform="translate(21.392794,11.987286)">
       <flowRoot
          style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
          id="flowRoot3479-5-0"
@@ -1393,7 +1393,7 @@
            style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
            transform="matrix(0.99996603,0.0082431,-0.0082431,0.99996603,0,0)" />
         <rect
-           style="fill:#00789c;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+           style="fill:#dd6108;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
            id="rect12552-55-5-9-8-1-2-0"
            width="54.180916"
            height="45.235905"
@@ -1620,7 +1620,7 @@
     </g>
     <g
        id="g3625-6"
-       transform="matrix(0.99996829,-0.00796331,0.00796331,0.99996829,327.05331,-115.06558)">
+       transform="matrix(0.99996829,-0.00796331,0.00796331,0.99996829,327.05331,-141.06558)">
       <g
          id="g18631-6-5"
          style="display:inline"
@@ -1844,7 +1844,7 @@
     </g>
     <g
        id="g4063-5"
-       transform="matrix(0.99997853,-0.00655313,0.00655313,0.99997853,-240.42267,196.60426)">
+       transform="matrix(0.99997853,-0.00655313,0.00655313,0.99997853,-240.42267,170.60426)">
       <rect
          transform="matrix(0.99996603,0.0082431,-0.0082431,0.99996603,0,0)"
          style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
@@ -1863,7 +1863,7 @@
          height="45.235905"
          width="54.180916"
          id="rect12552-55-5-9-8-1-2-5"
-         style="fill:#00789c;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+         style="fill:#dd6108;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
       <rect
          transform="matrix(0.99996603,0.0082431,-0.0082431,0.99996603,0,0)"
          rx="1.71875"
@@ -2082,7 +2082,7 @@
     </g>
     <g
        id="g4245-1"
-       transform="matrix(0.99996691,-0.00813452,0.00813452,0.99996691,-52.694716,196.03513)">
+       transform="matrix(0.99996691,-0.00813452,0.00813452,0.99996691,-52.694716,170.03513)">
       <g
          id="g18631-6-4-4"
          style="display:inline"
@@ -2097,7 +2097,7 @@
            id="rect12438-9-9-5-5-9-1"
            style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
         <rect
-           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+           style="fill:#f6a800;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
            id="rect12552-55-5-9-8-1-3"
            width="55.076202"
            height="45.983387"
@@ -2304,7 +2304,7 @@
        xml:space="preserve"
        id="flowRoot3479-2"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       transform="translate(-25.71133,-90.21695)"><flowRegion
+       transform="translate(-25.71133,-116.21695)"><flowRegion
          id="flowRegion3481-9"><rect
            id="rect3483-3"
            width="117.14286"
@@ -2315,7 +2315,7 @@
        xml:space="preserve"
        id="flowRoot3479-2-2"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       transform="translate(48.086766,-90.18268)"><flowRegion
+       transform="translate(48.086766,-116.18268)"><flowRegion
          id="flowRegion3481-9-7"><rect
            id="rect3483-3-0"
            width="117.14286"
@@ -2326,12 +2326,272 @@
        xml:space="preserve"
        id="flowRoot3479-2-21"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       transform="translate(119.1705,-90.23948)"><flowRegion
+       transform="translate(119.1705,-116.23948)"><flowRegion
          id="flowRegion3481-9-9"><rect
            id="rect3483-3-7"
            width="117.14286"
            height="19.999939"
            x="102.85714"
            y="666.64789" /></flowRegion><flowPara
-         id="flowPara3485-4-5">0%</flowPara></flowRoot>  </g>
+         id="flowPara3485-4-5">0%</flowPara></flowRoot>    <g
+       id="g5496"
+       transform="translate(-1.6713935,0)">
+      <flowRoot
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+         id="flowRoot3479-5-01"
+         xml:space="preserve"
+         transform="translate(495.71684,-146.55536)"><flowRegion
+           id="flowRegion3481-2-9"><rect
+             style="text-align:center;text-anchor:middle"
+             y="666.64789"
+             x="102.85714"
+             height="58.571342"
+             width="90"
+             id="rect3483-2-6" /></flowRegion><flowPara
+           style="text-align:center;text-anchor:middle;fill:#006400;fill-opacity:1"
+           id="flowPara3485-7-3">Tom Hanks</flowPara><flowPara
+           style="text-align:center;text-anchor:middle;fill:#006400;fill-opacity:1"
+           id="flowPara3772-7">Robin Wright</flowPara><flowPara
+           style="text-align:center;text-anchor:middle;fill:#006400;fill-opacity:1"
+           id="flowPara3774-4">Peter Dobson </flowPara></flowRoot>      <g
+         transform="matrix(0.99996829,-0.00796331,0.00796331,0.99996829,877.71097,-171.88169)"
+         id="g3625-4">
+        <g
+           transform="matrix(0.98371113,0.0081091,-0.0081091,0.98371113,-1977.8195,218.69574)"
+           style="display:inline"
+           id="g18631-6-2">
+          <rect
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+             id="rect12438-9-9-5-5-8"
+             width="58.721436"
+             height="71.45417"
+             x="1744.152"
+             y="394.37091"
+             rx="20.433676"
+             ry="0" />
+          <rect
+             rx="0"
+             y="407.10629"
+             x="1744.152"
+             height="45.983387"
+             width="55.076202"
+             id="rect12552-55-5-9-8-19"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="398.37091"
+             x="1797.7449"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-1-5-0-5-9"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="398.37091"
+             x="1791.2318"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-0-49-1-1-8-6"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="398.37091"
+             x="1784.7188"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-5-40-6-6-2-9"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="398.37091"
+             x="1778.2057"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-9-0-5-02-3-2"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="398.37091"
+             x="1765.1796"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-6-4-1-1-3-2"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="398.37091"
+             x="1758.6665"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-97-01-1-5-4-1"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="398.37091"
+             x="1752.1534"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-57-91-8-5-8-4"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="398.37091"
+             x="1745.6404"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-4-87-6-1-5-8"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="398.37091"
+             x="1771.6926"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-6-1-8-8-4-6-9"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             ry="0"
+             rx="20.433674"
+             y="394.36075"
+             x="1740.5217"
+             height="71.467453"
+             width="3.6419981"
+             id="rect18320-4-7-5"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="398.37091"
+             x="1739.1273"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-4-87-6-8-1-2-5"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="456.95007"
+             x="1797.7443"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-1-5-7-5-0-69"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="456.95007"
+             x="1791.2312"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-0-49-1-8-9-7-8"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="456.95007"
+             x="1784.7181"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-5-40-6-4-5-7-8"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="456.95007"
+             x="1778.2051"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-9-0-5-0-4-6-4"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="456.95007"
+             x="1765.179"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-6-4-1-6-6-7-47"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="456.95007"
+             x="1758.6659"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-97-01-1-1-0-6-2"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="456.95007"
+             x="1752.1528"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-57-91-8-1-6-6-1"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="456.95007"
+             x="1745.6398"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-4-87-6-7-5-5-6"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="456.95007"
+             x="1771.692"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-6-1-8-8-1-0-5-83"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+          <rect
+             rx="1.7471507"
+             ry="0.762393"
+             y="456.95007"
+             x="1739.1267"
+             height="4.875"
+             width="3.4375"
+             id="rect12554-4-87-6-8-0-0-7-1"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline" />
+        </g>
+        <image
+           style="display:inline"
+           width="54.237144"
+           height="45.197617"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOoAAADDCAYAAACMN42wAAAABHNCSVQICAgIfAhkiAAAA01JREFU eJzt3UFylEAYgFHG8hKuvZ1HmIO4nJu59hhxNVVxoWAY6f7gvXVSIZ3/K1JDA7fl/nhbgKl9Gn0A wDqhQoBQIUCoECBUCBAqBAgVAoQKAUKFAKFCgFAhQKgQIFQIECoECBUChAoBQoUAoUKAUCFAqBAg VAgQKgQIFQKECgFChQChQoBQIUCoECBUCBAqBAgVAoQKAUKFAKFCgFAhQKgQIFQIECoECBUChAoB QoUAoUKAUCFAqBAgVAgQKgQIFQKECgFChQChQoBQIUCoECBUCBAqBAgVAoQKAUKFAKFCgFAhQKgQ IFQIECoECBUChAoBQoUAoUKAUCFAqBAgVAgQKgQIFQKECgFChQChQoBQIUCoECBUCBAqBAgVAoQK AUKFAKFCgFAhQKgQIFQIECoECBUChAoBQoUAoUKAUCFAqBAgVAgQKgR8Hn0ATz9+flv9mq9fvh9w JFzFlplbljnmzhkVAoQKAUKFAKFCgFAhQKgQIFQIuC33x9tHv3nrdShg3/VYZ1QIECoECBUChAoB QoUAoUKAUCFg1/2or7xPz/2oHK10P6oND3AQGx7g5IQKAUKFAKFCgFAhQKgQIFQImGLDQ+nCM+dR mjsbHuAgNjzAyQkVAoQKAUKFAKFCgFAhQKgQIFQImGJn0rJ4FAvHK+1MckaFAKFCgFAhQKgQIFQI ECoECBUCpgjVDejwd7ue8PAnwuPqXr1JYtfOpCdhwu/eN/GKaHeFKlBY9+zEM5Pg5IQKAUKFgNRt bkccB+ez97OUGeYrf0adYRGZ2xlmJB3qGf4AHKM+K9lQ6wvP8cozkw0VPqIaazLU6mIzh+L85EIt LjLzqc1RKtTa4sKrpEKFqxIqBAgVAoQKAUKFAKFCgFAhQKgQIFQIECoECBUChAoBQoUAoUKAUCFA qBAgVAgQKgS85LWLe219kvmrX2XHNRXfQuiMCitmCHt4qDMsAqwZPadDQx39y8O/GDmvw0IVKUWj 5nb4v77AOqFCQDJUl2a4mlyoImWv4gxNseFhi+LiMq/nPFU+1Jw+VIHyP1WCnTZUgXKkrcGOmsvb cn+8DfnJwGa5D5PgioQKAUKFAKFCgFAhQKgQIFQIECoECBUChAoBQoWAXwhAdydNyvkvAAAAAElF TkSuQmCC "
+           id="image10-6-7"
+           x="-260.16125"
+           y="635.47009"
+           transform="matrix(0.99996603,0.0082431,-0.0082431,0.99996603,0,0)" />
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 555.07883,414.45085 598.0103,371.51937"
+       id="path5534"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.00000023, 6.00000023;stroke-dashoffset:0"
+       d="m 129.28572,473.02682 0,103.38504"
+       id="path5538"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 598.0103,480.45085 555.07883,437.51937"
+       id="path5534-5"
+       inkscape:connector-curvature="0" />
+  </g>
 </svg>
