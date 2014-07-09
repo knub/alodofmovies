@@ -90,6 +90,12 @@ class TripleGraph(triples: List[RdfTriple]) {
 		val sameAsTriples = getObjectsForPredicate("owl:sameAs").filter(p => p.contains("http://imdb.com/title/"))
 		if (sameAsTriples.isEmpty)
 			return null
-		sameAsTriples.head.split("/").last.split(">")(0)
+    try {
+      sameAsTriples.head.split("/").last.split(">")(0)
+    } catch {
+      case e: Exception =>
+        println(sameAsTriples.head)
+        throw e
+    }
 	}
 }
