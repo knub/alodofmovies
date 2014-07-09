@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="1052.3622"
+   height="744.09448"
    id="svg8322"
    version="1.1"
    inkscape:version="0.48.4 r9939"
@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.2357779"
-     inkscape:cx="380.25265"
-     inkscape:cy="349.7213"
+     inkscape:zoom="0.87382693"
+     inkscape:cx="430.68375"
+     inkscape:cy="466.10328"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,7 +35,115 @@
      inkscape:window-y="27"
      inkscape:window-maximized="1" />
   <defs
-     id="defs8324" />
+     id="defs8324">
+    <defs
+       id="defs3386">
+      <circle
+         r="0.5"
+         id="gpDot"
+         cx="0"
+         cy="0"
+         sodipodi:cx="0"
+         sodipodi:cy="0"
+         sodipodi:rx="0.5"
+         sodipodi:ry="0.5"
+         style="stroke-width:0.5" />
+      <path
+         d="M -1,0 H 1 M 0,-1 v 2"
+         id="gpPt0"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <path
+         d="M -1,-1 1,1 M 1,-1 -1,1"
+         id="gpPt1"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <path
+         d="M -1,0 1,0 M 0,-1 0,1 m -1,-2 2,2 m -2,0 2,-2"
+         id="gpPt2"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <rect
+         height="2"
+         width="2"
+         y="-1"
+         x="-1"
+         id="gpPt3"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <rect
+         height="2"
+         width="2"
+         y="-1"
+         x="-1"
+         id="gpPt4"
+         style="fill:currentColor;stroke:currentColor;stroke-width:0.222" />
+      <circle
+         r="1"
+         cy="0"
+         cx="0"
+         id="gpPt5"
+         sodipodi:cx="0"
+         sodipodi:cy="0"
+         sodipodi:rx="1"
+         sodipodi:ry="1"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <use
+         id="gpPt6"
+         xlink:href="#gpPt5"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="1"
+         height="1" />
+      <path
+         d="m 0,-1.33 -1.33,2 2.66,0 z"
+         id="gpPt7"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <use
+         id="gpPt8"
+         xlink:href="#gpPt7"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="1"
+         height="1" />
+      <use
+         transform="scale(-1,-1)"
+         id="gpPt9"
+         xlink:href="#gpPt7"
+         style="stroke:currentColor"
+         x="0"
+         y="0"
+         width="1"
+         height="1" />
+      <use
+         id="gpPt10"
+         xlink:href="#gpPt9"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="1"
+         height="1" />
+      <use
+         transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
+         id="gpPt11"
+         xlink:href="#gpPt3"
+         style="stroke:currentColor"
+         x="0"
+         y="0"
+         width="1"
+         height="1" />
+      <use
+         id="gpPt12"
+         xlink:href="#gpPt11"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="1"
+         height="1" />
+    </defs>
+  </defs>
   <metadata
      id="metadata8327">
     <rdf:RDF>
@@ -51,229 +159,45 @@
   <g
      id="layer1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
-    <g
-       transform="matrix(0.66763524,0,0,0.66763524,-889.14128,53.9637)"
-       style="display:inline"
-       id="g8114-6">
-      <rect
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.60622883;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect2989-8"
-         width="220.35954"
-         height="82.473724"
-         x="1497.2141"
-         y="285.99438"
-         rx="0"
-         ry="10.101515" />
-      <text
-         xml:space="preserve"
-         style="font-size:41.36181259px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
-         x="1515.3877"
-         y="346.86496"
-         id="text3829-3"
-         sodipodi:linespacing="125%"><tspan
-           sodipodi:role="line"
-           id="tspan3831-7"
-           x="1515.3877"
-           y="346.86496">Results</tspan></text>
-      <g
-         id="g3922-7"
-         transform="matrix(0.97596207,-0.21794049,0.21794049,0.97596205,1430.3664,246.5295)">
-        <rect
-           y="40.441868"
-           x="56.063465"
-           height="16.920055"
-           width="217.94041"
-           id="rect3858-62"
-           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-        <rect
-           transform="matrix(1,0,0.71692722,0.69714802,0,0)"
-           y="59.821667"
-           x="21.684069"
-           height="20.647938"
-           width="14.142134"
-           id="rect3860-25"
-           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-        <rect
-           transform="matrix(1,0,0.71692722,0.69714802,0,0)"
-           y="59.821667"
-           x="47.18462"
-           height="20.647938"
-           width="14.142134"
-           id="rect3860-9-5"
-           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-        <rect
-           transform="matrix(1,0,0.71692722,0.69714802,0,0)"
-           y="59.821667"
-           x="72.68515"
-           height="20.647938"
-           width="14.142134"
-           id="rect3860-5-1"
-           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-        <rect
-           transform="matrix(1,0,0.71692722,0.69714802,0,0)"
-           y="59.821667"
-           x="98.185677"
-           height="20.647938"
-           width="14.142134"
-           id="rect3860-6-5"
-           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-        <rect
-           transform="matrix(1,0,0.71692722,0.69714802,0,0)"
-           y="59.821667"
-           x="149.18674"
-           height="20.647938"
-           width="14.142134"
-           id="rect3860-68-8"
-           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-        <rect
-           transform="matrix(1,0,0.71692722,0.69714802,0,0)"
-           y="59.821667"
-           x="174.68729"
-           height="20.647938"
-           width="14.142134"
-           id="rect3860-2-87"
-           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-        <rect
-           transform="matrix(1,0,0.71692722,0.69714802,0,0)"
-           y="59.821667"
-           x="200.18784"
-           height="20.647938"
-           width="14.142134"
-           id="rect3860-54-38"
-           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-        <rect
-           transform="matrix(1,0,0.71692722,0.69714802,0,0)"
-           y="59.821667"
-           x="123.6862"
-           height="20.647938"
-           width="14.142134"
-           id="rect3860-7-8"
-           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-      </g>
-      <rect
-         transform="scale(1,-1)"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect3858-1-3"
-         width="217.94041"
-         height="16.920055"
-         x="1496.5299"
-         y="-302.23004" />
-      <rect
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect3860-4-1"
-         width="14.142134"
-         height="20.647938"
-         x="1814.5446"
-         y="-431.71225"
-         transform="matrix(1,0,0.71692722,-0.69714802,0,0)" />
-      <rect
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect3860-9-8-7"
-         width="14.142134"
-         height="20.647938"
-         x="1840.045"
-         y="-431.71225"
-         transform="matrix(1,0,0.71692722,-0.69714802,0,0)" />
-      <rect
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect3860-5-8-3"
-         width="14.142134"
-         height="20.647938"
-         x="1865.5457"
-         y="-431.71225"
-         transform="matrix(1,0,0.71692722,-0.69714802,0,0)" />
-      <rect
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect3860-6-4-63"
-         width="14.142134"
-         height="20.647938"
-         x="1891.0461"
-         y="-431.71225"
-         transform="matrix(1,0,0.71692722,-0.69714802,0,0)" />
-      <rect
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect3860-68-3-5"
-         width="14.142134"
-         height="20.647938"
-         x="1942.0472"
-         y="-431.71225"
-         transform="matrix(1,0,0.71692722,-0.69714802,0,0)" />
-      <rect
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect3860-2-4-8"
-         width="14.142134"
-         height="20.647938"
-         x="1967.5477"
-         y="-431.71225"
-         transform="matrix(1,0,0.71692722,-0.69714802,0,0)" />
-      <rect
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect3860-54-2-9"
-         width="14.142134"
-         height="20.647938"
-         x="1993.0483"
-         y="-431.71225"
-         transform="matrix(1,0,0.71692722,-0.69714802,0,0)" />
-      <rect
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect3860-7-6-4"
-         width="14.142134"
-         height="20.647938"
-         x="1916.5466"
-         y="-431.71225"
-         transform="matrix(1,0,0.71692722,-0.69714802,0,0)" />
-    </g>
-    <rect
-       ry="58.009922"
-       rx="58.009922"
-       y="301.51086"
-       x="54.268833"
-       height="557.50787"
-       width="641.46234"
-       id="rect4562-6-7"
-       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.33527052;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline" />
-    <g
-       transform="translate(-128.9009,218.88842)"
-       id="g3074">
-      <flowRoot
-         xml:space="preserve"
-         id="flowRoot8383"
-         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-         transform="matrix(0.57522921,0,0,0.57522921,146.59156,206.16596)"><flowRegion
-           id="flowRegion8385"><rect
-             id="rect8387"
-             width="568.57141"
-             height="314.28574"
-             x="140"
-             y="409.50504"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab" /></flowRegion><flowPara
-           id="flowPara8389">Precision:<flowSpan
-   style="text-align:end;text-anchor:end"
-   id="flowSpan3022" /></flowPara><flowPara
-           id="flowPara8405">Recall:</flowPara><flowPara
-           id="flowPara8401">F1-Measure:</flowPara><flowPara
-           id="flowPara8395">F0.5-Measure:</flowPara><flowPara
-           id="flowPara8403" /></flowRoot>      <flowRoot
-         xml:space="preserve"
-         id="flowRoot8383-4"
-         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-         transform="matrix(0.57522921,0,0,0.57522921,184.66941,206.75838)"><flowRegion
-           id="flowRegion8385-7"><rect
-             id="rect8387-5"
-             width="568.57141"
-             height="314.28574"
-             x="140"
-             y="409.50504"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab" /></flowRegion><flowPara
-           id="flowPara8405-4"><flowSpan
-             style="text-align:center;text-anchor:middle"
-             id="flowSpan3022-7">99,46 %</flowSpan></flowPara><flowPara
-           id="flowPara3072">90,19 %</flowPara><flowPara
-           id="flowPara8401-9">94,60 %</flowPara><flowPara
-           id="flowPara8395-6">97,45 %</flowPara><flowPara
-           id="flowPara8403-9" /></flowRoot>    </g>
+     inkscape:label="Layer 1"
+     transform="translate(0,-308.2677)">
     <flowRoot
+       transform="matrix(0.57522921,0,0,0.57522921,30.509067,419.76867)"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       id="flowRoot8383"
+       xml:space="preserve"><flowRegion
+         id="flowRegion8385"><rect
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           y="409.50504"
+           x="140"
+           height="314.28574"
+           width="568.57141"
+           id="rect8387" /></flowRegion><flowPara
+         id="flowPara8389">Precision:<flowSpan
+   id="flowSpan3022"
+   style="text-align:end;text-anchor:end" /></flowPara><flowPara
+         id="flowPara8405">Recall:</flowPara><flowPara
+         id="flowPara8401">F1-Measure:</flowPara><flowPara
+         id="flowPara8395">F0.5-Measure:</flowPara><flowPara
+         id="flowPara8403" /></flowRoot>    <flowRoot
+       transform="matrix(0.57522921,0,0,0.57522921,148.66016,420.36109)"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       id="flowRoot8383-4"
+       xml:space="preserve"><flowRegion
+         id="flowRegion8385-7"><rect
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           y="409.50504"
+           x="140"
+           height="314.28574"
+           width="568.57141"
+           id="rect8387-5" /></flowRegion><flowPara
+         id="flowPara8405-4"><flowSpan
+           id="flowSpan3022-7"
+           style="text-align:center;text-anchor:middle">99,46 %</flowSpan></flowPara><flowPara
+         id="flowPara3072">90,19 %</flowPara><flowPara
+         id="flowPara8401-9">94,60 %</flowPara><flowPara
+         id="flowPara8395-6">97,45 %</flowPara><flowPara
+         id="flowPara8403-9" /></flowRoot>    <flowRoot
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        id="flowRoot3094"
        xml:space="preserve"><flowRegion
@@ -284,23 +208,27 @@
            width="169.93344"
            id="rect3098" /></flowRegion><flowPara
          id="flowPara3100">Evaluation was done on Movies, wehere we have a ground truth in our test set.</flowPara></flowRoot>    <flowRoot
-       transform="matrix(1.0132895,0,0,1.0132895,-308.88853,-39.411756)"
-       style="font-size:22px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+       transform="matrix(0.83639965,0,0,0.83639965,48.899764,-30.499913)"
+       style="font-size:26.30321503px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
        id="flowRoot3102"
        xml:space="preserve"><flowRegion
          id="flowRegion3104"><rect
-           style="font-size:22px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+           style="font-size:26.30321503px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
            y="544.98944"
            x="75.256241"
-           height="562.93713"
-           width="406.38248"
+           height="269.7413"
+           width="384.89929"
            id="rect3106" /></flowRegion><flowPara
-         id="flowPara3108">Test set: TMDB-Movies, which have a imdb_id set in the JSON file.</flowPara><flowPara
-         id="flowPara3114">We compare our match result with the ground truth from the TMDB file.</flowPara><flowPara
+         id="flowPara3114"
+         style="font-style:italic;-inkscape-font-specification:Roboto Slab Italic">Test set:</flowPara><flowPara
+         style="font-style:italic;-inkscape-font-specification:Roboto Slab Italic"
+         id="flowPara3413">Movies from TMDB, which have an IMDB id.</flowPara><flowPara
+         style="font-style:italic;-inkscape-font-specification:Roboto Slab Italic"
+         id="flowPara3415" /><flowPara
          id="flowPara3189">Of 2028 movies, we:</flowPara><flowPara
-         id="flowPara3177">matched 1829 correctly</flowPara><flowPara
-         id="flowPara3179">matched 10 incorrectly</flowPara><flowPara
-         id="flowPara3187">did not match 189</flowPara></flowRoot>    <text
+         id="flowPara3177">     matched 1829 correctly,</flowPara><flowPara
+         id="flowPara3179">     matched 10 incorrectly and</flowPara><flowPara
+         id="flowPara3187">     did not match 189.</flowPara></flowRoot>    <text
        sodipodi:linespacing="125%"
        id="text3110"
        y="566.83807"
@@ -311,549 +239,316 @@
          x="193.40045"
          id="tspan3112"
          sodipodi:role="line" /></text>
-    <g
-       transform="matrix(0.37056802,0,0,0.37056802,418.15555,371.40433)"
-       id="gnuplot_canvas">
-      <rect
-         style="fill:none"
-         x="0"
-         y="0"
-         width="600"
-         height="480"
-         id="rect3384" />
-      <defs
-         id="defs3386">
-        <circle
-           style="stroke-width:0.5"
-           sodipodi:ry="0.5"
-           sodipodi:rx="0.5"
-           sodipodi:cy="0"
-           sodipodi:cx="0"
-           cy="0"
-           cx="0"
-           id="gpDot"
-           r="0.5" />
-        <path
-           style="stroke:currentColor;stroke-width:0.222"
-           inkscape:connector-curvature="0"
-           id="gpPt0"
-           d="M -1,0 H 1 M 0,-1 v 2" />
-        <path
-           style="stroke:currentColor;stroke-width:0.222"
-           inkscape:connector-curvature="0"
-           id="gpPt1"
-           d="M -1,-1 1,1 M 1,-1 -1,1" />
-        <path
-           style="stroke:currentColor;stroke-width:0.222"
-           inkscape:connector-curvature="0"
-           id="gpPt2"
-           d="M -1,0 1,0 M 0,-1 0,1 m -1,-2 2,2 m -2,0 2,-2" />
-        <rect
-           style="stroke:currentColor;stroke-width:0.222"
-           id="gpPt3"
-           x="-1"
-           y="-1"
-           width="2"
-           height="2" />
-        <rect
-           style="fill:currentColor;stroke:currentColor;stroke-width:0.222"
-           id="gpPt4"
-           x="-1"
-           y="-1"
-           width="2"
-           height="2" />
-        <circle
-           style="stroke:currentColor;stroke-width:0.222"
-           sodipodi:ry="1"
-           sodipodi:rx="1"
-           sodipodi:cy="0"
-           sodipodi:cx="0"
-           id="gpPt5"
-           cx="0"
-           cy="0"
-           r="1" />
-        <use
-           height="1"
-           width="1"
-           y="0"
-           x="0"
-           style="fill:currentColor;stroke:none"
-           xlink:href="#gpPt5"
-           id="gpPt6" />
-        <path
-           style="stroke:currentColor;stroke-width:0.222"
-           inkscape:connector-curvature="0"
-           id="gpPt7"
-           d="m 0,-1.33 -1.33,2 2.66,0 z" />
-        <use
-           height="1"
-           width="1"
-           y="0"
-           x="0"
-           style="fill:currentColor;stroke:none"
-           xlink:href="#gpPt7"
-           id="gpPt8" />
-        <use
-           height="1"
-           width="1"
-           y="0"
-           x="0"
-           style="stroke:currentColor"
-           xlink:href="#gpPt7"
-           id="gpPt9"
-           transform="scale(-1,-1)" />
-        <use
-           height="1"
-           width="1"
-           y="0"
-           x="0"
-           style="fill:currentColor;stroke:none"
-           xlink:href="#gpPt9"
-           id="gpPt10" />
-        <use
-           height="1"
-           width="1"
-           y="0"
-           x="0"
-           style="stroke:currentColor"
-           xlink:href="#gpPt3"
-           id="gpPt11"
-           transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
-        <use
-           height="1"
-           width="1"
-           y="0"
-           x="0"
-           style="fill:currentColor;stroke:none"
-           xlink:href="#gpPt11"
-           id="gpPt12" />
-      </defs>
-      <g
-         style="color:#ffffff;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
-         id="g3402" />
-      <g
-         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
-         id="g3404">
-        <polygon
-           id="polygon3408"
-           points="599.9,0.1 0,0.1 0,480 599.9,480 "
-           style="fill:#ffffff;stroke:none" />
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="M 0,480 0,0.1 599.9,0.1 599.9,480 0,480 m 62.2,-36 9,0 m 503.8,0 -9,0 h 0.01"
-           id="path3410" />
-        <g
-           transform="translate(53.9,448.5)"
-           style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-           id="g3412">
-          <text
-             id="text3414">0.65</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 62.2,388.3 9,0 m 503.8,0 -9,0 h 0.01"
-           id="path3416" />
-        <g
-           transform="translate(53.9,392.8)"
-           style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-           id="g3418">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3420">0.7</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 62.2,332.6 9,0 m 503.8,0 -9,0 h 0.01"
-           id="path3422" />
-        <g
-           transform="translate(53.9,337.1)"
-           style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-           id="g3424">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3426">0.75</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 62.2,276.9 9,0 m 503.8,0 -9,0 h 0.01"
-           id="path3428" />
-        <g
-           transform="translate(53.9,281.4)"
-           style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-           id="g3430">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3432">0.8</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 62.2,221.2 9,0 m 503.8,0 -9,0 h 0.01"
-           id="path3434" />
-        <g
-           transform="translate(53.9,225.7)"
-           style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-           id="g3436">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3438">0.85</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 62.2,165.5 9,0 m 503.8,0 -9,0 h 0.01"
-           id="path3440" />
-        <g
-           transform="translate(53.9,170)"
-           style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-           id="g3442">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3444">0.9</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 62.2,109.8 9,0 m 503.8,0 -9,0 h 0.01"
-           id="path3446" />
-        <g
-           transform="translate(53.9,114.3)"
-           style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-           id="g3448">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3450">0.95</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 62.2,54.1 9,0 m 503.8,0 -9,0 h 0.01"
-           id="path3452" />
-        <g
-           transform="translate(53.9,58.6)"
-           style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-           id="g3454">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3456">1</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 62.2,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3458" />
-        <g
-           transform="translate(62.2,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3460">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3462">0</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 113.5,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3464" />
-        <g
-           transform="translate(113.5,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3466">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3468">10</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 164.8,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3470" />
-        <g
-           transform="translate(164.8,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3472">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3474">20</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 216,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3476" />
-        <g
-           transform="translate(216,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3478">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3480">30</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 267.3,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3482" />
-        <g
-           transform="translate(267.3,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3484">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3486">40</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 318.6,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3488" />
-        <g
-           transform="translate(318.6,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3490">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3492">50</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 369.9,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3494" />
-        <g
-           transform="translate(369.9,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3496">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3498">60</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 421.2,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3500" />
-        <g
-           transform="translate(421.2,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3502">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3504">70</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 472.4,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3506" />
-        <g
-           transform="translate(472.4,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3508">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3510">80</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 523.7,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3512" />
-        <g
-           transform="translate(523.7,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3514">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3516">90</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 575,444 0,-9 m 0,-380.9 0,9 h 0.01"
-           id="path3518" />
-        <g
-           transform="translate(575,466.5)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3520">
-          <text
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-             id="text3522">100</text>
-        </g>
-        <path
-           style="stroke:#000000"
-           inkscape:connector-curvature="0"
-           d="m 62.2,54.1 0,389.9 512.8,0 0,-389.9 -512.8,0 z m 0,0 h 0.01"
-           id="path3524" />
-        <g
-           transform="translate(318.6,31.6)"
-           style="font-size:15px;text-anchor:middle;fill:#000000;stroke:none;font-family:Arial"
-           id="g3526">
-          <text
-             y="1.4292128"
-             x="-0.0092205526"
-             style="font-size:19.196455px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Bold"
-             id="text3528">Parameter evaluation for ACTOR_OVERLAP_MINIMUM</text>
-        </g>
-      </g>
-      <g
-         id="gnuplot_plot_1">
-        <title
-           id="title3531">gnuplot_plot_1</title>
-        <g
-           style="color:#ff0000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
-           id="g3533">
-          <g
-             transform="translate(507.9,76.6)"
-             style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-             id="g3535">
-            <text
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-               id="text3537">Precision</text>
-          </g>
-          <path
-             style="stroke-width:2.96816754;stroke-miterlimit:4;stroke-dasharray:none"
-             inkscape:connector-curvature="0"
-             d="m 516.2,72.1 42.2,0 m -496.2,33.8 25.6,-42 25.7,0 25.6,0 25.7,-1.2 25.6,0 25.6,0 25.7,0 25.6,0 25.7,0 25.6,0.1 25.6,0.1 25.7,0 25.6,0 25.7,-1.1 25.6,0 25.6,0.2 25.7,0.3 25.6,0.6 25.7,1 h 0.01"
-             id="path3539" />
-        </g>
-      </g>
-      <g
-         id="gnuplot_plot_2">
-        <title
-           id="title3542">gnuplot_plot_2</title>
-        <g
-           style="color:#008000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
-           id="g3544">
-          <g
-             transform="translate(507.9,94.6)"
-             style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-             id="g3546">
-            <text
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-               id="text3548">Recall</text>
-          </g>
-          <path
-             style="stroke-width:2.96816754;stroke-miterlimit:4;stroke-dasharray:none"
-             inkscape:connector-curvature="0"
-             d="m 516.2,90.1 42.2,0 m -496.2,67.1 25.6,18.6 25.7,0 25.6,0 25.7,1.1 25.6,2.2 25.6,0 25.7,1.1 25.6,4.4 25.7,2.2 25.6,4.4 25.6,9.8 25.7,0 25.6,3.3 25.7,13.2 25.6,8.7 25.6,19.8 25.7,36.2 25.6,60.3 25.7,85.5 h 0.01"
-             id="path3550" />
-        </g>
-      </g>
-      <g
-         id="gnuplot_plot_3">
-        <title
-           id="title3553">gnuplot_plot_3</title>
-        <g
-           style="color:#0000ff;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
-           id="g3555">
-          <g
-             transform="translate(507.9,112.6)"
-             style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-             id="g3557">
-            <text
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-               id="text3559">F1-Measure</text>
-          </g>
-          <path
-             style="stroke-width:2.96816754;stroke-miterlimit:4;stroke-dasharray:none"
-             inkscape:connector-curvature="0"
-             d="m 516.2,108.1 42.2,0 m -496.2,24.1 25.6,-9.4 25.7,0 25.6,0 25.7,0.1 25.6,1.2 25.6,0 25.7,0.6 25.6,2.5 25.7,1.2 25.6,2.5 25.6,5.7 25.7,0 25.6,1.8 25.7,7.1 25.6,5.1 25.6,11.7 25.7,22.1 25.6,38.5 25.7,59 h 0.01"
-             id="path3561" />
-        </g>
-      </g>
-      <g
-         id="gnuplot_plot_4">
-        <title
-           id="title3564">gnuplot_plot_4</title>
-        <g
-           style="color:#00ffff;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
-           id="g3566">
-          <g
-             transform="translate(507.9,130.6)"
-             style="font-size:15px;text-anchor:end;fill:#000000;stroke:none;font-family:Arial"
-             id="g3568">
-            <text
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-               id="text3570">F0.5-Measure</text>
-          </g>
-          <path
-             style="stroke-width:2.96816754;stroke-miterlimit:4;stroke-dasharray:none"
-             inkscape:connector-curvature="0"
-             d="m 516.2,126.1 42.2,0 m -496.2,-9.5 25.6,-28.4 25.7,0 25.6,0 25.7,-0.6 25.6,0.5 25.6,0 25.7,0.3 25.6,1.1 25.7,0.5 25.6,1.1 25.6,2.5 25.7,0 25.6,0.8 25.7,2.5 25.6,2.2 25.6,5.3 25.7,10.2 25.6,18.4 25.7,29.8 h 0.01"
-             id="path3572" />
-        </g>
-      </g>
-      <g
-         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
-         id="g3574">
-        <path
-           style="stroke:#000000;stroke-width:2.73984694;stroke-miterlimit:4;stroke-dasharray:none"
-           inkscape:connector-curvature="0"
-           d="m 62.2,54.1 0,389.9 512.8,0 0,-389.9 -512.8,0 z m 0,0 h 0.01"
-           id="path3576" />
-      </g>
-    </g>
+    <rect
+       id="rect3384"
+       height="411.05109"
+       width="513.81384"
+       y="443.25333"
+       x="458.85901"
+       style="fill:none" />
+    <path
+       style="color:#000000;fill:none;stroke:none"
+       inkscape:connector-curvature="0"
+       d="m 458.85903,854.30442 0,-410.96546 513.72823,0 0,410.96546 -513.72823,0 m 53.26537,-30.82884 7.70721,0 m 431.43238,0 -7.70721,0 h 0.008"
+       id="path3410" />
+    <text
+       style="font-size:12.84534645px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       id="text3414"
+       x="505.01663"
+       y="827.32922">0.65</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 512.1244,775.77653 7.70721,0 m 431.43238,0 -7.70721,0 h 0.008"
+       id="path3416" />
+    <text
+       id="text3420"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="505.01663"
+       y="779.63013">0.7</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 512.1244,728.07748 7.70721,0 m 431.43238,0 -7.70721,0 h 0.008"
+       id="path3422" />
+    <text
+       id="text3426"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="505.01663"
+       y="731.93109">0.75</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 512.1244,680.37843 7.70721,0 m 431.43238,0 -7.70721,0 h 0.008"
+       id="path3428" />
+    <text
+       id="text3432"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="505.01663"
+       y="684.23199">0.8</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 512.1244,632.67937 7.70721,0 m 431.43238,0 -7.70721,0 h 0.008"
+       id="path3434" />
+    <text
+       id="text3438"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="505.01663"
+       y="636.53296">0.85</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 512.1244,584.98032 7.70721,0 m 431.43238,0 -7.70721,0 h 0.008"
+       id="path3440" />
+    <text
+       id="text3444"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="505.01663"
+       y="588.83392">0.9</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 512.1244,537.28127 7.70721,0 m 431.43238,0 -7.70721,0 h 0.008"
+       id="path3446" />
+    <text
+       id="text3450"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="505.01663"
+       y="541.13483">0.95</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 512.1244,489.58221 7.70721,0 m 431.43238,0 -7.70721,0 h 0.008"
+       id="path3452" />
+    <text
+       id="text3456"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="505.01663"
+       y="493.43582">1</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 512.1244,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3458" />
+    <text
+       id="text3462"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="512.12439"
+       y="842.74365">0</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 556.05549,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3464" />
+    <text
+       id="text3468"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="556.05548"
+       y="842.74365">10</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 599.98657,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3470" />
+    <text
+       id="text3474"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="599.98657"
+       y="842.74365">20</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 643.83202,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3476" />
+    <text
+       id="text3480"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="643.83197"
+       y="842.74365">30</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 687.76311,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3482" />
+    <text
+       id="text3486"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="687.76306"
+       y="842.74365">40</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 731.69419,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3488" />
+    <text
+       id="text3492"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="731.69415"
+       y="842.74365">50</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 775.62528,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3494" />
+    <text
+       id="text3498"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="775.62524"
+       y="842.74365">60</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 819.55636,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3500" />
+    <text
+       id="text3504"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="819.55634"
+       y="842.74365">70</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 863.40181,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3506" />
+    <text
+       id="text3510"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="863.40186"
+       y="842.74365">80</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 907.3329,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3512" />
+    <text
+       id="text3516"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="907.33289"
+       y="842.74365">90</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 951.26399,823.47558 0,-7.7072 m 0,-326.18617 0,7.70721 h 0.008"
+       id="path3518" />
+    <text
+       id="text3522"
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       x="951.26398"
+       y="842.74365">100</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.8563565;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       d="m 512.1244,489.58221 0,333.89337 439.13959,0 0,-333.89337 -439.13959,0 z m 0,0 h 0.008"
+       id="path3524" />
+    <text
+       id="text3528"
+       style="font-size:16.43900871px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Bold"
+       x="731.68634"
+       y="471.53812">Parameter evaluation for ACTOR_OVERLAP_MINIMUM</text>
+    <text
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#ff0000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       id="text3537"
+       x="893.80249"
+       y="508.85022">Precision</text>
+    <path
+       id="path3539"
+       d="m 900.91022,504.99663 36.13825,0 m -424.92407,28.94485 21.92273,-35.96697 22.00836,0 21.92271,0 22.00837,-1.02764 21.92272,0 21.92273,0 22.00836,0 21.92273,0 22.00836,0 21.92272,0.0856 21.92273,0.0856 22.00836,0 21.92272,0 22.00836,-0.942 21.92272,0 21.92273,0.17128 22.00836,0.2569 21.92273,0.51382 22.00836,0.85636 h 0.008"
+       inkscape:connector-curvature="0"
+       style="color:#ff0000;fill:none;stroke:#b1063a;stroke-width:2.54180932000000004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#008000;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       id="text3548"
+       x="893.80249"
+       y="524.26465">Recall</text>
+    <path
+       id="path3550"
+       d="m 900.91022,520.41104 36.13825,0 m -424.92407,57.46152 21.92273,15.92824 22.00836,0 21.92271,0 22.00837,0.94199 21.92272,1.88398 21.92273,0 22.00836,0.94199 21.92273,3.76796 22.00836,1.88399 21.92272,3.76797 21.92273,8.39229 22.00836,0 21.92272,2.82598 22.00836,11.30391 21.92272,7.45029 21.92273,16.95586 22.00836,31.00011 21.92273,51.63829 22.00836,73.21847 h 0.008"
+       inkscape:connector-curvature="0"
+       style="color:#008000;fill:none;stroke:#f6a800;stroke-width:2.54180932000000004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#0000ff;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       id="text3559"
+       x="893.80249"
+       y="539.67908">F1-Measure</text>
+    <path
+       id="path3561"
+       d="m 900.91022,535.82546 36.13825,0 m -424.92407,20.63819 21.92273,-8.04975 22.00836,0 21.92271,0 22.00837,0.0856 21.92272,1.02763 21.92273,0 22.00836,0.51382 21.92273,2.14088 22.00836,1.02764 21.92272,2.14088 21.92273,4.88124 22.00836,0 21.92272,1.54144 22.00836,6.08013 21.92272,4.36742 21.92273,10.01937 22.00836,18.92547 21.92273,32.96973 22.00836,50.52503 h 0.008"
+       inkscape:connector-curvature="0"
+       style="color:#0000ff;fill:none;stroke:#007a9e;stroke-width:2.54180932000000004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       style="font-size:12.84534645px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:end;color:#00ffff;fill:#000000;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       id="text3570"
+       x="893.80249"
+       y="555.09351">F0.5-Measure</text>
+    <path
+       id="path3572"
+       d="m 900.91022,551.23987 36.13825,0 m -424.92407,-8.13538 21.92273,-24.32053 22.00836,0 21.92271,0 22.00837,-0.51381 21.92272,0.42818 21.92273,0 22.00836,0.2569 21.92273,0.94199 22.00836,0.42819 21.92272,0.94199 21.92273,2.1409 22.00836,0 21.92272,0.68507 22.00836,2.1409 21.92272,1.88398 21.92273,4.53869 22.00836,8.73484 21.92273,15.75695 22.00836,25.51942 h 0.008"
+       inkscape:connector-curvature="0"
+       style="color:#00ffff;fill:none;stroke:#006400;stroke-width:2.54180932000000004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:2.34628558;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0"
+       d="m 512.1244,489.58221 0,333.89337 439.13959,0 0,-333.89337 -439.13959,0 z m 0,0 h 0.008"
+       id="path3576" />
     <flowRoot
-       transform="matrix(0.59918278,0,0,0.59918278,366.73909,230.07859)"
-       style="font-size:22px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+       transform="matrix(0.59918278,0,0,0.59918278,466.6788,527.57738)"
+       style="font-size:36.7166748px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
        id="flowRoot3102-8"
        xml:space="preserve"><flowRegion
          id="flowRegion3104-0"><rect
-           style="font-size:22px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+           style="font-size:36.7166748px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
            y="544.98944"
            x="75.256241"
-           height="257.32779"
-           width="418.35995"
+           height="215.30954"
+           width="752.59601"
            id="rect3106-9" /></flowRegion><flowPara
-         id="flowPara3114-4">Determining the best threshold for the</flowPara><flowPara
-         id="flowPara4492">actor overlap, when a match is recognized. Tests in 5% steps. You can see, that a threshold of ~ 70 % yields the best results.</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.57522921,0,0,0.57522921,321.93152,84.05067)"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+         id="flowPara3114-4"
+         style="font-size:33.37879562px;text-align:center;text-anchor:middle">Determining the best threshold for the</flowPara><flowPara
+         id="flowPara4492"
+         style="font-size:33.37879562px;text-align:center;text-anchor:middle">actor overlap, when a match is recognized. Tests in 5% steps. You can see, that a threshold of ~ 70 % yields the best results.</flowPara></flowRoot>    <flowRoot
+       transform="matrix(0.57522921,0,0,0.57522921,377.72536,145.54828)"
+       style="font-size:41.72249876px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
        id="flowRoot8383-9"
        xml:space="preserve"><flowRegion
          id="flowRegion8385-5"><rect
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           style="font-size:41.72249876px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
            y="409.50504"
            x="140"
            height="314.28574"
            width="568.57141"
            id="rect8387-3" /></flowRegion><flowPara
-         style="font-weight:bold;-inkscape-font-specification:Roboto Slab Bold"
+         style="font-size:41.72249876px;font-weight:bold;-inkscape-font-specification:Roboto Slab Bold"
          id="flowPara8403-7">Parameter estimation:</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.57522921,0,0,0.57522921,21.579714,97.573131)"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       transform="matrix(0.57522921,0,0,0.57522921,30.705186,145.54828)"
+       style="font-size:41.72249876px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
        id="flowRoot8383-9-4"
        xml:space="preserve"><flowRegion
          id="flowRegion8385-5-1"><rect
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           style="font-size:41.72249876px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
            y="409.50504"
            x="140"
            height="314.28574"
            width="568.57141"
            id="rect8387-3-9" /></flowRegion><flowPara
-         style="font-weight:bold;-inkscape-font-specification:Roboto Slab Bold"
+         style="font-size:41.72249876px;font-weight:bold;-inkscape-font-specification:Roboto Slab Bold"
          id="flowPara8403-7-5">Evaluation measures:</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.57522921,0,0,0.57522921,329.41118,416.41583)"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       transform="matrix(0.57522921,0,0,0.57522921,30.748155,561.16524)"
+       style="font-size:38.24562454px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
        id="flowRoot8383-9-4-0"
        xml:space="preserve"><flowRegion
          id="flowRegion8385-5-1-4"><rect
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           style="font-size:38.24562454px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
            y="409.50504"
            x="140"
            height="314.28574"
            width="568.57141"
            id="rect8387-3-9-1" /></flowRegion><flowPara
-         style="font-weight:bold;-inkscape-font-specification:Roboto Slab Bold"
+         style="font-size:38.24562454px;font-weight:bold;-inkscape-font-specification:Roboto Slab Bold"
          id="flowPara8403-7-5-8">Current error analysis:</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot5092"
-       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Roboto Slab;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:Roboto Slab;font-stretch:normal;font-variant:normal"><flowRegion
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"><flowRegion
          id="flowRegion5094"><rect
            id="rect5096"
            width="69.23568"
@@ -861,42 +556,108 @@
            x="116.15572"
            y="633.51495" /></flowRegion><flowPara
          id="flowPara5098" /></flowRoot>    <flowRoot
-       transform="matrix(0.47178004,0,0,0.47178004,346.18477,501.81921)"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       transform="matrix(0.47178004,0,0,0.47178004,45.026937,643.71301)"
+       style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
        id="flowRoot8383-47"
        xml:space="preserve"><flowRegion
          id="flowRegion8385-9"><rect
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
            y="409.50504"
            x="140"
-           height="66.696754"
-           width="622.02814"
+           height="291.39066"
+           width="642.61078"
            id="rect8387-9" /></flowRegion><flowPara
-         id="flowPara8403-3">No candidate found</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.47178004,0,0,0.47178004,346.2868,542.89144)"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-       id="flowRoot8383-47-4"
-       xml:space="preserve"><flowRegion
-         id="flowRegion8385-9-5"><rect
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
-           y="409.50504"
-           x="140"
-           height="102.71638"
-           width="608.3064"
-           id="rect8387-9-0" /></flowRegion><flowPara
-         id="flowPara8403-3-3">Right movie not in</flowPara><flowPara
-         id="flowPara5307">candidates</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.47178004,0,0,0.47178004,346.2916,603.6652)"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+         id="flowPara3279">Not in candidates</flowPara></flowRoot>    <flowRoot
+       transform="matrix(0.47178004,0,0,0.47178004,45.026937,697.88559)"
+       style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
        id="flowRoot8383-47-4-3"
        xml:space="preserve"><flowRegion
          id="flowRegion8385-9-5-2"><rect
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
            y="409.50504"
            x="140"
            height="102.71638"
            width="608.3064"
            id="rect8387-9-0-1" /></flowRegion><flowPara
-         id="flowPara5369">Threshold to high,</flowPara><flowPara
-         id="flowPara5373">no match</flowPara></flowRoot>  </g>
+         id="flowPara5373">No candidates</flowPara></flowRoot>    <flowRoot
+       transform="matrix(0.65799869,0,0,0.65799869,-348.88618,-128.20212)"
+       style="font-size:33.43471527px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+       id="flowRoot3102-7"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3104-4"><rect
+           style="font-size:33.43471527px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+           y="544.98944"
+           x="75.256241"
+           height="273.84604"
+           width="323.3287"
+           id="rect3106-5" /></flowRegion><flowPara
+         id="flowPara3187-3">Note:</flowPara><flowPara
+         id="flowPara3269">This values might be biased by the fact, that we only match those movies, where we already have an IMDB id from TMDB.</flowPara><flowPara
+         id="flowPara3273">It could be, that these movies are maintained better than the ones without a IMDB id.</flowPara></flowRoot>    <flowRoot
+       transform="matrix(0.47178004,0,0,0.47178004,42.953695,754.04756)"
+       style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+       id="flowRoot8383-47-4-3-1"
+       xml:space="preserve"><flowRegion
+         id="flowRegion8385-9-5-2-4"><rect
+           style="font-size:46.63190079px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab Italic"
+           y="409.50504"
+           x="140"
+           height="102.71638"
+           width="608.3064"
+           id="rect8387-9-0-1-9" /></flowRegion><flowPara
+         id="flowPara5373-8">Threshold to high</flowPara></flowRoot>    <flowRoot
+       transform="matrix(0.57522921,0,0,0.57522921,149.14906,600.33797)"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       id="flowRoot8383-4-9"
+       xml:space="preserve"><flowRegion
+         id="flowRegion8385-7-9"><rect
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           y="409.50504"
+           x="140"
+           height="314.28574"
+           width="568.57141"
+           id="rect8387-5-0" /></flowRegion><flowPara
+         id="flowPara8403-9-8"
+         style="text-align:center;text-anchor:middle">67</flowPara></flowRoot>    <flowRoot
+       transform="matrix(0.57522921,0,0,0.57522921,-191.4619,591.92164)"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       id="flowRoot8383-4-9-0"
+       xml:space="preserve"><flowRegion
+         id="flowRegion8385-7-9-3"><rect
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           y="409.50504"
+           x="140"
+           height="314.28574"
+           width="568.57141"
+           id="rect8387-5-0-1" /></flowRegion><flowPara
+         id="flowPara8395-6-2-7"
+         style="text-align:center;text-anchor:middle" /><flowPara
+         id="flowPara8403-9-8-4" /></flowRoot>    <flowRoot
+       transform="matrix(0.57522921,0,0,0.57522921,148.42233,715.3772)"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       id="flowRoot8383-4-9-48"
+       xml:space="preserve"><flowRegion
+         id="flowRegion8385-7-9-30"><rect
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           y="409.50504"
+           x="140"
+           height="314.28574"
+           width="568.57141"
+           id="rect8387-5-0-55" /></flowRegion><flowPara
+         id="flowPara8395-6-2-5"
+         style="text-align:center;text-anchor:middle">27</flowPara><flowPara
+         id="flowPara8403-9-8-6" /></flowRoot>    <flowRoot
+       transform="matrix(0.57522921,0,0,0.57522921,149.14906,654.43383)"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+       id="flowRoot8383-4-9-8"
+       xml:space="preserve"><flowRegion
+         id="flowRegion8385-7-9-2"><rect
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           y="409.50504"
+           x="140"
+           height="314.28574"
+           width="568.57141"
+           id="rect8387-5-0-2" /></flowRegion><flowPara
+         id="flowPara8403-9-8-5"
+         style="text-align:center;text-anchor:middle">95</flowPara></flowRoot>  </g>
 </svg>
