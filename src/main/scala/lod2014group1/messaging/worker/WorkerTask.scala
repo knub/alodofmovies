@@ -29,13 +29,18 @@ object WorkerTask {
 				"flag" -> dbTask.flag
 			))
 
-		else if (TaskType.withName(dbTask.taskType) == TaskType.Triplimerge)
-			WorkerTask(dbTask.taskType, dbTask.id, Map(
-				"fileName" -> dbTask.fileOrUrl,
-				"content" -> FileUtils.readFileToString(new File(s"${Config.DATA_FOLDER}/${dbTask.fileOrUrl}")),
-				"graph" -> dbTask.graph,
+		else if (TaskType.withName(dbTask.taskType) == TaskType.Triplimerge) {
+      val file = new File(s"${Config.DATA_FOLDER}/${dbTask.fileOrUrl}")
+      if (!file.exists())
+        return null
+
+      WorkerTask(dbTask.taskType, dbTask.id, Map(
+        "fileName" -> dbTask.fileOrUrl,
+        "content" -> FileUtils.readFileToString(new File(s"${Config.DATA_FOLDER}/${dbTask.fileOrUrl}")),
+        "graph" -> dbTask.graph,
         "flag" -> dbTask.flag
-			))
+      ))
+    }
 
 		else if (TaskType.withName(dbTask.taskType) == TaskType.Crawlifymerge)
 			WorkerTask(dbTask.taskType, dbTask.id, Map(
