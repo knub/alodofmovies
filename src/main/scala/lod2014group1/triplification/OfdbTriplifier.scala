@@ -5,7 +5,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import lod2014group1.Config
 import scala.io.Source
-import lod2014group1.rdf.{RdfReleaseInfoResource, RdfTriple, RdfResource}
+import lod2014group1.rdf._
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
@@ -15,13 +15,11 @@ import lod2014group1.rdf.RdfAkaResource._
 import lod2014group1.rdf.RdfMovieResource._
 import lod2014group1.rdf.RdfPersonResource._
 import lod2014group1.rdf.RdfCharacterResource._
-import lod2014group1.rdf.UriBuilder
 import org.joda.time.DateTime
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormat}
 import lod2014group1.rdf
 import scala.io.Codec
 import java.nio.charset.CodingErrorAction
-import lod2014group1.rdf.UriBuilder
 
 class OfdbTriplifier extends Triplifier {
 	
@@ -45,6 +43,9 @@ class OfdbTriplifier extends Triplifier {
 		
 		if(docString.contains("Unter dieser ID existiert kein Film."))
 			return triples
+
+    triples ::= (movie isA RdfMovieResource.film)
+    triples ::= (movie sameAs movie.toString())
 
 		val imdbIdSplit = """http://www.imdb.com/Title?"""
 		if(docString.contains(imdbIdSplit)){

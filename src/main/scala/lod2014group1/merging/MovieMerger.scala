@@ -6,12 +6,23 @@ import lod2014group1.rdf.UriBuilder
 import lod2014group1.database.{TaskDatabase, Task, Queries}
 import lod2014group1.Config
 import java.io.File
+import org.apache.commons.io.FileUtils
 import org.joda.time.DateTime
-import lod2014group1.triplification.FreebaseFilmsTriplifier
-import lod2014group1.triplification.TmdbMovieTriplifier
+import lod2014group1.triplification.{TriplifyDistributor, FreebaseFilmsTriplifier, TmdbMovieTriplifier}
 
 object MovieMerger extends App{
-	
+
+
+  override def main(args: Array[String]): Unit = {
+    val triplifier = new TriplifyDistributor
+    val content = FileUtils.readFileToString(new File("/home/tanja/Repositories/alodofmovies/data/OFDB/Movies/145135/Film.html"))
+    val triples = triplifier.triplify("OFDB/Movies/145135/Film.html", content)
+
+    val mergedTriples = MovieMerger.merge(triples).map {
+      _.toRdfTripleString()
+    }
+  }
+
 	def merge(triples: List[RdfTriple]): List[RdfTriple] = {
 		val tripleGraph = new TripleGraph(triples)
 
@@ -20,7 +31,7 @@ object MovieMerger extends App{
       // TODO match movie
       return List()
     }
-		
+
 		val movieResource = tripleGraph.getObjectOfType("dbpedia-owl:Film")
     if (movieResource == null)
       return List()
@@ -64,14 +75,6 @@ object MovieMerger extends App{
 	
 	private def areActorNamesEqual(imdbActorName : String, actorName : String): Boolean = {
 		imdbActorName == actorName
-	}
-	
-	override def main(args: Array[String]): Unit = {
-//		val triple = (new FreebaseFilmsTriplifier).triplify(new File(s"${Config.DATA_FOLDER}/Freebase/0bdjd"))
-////		val triple = (new TmdbMovieTriplifier).triplify(new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie/13.json"))
-//		//triple.foreach(println)
-//		println("==================================================")
-//		merge (triple).foreach(println)
 	}
 
 }
