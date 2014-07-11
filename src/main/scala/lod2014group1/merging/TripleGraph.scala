@@ -16,9 +16,12 @@ class TripleGraph(triples: List[RdfTriple]) {
 
 	def getObjectOfType(rdfType: String): String = {
 		edges.find { edge =>
-			edge.label.toString == "rdf:type" &&
-				edge.target.toString == rdfType
-		}.get.source
+        edge.label.toString == "rdf:type" &&
+          edge.target.toString == rdfType
+    } match {
+      case Some(e) => e.source
+      case None => null
+    }
 	}
 	
 	def getObjectListOfType(rdfType: String): List[String] = {

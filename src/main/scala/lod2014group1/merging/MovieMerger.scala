@@ -22,6 +22,9 @@ object MovieMerger extends App{
     }
 		
 		val movieResource = tripleGraph.getObjectOfType("dbpedia-owl:Film")
+    if (movieResource == null)
+      return List()
+
 		val movieTriple = tripleGraph.getTriplesForSubject(movieResource)
 		val imdbResource = UriBuilder.getMovieUriFromImdbIdWithoutPrefix(imdbId)
 		
