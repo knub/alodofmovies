@@ -59,7 +59,7 @@ class DatabasePopulator extends Logging {
     val date = new Date(new DateTime().toDate.getTime)
 
     val taskList = ofdbDir.listFiles.flatMap { file: File =>
-      val filePath = file.getPath.replace("data/", "")
+      val filePath = file.getPath.replace("\\", "/").replace("data/", "")
         List(
           Task(0, TaskType.Triplimerge.toString, date, 5, filePath + "/Film.html", false, "no matching", Config.OFDB_GRAPH),
           Task(0, TaskType.Triplimerge.toString, date, 5, filePath + "/Cast.html", false, "no matching", Config.OFDB_GRAPH)
