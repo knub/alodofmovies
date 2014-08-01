@@ -38,6 +38,15 @@ General idea: actor overlap
 
 \paragraph{Candidate selection}
 
+The general goal of candidate selection is to reduce to the whole set of all movies in the database to a smaller set of candidates.
+There are two goals working against each other here:
+\begin{itemize}
+	\item We want the candidate set to be as small as possible. This leads to fewer comparisions and thereby increased performance.
+	\item The correct movie, i.e. that movie that needs to be matched to our current movie, must be in the candidate set, if it exists in the database.
+\end{itemize}
+The former would be optimized by returning nothing, the latter by returning everything, so a viable tradeoff has to be found.
+
+The algorithm presented in this paper 
 \paragraph{Score calculation}
 
 \subsubsection{Refinement}
