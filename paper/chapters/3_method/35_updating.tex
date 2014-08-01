@@ -1,2 +1,60 @@
 \subsection{Updating}
 \label{subsec_method_updating}
+
+To ensure that the movies are always up to date, a scheduler is responsible to update the movies at certain, repeading times.
+The scheduler downloads movie resources, which should be updated, triplifies them and stores them into the triple store.
+Thereby, the schedule distinguish between existing movies - movies, which are released in the past from the current date - and coming soon movies - movies, which are resleased in the future.
+
+\subsubsection{Updating coming soon movies}
+Upcoming movies are published almost every day on IMDB (Chapter \ref{subsec_evaluation_updating}).
+Because IMDB is the main data source, the scheduler updates upcoming movies from IMDB daily.
+Upcoming movies from the other data sources are updated weekly.
+In this way, movies, which come from freebase, TMDB or OFDB, can already be matched to a movie of IMDB.
+
+The steps to update upcoming soon movies are:
+\begin {enumerate}
+	\item Get new movie resources with their ids.
+	\item For each movie, download the new movie resource and triplify it.
+	\item Delete all triples of the movie in the triple store in the corresponding graph, if the movie already exists.
+	\item Load triples of an IMDB movie into the corresponding graph in the triple store. For the other resources, integrate  the triples of the upcoming movie and store them in the corresponding graph.
+\end{enumerate}
+
+To get all new movies from IMDB, the scheduler crawls the "Coming Soon" page (\url{http://www.imdb.com/movies-coming-soon/2014-08/}) from the current month until the same month next year.
+This page contains all new movies ids, which will be released in the time period crawled.
+Having the new movie ids, the scheduler automatically has the new movie resource, which can be crawled.
+
+Freebase has an API, which the scheduler ask for all movies ids.
+Afterwards, the scheduler filters the ids for those ids, which are unknown.
+
+% TODO
+% TMDB
+% Get all ids higher than the last id
+% OFDB
+% Get all ids higher than the last id
+
+\subsubsection{Updating existing movies}
+Existings movies are divided into different categories.
+Each category is updated at different frequencies (Table \ref{tab_updating_existing}).
+\begin{table}[h]
+	\caption{Frequency of updating existing movies}
+	\begin{center}
+	\begin{tabular}{rl}
+		\textbf{category of movie} & \textbf{frequency} \\ \hline
+		one year old & weekly \\
+		5 year old & monthly \\
+		5 - 25 years old & yearly \\
+		older than 25 years & never \\
+	\end{tabular}
+	\end{center}
+	\label{tab_updating_existing}
+\end{table}
+If a category should be updated, the scheduler does the follwing steps:
+\begin{enumerate}
+	\item Find all movies, which should be updated regardless their originial data source.
+	\item For each of these movies, get the updated movie resource and triplify it.
+	\item Delete all triples of the movie in the triple store in the corresponding graph.
+	\item Load the new triples into the corresponding graph in the triple store.
+\end{enumerate}
+Because the movies are stored in different graphs depending on their originial data source, the scheduler knows, where to find the movie resource in the web.
+The originial resource of a movie is stored in a \emph{sameAs} triple to the movie.
+Deleting the existing triples and storing the new downloaded triples, ensures that no conflicting information is stored of a resource.
