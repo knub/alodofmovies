@@ -21,8 +21,8 @@ object Main extends App with Logging {
 		} else if (args contains "crawl-imdb") {
 			Crawler.crawl
 		} else if (args contains "crawl-tmdb") {
-      val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
-      tmdb.crawl
+//      val tmdb = new lod2014group1.crawling.TMDBMoviesListCrawler()
+//      tmdb.crawl
 		} else if (args contains "rabbit-worker") {
 			val worker = new WorkReceiver("tasks", "answers")
 			worker.init()
@@ -86,14 +86,6 @@ object Main extends App with Logging {
     } else if (args contains "populateMerge") {
       val populator = new DatabasePopulator()
       populator.populateMergeTasks()
-		} else if (args contains "fixx") {
-//			val taskDb = new TaskDatabase
-//			val oldResources = Queries.getAllMoviesWithNameAndOriginalTitles
-//			oldResources.zipWithIndex.foreach { case (resource, index) =>
-//				taskDb.resetTasks(resource.resource.split("movie#Movie")(1))
-//				Queries.deleteNameAndOriginalTitleTriples(resource)
-//				if (index % 5 == 0) println(index)
-//			}
 		} else {
 			log.warn("Please pass a parameter to indicate what you want to do, e.g. run `gradle crawl` or `gradle triplify`.")
 		}

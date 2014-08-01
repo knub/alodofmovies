@@ -1,2 +1,33 @@
 \subsection{Matching}
 \label{subsec_method_matching}
+
+The following sections show the approach for matching (i.e. finding the same entity in different datasets) and merging (i.e. integrating two different datasets about the same entity into one.)
+
+\subsubsection{Problem statement}
+After loading the initial dataset into the database, the task is to integrate another dataset to finally create the whole dataset with more information than one single dataset can provide.
+% TODO: Why IMDB?
+But simply dumping the second dataset into the database would lead to duplicate entries with slighly different names, thereby decreasing the overall database quality.
+
+However, only using the name as a matching criteria TODO
+Because of the following problems: TODO
+\begin{itemize}
+	\item TODO Take things from poster.
+	\item TODO Take things from poster.
+	\item TODO Take things from poster.
+\end{itemize}
+This is way a more sophisticated approach needs to be developed.
+
+\subsubsection{Matching using Actor overlap}
+In general, the matching algorithm must satisfy two requirements:
+\begin{enumerate}
+	\item{High precision}: We need a high precision.
+	\item{Performance:} It must run fast enough to TODO
+\end{enumerate}
+
+General idea: actor overlap
+
+\paragraph{Candidate selection}
+
+\paragraph{Score calculation}
+
+\subsubsection{Refinement}

@@ -108,11 +108,6 @@ task update(type: JavaExec, dependsOn: [build]) {
     classpath = sourceSets.main.runtimeClasspath
     args = ['update-daily']
 }
-task fixx(type: JavaExec, dependsOn: [build]) {
-    main = 'lod2014group1.Main'
-    classpath = sourceSets.main.runtimeClasspath
-    args = ['fixx']
-}
 task populateMerge(type: JavaExec, dependsOn: [build]) {
     main = 'lod2014group1.Main'
     classpath = sourceSets.main.runtimeClasspath
