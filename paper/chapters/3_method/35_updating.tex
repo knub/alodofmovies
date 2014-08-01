@@ -16,21 +16,26 @@ The steps to update upcoming soon movies are:
 	\item Get new movie resources with their ids.
 	\item For each movie, download the new movie resource and triplify it.
 	\item Delete all triples of the movie in the triple store in the corresponding graph, if the movie already exists.
-	\item Load triples of an IMDB movie into the corresponding graph in the triple store. For the other resources, integrate  the triples of the upcoming movie and store them in the corresponding graph.
+	\item Load triples of an IMDB movie into the corresponding graph in the triple store. For the other resources, integrate the triples of the upcoming movie and store them in the corresponding graph.
 \end{enumerate}
 
 To get all new movies from IMDB, the scheduler crawls the "Coming Soon" page (\url{http://www.imdb.com/movies-coming-soon/2014-08/}) from the current month until the same month next year.
 This page contains all new movies ids, which will be released in the time period crawled.
-Having the new movie ids, the scheduler automatically has the new movie resource, which can be crawled.
+Having the new movie ids, the scheduler automatically can construct the new movie resource (\url{http://www.imdb.com/[id]}), which can be crawled.
 
 Freebase has an API, which the scheduler ask for all movies ids.
 Afterwards, the scheduler filters the ids for those ids, which are unknown.
+Thus, the scheduler gets all new upcoming movies.
 
-% TODO
-% TMDB
-% Get all ids higher than the last id
-% OFDB
-% Get all ids higher than the last id
+TMDB offers a change set.
+The scheduler requests the change API to get all movies, which recently changed.
+Then, the scheduler can filter for movies, which are unkown and thus, which are new.
+
+At OFDB the movies have increasing ids.
+New movies published on the current day can be found under the following page \url{http://www.ofdb.de/view.php?page=neu&Kat=Film&Tage=1}.
+So, the scheduler knows the highest newest movie id and also the last movie id of OFDB in the triple store.
+All ids between these two are ids of new moives.
+With the help of the ids, the scheduler can esaliy build the URL for the movie resource (\url{http://www.ofdb.de/film/[id],}) and crawl it.
 
 \subsubsection{Updating existing movies}
 Existings movies are divided into different categories.
@@ -56,5 +61,5 @@ If a category should be updated, the scheduler does the follwing steps:
 	\item Load the new triples into the corresponding graph in the triple store.
 \end{enumerate}
 Because the movies are stored in different graphs depending on their originial data source, the scheduler knows, where to find the movie resource in the web.
-The originial resource of a movie is stored in a \emph{sameAs} triple to the movie.
+The originial resource of a movie is stored in a \emph{sameAs} triple.
 Deleting the existing triples and storing the new downloaded triples, ensures that no conflicting information is stored of a resource.
