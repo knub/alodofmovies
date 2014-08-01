@@ -3,4 +3,9 @@
 *.aux
 *.idx
 *.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.ilg
+*.ind
 *.synctex.gz
