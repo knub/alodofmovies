@@ -7,7 +7,7 @@ The following sections show the approach for matching (i.e. finding the same ent
 After loading the initial dataset into the database, the task is to integrate another dataset to finally create a whole dataset with more information than a single one can provide on their own.
 % TODO: Why IMDB?
 However, simply dumping the second dataset into the database would lead to duplicated entries and thereby decreasing the overall quality of the database.
-Thus, the datasets need to be aggregated and unified.
+Thus, the datasets need to be aggregated and unified by looking for a match of each new movie in the old dataset.
 Matching movies, actors, ... but now focus on movies. TODO
 
 A first approach is to match movies by their name.
@@ -33,7 +33,9 @@ In general, the matching algorithm must satisfy two requirements:
 	\item{Performance:} Matching should not take to long TODO
 \end{enumerate}
 
-The former 
+As a consequence of the former, a certain level of confidence needs to be reached to match two movies to each other. The latter precludes that each movie is compared with each other movie on every attribute.
+
+Hence the suggested idea is to use find a list of movies that could match and based on those check the number of actors that are listed in the new movie and the possible candidate in our existing dataset.
 General idea: actor overlap
 
 \paragraph{Candidate selection}
