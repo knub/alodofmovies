@@ -83,8 +83,8 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 	def runStatistic(dir: File): Unit = {
 		val r = new Random(RANDOM)
-		val filter = { a: File => a.getName == "13.json" }
-//		val filter = { a: File => true }
+//		val filter = { a: File => a.getName == "13.json" }
+		val filter = { a: File => true }
 		val testSet =  r.shuffle(dir.listFiles().toList.filter(filter).sortBy(_.getName)).take(TEST_SET_SIZE)
 		try {
 			testSet.zipWithIndex.foreach(mergeMovie)
@@ -297,8 +297,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 	}
 	def calculateActorOverlap(g: TripleGraph, candidate: ResourceWithNameAndOriginalTitleAndYear): Double = {
 		val currentActors    = g.getObjectsFor("dbpprop:starring", "rdfs:label")
-		println("currentActors")
-		println(currentActors)
 
 		val cacheFile = new File(s"data/MergeMovieActor/${candidate.resource.split("imdb-new/")(1)}")
 		val candidateActors = if (cacheFile.exists()) {
@@ -311,10 +309,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 			FileUtils.writeStringToFile(cacheFile, jsonString, "UTF-8")
 			tmp
 		}
-		println("candidate")
-		println(candidate)
-		println("candidateActors")
-		println(candidateActors)
 
 		calculateOverlap(currentActors, candidateActors)
 	}
@@ -354,10 +348,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 			else
 				List()
 		}
-		if (currentObjects.isEmpty)
-			0.0
-		else
-			similarObjects.size.toDouble / currentObjects.size
+		similarObjects.size.toDouble / currentObjects.size
 	}
 
 	def sortName(name: String): String = {

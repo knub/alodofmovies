@@ -1,2 +1,31 @@
 \subsection{Updating}
 \label{subsec_evaluation_updating}
+
+The scheduler, described in Chapter \ref{subsec_method_updating}, updates movies at certain times.
+Thereby, the scheduler distinguish between existing and coming soon movies.
+
+How many coming soon movies are daily added to IMDB is shown in Figure \ref{fig_coming_soon_movie}.
+On a daily basis, the coming soon page from IMDB was crawled and the changes were recorded.
+Almost every day, new movies are added or deleted from the IMDB coming soon list.
+It is noticeable, that the most movies are published between Thursdays to Sundays on IMDB.
+
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics[width=0.5\textwidth]{images/updating_1.pdf}
+  \end{center}
+  \caption{Number of new coming soon movies, which are published on IMDB per day.}
+  \label{fig_coming_soon_movie}
+\end{figure}
+
+In Figure \ref{fig_new_movie} the number of changed triples of a new released movie from IMDB is displayed.
+Therefor, the movie was crawled and triplified daily.
+As you can seen, the movie frequently changes in the first days.
+Often changing triples are for example cast triple, links to images and videos, IMDB rating, charachter triples or taglines.
+
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics[width=0.5\textwidth]{images/updating_2.pdf}
+  \end{center}
+  \caption{Number of triples, which change in the first days of a new released movie from IMDB.}
+  \label{fig_new_movie}
+\end{figure}
