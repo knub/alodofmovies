@@ -297,8 +297,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 	}
 	def calculateActorOverlap(g: TripleGraph, candidate: ResourceWithNameAndOriginalTitleAndYear): Double = {
 		val currentActors    = g.getObjectsFor("dbpprop:starring", "rdfs:label")
-		println("currentActors")
-		println(currentActors)
 
 		val cacheFile = new File(s"data/MergeMovieActor/${candidate.resource.split("imdb-new/")(1)}")
 		val candidateActors = if (cacheFile.exists()) {
@@ -311,8 +309,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 			FileUtils.writeStringToFile(cacheFile, jsonString, "UTF-8")
 			tmp
 		}
-//		println("candidateActors")
-//		println(candidateActors)
 
 		calculateOverlap(currentActors, candidateActors)
 	}
