@@ -17,7 +17,7 @@
 
 %Hilfs-Fonts - ohne Serifen (hier für Tabellen)
 \newfont{\bib}{cmss8 scaled 1040}
-\newfont{\bibf}{cmssbx8 scaled 1040}
+%\newfont{\bibf}{cmssbx8 scaled 1040}
 
 \definecolor{lightgray}{gray}{0.85}
 
@@ -33,37 +33,37 @@
 \makeindex % legt das Index-File an
 
 
-\begin{document}
+\begin{document}          
 
 \begin{titlepage}
-  \begin{center}
+  \begin{center} 
     \mbox{}
     \vspace{1cm}
-
-    {\huge Match Forrest, Match! \\[1em] {\LARGE Creating an unified data set of Movies}}
-
+    
+    {\huge Match Forrest, Match! \\[1em] {\LARGE Creating an unified data set of Movies}}  
+        
     \vspace{5cm}
-
+    
     Seminararbeit im Seminar \\[1em]
     {\large \sc Semantic Multimedia 2014 - A LOD of Movies} \\[1em]
     Sommersemester 2014 \\[1em]
     Hasso-Plattner-Institut für Softwaresystemtechnik GmbH \\[1em]
     Universität Potsdam
-
+    
     \vspace{3cm}
-
+    
 		vorgelegt von
-
+		
     \vspace{1em}
-
+    
 		{\Large Tanja Bergmann} \\
 		{\Large Stefan Bunk} \\
 		{\Large Tim Draeger} \\
 		{\Large Dominik Müller} \\
-		{\Large Ricarda Schueler}
-
+		{\Large Ricarda Schüler}
+		
     \vspace{4em}
-
+    
     August 19th, 2014
   \end{center}
 \end{titlepage}
@@ -74,7 +74,7 @@
 % Zweite Seite = Kurzzusammenfassung
 \begin{abstract}
 \noindent
-An dieser Stelle erfolgt eine knappe Zusammenfassung der vorliegenden Arbeit ([engl.] Abstract)\index{Abstract}, die maximal ca.~200 Worte umfassen sollte.
+An dieser Stelle erfolgt eine knappe Zusammenfassung der vorliegenden Arbeit ([engl.] Abstract)\index{Abstract}, die maximal ca.~200 Worte umfassen sollte. 
 Der Sinn und Zweck dieser Kurzzusammenfassung liegt darin, einem interessierten Leser die Entscheidung zu erleichtern, die vorliegende Arbeit überhaupt zu lesen bzw.~vor dem Lesen der Arbeit erst einmal in Erfahrung zu bringen, worum es geht.
 Also eine knappe, motivierende Hinführung zum Problem und wie sie es gelöst haben.
 
@@ -88,11 +88,11 @@ Daher ist es immer sinnvoll, diese Zusammenfassung erst ganz am Ende zu schreibe
 \newpage
 
 % Dritte Seite = Inhaltsverzeichnis
-\tableofcontents
+\tableofcontents 
 
 \newpage
 
-\input{chapters/1_introduction.tex}
+\input{chapters/1_introduction.tex} 
 \newpage
 \input{chapters/2_related_work.tex}
 \newpage
@@ -127,7 +127,7 @@ Daher ist es immer sinnvoll, diese Zusammenfassung erst ganz am Ende zu schreibe
 
 %Hierhin kommt der Index (Sachverzeichnis)
 \addcontentsline{toc}{section}{Index} % Dies ist die Zeile für das Inhaltsverzeichnis
-\flushbottom
+\flushbottom                                    
 \printindex
 
 \end{document}
