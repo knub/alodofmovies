@@ -4,26 +4,36 @@
 The following sections show the approach for matching (i.e. finding the same entity in different datasets) and merging (i.e. integrating two different datasets about the same entity into one.)
 
 \subsubsection{Problem statement}
-After loading the initial dataset into the database, the task is to integrate another dataset to finally create the whole dataset with more information than one single dataset can provide.
+After loading the initial dataset into the database, the task is to integrate another dataset to finally create a whole dataset with more information than a single one can provide on their own.
 % TODO: Why IMDB?
-But simply dumping the second dataset into the database would lead to duplicate entries with slighly different names, thereby decreasing the overall database quality.
+However, simply dumping the second dataset into the database would lead to duplicated entries and thereby decreasing the overall quality of the database.
+Thus, the datasets need to be aggregated and unified.
+Matching movies, actors, ... but now focus on movies. TODO
 
-However, only using the name as a matching criteria TODO
-Because of the following problems: TODO
+A first approach is to match movies by their name.
+However, only using the name as a matching criteria yields multiple problems, such as:
 \begin{itemize}
-	\item TODO Take things from poster.
-	\item TODO Take things from poster.
-	\item TODO Take things from poster.
+	\item different movies having the same name e.g.
+	\begin{itemize} 
+        \item The Avengers (2012) vs. The Avengers (1998)
+    \end{itemize}
+	\item same movies having different names in different datasets e.g.
+	\begin{itemize} 
+        \item typos: Batman vs Badman
+        \item localization: The Internship vs. Prakti.com
+        \item formating: The Italian Job vs. Italian Job, The
+     \end{itemize}
 \end{itemize}
-This is way a more sophisticated approach needs to be developed.
+Hence, a more sophisticated approach needs to be developed to increase the quality of the dataset.
 
 \subsubsection{Matching using Actor overlap}
 In general, the matching algorithm must satisfy two requirements:
 \begin{enumerate}
-	\item{High precision}: We need a high precision.
-	\item{Performance:} It must run fast enough to TODO
+	\item{High precision}: A movies should not be matched to a wrong movie.
+	\item{Performance:} Matching should not take to long TODO
 \end{enumerate}
 
+The former 
 General idea: actor overlap
 
 \paragraph{Candidate selection}
