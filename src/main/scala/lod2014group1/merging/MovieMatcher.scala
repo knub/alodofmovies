@@ -311,10 +311,8 @@ class MovieMatcher(val triplifier: Triplifier) {
 			FileUtils.writeStringToFile(cacheFile, jsonString, "UTF-8")
 			tmp
 		}
-		println("candidate")
-		println(candidate)
-		println("candidateActors")
-		println(candidateActors)
+//		println("candidateActors")
+//		println(candidateActors)
 
 		calculateOverlap(currentActors, candidateActors)
 	}
@@ -354,10 +352,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 			else
 				List()
 		}
-		if (currentObjects.isEmpty)
-			0.0
-		else
-			similarObjects.size.toDouble / currentObjects.size
+		similarObjects.size.toDouble / currentObjects.size
 	}
 
 	def sortName(name: String): String = {
