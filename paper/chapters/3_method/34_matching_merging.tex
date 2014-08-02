@@ -50,5 +50,12 @@ The former would be optimized by returning nothing, the latter by returning ever
 
 The algorithm presented in this paper 
 \paragraph{Score calculation}
+Matching actors TODO
+
+Calculating score TODO
+
+Finally, nor only actors but also director, writer, produced... TODO
 
 \subsubsection{Refinement}
+Sofar the algorithm matches only on persons. This can lead to errors if two movies have the same persons annotated, e.g. a sequel or no annotation data. To address this problem, the last step of the algorithm is to refine the score with an additional score that is calculated based on the similarity of the name and the year of the movies. More precise this means that a candidate that matches both with the name and the release year to the new movie will get a small boost of the score.
+
