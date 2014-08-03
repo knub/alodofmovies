@@ -1,4 +1,25 @@
 \section{Introduction}
 \label{sec_introduction}
 
+The internet contains vast amounts of information on all sorts of topics, movies being one of those.
+Should a user search for details on a certain movie, all they have to do is enter its title in the search field of an online movie database and they are presented with a lot of data.
+But what if a user does not know the movie's title and doesn't even remember its director or actors which starred in it?
 
+If the users only knows some plot points and tries to find the corresponding movie's title, they might have to manually sort through hundreds of movies since most online databases don't provide a proper interface for such queries, even if the data is actually available to them.
+This problem can be solved by creating an open linked movie database from the data in those online movie databases which should contain tradtional data such as the movie's actors or its release data, but also semantic information such as the location where it is set and the major plot points.
+The categories of data which were used in the project are described in chapter \ref{subsec_method_ontology} and the acquisition of the data is covered in chapter \ref{subsec_method_triplification}.
+
+Another issue which arises is that every online database contains some information which is not found in others.
+So, building a complete database requires gathering data from multiple sources.
+The data sources which were used in this project are described in chapter \ref{subsec_method_datasources}.
+But if there is movie data from different sources, this data needs to be matched so that the linked database knows that both sets of data actually belong together.
+Since some movies may have different titles in different data sources, devloping a matching algorithm is not trivial.
+This paper details the matching algorithm in chapter \ref{subsec_method_matching} and evaluates it in capter \ref{subsec_evaluation_matching}.
+
+Users often want information on recently released movies because they might wish to decide if those are worth watching in cinema.
+Thus, an updating strategy needs to be developed to keep the databases' contents up-to-date.
+The stratgey which was implemented is described in chapter \ref{subsec_method_updating} and evaluated in chapter \ref{subsec_evaluation_updating}.
+
+Possible uses for the application of such a linked open movie database include semantic search, explorative search or recommender systems.
+
+This paper details related work in chapter \ref{sec_related_work}, while it describes the system's architecture in chapter \ref{subsec_method_architecture}. Finally, chapter \ref{sec_conclusion} concludes the paper with an outlook on potential development in the future.

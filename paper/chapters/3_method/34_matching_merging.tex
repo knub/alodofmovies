@@ -4,30 +4,58 @@
 The following sections show the approach for matching (i.e. finding the same entity in different datasets) and merging (i.e. integrating two different datasets about the same entity into one.)
 
 \subsubsection{Problem statement}
-After loading the initial dataset into the database, the task is to integrate another dataset to finally create the whole dataset with more information than one single dataset can provide.
+After loading the initial dataset into the database, the task is to integrate another dataset to finally create a whole dataset with more information than a single one can provide on their own.
 % TODO: Why IMDB?
-But simply dumping the second dataset into the database would lead to duplicate entries with slighly different names, thereby decreasing the overall database quality.
+However, simply dumping the second dataset into the database would lead to duplicated entries and thereby decreasing the overall quality of the database.
+Thus, the datasets need to be aggregated and unified by looking for a match of each new movie in the old dataset.
+Matching movies, actors, ... but now focus on movies. TODO
 
-However, only using the name as a matching criteria TODO
-Because of the following problems: TODO
+A first approach is to match movies by their name.
+However, only using the name as a matching criteria yields multiple problems, such as:
 \begin{itemize}
-	\item TODO Take things from poster.
-	\item TODO Take things from poster.
-	\item TODO Take things from poster.
+	\item different movies having the same name e.g.
+	\begin{itemize} 
+        \item The Avengers (2012) vs. The Avengers (1998)
+    \end{itemize}
+	\item same movies having different names in different datasets e.g.
+	\begin{itemize} 
+        \item typos: Batman vs Badman
+        \item localization: The Internship vs. Prakti.com
+        \item formating: The Italian Job vs. Italian Job, The
+     \end{itemize}
 \end{itemize}
-This is way a more sophisticated approach needs to be developed.
+Hence, a more sophisticated approach needs to be developed to increase the quality of the dataset.
 
 \subsubsection{Matching using Actor overlap}
 In general, the matching algorithm must satisfy two requirements:
 \begin{enumerate}
-	\item{High precision}: We need a high precision.
-	\item{Performance:} It must run fast enough to TODO
+	\item{High precision}: A movies should not be matched to a wrong movie.
+	\item{Performance:} Matching should not take to long TODO
 \end{enumerate}
 
+As a consequence of the former, a certain level of confidence needs to be reached to match two movies to each other. The latter precludes that each movie is compared with each other movie on every attribute.
+
+Hence, this paper proposes the idea to find a list of movies that could be a match and for each of these movies check the number of actors that are listed in the new movie and the possible candidate in our existing dataset.
 General idea: actor overlap
 
 \paragraph{Candidate selection}
 
+The general goal of candidate selection is to reduce the whole set of all movies in the database to a smaller set of candidates.
+There are two constraints working against each other here:
+\begin{itemize}
+	\item We want the candidate set to be as small as possible. This leads to fewer comparisions and thereby increased performance.
+	\item The correct movie, as in the movie that needs to be matched to our current movie, must be in the candidate set, if it exists in the database.
+\end{itemize}
+The former would be optimized by returning nothing, the latter by returning everything, so a viable tradeoff has to be found.
+
+The algorithm presented in this paper 
 \paragraph{Score calculation}
+Matching actors TODO
+
+Calculating score TODO
+
+Finally, nor only actors but also director, writer, produced... TODO
 
 \subsubsection{Refinement}
+Sofar the algorithm matches only on persons. This can lead to errors if two movies have the same persons annotated, e.g. a sequel or no annotation data. To address this problem, the last step of the algorithm is to refine the score with an additional score that is calculated based on the similarity of the name and the year of the movies. More precise this means that a candidate that matches both with the name and the release year to the new movie will get a small boost of the score.
+

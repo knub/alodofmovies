@@ -41,9 +41,19 @@ In Figure \ref{fig_ontology} are also the relations between the listed resources
 \label{fig_ontology}
 \end{figure}
 
-The character resource must also be treated special. It exists movies which have
+The naive way to express roles, shown in Figure \ref{fig_ontology}, was one \emph{character} class which is connected to the corresponding movie (via film/performance) and actor (actor or performance).
+This means that a role which exists in multiple movies (e.g. "cleaning lady") is one resource with an \emph{actor} property for each actor who has portrayed this role at some point. 
 
+This approach caused problems in some cases.
+For example an actor played a certain role in an old movie and also appears in the movies newer remake.
+But now they play a different role while another act plays their original role. 
+An example for this is the movie "Starsky and Hutch" (year), which is a remake of the (decade) TV series with the same name.
+In the movie, both actors which originally portrayed Starsky and Hutch get a cameo appearance alongside the new cast for their old roles.
+With the naive approach you do not know who played the Starsky role in the remake, because only references to the movies and the actors are given.
 
-
+Therefore a additional class \emph{MovieCharacter} was introduced.
+The resources of this class knows exactly one movie and all actors playing this role in this one movie.
+The \emph{MovieCharacter} has a connection, named \emph{Character}, to the \emph{Character} class, which describes the general role.
+This means that the \emph{MovieCharacter} in the "Starsky and Hutch" example is "starksyStarskyAndHutch1970" and the \emph{Character} is "starksy".
 
 %onthology -> movie character (james bond- john connory), classes, picture presentation, dbpedia-props > freebase > own
