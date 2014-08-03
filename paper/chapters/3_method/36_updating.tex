@@ -2,7 +2,7 @@
 \label{subsec_method_updating}
 
 To ensure that the movies are always up to date, a scheduler is responsible to update the movies at certain, repeading times.
-The scheduler downloads movie resources, which should be updated, triplifies them and stores them into the triple store.
+The scheduler creates \textit{Crawlify} tasks, which downloads the movie resource, which should be updated, triplifies it and stores the updated triples into the triple store.
 Thereby, the schedule distinguish between existing movies - movies, which are released in the past from the current date - and coming soon movies - movies, which are resleased in the future.
 
 \subsubsection{Updating coming soon movies}
