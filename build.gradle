@@ -106,7 +106,7 @@ task offlineRunner(type: JavaExec, dependsOn: [build]) {
 task update(type: JavaExec, dependsOn: [build]) {
     main = 'lod2014group1.Main'
     classpath = sourceSets.main.runtimeClasspath
-    args = ['update-daily']
+    args = ['update']
 }
 task populateMerge(type: JavaExec, dependsOn: [build]) {
     main = 'lod2014group1.Main'
