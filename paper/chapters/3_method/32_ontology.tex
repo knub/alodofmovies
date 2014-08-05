@@ -5,9 +5,9 @@ As described in the previous section, different data sources with different data
 To create a unified dataset and therefore enable simple querying over all data, a unified ontology was defined.
 
 
-The following resources, defined by the dataset, can mostly be represented by dbpedia entities. 
-In most cases a dbpedia entity is available.
-If no dbpedia entity was present freebase entities or self defined ones were used.
+The following resources, defined by the dataset, were used in the system. 
+In most cases a corresponding dbpedia entity exists and thus was used.
+If no dbpedia entity was present, freebase entities or newly defined ones were used.
 
 \begin{itemize}
 \item Movie: dbpedia-owl:Film
@@ -19,9 +19,9 @@ If no dbpedia entity was present freebase entities or self defined ones were use
 
 \end{itemize}
 
-A MoviePerson can be beside a dbpedia-owl:Person also another type, depending on the job the person plays. 
+A MoviePerson can have multiple sub-types of dbpedia-owl:Person, depending on the jobs the person had in any movies they worked on. 
 As shown in Figure \ref{fig_ontology} a distinction between e.g. director, writer, producer was made.
-In Figure \ref{fig_ontology} are also the relations between the listed resources shown.
+Relations between the listed resources are also shown in Figure \ref{fig_ontology}.
 
 %dbpedia-owl:Actor,
 %dbpedia-owl:director,
@@ -41,19 +41,20 @@ In Figure \ref{fig_ontology} are also the relations between the listed resources
 \label{fig_ontology}
 \end{figure}
 
-The naive way to express roles, shown in Figure \ref{fig_ontology}, was one \emph{character} class which is connected to the corresponding movie (via film/performance) and actor (actor or performance).
-This means that a role which exists in multiple movies (e.g. "cleaning lady") is one resource with an \emph{actor} property for each actor who has portrayed this role at some point. 
+The naive way to express roles, shown in Figure \ref{fig_ontology}, was one \emph{character} class which was connected to the corresponding movie (via film/performance) and actor (actor or performance).
+This meant that a role which exists in multiple movies (e.g. "cleaning lady") would be one resource with an \emph{actor} property for each actor who had ever portrayed this role. 
 
-This approach caused problems in some cases.
-For example an actor played a certain role in an old movie and also appears in the movies newer remake.
-But now they play a different role while another act plays their original role. 
-An example for this is the movie "Starsky and Hutch" (year), which is a remake of the (decade) TV series with the same name.
+This approach could cause problems in some cases.
+One such case is an actor who played a certain role in an old movie but also appears in the movie's newer remake.
+In the remake, they might play a different role while another actor plays their original role. 
+An example for this is the movie "Starsky \& Hutch" (2004), which is a remake of the (1970s) television series with the same name.
 In the movie, both actors which originally portrayed Starsky and Hutch get a cameo appearance alongside the new cast for their old roles.
-With the naive approach you do not know who played the Starsky role in the remake, because only references to the movies and the actors are given.
+With the naive approach, the system could not know who played the Starsky role in the remake, because only references to the movies and the actors are given.
 
-Therefore a additional class \emph{MovieCharacter} was introduced.
-The resources of this class knows exactly one movie and all actors playing this role in this one movie.
+Therefore, an additional class of \emph{MovieCharacter} was introduced.
+The resources of this class knows exactly one movie and all actors who played this role in this one movie.
 The \emph{MovieCharacter} has a connection, named \emph{Character}, to the \emph{Character} class, which describes the general role.
-This means that the \emph{MovieCharacter} in the "Starsky and Hutch" example is "starksyStarskyAndHutch1970" and the \emph{Character} is "starksy".
+This means that the \emph{MovieCharacter} in the "Starsky \& Hutch" example is "StarksyStarsky\&Hutch1970" and the \emph{Character} is "Starksy".
 
-%onthology -> movie character (james bond- john connory), classes, picture presentation, dbpedia-props > freebase > own
+%TODO ??More detailed description of diagram??
+%TODO ??How many total different entity types, relation types, property types??
