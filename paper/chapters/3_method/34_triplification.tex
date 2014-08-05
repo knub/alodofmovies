@@ -1,10 +1,10 @@
 \subsection{Triplification}
 \label{subsec_method_triplification}
 
-Triplification is the step of converting information from a movie resource into triple.
-To generate the triple, the ontology, defined in Section \ref{subsec_method_ontology}, is used.
+Triplification is the step of converting information from a movie resource into triples.
+To generate the triples, the ontology, defined in Section \ref{subsec_method_ontology}, is used.
 
-To create the triples from the information of a movie resource, the information has to be matched to a corresponding triple.
+To create triples from the information of a movie resource, the information has to be matched to a corresponding predicate.
 For example, the title of the movie "Forrest Gump" displyed on a website has to be converted into the triple \emph{<http://movie> dbpprop:title "Forrest Gump"}.
-To garuantee this, every data source was analyzed and parsed manually.
-So, it is strictly defined which part of a movie resource contains valuable information and in what kind of triple this information should be converted.
+To guarantee this, every data source was analyzed and parsed manually.
+So, it is strictly defined which part of a movie resource contains valuable information and which RDF predicate correpsponds to the type of information.
