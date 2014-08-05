@@ -4,13 +4,13 @@
 The following sections show the approach for matching (i.e. finding the same entity in different datasets) and merging (i.e. integrating two different datasets about the same entity into one.)
 
 \subsubsection{Problem statement}
-After loading the initial dataset into the database, the task is to integrate another dataset to finally create a whole dataset with more information than a single one can provide on their own.
+After loading the initial dataset into the database, the task is to integrate other datasets to create a whole dataset with more information than a single one can provide on their own.
 % TODO: Why IMDB?
 However, simply dumping the second dataset into the database would lead to duplicated entries and thereby decreasing the overall quality of the database.
-Thus, the datasets need to be aggregated and unified by looking for a match of each new movie in the old dataset.
-Matching movies, actors, ... but now focus on movies. TODO
+Thus, the datasets need to be aggregated and unified by looking for a match for each new entry in the old dataset.
+Potentially, this has to be done for matching every entry, such as movies, actors, characters and more but the next parts focus on matching just movies to each other.
 
-A first approach is to match movies by their name.
+A first approach is to match movies only by their name.
 However, only using the name as a matching criteria yields multiple problems, such as:
 \begin{itemize}
 	\item different movies having the same name e.g.
@@ -27,16 +27,15 @@ However, only using the name as a matching criteria yields multiple problems, su
 Hence, a more sophisticated approach needs to be developed to increase the quality of the dataset.
 
 \subsubsection{Matching using Actor overlap}
-In general, the matching algorithm must satisfy two requirements:
+In general, the matching algorithm must satisfy two requirements besides the goal of finding matches:
 \begin{enumerate}
-	\item{High precision}: A movies should not be matched to a wrong movie.
-	\item{Performance:} Matching should not take to long TODO
+	\item{High precision:} A movies should not be matched to a wrong movie.
+	\item{Performance:} With thousand of movies in each new dataset, matching should not take to long to stay up to date. %TODO: better formulation?
 \end{enumerate}
 
-As a consequence of the former, a certain level of confidence needs to be reached to match two movies to each other. The latter precludes that each movie is compared with each other movie on every attribute.
+As a consequence of the former, a certain level of confidence needs to be reached to match two movies to each other. The latter precludes that each movie is compared with every other movie on every attribute.
 
-Hence, this paper proposes the idea to find a list of movies that could be a match and for each of these movies check the number of actors that are listed in the new movie and the possible candidate in our existing dataset.
-General idea: actor overlap
+Hence, this paper proposes the idea to find a list of movies that could be a match (henceforth called candidates) and for each of these movies check the number of actors that are listed in the new movie and the possible candidate in our existing dataset.
 
 \paragraph{Candidate selection}
 
@@ -49,8 +48,20 @@ There are two constraints working against each other here:
 The former would be optimized by returning nothing, the latter by returning everything, so a viable tradeoff has to be found.
 
 The algorithm presented in this paper 
+
 \paragraph{Score calculation}
-Matching actors TODO
+After the candidates have been selected, the next step is to find the top match. Therefore, for each candidate a score is calculated by looking at the actors that are annotated in both. For each candidate the percentage of the new movie actors is calculated. Equation \ref{actorOverlap} shows the algorithm.
+
+super awesome Equation:
+\begin{equation} \label{actorOverlap}
+arg max_{m \in C} \frac
+{\sum_{a \in A_{n}} \begin{cases} 1 &\text{if $a\in A_{m}$}\\ 0 &\text{else.} \end{cases} }
+{\left\lvert  A_{n} \right\rvert} \text{, where}
+\end{equation}
+\begin{description}
+\item[C] is the set of candidate movies
+\item[$A_{x}$] is set of actors in movie x
+\end{description}
 
 Calculating score TODO
 
