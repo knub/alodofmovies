@@ -73,17 +73,33 @@ The algorithm presented in this paper TODO Dominik.
 \paragraph{Score calculation}
 After the candidates have been selected, the next step is to find the best match.
 For that, we use the actor information we have about $n_i$ and each $m_j$ in $C_i$.
-Given a movie $n_i$ and its corresponding candidate set $C_i$, we determine the best match as follows:
+Given
+\begin{description}
+	\item[$n_i$] the movie we want to match,
+	\item[$C_i$] the set of candidates for the movie,
+	\item[$A(movie)$] a function, which returns the actor names from a movie in one of our datasets,
+	\item[$levenshtein(s_1, s_2)$] a function, which returns the edit distance (insert, remove, replace) between two strings.
+\end{description}
+we determine the best match as follows:
 
 \begin{align}
-	\label{actor_overlap}
-	
-	best\_match(n_i) &= \argmax_{m_j \in C_i} score(n_i, m_j) \\
+	% \label{actor_overlap}
+	best\_match(n_i) &= \argmax_{m_j \in C_i} score(n_i, m_j)\label{aoeq:1}\\
 	score(n, m) &= \frac
-	{\sum_{a \in A_{n}} \begin{cases} 1 &\text{if $a\in A_{m}$}\\ 0 &\text{else.} \end{cases} }
-	{\left\lvert  A_{n} \right\rvert} \text{, where}
+	{\left\lvert  overlap\_set(A(n), A(m)) \right\rvert}
+	{\left\lvert  A_{n} \right\rvert}\label{aoeq:2}\\
+	overlap\_set(A_n, A_m) &= \Set*{a_n \in A_n}{\exists a_m \in A_m: levenshtein(a_n, a_m) < T},\label{aoeq:3} 
 \end{align}
+% \begin{equation}
+% 	% \label{actor_overlap}
+% 	be\_mh(n_i) = \argmax_{m_j \in C_i} sco(n_i, m_j)\label{aoeq:1}\\
+% \end{equation}
+where $T$ is a certain threshold parameter, that determines from which levenshtein distance we consider two actors to be similar.
 
+Using the actor overlap is the main idea.
+The levenshtein function in \ref{aoeq:3} may not be able to match all actors correctly, because similar name problems can occur as with the movie (misspellings, different countries etc.).
+However, the idea is that enough 
+This is the main idea behind 
 Calculating score TODO
 
 Finally, nor only actors but also director, writer, produced... TODO
