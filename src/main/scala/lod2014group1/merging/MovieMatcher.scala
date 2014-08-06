@@ -4,6 +4,7 @@ import java.io.File
 import lod2014group1.triplification.{Triplifier, TmdbMovieTriplifier}
 import lod2014group1.database._
 import org.apache.commons.lang3.StringUtils
+import scala.io.Codec
 import scala.pickling._
 import json._
 import org.apache.commons.io.FileUtils
@@ -34,6 +35,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 	val movieNames = Queries.getAllMoviesWithNameAndOriginalTitles
 	val taskDb = new TaskDatabase()
 	new File(s"data/MergeMovieActor/").mkdir()
+	val tripleFile = new File("data/triples.rdf")
 
 	def getImdbId(cs: CandidateScore): String = {
 		cs.candidate.split("Movie").last
@@ -138,6 +140,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 			noImdbId ::= fileId
 			return
 		}
+		FileUtils.writeStringToFile(tripleFile, tripleGraph.toRdfString, true)
 		if (!taskDb.hasTasks(imdbId)) {
 //			log("Not in DB. Skip.")
 			notInDb ::= fileId

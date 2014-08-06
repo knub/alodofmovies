@@ -109,4 +109,10 @@ class TripleGraph(triples: List[RdfTriple]) {
       return null
     }
 	}
+
+	def toRdfString(): String = {
+		edges.map { edge =>
+			s"${edge.source} ${edge.label} ${edge.target} ."
+		}.mkString("\n")
+	}
 }
