@@ -6,18 +6,41 @@ The matching algorithm, explained in \ref{subsec_method_matching}, depends on mu
 
 Evaluation is done on a set of 4000 randomly selected movies. The selection is done by listing all movies by name and then using $scala.util.Random$ to shuffle the list and take the first 4000 movies. To get a gold standard we only try to match those movies with an annotated IMDb-Id (but not using the Id to match the movie) and only the movies that could potentially be matched, i.e movies that are in our existing database. The result is a list of 2028 movies that could possibly be matched and are annotated with a gold standard.
 
-Using the algorithm explained in \ref{subsec_method_matching} the following three sets exists:
+Given the set of new movies N, the set of existing movies M, a found match for a new movie $f_{n_{i}}$ and a correct match $c_{n_{i}}$ where $n_{i} \in N and f_{n_{i}} \in M$. Using the algorithm explained in \ref{subsec_method_matching} the following three subsets are computed:
 
 \begin{description}
 \item[TP]: the correctly matched movies,
-\item[FP]: the incorrectly matched movies,
-\item[FN]: the not matched movies.
+\begin{math}
+TP \coloneqq \forall n_{i} \in N ~\exists f_{n_{i}}: f_{n_{i}} = c_{n_{i}}
+\end{math}
+\item[I]: the incorrectly matched movies,
+\begin{math}
+TP \coloneqq \forall n_{i} \in N ~\exists f_{n_{i}}: f_{n_{i}} \neq c_{n_{i}}
+\end{math}
+\item[N]: the not matched movies.
+\begin{math}
+TP \coloneqq \forall n_{i} \in N ~\nexists f_{n_{i}}
+\end{math}
 \end{description}
 
 Based on these the evaluation measures are defined as follows:
 
+\begin{description}
+\item[Precision (P)] is the percentage of movies that are correctly matched from the movies that are matched.
+\begin{equation}
+\frac
+{\left\lvert TP \right\rvert}
+{\left\lvert TP \right\rvert + \left\lvert I \right\rvert}
+\end{equation}
+\item[Recall (R)] is the percentage of movies that are correctly matched from all possible correct matches.
+\begin{equation}
+\frac
+{\left\lvert TP \right\rvert}
+{\left\lvert TP \right\rvert + \left\lvert I \right\rvert + \left\lvert N \right\rvert}
+\end{equation}
+\end{description}
 
-
+Based on Recall and Precision the F-m
 what is evaluated TODO
 enviroment TODO
 explanation of Precision, Recall, FMeasure TODO
