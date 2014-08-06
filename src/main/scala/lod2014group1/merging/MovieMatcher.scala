@@ -35,7 +35,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 	val movieNames = Queries.getAllMoviesWithNameAndOriginalTitles
 	val taskDb = new TaskDatabase()
 	new File(s"data/MergeMovieActor/").mkdir()
-	val tripleFile = new File("data/triples.rdf")
 
 	def getImdbId(cs: CandidateScore): String = {
 		cs.candidate.split("Movie").last
@@ -140,7 +139,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 			noImdbId ::= fileId
 			return
 		}
-		FileUtils.writeStringToFile(tripleFile, tripleGraph.toRdfString, true)
 		if (!taskDb.hasTasks(imdbId)) {
 //			log("Not in DB. Skip.")
 			notInDb ::= fileId

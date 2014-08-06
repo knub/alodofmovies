@@ -15,6 +15,7 @@ object TmdbMovieTriplifier {
 
 class TmdbMovieTriplifier extends Triplifier {
 	val crawler = new TMDBMoviesListCrawler
+	val tripleFile = new File("data/tmdb_testset.rdf")
 
 	def triplify(file: File): List[RdfTriple] = {
 		triplify(FileUtils.readFileToString(file))
@@ -38,7 +39,7 @@ class TmdbMovieTriplifier extends Triplifier {
 			""
 		}
 		val movie = new RdfMovieResource(UriBuilder.getMovieUriFromTmdbId(id))
-		List(movie sameAs UriBuilder.getTmdbMovieUri(id),
+		val triples = List(movie sameAs UriBuilder.getTmdbMovieUri(id),
 			movie isA RdfMovieResource.film) :::
 		addString(movie.label(_: String), mainJson.title) :::
 		addString(movie.sameAsImdbUrl(_: String), mainJson.imdb_id) :::
@@ -67,6 +68,11 @@ class TmdbMovieTriplifier extends Triplifier {
 		addList(movie.hasVideo(_: String), appendJson.videos.results.map { video => TmdbMovieTriplifier.YouTubeBaseUrl.format(video.key) } ) :::
 		addAlternativeTitles(movie, id, appendJson.alternative_titles.titles) :::
 		addReleaseInfo(movie, id, appendJson.releases.countries)
+		if (mainJson.imdb_id != null && mainJson.imdb_id != "") {
+			FileUtils.writeStringToFile(tripleFile, triples.mkString("\n"), true)
+		}
+
+		triples
 	}
 
 
