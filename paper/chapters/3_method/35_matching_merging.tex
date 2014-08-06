@@ -72,29 +72,39 @@ The algorithm presented in this paper TODO Dominik.
 
 \paragraph{Score calculation}
 After the candidates have been selected, the next step is to find the best match.
-For that, we use the actor information we have about $n_i$ and each $m_j$ in $C_i$.
+For that, the algorithm uses the actor information we have about $n_i$ and each $m_j$ in $C_i$.
 Given
 \begin{description}
 	\item[$n_i$] the movie we want to match,
 	\item[$C_i$] the set of candidates for the movie,
-	\item[$A(movie)$] a function, which returns the actor names from a movie in one of our datasets,
+	\item[$A_{movie}$] a function, which returns the actor names from a movie in one of our datasets,
 	\item[$levenshtein(s_1, s_2)$] a function, which returns the edit distance (insert, remove, replace) between two strings.
 \end{description}
-we determine the best match as follows:
+the best match $n_i$ is determined as follows:
 
 \begin{align}
-	% \label{actor_overlap}
-	best\_match(n_i) &= \argmax_{m_j \in C_i} score(n_i, m_j)\label{aoeq:1}\\
-	score(n, m) &= \frac
-	{\left\lvert  overlap\_set(A(n), A(m)) \right\rvert}
-	{\left\lvert  A_{n} \right\rvert}\label{aoeq:2}\\
-	overlap\_set(A_n, A_m) &= \Set*{a_n \in A_n}{\exists a_m \in A_m: levenshtein(a_n, a_m) < T},\label{aoeq:3} 
+	match(n_i) &=
+		\begin{cases}
+			best\_match(n_i),~if~score > MIN\_SCORE) \\
+			\bot
+	% 		 \\
+		\end{cases} \\
+	best\_match(n_i) &=
+		\argmax_{m_j \in C_i} score(n_i, m_j)\label{aoeq:1}\\
+	score(n_i, m_j) &=
+		\frac
+			{\left\lvert overlap\_set(A_{n_i}, A_{m_j}) \right\rvert}
+			{\left\lvert A_{n_i}) \right\rvert}\label{aoeq:2}\\
+	overlap\_set(A_{n_i}, A_{m_j} &=
+		\Set*{a_n \in A_n}{\exists a_m \in A_m: levenshtein(a_n, a_m) < ACT\_DIST},\label{aoeq:3}
 \end{align}
-% \begin{equation}
-% 	% \label{actor_overlap}
-% 	be\_mh(n_i) = \argmax_{m_j \in C_i} sco(n_i, m_j)\label{aoeq:1}\\
-% \end{equation}
-where $T$ is a certain threshold parameter, that determines from which levenshtein distance we consider two actors to be similar.
+
+TODO Stefan: Explain lines of equations.
+There are two parameters: $MIN\_SCORE$ and $ACT\_DIST$.
+$MIN\_SCORE$ determines, when a best matching movie is returned as an actual match.
+If its score is too low, the assumption is that the movie is not the right one (i.e. the correct one does not exist in the database).
+Thus, nothing is returned.
+$ACT\_DIST$ determines the threshold for the Levenshtein distance between two actor names, i.e. below which edit distance two actors are considered to be the same.
 
 Using the actor overlap is the main idea.
 The levenshtein function in \ref{aoeq:3} may not be able to match all actors correctly, because similar name problems can occur as with the movie (misspellings, different countries etc.).
