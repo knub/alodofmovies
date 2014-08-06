@@ -81,6 +81,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 	var notMatched      = List[ResultIds]()
 	var noImdbId        = List[String]()
 	var notInDb         = List[String]()
+	var wronglyMatchedNotInDbSum = 0
 
 	def runStatistic(dir: File): Unit = {
 		val r = new Random(RANDOM)
@@ -110,7 +111,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		log(f"${noImdbId.size}%4s had no imdb id.")
 		log()
 		log("Precision = matched correctly/(correctly + incorrectly)")
-		val precision = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size)
+		val precision = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size + wronglyMatchedNotInDbSum)
 		println(s"Precision    = $precision")
 		log("Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)")
 		val recall = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size + noCandidates.size + notInCandidate.size + notMatched.size)
@@ -122,6 +123,9 @@ class MovieMatcher(val triplifier: Triplifier) {
 		log("F0.5-measure = (1.25 * Precision * Recall) / (0.25 * Precision + Recall)")
 		val f05Measure = (1.25 * precision * recall) / (0.25 * precision + recall)
 		println(s"F0.5-measure = $f05Measure")
+
+		log("Accuracy = correct / (correct + incorrect)")
+		val acc = (trueMatched.size + notInDb.size - wronglyMatchedNotInDbSum).toDouble / (trueMatched.size + falseMatched.size + noCandidates.size + notInCandidate.size + notMatched.size + falseMatched.size + notInDb.size)
 	}
 
 	def mergeMovie(t: (File, Int)): Unit = {
@@ -139,9 +143,11 @@ class MovieMatcher(val triplifier: Triplifier) {
 			noImdbId ::= fileId
 			return
 		}
-		if (!taskDb.hasTasks(imdbId)) {
+		val isInDb = taskDb.hasTasks(imdbId)
+		if (!isInDb) {
 //			log("Not in DB. Skip.")
 			notInDb ::= fileId
+			wronglyMatchedNotInDbSum += (if (merge(tripleGraph).filter(minScore).isEmpty) 0 else 1)
 			return
 		}
 		val candidates = merge(tripleGraph)
