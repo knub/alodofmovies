@@ -16,57 +16,79 @@ However, only using the name as a matching criteria yields multiple problems, su
 	\item different movies having the same name e.g.
 	\begin{itemize} 
         \item The Avengers (2012) vs. The Avengers (1998)
+        \item Casino Royale (1967) vs. Casino Royale (2006)
     \end{itemize}
 	\item same movies having different names in different datasets e.g.
 	\begin{itemize} 
-        \item typos: Batman vs Badman
-        \item localization: The Internship vs. Prakti.com
-        \item formating: The Italian Job vs. Italian Job, The
+        \item Spelling errors: Batman vs Badman
+        \item Localization: The Internship vs. Prakti.com
+        \item Formatting: The Italian Job vs. Italian Job, The
      \end{itemize}
 \end{itemize}
 Hence, a more sophisticated approach needs to be developed to increase the quality of the dataset.
 
-\subsubsection{Matching using Actor overlap}
-In general, the matching algorithm must satisfy two requirements besides the goal of finding matches:
+\subsubsection{Matching using actor overlap}
+In general, the matching algorithm must satisfy two requirements:
 \begin{enumerate}
-	\item{High precision:} A movies should not be matched to a wrong movie.
-	\item{Performance:} With thousand of movies in each new dataset, matching should not take to long to stay up to date. %TODO: better formulation?
+	\item{High precision:} A movies should not be matched to a wrong movie, as this decreases the quality of the dataset. We want to find many matches, but it is important not to add too many wrong matches.
+	\item{Performance:} With thousand of movies in each new dataset, matching should not take too long, as there are thousands of movies to match (e.g. TMDB has ca. 170,000 (TODO Check this number) movies to match.
+	If each movie takes just 1 minute to match, the whole process for TMDB already takes $170,000~movies * 1 \frac{minute}{movie} * \frac{1}{1440} \frac{days}{minute} \approx 118~days$.
+	This is just one data source, and only the current set of movies (remember, there are new movies every day from all data sources, which need to be merged)).
 \end{enumerate}
 
-As a consequence of the former, a certain level of confidence needs to be reached to match two movies to each other. The latter precludes that each movie is compared with every other movie on every attribute.
+This leads to two consequences: First, a certain level of confidence needs to be reached to match two movies to each other. Otherwise, it is impossible to detect movies, which are not matchable, because they are not in the database.
+Second, comparing each movie with all movies in the database is not feasible.
 
-Hence, this paper proposes the idea to find a list of movies that could be a match (henceforth called candidates) and for each of these movies check the number of actors that are listed in the new movie and the possible candidate in our existing dataset.
+This paper proposes the idea to first find a small list of movies that could be a match (henceforth called candidates) and then calculate a score for each of these candidates, which is based on the actors . Details are described in the following paragraphs.
+
+Figure \ref{fig_matching_general} shows the general matching procedure:
+First, we pass through each new movie, that we want to match.
+For each movie $n_i \in N$ ($N$ is the set of movies we still need to match), we first select a small set of movies $C_{i}$ that could be a match (henceforth called candidates).
+Then we calculate a score, which captures the similarity between $n_i$ and each $m_j \in C_i$.
+This score is mostly based on the actor information we have about the two movies.
+Finally, we choose the movie with the highest score, if the score is above a certain threshold.
+
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{images/matching_general.pdf}
+  \end{center}
+  \caption{This shows the general matching procedure. In this case, we would choose movie $m_3$ as a match for $n_3$, because it has the highest score and is above the threshold.}
+  \label{fig_matching_general}
+\end{figure}
+
+The next paragraphs describe candidate selection and score calculation in detail.
 
 \paragraph{Candidate selection}
 
-The general goal of candidate selection is to reduce the whole set of all movies in the database to a smaller set of candidates.
-There are two constraints working against each other here:
+The general goal of candidate selection is to reduce the set of all movies in the database to a smaller set of candidates.
+There are two constraints working against each other:
 \begin{itemize}
-	\item We want the candidate set to be as small as possible. This leads to fewer comparisions and thereby increased performance.
-	\item The correct movie, as in the movie that needs to be matched to our current movie, must be in the candidate set, if it exists in the database.
+	\item The candidate should be as small as possible. This leads to fewer comparisions and thereby increased performance.
+	\item The correct movie, i.e. the movie that needs to be matched to our current movie, must be in the candidate set, if it exists in the database.
 \end{itemize}
 The former would be optimized by returning nothing, the latter by returning everything, so a viable tradeoff has to be found.
 
-The algorithm presented in this paper 
+The algorithm presented in this paper TODO Dominik.
 
 \paragraph{Score calculation}
-After the candidates have been selected, the next step is to find the top match. Therefore, for each candidate a score is calculated by looking at the actors that are annotated in both. For each candidate the percentage of the new movie actors is calculated. Equation \ref{actorOverlap} shows the algorithm.
+After the candidates have been selected, the next step is to find the best match.
+For that, we use the actor information we have about $n_i$ and each $m_j$ in $C_i$.
+Given a movie $n_i$ and its corresponding candidate set $C_i$, we determine the best match as follows:
 
-super awesome Equation:
-\begin{equation} \label{actorOverlap}
-arg max_{m \in C} \frac
-{\sum_{a \in A_{n}} \begin{cases} 1 &\text{if $a\in A_{m}$}\\ 0 &\text{else.} \end{cases} }
-{\left\lvert  A_{n} \right\rvert} \text{, where}
-\end{equation}
-\begin{description}
-\item[C] is the set of candidate movies
-\item[$A_{x}$] is set of actors in movie x
-\end{description}
+\begin{align}
+	\label{actor_overlap}
+	
+	best\_match(n_i) &= \argmax_{m_j \in C_i} score(n_i, m_j) \\
+	score(n, m) &= \frac
+	{\sum_{a \in A_{n}} \begin{cases} 1 &\text{if $a\in A_{m}$}\\ 0 &\text{else.} \end{cases} }
+	{\left\lvert  A_{n} \right\rvert} \text{, where}
+\end{align}
 
 Calculating score TODO
 
 Finally, nor only actors but also director, writer, produced... TODO
 
 \subsubsection{Refinement}
-Sofar the algorithm matches only on persons. This can lead to errors if two movies have the same persons annotated, e.g. a sequel or no annotation data. To address this problem, the last step of the algorithm is to refine the score with an additional score that is calculated based on the similarity of the name and the year of the movies. More precise this means that a candidate that matches both with the name and the release year to the new movie will get a small boost of the score.
+So far the algorithm matches only on persons.
+This can lead to errors if two movies have the same persons annotated, e.g. a sequel or no annotation data. To address this problem, the last step of the algorithm is to refine the score with an additional score that is calculated based on the similarity of the name and the year of the movies. More precise this means that a candidate that matches both with the name and the release year to the new movie will get a small boost of the score.
 
