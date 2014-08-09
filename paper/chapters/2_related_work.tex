@@ -4,13 +4,23 @@
 
 Triplification (http://linkedmdb.org/), Referenz zur Triplification http://triplify.org/Challenge/ von Movies
 
-Hassanzadeh and Consens tried in \cite{LMDB} to unify multiple sources of movie data (among them IMDb and Freebase) into an open linked data set.
+Oktie Hassanzadeh and Mariano Consens. Linked Movie Database
+\url{http://ceur-ws.org/Vol-538/ldow2009_paper12.pdf}
+
+Hassanzadeh and Consens tried to unify multiple sources of movie data (among them IMDb and Freebase) into an open linked data set.
 They utilize approximate string matching methods on movies' titles to find sameAs relation between movies of different sources.
 Hassanzadeh and Consens measured the accuracy of their method when using edit similarity, Jaccard or WeightedJaccard, as well as other measures used in information retrieval for string matching.
 
 Leveraging Usage Data for Linked Data Movie Entity Summarization 
-\cite{MovieSummarization}
-%http://arxiv.org/pdf/1204.2718v1.pdf
+\url{http://arxiv.org/abs/1204.2718}
+
+Thalhammer et al. propose an approach to find features which are important for identifying a certain entity in a linked data set.
+They do this to allow a summarization of an entity according to only some of its features which is then used to measure similarity to other entities.
+Thalhammer et al. focus on the movie domain for their example similarity measures.
 
 T. Berners-Lee. Linked Data, Design Issues.
 \url{http://www.w3.org/DesignIssues/LinkedData.html}, 27 July 2006.
+
+Berners-Lee defines four rules to properly defining linked open data.
+He proposes to use URIs as names for things, and to use HTTP URIs to allow people to look these up.
+Additionally, Berners-Lee states that useful information using certain standards should be provided and that other links to other URIs should be included.
