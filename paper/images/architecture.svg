@@ -14,7 +14,7 @@
    inkscape:version="0.48.4 r9939"
    width="100%"
    height="100%"
-   sodipodi:docname="architecture.pdf"
+   sodipodi:docname="architecture.svg"
    style="fill:none;stroke:none">
   <metadata
      id="metadata3633">
@@ -57,8 +57,8 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="1.1319444"
-     inkscape:cx="345.37262"
-     inkscape:cy="225.45066"
+     inkscape:cx="343.7868"
+     inkscape:cy="298.08443"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -91,11 +91,6 @@
   <g
      id="g3785"
      transform="translate(-134.25,-132.21875)">
-    <path
-       d="m 135.19685,133.15749 689.6063,0 0,416.25195 -689.6063,0 z"
-       id="path3355"
-       inkscape:connector-curvature="0"
-       style="fill:#cccccc;fill-rule:nonzero" />
     <path
        stroke-miterlimit="8.0"
        d="m 135.19685,133.15749 689.6063,0 0,416.25195 -689.6063,0 z"
@@ -651,30 +646,30 @@
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-       x="167.55013"
+       x="173.55013"
        y="254.36006"
        id="text3126"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3128"
-         x="167.55013"
+         x="173.55013"
          y="254.36006"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium">Task Database</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-       x="180.43489"
-       y="315.80316"
+       x="186.43489"
+       y="317.80316"
        id="text3130"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3132"
-         x="180.43489"
-         y="315.80316"
+         x="186.43489"
+         y="317.80316"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium">Data Dump</tspan></text>
     <g
        id="g3919"
-       transform="translate(0,12)">
+       transform="translate(0,38)">
       <path
          style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.86614168;stroke-linecap:butt;stroke-miterlimit:8"
          inkscape:connector-curvature="0"
@@ -685,106 +680,106 @@
          sodipodi:linespacing="100%"
          id="text3130-9"
          y="229.84566"
-         x="405.03659"
+         x="413.03659"
          style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:100%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
          xml:space="preserve"><tspan
            style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:100%;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
            y="229.84566"
-           x="405.03659"
+           x="413.03659"
            id="tspan3132-1"
            sodipodi:role="line">Messaging</tspan><tspan
            id="tspan3305"
            style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:100%;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
            y="247.84566"
-           x="405.03659"
+           x="413.03659"
            sodipodi:role="line">Server</tspan></text>
     </g>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-       x="382.3652"
+       x="386.3652"
        y="349.96033"
        id="text3130-21"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3132-3"
-         x="382.3652"
+         x="386.3652"
          y="349.96033"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium">Task Distributor</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-       x="603.71576"
+       x="609.71576"
        y="204.08369"
        id="text3130-8"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3132-6"
-         x="603.71576"
+         x="609.71576"
          y="204.08369"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium">Bulk Loader</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-       x="641.86469"
-       y="299.23749"
+       x="645.86469"
+       y="301.23749"
        id="text3130-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3132-5"
-         x="641.86469"
-         y="299.23749"
+         x="645.86469"
+         y="301.23749"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium">Triple Store</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-       x="283.19211"
-       y="503.91833"
+       x="287.19211"
+       y="501.91833"
        id="text3130-7"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3132-31"
-         x="283.19211"
-         y="503.91833"
+         x="287.19211"
+         y="501.91833"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium">Crawler</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-       x="420.33017"
-       y="500.42908"
+       x="424.33017"
+       y="502.42908"
        id="text3130-1"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3132-55"
-         x="420.33017"
-         y="500.42908"
+         x="424.33017"
+         y="502.42908"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium">Triplifier</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-       x="557.21753"
-       y="500.42908"
+       x="561.21753"
+       y="502.42908"
        id="text3130-3"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3132-36"
-         x="557.21753"
-         y="500.42908"
+         x="561.21753"
+         y="502.42908"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium">Updater</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:100%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-       x="691.64832"
+       x="697.64832"
        y="484.09708"
        id="text3130-5"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="691.64832"
+         x="697.64832"
          y="484.09708"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:100%;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
          id="tspan3299">Matcher/</tspan><tspan
          sodipodi:role="line"
-         x="691.64832"
+         x="697.64832"
          y="502.09708"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:100%;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
          id="tspan3303">Merger</tspan></text>
@@ -827,13 +822,13 @@
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-       x="558.45312"
+       x="566.45312"
        y="639.16071"
        id="text3130-6"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3132-29"
-         x="558.45312"
+         x="566.45312"
          y="639.16071"
          style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium">Freebase</tspan></text>
     <text
