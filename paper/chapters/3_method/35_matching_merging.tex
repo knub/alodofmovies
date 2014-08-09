@@ -94,8 +94,8 @@ the best match $n_i$ is determined as follows:
 	score(n_i, m_j) &=
 		\frac
 			{\left\lvert overlap\_set(A_{n_i}, A_{m_j}) \right\rvert}
-			{\left\lvert A_{n_i}) \right\rvert}\label{aoeq:2}\\
-	overlap\_set(A_{n_i}, A_{m_j} &=
+			{\left\lvert A_{n_i} \right\rvert}\label{aoeq:2}\\
+	overlap\_set(A_{n_i}, A_{m_j}) &=
 		\Set*{a_n \in A_n}{\exists a_m \in A_m: levenshtein(a_n, a_m) < ACT\_DIST},\label{aoeq:3}
 \end{align}
 
