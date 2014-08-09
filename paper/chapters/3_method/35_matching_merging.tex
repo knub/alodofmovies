@@ -87,24 +87,28 @@ the best match $n_i$ is determined as follows:
 		\begin{cases}
 			best\_match(n_i),~if~score > MIN\_SCORE) \\
 			\bot
-	% 		 \\
-		\end{cases} \\
+		\end{cases}\label{aoeq:1}\\
 	best\_match(n_i) &=
-		\argmax_{m_j \in C_i} score(n_i, m_j)\label{aoeq:1}\\
+		\argmax_{m_j \in C_i} score(n_i, m_j)\label{aoeq:2}\\
 	score(n_i, m_j) &=
 		\frac
 			{\left\lvert overlap\_set(A_{n_i}, A_{m_j}) \right\rvert}
-			{\left\lvert A_{n_i} \right\rvert}\label{aoeq:2}\\
-	overlap\_set(A_{n_i}, A_{m_j}) &=
-		\Set*{a_n \in A_n}{\exists a_m \in A_m: levenshtein(a_n, a_m) < ACT\_DIST},\label{aoeq:3}
+			{\left\lvert A_{n_i}) \right\rvert}\label{aoeq:3}\\
+	overlap\_set(A_{n_i}, A_{m_j} &=
+		\Set*{a_n \in A_n}{\exists a_m \in A_m: levenshtein(a_n, a_m) < ACT\_DIST},\label{aoeq:4}
 \end{align}
 
-TODO Stefan: Explain lines of equations.
-There are two parameters: $MIN\_SCORE$ and $ACT\_DIST$.
-$MIN\_SCORE$ determines, when a best matching movie is returned as an actual match.
+The basic idea, which is shown in equation \ref{aoeq:1}, is to only assume a match, if the score of the best matching movie is above a certain threshold $MIN\_SCORE$.
+So $MIN\_SCORE$ determines, when a best matching movie is returned as an actual match.
 If its score is too low, the assumption is that the movie is not the right one (i.e. the correct one does not exist in the database).
 Thus, nothing is returned.
-$ACT\_DIST$ determines the threshold for the Levenshtein distance between two actor names, i.e. below which edit distance two actors are considered to be the same.
+
+The best matching movie is defined as the movie from the candidate set, which has the highest score (see equation \ref{aoeq:2}.
+
+The the algorithm's main idea is illustrated in equation \ref{aoeq:3}: Given the movie to match and a candidate, the score's is determined as the fraction of the movie's actor, which can also be found in the candidate movie's actors.
+
+The check whether one actor from one movie is also in the other movie, we do not use strict matching, but rather a fuzzy approach.
+Two actors are considered equal (but only for the sake of matching movies), when their Levenshtein\footnote{The Levenshtein distance between two strings is defined as the amount of edit operations (insertions, deletions, substitutions), which are needed to transform the first string into the second one.} distance is below a certain threshold $ACT\_DIST$.
 
 The main idea of the algorith is to use the actor overlap between two movies as the main matching criteria.
 The Levenshtein distance in \ref{aoeq:3} may not be able to match all actors correctly (i.e. "`Emma Watson"' and "`Emily Watson"' with a distance of three), because similar name problems can occur as with the movie (misspellings, different spelling in different languages, actual similar names for different actors etc.).
