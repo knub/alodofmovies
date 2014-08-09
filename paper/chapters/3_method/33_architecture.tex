@@ -35,12 +35,43 @@ Thus, there are four graphs in the triplestore, \textit{IMDb}, \textit{Freebase}
 \subsubsection{Messaging Infrastructure}
 \label{subsubsec_messaging_infrastructure}
 
-The process of crawling, triplifying and matching a movie resource takes some time.
-Because the steps can be done in parallel, a messaging infrastructure was implemented to speed up the process.
-The messaging infrastructure is based on \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}}.
-In this way, crawl limits are avoided.
 
-How the messaging infrastructure works, is shown in Figure \ref{fig_messaging_infrastructure}.
+The process of crawling, triplifying and matching a movie resource takes a lot of time.
+Especially there are limits to crawl some web pages, which means that waiting times can occur. Triplifying and matching needs computational resources.
+Because the steps can be done in parallel, a messaging infrastructure was implemented to speed up the process and avoid crawl limits.
+
+%The messaging infrastructure is based on \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}}.
+The messaging server uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
+
+A task consists of the following fields
+\begin{itemize}
+  \item \textbf{Id}: 
+  The unique id of the task.
+  \item \textbf{Task type}:
+   The type of the task.
+  Basically it exists a type for each of the compontent, controlled by the \textit{Task Distibutor}, for example \textit{Triplify} or \textit{MatchAndMerge}.
+  \textit{Triplify} is a task execute by the \textit{Triplifier} component.
+  The \textit{Matcher and Merger} component works on \textit{MatchAndMerge} tasks.
+  There are also tasks, which combine some steps, such as the \textit{CrawlifyMatch} task, which crawls, trilifies and matches a movie.
+  \item \textbf{Due date}: 
+  The date until when the task should be finished.
+  \item \textbf{file or url}: 
+  The file or url which is needed to execute the task.
+  \item \textbf{Finished}
+  Defines, if the task is already done.
+  \item \textbf{Graph}: 
+  The graph in which the resulting triples should be stored.
+  \item \textbf{Remarks}: 
+  Additional information needed when executing a task.
+  For example, it could tell weather a certain entity should be delete from the triple store before storing new triples.
+\end{itemize}
+Not all fields have to be set, it depends on the task type, which fields are needed.
+For example the \textit{Triplify} task needs a file, but the \textit{MatchAndMerge} task does not.
+
+All tasks are stored in a SQL databse.
+New tasks are created by the \textit{Updater}.
+Initially, tasks has to be created manually to get an initial data set.
+\\ \\
 
 \begin{figure}[ht]
   \begin{center}
@@ -50,40 +81,13 @@ How the messaging infrastructure works, is shown in Figure \ref{fig_messaging_in
   \label{fig_messaging_infrastructure}
 \end{figure}
 
-The SQL database contains all tasks, which should be executed.
-A task consists of the following fields
-\begin{itemize}
-  \item \textbf{id} \\
-  The unique id of the task.
-  \item \textbf{task type} \\
-  The type of the task.
-  Basically it exists a type for each of the compontent, controlled by the \textit{Task Distibutor}, for example \textit{Triplify} or \textit{MatchAndMerge}.
-  \textit{Triplify} is a task execute by the \textit{Triplifier} component.
-  The \textit{Matcher and Merger} component works on \textit{MatchAndMerge} tasks.
-  There are also tasks, which combine some steps, such as the \textit{CrawlifyMatch} task, which crawls, trilifies and matches a movie.
-  \item \textbf{due date} \\
-  The date until when the task should be finished.
-  \item \textbf{file or url} \\
-  The file or url which is needed to execute the task.
-  \item finished \\
-  Defines, if the task is already done.
-  \item \textbf{graph} \\
-  The graph in which the resulting triples should be stored.
-  \item \textbf{remarks} \\
-  Additional information needed when executing a task.
-  For example, it could tell weather a certain entity should be delete from the triple store before storing new triples.
-\end{itemize}
-Not all fields have to be set, it depends on the task type, which field are needed.
-For example the \textit{Triplify} task needs a file, but the \textit{MatchAndMerge} task does not.
-
-New tasks are created by the \textit{Updater}.
-Initially, tasks has to be created manually to get an initial data set.
-\\ \\
-The messaging server takes a task out of the SQL database and puts it into the messaging queue.
-A worker, which has to register at the messaging server, can then take a task out of the messaging queue and work on this task.
-If the worker is done, it sends his answer to the answer queue and waits for the server to acknowledge his work.
+The messaging server takes a task out of the SQL database and puts it into the messaging queue. 
+The functionality of the messaging system, is shown in Figure \ref{fig_messaging_infrastructure}.
+A worker, which is registered on the task queue, gets the new task pushed.
+If multiple workers are registered, a free worker is selected by using the round robin principle to perform the next task.  
+%can then take a task out of the messaging queue and work on this task.
+When the worker has finished the task, it sends his answer to the answer queue and waits for the server to acknowledge his work.
 The server gets the answer of the worker from the answer queue and stores given triples into the triple store and files to the file system.
-If the answer could successfully stored, the server sends his acknowledgement to the worker, who forwards the acknowledgement to the task queue.
+When the answer was successfully stored, the server sends his acknowledgement to the worker, who forwards the acknowledgement to the task queue.
 The task is now successfully executed and the worker can work on the next task in the task queue.
-
-The server accepts serveral workers at once, so that more than one worker can be active at a time.
+If an acknowledgement takes longer than a given time, the task would be given to another worker again. This assures that no tasks get lost.
