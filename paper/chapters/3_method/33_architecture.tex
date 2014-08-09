@@ -35,6 +35,7 @@ Thus, there are four graphs in the triplestore, \textit{IMDb}, \textit{Freebase}
 \subsubsection{Messaging Infrastructure}
 \label{subsubsec_messaging_infrastructure}
 
+TODO Stefan, Dominik verifizieren
 
 The process of crawling, triplifying and matching a movie resource takes a lot of time.
 Especially there are limits to crawl some web pages, which means that waiting times can occur. Triplifying and matching needs computational resources.
@@ -45,7 +46,7 @@ The messaging server uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/
 
 A task consists of the following fields
 \begin{itemize}
-  \item \textbf{Id}: 
+  \item \textbf{Id}:
   The unique id of the task.
   \item \textbf{Task type}:
    The type of the task.
@@ -53,15 +54,15 @@ A task consists of the following fields
   \textit{Triplify} is a task execute by the \textit{Triplifier} component.
   The \textit{Matcher and Merger} component works on \textit{MatchAndMerge} tasks.
   There are also tasks, which combine some steps, such as the \textit{CrawlifyMatch} task, which crawls, trilifies and matches a movie.
-  \item \textbf{Due date}: 
+  \item \textbf{Due date}:
   The date until when the task should be finished.
-  \item \textbf{file or url}: 
+  \item \textbf{file or url}:
   The file or url which is needed to execute the task.
   \item \textbf{Finished}
   Defines, if the task is already done.
-  \item \textbf{Graph}: 
+  \item \textbf{Graph}:
   The graph in which the resulting triples should be stored.
-  \item \textbf{Remarks}: 
+  \item \textbf{Remarks}:
   Additional information needed when executing a task.
   For example, it could tell weather a certain entity should be delete from the triple store before storing new triples.
 \end{itemize}
@@ -80,10 +81,10 @@ Initially, tasks has to be created manually to get an initial data set.
   \label{fig_messaging_infrastructure}
 \end{figure}
 
-The messaging server takes a task out of the SQL database and puts it into the messaging queue. 
+The messaging server takes a task out of the SQL database and puts it into the messaging queue.
 The functionality of the messaging system, is shown in Figure \ref{fig_messaging_infrastructure}.
 A worker, which is registered on the task queue, gets the new task pushed.
-If multiple workers are registered, a free worker is selected by using the round robin principle to perform the next task.  
+If multiple workers are registered, a free worker is selected by using the round robin principle to perform the next task.
 %can then take a task out of the messaging queue and work on this task.
 When the worker has finished the task, it sends his answer to the answer queue and waits for the server to acknowledge his work.
 The server gets the answer of the worker from the answer queue and stores given triples into the triple store and files to the file system.
