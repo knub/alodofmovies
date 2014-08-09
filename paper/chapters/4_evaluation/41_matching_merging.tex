@@ -1,12 +1,14 @@
 \subsection{Matching}
 \label{subsec_evaluation_matching}
 
+TODO Dominik: Training-Test-sets erwaehnen, parameter estimation auf dem einen, das andere ...
+
 \subsubsection{Introduction}
 The matching algorithm, explained in \ref{subsec_method_matching}, depends on multiple parameters. The following paragraphs explain the process of tuning these parameters and evaluating the quality of the matching algorithm.
 
 Evaluation is done on a set of 4000 randomly selected movies. The selection is done by listing all movies by name and then using $scala.util.Random$ to shuffle the list and take the first 4000 movies.
 To get a gold standard we only try to match those movies with an annotated IMDb-Id (but not using the Id to match the movie) and only the movies that could potentially be matched, i.e movies that are in our existing database.
-The result is a list of 2028 movies that could possibly be matched and are annotated with a gold standard.
+The result is a list of 2028 TODO movies that could possibly be matched and are annotated with a gold standard.
 
 Given the set of new movies N and the set of existing movies M the following function calculates the correct matching movie $m_{j} \in M$ of a new movie $n_{i} \in N$:
 
