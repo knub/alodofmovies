@@ -3,7 +3,7 @@
 
 As described in the previous section, different data sources, each having an own data format, were used in the system \emph{Match Forrest, Match!}.
 To create a unified dataset and therefore enable simple querying over all data, an ontology for movies was defined.
-\\ \\
+
 This ontology covers besides movie resources also resources which belong to a movie, such as awards.
 In general the defined ontology is based on the \textit{DBpedia} ontology.
 If no \textit{DBpedia} class or property was preseent, \textit{Freebase} classes or properties or newly defined ones were used.
@@ -29,7 +29,7 @@ The prefix \textit{lod} is our new defined one.
 A \textit{MoviePerson} can have multiple sub-types of dbpedia-owl:Person, depending on the jobs the person had in any movies they worked on.
 As shown in Figure \ref{fig_ontology} a distinction between e.g. director, writer, producer was made.
 For example a person, who is a director in one movie and an actor in another movie, would have the additional classes dbpedia-owl:Actor and dbpedia-owl:Director.
-\\ \\
+
 A problem, which occured when defining our ontology, was the entity \textit{Character}.
 In the first definition, there was just one \textit{Character} class, which was connected to the corresponding movie and actor.
 Also the actor had a connection to the character.
