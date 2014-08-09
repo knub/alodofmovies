@@ -106,9 +106,9 @@ If its score is too low, the assumption is that the movie is not the right one (
 Thus, nothing is returned.
 $ACT\_DIST$ determines the threshold for the Levenshtein distance between two actor names, i.e. below which edit distance two actors are considered to be the same.
 
-Using the actor overlap is the main idea.
-The levenshtein function in \ref{aoeq:3} may not be able to match all actors correctly, because similar name problems can occur as with the movie (misspellings, different countries etc.).
-However, the idea is that enough 
+The main idea of the algorith is to use the actor overlap between two movies as the main matching criteria.
+The Levenshtein distance in \ref{aoeq:3} may not be able to match all actors correctly (i.e. "`Emma Watson"' and "`Emily Watson"' with a distance of three), because similar name problems can occur as with the movie (misspellings, different spelling in different languages, actual similar names for different actors etc.).
+However, the idea is that enough TODO ..
 This is the main idea behind 
 Calculating score TODO
 
