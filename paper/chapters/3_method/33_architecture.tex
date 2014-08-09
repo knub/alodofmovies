@@ -5,23 +5,23 @@ The architecture of \emph{Match Forrest, Match!} is shown in Figure \ref{fig_arc
 \\ \\
 The central component of the system is the \textit{Task Distributor}.
 This component is responsible for managing the other components, \textit{Crawler}, \textit{Triplifier}, \textit{Updater} and \textit{Matcher and Merger}.
-The details of this messaging systems are explained in Section \ref{subsubsec_messaging_infrastructure}.
+Therefore, it uses a messaging system, explained in Section \ref{subsubsec_messaging_infrastructure}.
 \\ \\
 In general, the first step to get a movie into the system is to get the acutal movie resource.
 This step is executed by the \textit{Crawler.}
 This component is responsible for downloading websites and for sending requests to the provided API from a data source.
 
 Once the page is downloaded, the \textit{Triplifier} can triplify the resource.
-This means it extracting the information from the resource and creating triples out of it.
-Therefore the ontology, defined in Section \ref{subsec_method_ontology}, is used.
+This means, it extracts the information from the resource and creates triples out of it.
+Therefore, the ontology, defined in Section \ref{subsec_method_ontology}, is used.
 
 The component \textit{Matcher and Merger} is in charge of matching two movies from different data sources, so they only can be found once in the resulting dataset.
 This component is explained in detail in Section \ref{subsec_method_matching}.
 
 The updater, described in Section \ref{subsec_method_updating}, ensures that the movies are always up to date.
 \\ \\
-The triplestore \textit{Virtuoso} is used to store the resulting triples.
-To distinguish between the sources of the different triples, triples from each data source are stored in the graph named after the source.
+The triple store \textit{Virtuoso} is used to store the resulting triples.
+To distinguish between the sources of the different triples, triples from a data source are stored in a graph named after the source.
 Thus, there are four graphs in the triplestore, \textit{IMDb}, \textit{Freebase}, \textit{TMDb} and \textit{OFDb}.
 
 \begin{figure}[ht]
@@ -35,8 +35,12 @@ Thus, there are four graphs in the triplestore, \textit{IMDb}, \textit{Freebase}
 \subsubsection{Messaging Infrastructure}
 \label{subsubsec_messaging_infrastructure}
 
-... TODO ...
-%TODO
+The process of crawling, triplifying and matching a movie resource takes some time.
+Because the steps can be done in parallel, a messaging infrastructure was implemented to speed up the process.
+The messaging infrastructure is based on \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}}.
+In this way, crawl limits are avoided.
+
+How the messaging infrastructure works, is shown in Figure \ref{fig_messaging_infrastructure}.
 
 \begin{figure}[ht]
   \begin{center}
@@ -45,3 +49,41 @@ Thus, there are four graphs in the triplestore, \textit{IMDb}, \textit{Freebase}
   \caption{Messaging Infrastructure using RabbitMQ}
   \label{fig_messaging_infrastructure}
 \end{figure}
+
+The SQL database contains all tasks, which should be executed.
+A task consists of the following fields
+\begin{itemize}
+  \item \textbf{id} \\
+  The unique id of the task.
+  \item \textbf{task type} \\
+  The type of the task.
+  Basically it exists a type for each of the compontent, controlled by the \textit{Task Distibutor}, for example \textit{Triplify} or \textit{MatchAndMerge}.
+  \textit{Triplify} is a task execute by the \textit{Triplifier} component.
+  The \textit{Matcher and Merger} component works on \textit{MatchAndMerge} tasks.
+  There are also tasks, which combine some steps, such as the \textit{CrawlifyMatch} task, which crawls, trilifies and matches a movie.
+  \item \textbf{due date} \\
+  The date until when the task should be finished.
+  \item \textbf{file or url} \\
+  The file or url which is needed to execute the task.
+  \item finished \\
+  Defines, if the task is already done.
+  \item \textbf{graph} \\
+  The graph in which the resulting triples should be stored.
+  \item \textbf{remarks} \\
+  Additional information needed when executing a task.
+  For example, it could tell weather a certain entity should be delete from the triple store before storing new triples.
+\end{itemize}
+Not all fields have to be set, it depends on the task type, which field are needed.
+For example the \textit{Triplify} task needs a file, but the \textit{MatchAndMerge} task does not.
+
+New tasks are created by the \textit{Updater}.
+Initially, tasks has to be created manually to get an initial data set.
+\\ \\
+The messaging server takes a task out of the SQL database and puts it into the messaging queue.
+A worker, which has to register at the messaging server, can then take a task out of the messaging queue and work on this task.
+If the worker is done, it sends his answer to the answer queue and waits for the server to acknowledge his work.
+The server gets the answer of the worker from the answer queue and stores given triples into the triple store and files to the file system.
+If the answer could successfully stored, the server sends his acknowledgement to the worker, who forwards the acknowledgement to the task queue.
+The task is now successfully executed and the worker can work on the next task in the task queue.
+
+The server accepts serveral workers at once, so that more than one worker can be active at a time.
