@@ -114,20 +114,21 @@ class MovieMatcher(val triplifier: Triplifier) {
 		log()
 		log("Precision = matched correctly/(correctly + incorrectly)")
 		val precision = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size + wronglyMatchedNotInDbSum)
-		println(s"Precision    = $precision")
+		log(s"Precision    = $precision")
 		log("Recall = matched correctly/(correctly + incorrectly + no candidates + not in candidates + unknown reasons)")
 		val recall = trueMatched.size.toDouble / (trueMatched.size + falseMatched.size + noCandidates.size + notInCandidate.size + notMatched.size)
-		println(s"Recall       = $recall")
+		log(s"Recall       = $recall")
 		log("F1-measure = (2 * Precision * Recall) / (Precision + Recall)")
 		val f1Measure = (2 * precision * recall) / (precision + recall)
-		println(s"F1-measure   = $f1Measure")
+		log(s"F1-measure   = $f1Measure")
 
 		log("F0.5-measure = (1.25 * Precision * Recall) / (0.25 * Precision + Recall)")
 		val f05Measure = (1.25 * precision * recall) / (0.25 * precision + recall)
-		println(s"F0.5-measure = $f05Measure")
+		println(s"$CANDIDATE_SET_SIZE,$precision,$recall,$f1Measure,$f05Measure")
+		log(s"F0.5-measure = $f05Measure")
 
-		log("Accuracy = correct / (correct + incorrect)")
-		val acc = (trueMatched.size + notInDb.size - wronglyMatchedNotInDbSum).toDouble / (trueMatched.size + falseMatched.size + noCandidates.size + notInCandidate.size + notMatched.size + falseMatched.size + notInDb.size)
+//		log("Accuracy = correct / (correct + incorrect)")
+//		val acc = (trueMatched.size + notInDb.size - wronglyMatchedNotInDbSum).toDouble / (trueMatched.size + falseMatched.size + noCandidates.size + notInCandidate.size + notMatched.size + falseMatched.size + notInDb.size)
 	}
 
 	def mergeMovie(t: (File, Int)): Unit = {
