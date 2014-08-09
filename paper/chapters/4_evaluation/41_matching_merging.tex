@@ -1,50 +1,55 @@
 \subsection{Matching}
 \label{subsec_evaluation_matching}
 
+TODO Dominik: Training-Test-sets erwaehnen, parameter estimation auf dem einen, das andere ...
+
 \subsubsection{Introduction}
 The matching algorithm, explained in \ref{subsec_method_matching}, depends on multiple parameters. The following paragraphs explain the process of tuning these parameters and evaluating the quality of the matching algorithm.
 
-Evaluation is done on a set of 4000 randomly selected movies. The selection is done by listing all movies by name and then using $scala.util.Random$ to shuffle the list and take the first 4000 movies. To get a gold standard we only try to match those movies with an annotated IMDb-Id (but not using the Id to match the movie) and only the movies that could potentially be matched, i.e movies that are in our existing database. The result is a list of 2028 movies that could possibly be matched and are annotated with a gold standard.
+Evaluation is done on a set of 4000 randomly selected movies. The selection is done by listing all movies by name and then using $scala.util.Random$ to shuffle the list and take the first 4000 movies.
+To get a gold standard we only try to match those movies with an annotated IMDb-Id (but not using the Id to match the movie) and only the movies that could potentially be matched, i.e movies that are in our existing database.
+The result is a list of 2028 TODO movies that could possibly be matched and are annotated with a gold standard.
 
-Given the set of new movies N, the set of existing movies M, a found match for a new movie $f_{n_{i}}$ and a correct match $c_{n_{i}}$ where $n_{i} \in N and f_{n_{i}} \in M$. Using the algorithm explained in \ref{subsec_method_matching} the following three subsets are computed:
+Given the set of new movies N and the set of existing movies M the following function calculates the correct matching movie $m_{j} \in M$ of a new movie $n_{i} \in N$:
 
-\begin{description}
-\item[TP]: the correctly matched movies,
-\begin{math}
-TP \coloneqq \forall n_{i} \in N ~\exists f_{n_{i}}: f_{n_{i}} = c_{n_{i}}
-\end{math}
-\item[I]: the incorrectly matched movies,
-\begin{math}
-TP \coloneqq \forall n_{i} \in N ~\exists f_{n_{i}}: f_{n_{i}} \neq c_{n_{i}}
-\end{math}
-\item[N]: the not matched movies.
-\begin{math}
-TP \coloneqq \forall n_{i} \in N ~\nexists f_{n_{i}}
-\end{math}
-\end{description}
+\begin{align}
+	gold: ~&N \rightarrow M \cup \{\bot\} \\
+	gold(n) &=
+		\begin{cases}
+		m \in M ~\text{if matching movie m exists in database}  \\
+		\bot
+		\end{cases}
+\end{align}
 
-Based on these the evaluation measures are defined as follows:
+Using this function and the algorithm $match_{n_{i}}$ explained in \ref{subsec_method_matching} the following sets are defined:
 
 \begin{description}
-\item[Precision (P)] is the percentage of movies that are correctly matched from the movies that are matched.
-\begin{equation}
-\frac
-{\left\lvert TP \right\rvert}
-{\left\lvert TP \right\rvert + \left\lvert I \right\rvert}
-\end{equation}
-\item[Recall (R)] is the percentage of movies that are correctly matched from all possible correct matches.
-\begin{equation}
-\frac
-{\left\lvert TP \right\rvert}
-{\left\lvert TP \right\rvert + \left\lvert I \right\rvert + \left\lvert N \right\rvert}
-\end{equation}
+\item[True Positives (TP)] is the set of correct matches between a new movie and an existing one in the database,
+\begin{align}
+TP &\coloneqq \Set*{(n_i, match(n_i))}{match(n_i) = gold(n_i) \land match(n_i) \neq \bot}
+\end{align}
+\item[False Positives (FP)] is the set of incorrect matches, either meaning another movie is the correct match or no correct match exists in the database
+\begin{align}
+FP &\coloneqq \Set*{(n_i, match(n_i))}{match(n_i) \neq gold(n_i) \land match(n_i) \neq \bot}
+\end{align}\item[True Negatives (TN)] is the set of tuples that are no matches and that cannot be matched because they are not in the database,
+\begin{align}
+FP &\coloneqq \Set*{(n_i, m_j)}{m_j \in M \land (m_j \neq match(n_i) \land m_j \neq gold(n_i) \lor m_j = \bot)}
+\end{align}
+\item[False Negatives (FN)] is the set of correct matches between movies that have not been found.
+\begin{align}
+FP &\coloneqq \Set*{(n_i, m_j)}{m_j \in M \land m_j \neq match(n_i) \land m_j = gold(n_i) \land m_j \neq \bot}
+\end{align}
 \end{description}
 
-Based on Recall and Precision the F-measure is calculated. Since, as explained in Section \ref{subsec_method_matching}, Precision is more important the F0.5-measure is observed in the evaluation process.
-
+Based on these sets the standard evaluation measures \emph{Precision (P)}, \emph{Recall (R)}, and \emph{F-measure} are calculated.
+As explained in Section \ref{subsec_method_matching}, Precision is more important and therefore the F0.5-measure is additionally observed in the evaluation process.
 
 what is evaluated TODO
-enviroment TODO
+enviroment TODO (nicht verteilt um besser evaluieren zu können: Internet probleme... blablabla)
+Pentium(R) Dual-Core  CPU      E5300  @ 2.60GHz
+1200.000 MHz
+chache: 2048 KB
+RAM: 15923MB
 explanation of Precision, Recall, FMeasure TODO
 
 list of annotated properties 

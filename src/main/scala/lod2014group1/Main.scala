@@ -62,19 +62,19 @@ object Main extends App with Logging {
 					merger.runStatistic(dir)
 				case _ =>
 					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
-					val merger = new MovieMatcher(new TmdbMovieTriplifier())
-					merger.VERBOSE = true
-					merger.RANDOM = 1001
-					merger.TEST_SET_SIZE = 4000
-					merger.runStatistic(tmdbDir)
-//					(0.0 to (1.0, 0.05)).foreach { overlap =>
-//						println(s"=== Using minimum overlap of ${overlap * 100}% ===")
-//						val merger = new MovieMatcher(new TmdbMovieTriplifier())
-//						merger.VERBOSE = false
-//						merger.TEST_SET_SIZE = 2000
-//						merger.SCORE_THRESHOLD = overlap
-//						time(merger.runStatistic(tmdbDir))
-//						}
+//					val merger = new MovieMatcher(new TmdbMovieTriplifier())
+//					merger.VERBOSE = false
+//					merger.RANDOM = 1001
+//					merger.TEST_SET_SIZE = 4000
+//					merger.runStatistic(tmdbDir)
+					List(2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096).foreach { candidateSetSize =>
+						println(s"=== Using candidate set size of $candidateSetSize% ===")
+						val merger = new MovieMatcher(new TmdbMovieTriplifier())
+						merger.VERBOSE = false
+						merger.TEST_SET_SIZE = 4000
+						merger.CANDIDATE_SET_SIZE = candidateSetSize
+						time(merger.runStatistic(tmdbDir))
+					}
 			}
 		} else if (args contains "merge-ofdb") {
 			val dir = new File (s"${Config.DATA_FOLDER}/OFDB/movies/")
