@@ -1,27 +1,34 @@
-%!TEX root = ../lod-group1.tex
 \section{Related Work}
 \label{sec_related_work}
 
-
-Triplification (http://linkedmdb.org/), Referenz zur Triplification http://triplify.org/Challenge/ von Movies
-
-Oktie Hassanzadeh and Mariano Consens. Linked Movie Database
-\url{http://ceur-ws.org/Vol-538/ldow2009_paper12.pdf}
-
-Hassanzadeh and Consens tried to unify multiple sources of movie data (among them IMDb and Freebase) into an open linked data set.
+In the context of the triplification challenge\footnote{\url{http://triplify.org/Challenge/}} Hassanzadeh and Consens developed a Linked Movie Database \cite{LMDB}.
+They tried to unify multiple sources of movie data (among them IMDb and Freebase) into an open linked data set.
 They utilize approximate string matching methods on movies' titles to find sameAs relation between movies of different sources.
 Hassanzadeh and Consens measured the accuracy of their method when using edit similarity, Jaccard or WeightedJaccard, as well as other measures used in information retrieval for string matching.
 
-Leveraging Usage Data for Linked Data Movie Entity Summarization 
-\url{http://arxiv.org/abs/1204.2718}
-
-Thalhammer et al. propose an approach to find features which are important for identifying a certain entity in a linked data set.
+Another similarity measure in the movie domain have Thalhammer et al. in \cite{MovieSummarization}.
+They propose an approach to find features which are important for identifying a certain entity in a linked data set.
 They do this to allow a summarization of an entity according to only some of its features which is then used to measure similarity to other entities.
-Thalhammer et al. focus on the movie domain for their example similarity measures.
+%Thalhammer et al. focus on the movie domain for their example similarity measures.
 
-T. Berners-Lee. Linked Data, Design Issues.
-\url{http://www.w3.org/DesignIssues/LinkedData.html}, 27 July 2006.
-
-Berners-Lee defines four rules to properly defining linked open data.
-He proposes to use URIs as names for things, and to use HTTP URIs to allow people to look these up.
+\cite{linkedData_DesignIssues} defines four rules to properly defining linked open data.
+Berners-Lee proposes to use URIs as names for things, and to use HTTP URIs to allow people to look these up.
 Additionally, Berners-Lee states that useful information using certain standards should be provided and that other links to other URIs should be included.
+
+
+%Triplification (http://linkedmdb.org/), Referenz zur Triplification  other winners of triplification challenge: 
+%Live linked open sensor database - http://dl.acm.org/citation.cfm?id=1839763
+%http://triplify.org/Challenge/Nominations
+
+
+
+%Oktie Hassanzadeh and Mariano Consens. Linked Movie Database
+%\url{http://ceur-ws.org/Vol-538/ldow2009_paper12.pdf}
+
+
+
+%Leveraging Usage Data for Linked Data Movie Entity Summarization 
+%\url{http://arxiv.org/abs/1204.2718}
+
+
+
