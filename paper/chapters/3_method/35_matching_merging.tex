@@ -30,10 +30,10 @@ Hence, a more sophisticated approach needs to be developed to increase the quali
 \subsubsection{Matching using actor overlap}
 In general, the matching algorithm must satisfy two requirements:
 \begin{enumerate}
-	\item{High precision:} A movies should not be matched to a wrong movie, as this decreases the quality of the dataset. We want to find many matches, but it is important not to add too many wrong matches.
-	\item{Performance:} With thousand of movies in each new dataset, matching should not take too long, as there are thousands of movies to match (e.g. TMDb has ca. 170,000 (TODO Check this number) movies to match.
+	\item{High precision:} A movie should not be matched to a wrong movie, as this decreases the quality of the dataset. We want to find many matches, but it is important not to add too many wrong matches.
+	\item{Performance:} With thousand of movies in each new dataset, matching one movie should not take too long.  For Example TMDb has about 170,000 (TODO Check this number) movies to match.
 	If each movie takes just 1 minute to match, the whole process for TMDb already takes $171,000~movies * 1 \frac{minute}{movie} * \frac{1}{1440} \frac{days}{minute} \approx 119~days$.
-	This is just one data source, and only the current set of movies (remember, there are new movies every day from all data sources, which need to be merged)).
+	This is just one data source, and only the current set of movies (remember, there are new movies every day from all data sources, which need to be merged).
 \end{enumerate}
 
 This leads to two consequences: First, a certain level of confidence needs to be reached to match two movies to each other. Otherwise, it is impossible to detect movies, which are not matchable, because they are not in the database.
@@ -43,7 +43,7 @@ This paper proposes the idea to first find a small list of movies that could be 
 
 Figure \ref{fig_matching_general} shows the general matching procedure:
 First, we pass through each new movie, that we want to match.
-For each movie $n_i \in N$ ($N$ is the set of movies we still need to match), we first select a small set of movies $C_{i}$ that could be a match (henceforth called candidates).
+For each movie $n_i \in N$ ($N$ is the set of movies we still need to match), we first select a small set of movies $C_{i}$ that could be a match.
 Then we calculate a score, which captures the similarity between $n_i$ and each $m_j \in C_i$.
 This score is mostly based on the actor information we have about the two movies.
 Finally, we choose the movie with the highest score, if the score is above a certain threshold.
@@ -69,8 +69,8 @@ There are two constraints working against each other:
 The former would be optimized by returning nothing, the latter by returning everything, so a viable tradeoff has to be found.
 
 The algorithm presented in this paper uses a candidate selection by calculating a pre-score based on the year and the name of a movie.
-This two properties have shown to be available in all datasets for all movies.
-The pre-score is calculated based on the Levenshtein distance \footnote{The Levenshtein distance between two strings is defined as the amount of edit operations (insertions, deletions, substitutions), which are needed to transform the first string into the second one.} $n_i$ and each $m_j$ and the distance between the years $year(n_i)$ and $year(m_j)$.
+This two properties have shown to be available in all datasets for nearly all movies.
+The pre-score is calculated based on the Levenshtein distance\footnote{The Levenshtein distance between two strings is defined as the amount of edit operations (insertions, deletions, substitutions), which are needed to transform the first string into the second one.} $n_i$ and each $m_j$ and the distance between the years $year(n_i)$ and $year(m_j)$.
 Calculating these numbers for all movies in the database can be done efficient enough to provide a fast candidate selection.
 These numbers are combined into a score, where the Levenshtein distance is weighted more.
 Finally, the best 100 movies are selected as candidates, according to the score computed in the previous step.
@@ -103,8 +103,8 @@ the best match $n_i$ is determined as follows:
 	score(n_i, m_j) &=
 		\frac
 			{\left\lvert overlap\_set(A_{n_i}, A_{m_j}) \right\rvert}
-			{\left\lvert A_{n_i}) \right\rvert}\label{aoeq:3}\\
-	overlap\_set(A_{n_i}, A_{m_j} &=
+			{\left\lvert A_{n_i} \right\rvert}\label{aoeq:3}\\
+	overlap\_set(A_{n_i}, A_{m_j}) &=
 		\Set*{a_n \in A_n}{\exists a_m \in A_m: Levenshtein(a_n, a_m) < ACT\_DIST}.\label{aoeq:4}
 \end{align}
 
@@ -113,16 +113,16 @@ So $MIN\_SCORE$ determines, when a best matching movie is returned as an actual 
 If its score is too low, the assumption is that the movie is not the right one (i.e. the correct one does not exist in the database).
 Thus, nothing is returned.
 
-The best matching movie is defined as the movie from the candidate set, which has the highest score (see equation \ref{aoeq:2}.
+The best matching movie is defined as the movie from the candidate set, which has the highest score (see equation \ref{aoeq:2}).
 
-The the algorithm's main idea is illustrated in equation \ref{aoeq:3}: Given the movie to match and a candidate, the score's is determined as the fraction of the movie's actor, which can also be found in the candidate movie's actors.
+The algorithm's main idea is illustrated in equation \ref{aoeq:3}: Given the movie to match and a candidate, the score's is determined as the fraction of the movie's actor, which can also be found in the candidate movie's actors.
 
 The check whether one actor from one movie is also in the other movie, we do not use strict matching, but rather a fuzzy approach, see \ref{aoeq:4}.
 Two actors are considered equal (but only for the sake of matching movies), when their Levenshtein distance is below a certain threshold $ACT\_DIST$.
 
 The main idea of the algorithm is to use the actor overlap between two movies as the main matching criteria.
 The Levenshtein distance in \ref{aoeq:4} may not be able to match all actors correctly (i.e. "`Emma Watson"' and "`Emily Watson"' with a distance of three), because similar name problems can occur as with the movie (misspellings, different spelling in different languages, actual similar names for different actors etc.).
-However, the idea is that less actors can be matched for different movies and more actors can be matched for the same movie in different datasources.
+However, the idea is that less actors can be matched for different movies and more actors can be matched for the same movie in different data sources.
 An evaluation of this approach can be found in section \ref{subsec_evaluation_matching}.
 
 \paragraph{Implementation}

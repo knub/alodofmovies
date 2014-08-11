@@ -7,7 +7,7 @@ The central component of the system is the \textit{Task Distributor}.
 This component is responsible for managing the other components, \textit{Crawler}, \textit{Triplifier}, \textit{Updater} and \textit{Matcher and Merger}.
 Therefore, it uses a messaging system, explained in Section \ref{subsubsec_messaging_infrastructure}.
 
-In general, the first step to get a movie into the system is to get the acutal movie resource.
+In general, the first step to get a movie into the system is to get the actual movie resource.
 This step is executed by the \textit{Crawler.}
 This component is responsible for downloading websites and for sending requests to the provided API from a data source.
 
@@ -18,7 +18,7 @@ Therefore, the ontology, defined in Section \ref{subsec_method_ontology}, is use
 The component \textit{Matcher and Merger} is in charge of matching two movies from different data sources, so they only can be found once in the resulting dataset.
 This component is explained in detail in Section \ref{subsec_method_matching}.
 
-The updater, described in Section \ref{subsec_method_updating}, ensures that the movies are always up to date.
+The updater, described in Section \ref{subsec_method_updating}, ensures that the existing movies are always up to date and that new movies are in the system.
 
 The triple store \textit{Virtuoso} is used to store the resulting triples.
 To distinguish between the sources of the different triples, triples from a data source are stored in a graph named after the source.
@@ -39,10 +39,10 @@ TODO Stefan, Dominik verifizieren
 
 The process of crawling, triplifying and matching a movie resource takes a lot of time.
 Especially there are limits to crawl some web pages, which means that waiting times can occur. Triplifying and matching needs computational resources.
-Because the steps can be done in parallel, a messaging infrastructure was implemented to speed up the process and avoid crawl limits.
+Because the steps can be done in parallel, a messaging infrastructure was implemented to speed up the process and to avoid crawl limits.
 
 %The messaging infrastructure is based on \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}}.
-The messaging server uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
+Therefore the Task Distributor, including the messaging server, uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
 
 A task consists of the following fields
 \begin{itemize}
@@ -58,7 +58,7 @@ A task consists of the following fields
   The date until when the task should be finished.
   \item \textbf{file or url}:
   The file or url which is needed to execute the task.
-  \item \textbf{Finished}
+  \item \textbf{Finished:}
   Defines, if the task is already done.
   \item \textbf{Graph}:
   The graph in which the resulting triples should be stored.
@@ -69,9 +69,8 @@ A task consists of the following fields
 Not all fields have to be set, it depends on the task type, which fields are needed.
 For example the \textit{Triplify} task needs a file, but the \textit{MatchAndMerge} task does not.
 
-All tasks are stored in a SQL databse.
-New tasks are created by the \textit{Updater}.
-Initially, tasks has to be created manually to get an initial data set.
+All tasks are stored in a SQL database and new ones are created by the \textit{Updater}.
+To get an initial data set tasks have to be created manually.
 
 \begin{figure}[ht]
   \begin{center}
@@ -90,4 +89,4 @@ When the worker has finished the task, it sends his answer to the answer queue a
 The server gets the answer of the worker from the answer queue and stores given triples into the triple store and files to the file system.
 When the answer was successfully stored, the server sends his acknowledgement to the worker, who forwards the acknowledgement to the task queue.
 The task is now successfully executed and the worker can work on the next task in the task queue.
-If an acknowledgement takes longer than a given time, the task would be given to another worker again. This assures that no tasks get lost.
+If an acknowledgement takes longer than a given time, the task would be given to another worker again. This assures that no task get lost.
