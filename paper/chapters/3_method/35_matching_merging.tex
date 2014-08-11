@@ -71,7 +71,7 @@ The former would be optimized by returning nothing, the latter by returning ever
 
 The algorithm presented in this paper uses a candidate selection by calculating a pre-score based on the year and the name of a movie.
 This two properties have shown to be available in all datasets for nearly all movies.
-The pre-score is calculated based on the Levenshtein distance\footnote{The Levenshtein distance between two strings is defined as the amount of edit operations (insertions, deletions, substitutions), which are needed to transform the first string into the second one.} $n_i$ and each $m_j$ and the distance between the years $year(n_i)$ and $year(m_j)$.
+The pre-score is calculated based on the Levenshtein distance\footnote{The Levenshtein distance between two strings is defined as the amount of edit operations (insertions, deletions, substitutions), which are needed to transform the first string into the second one.} between $n_i$ and each $m_j$ and the distance between the years $year(n_i)$ and $year(m_j)$.
 Calculating these numbers for all movies in the database can be done efficient enough to provide a fast candidate selection.
 These numbers are combined into a score, where the Levenshtein distance is weighted more.
 Finally, the best 100 movies are selected as candidates, according to the score computed in the previous step.
