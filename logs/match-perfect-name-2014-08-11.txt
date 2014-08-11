@@ -1,0 +1,20 @@
+:compileJava UP-TO-DATE
+:compileScala
+:processResources UP-TO-DATE
+:classes
+:jar
+:assemble
+:compileTestJava UP-TO-DATE
+:compileTestScala UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:check UP-TO-DATE
+:build
+:merge
+[INFO ] lod2014group1.Main$ - 11:14 - Arguments: List(merge)
+0.5602094240837696,0.5742397137745975,0.5671378091872792,0.5629603647842861
+
+BUILD SUCCESSFUL
+
+Total time: 52 mins 42.343 secs
