@@ -20,10 +20,12 @@ class MovieMatcher(val triplifier: Triplifier) {
 	var SCORE_THRESHOLD             = 0.3
 	var ACTOR_OVERLAP_LEVENSHTEIN   = 2
 	var CANDIDATE_MOVIE_LEVENSHTEIN = 4
-	var CANDIDATE_SET_SIZE          = 10
-	var TEST_SET_SIZE               = 750
+	var CANDIDATE_SET_SIZE          = 32
+	var TEST_SET_SIZE               = 4000
 	var RANDOM                      = 1001
 	var VERBOSE                     = true
+	var REFINEMENT_WEIGHT: Double   = 2.5
+	lazy val OTHER_WEIGHT: Double   = (100 - REFINEMENT_WEIGHT)/2.0
 
 
 	def log(): Unit = {}
@@ -124,7 +126,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 		log("F0.5-measure = (1.25 * Precision * Recall) / (0.25 * Precision + Recall)")
 		val f05Measure = (1.25 * precision * recall) / (0.25 * precision + recall)
-		println(s"$CANDIDATE_SET_SIZE,$precision,$recall,$f1Measure,$f05Measure")
+		println(s"$REFINEMENT_WEIGHT,$precision,$recall,$f1Measure,$f05Measure")
 		log(s"F0.5-measure = $f05Measure")
 
 //		log("Accuracy = correct / (correct + incorrect)")
@@ -254,7 +256,8 @@ class MovieMatcher(val triplifier: Triplifier) {
 				calculateDirectorOverlap,
 				nameAndYearSimilarity
 			)
-			val weights = List(20, 20, 1)
+			println(OTHER_WEIGHT)
+			val weights = List(OTHER_WEIGHT, OTHER_WEIGHT, REFINEMENT_WEIGHT)
 
 			val scoringWeights = scoringFunctions.zip(weights)
 			val score = avg(scoringWeights.map { case (scorer, weight) =>
@@ -276,7 +279,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 		bestMovies
 	}
 
-	def avg(l: List[(Double, Int)]): Double = {
+	def avg(l: List[(Double, Double)]): Double = {
 		if (l.isEmpty)
 			0.0
 		val weightSum = l.map(_._2).sum
