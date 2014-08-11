@@ -256,7 +256,6 @@ class MovieMatcher(val triplifier: Triplifier) {
 				calculateDirectorOverlap,
 				nameAndYearSimilarity
 			)
-			println(OTHER_WEIGHT)
 			val weights = List(OTHER_WEIGHT, OTHER_WEIGHT, REFINEMENT_WEIGHT)
 
 			val scoringWeights = scoringFunctions.zip(weights)
