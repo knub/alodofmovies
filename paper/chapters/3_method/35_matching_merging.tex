@@ -42,17 +42,17 @@ Second, comparing each movie with all movies in the database is not feasible.
 This paper proposes the idea to first find a small list of movies that could be a match (henceforth called candidates) and then calculate a score for each of these candidates, which is based on the actors . Details are described in the following paragraphs.
 
 Figure \ref{fig_matching_general} shows the general matching procedure:
-First, we pass through each new movie, that we want to match.
-For each movie $n_i \in N$ ($N$ is the set of movies we still need to match), we first select a small set of movies $C_{i}$ that could be a match.
-Then we calculate a score, which captures the similarity between $n_i$ and each $m_j \in C_i$.
-This score is mostly based on the actor information we have about the two movies.
-Finally, we choose the movie with the highest score, if the score is above a certain threshold.
+First, the algorithm pass through each new movie, that needs to be matched.
+For each movie $n_i \in N$ ($N$ is the set of movies, which still needs to be matched), a small set of movies $C_{i}$, that could be a match, is selected.
+the next step is to calculate a score, which captures the similarity between $n_i$ and each $m_j \in C_i$.
+This score is mostly based on the actor information, which are available about the two movies.
+Finally, the movie with the highest score will be chosen, if the score is above a certain threshold.
 
 \begin{figure}[ht]
   \begin{center}
   \includegraphics[width=0.8\textwidth]{images/matching_general.pdf}
   \end{center}
-  \caption{This shows the general matching procedure. In this case, we would choose movie $m_3$ as a match for $n_3$, because it has the highest score and is above the threshold.}
+  \caption{This shows the general matching procedure. In this case, the algorithm would choose movie $m_3$ as a match for $n_3$, because it has the highest score and is above the threshold.}
   \label{fig_matching_general}
 \end{figure}
 
@@ -82,10 +82,10 @@ TODO: Reword
 
 \paragraph{Score calculation}
 After the candidates have been selected, the next step is to find the best match.
-For that, the algorithm uses the actor information we have about $n_i$ and each $m_j$ in $C_i$.
+For that, the algorithm uses the actor information, which are available about $n_i$ and each $m_j$ in $C_i$.
 Given
 \begin{description}
-	\item[$n_i$] the movie we want to match,
+	\item[$n_i$] the movie, which should be matched,
 	\item[$C_i$] the set of candidates for the movie,
 	\item[$A_{movie}$] a function, which returns the actor names from a movie in one of our datasets,
 	\item[$Levenshtein(s_1, s_2)$] a function, which returns the edit distance (insert, remove, replace) between two strings.
@@ -117,7 +117,7 @@ The best matching movie is defined as the movie from the candidate set, which ha
 
 The algorithm's main idea is illustrated in equation \ref{aoeq:3}: Given the movie to match and a candidate, the score's is determined as the fraction of the movie's actor, which can also be found in the candidate movie's actors.
 
-The check whether one actor from one movie is also in the other movie, we do not use strict matching, but rather a fuzzy approach, see \ref{aoeq:4}.
+The check whether one actor from one movie is also in the other movie, there is no use of a strict matching, but rather a fuzzy approach, see \ref{aoeq:4}.
 Two actors are considered equal (but only for the sake of matching movies), when their Levenshtein distance is below a certain threshold $ACT\_DIST$.
 
 The main idea of the algorithm is to use the actor overlap between two movies as the main matching criteria.
