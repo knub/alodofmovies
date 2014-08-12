@@ -23,7 +23,7 @@ The updater, described in Section \ref{subsec_method_updating}, ensures that the
 
 The triple store \textit{Virtuoso} is used to store the resulting triples.
 To distinguish between the sources of the different triples, triples from a data source are stored in a graph named after the source.
-Thus, there are four graphs in the triplestore, \textit{IMDb}, \textit{Freebase}, \textit{TMDb} and \textit{OFDb}.
+Thus, there are four graphs in the triplestore, IMDb, Freebase, TMDb and OFDb.
 
 \begin{figure}[ht]
   \begin{center}
@@ -36,14 +36,14 @@ Thus, there are four graphs in the triplestore, \textit{IMDb}, \textit{Freebase}
 \subsubsection{Messaging Infrastructure}
 \label{subsubsec_messaging_infrastructure}
 
-TODO Stefan, Dominik verifizieren
+%TODO Stefan, Dominik verifizieren
 
 The process of crawling, triplifying and matching a movie resource takes a lot of time.
 Especially there are limits to crawl some web pages, which means that waiting times can occur. Triplifying and matching needs computational resources.
 Because the steps can be done in parallel, a messaging infrastructure was implemented to speed up the process and to avoid crawl limits.
 
 %The messaging infrastructure is based on \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}}.
-Therefore the Task Distributor, including the messaging server, uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
+Therefore the \textit{Task Distributor}, including the messaging server, uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
 
 A task consists of the following fields
 \begin{itemize}
@@ -51,10 +51,10 @@ A task consists of the following fields
   The unique id of the task.
   \item \textbf{Task type}:
    The type of the task.
-  Basically it exists a type for each of the compontent, controlled by the \textit{Task Distibutor}, for example \textit{Triplify} or \textit{MatchAndMerge}.
-  \textit{Triplify} is a task execute by the \textit{Triplifier} component.
-  The \textit{Matcher and Merger} component works on \textit{MatchAndMerge} tasks.
-  There are also tasks, which combine some steps, such as the \textit{CrawlifyMatch} task, which crawls, trilifies and matches a movie.
+  Basically it exists a type for each of the compontent, controlled by the \textit{Task Distibutor}, for example ``Triplify'' or ``MatchAndMerge''.
+  ``Triplify'' is a task execute by the \textit{Triplifier} component.
+  The \textit{Matcher and Merger} component works on ``MatchAndMerge'' tasks.
+  There are also tasks, which combine some steps, such as the ``CrawlifyMatch'' task, which crawls, triplifies and matches a movie.
   \item \textbf{Due date}:
   The date until when the task should be finished.
   \item \textbf{file or url}:
@@ -68,10 +68,21 @@ A task consists of the following fields
   For example, it could tell weather a certain entity should be delete from the triple store before storing new triples.
 \end{itemize}
 Not all fields have to be set, it depends on the task type, which fields are needed.
-For example the \textit{Triplify} task needs a file, but the \textit{MatchAndMerge} task does not.
+For example the ``Triplify'' task needs a file, but the ``MatchAndMerge'' task does not.
 
 All tasks are stored in a SQL database and new ones are created by the \textit{Updater}.
 To get an initial data set tasks have to be created manually.
+
+The messaging server takes a task out of the SQL database and puts it into the messaging queue.
+The functionality of the messaging system, is shown in Figure \ref{fig_messaging_infrastructure}.
+A worker, which is registered on the task queue, gets the new task pushed.
+If multiple workers are registered, a free worker is selected by using the round robin principle to perform the next task.
+When the worker has finished the task, it sends his answer to the answer queue and waits for the server to acknowledge his work.
+The server gets the answer of the worker from the answer queue and stores given triples into the triple store and files to the file system.
+When the answer was successfully stored, the server sends his acknowledgement to the worker, who forwards the acknowledgement to the task queue.
+The task is now successfully executed and the worker can work on the next task in the task queue.
+If an acknowledgement takes longer than a given time, the task would be given to another worker again.
+This assures that no task get lost.
 
 \begin{figure}[ht]
   \begin{center}
@@ -80,14 +91,3 @@ To get an initial data set tasks have to be created manually.
   \caption{Messaging Infrastructure using RabbitMQ}
   \label{fig_messaging_infrastructure}
 \end{figure}
-
-The messaging server takes a task out of the SQL database and puts it into the messaging queue.
-The functionality of the messaging system, is shown in Figure \ref{fig_messaging_infrastructure}.
-A worker, which is registered on the task queue, gets the new task pushed.
-If multiple workers are registered, a free worker is selected by using the round robin principle to perform the next task.
-%can then take a task out of the messaging queue and work on this task.
-When the worker has finished the task, it sends his answer to the answer queue and waits for the server to acknowledge his work.
-The server gets the answer of the worker from the answer queue and stores given triples into the triple store and files to the file system.
-When the answer was successfully stored, the server sends his acknowledgement to the worker, who forwards the acknowledgement to the task queue.
-The task is now successfully executed and the worker can work on the next task in the task queue.
-If an acknowledgement takes longer than a given time, the task would be given to another worker again. This assures that no task get lost.
