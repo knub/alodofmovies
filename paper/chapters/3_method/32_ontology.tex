@@ -9,16 +9,25 @@ This ontology covers besides movie resources also resources which belong to a mo
 In general the defined ontology is based on the DBpedia ontology.
 If no DBpedia class or property was preseent, Freebase classes or properties or newly defined ones were used.
 
-In the following the defined entities used in the system with their corresponding \textit{RDF} classes are listed.
-\begin{itemize}
-	\item \textbf{Movie}: dbpedia-owl:Film
-	\item \textbf{Award}: dbpedia-owl:Award
-	\item \textbf{MoviePerson}: dbpedia-owl:Person
-	\item \textbf{Character}: freebase:film/performance
-	\item \textbf{MovieCharacter}: lod:movieCharacter
-	\item \textbf{Aka (also known as)}: lod:aka
-	\item \textbf{ReleaseInfo}: lod:releaseInfo
-\end{itemize}
+In the following the defined entities used in the system with their corresponding RDF classes are listed in Table \ref{tab_entities}.
+
+\begin{table}[ht]
+	\begin{center}
+	\begin{tabular}{ll}
+		\textbf{Entity} & \textbf{RDF class} \\ \hline
+		Movie & dbpedia-owl:Film \\
+		Award & dbpedia-owl:Award \\
+		MoviePerson & dbpedia-owl:Person \\
+		Character & freebase:film/performance \\
+		MovieCharacter & lod:MovieCharacter \\
+		Aka (also known as) & lod:Aka \\
+		ReleaseInfo & lod:ReleaseInfo \\
+	\end{tabular}
+	\end{center}
+	\caption{Entities with their corresponding RDF classes}
+	\label{tab_entities}
+\end{table}
+
 Relations between these resources and their pattern for the unique identifiers are shown in Figure \ref{fig_ontology}.
 The prefix \textit{lod} is our new defined one.
 
