@@ -1,5 +1,5 @@
 %!TEX root = ../../lod-group1.tex
-\subsection{Updating}
+\subsection{Keep the system up-to-date}
 \label{subsec_method_updating}
 
 To ensure that the movies are always up to date, a scheduler is responsible to update the movies at certain repeading times.
@@ -7,13 +7,6 @@ The scheduler creates ``CrawlifyMatch'' tasks, which downloads the movie resourc
 Thereby, the scheduler distinguish between existing movies, which are released in the past from the current date, and coming soon movies, which will be released in the future.
 
 \subsubsection{Updating coming soon movies}
-Upcoming movies are published almost every day on IMDb (Chapter \ref{subsec_evaluation_updating}).
-Because IMDb is the main data source, the scheduler updates upcoming movies from IMDb daily.
-Upcoming movies from the other data sources are updated weekly.
-In this way, movies, which come from Freebase, TMDb or OFDb, can already be matched to a movie of IMDb.
-%TODO muss nicht sein, wenn IMDb den film noch nicht hat. Auch ist das ja nicht zwingend notwendig oder? wir matchen doch immer mit allen schon vorhandenen
-% --> Haben wir nie weiter beachtet. Müssen wir so schreiben, dass es plausible klingt
-
 The steps to update upcoming soon movies are:
 \begin {enumerate}
 	\item Get new movie resources with their ids.
@@ -40,10 +33,43 @@ So, the scheduler knows the highest newest movie id and also the last movie id o
 All ids between these two are ids of new moives.
 With the help of the ids, the scheduler can esaliy build the URL for the movie resource\footnote{\url{http://www.ofdb.de/film/[id],}} and crawl it.
 
+To figure out how often the scheduler should add coming soon movies, IMDb's upcoming movie list was observed.
+How many coming soon movies are daily added to IMDb is shown in Figure \ref{fig_coming_soon_movie}.
+On a daily basis, the coming soon page from IMDb was crawled and the changes were recorded.
+Almost every day, new movies are added or deleted from the IMDb coming soon list.
+It is noticeable, that the most movies are published between Thursdays to Sundays on IMDb.
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{images/updating_1.pdf}
+  \end{center}
+  \caption{Number of new coming soon movies, which are published on IMDb per day.}
+  \label{fig_coming_soon_movie}
+\end{figure}
+
+From this observation we decided to update coming soon movies from IMDb daily.
+Upcoming movies from the other data sources are updated weekly.
+In this way, movies, which come from Freebase, TMDb or OFDb, can already be matched to a movie of IMDb.
+%TODO muss nicht sein, wenn IMDb den film noch nicht hat. Auch ist das ja nicht zwingend notwendig oder? wir matchen doch immer mit allen schon vorhandenen
+% --> Haben wir nie weiter beachtet. Müssen wir so schreiben, dass es plausible klingt
+
 \subsubsection{Updating existing movies}
-Existings movies are divided into different categories.
+In Figure \ref{fig_new_movie} the number of changed triples of a new released movie from IMDb is displayed.
+Therefor, the movie was crawled and triplified daily.
+As you can seen, the movie frequently changes in the first days.
+Also, the number of changing triples decreases with time.
+Often changing triples are for example cast triple, links to images and videos, IMDb rating, charachter triples or taglines.
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{images/updating_2.pdf}
+  \end{center}
+  \caption{Number of triples, which change in the first days of a new released movie from IMDb.}
+  \label{fig_new_movie}
+\end{figure}
+
+Because a movie changes less the older the movie is, existings movies are divided into different categories.
 Each category is updated at different frequencies (Table \ref{tab_updating_existing}).
-The frequencies are chosen with the help of the in section \ref{subsec_evaluation_updating} described statistics.
 \begin{table}[ht]
 	\begin{center}
 	\begin{tabular}{rl}
