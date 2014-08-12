@@ -6,8 +6,8 @@ As described in the previous section, different data sources, each having an own
 To create a unified dataset and therefore enable simple querying over all data, an ontology for movies was defined.
 
 This ontology covers besides movie resources also resources which belong to a movie, such as awards.
-In general the defined ontology is based on the \textit{DBpedia} ontology.
-If no \textit{DBpedia} class or property was preseent, \textit{Freebase} classes or properties or newly defined ones were used.
+In general the defined ontology is based on the DBpedia ontology.
+If no DBpedia class or property was preseent, Freebase classes or properties or newly defined ones were used.
 
 In the following the defined entities used in the system with their corresponding \textit{RDF} classes are listed.
 \begin{itemize}
@@ -28,9 +28,9 @@ The prefix \textit{lod} is our new defined one.
 \label{fig_ontology}
 \end{figure}
 
-A \textit{MoviePerson} can have multiple sub-types of dbpedia-owl:Person, depending on the jobs the person had in any movies they worked on.
+A \textit{MoviePerson} can have multiple sub-types of \textit{dbpedia-owl:Person}, depending on the jobs the person had in any movies they worked on.
 As shown in Figure \ref{fig_ontology} a distinction between e.g. director, writer, producer was made.
-For example a person, who is a director in one movie and an actor in another movie, would have the additional classes dbpedia-owl:Actor and dbpedia-owl:Director.
+For example a person, who is a director in one movie and an actor in another movie, would have the additional classes \textit{dbpedia-owl:Actor} and \textit{dbpedia-owl:Director}.
 
 A problem, which occured when defining our ontology, was the entity \textit{Character}.
 In the first definition, there was just one \textit{Character} class, which was connected to the corresponding movie and actor.
@@ -40,7 +40,6 @@ The URL of the character was build out of the character name.
 Thus, a role which exists in multiple movies (e.g. "cleaning lady") would be one resource connected to each actor who had ever portrayed this role.
 The role had also a list of movies, which it occures in.
 That way, one could not say, which actors played the role in a certain movie.
-
 One such case is an actor who played a certain role in an old movie but also appears in the movie's newer remake.
 In the remake, they might play a different role while another actor plays their original role.
 An example for this is the movie "Starsky \& Hutch" (2004), which is a remake of the (1970s) television series with the same name.
@@ -52,8 +51,7 @@ Therefore, an additional class of \textit{MovieCharacter} was introduced in the 
 This resource is only connected to one movie and all actors, who played that role in the movie.
 The URL of the \textit{MovieCharacter} is build from the unique identifier of the movie and the character.
 The \textit{MovieCharacter} is a subclass of \textit{Character}, which describes the general role.
-
-This means, that the URL of the\textit{MovieCharacter} in the "Starsky \& Hutch" example is "Starksy/Starsky\&Hutch1970" and the URL of \textit{Character} is "Starksy".
+This means, that the unique identifier of the \textit{MovieCharacter} in the "Starsky \& Hutch" example is "Starksy/Starsky\&Hutch1970" and identifier of \textit{Character} is "Starksy".
 
 %TODO ??More detailed description of diagram??
 %TODO ??How many total different entity types, relation types, property types??
