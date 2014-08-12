@@ -3,8 +3,8 @@
 \label{subsec_method_updating}
 
 To ensure that the movies are always up to date, a scheduler is responsible to update the movies at certain repeading times.
-The scheduler creates \textit{CrawlifyMatch} tasks, which downloads the movie resource, which should be updated, triplifies it, matches it (if necessary) and stores the updated triples in the triple store.
-Thereby, the schedule distinguish between existing movies, which are released in the past from the current date, and coming soon movies, which will be released in the future.
+The scheduler creates ``CrawlifyMatch'' tasks, which downloads the movie resource, which should be updated, triplifies it, matches it (if necessary) and stores the updated triples in the triple store.
+Thereby, the scheduler distinguish between existing movies, which are released in the past from the current date, and coming soon movies, which will be released in the future.
 
 \subsubsection{Updating coming soon movies}
 Upcoming movies are published almost every day on IMDb (Chapter \ref{subsec_evaluation_updating}).
@@ -12,6 +12,7 @@ Because IMDb is the main data source, the scheduler updates upcoming movies from
 Upcoming movies from the other data sources are updated weekly.
 In this way, movies, which come from Freebase, TMDb or OFDb, can already be matched to a movie of IMDb.
 %TODO muss nicht sein, wenn IMDb den film noch nicht hat. Auch ist das ja nicht zwingend notwendig oder? wir matchen doch immer mit allen schon vorhandenen
+% --> Haben wir nie weiter beachtet. Müssen wir so schreiben, dass es plausible klingt
 
 The steps to update upcoming soon movies are:
 \begin {enumerate}
@@ -41,7 +42,8 @@ With the help of the ids, the scheduler can esaliy build the URL for the movie r
 
 \subsubsection{Updating existing movies}
 Existings movies are divided into different categories.
-Each category is updated at different frequencies (Table \ref{tab_updating_existing}). The frequencies are chosen with the help of the in section \ref{subsec_evaluation_updating} described statistics.
+Each category is updated at different frequencies (Table \ref{tab_updating_existing}).
+The frequencies are chosen with the help of the in section \ref{subsec_evaluation_updating} described statistics.
 \begin{table}[ht]
 	\begin{center}
 	\begin{tabular}{rl}
