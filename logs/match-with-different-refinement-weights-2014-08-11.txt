@@ -1,0 +1,40 @@
+:compileJava UP-TO-DATE
+:compileScala
+:processResources UP-TO-DATE
+:classes
+:jar
+:assemble
+:compileTestJava UP-TO-DATE
+:compileTestScala UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:check UP-TO-DATE
+:build
+:merge
+[INFO ] lod2014group1.Main$ - 14:19 - Arguments: List(merge)
+=== Using refinement Weight of 0.0% ===
+0.0,0.9958896065766295,0.8446215139442231,0.9140393424952843,0.961451247165533
+Took 62 min 51 s.
+=== Using refinement Weight of 2.5% ===
+2.5,0.9954878736604625,0.8789840637450199,0.9336154456492992,0.9697802197802197
+Took 62 min 25 s.
+=== Using refinement Weight of 5.0% ===
+5.0,0.9954878736604625,0.8789840637450199,0.9336154456492992,0.9697802197802197
+Took 62 min 23 s.
+=== Using refinement Weight of 10.0% ===
+10.0,0.9954904171364148,0.8794820717131474,0.9338974087784241,0.969903339191564
+Took 62 min 22 s.
+=== Using refinement Weight of 20.0% ===
+20.0,0.9927374301675977,0.8849601593625498,0.9357556608741443,0.9691317626527051
+Took 62 min 20 s.
+=== Using refinement Weight of 33.0% ===
+33.0,0.9905239687848384,0.8849601593625498,0.934771173066807,0.9674433797909407
+Took 62 min 21 s.
+=== Using refinement Weight of 50.0% ===
+50.0,0.9905027932960894,0.8829681274900398,0.933649289099526,0.9669502617801046
+Took 62 min 26 s.
+
+BUILD SUCCESSFUL
+
+Total time: 7 hrs 18 mins 54.6 secs

@@ -3,11 +3,17 @@
 \label{subsec_evaluation_matching}
 
 \subsubsection{Introduction}
-The matching algorithm, explained in \ref{subsec_method_matching}, depends on multiple parameters. The following paragraphs explain the process of tuning these parameters and evaluating the quality of the matching algorithm.
+The matching algorithm, explained in \ref{subsec_method_matching}, depends on multiple parameters.
+The following paragraphs explain the process of tuning these parameters and evaluating the quality of the matching algorithm.
 
-Evaluation is done on two sets of 4000 randomly selected movies. The selection is done by listing all movies by name and then using $scala.util.Random$ to shuffle the list and take the first 4000 movies. The first list is used for the parameter opitimization, while the second is used for the final evaluation purpose.
-To get a gold standard only those movies with an annotated IMDb-id are taken into concideration. However, the id is not used to match the movies. These movies can be split into two parts: the movies that could potentially be matched and the movies that can not be matched, i.e. movies that do not exist in the database.
-The result is a list of 3300 TODO movies the algorithm is tested with. 2008 of these movies could possibly be matched.
+Evaluation is done on two sets of 4000 randomly selected movies.
+The selection is done by listing all movies by name and then using $scala.util.Random$ to shuffle the list and take the first 4000 movies.
+The first list is used for the parameter opitimization, while the second is used for the final evaluation purpose.
+To get a gold standard only those movies with an annotated IMDb-id are taken into concideration.
+However, the id is not used to match the movies.
+These movies can be split into two parts: the movies that could potentially be matched and the movies that can not be matched, i.e. movies that do not exist in the database.
+The result is a list of 3300 TODO movies the algorithm is tested with.
+2008 of these movies could possibly be matched.
 
 Given the set of new movies N and the set of existing movies M the following function calculates the correct matching movie $m_{j} \in M$ of a new movie $n_{i} \in N$:
 
@@ -50,9 +56,16 @@ To generate consistent result, the whole evaluation is done without the distribu
 \item OS: Debian 3.2.57
 \end{itemize}
 
+The evaluation process is structured into two parts.
+First multiple evaluation steps are conducted to find the optimal values for the possible parameters in the process.
+Therefore, the first test looks at the impact on the quality of the results when the number of considered candidates is lowered.
+A second test observes the maximum Levenshtein distance between two actors and the threshold that needs to be reached for the actor overlap.
+The Levenshtein distance of the candidates is regared in the third test.
+Finally, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name.
+Thereby each annotated name of the movie is compared with each name of all the movies in the database.
 
 what is evaluated TODO
-list of annotated properties 
+list of annotated properties
 
 \subsubsection{Candidate Parameter}
 \subsubsection{Threshold Parameter}
