@@ -77,7 +77,7 @@ This two properties have shown to be available in all datasets for nearly all mo
 The pre-score is calculated based on the Levenshtein distance\footnote{The Levenshtein distance between two strings is defined as the amount of edit operations (insertions, deletions, substitutions), which are needed to transform the first string into the second one.} between $n_i$ and each $m_j$ and the distance between the years $year(n_i)$ and $year(m_j)$.
 Calculating these numbers for all movies in the database can be done efficient enough to provide a fast candidate selection.
 These numbers are combined into a score, where the Levenshtein distance is weighted more.
-Finally, the best 100 movies are selected as candidates, according to the score computed in the previous step.
+The parameter $CANDIDATE\_SET\_SIZE$ determines the number of candidates selected, so the best $CANDIDATE\_SET\_SIZE$ movies are selected as candidates, according to the score computed in the previous step.
 
 Please note, that candidate selection is not matching over the name, because no decisions need to be made between two similar named movies.
 Similar named movies are still good candidates, but the matching itself is using a different approach (see following chapter).
@@ -130,8 +130,9 @@ However, the idea is that less actors can be matched for different movies and mo
 An evaluation of this approach can be found in section \ref{subsec_evaluation_matching}.
 
 \paragraph{Implementation}
-The actual implementation does not only use the actor overlap, but also the overlap for producers, writers and directors.
-However, as these sets are usually smaller then the actor set, these overlaps are used with smaller weight than the actor overlap. ( <-Anmerkung von Dominik: Ich finde den Satz kann man weglassen)
+The actual implementation does not only use the actor overlap, but also considers the overlap for producers, writers, voice actors and directors.
+If there are lots of actors in both the new movie and the candidate movie, this information is taken into account with a lot of weight.
+However, for movies which do not have much actor information (e.g. cartoons, anime etc.), more weight is put to e.g. voice actors.
 Furthermore, the movie name and the year a movie was published is used as the deciding factor between movies, when their actor overlap is equal.
 
 This improvements have shown to produce better results as shown in section \ref{subsec_evaluation_matching}.
