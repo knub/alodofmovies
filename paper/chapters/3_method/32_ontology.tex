@@ -42,7 +42,7 @@ As shown in Figure \ref{fig_ontology} a distinction between e.g. director, write
 For example a person, who is a director in one movie and an actor in another movie, would have the additional classes \textit{dbpedia-owl:Actor} and \textit{dbpedia-owl:Director}.
 
 A problem, which occured when defining our ontology, was the entity \textit{Character}.
-In the first definition, there was just one \textit{Character} class, which was connected to the corresponding movie and actor.
+In the first definition, there was just one Character class, which was connected to the corresponding movie and actor.
 Also the actor had a connection to the character.
 The URL of the character was build out of the character name.
 
@@ -56,10 +56,10 @@ In the movie, both actors which originally portrayed Starsky and Hutch get a cam
 
 With the old approach, the system could not know who played the Starsky role in the remake, because all actors, who ever played the role, are listed.
 
-Therefore, an additional class of \textit{MovieCharacter} was introduced in the final ontology.
+Therefore, an additional class of MovieCharacter was introduced in the final ontology.
 This resource is only connected to one movie and all actors, who played that role in the movie.
-The URL of the \textit{MovieCharacter} is build from the unique identifier of the movie and the character.
-The \textit{MovieCharacter} is a subclass of \textit{Character}, which describes the general role.
+The URL of the MovieCharacter is build from the unique identifier of the movie and the character.
+The MovieCharacter is a subclass of \textit{Character}, which describes the general role.
 This means, that the unique identifier of the \textit{MovieCharacter} in the "Starsky \& Hutch" example is "Starksy/Starsky\&Hutch1970" and identifier of \textit{Character} is "Starksy".
 
 %TODO ??More detailed description of diagram??
