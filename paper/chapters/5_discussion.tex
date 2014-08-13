@@ -3,7 +3,7 @@
 \label{sec_discussion}
 
 The results shown in section \ref{sec_evaluation} give a lot of insight on the used approach.
-The following section will discuss these findings.
+The following section will discuss these findings and give insight on possible conclusions.
 
 TODO Stefan, Dominik, Tanja
 
@@ -12,14 +12,14 @@ Outlook SMM Comparision
 Figure \ref{fig_baseline_comparison} shows the huge improvement of the discussed algorithm to the baseline approach.
 This improvement can be explained by the limiting factors of the baseline approach, which have been explained in section \ref{subsec_method_matching}.
 
-
 Even though the results are already good there is still room for improvements.
-An analysis of the wrongly matched movies and the not found matches has yielded that the biggest possible gain is in improving the way the candidates are selected.
+The analysis of the wrongly matched movies and the not found matches, as listed in section \ref{subsec_evaluation_matching} has yielded that the biggest possible gain is in improving the way the candidates are selected.
 Since candidate selection is based mainly on the name, movies with names that are not annoted sofar are most likely not found.
-Thus, further criterias should be concidered when selecting the candidates to address this problem.
-However, the poor annotation quality, i.e. meaning that not many attributes are annotated, of a lot of the lesser known movies makes choosing these criterias a difficult task.
+Thus, further criterias should be concidered when calculating the pre-score for selecting candidates.
+Especially a set of movies that is choosen without an influence of there name could help.
+However, the movies that need to be matched, i.e. the one that do not have an annotated IMDb-id, usually have many other properties not annotated.
 
-
+99,5\% precision is a really good result.
 Biggest gain possible: in candidate selection
 aber candidate selection is trotzdem schon gut
 
