@@ -63,14 +63,19 @@ object Main extends App with Logging {
 				case _ =>
 					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
 					val merger = new MovieMatcher(new TmdbMovieTriplifier())
+					val baseLine = new DirectMovieMatcher(new TmdbMovieTriplifier())
+					baseLine.VERBOSE = false
+					baseLine.RANDOM = 1002
+					baseLine.TEST_SET_SIZE = 4000
 //					merger.VERBOSE = true
 //					merger.RANDOM = 1001
 //					merger.TEST_SET_SIZE = 4000
 //					merger.runStatistic(tmdbDir)
-					(0.0 to 1.0 by 0.1).foreach { minScore =>
-						List(1, 2, 3, 4).foreach { actDist =>
+					List(0.30000000000000004).foreach { minScore =>
+						List(3).foreach { actDist =>
 							val merger = new MovieMatcher(new TmdbMovieTriplifier())
 							merger.VERBOSE = false
+							merger.RANDOM = 1002
 							merger.TEST_SET_SIZE = 4000
 							merger.SCORE_THRESHOLD = minScore
 							merger.ACTOR_OVERLAP_LEVENSHTEIN = actDist

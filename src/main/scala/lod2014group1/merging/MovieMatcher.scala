@@ -126,7 +126,7 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 		log("F0.5-measure = (1.25 * Precision * Recall) / (0.25 * Precision + Recall)")
 		val f05Measure = (1.25 * precision * recall) / (0.25 * precision + recall)
-		println(s"$SCORE_THRESHOLD,$ACTOR_OVERLAP_LEVENSHTEIN,$precision,$recall,$f1Measure,$f05Measure")
+		println(s"MFM,$precision,$recall,$f1Measure,$f05Measure")
 		log(s"F0.5-measure = $f05Measure")
 
 //		log("Accuracy = correct / (correct + incorrect)")
