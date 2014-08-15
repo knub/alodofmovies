@@ -1,0 +1,31 @@
+:compileJava UP-TO-DATE
+:compileScala
+:processResources UP-TO-DATE
+:classes
+:jar
+:assemble
+:compileTestJava UP-TO-DATE
+:compileTestScala UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:check UP-TO-DATE
+:build
+:merge
+[INFO ] lod2014group1.Main$ - 08:28 - Arguments: List(merge)
+<http://imdb.com/title/tt78578>
+<http://imdb.com/title/tt545406>
+<http://imdb.com/title/tt125356>
+<http://imdb.com/title/tt087678>
+baseline,0.5923566878980892,0.5925663716814159,0.5924615112369491,0.592398612782221
+Took 54 min 10 s.
+<http://imdb.com/title/tt78578>
+<http://imdb.com/title/tt545406>
+<http://imdb.com/title/tt125356>
+<http://imdb.com/title/tt087678>
+MFM,0.991807755324959,0.88671875,0.9363237947924722,0.9688433632095604
+Took 61 min 54 s.
+
+BUILD SUCCESSFUL
+
+Total time: 1 hrs 56 mins 58.242 secs
