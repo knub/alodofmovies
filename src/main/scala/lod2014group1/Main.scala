@@ -71,6 +71,7 @@ object Main extends App with Logging {
 //					merger.RANDOM = 1001
 //					merger.TEST_SET_SIZE = 4000
 //					merger.runStatistic(tmdbDir)
+					time(baseLine.runStatistic(tmdbDir))
 					List(0.30000000000000004).foreach { minScore =>
 						List(3).foreach { actDist =>
 							val merger = new MovieMatcher(new TmdbMovieTriplifier())
