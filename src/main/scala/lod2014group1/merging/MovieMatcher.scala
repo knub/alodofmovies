@@ -142,19 +142,20 @@ class MovieMatcher(val triplifier: Triplifier) {
 
 		val triples = triplifier.triplify(FileUtils.readFileToString(file))
 		val tripleGraph = new TripleGraph(triples)
-		val imdbId = tripleGraph.getImdbId()
-		if (imdbId == null) {
+		var imdbId = tripleGraph.getImdbId()
+		if (imdbId != null) {
 //			log("No IMDB ID. Skip.")
 			noImdbId ::= fileId
 			return
 		}
-		val isInDb = taskDb.hasTasks(imdbId)
-		if (!isInDb) {
-//			log("Not in DB. Skip.")
-			notInDb ::= fileId
-			wronglyMatchedNotInDbSum += (if (merge(tripleGraph).filter(minScore).isEmpty) 0 else 1)
-			return
-		}
+		imdbId = "xxx"
+//		val isInDb = taskDb.hasTasks(imdbId)
+//		if (!isInDb) {
+////			log("Not in DB. Skip.")
+//			notInDb ::= fileId
+//			wronglyMatchedNotInDbSum += (if (merge(tripleGraph).filter(minScore).isEmpty) 0 else 1)
+//			return
+//		}
 		val candidates = merge(tripleGraph)
 		val candidateIds = candidates.map { c => getImdbId(c) }
 
