@@ -1,0 +1,3 @@
+plot:
+	gnuplot -p *.gnuplot
+

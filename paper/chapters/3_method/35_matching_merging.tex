@@ -2,11 +2,12 @@
 \subsection{Matching and Merging Movie Resources}
 \label{subsec_method_matching}
 
-The following sections show the approach for matching (i.e. finding the same entity in different datasets) and merging (i.e. integrating mulitple different datasets which decribe the same entity into one.)
+The following sections show the approach for matching (i.e. finding the same entity in different datasets)
+and merging (i.e. integrating two different datasets about the same entity into one).
 
 \subsubsection{Problem Statement}
 After loading the initial dataset into the database, the task is to integrate others to create a complete dataset with more information than a single one can provide on its own.
-% TODO: Why IMDB?
+
 However, simply dumping the second dataset into the database would lead to duplicated entries and thereby decrease the overall quality of the database.
 Thus, the datasets need to be aggregated and unified by looking for a match for each new entry in the old dataset.
 Potentially, this has to be done for matching every entry, such as movies, actors, characters, and others, but the following section focusses on matching movies only.
@@ -34,10 +35,9 @@ In general, the matching algorithm must satisfy two requirements:
 	\item{High precision:} A movie should not be matched to a wrong movie, as this decreases the quality of the dataset.
 	The goal is to find many matches, but it is important not to add too many wrong matches.
 	\item{Performance:} With thousands of movies in each new dataset, matching one movie should not take too long.
-	For example TMDb has about 170,000 movies to match. (TODO check this number)
-	%TODO Check this number
-	If each movie takes just 1 minute to match, the whole process for TMDb already takes $171,000~movies * 1 \frac{minute}{movie} * \frac{1}{1440} \frac{days}{minute} \approx 119~days$.
-	This is just one data source and only the current set of movies which is steadily increasing in size as more movies are added for each data source.
+	For example TMDb has about 182,000 movies to match.
+	If each movie takes just 1 minute to match, the whole process for TMDb already takes $182,000~movies * 1 \frac{minute}{movie} * \frac{1}{1440} \frac{days}{minute} \approx 126~days$.
+	This is just one data source and only the current set of movies which is steadily increasing in size as more movies are added to each data source every day.
 \end{enumerate}
 
 This leads to two consequences: First, a certain level of confidence needs to be reached to match two movies to each other.
@@ -84,8 +84,6 @@ The parameter $CANDIDATE\_SET\_SIZE$ determines the number of candidates selecte
 Please note, that candidate selection is not matching over the name, because no decisions need to be made between two similarly named movies.
 Similarly named movies are still good candidates, but the matching itself is using a different approach, see the following chapter.
 
-TODO: Reword
-
 \paragraph{Score calculation}
 After the candidates have been selected, the next step is to find the best match.
 For that, the algorithm uses the actor information, which is available for $n_i$ and each $m_j$ in $C_i$.
@@ -96,12 +94,12 @@ Given
 	\item[$A_{movie}$] a function, which returns the actor names from a movie in one of the datasets,
 	\item[$Levenshtein(s_1, s_2)$] a function, which returns the edit distance (insert, remove, replace) between two strings.
 \end{description}
-the best match $n_i$ is determined as follows:
+the best match for $n_i$ is determined as follows:
 
 \begin{align}
 	match(n_i) &=
 		\begin{cases}
-			best\_match(n_i),~if~score > MIN\_SCORE) \\
+			best\_match(n_i),~if> MIN\_SCORE) \\
 			\bot
 		\end{cases}\label{aoeq:1}\\
 	best\_match(n_i) &=
@@ -127,7 +125,7 @@ For the check whether one actor from one movie is also in the other movie, no st
 Two actors are considered equal (but only for the sake of matching movies), when their Levenshtein distance is below a certain threshold $ACT\_DIST$.
 
 The main idea of the algorithm is to use the actor overlap between two movies as the main matching criteria.
-The Levenshtein distance in \ref{aoeq:4} may not be able to match all actors correctly (i.e. "`Emma Watson"' and "`Emily Watson"' with a distance of three), because similar name problems can occur as with the movie (misspellings, different spelling in different languages, actual similar names for different actors etc.).
+The Levenshtein distance in \ref{aoeq:4} may not be able to match all actors correctly (i.e. ``Emma Watson'' and ``Emily Watson'' with a distance of three), because similar name problems can occur as with the movie (misspellings, different spelling in different languages, actual similar names for different actors etc.).
 However, the idea is that less actors can be matched for different movies and more actors can be matched for the same movie in different data sources.
 An evaluation of this approach can be found in Section \ref{subsec_evaluation_matching}.
 
