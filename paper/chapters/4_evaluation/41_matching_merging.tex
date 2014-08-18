@@ -53,7 +53,7 @@ FP &\coloneqq \Set*{(n_i, m_j)}{m_j \in M \land m_j \neq match(n_i) \land m_j = 
 
 Based on these sets, standard definitions of the evaluation metrics precision, recall, F0.5-measure are used.
 
-To generate consistent results, the whole evaluation is done without the distributed enviroment, as explained in section \ref{subsec_method_architecture}, but on a single machine with the following system specifications:
+To generate consistent results, the whole evaluation is done without the distributed enviroment, as explained in Section \ref{subsec_method_architecture}, but on a single machine with the following system specifications:
 \begin{itemize}
 	\item CPU: Pentium(R) Dual-Core  CPU E5300  @ 2.60GHz
 	\item RAM: 16GB, Java is run with 4GB of RAM
@@ -69,21 +69,23 @@ TODO: List of annotated properties
 TODO: Important, how are the other parameters set?
 
 \subsection{$CANDIDATE\_SET\_SIZE$ parameter}
-The first test looks at the impact on the quality of the results when the number of considered candidates is increased (see Figure \ref{fig_candidate_set_size}.
+The first test looks at the impact on the quality of the results when the number of considered candidates is increased (see Figure \ref{fig_candidate_set_size}).
+For each test step, the candidate set size was doubled (starting at 2), hence a logarithmic scale is used.
+In general, the candidate set size should be as small as possible, because the greater this number, the longer the runtime of the matching process.
+For example, when trying to match 4000 movies, it takes 145 minutes with a $CANDIDATE\_SET\_SIZE$ of 1024, but 276 minutes with a $CANDIDATE\_SET\_SIZE$ of 2048.
 
 \begin{figure}[h!]
   \begin{center}
   \includegraphics[width=0.8\textwidth]{images/candidateSetSize.pdf}
   \end{center}
-  \caption{Candidate set size}
+  \caption{$CANDIDATE\_SET\_SIZE$ evaluation: The best F0.5 performance is reached at a candidate set size of 32.}
   \label{fig_candidate_set_size}
 \end{figure}
 
 \subsection{$ACT\_DIST$ and $MIN\_SCORE$ parameter}
 A second test observes the maximum Levenshtein distance between two actors and the threshold that needs to be reached for the actor overlap.
-The assumption was, that these parameters are not independent of each other, as both directly affect the scoring procedure.
+The assumption is, that these parameters are not independent of each other, as both directly affect the scoring procedure.
 Increasing $ACT\_DIST$ immediately leads to a higher score, because more actors are considered the same.
-
 
 
 \subsection{Refinement Weight}
