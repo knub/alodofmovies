@@ -5,29 +5,24 @@
 \emph{Match Forrest, Match!} is built on four different data sources.
 
 The first data source is the \textit{Internet Movie Database (IMDb)}\footnote{\url{http://www.imdb.com/}}.
-This data source contains more than 274,000 movies and more than 365,000 people.
-%TODO SOURCE ^
+This data source contains more than 313,000 movies and more than 6,000,000 people \cite{IMDb_stats}.
 To get the individual movie resources, the system has to crawl HTML pages.
 While the content in IMDb is mostly user-generated, it has to go through multiple consistency checks, performed by professionals \cite{IMDb_DataCreation, IMDb_amazon}.
 Thus, we can assume that the data is more likely to be correct when compared to data from entirely user generated data sources.
 
 A big open platform, which includes a big section about movies, is \textit{Freebase}\footnote{\url{http://www.freebase.com/}}.
 Google hosts this connected user-generated open database, which contains a lot of links to other platforms.
-It contains more than 250,000 movies and more than 430,000 people.
-%TODO SOURCE ^
+It contains more than 250,000 movies and more than 754,000 people \cite{Freebase_stats}.
 Freebase offers a MQL API and a Topic API, which can be queried to get movie resources.
 
 \textit{themoviedb.org (TMDb)}\footnote{\url{http://www.themoviedb.org/}} is a movie database which contains a lot of images.
 It also offers an API to send requests for movie resources.
-TMDb is a collection of more than 171,000 movies and 605,000 people.
-%TODO SOURCE ^
+TMDb is a collection of 182,000 movies and 475,000 people \cite{TMDb_stats}.
 TMDb also publishes diffs, which is helpful to keep all movies from this data source up-to-date.
 
 The last data source the system utilizes is the \textit{Online-Filmdatenbank (OFDb)}\footnote{\url{http://www.ofdb.de/}}.
 This data source is specialised on German movies, but also contains international ones.
-It contains more than 236,000 movies and 54,000 people.
-%TODO SOURCE ^
-%TODO ??Table for the numbers instead??
+It contains more than 257,000 movies and 60,000 people \cite{OFDb_stats}.
 
 To create a unified dataset of movies, a main data source must be chosen.
 This main source is used to match movies from different data sources against it.
