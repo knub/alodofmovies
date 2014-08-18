@@ -62,31 +62,28 @@ To generate consistent results, the whole evaluation is done without the distrib
 
 The evaluation process is structured into two parts: parameter optimization and final evaluation.
 In the first part, several experiments are conducted regarding the optimal parameters.
-Concretely, the goal was to find good values for $ACT\_DIST$, $MIN\_SCORE$ and $CANDIDATE\_SET\_SIZE$.
+Concretely, the goal was to find good values for $ACT\_DIST$, $MIN\_SCORE$, $CANDIDATE\_SET\_SIZE$ and the weighting of the different score factors.
+In the second part, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name, and against the optimized system.
 
-
-The Levenshtein distance of the candidates is regared in the third test.
-Finally, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name.
-Thereby each annotated name of the movie is compared with each name of all the movies in the database.
-
-what is evaluated TODO
-list of annotated properties
+TODO: List of annotated properties
 TODO: Important, how are the other parameters set?
 
 \subsection{$CANDIDATE\_SET\_SIZE$ parameter}
-Therefore, the first test looks at the impact on the quality of the results when the number of considered candidates is lowered.
+The first test looks at the impact on the quality of the results when the number of considered candidates is increased (see Figure \ref{fig_candidate_set_size}.
 
 \begin{figure}[h!]
   \begin{center}
   \includegraphics[width=0.8\textwidth]{images/candidateSetSize.pdf}
   \end{center}
-  \caption{TODO}
+  \caption{Candidate set size}
   \label{fig_candidate_set_size}
 \end{figure}
 
-\subsection{Threshold Parameter}
-
+\subsection{$ACT\_DIST$ and $MIN\_SCORE$ parameter}
 A second test observes the maximum Levenshtein distance between two actors and the threshold that needs to be reached for the actor overlap.
+The assumption was, that these parameters are not independent of each other, as both directly affect the scoring procedure.
+Increasing $ACT\_DIST$ immediately leads to a higher score, because more actors are considered the same.
+
 
 
 \subsection{Refinement Weight}
@@ -95,11 +92,12 @@ A second test observes the maximum Levenshtein distance between two actors and t
   \begin{center}
   \includegraphics[width=0.8\textwidth]{images/graph_weight.pdf}
   \end{center}
-  \caption{TODO}
+  \caption{Refinement weight}
   \label{fig_weight}
 \end{figure}
+
 \subsection{Final evaluation}
-With the determined parameters:
+With the determined parameters: $MIN\_SCORE = 1.00$, $ACT\_DIST = 1.00$, $CANDIDATE\_SET = 100$
 TODO: Write final parameters
 the final performance of the matching algorithm is illustrated in figure ref
 
