@@ -1,6 +1,3 @@
 plot:
-	gnuplot -p test.gnuplot
-
-glass:
-	gnuplot -p glass.gnuplot
+	gnuplot -p test.gnuplot && eog *.svg
 

@@ -87,6 +87,20 @@ A second test observes the maximum Levenshtein distance between two actors and t
 The assumption is, that these parameters are not independent of each other, as both directly affect the scoring procedure.
 Increasing $ACT\_DIST$ immediately leads to a higher score, because more actors are considered the same.
 
+For the optimization, $ACT\_DIST$ was tried for values from 1 to 4, $MIN\_SCORE$ was tried for every value from 0 to 1 in 0.1 steps.
+
+The results can be seen in Figure \ref{fig_3d}.
+The results for $MIN\_SCORE > 0.7$ and $MIN\_SCORE < 0.1$ are far worse than the other results, which is why they have been excluded from the figure.
+The optimal value is at $MIN\_SCORE = 0.2$ and $ACT\_DIST = 2$.
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{images/3d.pdf}
+  \end{center}
+  \caption{$ACT\_DIST$  and $MIN\_SCORE$ evaluation. There are a lot of false positives between a threshold of 0.6 and 0.7, which explains the knee.}
+  \label{fig_3d}
+\end{figure}
+
 
 \subsection{Refinement Weight}
 
@@ -97,7 +111,6 @@ Increasing $ACT\_DIST$ immediately leads to a higher score, because more actors 
   \caption{Refinement weight}
   \label{fig_weight}
 \end{figure}
-
 \subsection{Final evaluation}
 With the determined parameters: $MIN\_SCORE = 1.00$, $ACT\_DIST = 1.00$, $CANDIDATE\_SET = 100$
 TODO: Write final parameters
