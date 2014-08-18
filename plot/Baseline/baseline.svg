@@ -114,13 +114,13 @@
      inkscape:window-height="1014"
      id="namedview341"
      showgrid="false"
-     inkscape:zoom="2.7812867"
-     inkscape:cx="352.07844"
-     inkscape:cy="201.16851"
+     inkscape:zoom="0.98333334"
+     inkscape:cx="243.37763"
+     inkscape:cy="256.27641"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g232" />
+     inkscape:current-layer="gnuplot_canvas" />
   <title
      id="title4">Gnuplot</title>
   <desc
@@ -357,14 +357,14 @@
        d="m 106.9,463.4 0,-388.1 15.1,0 0,388.1 -15.1,0 z m 0,0 h 0.01"
        id="path125"
        inkscape:connector-curvature="0"
-       style="color:#008000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;" />
+       style="color:#008000;fill:#b3b3b3;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
     <g
        style="color:#0000ff;fill:none;stroke:none"
        id="g147">
       <polygon
          points="122,463.4 137.3,463.4 137.3,113.9 122,113.9 "
          id="polygon149"
-         style="fill:url(#gpPat3)" />
+         style="fill:#666666" />
     </g>
     <path
        d="m 122,463.4 0,-349.4 15.2,0 0,349.4 -15.2,0 z m 0,0 h 0.01"
@@ -514,7 +514,7 @@
     </g>
     <g
        id="g216"
-       style="color:#008000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+       style="color:#008000;fill:#b3b3b3;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
       <defs
          id="defs218">
         <pattern
@@ -532,21 +532,21 @@
       </defs>
       <g
          id="g223"
-         style="stroke:none">
+         style="stroke:none;fill:#b3b3b3">
         <polygon
-           style="fill:url(#gpPat5)"
+           style="fill:#b3b3b3"
            id="polygon225"
            points="322.1,116.3 306.9,116.3 306.9,463.4 322.1,463.4 " />
       </g>
       <path
-         style="stroke:#000000"
+         style="stroke:#000000;fill:#b3b3b3"
          inkscape:connector-curvature="0"
          id="path227"
          d="m 306.9,463.4 0,-347 15.1,0 0,347 -15.1,0 z m 0,0 h 0.01" />
     </g>
     <g
        id="g232"
-       style="color:#0000ff;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1">
+       style="color:#0000ff;fill:#666666;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1">
       <defs
          id="defs234">
         <pattern
@@ -564,9 +564,9 @@
       </defs>
       <g
          id="g239"
-         style="stroke:#000000;stroke-opacity:1">
+         style="stroke:#000000;stroke-opacity:1;fill:#666666">
         <polygon
-           style="fill:url(#gpPat6);stroke:#000000;stroke-opacity:1"
+           style="fill:#666666;stroke:#000000;stroke-opacity:1"
            id="polygon241"
            points="322,463.4 337.3,463.4 337.3,183.8 322,183.8 " />
       </g>
@@ -717,7 +717,7 @@
     </g>
     <g
        id="g308"
-       style="color:#008000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+       style="color:#008000;fill:#b3b3b3;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
       <defs
          id="defs310">
         <pattern
@@ -735,21 +735,21 @@
       </defs>
       <g
          id="g315"
-         style="stroke:none">
+         style="stroke:none;fill:#b3b3b3">
         <polygon
-           style="fill:url(#gpPat8)"
+           style="fill:#b3b3b3"
            id="polygon317"
            points="522.1,84.2 506.9,84.2 506.9,463.4 522.1,463.4 " />
       </g>
       <path
-         style="stroke:#000000"
+         style="stroke:#000000;fill:#b3b3b3"
          inkscape:connector-curvature="0"
          id="path319"
          d="m 506.9,463.4 0,-379.1 15.1,0 0,379.1 -15.1,0 z m 0,0 h 0.01" />
     </g>
     <g
        id="g324"
-       style="color:#0000ff;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+       style="color:#0000ff;fill:#666666;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
       <defs
          id="defs326">
         <pattern
@@ -767,14 +767,14 @@
       </defs>
       <g
          id="g331"
-         style="stroke:none">
+         style="stroke:none;fill:#666666">
         <polygon
-           style="fill:url(#gpPat9)"
+           style="fill:#666666"
            id="polygon333"
            points="537.3,130.6 522,130.6 522,463.4 537.3,463.4 " />
       </g>
       <path
-         style="stroke:#000000"
+         style="stroke:#000000;fill:#666666"
          inkscape:connector-curvature="0"
          id="path335"
          d="m 522,463.4 0,-332.7 15.2,0 0,332.7 -15.2,0 z m 0,0 h 0.01" />
@@ -833,7 +833,7 @@
        d="m 532.34307,512.95416 42.2,0 0,-9 -42.2,0 0,9 z m 0,0 h 0.01"
        id="path119"
        inkscape:connector-curvature="0"
-       style="color:#008000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+       style="color:#008000;fill:#b3b3b3;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
     <g
        transform="translate(524.04307,530.95416)"
        style="font-size:15px;text-anchor:end;color:#0000ff;fill:#000000;stroke:none;font-family:Arial"
@@ -858,7 +858,7 @@
        d="m 532.34307,530.95416 42.2,0 0,-9 -42.2,0 0,9 z m 0,0 h 0.01"
        id="path145"
        inkscape:connector-curvature="0"
-       style="color:#0000ff;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+       style="color:#0000ff;fill:#666666;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot3671"
@@ -869,5 +869,5 @@
            height="627.45764"
            x="-108.81356"
            y="-55.932205" /></flowRegion><flowPara
-         id="flowPara3677"></flowPara></flowRoot>  </g>
+         id="flowPara3677" /></flowRoot>  </g>
 </svg>
