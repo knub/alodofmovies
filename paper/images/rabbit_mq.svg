@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="rabbit_mq.pdf">
+   sodipodi:docname="rabbit_mq.svg">
   <defs
      id="defs4">
     <clipPath
@@ -41,9 +41,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="461.38145"
-     inkscape:cy="265.69462"
+     inkscape:zoom="1.4"
+     inkscape:cx="179.85066"
+     inkscape:cy="267.53297"
      inkscape:document-units="px"
      inkscape:current-layer="g3351"
      showgrid="false"
@@ -66,7 +66,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -521,20 +521,20 @@
         <text
            xml:space="preserve"
            style="font-size:18px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Classical Serif;-inkscape-font-specification:CMU Classical Serif Bold Italic"
-           x="355.82611"
-           y="427.9895"
+           x="349.82611"
+           y="429.9895"
            id="text3969-3-9"
            sodipodi:linespacing="125%"><tspan
              sodipodi:role="line"
              id="tspan3971-3-6"
-             x="355.82611"
-             y="427.9895"
+             x="349.82611"
+             y="429.9895"
              style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium">5. Get </tspan><tspan
              sodipodi:role="line"
-             x="355.82611"
-             y="450.4895"
+             x="349.82611"
+             y="452.4895"
              style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-             id="tspan3109">Answer</tspan></text>
+             id="tspan3109">   Answer</tspan></text>
         <text
            xml:space="preserve"
            style="font-size:18px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Classical Serif;-inkscape-font-specification:CMU Classical Serif Bold Italic"
@@ -551,7 +551,7 @@
              x="243.69919"
              y="494.93622"
              style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
-             id="tspan3102">Result</tspan></text>
+             id="tspan3102">   Result</tspan></text>
         <text
            xml:space="preserve"
            style="font-size:18px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Classical Serif;-inkscape-font-specification:CMU Classical Serif Bold Italic"
