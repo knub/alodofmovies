@@ -43,9 +43,9 @@ Thus, there are four graphs in the triplestore: IMDb, Freebase, TMDb and OFDb.
 The process of crawling, triplifying and matching a movie resource takes a lot of time.
 This is especially true when there are limits to crawl some web pages, which means that waiting times can occur.
 Triplifying and matching needs computational resources.
-Because the steps can be done in parallel, a messaging infrastructure was implemented to speed up the process and to avoid crawl limits.
+Because these steps can be done in parallel, a messaging infrastructure was implemented to speed up the process and to avoid crawl limits.
 
-Therefore, the Task Distributor, including the messaging server, uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
+Therefore, the Task Distributor uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
 
 A task consists of the following fields
 \begin{itemize}
@@ -83,8 +83,9 @@ When the worker has finished the task, it sends its answer to the answer queue a
 The server receives the worker's answer from the answer queue and then stores given triples into the triple store or files into the file system.
 When the answer was successfully stored, the server sends his acknowledgement to the worker who forwards the acknowledgement to the task queue.
 The task is now successfully executed and the worker can work on the next task in the task queue.
-If an acknowledgement takes longer than a given time, the task would be assigned to another worker.
+If an acknowledgement takes longer than a certain time, the task would be assigned to another worker.
 This ensures that no tasks get lost.
+By only sending the acknowledgement after storing the data, it is also ensured that only really finished tasks are considered as finished.
 
 \begin{figure}[ht]
   \begin{center}
