@@ -1,5 +1,5 @@
 %!TEX root = ../../lod-group1.tex
-\subsection{Matching}
+\subsection{Matching and Merging Movie Resources}
 \label{subsec_method_matching}
 
 The following sections show the approach for matching (i.e. finding the same entity in different datasets) and merging (i.e. integrating two different datasets about the same entity into one.)
@@ -136,3 +136,12 @@ However, for movies which do not have much actor information (e.g. cartoons, ani
 Furthermore, the movie name and the year a movie was published is used as the deciding factor between movies, when their actor overlap is equal.
 
 This improvements have shown to produce better results as shown in Section \ref{subsec_evaluation_matching}.
+
+\subsubsection{Merging Movie Resources}
+
+If two movie resources are identified as the same, the movies have to be merged, i.e. the already existing movie is enriched with the new information.
+The triples from the matched movie can contain new, duplicate or conflicting information.
+The systems, however, considers all triples to be correct and inserts them all.
+A conflict detection and resolution is not in the scope of this paper.
+All triples are stored in an extra graph depending on the data source where they come from.
+This allows to track duplicate or conflicting information.
