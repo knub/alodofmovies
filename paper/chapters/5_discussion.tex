@@ -9,17 +9,17 @@ Figure \ref{fig_baseline} shows the huge improvement of the discussed algorithm 
 This improvement can be explained by the limiting factors of the baseline approach, which have already been explained in section \ref{subsec_method_matching}.
 
 On the other hand, Figure \ref{fig_baseline} also shows results for matching movies with no IMDb-id annotated.
-When comparing this with the results 
+When comparing this with the results from movies, which have an IMDb-id annotated, a bias is clearly visible.
+This shows
 
 
-Bias existss
 
 The drop in precision and recall can be explained by the general lower annotation quality of those movies.
 Still, compared to a possible baseline approach it is still an improvement.
 
 However, even though the results are already good there is still room for improvements.
 The analysis of the wrongly matched movies and the not found matches, as listed in Section \ref{subsec_evaluation_matching} has yielded that the biggest possible gain is in improving the way the candidates are selected.
-Since candidate selection is based mainly on the name, movies with names that are not annoted sofar are most likely not found.
+Since candidate selection is based mainly on the name at the moment, movies with names that are not annotated so far are most likely not found.
 Thus, further criterias should be concidered when calculating the pre-score for selecting candidates.
 Especially a set of movies that is choosen without an influence of there name could help.
 However, the movies that need to be matched, i.e. the one that do not have an annotated IMDb-id, usually have many other properties not annotated.
