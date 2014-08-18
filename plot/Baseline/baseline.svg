@@ -1,235 +1,873 @@
-<?xml version="1.0" encoding="utf-8"  standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg 
- width="600" height="480" 
- viewBox="0 0 600 480"
- xmlns="http://www.w3.org/2000/svg"
- xmlns:xlink="http://www.w3.org/1999/xlink"
->
-
-<title>Gnuplot</title>
-<desc>Produced by GNUPLOT 4.6 patchlevel 4 </desc>
-
-<g id="gnuplot_canvas">
-
-<rect x="0" y="0" width="600" height="480" fill="none"/>
-<defs>
-
-	<circle id='gpDot' r='0.5' stroke-width='0.5'/>
-	<path id='gpPt0' stroke-width='0.222' stroke='currentColor' d='M-1,0 h2 M0,-1 v2'/>
-	<path id='gpPt1' stroke-width='0.222' stroke='currentColor' d='M-1,-1 L1,1 M1,-1 L-1,1'/>
-	<path id='gpPt2' stroke-width='0.222' stroke='currentColor' d='M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1'/>
-	<rect id='gpPt3' stroke-width='0.222' stroke='currentColor' x='-1' y='-1' width='2' height='2'/>
-	<rect id='gpPt4' stroke-width='0.222' stroke='currentColor' fill='currentColor' x='-1' y='-1' width='2' height='2'/>
-	<circle id='gpPt5' stroke-width='0.222' stroke='currentColor' cx='0' cy='0' r='1'/>
-	<use xlink:href='#gpPt5' id='gpPt6' fill='currentColor' stroke='none'/>
-	<path id='gpPt7' stroke-width='0.222' stroke='currentColor' d='M0,-1.33 L-1.33,0.67 L1.33,0.67 z'/>
-	<use xlink:href='#gpPt7' id='gpPt8' fill='currentColor' stroke='none'/>
-	<use xlink:href='#gpPt7' id='gpPt9' stroke='currentColor' transform='rotate(180)'/>
-	<use xlink:href='#gpPt9' id='gpPt10' fill='currentColor' stroke='none'/>
-	<use xlink:href='#gpPt3' id='gpPt11' stroke='currentColor' transform='rotate(45)'/>
-	<use xlink:href='#gpPt11' id='gpPt12' fill='currentColor' stroke='none'/>
-</defs>
-<g style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<g transform="translate(300.0,22.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text></text>
-	</g>
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M53.9,463.4 L62.9,463.4 M175.0,463.4 L166.0,463.4  h0.01'/>	<g transform="translate(45.6,467.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0</text>
-	</g>
-	<path stroke='black'  d='M53.9,385.1 L62.9,385.1 M175.0,385.1 L166.0,385.1  h0.01'/>	<g transform="translate(45.6,389.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.2</text>
-	</g>
-	<path stroke='black'  d='M53.9,306.9 L62.9,306.9 M175.0,306.9 L166.0,306.9  h0.01'/>	<g transform="translate(45.6,311.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.4</text>
-	</g>
-	<path stroke='black'  d='M53.9,228.6 L62.9,228.6 M175.0,228.6 L166.0,228.6  h0.01'/>	<g transform="translate(45.6,233.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.6</text>
-	</g>
-	<path stroke='black'  d='M53.9,150.4 L62.9,150.4 M175.0,150.4 L166.0,150.4  h0.01'/>	<g transform="translate(45.6,154.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.8</text>
-	</g>
-	<path stroke='black'  d='M53.9,72.1 L62.9,72.1 M175.0,72.1 L166.0,72.1  h0.01'/>	<g transform="translate(45.6,76.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 1</text>
-	</g>
-	<path stroke='black'  d='M53.9,72.1 L53.9,463.4 L175.0,463.4 L175.0,72.1 L53.9,72.1 Z  h0.01'/>	<g transform="translate(114.4,49.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Precision</text>
-	</g>
-</g>
-	<g id="gnuplot_plot_1a" ><title>gnuplot_plot_1a</title>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<g transform="translate(107.9,94.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text>Baseline on movies with IMDb-id</text>
-	</g>
-	<defs>
-		<pattern id='gpPat1' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat1)' points = '116.2,94.6 158.4,94.6 158.4,85.6 116.2,85.6 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M116.2,94.6 L158.4,94.6 L158.4,85.6 L116.2,85.6 L116.2,94.6 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat1)' points = '91.7,463.4 107.0,463.4 107.0,231.5 91.7,231.5 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M91.7,463.4 L91.7,231.6 L106.9,231.6 L106.9,463.4 L91.7,463.4 Z  h0.01'/></g>
-	</g>
-	<g id="gnuplot_plot_2a" ><title>gnuplot_plot_2a</title>
-<g style="fill:none; color:green; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<g transform="translate(107.9,112.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text>MFM on movies with IMDb-id</text>
-	</g>
-	<defs>
-		<pattern id='gpPat2' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat2)' points = '116.2,112.6 158.4,112.6 158.4,103.6 116.2,103.6 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M116.2,112.6 L158.4,112.6 L158.4,103.6 L116.2,103.6 L116.2,112.6 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat2)' points = '106.9,463.4 122.1,463.4 122.1,75.2 106.9,75.2 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M106.9,463.4 L106.9,75.3 L122.0,75.3 L122.0,463.4 L106.9,463.4 Z  h0.01'/></g>
-	</g>
-	<g id="gnuplot_plot_3a" ><title>gnuplot_plot_3a</title>
-<g style="fill:none; color:blue; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<g transform="translate(107.9,130.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text>MFM on movies without IMDb-id</text>
-	</g>
-	<defs>
-		<pattern id='gpPat3' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0 M0,4 L4,8 L8,4 L4,0 L0,4'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat3)' points = '116.2,130.6 158.4,130.6 158.4,121.6 116.2,121.6 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M116.2,130.6 L158.4,130.6 L158.4,121.6 L116.2,121.6 L116.2,130.6 Z  h0.01'/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat3)' points = '122.0,463.4 137.3,463.4 137.3,113.9 122.0,113.9 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M122.0,463.4 L122.0,114.0 L137.2,114.0 L137.2,463.4 L122.0,463.4 Z  h0.01'/></g>
-	</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M53.9,72.1 L53.9,463.4 L175.0,463.4 L175.0,72.1 L53.9,72.1 Z  h0.01'/>	<path stroke='black'  d='M253.9,463.4 L262.9,463.4 M375.0,463.4 L366.0,463.4  h0.01'/>	<g transform="translate(245.6,467.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0</text>
-	</g>
-	<path stroke='black'  d='M253.9,385.1 L262.9,385.1 M375.0,385.1 L366.0,385.1  h0.01'/>	<g transform="translate(245.6,389.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.2</text>
-	</g>
-	<path stroke='black'  d='M253.9,306.9 L262.9,306.9 M375.0,306.9 L366.0,306.9  h0.01'/>	<g transform="translate(245.6,311.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.4</text>
-	</g>
-	<path stroke='black'  d='M253.9,228.6 L262.9,228.6 M375.0,228.6 L366.0,228.6  h0.01'/>	<g transform="translate(245.6,233.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.6</text>
-	</g>
-	<path stroke='black'  d='M253.9,150.4 L262.9,150.4 M375.0,150.4 L366.0,150.4  h0.01'/>	<g transform="translate(245.6,154.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.8</text>
-	</g>
-	<path stroke='black'  d='M253.9,72.1 L262.9,72.1 M375.0,72.1 L366.0,72.1  h0.01'/>	<g transform="translate(245.6,76.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 1</text>
-	</g>
-	<path stroke='black'  d='M253.9,72.1 L253.9,463.4 L375.0,463.4 L375.0,72.1 L253.9,72.1 Z  h0.01'/>	<g transform="translate(314.4,49.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Recall</text>
-	</g>
-</g>
-	<g id="gnuplot_plot_1b" ><title>gnuplot_plot_1b</title>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat4' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat4)' points = '291.7,463.4 307.0,463.4 307.0,231.4 291.7,231.4 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M291.7,463.4 L291.7,231.5 L306.9,231.5 L306.9,463.4 L291.7,463.4 Z  h0.01'/></g>
-	</g>
-	<g id="gnuplot_plot_2b" ><title>gnuplot_plot_2b</title>
-<g style="fill:none; color:green; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat5' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat5)' points = '306.9,463.4 322.1,463.4 322.1,116.3 306.9,116.3 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M306.9,463.4 L306.9,116.4 L322.0,116.4 L322.0,463.4 L306.9,463.4 Z  h0.01'/></g>
-	</g>
-	<g id="gnuplot_plot_3b" ><title>gnuplot_plot_3b</title>
-<g style="fill:none; color:blue; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat6' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0 M0,4 L4,8 L8,4 L4,0 L0,4'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat6)' points = '322.0,463.4 337.3,463.4 337.3,183.8 322.0,183.8 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M322.0,463.4 L322.0,183.9 L337.2,183.9 L337.2,463.4 L322.0,463.4 Z  h0.01'/></g>
-	</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M253.9,72.1 L253.9,463.4 L375.0,463.4 L375.0,72.1 L253.9,72.1 Z  h0.01'/>	<path stroke='black'  d='M453.9,463.4 L462.9,463.4 M575.0,463.4 L566.0,463.4  h0.01'/>	<g transform="translate(445.6,467.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0</text>
-	</g>
-	<path stroke='black'  d='M453.9,385.1 L462.9,385.1 M575.0,385.1 L566.0,385.1  h0.01'/>	<g transform="translate(445.6,389.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.2</text>
-	</g>
-	<path stroke='black'  d='M453.9,306.9 L462.9,306.9 M575.0,306.9 L566.0,306.9  h0.01'/>	<g transform="translate(445.6,311.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.4</text>
-	</g>
-	<path stroke='black'  d='M453.9,228.6 L462.9,228.6 M575.0,228.6 L566.0,228.6  h0.01'/>	<g transform="translate(445.6,233.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.6</text>
-	</g>
-	<path stroke='black'  d='M453.9,150.4 L462.9,150.4 M575.0,150.4 L566.0,150.4  h0.01'/>	<g transform="translate(445.6,154.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.8</text>
-	</g>
-	<path stroke='black'  d='M453.9,72.1 L462.9,72.1 M575.0,72.1 L566.0,72.1  h0.01'/>	<g transform="translate(445.6,76.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 1</text>
-	</g>
-	<path stroke='black'  d='M453.9,72.1 L453.9,463.4 L575.0,463.4 L575.0,72.1 L453.9,72.1 Z  h0.01'/>	<g transform="translate(514.4,49.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>F0.5</text>
-	</g>
-</g>
-	<g id="gnuplot_plot_1c" ><title>gnuplot_plot_1c</title>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat7' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat7)' points = '491.7,463.4 507.0,463.4 507.0,231.5 491.7,231.5 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M491.7,463.4 L491.7,231.6 L506.9,231.6 L506.9,463.4 L491.7,463.4 Z  h0.01'/></g>
-	</g>
-	<g id="gnuplot_plot_2c" ><title>gnuplot_plot_2c</title>
-<g style="fill:none; color:green; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat8' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat8)' points = '506.9,463.4 522.1,463.4 522.1,84.2 506.9,84.2 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M506.9,463.4 L506.9,84.3 L522.0,84.3 L522.0,463.4 L506.9,463.4 Z  h0.01'/></g>
-	</g>
-	<g id="gnuplot_plot_3c" ><title>gnuplot_plot_3c</title>
-<g style="fill:none; color:blue; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat9' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0 M0,4 L4,8 L8,4 L4,0 L0,4'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat9)' points = '522.0,463.4 537.3,463.4 537.3,130.6 522.0,130.6 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M522.0,463.4 L522.0,130.7 L537.2,130.7 L537.2,463.4 L522.0,463.4 Z  h0.01'/></g>
-	</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M453.9,72.1 L453.9,463.4 L575.0,463.4 L575.0,72.1 L453.9,72.1 Z  h0.01'/></g>
-</g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600"
+   height="480"
+   viewBox="0 0 600 480"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="baseline.svg">
+  <metadata
+     id="metadata345">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Gnuplot</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs343">
+    <defs
+       id="defs86">
+      <pattern
+         id="gpPat1"
+         patternUnits="userSpaceOnUse"
+         x="0"
+         y="0"
+         width="8"
+         height="8" />
+    </defs>
+    <defs
+       id="defs110">
+      <pattern
+         id="gpPat2"
+         patternUnits="userSpaceOnUse"
+         x="0"
+         y="0"
+         width="8"
+         height="8">
+        <path
+           style="fill:none; stroke:rgb(0,0,0)"
+           d="M0,0 L8,8 M0,8 L8,0"
+           id="path113" />
+      </pattern>
+    </defs>
+    <defs
+       id="defs136">
+      <pattern
+         id="gpPat3"
+         patternUnits="userSpaceOnUse"
+         x="0"
+         y="0"
+         width="8"
+         height="8">
+        <path
+           style="fill:none; stroke:rgb(0,0,0)"
+           d="M0,0 L8,8 M0,8 L8,0 M0,4 L4,8 L8,4 L4,0 L0,4"
+           id="path139" />
+      </pattern>
+    </defs>
+    <pattern
+       id="gpPat3-2"
+       patternUnits="userSpaceOnUse"
+       x="0"
+       y="0"
+       width="8"
+       height="8">
+      <path
+         style="fill:none; stroke:rgb(0,0,0)"
+         d="M0,0 L8,8 M0,8 L8,0 M0,4 L4,8 L8,4 L4,0 L0,4"
+         id="path139-4" />
+    </pattern>
+    <pattern
+       id="gpPat2-4"
+       patternUnits="userSpaceOnUse"
+       x="0"
+       y="0"
+       width="8"
+       height="8">
+      <path
+         style="fill:none; stroke:rgb(0,0,0)"
+         d="M0,0 L8,8 M0,8 L8,0"
+         id="path113-1" />
+    </pattern>
+    <pattern
+       id="gpPat1-4"
+       patternUnits="userSpaceOnUse"
+       x="0"
+       y="0"
+       width="8"
+       height="8" />
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1014"
+     id="namedview341"
+     showgrid="false"
+     inkscape:zoom="2.7812867"
+     inkscape:cx="352.07844"
+     inkscape:cy="201.16851"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g232" />
+  <title
+     id="title4">Gnuplot</title>
+  <desc
+     id="desc6">Produced by GNUPLOT 4.6 patchlevel 4 </desc>
+  <g
+     id="gnuplot_canvas">
+    <rect
+       x="0"
+       y="0"
+       width="600"
+       height="480"
+       fill="none"
+       id="rect9" />
+    <defs
+       id="defs11">
+      <circle
+         id="gpDot"
+         r="0.5"
+         stroke-width="0.5" />
+      <path
+         id="gpPt0"
+         stroke-width="0.222"
+         stroke="currentColor"
+         d="M-1,0 h2 M0,-1 v2" />
+      <path
+         id="gpPt1"
+         stroke-width="0.222"
+         stroke="currentColor"
+         d="M-1,-1 L1,1 M1,-1 L-1,1" />
+      <path
+         id="gpPt2"
+         stroke-width="0.222"
+         stroke="currentColor"
+         d="M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1" />
+      <rect
+         id="gpPt3"
+         stroke-width="0.222"
+         stroke="currentColor"
+         x="-1"
+         y="-1"
+         width="2"
+         height="2" />
+      <rect
+         id="gpPt4"
+         stroke-width="0.222"
+         stroke="currentColor"
+         fill="currentColor"
+         x="-1"
+         y="-1"
+         width="2"
+         height="2" />
+      <circle
+         id="gpPt5"
+         stroke-width="0.222"
+         stroke="currentColor"
+         cx="0"
+         cy="0"
+         r="1" />
+      <use
+         xlink:href="#gpPt5"
+         id="gpPt6"
+         fill="currentColor"
+         stroke="none" />
+      <path
+         id="gpPt7"
+         stroke-width="0.222"
+         stroke="currentColor"
+         d="M0,-1.33 L-1.33,0.67 L1.33,0.67 z" />
+      <use
+         xlink:href="#gpPt7"
+         id="gpPt8"
+         fill="currentColor"
+         stroke="none" />
+      <use
+         xlink:href="#gpPt7"
+         id="gpPt9"
+         stroke="currentColor"
+         transform="rotate(180)" />
+      <use
+         xlink:href="#gpPt9"
+         id="gpPt10"
+         fill="currentColor"
+         stroke="none" />
+      <use
+         xlink:href="#gpPt3"
+         id="gpPt11"
+         stroke="currentColor"
+         transform="rotate(45)" />
+      <use
+         xlink:href="#gpPt11"
+         id="gpPt12"
+         fill="currentColor"
+         stroke="none" />
+    </defs>
+    <g
+       style="fill:none;color:white;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g27">
+      <g
+         transform="translate(300.0,22.5)"
+         style="stroke:none;fill:black;font-family:Arial;font-size:12pt;text-anchor:middle"
+         id="g29">
+        <text
+           id="text31" />
+      </g>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path35"
+       d="m 53.9,463.4 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g37"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(45.6,467.9)">
+      <text
+         id="text39">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3605">0</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path41"
+       d="m 53.9,385.1 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g43"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(45.6,389.6)">
+      <text
+         id="text45">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3601">0.2</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path47"
+       d="m 53.9,306.9 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g49"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(45.6,311.4)">
+      <text
+         id="text51"
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal">0.4</text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path53"
+       d="m 53.9,228.6 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g55"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(45.6,233.1)">
+      <text
+         id="text57">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3599">0.6</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path59"
+       d="m 53.9,150.4 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g61"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(45.6,154.9)">
+      <text
+         id="text63"
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal">0.8</text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path65"
+       d="m 53.9,72.1 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g67"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(45.6,76.6)">
+      <text
+         id="text69">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3607">1</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path71"
+       d="m 53.9,72.1 0,391.3 121.1,0 0,-391.3 -121.1,0 z m 0,0 h 0.01" />
+    <g
+       id="g73"
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(114.4,49.6)">
+      <text
+         id="text75">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3507">Precision</tspan>
+      </text>
+    </g>
+    <g
+       style="color:#ff0000;fill:none;stroke:none"
+       id="g95">
+      <polygon
+         points="91.7,463.4 107,463.4 107,231.5 91.7,231.5 "
+         id="polygon97"
+         style="fill:url(#gpPat1)" />
+    </g>
+    <path
+       d="m 91.7,463.4 0,-231.8 15.2,0 0,231.8 -15.2,0 z m 0,0 h 0.01"
+       id="path99"
+       inkscape:connector-curvature="0"
+       style="color:#ff0000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+    <g
+       style="color:#008000;fill:none;stroke:none"
+       id="g121">
+      <polygon
+         points="106.9,463.4 122.1,463.4 122.1,75.2 106.9,75.2 "
+         id="polygon123"
+         style="fill:url(#gpPat2)" />
+    </g>
+    <path
+       d="m 106.9,463.4 0,-388.1 15.1,0 0,388.1 -15.1,0 z m 0,0 h 0.01"
+       id="path125"
+       inkscape:connector-curvature="0"
+       style="color:#008000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;" />
+    <g
+       style="color:#0000ff;fill:none;stroke:none"
+       id="g147">
+      <polygon
+         points="122,463.4 137.3,463.4 137.3,113.9 122,113.9 "
+         id="polygon149"
+         style="fill:url(#gpPat3)" />
+    </g>
+    <path
+       d="m 122,463.4 0,-349.4 15.2,0 0,349.4 -15.2,0 z m 0,0 h 0.01"
+       id="path151"
+       inkscape:connector-curvature="0"
+       style="color:#0000ff;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path155"
+       d="m 53.9,72.1 0,391.3 121.1,0 0,-391.3 -121.1,0 z m 0,0 h 0.01" />
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path157"
+       d="m 253.9,463.4 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g159"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(245.6,467.9)">
+      <text
+         id="text161">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3617">0</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path163"
+       d="m 253.9,385.1 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g165"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(245.6,389.6)">
+      <text
+         id="text167">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3615">0.2</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path169"
+       d="m 253.9,306.9 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g171"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(245.6,311.4)">
+      <text
+         id="text173">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3613">0.4</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path175"
+       d="m 253.9,228.6 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g177"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(245.6,233.1)">
+      <text
+         id="text179"
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal">0.6</text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path181"
+       d="m 253.9,150.4 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g183"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(245.6,154.9)">
+      <text
+         id="text185">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3609">0.8</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path187"
+       d="m 253.9,72.1 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g189"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(245.6,76.6)">
+      <text
+         id="text191">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3611">1</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path193"
+       d="m 253.9,72.1 0,391.3 121.1,0 0,-391.3 -121.1,0 z m 0,0 h 0.01" />
+    <g
+       id="g195"
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(314.4,49.6)">
+      <text
+         id="text197">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3511">Recall</tspan>
+      </text>
+    </g>
+    <g
+       id="g202"
+       style="color:#ff0000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <defs
+         id="defs204">
+        <pattern
+           height="8"
+           width="8"
+           y="0"
+           x="0"
+           patternUnits="userSpaceOnUse"
+           id="gpPat4" />
+      </defs>
+      <g
+         id="g207"
+         style="stroke:none">
+        <polygon
+           style="fill:url(#gpPat4)"
+           id="polygon209"
+           points="307,231.4 291.7,231.4 291.7,463.4 307,463.4 " />
+      </g>
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         id="path211"
+         d="m 291.7,463.4 0,-231.9 15.2,0 0,231.9 -15.2,0 z m 0,0 h 0.01" />
+    </g>
+    <g
+       id="g216"
+       style="color:#008000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <defs
+         id="defs218">
+        <pattern
+           height="8"
+           width="8"
+           y="0"
+           x="0"
+           patternUnits="userSpaceOnUse"
+           id="gpPat5">
+          <path
+             id="path221"
+             d="M0,0 L8,8 M0,8 L8,0"
+             style="fill:none; stroke:rgb(0,0,0)" />
+        </pattern>
+      </defs>
+      <g
+         id="g223"
+         style="stroke:none">
+        <polygon
+           style="fill:url(#gpPat5)"
+           id="polygon225"
+           points="322.1,116.3 306.9,116.3 306.9,463.4 322.1,463.4 " />
+      </g>
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         id="path227"
+         d="m 306.9,463.4 0,-347 15.1,0 0,347 -15.1,0 z m 0,0 h 0.01" />
+    </g>
+    <g
+       id="g232"
+       style="color:#0000ff;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1">
+      <defs
+         id="defs234">
+        <pattern
+           height="8"
+           width="8"
+           y="0"
+           x="0"
+           patternUnits="userSpaceOnUse"
+           id="gpPat6">
+          <path
+             id="path237"
+             d="M0,0 L8,8 M0,8 L8,0 M0,4 L4,8 L8,4 L4,0 L0,4"
+             style="fill:none; stroke:rgb(0,0,0)" />
+        </pattern>
+      </defs>
+      <g
+         id="g239"
+         style="stroke:#000000;stroke-opacity:1">
+        <polygon
+           style="fill:url(#gpPat6);stroke:#000000;stroke-opacity:1"
+           id="polygon241"
+           points="322,463.4 337.3,463.4 337.3,183.8 322,183.8 " />
+      </g>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path247"
+       d="m 253.9,72.1 0,391.3 121.1,0 0,-391.3 -121.1,0 z m 0,0 h 0.01" />
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path249"
+       d="m 453.9,463.4 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g251"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(445.6,467.9)">
+      <text
+         id="text253">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3631">0</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path255"
+       d="m 453.9,385.1 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g257"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(445.6,389.6)">
+      <text
+         id="text259">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3629">0.2</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path261"
+       d="m 453.9,306.9 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g263"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(445.6,311.4)">
+      <text
+         id="text265">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3627">0.4</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path267"
+       d="m 453.9,228.6 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g269"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(445.6,233.1)">
+      <text
+         id="text271">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3625">0.6</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path273"
+       d="m 453.9,150.4 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g275"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(445.6,154.9)">
+      <text
+         id="text277">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3621">0.8</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path279"
+       d="m 453.9,72.1 9,0 m 112.1,0 -9,0 h 0.01" />
+    <g
+       id="g281"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(445.6,76.6)">
+      <text
+         id="text283">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3619">1</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path285"
+       d="m 453.9,72.1 0,391.3 121.1,0 0,-391.3 -121.1,0 z m 0,0 h 0.01" />
+    <g
+       id="g287"
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(514.4,49.6)">
+      <text
+         id="text289">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3513">F0.5</tspan>
+      </text>
+    </g>
+    <g
+       id="g294"
+       style="color:#ff0000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <defs
+         id="defs296">
+        <pattern
+           height="8"
+           width="8"
+           y="0"
+           x="0"
+           patternUnits="userSpaceOnUse"
+           id="gpPat7" />
+      </defs>
+      <g
+         id="g299"
+         style="stroke:none">
+        <polygon
+           style="fill:url(#gpPat7)"
+           id="polygon301"
+           points="507,231.5 491.7,231.5 491.7,463.4 507,463.4 " />
+      </g>
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         id="path303"
+         d="m 491.7,463.4 0,-231.8 15.2,0 0,231.8 -15.2,0 z m 0,0 h 0.01" />
+    </g>
+    <g
+       id="g308"
+       style="color:#008000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <defs
+         id="defs310">
+        <pattern
+           height="8"
+           width="8"
+           y="0"
+           x="0"
+           patternUnits="userSpaceOnUse"
+           id="gpPat8">
+          <path
+             id="path313"
+             d="M0,0 L8,8 M0,8 L8,0"
+             style="fill:none; stroke:rgb(0,0,0)" />
+        </pattern>
+      </defs>
+      <g
+         id="g315"
+         style="stroke:none">
+        <polygon
+           style="fill:url(#gpPat8)"
+           id="polygon317"
+           points="522.1,84.2 506.9,84.2 506.9,463.4 522.1,463.4 " />
+      </g>
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         id="path319"
+         d="m 506.9,463.4 0,-379.1 15.1,0 0,379.1 -15.1,0 z m 0,0 h 0.01" />
+    </g>
+    <g
+       id="g324"
+       style="color:#0000ff;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <defs
+         id="defs326">
+        <pattern
+           height="8"
+           width="8"
+           y="0"
+           x="0"
+           patternUnits="userSpaceOnUse"
+           id="gpPat9">
+          <path
+             id="path329"
+             d="M0,0 L8,8 M0,8 L8,0 M0,4 L4,8 L8,4 L4,0 L0,4"
+             style="fill:none; stroke:rgb(0,0,0)" />
+        </pattern>
+      </defs>
+      <g
+         id="g331"
+         style="stroke:none">
+        <polygon
+           style="fill:url(#gpPat9)"
+           id="polygon333"
+           points="537.3,130.6 522,130.6 522,463.4 537.3,463.4 " />
+      </g>
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         id="path335"
+         d="m 522,463.4 0,-332.7 15.2,0 0,332.7 -15.2,0 z m 0,0 h 0.01" />
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path339"
+       d="m 453.9,72.1 0,391.3 121.1,0 0,-391.3 -121.1,0 z m 0,0 h 0.01" />
+    <g
+       transform="translate(524.04307,494.95416)"
+       style="font-size:15px;text-anchor:end;color:#ff0000;fill:#000000;stroke:none;font-family:Arial"
+       id="g82">
+      <text
+         id="text84">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
+           id="tspan3499">Baseline on movies with IMDb-ID</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(416.14307,400.35416)"
+       style="color:#ff0000;fill:none;stroke:none"
+       id="g89">
+      <polygon
+         points="158.4,94.6 158.4,85.6 116.2,85.6 116.2,94.6 "
+         id="polygon91"
+         style="fill:url(#gpPat1-4)" />
+    </g>
+    <path
+       d="m 532.34307,494.95416 42.2,0 0,-9 -42.2,0 0,9 z m 0,0 h 0.01"
+       id="path93"
+       inkscape:connector-curvature="0"
+       style="color:#ff0000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+    <g
+       transform="translate(524.04307,512.95416)"
+       style="font-size:15px;text-anchor:end;color:#008000;fill:#000000;stroke:none;font-family:Arial"
+       id="g106">
+      <text
+         id="text108">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
+           id="tspan3501">MFM on movies with IMDb-ID</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(416.14307,400.35416)"
+       style="color:#008000;fill:none;stroke:none"
+       id="g115">
+      <polygon
+         points="158.4,112.6 158.4,103.6 116.2,103.6 116.2,112.6 "
+         id="polygon117"
+         style="fill:url(#gpPat2-4)" />
+    </g>
+    <path
+       d="m 532.34307,512.95416 42.2,0 0,-9 -42.2,0 0,9 z m 0,0 h 0.01"
+       id="path119"
+       inkscape:connector-curvature="0"
+       style="color:#008000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+    <g
+       transform="translate(524.04307,530.95416)"
+       style="font-size:15px;text-anchor:end;color:#0000ff;fill:#000000;stroke:none;font-family:Arial"
+       id="g132">
+      <text
+         id="text134">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
+           id="tspan3503">MFM on movies without IMDb-ID</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(416.14307,400.35416)"
+       style="color:#0000ff;fill:none;stroke:none"
+       id="g141">
+      <polygon
+         points="158.4,130.6 158.4,121.6 116.2,121.6 116.2,130.6 "
+         id="polygon143"
+         style="fill:url(#gpPat3-2)" />
+    </g>
+    <path
+       d="m 532.34307,530.95416 42.2,0 0,-9 -42.2,0 0,9 z m 0,0 h 0.01"
+       id="path145"
+       inkscape:connector-curvature="0"
+       style="color:#0000ff;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3671"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:CMU Serif;font-style:normal;font-weight:500;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:CMU Serif Medium;font-stretch:normal;font-variant:normal"><flowRegion
+         id="flowRegion3673"><rect
+           id="rect3675"
+           width="816.61017"
+           height="627.45764"
+           x="-108.81356"
+           y="-55.932205" /></flowRegion><flowPara
+         id="flowPara3677"></flowPara></flowRoot>  </g>
 </svg>
-
