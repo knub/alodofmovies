@@ -7,15 +7,15 @@ The scheduler creates ``CrawlifyMatch'' tasks, which downloads the movie resourc
 Thereby, the scheduler distinguish between existing movies, which are released in the past from the current date, and coming soon movies, which will be released in the future.
 
 \subsubsection{Adding coming soon movies}
-The steps to add upcoming soon movies are:
+The steps to add upcoming movies are:
 \begin {enumerate}
-	\item Get new movie resources with their ids.
+	\item Get new movie resources.
 	\item For each movie, download the new movie resource and triplify it.
 	\item Delete all triples of the movie in the triple store in the corresponding graph, if the movie already exists.
 	\item Load triples of an IMDb movie into the corresponding graph in the triple store. For the other resources, integrate the triples of the upcoming movie and store them in the corresponding graph.
 \end{enumerate}
 
-To get all new movies from IMDb, the scheduler crawls the "`Coming Soon"' page\footnote{\url{http://www.imdb.com/movies-coming-soon/2014-08/}} from the current month until the same month next year.
+To get all new movies from IMDb, the scheduler crawls the ``Coming Soon'' page\footnote{\url{http://www.imdb.com/movies-coming-soon/2014-08/}} from the current month until the same month next year.
 This page contains all new movies ids, which will be released in the time period crawled.
 Having the new movie ids, the scheduler automatically can construct the new movie resource\footnote{\url{http://www.imdb.com/[id]}}, which can be crawled.
 
@@ -55,7 +55,7 @@ In this way, movies, which come from Freebase, TMDb or OFDb, can already be matc
 
 \subsubsection{Updating existing movies}
 In Figure \ref{fig_new_movie} the number of changed triples of a new released movie from IMDb is displayed.
-Therefor, the movie was crawled and triplified daily.
+Therefor, a movie was crawled and triplified daily.
 As you can seen, the movie frequently changes in the first days.
 Also, the number of changing triples decreases with time.
 Often changing triples are for example cast triple, links to images and videos, IMDb rating, charachter triples or taglines.
