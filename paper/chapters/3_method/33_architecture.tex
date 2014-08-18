@@ -2,31 +2,32 @@
 \subsection{System Architecture}
 \label{subsec_method_architecture}
 
-The architecture of \emph{Match Forrest, Match!} is shown in Figure \ref{fig_architecture}.
-
+The following section describes the architecture of \emph{Match Forrest, Match!} system.
 The central component of the system is the \textit{Task Distributor}.
 This component is responsible for managing the other components, \textit{Crawler}, \textit{Triplifier}, \textit{Updater} and \textit{Matcher and Merger}.
-Therefore, it uses a messaging system, explained in Section \ref{subsubsec_messaging_infrastructure}.
+It uses a messaging system, which is explained in Section \ref{subsubsec_messaging_infrastructure}.
 
 \subsubsection{Workflow}
 \label{subsubsec_workflow}
 
-In general, the first step to get a movie into the system is to get the actual movie resource.
+The overview about the system can be seen in Figure \ref{fig_architecture}.
+The first step to get a movie into the system is always to retrieve the web resource about a movie from one of the data sources.
 This step is executed by the Crawler.
 This component is responsible for downloading websites or for sending requests to the API a data source might provide.
 
 Once the page is downloaded, the Triplifier can triplify the resource.
-This means that it extracts the information from the resource and creates triples out of it.
-Therefor, the ontology, defined in Section \ref{subsec_method_ontology}, is used.
+This means that it extracts the information from the resource (usually in HTML or JSON format) and creates triples according to a certain ontology.
+The ontology is described in Section \ref{subsec_method_ontology}.
 
 The component Matcher and Merger is in charge of matching and merging two movies from different data sources, so they can only be found once in the resulting dataset.
+This is the crucial step in creating a clean data set.
 This component is explained in detail in Section \ref{subsec_method_matching}.
 
-The updater, described in Section \ref{subsec_method_updating}, ensures that the existing movies are always up-to-date and that new movies are in the system.
+The Updater, described in Section \ref{subsec_method_updating}, ensures that the existing movies are always up-to-date and that new movies are in the system.
 
 The triple store \emph{Virtuoso}\footnote{\url{http://virtuoso.openlinksw.com/}} is used to store the resulting triples.
 To distinguish between the sources of the different triples, triples from each data source are stored in a distinct graph named after the source.
-Thus, there are four graphs in the triplestore, IMDb, Freebase, TMDb and OFDb.
+Thus, there are four graphs in the triplestore: IMDb, Freebase, TMDb and OFDb.
 
 \begin{figure}[ht]
   \begin{center}
@@ -39,14 +40,12 @@ Thus, there are four graphs in the triplestore, IMDb, Freebase, TMDb and OFDb.
 \subsubsection{Messaging Infrastructure}
 \label{subsubsec_messaging_infrastructure}
 
-%TODO Stefan, Dominik verifizieren
-
 The process of crawling, triplifying and matching a movie resource takes a lot of time.
 This is especially true when there are limits to crawl some web pages, which means that waiting times can occur.
 Triplifying and matching needs computational resources.
 Because the steps can be done in parallel, a messaging infrastructure was implemented to speed up the process and to avoid crawl limits.
 
-Therefor, the Task Distributor, including the messaging server, uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
+Therefore, the Task Distributor, including the messaging server, uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
 
 A task consists of the following fields
 \begin{itemize}
@@ -54,19 +53,19 @@ A task consists of the following fields
   The unique id of the task.
   \item \textbf{Task type}:
    The type of the task.
-  Basically it exists a type for each of the compontent, controlled by the Task Distibutor, for example ``Triplify'' or ``MatchAndMerge''.
-  ``Triplify'' is a task execute by the Triplifier component.
+  Basically there is a type for each of the compontents, controlled by the Task Distributor, for example ``Triplify'' or ``MatchAndMerge''.
+  ``Triplify'' is a task executed by the Triplifier component.
   The Matcher and Merger component works on ``MatchAndMerge'' tasks.
-  There are also tasks, which combine some steps, such as the ``CrawlifyMatch'' task, which crawls, triplifies and matches a movie.
+  There are also tasks, which combine some steps, e.g. one task which crawls, triplifies and matches a movie. This is important for updating, since then all of them are better done at once.
   \item \textbf{Due date}:
   The date until when the task should be finished.
   \item \textbf{File or URL}:
-  The file or url which is needed to execute the task.
+  The file or url which is needed to execute the task, e.g. a URL to crawl or a JSON file to triplify.
   \item \textbf{Finished:}
   Defines if the task is already done.
   \item \textbf{Graph}:
   The graph in which the resulting triples should be stored.
-  \item \textbf{Remarks}:
+  \item \textbf{Special flags}:
   Additional information needed when executing a task.
   For example, it could tell whether a certain entity should be deleted from the triple store before storing new triples.
 \end{itemize}
