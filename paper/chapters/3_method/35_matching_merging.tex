@@ -127,7 +127,7 @@ Two actors are considered equal (but only for the sake of matching movies), when
 The main idea of the algorithm is to use the actor overlap between two movies as the main matching criteria.
 The Levenshtein distance in \ref{aoeq:4} may not be able to match all actors correctly (i.e. "`Emma Watson"' and "`Emily Watson"' with a distance of three), because similar name problems can occur as with the movie (misspellings, different spelling in different languages, actual similar names for different actors etc.).
 However, the idea is that less actors can be matched for different movies and more actors can be matched for the same movie in different data sources.
-An evaluation of this approach can be found in section \ref{subsec_evaluation_matching}.
+An evaluation of this approach can be found in Section \ref{subsec_evaluation_matching}.
 
 \paragraph{Implementation}
 The actual implementation does not only use the actor overlap, but also considers the overlap for producers, writers, voice actors and directors.
@@ -135,4 +135,4 @@ If there are lots of actors in both the new movie and the candidate movie, this 
 However, for movies which do not have much actor information (e.g. cartoons, anime etc.), more weight is put to e.g. voice actors.
 Furthermore, the movie name and the year a movie was published is used as the deciding factor between movies, when their actor overlap is equal.
 
-This improvements have shown to produce better results as shown in section \ref{subsec_evaluation_matching}.
+This improvements have shown to produce better results as shown in Section \ref{subsec_evaluation_matching}.
