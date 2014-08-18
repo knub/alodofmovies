@@ -1,336 +1,1262 @@
-<?xml version="1.0" encoding="utf-8"  standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg 
- width="600" height="500" 
- viewBox="0 0 600 500"
- xmlns="http://www.w3.org/2000/svg"
- xmlns:xlink="http://www.w3.org/1999/xlink"
->
-
-<title>Gnuplot</title>
-<desc>Produced by GNUPLOT 4.6 patchlevel 4 </desc>
-
-<g id="gnuplot_canvas">
-
-<rect x="0" y="0" width="600" height="500" fill="none"/>
-<defs>
-
-	<circle id='gpDot' r='0.5' stroke-width='0.5'/>
-	<path id='gpPt0' stroke-width='0.222' stroke='currentColor' d='M-1,0 h2 M0,-1 v2'/>
-	<path id='gpPt1' stroke-width='0.222' stroke='currentColor' d='M-1,-1 L1,1 M1,-1 L-1,1'/>
-	<path id='gpPt2' stroke-width='0.222' stroke='currentColor' d='M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1'/>
-	<rect id='gpPt3' stroke-width='0.222' stroke='currentColor' x='-1' y='-1' width='2' height='2'/>
-	<rect id='gpPt4' stroke-width='0.222' stroke='currentColor' fill='currentColor' x='-1' y='-1' width='2' height='2'/>
-	<circle id='gpPt5' stroke-width='0.222' stroke='currentColor' cx='0' cy='0' r='1'/>
-	<use xlink:href='#gpPt5' id='gpPt6' fill='currentColor' stroke='none'/>
-	<path id='gpPt7' stroke-width='0.222' stroke='currentColor' d='M0,-1.33 L-1.33,0.67 L1.33,0.67 z'/>
-	<use xlink:href='#gpPt7' id='gpPt8' fill='currentColor' stroke='none'/>
-	<use xlink:href='#gpPt7' id='gpPt9' stroke='currentColor' transform='rotate(180)'/>
-	<use xlink:href='#gpPt9' id='gpPt10' fill='currentColor' stroke='none'/>
-	<use xlink:href='#gpPt3' id='gpPt11' stroke='currentColor' transform='rotate(45)'/>
-	<use xlink:href='#gpPt11' id='gpPt12' fill='currentColor' stroke='none'/>
-</defs>
-<g style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M125.3,302.9 L436.5,289.1 M474.7,401.7 L436.5,289.1 M125.3,302.9 L125.3,98.3 M436.5,289.1 L436.5,135.4 
-		M474.7,401.7 L474.7,278.6 M163.5,415.6 L162.1,411.2  h0.01'/>	<g transform="translate(164.9,428.7)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 0.1</text>
-	</g>
-	<path stroke='black'  d='M125.3,302.9 L126.8,307.2 M215.4,413.3 L213.9,408.9  h0.01'/>	<g transform="translate(216.8,426.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 0.2</text>
-	</g>
-	<path stroke='black'  d='M177.2,300.6 L178.7,304.9 M267.3,411.0 L265.8,406.6  h0.01'/>	<g transform="translate(268.6,424.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 0.3</text>
-	</g>
-	<path stroke='black'  d='M229.1,298.3 L230.5,302.6 M319.1,408.6 L317.6,404.3  h0.01'/>	<g transform="translate(320.4,421.8)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 0.4</text>
-	</g>
-	<path stroke='black'  d='M280.9,296.0 L282.4,300.3 M370.9,406.3 L369.5,402.0  h0.01'/>	<g transform="translate(372.3,419.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 0.5</text>
-	</g>
-	<path stroke='black'  d='M332.7,293.7 L334.2,298.0 M422.8,404.0 L421.3,399.7  h0.01'/>	<g transform="translate(424.2,417.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 0.6</text>
-	</g>
-	<path stroke='black'  d='M384.6,291.4 L386.1,295.7 M474.7,401.7 L473.2,397.4  h0.01'/>	<g transform="translate(476.0,414.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 0.7</text>
-	</g>
-	<path stroke='black'  d='M436.5,289.1 L437.9,293.4 M163.5,415.6 L172.5,415.2  h0.01'/>	<g transform="translate(155.3,420.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 1</text>
-	</g>
-	<path stroke='black'  d='M474.7,401.7 L465.8,402.1 M157.2,396.8 L166.1,396.4  h0.01'/>	<g transform="translate(148.9,402.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 1.5</text>
-	</g>
-	<path stroke='black'  d='M468.3,383.0 L459.4,383.4 M150.8,378.0 L159.7,377.6  h0.01'/>	<g transform="translate(142.6,383.3)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 2</text>
-	</g>
-	<path stroke='black'  d='M462.0,364.2 L453.0,364.6 M144.4,359.2 L153.4,358.8  h0.01'/>	<g transform="translate(136.2,364.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 2.5</text>
-	</g>
-	<path stroke='black'  d='M455.6,345.4 L446.6,345.8 M138.0,340.5 L147.0,340.1  h0.01'/>	<g transform="translate(129.8,345.8)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 3</text>
-	</g>
-	<path stroke='black'  d='M449.2,326.6 L440.3,327.0 M131.7,321.7 L140.6,321.3  h0.01'/>	<g transform="translate(123.4,327.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 3.5</text>
-	</g>
-	<path stroke='black'  d='M442.8,307.9 L433.9,308.3 M125.3,302.9 L134.2,302.5  h0.01'/>	<g transform="translate(117.1,308.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 4</text>
-	</g>
-	<path stroke='black'  d='M436.5,289.1 L427.5,289.5 M125.3,234.8 L134.3,234.8  h0.01'/>	<g transform="translate(107.3,239.3)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.95</text>
-	</g>
-	<path stroke='black'  d='M125.3,222.4 L134.3,222.4  h0.01'/>	<g transform="translate(107.3,226.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.952</text>
-	</g>
-	<path stroke='black'  d='M125.3,209.9 L134.3,209.9  h0.01'/>	<g transform="translate(107.3,214.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.954</text>
-	</g>
-	<path stroke='black'  d='M125.3,197.5 L134.3,197.5  h0.01'/>	<g transform="translate(107.3,202.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.956</text>
-	</g>
-	<path stroke='black'  d='M125.3,185.1 L134.3,185.1  h0.01'/>	<g transform="translate(107.3,189.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.958</text>
-	</g>
-	<path stroke='black'  d='M125.3,172.7 L134.3,172.7  h0.01'/>	<g transform="translate(107.3,177.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.96</text>
-	</g>
-	<path stroke='black'  d='M125.3,160.3 L134.3,160.3  h0.01'/>	<g transform="translate(107.3,164.8)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.962</text>
-	</g>
-	<path stroke='black'  d='M125.3,147.9 L134.3,147.9  h0.01'/>	<g transform="translate(107.3,152.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.964</text>
-	</g>
-	<path stroke='black'  d='M125.3,135.5 L134.3,135.5  h0.01'/>	<g transform="translate(107.3,140.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.966</text>
-	</g>
-	<path stroke='black'  d='M125.3,123.1 L134.3,123.1  h0.01'/>	<g transform="translate(107.3,127.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.968</text>
-	</g>
-	<path stroke='black'  d='M125.3,110.7 L134.3,110.7  h0.01'/>	<g transform="translate(107.3,115.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.97</text>
-	</g>
-	<path stroke='black'  d='M125.3,98.3 L134.3,98.3  h0.01'/>	<g transform="translate(107.3,102.8)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.972</text>
-	</g>
-	<g transform="translate(67.2,171.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>F0.5</text>
-	</g>
-	<g transform="translate(300.0,41.3)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Parameter evaluation for ACTOR_OVERLAP_MINIMUM and MIN_SCORE</text>
-	</g>
-</g>
-	<g id="gnuplot_plot_1" ><title>gnuplot_plot_1</title>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon fill = 'rgb(138, 138, 138)' points = '449.2,178.5 397.3,236.8 384.6,195.3 436.5,135.4 '/>
-		<polygon fill = 'rgb(128, 128, 128)' points = '462.0,224.2 410.1,280.6 397.3,236.8 449.2,178.5 '/>
-		<polygon fill = 'rgb(109, 109, 109)' points = '474.7,278.6 422.8,326.8 410.1,280.6 462.0,224.2 '/>
-		<polygon fill = 'rgb(164, 164, 164)' points = '397.3,236.8 345.5,149.6 332.7,109.0 384.6,195.3 '/>
-		<polygon fill = 'rgb(158, 158, 158)' points = '410.1,280.6 358.2,189.5 345.5,149.6 397.3,236.8 '/>
-		<polygon fill = 'rgb(150, 150, 150)' points = '422.8,326.8 370.9,230.6 358.2,189.5 410.1,280.6 '/>
-		<polygon fill = 'rgb(230, 230, 230)' points = '345.5,149.6 293.7,145.0 280.9,110.4 332.7,109.0 '/>
-		<polygon fill = 'rgb(229, 229, 229)' points = '358.2,189.5 306.3,184.1 293.7,145.0 345.5,149.6 '/>
-		<polygon fill = 'rgb(225, 225, 225)' points = '370.9,230.6 319.1,225.4 306.3,184.1 358.2,189.5 '/>
-		<polygon fill = 'rgb(233, 233, 233)' points = '293.7,145.0 241.8,143.5 229.1,114.2 280.9,110.4 '/>
-		<polygon fill = 'rgb(236, 236, 236)' points = '306.3,184.1 254.5,182.5 241.8,143.5 293.7,145.0 '/>
-		<polygon fill = 'rgb(233, 233, 233)' points = '319.1,225.4 267.3,221.6 254.5,182.5 306.3,184.1 '/>
-		<polygon fill = 'rgb(232, 232, 232)' points = '241.8,143.5 189.9,145.7 177.2,124.7 229.1,114.2 '/>
-		<polygon fill = 'rgb(240, 240, 240)' points = '254.5,182.5 202.7,181.4 189.9,145.7 241.8,143.5 '/>
-		<polygon fill = 'rgb(239, 239, 239)' points = '267.3,221.6 215.4,221.2 202.7,181.4 254.5,182.5 '/>
-		<polygon fill = 'rgb(212, 212, 212)' points = '189.9,145.7 138.0,161.1 125.3,163.4 177.2,124.7 '/>
-		<polygon fill = 'rgb(235, 235, 235)' points = '202.7,181.4 150.8,189.0 138.0,161.1 189.9,145.7 '/>
-		<polygon fill = 'rgb(238, 238, 238)' points = '215.4,221.2 163.5,226.5 150.8,189.0 202.7,181.4 '/>
-	<g transform="translate(415.9,85.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text>F0.5</text>
-	</g>
-	</g>
-	<path stroke='red'  d='M424.2,81.1 L466.4,81.1 M474.7,278.6 L462.0,224.2 L449.2,178.5 L436.5,135.4 M422.8,326.8 L410.1,280.6 
-		L397.3,236.8 L384.6,195.3 M370.9,230.6 L358.2,189.5 L345.5,149.6 L332.7,109.0 M319.1,225.4 L306.3,184.1 
-		L293.7,145.0 L280.9,110.4 M267.3,221.6 L254.5,182.5 L241.8,143.5 L229.1,114.2 M215.4,221.2 L202.7,181.4 
-		L189.9,145.7 L177.2,124.7 M163.5,226.5 L150.8,189.0 L138.0,161.1 L125.3,163.4 M436.5,135.4 L384.6,195.3 
-		L332.7,109.0 L280.9,110.4 L229.1,114.2 L177.2,124.7 L125.3,163.4 M449.2,178.5 L397.3,236.8 L345.5,149.6 
-		L293.7,145.0 L241.8,143.5 L189.9,145.7 L138.0,161.1 M462.0,224.2 L410.1,280.6 L358.2,189.5 L306.3,184.1 
-		L254.5,182.5 L202.7,181.4 L150.8,189.0 M474.7,278.6 L422.8,326.8 L370.9,230.6 L319.1,225.4 L267.3,221.6 
-		L215.4,221.2 L163.5,226.5  h0.01'/></g>
-	</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M474.7,401.7 L163.5,415.6 M125.3,302.9 L163.5,415.6 L163.5,226.5  h0.01'/>	<g transform="translate(328.6,441.3)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>MIN_SCORE</text>
-	</g>
-	<g transform="translate(66.6,367.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>ACT_DIST</text>
-	</g>
-	<g transform="translate(67.2,171.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>F0.5</text>
-	</g>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon fill = 'rgb(  2,   2,   2)' points = '522.3,284.5 543.9,284.5 543.9,283.3 522.3,283.3 '/>
-		<polygon fill = 'rgb( 10,  10,  10)' points = '522.3,283.4 543.9,283.4 543.9,282.1 522.3,282.1 '/>
-		<polygon fill = 'rgb( 16,  16,  16)' points = '522.3,282.2 543.9,282.2 543.9,280.9 522.3,280.9 '/>
-		<polygon fill = 'rgb( 21,  21,  21)' points = '522.3,281.0 543.9,281.0 543.9,279.7 522.3,279.7 '/>
-		<polygon fill = 'rgb( 26,  26,  26)' points = '522.3,279.8 543.9,279.8 543.9,278.6 522.3,278.6 '/>
-		<polygon fill = 'rgb( 29,  29,  29)' points = '522.3,278.7 543.9,278.7 543.9,277.4 522.3,277.4 '/>
-		<polygon fill = 'rgb( 33,  33,  33)' points = '522.3,277.5 543.9,277.5 543.9,276.2 522.3,276.2 '/>
-		<polygon fill = 'rgb( 37,  37,  37)' points = '522.3,276.3 543.9,276.3 543.9,275.0 522.3,275.0 '/>
-		<polygon fill = 'rgb( 40,  40,  40)' points = '522.3,275.1 543.9,275.1 543.9,273.8 522.3,273.8 '/>
-		<polygon fill = 'rgb( 44,  44,  44)' points = '522.3,273.9 543.9,273.9 543.9,272.7 522.3,272.7 '/>
-		<polygon fill = 'rgb( 47,  47,  47)' points = '522.3,272.8 543.9,272.8 543.9,271.5 522.3,271.5 '/>
-		<polygon fill = 'rgb( 50,  50,  50)' points = '522.3,271.6 543.9,271.6 543.9,270.3 522.3,270.3 '/>
-		<polygon fill = 'rgb( 53,  53,  53)' points = '522.3,270.4 543.9,270.4 543.9,269.1 522.3,269.1 '/>
-		<polygon fill = 'rgb( 56,  56,  56)' points = '522.3,269.2 543.9,269.2 543.9,268.0 522.3,268.0 '/>
-		<polygon fill = 'rgb( 58,  58,  58)' points = '522.3,268.1 543.9,268.1 543.9,266.8 522.3,266.8 '/>
-		<polygon fill = 'rgb( 61,  61,  61)' points = '522.3,266.9 543.9,266.9 543.9,265.6 522.3,265.6 '/>
-		<polygon fill = 'rgb( 64,  64,  64)' points = '522.3,265.7 543.9,265.7 543.9,264.4 522.3,264.4 '/>
-		<polygon fill = 'rgb( 67,  67,  67)' points = '522.3,264.5 543.9,264.5 543.9,263.2 522.3,263.2 '/>
-		<polygon fill = 'rgb( 69,  69,  69)' points = '522.3,263.3 543.9,263.3 543.9,262.1 522.3,262.1 '/>
-		<polygon fill = 'rgb( 72,  72,  72)' points = '522.3,262.2 543.9,262.2 543.9,260.9 522.3,260.9 '/>
-		<polygon fill = 'rgb( 74,  74,  74)' points = '522.3,261.0 543.9,261.0 543.9,259.7 522.3,259.7 '/>
-		<polygon fill = 'rgb( 77,  77,  77)' points = '522.3,259.8 543.9,259.8 543.9,258.5 522.3,258.5 '/>
-		<polygon fill = 'rgb( 79,  79,  79)' points = '522.3,258.6 543.9,258.6 543.9,257.4 522.3,257.4 '/>
-		<polygon fill = 'rgb( 81,  81,  81)' points = '522.3,257.5 543.9,257.5 543.9,256.2 522.3,256.2 '/>
-		<polygon fill = 'rgb( 84,  84,  84)' points = '522.3,256.3 543.9,256.3 543.9,255.0 522.3,255.0 '/>
-		<polygon fill = 'rgb( 86,  86,  86)' points = '522.3,255.1 543.9,255.1 543.9,253.8 522.3,253.8 '/>
-		<polygon fill = 'rgb( 88,  88,  88)' points = '522.3,253.9 543.9,253.9 543.9,252.6 522.3,252.6 '/>
-		<polygon fill = 'rgb( 91,  91,  91)' points = '522.3,252.7 543.9,252.7 543.9,251.5 522.3,251.5 '/>
-		<polygon fill = 'rgb( 93,  93,  93)' points = '522.3,251.6 543.9,251.6 543.9,250.3 522.3,250.3 '/>
-		<polygon fill = 'rgb( 95,  95,  95)' points = '522.3,250.4 543.9,250.4 543.9,249.1 522.3,249.1 '/>
-		<polygon fill = 'rgb( 97,  97,  97)' points = '522.3,249.2 543.9,249.2 543.9,247.9 522.3,247.9 '/>
-		<polygon fill = 'rgb( 99,  99,  99)' points = '522.3,248.0 543.9,248.0 543.9,246.7 522.3,246.7 '/>
-		<polygon fill = 'rgb(101, 101, 101)' points = '522.3,246.8 543.9,246.8 543.9,245.6 522.3,245.6 '/>
-		<polygon fill = 'rgb(103, 103, 103)' points = '522.3,245.7 543.9,245.7 543.9,244.4 522.3,244.4 '/>
-		<polygon fill = 'rgb(105, 105, 105)' points = '522.3,244.5 543.9,244.5 543.9,243.2 522.3,243.2 '/>
-		<polygon fill = 'rgb(108, 108, 108)' points = '522.3,243.3 543.9,243.3 543.9,242.0 522.3,242.0 '/>
-		<polygon fill = 'rgb(110, 110, 110)' points = '522.3,242.1 543.9,242.1 543.9,240.9 522.3,240.9 '/>
-		<polygon fill = 'rgb(111, 111, 111)' points = '522.3,241.0 543.9,241.0 543.9,239.7 522.3,239.7 '/>
-		<polygon fill = 'rgb(114, 114, 114)' points = '522.3,239.8 543.9,239.8 543.9,238.5 522.3,238.5 '/>
-		<polygon fill = 'rgb(116, 116, 116)' points = '522.3,238.6 543.9,238.6 543.9,237.3 522.3,237.3 '/>
-		<polygon fill = 'rgb(118, 118, 118)' points = '522.3,237.4 543.9,237.4 543.9,236.1 522.3,236.1 '/>
-		<polygon fill = 'rgb(120, 120, 120)' points = '522.3,236.2 543.9,236.2 543.9,235.0 522.3,235.0 '/>
-		<polygon fill = 'rgb(121, 121, 121)' points = '522.3,235.1 543.9,235.1 543.9,233.8 522.3,233.8 '/>
-		<polygon fill = 'rgb(123, 123, 123)' points = '522.3,233.9 543.9,233.9 543.9,232.6 522.3,232.6 '/>
-		<polygon fill = 'rgb(125, 125, 125)' points = '522.3,232.7 543.9,232.7 543.9,231.4 522.3,231.4 '/>
-		<polygon fill = 'rgb(127, 127, 127)' points = '522.3,231.5 543.9,231.5 543.9,230.3 522.3,230.3 '/>
-		<polygon fill = 'rgb(129, 129, 129)' points = '522.3,230.4 543.9,230.4 543.9,229.1 522.3,229.1 '/>
-		<polygon fill = 'rgb(131, 131, 131)' points = '522.3,229.2 543.9,229.2 543.9,227.9 522.3,227.9 '/>
-		<polygon fill = 'rgb(133, 133, 133)' points = '522.3,228.0 543.9,228.0 543.9,226.7 522.3,226.7 '/>
-		<polygon fill = 'rgb(135, 135, 135)' points = '522.3,226.8 543.9,226.8 543.9,225.5 522.3,225.5 '/>
-		<polygon fill = 'rgb(136, 136, 136)' points = '522.3,225.6 543.9,225.6 543.9,224.4 522.3,224.4 '/>
-		<polygon fill = 'rgb(138, 138, 138)' points = '522.3,224.5 543.9,224.5 543.9,223.2 522.3,223.2 '/>
-		<polygon fill = 'rgb(140, 140, 140)' points = '522.3,223.3 543.9,223.3 543.9,222.0 522.3,222.0 '/>
-		<polygon fill = 'rgb(142, 142, 142)' points = '522.3,222.1 543.9,222.1 543.9,220.8 522.3,220.8 '/>
-		<polygon fill = 'rgb(144, 144, 144)' points = '522.3,220.9 543.9,220.9 543.9,219.7 522.3,219.7 '/>
-		<polygon fill = 'rgb(145, 145, 145)' points = '522.3,219.8 543.9,219.8 543.9,218.5 522.3,218.5 '/>
-		<polygon fill = 'rgb(147, 147, 147)' points = '522.3,218.6 543.9,218.6 543.9,217.3 522.3,217.3 '/>
-		<polygon fill = 'rgb(149, 149, 149)' points = '522.3,217.4 543.9,217.4 543.9,216.1 522.3,216.1 '/>
-		<polygon fill = 'rgb(151, 151, 151)' points = '522.3,216.2 543.9,216.2 543.9,214.9 522.3,214.9 '/>
-		<polygon fill = 'rgb(152, 152, 152)' points = '522.3,215.0 543.9,215.0 543.9,213.8 522.3,213.8 '/>
-		<polygon fill = 'rgb(154, 154, 154)' points = '522.3,213.9 543.9,213.9 543.9,212.6 522.3,212.6 '/>
-		<polygon fill = 'rgb(156, 156, 156)' points = '522.3,212.7 543.9,212.7 543.9,211.4 522.3,211.4 '/>
-		<polygon fill = 'rgb(157, 157, 157)' points = '522.3,211.5 543.9,211.5 543.9,210.2 522.3,210.2 '/>
-		<polygon fill = 'rgb(159, 159, 159)' points = '522.3,210.3 543.9,210.3 543.9,209.0 522.3,209.0 '/>
-		<polygon fill = 'rgb(161, 161, 161)' points = '522.3,209.1 543.9,209.1 543.9,207.9 522.3,207.9 '/>
-		<polygon fill = 'rgb(162, 162, 162)' points = '522.3,208.0 543.9,208.0 543.9,206.7 522.3,206.7 '/>
-		<polygon fill = 'rgb(164, 164, 164)' points = '522.3,206.8 543.9,206.8 543.9,205.5 522.3,205.5 '/>
-		<polygon fill = 'rgb(166, 166, 166)' points = '522.3,205.6 543.9,205.6 543.9,204.3 522.3,204.3 '/>
-		<polygon fill = 'rgb(167, 167, 167)' points = '522.3,204.4 543.9,204.4 543.9,203.2 522.3,203.2 '/>
-		<polygon fill = 'rgb(169, 169, 169)' points = '522.3,203.3 543.9,203.3 543.9,202.0 522.3,202.0 '/>
-		<polygon fill = 'rgb(171, 171, 171)' points = '522.3,202.1 543.9,202.1 543.9,200.8 522.3,200.8 '/>
-		<polygon fill = 'rgb(172, 172, 172)' points = '522.3,200.9 543.9,200.9 543.9,199.6 522.3,199.6 '/>
-		<polygon fill = 'rgb(174, 174, 174)' points = '522.3,199.7 543.9,199.7 543.9,198.4 522.3,198.4 '/>
-		<polygon fill = 'rgb(175, 175, 175)' points = '522.3,198.5 543.9,198.5 543.9,197.3 522.3,197.3 '/>
-		<polygon fill = 'rgb(177, 177, 177)' points = '522.3,197.4 543.9,197.4 543.9,196.1 522.3,196.1 '/>
-		<polygon fill = 'rgb(179, 179, 179)' points = '522.3,196.2 543.9,196.2 543.9,194.9 522.3,194.9 '/>
-		<polygon fill = 'rgb(180, 180, 180)' points = '522.3,195.0 543.9,195.0 543.9,193.7 522.3,193.7 '/>
-		<polygon fill = 'rgb(182, 182, 182)' points = '522.3,193.8 543.9,193.8 543.9,192.6 522.3,192.6 '/>
-		<polygon fill = 'rgb(183, 183, 183)' points = '522.3,192.7 543.9,192.7 543.9,191.4 522.3,191.4 '/>
-		<polygon fill = 'rgb(185, 185, 185)' points = '522.3,191.5 543.9,191.5 543.9,190.2 522.3,190.2 '/>
-		<polygon fill = 'rgb(186, 186, 186)' points = '522.3,190.3 543.9,190.3 543.9,189.0 522.3,189.0 '/>
-		<polygon fill = 'rgb(188, 188, 188)' points = '522.3,189.1 543.9,189.1 543.9,187.8 522.3,187.8 '/>
-		<polygon fill = 'rgb(190, 190, 190)' points = '522.3,187.9 543.9,187.9 543.9,186.7 522.3,186.7 '/>
-		<polygon fill = 'rgb(191, 191, 191)' points = '522.3,186.8 543.9,186.8 543.9,185.5 522.3,185.5 '/>
-		<polygon fill = 'rgb(193, 193, 193)' points = '522.3,185.6 543.9,185.6 543.9,184.3 522.3,184.3 '/>
-		<polygon fill = 'rgb(194, 194, 194)' points = '522.3,184.4 543.9,184.4 543.9,183.1 522.3,183.1 '/>
-		<polygon fill = 'rgb(196, 196, 196)' points = '522.3,183.2 543.9,183.2 543.9,182.0 522.3,182.0 '/>
-		<polygon fill = 'rgb(197, 197, 197)' points = '522.3,182.1 543.9,182.1 543.9,180.8 522.3,180.8 '/>
-		<polygon fill = 'rgb(199, 199, 199)' points = '522.3,180.9 543.9,180.9 543.9,179.6 522.3,179.6 '/>
-		<polygon fill = 'rgb(200, 200, 200)' points = '522.3,179.7 543.9,179.7 543.9,178.4 522.3,178.4 '/>
-		<polygon fill = 'rgb(202, 202, 202)' points = '522.3,178.5 543.9,178.5 543.9,177.2 522.3,177.2 '/>
-		<polygon fill = 'rgb(203, 203, 203)' points = '522.3,177.3 543.9,177.3 543.9,176.1 522.3,176.1 '/>
-		<polygon fill = 'rgb(205, 205, 205)' points = '522.3,176.2 543.9,176.2 543.9,174.9 522.3,174.9 '/>
-		<polygon fill = 'rgb(206, 206, 206)' points = '522.3,175.0 543.9,175.0 543.9,173.7 522.3,173.7 '/>
-		<polygon fill = 'rgb(208, 208, 208)' points = '522.3,173.8 543.9,173.8 543.9,172.5 522.3,172.5 '/>
-		<polygon fill = 'rgb(209, 209, 209)' points = '522.3,172.6 543.9,172.6 543.9,171.3 522.3,171.3 '/>
-		<polygon fill = 'rgb(211, 211, 211)' points = '522.3,171.4 543.9,171.4 543.9,170.2 522.3,170.2 '/>
-		<polygon fill = 'rgb(212, 212, 212)' points = '522.3,170.3 543.9,170.3 543.9,169.0 522.3,169.0 '/>
-		<polygon fill = 'rgb(213, 213, 213)' points = '522.3,169.1 543.9,169.1 543.9,167.8 522.3,167.8 '/>
-		<polygon fill = 'rgb(215, 215, 215)' points = '522.3,167.9 543.9,167.9 543.9,166.6 522.3,166.6 '/>
-		<polygon fill = 'rgb(216, 216, 216)' points = '522.3,166.7 543.9,166.7 543.9,165.5 522.3,165.5 '/>
-		<polygon fill = 'rgb(218, 218, 218)' points = '522.3,165.6 543.9,165.6 543.9,164.3 522.3,164.3 '/>
-		<polygon fill = 'rgb(219, 219, 219)' points = '522.3,164.4 543.9,164.4 543.9,163.1 522.3,163.1 '/>
-		<polygon fill = 'rgb(221, 221, 221)' points = '522.3,163.2 543.9,163.2 543.9,161.9 522.3,161.9 '/>
-		<polygon fill = 'rgb(222, 222, 222)' points = '522.3,162.0 543.9,162.0 543.9,160.7 522.3,160.7 '/>
-		<polygon fill = 'rgb(224, 224, 224)' points = '522.3,160.8 543.9,160.8 543.9,159.6 522.3,159.6 '/>
-		<polygon fill = 'rgb(225, 225, 225)' points = '522.3,159.7 543.9,159.7 543.9,158.4 522.3,158.4 '/>
-		<polygon fill = 'rgb(226, 226, 226)' points = '522.3,158.5 543.9,158.5 543.9,157.2 522.3,157.2 '/>
-		<polygon fill = 'rgb(228, 228, 228)' points = '522.3,157.3 543.9,157.3 543.9,156.0 522.3,156.0 '/>
-		<polygon fill = 'rgb(229, 229, 229)' points = '522.3,156.1 543.9,156.1 543.9,154.9 522.3,154.9 '/>
-		<polygon fill = 'rgb(231, 231, 231)' points = '522.3,155.0 543.9,155.0 543.9,153.7 522.3,153.7 '/>
-		<polygon fill = 'rgb(232, 232, 232)' points = '522.3,153.8 543.9,153.8 543.9,152.5 522.3,152.5 '/>
-		<polygon fill = 'rgb(233, 233, 233)' points = '522.3,152.6 543.9,152.6 543.9,151.3 522.3,151.3 '/>
-		<polygon fill = 'rgb(235, 235, 235)' points = '522.3,151.4 543.9,151.4 543.9,150.1 522.3,150.1 '/>
-		<polygon fill = 'rgb(236, 236, 236)' points = '522.3,150.2 543.9,150.2 543.9,149.0 522.3,149.0 '/>
-		<polygon fill = 'rgb(237, 237, 237)' points = '522.3,149.1 543.9,149.1 543.9,147.8 522.3,147.8 '/>
-		<polygon fill = 'rgb(239, 239, 239)' points = '522.3,147.9 543.9,147.9 543.9,146.6 522.3,146.6 '/>
-		<polygon fill = 'rgb(240, 240, 240)' points = '522.3,146.7 543.9,146.7 543.9,145.4 522.3,145.4 '/>
-		<polygon fill = 'rgb(242, 242, 242)' points = '522.3,145.5 543.9,145.5 543.9,144.3 522.3,144.3 '/>
-		<polygon fill = 'rgb(243, 243, 243)' points = '522.3,144.4 543.9,144.4 543.9,143.1 522.3,143.1 '/>
-		<polygon fill = 'rgb(244, 244, 244)' points = '522.3,143.2 543.9,143.2 543.9,141.9 522.3,141.9 '/>
-		<polygon fill = 'rgb(246, 246, 246)' points = '522.3,142.0 543.9,142.0 543.9,140.7 522.3,140.7 '/>
-		<polygon fill = 'rgb(247, 247, 247)' points = '522.3,140.8 543.9,140.8 543.9,139.5 522.3,139.5 '/>
-		<polygon fill = 'rgb(248, 248, 248)' points = '522.3,139.6 543.9,139.6 543.9,138.4 522.3,138.4 '/>
-		<polygon fill = 'rgb(250, 250, 250)' points = '522.3,138.5 543.9,138.5 543.9,137.2 522.3,137.2 '/>
-		<polygon fill = 'rgb(251, 251, 251)' points = '522.3,137.3 543.9,137.3 543.9,136.0 522.3,136.0 '/>
-		<polygon fill = 'rgb(252, 252, 252)' points = '522.3,136.1 543.9,136.1 543.9,134.8 522.3,134.8 '/>
-		<polygon fill = 'rgb(254, 254, 254)' points = '522.3,134.9 543.9,134.9 543.9,133.7 522.3,133.7 '/>
-	</g>
-	<path stroke='black'  d='M522.3,284.5 L543.9,284.5 L543.9,133.7 L522.3,133.7 L522.3,284.5 Z  h0.01'/>	<path stroke='black'  d='M543.9,284.5 L534.9,284.5  h0.01'/>	<g transform="translate(552.2,289.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.95</text>
-	</g>
-	<path stroke='black'  d='M522.3,284.5 L531.3,284.5 M543.9,270.8 L534.9,270.8  h0.01'/>	<g transform="translate(552.2,275.3)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.952</text>
-	</g>
-	<path stroke='black'  d='M522.3,270.8 L531.3,270.8 M543.9,257.1 L534.9,257.1  h0.01'/>	<g transform="translate(552.2,261.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.954</text>
-	</g>
-	<path stroke='black'  d='M522.3,257.1 L531.3,257.1 M543.9,243.4 L534.9,243.4  h0.01'/>	<g transform="translate(552.2,247.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.956</text>
-	</g>
-	<path stroke='black'  d='M522.3,243.4 L531.3,243.4 M543.9,229.7 L534.9,229.7  h0.01'/>	<g transform="translate(552.2,234.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.958</text>
-	</g>
-	<path stroke='black'  d='M522.3,229.7 L531.3,229.7 M543.9,216.0 L534.9,216.0  h0.01'/>	<g transform="translate(552.2,220.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.96</text>
-	</g>
-	<path stroke='black'  d='M522.3,216.0 L531.3,216.0 M543.9,202.3 L534.9,202.3  h0.01'/>	<g transform="translate(552.2,206.8)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.962</text>
-	</g>
-	<path stroke='black'  d='M522.3,202.3 L531.3,202.3 M543.9,188.6 L534.9,188.6  h0.01'/>	<g transform="translate(552.2,193.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.964</text>
-	</g>
-	<path stroke='black'  d='M522.3,188.6 L531.3,188.6 M543.9,174.9 L534.9,174.9  h0.01'/>	<g transform="translate(552.2,179.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.966</text>
-	</g>
-	<path stroke='black'  d='M522.3,174.9 L531.3,174.9 M543.9,161.2 L534.9,161.2  h0.01'/>	<g transform="translate(552.2,165.7)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.968</text>
-	</g>
-	<path stroke='black'  d='M522.3,161.2 L531.3,161.2 M543.9,147.5 L534.9,147.5  h0.01'/>	<g transform="translate(552.2,152.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.97</text>
-	</g>
-	<path stroke='black'  d='M522.3,147.5 L531.3,147.5 M543.9,133.7 L534.9,133.7  h0.01'/>	<g transform="translate(552.2,138.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:start">
-		<text> 0.972</text>
-	</g>
-	<path stroke='black'  d='M522.3,133.7 L531.3,133.7  h0.01'/></g>
-</g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600"
+   height="500"
+   viewBox="0 0 600 500"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="3d.svg">
+  <metadata
+     id="metadata598">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs596" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1014"
+     id="namedview594"
+     showgrid="false"
+     inkscape:zoom="0.944"
+     inkscape:cx="100.20218"
+     inkscape:cy="341.14322"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="gnuplot_canvas" />
+  <title
+     id="title4">Gnuplot</title>
+  <desc
+     id="desc6">Produced by GNUPLOT 4.6 patchlevel 4 </desc>
+  <g
+     id="gnuplot_canvas">
+    <rect
+       x="0"
+       y="0"
+       width="600"
+       height="500"
+       fill="none"
+       id="rect9" />
+    <defs
+       id="defs11">
+      <circle
+         id="gpDot"
+         r="0.5"
+         stroke-width="0.5" />
+      <path
+         id="gpPt0"
+         stroke-width="0.222"
+         stroke="currentColor"
+         d="M-1,0 h2 M0,-1 v2" />
+      <path
+         id="gpPt1"
+         stroke-width="0.222"
+         stroke="currentColor"
+         d="M-1,-1 L1,1 M1,-1 L-1,1" />
+      <path
+         id="gpPt2"
+         stroke-width="0.222"
+         stroke="currentColor"
+         d="M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1" />
+      <rect
+         id="gpPt3"
+         stroke-width="0.222"
+         stroke="currentColor"
+         x="-1"
+         y="-1"
+         width="2"
+         height="2" />
+      <rect
+         id="gpPt4"
+         stroke-width="0.222"
+         stroke="currentColor"
+         fill="currentColor"
+         x="-1"
+         y="-1"
+         width="2"
+         height="2" />
+      <circle
+         id="gpPt5"
+         stroke-width="0.222"
+         stroke="currentColor"
+         cx="0"
+         cy="0"
+         r="1" />
+      <use
+         xlink:href="#gpPt5"
+         id="gpPt6"
+         fill="currentColor"
+         stroke="none" />
+      <path
+         id="gpPt7"
+         stroke-width="0.222"
+         stroke="currentColor"
+         d="M0,-1.33 L-1.33,0.67 L1.33,0.67 z" />
+      <use
+         xlink:href="#gpPt7"
+         id="gpPt8"
+         fill="currentColor"
+         stroke="none" />
+      <use
+         xlink:href="#gpPt7"
+         id="gpPt9"
+         stroke="currentColor"
+         transform="rotate(180)" />
+      <use
+         xlink:href="#gpPt9"
+         id="gpPt10"
+         fill="currentColor"
+         stroke="none" />
+      <use
+         xlink:href="#gpPt3"
+         id="gpPt11"
+         stroke="currentColor"
+         transform="rotate(45)" />
+      <use
+         xlink:href="#gpPt11"
+         id="gpPt12"
+         fill="currentColor"
+         stroke="none" />
+    </defs>
+    <g
+       style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter"
+       id="g27" />
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path31"
+       d="m 125.3,302.9 311.2,-13.8 m 38.2,112.6 -38.2,-112.6 m -311.2,13.8 0,-204.6 m 311.2,190.8 0,-153.7 m 38.2,266.3 0,-123.1 m -311.2,137 -1.4,-4.4 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text35"
+       x="164.89999"
+       y="428.70001">0.1</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path37"
+       d="m 125.3,302.9 1.5,4.3 m 88.6,106.1 -1.5,-4.4 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text41"
+       x="216.8"
+       y="426.39999">0.2</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path43"
+       d="m 177.2,300.6 1.5,4.3 m 88.6,106.1 -1.5,-4.4 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text47"
+       x="268.60001"
+       y="424.10001">0.3</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path49"
+       d="m 229.1,298.3 1.4,4.3 m 88.6,106 -1.5,-4.3 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text53"
+       x="320.39999"
+       y="421.79999">0.4</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path55"
+       d="m 280.9,296 1.5,4.3 m 88.5,106 -1.4,-4.3 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text59"
+       x="372.29999"
+       y="419.5">0.5</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path61"
+       d="m 332.7,293.7 1.5,4.3 m 88.6,106 -1.5,-4.3 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text65"
+       x="424.20001"
+       y="417.20001">0.6</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path67"
+       d="m 384.6,291.4 1.5,4.3 m 88.6,106 -1.5,-4.3 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text71"
+       x="476"
+       y="414.89999">0.7</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path73"
+       d="m 436.5,289.1 1.4,4.3 m -274.4,122.2 9,-0.4 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text77"
+       x="155.3"
+       y="420.89999">1</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path79"
+       d="m 474.7,401.7 -8.9,0.4 m -308.6,-5.3 8.9,-0.4 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text83"
+       x="148.89999"
+       y="402.10001">1.5</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path85"
+       d="m 468.3,383 -8.9,0.4 m -308.6,-5.4 8.9,-0.4 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text89"
+       x="142.60001"
+       y="383.29999">2</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path91"
+       d="m 462,364.2 -9,0.4 m -308.6,-5.4 9,-0.4 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text95"
+       x="136.2"
+       y="364.5">2.5</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path97"
+       d="m 455.6,345.4 -9,0.4 m -308.6,-5.3 9,-0.4 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text101"
+       x="129.8"
+       y="345.79999">3</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path103"
+       d="m 449.2,326.6 -8.9,0.4 m -308.6,-5.3 8.9,-0.4 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text107"
+       x="123.4"
+       y="327">3.5</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path109"
+       d="m 442.8,307.9 -8.9,0.4 m -308.6,-5.4 8.9,-0.4 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text113"
+       x="117.1"
+       y="308.20001">4</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path115"
+       d="m 436.5,289.1 -9,0.4 m -302.2,-54.7 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text119"
+       x="107.3"
+       y="239.3">0.95</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path121"
+       d="m 125.3,222.4 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text125"
+       x="107.3"
+       y="226.89999">0.952</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path127"
+       d="m 125.3,209.9 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text131"
+       x="107.3"
+       y="214.39999">0.954</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path133"
+       d="m 125.3,197.5 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text137"
+       x="107.3"
+       y="202">0.956</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path139"
+       d="m 125.3,185.1 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text143"
+       x="107.3"
+       y="189.60001">0.958</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path145"
+       d="m 125.3,172.7 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text149"
+       x="107.3"
+       y="177.2">0.96</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path151"
+       d="m 125.3,160.3 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text155"
+       x="107.3"
+       y="164.8">0.962</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path157"
+       d="m 125.3,147.9 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text161"
+       x="107.3"
+       y="152.39999">0.964</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path163"
+       d="m 125.3,135.5 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text167"
+       x="107.3"
+       y="140">0.966</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path169"
+       d="m 125.3,123.1 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text173"
+       x="107.3"
+       y="127.6">0.968</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path175"
+       d="m 125.3,110.7 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text179"
+       x="107.3"
+       y="115.2">0.97</text>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path181"
+       d="m 125.3,98.3 9,0 h 0.01" />
+    <text
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text185"
+       x="107.3"
+       y="102.8">0.972</text>
+    <text
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
+       id="text189"
+       x="43.199997"
+       y="165">F0.5</text>
+    <text
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+       id="text193"
+       x="300"
+       y="41.299999">Parameter evaluation for ACTOR_OVERLAP_MINIMUM and MIN_SCORE</text>
+    <polygon
+       style="color:#ff0000;fill:#8a8a8a;stroke:none"
+       id="polygon202"
+       points="384.6,195.3 436.5,135.4 449.2,178.5 397.3,236.8 " />
+    <polygon
+       style="color:#ff0000;fill:#808080;stroke:none"
+       id="polygon204"
+       points="397.3,236.8 449.2,178.5 462,224.2 410.1,280.6 " />
+    <polygon
+       style="color:#ff0000;fill:#6d6d6d;stroke:none"
+       id="polygon206"
+       points="410.1,280.6 462,224.2 474.7,278.6 422.8,326.8 " />
+    <polygon
+       style="color:#ff0000;fill:#a4a4a4;stroke:none"
+       id="polygon208"
+       points="332.7,109 384.6,195.3 397.3,236.8 345.5,149.6 " />
+    <polygon
+       style="color:#ff0000;fill:#9e9e9e;stroke:none"
+       id="polygon210"
+       points="345.5,149.6 397.3,236.8 410.1,280.6 358.2,189.5 " />
+    <polygon
+       style="color:#ff0000;fill:#969696;stroke:none"
+       id="polygon212"
+       points="358.2,189.5 410.1,280.6 422.8,326.8 370.9,230.6 " />
+    <polygon
+       style="color:#ff0000;fill:#e6e6e6;stroke:none"
+       id="polygon214"
+       points="280.9,110.4 332.7,109 345.5,149.6 293.7,145 " />
+    <polygon
+       style="color:#ff0000;fill:#e5e5e5;stroke:none"
+       id="polygon216"
+       points="293.7,145 345.5,149.6 358.2,189.5 306.3,184.1 " />
+    <polygon
+       style="color:#ff0000;fill:#e1e1e1;stroke:none"
+       id="polygon218"
+       points="306.3,184.1 358.2,189.5 370.9,230.6 319.1,225.4 " />
+    <polygon
+       style="color:#ff0000;fill:#e9e9e9;stroke:none"
+       id="polygon220"
+       points="229.1,114.2 280.9,110.4 293.7,145 241.8,143.5 " />
+    <polygon
+       style="color:#ff0000;fill:#ececec;stroke:none"
+       id="polygon222"
+       points="241.8,143.5 293.7,145 306.3,184.1 254.5,182.5 " />
+    <polygon
+       style="color:#ff0000;fill:#e9e9e9;stroke:none"
+       id="polygon224"
+       points="254.5,182.5 306.3,184.1 319.1,225.4 267.3,221.6 " />
+    <polygon
+       style="color:#ff0000;fill:#e8e8e8;stroke:none"
+       id="polygon226"
+       points="177.2,124.7 229.1,114.2 241.8,143.5 189.9,145.7 " />
+    <polygon
+       style="color:#ff0000;fill:#f0f0f0;stroke:none"
+       id="polygon228"
+       points="189.9,145.7 241.8,143.5 254.5,182.5 202.7,181.4 " />
+    <polygon
+       style="color:#ff0000;fill:#efefef;stroke:none"
+       id="polygon230"
+       points="202.7,181.4 254.5,182.5 267.3,221.6 215.4,221.2 " />
+    <polygon
+       style="color:#ff0000;fill:#d4d4d4;stroke:none"
+       id="polygon232"
+       points="125.3,163.4 177.2,124.7 189.9,145.7 138,161.1 " />
+    <polygon
+       style="color:#ff0000;fill:#ebebeb;stroke:none"
+       id="polygon234"
+       points="138,161.1 189.9,145.7 202.7,181.4 150.8,189 " />
+    <polygon
+       style="color:#ff0000;fill:#eeeeee;stroke:none"
+       id="polygon236"
+       points="150.8,189 202.7,181.4 215.4,221.2 163.5,226.5 " />
+    <g
+       id="g238"
+       style="font-size:15px;text-anchor:end;color:#ff0000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(415.9,85.6)">
+      <text
+         id="text240">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
+           id="tspan3914">F0.5</tspan>
+      </text>
+    </g>
+    <path
+       d="m 424.2,81.1 42.2,0 M 474.7,278.6 462,224.2 449.2,178.5 436.5,135.4 M 422.8,326.8 410.1,280.6 397.3,236.8 384.6,195.3 M 370.9,230.6 358.2,189.5 345.5,149.6 332.7,109 M 319.1,225.4 306.3,184.1 293.7,145 280.9,110.4 m -13.6,111.2 -12.8,-39.1 -12.7,-39 -12.7,-29.3 m -13.7,107 -12.7,-39.8 -12.8,-35.7 -12.7,-21 M 163.5,226.5 150.8,189 138,161.1 l -12.7,2.3 m 311.2,-28 -51.9,59.9 -51.9,-86.3 -51.8,1.4 -51.8,3.8 -51.9,10.5 -51.9,38.7 m 323.9,15.1 -51.9,58.3 -51.8,-87.2 -51.8,-4.6 -51.9,-1.5 -51.9,2.2 -51.9,15.4 m 324,63.1 -51.9,56.4 -51.9,-91.1 -51.9,-5.4 -51.8,-1.6 -51.8,-1.1 -51.9,7.6 m 323.9,89.6 -51.9,48.2 -51.9,-96.2 -51.8,-5.2 -51.8,-3.8 -51.9,-0.4 -51.9,5.3 h 0.01"
+       id="path242"
+       inkscape:connector-curvature="0"
+       style="color:#ff0000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path246"
+       d="m 474.7,401.7 -311.2,13.9 m -38.2,-112.7 38.2,112.7 0,-189.1 h 0.01" />
+    <g
+       id="g248"
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(328.6,441.3)">
+      <text
+         id="text250">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3916">MIN_SCORE</tspan>
+      </text>
+    </g>
+    <g
+       id="g252"
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(66.6,367.2)">
+      <text
+         id="text254">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3918">ACT_DIST</tspan>
+      </text>
+    </g>
+    <g
+       id="g260"
+       style="color:#000000;fill:none;stroke:none">
+      <polygon
+         style="fill:#020202"
+         id="polygon262"
+         points="543.9,283.3 522.3,283.3 522.3,284.5 543.9,284.5 " />
+      <polygon
+         style="fill:#0a0a0a"
+         id="polygon264"
+         points="543.9,282.1 522.3,282.1 522.3,283.4 543.9,283.4 " />
+      <polygon
+         style="fill:#101010"
+         id="polygon266"
+         points="543.9,280.9 522.3,280.9 522.3,282.2 543.9,282.2 " />
+      <polygon
+         style="fill:#151515"
+         id="polygon268"
+         points="543.9,279.7 522.3,279.7 522.3,281 543.9,281 " />
+      <polygon
+         style="fill:#1a1a1a"
+         id="polygon270"
+         points="543.9,278.6 522.3,278.6 522.3,279.8 543.9,279.8 " />
+      <polygon
+         style="fill:#1d1d1d"
+         id="polygon272"
+         points="543.9,277.4 522.3,277.4 522.3,278.7 543.9,278.7 " />
+      <polygon
+         style="fill:#212121"
+         id="polygon274"
+         points="543.9,276.2 522.3,276.2 522.3,277.5 543.9,277.5 " />
+      <polygon
+         style="fill:#252525"
+         id="polygon276"
+         points="543.9,275 522.3,275 522.3,276.3 543.9,276.3 " />
+      <polygon
+         style="fill:#282828"
+         id="polygon278"
+         points="543.9,273.8 522.3,273.8 522.3,275.1 543.9,275.1 " />
+      <polygon
+         style="fill:#2c2c2c"
+         id="polygon280"
+         points="543.9,272.7 522.3,272.7 522.3,273.9 543.9,273.9 " />
+      <polygon
+         style="fill:#2f2f2f"
+         id="polygon282"
+         points="543.9,271.5 522.3,271.5 522.3,272.8 543.9,272.8 " />
+      <polygon
+         style="fill:#323232"
+         id="polygon284"
+         points="543.9,270.3 522.3,270.3 522.3,271.6 543.9,271.6 " />
+      <polygon
+         style="fill:#353535"
+         id="polygon286"
+         points="543.9,269.1 522.3,269.1 522.3,270.4 543.9,270.4 " />
+      <polygon
+         style="fill:#383838"
+         id="polygon288"
+         points="543.9,268 522.3,268 522.3,269.2 543.9,269.2 " />
+      <polygon
+         style="fill:#3a3a3a"
+         id="polygon290"
+         points="543.9,266.8 522.3,266.8 522.3,268.1 543.9,268.1 " />
+      <polygon
+         style="fill:#3d3d3d"
+         id="polygon292"
+         points="543.9,265.6 522.3,265.6 522.3,266.9 543.9,266.9 " />
+      <polygon
+         style="fill:#404040"
+         id="polygon294"
+         points="543.9,264.4 522.3,264.4 522.3,265.7 543.9,265.7 " />
+      <polygon
+         style="fill:#434343"
+         id="polygon296"
+         points="543.9,263.2 522.3,263.2 522.3,264.5 543.9,264.5 " />
+      <polygon
+         style="fill:#454545"
+         id="polygon298"
+         points="543.9,262.1 522.3,262.1 522.3,263.3 543.9,263.3 " />
+      <polygon
+         style="fill:#484848"
+         id="polygon300"
+         points="543.9,260.9 522.3,260.9 522.3,262.2 543.9,262.2 " />
+      <polygon
+         style="fill:#4a4a4a"
+         id="polygon302"
+         points="543.9,259.7 522.3,259.7 522.3,261 543.9,261 " />
+      <polygon
+         style="fill:#4d4d4d"
+         id="polygon304"
+         points="543.9,258.5 522.3,258.5 522.3,259.8 543.9,259.8 " />
+      <polygon
+         style="fill:#4f4f4f"
+         id="polygon306"
+         points="543.9,257.4 522.3,257.4 522.3,258.6 543.9,258.6 " />
+      <polygon
+         style="fill:#515151"
+         id="polygon308"
+         points="543.9,256.2 522.3,256.2 522.3,257.5 543.9,257.5 " />
+      <polygon
+         style="fill:#545454"
+         id="polygon310"
+         points="543.9,255 522.3,255 522.3,256.3 543.9,256.3 " />
+      <polygon
+         style="fill:#565656"
+         id="polygon312"
+         points="543.9,253.8 522.3,253.8 522.3,255.1 543.9,255.1 " />
+      <polygon
+         style="fill:#585858"
+         id="polygon314"
+         points="543.9,252.6 522.3,252.6 522.3,253.9 543.9,253.9 " />
+      <polygon
+         style="fill:#5b5b5b"
+         id="polygon316"
+         points="543.9,251.5 522.3,251.5 522.3,252.7 543.9,252.7 " />
+      <polygon
+         style="fill:#5d5d5d"
+         id="polygon318"
+         points="543.9,250.3 522.3,250.3 522.3,251.6 543.9,251.6 " />
+      <polygon
+         style="fill:#5f5f5f"
+         id="polygon320"
+         points="543.9,249.1 522.3,249.1 522.3,250.4 543.9,250.4 " />
+      <polygon
+         style="fill:#616161"
+         id="polygon322"
+         points="543.9,247.9 522.3,247.9 522.3,249.2 543.9,249.2 " />
+      <polygon
+         style="fill:#636363"
+         id="polygon324"
+         points="543.9,246.7 522.3,246.7 522.3,248 543.9,248 " />
+      <polygon
+         style="fill:#656565"
+         id="polygon326"
+         points="543.9,245.6 522.3,245.6 522.3,246.8 543.9,246.8 " />
+      <polygon
+         style="fill:#676767"
+         id="polygon328"
+         points="543.9,244.4 522.3,244.4 522.3,245.7 543.9,245.7 " />
+      <polygon
+         style="fill:#696969"
+         id="polygon330"
+         points="543.9,243.2 522.3,243.2 522.3,244.5 543.9,244.5 " />
+      <polygon
+         style="fill:#6c6c6c"
+         id="polygon332"
+         points="543.9,242 522.3,242 522.3,243.3 543.9,243.3 " />
+      <polygon
+         style="fill:#6e6e6e"
+         id="polygon334"
+         points="543.9,240.9 522.3,240.9 522.3,242.1 543.9,242.1 " />
+      <polygon
+         style="fill:#6f6f6f"
+         id="polygon336"
+         points="543.9,239.7 522.3,239.7 522.3,241 543.9,241 " />
+      <polygon
+         style="fill:#727272"
+         id="polygon338"
+         points="543.9,238.5 522.3,238.5 522.3,239.8 543.9,239.8 " />
+      <polygon
+         style="fill:#747474"
+         id="polygon340"
+         points="543.9,237.3 522.3,237.3 522.3,238.6 543.9,238.6 " />
+      <polygon
+         style="fill:#767676"
+         id="polygon342"
+         points="543.9,236.1 522.3,236.1 522.3,237.4 543.9,237.4 " />
+      <polygon
+         style="fill:#787878"
+         id="polygon344"
+         points="543.9,235 522.3,235 522.3,236.2 543.9,236.2 " />
+      <polygon
+         style="fill:#797979"
+         id="polygon346"
+         points="543.9,233.8 522.3,233.8 522.3,235.1 543.9,235.1 " />
+      <polygon
+         style="fill:#7b7b7b"
+         id="polygon348"
+         points="543.9,232.6 522.3,232.6 522.3,233.9 543.9,233.9 " />
+      <polygon
+         style="fill:#7d7d7d"
+         id="polygon350"
+         points="543.9,231.4 522.3,231.4 522.3,232.7 543.9,232.7 " />
+      <polygon
+         style="fill:#7f7f7f"
+         id="polygon352"
+         points="543.9,230.3 522.3,230.3 522.3,231.5 543.9,231.5 " />
+      <polygon
+         style="fill:#818181"
+         id="polygon354"
+         points="543.9,229.1 522.3,229.1 522.3,230.4 543.9,230.4 " />
+      <polygon
+         style="fill:#838383"
+         id="polygon356"
+         points="543.9,227.9 522.3,227.9 522.3,229.2 543.9,229.2 " />
+      <polygon
+         style="fill:#858585"
+         id="polygon358"
+         points="543.9,226.7 522.3,226.7 522.3,228 543.9,228 " />
+      <polygon
+         style="fill:#878787"
+         id="polygon360"
+         points="543.9,225.5 522.3,225.5 522.3,226.8 543.9,226.8 " />
+      <polygon
+         style="fill:#888888"
+         id="polygon362"
+         points="543.9,224.4 522.3,224.4 522.3,225.6 543.9,225.6 " />
+      <polygon
+         style="fill:#8a8a8a"
+         id="polygon364"
+         points="543.9,223.2 522.3,223.2 522.3,224.5 543.9,224.5 " />
+      <polygon
+         style="fill:#8c8c8c"
+         id="polygon366"
+         points="543.9,222 522.3,222 522.3,223.3 543.9,223.3 " />
+      <polygon
+         style="fill:#8e8e8e"
+         id="polygon368"
+         points="543.9,220.8 522.3,220.8 522.3,222.1 543.9,222.1 " />
+      <polygon
+         style="fill:#909090"
+         id="polygon370"
+         points="543.9,219.7 522.3,219.7 522.3,220.9 543.9,220.9 " />
+      <polygon
+         style="fill:#919191"
+         id="polygon372"
+         points="543.9,218.5 522.3,218.5 522.3,219.8 543.9,219.8 " />
+      <polygon
+         style="fill:#939393"
+         id="polygon374"
+         points="543.9,217.3 522.3,217.3 522.3,218.6 543.9,218.6 " />
+      <polygon
+         style="fill:#959595"
+         id="polygon376"
+         points="543.9,216.1 522.3,216.1 522.3,217.4 543.9,217.4 " />
+      <polygon
+         style="fill:#979797"
+         id="polygon378"
+         points="543.9,214.9 522.3,214.9 522.3,216.2 543.9,216.2 " />
+      <polygon
+         style="fill:#989898"
+         id="polygon380"
+         points="543.9,213.8 522.3,213.8 522.3,215 543.9,215 " />
+      <polygon
+         style="fill:#9a9a9a"
+         id="polygon382"
+         points="543.9,212.6 522.3,212.6 522.3,213.9 543.9,213.9 " />
+      <polygon
+         style="fill:#9c9c9c"
+         id="polygon384"
+         points="543.9,211.4 522.3,211.4 522.3,212.7 543.9,212.7 " />
+      <polygon
+         style="fill:#9d9d9d"
+         id="polygon386"
+         points="543.9,210.2 522.3,210.2 522.3,211.5 543.9,211.5 " />
+      <polygon
+         style="fill:#9f9f9f"
+         id="polygon388"
+         points="543.9,209 522.3,209 522.3,210.3 543.9,210.3 " />
+      <polygon
+         style="fill:#a1a1a1"
+         id="polygon390"
+         points="543.9,207.9 522.3,207.9 522.3,209.1 543.9,209.1 " />
+      <polygon
+         style="fill:#a2a2a2"
+         id="polygon392"
+         points="543.9,206.7 522.3,206.7 522.3,208 543.9,208 " />
+      <polygon
+         style="fill:#a4a4a4"
+         id="polygon394"
+         points="543.9,205.5 522.3,205.5 522.3,206.8 543.9,206.8 " />
+      <polygon
+         style="fill:#a6a6a6"
+         id="polygon396"
+         points="543.9,204.3 522.3,204.3 522.3,205.6 543.9,205.6 " />
+      <polygon
+         style="fill:#a7a7a7"
+         id="polygon398"
+         points="543.9,203.2 522.3,203.2 522.3,204.4 543.9,204.4 " />
+      <polygon
+         style="fill:#a9a9a9"
+         id="polygon400"
+         points="543.9,202 522.3,202 522.3,203.3 543.9,203.3 " />
+      <polygon
+         style="fill:#ababab"
+         id="polygon402"
+         points="543.9,200.8 522.3,200.8 522.3,202.1 543.9,202.1 " />
+      <polygon
+         style="fill:#acacac"
+         id="polygon404"
+         points="543.9,199.6 522.3,199.6 522.3,200.9 543.9,200.9 " />
+      <polygon
+         style="fill:#aeaeae"
+         id="polygon406"
+         points="543.9,198.4 522.3,198.4 522.3,199.7 543.9,199.7 " />
+      <polygon
+         style="fill:#afafaf"
+         id="polygon408"
+         points="543.9,197.3 522.3,197.3 522.3,198.5 543.9,198.5 " />
+      <polygon
+         style="fill:#b1b1b1"
+         id="polygon410"
+         points="543.9,196.1 522.3,196.1 522.3,197.4 543.9,197.4 " />
+      <polygon
+         style="fill:#b3b3b3"
+         id="polygon412"
+         points="543.9,194.9 522.3,194.9 522.3,196.2 543.9,196.2 " />
+      <polygon
+         style="fill:#b4b4b4"
+         id="polygon414"
+         points="543.9,193.7 522.3,193.7 522.3,195 543.9,195 " />
+      <polygon
+         style="fill:#b6b6b6"
+         id="polygon416"
+         points="543.9,192.6 522.3,192.6 522.3,193.8 543.9,193.8 " />
+      <polygon
+         style="fill:#b7b7b7"
+         id="polygon418"
+         points="543.9,191.4 522.3,191.4 522.3,192.7 543.9,192.7 " />
+      <polygon
+         style="fill:#b9b9b9"
+         id="polygon420"
+         points="543.9,190.2 522.3,190.2 522.3,191.5 543.9,191.5 " />
+      <polygon
+         style="fill:#bababa"
+         id="polygon422"
+         points="543.9,189 522.3,189 522.3,190.3 543.9,190.3 " />
+      <polygon
+         style="fill:#bcbcbc"
+         id="polygon424"
+         points="543.9,187.8 522.3,187.8 522.3,189.1 543.9,189.1 " />
+      <polygon
+         style="fill:#bebebe"
+         id="polygon426"
+         points="543.9,186.7 522.3,186.7 522.3,187.9 543.9,187.9 " />
+      <polygon
+         style="fill:#bfbfbf"
+         id="polygon428"
+         points="543.9,185.5 522.3,185.5 522.3,186.8 543.9,186.8 " />
+      <polygon
+         style="fill:#c1c1c1"
+         id="polygon430"
+         points="543.9,184.3 522.3,184.3 522.3,185.6 543.9,185.6 " />
+      <polygon
+         style="fill:#c2c2c2"
+         id="polygon432"
+         points="543.9,183.1 522.3,183.1 522.3,184.4 543.9,184.4 " />
+      <polygon
+         style="fill:#c4c4c4"
+         id="polygon434"
+         points="543.9,182 522.3,182 522.3,183.2 543.9,183.2 " />
+      <polygon
+         style="fill:#c5c5c5"
+         id="polygon436"
+         points="543.9,180.8 522.3,180.8 522.3,182.1 543.9,182.1 " />
+      <polygon
+         style="fill:#c7c7c7"
+         id="polygon438"
+         points="543.9,179.6 522.3,179.6 522.3,180.9 543.9,180.9 " />
+      <polygon
+         style="fill:#c8c8c8"
+         id="polygon440"
+         points="543.9,178.4 522.3,178.4 522.3,179.7 543.9,179.7 " />
+      <polygon
+         style="fill:#cacaca"
+         id="polygon442"
+         points="543.9,177.2 522.3,177.2 522.3,178.5 543.9,178.5 " />
+      <polygon
+         style="fill:#cbcbcb"
+         id="polygon444"
+         points="543.9,176.1 522.3,176.1 522.3,177.3 543.9,177.3 " />
+      <polygon
+         style="fill:#cdcdcd"
+         id="polygon446"
+         points="543.9,174.9 522.3,174.9 522.3,176.2 543.9,176.2 " />
+      <polygon
+         style="fill:#cecece"
+         id="polygon448"
+         points="543.9,173.7 522.3,173.7 522.3,175 543.9,175 " />
+      <polygon
+         style="fill:#d0d0d0"
+         id="polygon450"
+         points="543.9,172.5 522.3,172.5 522.3,173.8 543.9,173.8 " />
+      <polygon
+         style="fill:#d1d1d1"
+         id="polygon452"
+         points="543.9,171.3 522.3,171.3 522.3,172.6 543.9,172.6 " />
+      <polygon
+         style="fill:#d3d3d3"
+         id="polygon454"
+         points="543.9,170.2 522.3,170.2 522.3,171.4 543.9,171.4 " />
+      <polygon
+         style="fill:#d4d4d4"
+         id="polygon456"
+         points="543.9,169 522.3,169 522.3,170.3 543.9,170.3 " />
+      <polygon
+         style="fill:#d5d5d5"
+         id="polygon458"
+         points="543.9,167.8 522.3,167.8 522.3,169.1 543.9,169.1 " />
+      <polygon
+         style="fill:#d7d7d7"
+         id="polygon460"
+         points="543.9,166.6 522.3,166.6 522.3,167.9 543.9,167.9 " />
+      <polygon
+         style="fill:#d8d8d8"
+         id="polygon462"
+         points="543.9,165.5 522.3,165.5 522.3,166.7 543.9,166.7 " />
+      <polygon
+         style="fill:#dadada"
+         id="polygon464"
+         points="543.9,164.3 522.3,164.3 522.3,165.6 543.9,165.6 " />
+      <polygon
+         style="fill:#dbdbdb"
+         id="polygon466"
+         points="543.9,163.1 522.3,163.1 522.3,164.4 543.9,164.4 " />
+      <polygon
+         style="fill:#dddddd"
+         id="polygon468"
+         points="543.9,161.9 522.3,161.9 522.3,163.2 543.9,163.2 " />
+      <polygon
+         style="fill:#dedede"
+         id="polygon470"
+         points="543.9,160.7 522.3,160.7 522.3,162 543.9,162 " />
+      <polygon
+         style="fill:#e0e0e0"
+         id="polygon472"
+         points="543.9,159.6 522.3,159.6 522.3,160.8 543.9,160.8 " />
+      <polygon
+         style="fill:#e1e1e1"
+         id="polygon474"
+         points="543.9,158.4 522.3,158.4 522.3,159.7 543.9,159.7 " />
+      <polygon
+         style="fill:#e2e2e2"
+         id="polygon476"
+         points="543.9,157.2 522.3,157.2 522.3,158.5 543.9,158.5 " />
+      <polygon
+         style="fill:#e4e4e4"
+         id="polygon478"
+         points="543.9,156 522.3,156 522.3,157.3 543.9,157.3 " />
+      <polygon
+         style="fill:#e5e5e5"
+         id="polygon480"
+         points="543.9,154.9 522.3,154.9 522.3,156.1 543.9,156.1 " />
+      <polygon
+         style="fill:#e7e7e7"
+         id="polygon482"
+         points="543.9,153.7 522.3,153.7 522.3,155 543.9,155 " />
+      <polygon
+         style="fill:#e8e8e8"
+         id="polygon484"
+         points="543.9,152.5 522.3,152.5 522.3,153.8 543.9,153.8 " />
+      <polygon
+         style="fill:#e9e9e9"
+         id="polygon486"
+         points="543.9,151.3 522.3,151.3 522.3,152.6 543.9,152.6 " />
+      <polygon
+         style="fill:#ebebeb"
+         id="polygon488"
+         points="543.9,150.1 522.3,150.1 522.3,151.4 543.9,151.4 " />
+      <polygon
+         style="fill:#ececec"
+         id="polygon490"
+         points="543.9,149 522.3,149 522.3,150.2 543.9,150.2 " />
+      <polygon
+         style="fill:#ededed"
+         id="polygon492"
+         points="543.9,147.8 522.3,147.8 522.3,149.1 543.9,149.1 " />
+      <polygon
+         style="fill:#efefef"
+         id="polygon494"
+         points="543.9,146.6 522.3,146.6 522.3,147.9 543.9,147.9 " />
+      <polygon
+         style="fill:#f0f0f0"
+         id="polygon496"
+         points="543.9,145.4 522.3,145.4 522.3,146.7 543.9,146.7 " />
+      <polygon
+         style="fill:#f2f2f2"
+         id="polygon498"
+         points="543.9,144.3 522.3,144.3 522.3,145.5 543.9,145.5 " />
+      <polygon
+         style="fill:#f3f3f3"
+         id="polygon500"
+         points="543.9,143.1 522.3,143.1 522.3,144.4 543.9,144.4 " />
+      <polygon
+         style="fill:#f4f4f4"
+         id="polygon502"
+         points="543.9,141.9 522.3,141.9 522.3,143.2 543.9,143.2 " />
+      <polygon
+         style="fill:#f6f6f6"
+         id="polygon504"
+         points="543.9,140.7 522.3,140.7 522.3,142 543.9,142 " />
+      <polygon
+         style="fill:#f7f7f7"
+         id="polygon506"
+         points="543.9,139.5 522.3,139.5 522.3,140.8 543.9,140.8 " />
+      <polygon
+         style="fill:#f8f8f8"
+         id="polygon508"
+         points="543.9,138.4 522.3,138.4 522.3,139.6 543.9,139.6 " />
+      <polygon
+         style="fill:#fafafa"
+         id="polygon510"
+         points="543.9,137.2 522.3,137.2 522.3,138.5 543.9,138.5 " />
+      <polygon
+         style="fill:#fbfbfb"
+         id="polygon512"
+         points="543.9,136 522.3,136 522.3,137.3 543.9,137.3 " />
+      <polygon
+         style="fill:#fcfcfc"
+         id="polygon514"
+         points="543.9,134.8 522.3,134.8 522.3,136.1 543.9,136.1 " />
+      <polygon
+         style="fill:#fefefe"
+         id="polygon516"
+         points="543.9,133.7 522.3,133.7 522.3,134.9 543.9,134.9 " />
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path518"
+       d="m 522.3,284.5 21.6,0 0,-150.8 -21.6,0 0,150.8 z m 0,0 h 0.01" />
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path520"
+       d="m 543.9,284.5 -9,0 h 0.01" />
+    <g
+       id="g522"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,289)">
+      <text
+         id="text524">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3912">0.95</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path526"
+       d="m 522.3,284.5 9,0 m 12.6,-13.7 -9,0 h 0.01" />
+    <g
+       id="g528"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,275.3)">
+      <text
+         id="text530">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3910">0.952</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path532"
+       d="m 522.3,270.8 9,0 m 12.6,-13.7 -9,0 h 0.01" />
+    <g
+       id="g534"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,261.6)">
+      <text
+         id="text536">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3908">0.954</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path538"
+       d="m 522.3,257.1 9,0 m 12.6,-13.7 -9,0 h 0.01" />
+    <g
+       id="g540"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,247.9)">
+      <text
+         id="text542">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3906">0.956</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path544"
+       d="m 522.3,243.4 9,0 m 12.6,-13.7 -9,0 h 0.01" />
+    <g
+       id="g546"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,234.2)">
+      <text
+         id="text548">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3904">0.958</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path550"
+       d="m 522.3,229.7 9,0 m 12.6,-13.7 -9,0 h 0.01" />
+    <g
+       id="g552"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,220.5)">
+      <text
+         id="text554">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3902">0.96</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path556"
+       d="m 522.3,216 9,0 m 12.6,-13.7 -9,0 h 0.01" />
+    <g
+       id="g558"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,206.8)">
+      <text
+         id="text560">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3900">0.962</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path562"
+       d="m 522.3,202.3 9,0 m 12.6,-13.7 -9,0 h 0.01" />
+    <g
+       id="g564"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,193.1)">
+      <text
+         id="text566">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3898">0.964</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path568"
+       d="m 522.3,188.6 9,0 m 12.6,-13.7 -9,0 h 0.01" />
+    <g
+       id="g570"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,179.4)">
+      <text
+         id="text572">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3896">0.966</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path574"
+       d="m 522.3,174.9 9,0 m 12.6,-13.7 -9,0 h 0.01" />
+    <g
+       id="g576"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,165.7)">
+      <text
+         id="text578">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3894">0.968</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path580"
+       d="m 522.3,161.2 9,0 m 12.6,-13.7 -9,0 h 0.01" />
+    <g
+       id="g582"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,152)">
+      <text
+         id="text584">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3892">0.97</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path586"
+       d="m 522.3,147.5 9,0 m 12.6,-13.8 -9,0 h 0.01" />
+    <g
+       id="g588"
+       style="font-size:15px;text-anchor:start;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       transform="translate(552.2,138.2)">
+      <text
+         id="text590">
+        <tspan
+           style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+           id="tspan3890">0.972</tspan>
+      </text>
+    </g>
+    <path
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       inkscape:connector-curvature="0"
+       id="path592"
+       d="m 522.3,133.7 9,0 h 0.01" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3882"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:CMU Serif;font-style:normal;font-weight:500;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:CMU Serif Medium;font-stretch:normal;font-variant:normal"><flowRegion
+         id="flowRegion3884"><rect
+           id="rect3886"
+           width="144.06779"
+           height="254.76695"
+           x="502.64832"
+           y="98.516953" /></flowRegion><flowPara
+         id="flowPara3888"></flowPara></flowRoot>  </g>
 </svg>
-
