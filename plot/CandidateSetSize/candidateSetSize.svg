@@ -1,253 +1,856 @@
-<?xml version="1.0" encoding="utf-8"  standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg 
- width="600" height="480" 
- viewBox="0 0 600 480"
- xmlns="http://www.w3.org/2000/svg"
- xmlns:xlink="http://www.w3.org/1999/xlink"
->
-
-<title>Gnuplot</title>
-<desc>Produced by GNUPLOT 4.6 patchlevel 4 </desc>
-
-<g id="gnuplot_canvas">
-
-<rect x="0" y="0" width="600" height="480" fill="none"/>
-<defs>
-
-	<circle id='gpDot' r='0.5' stroke-width='0.5'/>
-	<path id='gpPt0' stroke-width='0.222' stroke='currentColor' d='M-1,0 h2 M0,-1 v2'/>
-	<path id='gpPt1' stroke-width='0.222' stroke='currentColor' d='M-1,-1 L1,1 M1,-1 L-1,1'/>
-	<path id='gpPt2' stroke-width='0.222' stroke='currentColor' d='M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1'/>
-	<rect id='gpPt3' stroke-width='0.222' stroke='currentColor' x='-1' y='-1' width='2' height='2'/>
-	<rect id='gpPt4' stroke-width='0.222' stroke='currentColor' fill='currentColor' x='-1' y='-1' width='2' height='2'/>
-	<circle id='gpPt5' stroke-width='0.222' stroke='currentColor' cx='0' cy='0' r='1'/>
-	<use xlink:href='#gpPt5' id='gpPt6' fill='currentColor' stroke='none'/>
-	<path id='gpPt7' stroke-width='0.222' stroke='currentColor' d='M0,-1.33 L-1.33,0.67 L1.33,0.67 z'/>
-	<use xlink:href='#gpPt7' id='gpPt8' fill='currentColor' stroke='none'/>
-	<use xlink:href='#gpPt7' id='gpPt9' stroke='currentColor' transform='rotate(180)'/>
-	<use xlink:href='#gpPt9' id='gpPt10' fill='currentColor' stroke='none'/>
-	<use xlink:href='#gpPt3' id='gpPt11' stroke='currentColor' transform='rotate(45)'/>
-	<use xlink:href='#gpPt11' id='gpPt12' fill='currentColor' stroke='none'/>
-</defs>
-<g style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<g transform="translate(300.0,22.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Candidate set size evaluation with respect to the evaluation metrics</text>
-	</g>
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M88.5,114.4 L97.5,114.4 M575.0,114.4 L566.0,114.4  h0.01'/>	<g transform="translate(80.2,118.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.945</text>
-	</g>
-	<path stroke='black'  d='M88.5,103.0 L97.5,103.0 M575.0,103.0 L566.0,103.0  h0.01'/>	<g transform="translate(80.2,107.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.95</text>
-	</g>
-	<path stroke='black'  d='M88.5,91.6 L97.5,91.6 M575.0,91.6 L566.0,91.6  h0.01'/>	<g transform="translate(80.2,96.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.955</text>
-	</g>
-	<path stroke='black'  d='M88.5,80.2 L97.5,80.2 M575.0,80.2 L566.0,80.2  h0.01'/>	<g transform="translate(80.2,84.7)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.96</text>
-	</g>
-	<path stroke='black'  d='M88.5,68.9 L97.5,68.9 M575.0,68.9 L566.0,68.9  h0.01'/>	<g transform="translate(80.2,73.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.965</text>
-	</g>
-	<path stroke='black'  d='M88.5,57.5 L97.5,57.5 M575.0,57.5 L566.0,57.5  h0.01'/>	<g transform="translate(80.2,62.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.97</text>
-	</g>
-	<path stroke='black'  d='M88.5,46.1 L97.5,46.1 M575.0,46.1 L566.0,46.1  h0.01'/>	<g transform="translate(80.2,50.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.975</text>
-	</g>
-	<path stroke='black'  d='M88.5,34.7 L97.5,34.7 M575.0,34.7 L566.0,34.7  h0.01'/>	<g transform="translate(80.2,39.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.98</text>
-	</g>
-	<path stroke='black'  d='M88.5,114.4 L88.5,105.4 M88.5,34.7 L88.5,43.7  h0.01'/>	<g transform="translate(88.5,136.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 1</text>
-	</g>
-	<path stroke='black'  d='M129.0,114.4 L129.0,109.9 M129.0,34.7 L129.0,39.2 M169.6,114.4 L169.6,105.4 M169.6,34.7 L169.6,43.7 
-		 h0.01'/>	<g transform="translate(169.6,136.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 4</text>
-	</g>
-	<path stroke='black'  d='M210.1,114.4 L210.1,109.9 M210.1,34.7 L210.1,39.2 M250.7,114.4 L250.7,105.4 M250.7,34.7 L250.7,43.7 
-		 h0.01'/>	<g transform="translate(250.7,136.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 16</text>
-	</g>
-	<path stroke='black'  d='M291.2,114.4 L291.2,109.9 M291.2,34.7 L291.2,39.2 M331.8,114.4 L331.8,105.4 M331.8,34.7 L331.8,43.7 
-		 h0.01'/>	<g transform="translate(331.8,136.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 64</text>
-	</g>
-	<path stroke='black'  d='M372.3,114.4 L372.3,109.9 M372.3,34.7 L372.3,39.2 M412.8,114.4 L412.8,105.4 M412.8,34.7 L412.8,43.7 
-		 h0.01'/>	<g transform="translate(412.8,136.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 256</text>
-	</g>
-	<path stroke='black'  d='M453.4,114.4 L453.4,109.9 M453.4,34.7 L453.4,39.2 M493.9,114.4 L493.9,105.4 M493.9,34.7 L493.9,43.7 
-		 h0.01'/>	<g transform="translate(493.9,136.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 1024</text>
-	</g>
-	<path stroke='black'  d='M534.5,114.4 L534.5,109.9 M534.5,34.7 L534.5,39.2 M575.0,114.4 L575.0,105.4 M575.0,34.7 L575.0,43.7 
-		 h0.01'/>	<g transform="translate(575.0,136.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 4096</text>
-	</g>
-	<path stroke='black'  d='M88.5,34.7 L88.5,114.4 L575.0,114.4 L575.0,34.7 L88.5,34.7 Z  h0.01'/>	<g transform="translate(17.6,74.6) rotate(270)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Precision</text>
-	</g>
-	<g transform="translate(331.7,163.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text># of candidates considered for a movie</text>
-	</g>
-</g>
-	<g id="gnuplot_plot_1a" ><title>gnuplot_plot_1a</title>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='red'  d='M129.0,41.0 L169.6,45.3 L210.1,48.3 L250.7,49.3 L291.2,50.4 L331.8,54.0 L372.3,61.1 L412.8,65.7 
-		L453.4,78.6 L493.9,91.2 L534.5,101.5 L575.0,104.9  h0.01'/></g>
-	</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M88.5,34.7 L88.5,114.4 L575.0,114.4 L575.0,34.7 L88.5,34.7 Z  h0.01'/>	<path stroke='black'  d='M88.5,268.4 L97.5,268.4 M575.0,268.4 L566.0,268.4  h0.01'/>	<g transform="translate(80.2,272.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.855</text>
-	</g>
-	<path stroke='black'  d='M88.5,260.4 L97.5,260.4 M575.0,260.4 L566.0,260.4  h0.01'/>	<g transform="translate(80.2,264.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.86</text>
-	</g>
-	<path stroke='black'  d='M88.5,252.5 L97.5,252.5 M575.0,252.5 L566.0,252.5  h0.01'/>	<g transform="translate(80.2,257.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.865</text>
-	</g>
-	<path stroke='black'  d='M88.5,244.5 L97.5,244.5 M575.0,244.5 L566.0,244.5  h0.01'/>	<g transform="translate(80.2,249.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.87</text>
-	</g>
-	<path stroke='black'  d='M88.5,236.5 L97.5,236.5 M575.0,236.5 L566.0,236.5  h0.01'/>	<g transform="translate(80.2,241.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.875</text>
-	</g>
-	<path stroke='black'  d='M88.5,228.5 L97.5,228.5 M575.0,228.5 L566.0,228.5  h0.01'/>	<g transform="translate(80.2,233.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.88</text>
-	</g>
-	<path stroke='black'  d='M88.5,220.6 L97.5,220.6 M575.0,220.6 L566.0,220.6  h0.01'/>	<g transform="translate(80.2,225.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.885</text>
-	</g>
-	<path stroke='black'  d='M88.5,212.6 L97.5,212.6 M575.0,212.6 L566.0,212.6  h0.01'/>	<g transform="translate(80.2,217.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.89</text>
-	</g>
-	<path stroke='black'  d='M88.5,204.6 L97.5,204.6 M575.0,204.6 L566.0,204.6  h0.01'/>	<g transform="translate(80.2,209.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.895</text>
-	</g>
-	<path stroke='black'  d='M88.5,196.7 L97.5,196.7 M575.0,196.7 L566.0,196.7  h0.01'/>	<g transform="translate(80.2,201.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.9</text>
-	</g>
-	<path stroke='black'  d='M88.5,188.7 L97.5,188.7 M575.0,188.7 L566.0,188.7  h0.01'/>	<g transform="translate(80.2,193.2)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.905</text>
-	</g>
-	<path stroke='black'  d='M88.5,268.4 L88.5,259.4 M88.5,188.7 L88.5,197.7  h0.01'/>	<g transform="translate(88.5,290.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 1</text>
-	</g>
-	<path stroke='black'  d='M129.0,268.4 L129.0,263.9 M129.0,188.7 L129.0,193.2 M169.6,268.4 L169.6,259.4 M169.6,188.7 L169.6,197.7 
-		 h0.01'/>	<g transform="translate(169.6,290.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 4</text>
-	</g>
-	<path stroke='black'  d='M210.1,268.4 L210.1,263.9 M210.1,188.7 L210.1,193.2 M250.7,268.4 L250.7,259.4 M250.7,188.7 L250.7,197.7 
-		 h0.01'/>	<g transform="translate(250.7,290.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 16</text>
-	</g>
-	<path stroke='black'  d='M291.2,268.4 L291.2,263.9 M291.2,188.7 L291.2,193.2 M331.8,268.4 L331.8,259.4 M331.8,188.7 L331.8,197.7 
-		 h0.01'/>	<g transform="translate(331.8,290.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 64</text>
-	</g>
-	<path stroke='black'  d='M372.3,268.4 L372.3,263.9 M372.3,188.7 L372.3,193.2 M412.8,268.4 L412.8,259.4 M412.8,188.7 L412.8,197.7 
-		 h0.01'/>	<g transform="translate(412.8,290.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 256</text>
-	</g>
-	<path stroke='black'  d='M453.4,268.4 L453.4,263.9 M453.4,188.7 L453.4,193.2 M493.9,268.4 L493.9,259.4 M493.9,188.7 L493.9,197.7 
-		 h0.01'/>	<g transform="translate(493.9,290.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 1024</text>
-	</g>
-	<path stroke='black'  d='M534.5,268.4 L534.5,263.9 M534.5,188.7 L534.5,193.2 M575.0,268.4 L575.0,259.4 M575.0,188.7 L575.0,197.7 
-		 h0.01'/>	<g transform="translate(575.0,290.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 4096</text>
-	</g>
-	<path stroke='black'  d='M88.5,188.7 L88.5,268.4 L575.0,268.4 L575.0,188.7 L88.5,188.7 Z  h0.01'/>	<g transform="translate(17.6,228.6) rotate(270)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Recall</text>
-	</g>
-	<g transform="translate(331.7,317.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text># of candidates considered for a movie</text>
-	</g>
-</g>
-	<g id="gnuplot_plot_1b" ><title>gnuplot_plot_1b</title>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='red'  d='M129.0,267.5 L169.6,217.5 L210.1,201.6 L250.7,197.6 L291.2,195.2 L331.8,195.2 L372.3,195.2 L412.8,193.7 
-		L453.4,193.7 L493.9,193.7 L534.5,193.7 L575.0,193.7  h0.01'/></g>
-	</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M88.5,188.7 L88.5,268.4 L575.0,268.4 L575.0,188.7 L88.5,188.7 Z  h0.01'/>	<path stroke='black'  d='M88.5,422.4 L97.5,422.4 M575.0,422.4 L566.0,422.4  h0.01'/>	<g transform="translate(80.2,426.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.938</text>
-	</g>
-	<path stroke='black'  d='M88.5,414.4 L97.5,414.4 M575.0,414.4 L566.0,414.4  h0.01'/>	<g transform="translate(80.2,418.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.94</text>
-	</g>
-	<path stroke='black'  d='M88.5,406.4 L97.5,406.4 M575.0,406.4 L566.0,406.4  h0.01'/>	<g transform="translate(80.2,410.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.942</text>
-	</g>
-	<path stroke='black'  d='M88.5,398.5 L97.5,398.5 M575.0,398.5 L566.0,398.5  h0.01'/>	<g transform="translate(80.2,403.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.944</text>
-	</g>
-	<path stroke='black'  d='M88.5,390.5 L97.5,390.5 M575.0,390.5 L566.0,390.5  h0.01'/>	<g transform="translate(80.2,395.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.946</text>
-	</g>
-	<path stroke='black'  d='M88.5,382.5 L97.5,382.5 M575.0,382.5 L566.0,382.5  h0.01'/>	<g transform="translate(80.2,387.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.948</text>
-	</g>
-	<path stroke='black'  d='M88.5,374.5 L97.5,374.5 M575.0,374.5 L566.0,374.5  h0.01'/>	<g transform="translate(80.2,379.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.95</text>
-	</g>
-	<path stroke='black'  d='M88.5,366.5 L97.5,366.5 M575.0,366.5 L566.0,366.5  h0.01'/>	<g transform="translate(80.2,371.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.952</text>
-	</g>
-	<path stroke='black'  d='M88.5,358.6 L97.5,358.6 M575.0,358.6 L566.0,358.6  h0.01'/>	<g transform="translate(80.2,363.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.954</text>
-	</g>
-	<path stroke='black'  d='M88.5,350.6 L97.5,350.6 M575.0,350.6 L566.0,350.6  h0.01'/>	<g transform="translate(80.2,355.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.956</text>
-	</g>
-	<path stroke='black'  d='M88.5,342.6 L97.5,342.6 M575.0,342.6 L566.0,342.6  h0.01'/>	<g transform="translate(80.2,347.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.958</text>
-	</g>
-	<path stroke='black'  d='M88.5,422.4 L88.5,413.4 M88.5,342.6 L88.5,351.6  h0.01'/>	<g transform="translate(88.5,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 1</text>
-	</g>
-	<path stroke='black'  d='M129.0,422.4 L129.0,417.9 M129.0,342.6 L129.0,347.1 M169.6,422.4 L169.6,413.4 M169.6,342.6 L169.6,351.6 
-		 h0.01'/>	<g transform="translate(169.6,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 4</text>
-	</g>
-	<path stroke='black'  d='M210.1,422.4 L210.1,417.9 M210.1,342.6 L210.1,347.1 M250.7,422.4 L250.7,413.4 M250.7,342.6 L250.7,351.6 
-		 h0.01'/>	<g transform="translate(250.7,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 16</text>
-	</g>
-	<path stroke='black'  d='M291.2,422.4 L291.2,417.9 M291.2,342.6 L291.2,347.1 M331.8,422.4 L331.8,413.4 M331.8,342.6 L331.8,351.6 
-		 h0.01'/>	<g transform="translate(331.8,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 64</text>
-	</g>
-	<path stroke='black'  d='M372.3,422.4 L372.3,417.9 M372.3,342.6 L372.3,347.1 M412.8,422.4 L412.8,413.4 M412.8,342.6 L412.8,351.6 
-		 h0.01'/>	<g transform="translate(412.8,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 256</text>
-	</g>
-	<path stroke='black'  d='M453.4,422.4 L453.4,417.9 M453.4,342.6 L453.4,347.1 M493.9,422.4 L493.9,413.4 M493.9,342.6 L493.9,351.6 
-		 h0.01'/>	<g transform="translate(493.9,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 1024</text>
-	</g>
-	<path stroke='black'  d='M534.5,422.4 L534.5,417.9 M534.5,342.6 L534.5,347.1 M575.0,422.4 L575.0,413.4 M575.0,342.6 L575.0,351.6 
-		 h0.01'/>	<g transform="translate(575.0,444.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text> 4096</text>
-	</g>
-	<path stroke='black'  d='M88.5,342.6 L88.5,422.4 L575.0,422.4 L575.0,342.6 L88.5,342.6 Z  h0.01'/>	<g transform="translate(17.6,382.5) rotate(270)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>F0.5</text>
-	</g>
-	<g transform="translate(331.7,471.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text># of candidates considered for a movie</text>
-	</g>
-</g>
-	<g id="gnuplot_plot_1c" ><title>gnuplot_plot_1c</title>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='red'  d='M129.0,373.6 L169.6,349.4 L210.1,344.3 L250.7,343.9 L291.2,343.6 L331.8,348.4 L372.3,358.1 L412.8,363.5 
-		L453.4,381.0 L493.9,398.4 L534.5,412.5 L575.0,417.2  h0.01'/></g>
-	</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M88.5,342.6 L88.5,422.4 L575.0,422.4 L575.0,342.6 L88.5,342.6 Z  h0.01'/></g>
-</g>
-</svg>
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600"
+   height="480"
+   viewBox="0 0 600 480"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="candidateSetSize.svg">
+  <metadata
+     id="metadata408">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Gnuplot</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs406">
+    <defs
+       id="defs11">
+      <circle
+         stroke-width="0.5"
+         r="0.5"
+         id="gpDot" />
+      <path
+         d="M-1,0 h2 M0,-1 v2"
+         stroke="currentColor"
+         stroke-width="0.222"
+         id="gpPt0" />
+      <path
+         d="M-1,-1 L1,1 M1,-1 L-1,1"
+         stroke="currentColor"
+         stroke-width="0.222"
+         id="gpPt1" />
+      <path
+         d="M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1"
+         stroke="currentColor"
+         stroke-width="0.222"
+         id="gpPt2" />
+      <rect
+         height="2"
+         width="2"
+         y="-1"
+         x="-1"
+         stroke="currentColor"
+         stroke-width="0.222"
+         id="gpPt3" />
+      <rect
+         height="2"
+         width="2"
+         y="-1"
+         x="-1"
+         fill="currentColor"
+         stroke="currentColor"
+         stroke-width="0.222"
+         id="gpPt4" />
+      <circle
+         r="1"
+         cy="0"
+         cx="0"
+         stroke="currentColor"
+         stroke-width="0.222"
+         id="gpPt5" />
+      <use
+         stroke="none"
+         fill="currentColor"
+         id="gpPt6"
+         xlink:href="#gpPt5" />
+      <path
+         d="M0,-1.33 L-1.33,0.67 L1.33,0.67 z"
+         stroke="currentColor"
+         stroke-width="0.222"
+         id="gpPt7" />
+      <use
+         stroke="none"
+         fill="currentColor"
+         id="gpPt8"
+         xlink:href="#gpPt7" />
+      <use
+         transform="rotate(180)"
+         stroke="currentColor"
+         id="gpPt9"
+         xlink:href="#gpPt7" />
+      <use
+         stroke="none"
+         fill="currentColor"
+         id="gpPt10"
+         xlink:href="#gpPt9" />
+      <use
+         transform="rotate(45)"
+         stroke="currentColor"
+         id="gpPt11"
+         xlink:href="#gpPt3" />
+      <use
+         stroke="none"
+         fill="currentColor"
+         id="gpPt12"
+         xlink:href="#gpPt11" />
+    </defs>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1014"
+     id="namedview404"
+     showgrid="false"
+     inkscape:zoom="1.3906433"
+     inkscape:cx="291.34"
+     inkscape:cy="249.95309"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <title
+     id="title4">Gnuplot</title>
+  <desc
+     id="desc6">Produced by GNUPLOT 4.6 patchlevel 4 </desc>
+  <rect
+     style="fill:none"
+     id="rect9"
+     height="480"
+     width="600"
+     y="0"
+     x="0" />
+  <g
+     transform="translate(332,22.5)"
+     style="font-size:15px;text-anchor:middle;color:#ffffff;fill:#000000;stroke:none;font-family:Arial"
+     id="g29">
+    <text
+       id="text31"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif">Candidate set size evaluation with respect to the evaluation metrics</text>
+  </g>
+  <path
+     d="m 88.5,114.4 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path35"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <path
+     d="m 88.5,103 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path41"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,107.5)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g43">
+    <text
+       id="text45"
+       style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal">0.95</text>
+  </g>
+  <path
+     d="m 88.5,80.2 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path53"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,84.7)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g55">
+    <text
+       id="text57"
+       style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal">0.96</text>
+  </g>
+  <path
+     d="m 88.5,57.5 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path65"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,62)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g67">
+    <text
+       id="text69"
+       style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal">0.97</text>
+  </g>
+  <path
+     d="m 88.5,34.7 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path77"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,39.2)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g79">
+    <text
+       id="text81"
+       style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal">0.98</text>
+  </g>
+  <path
+     d="m 88.5,114.4 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path83"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(88.5,136.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g85">
+    <text
+       id="text87">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3222">1</tspan>
+    </text>
+  </g>
+  <path
+     d="m 129,114.4 0,-4.5 m 0,-75.2 0,4.5 m 40.6,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path89"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(169.6,136.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g91">
+    <text
+       id="text93">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3224">4</tspan>
+    </text>
+  </g>
+  <path
+     d="m 210.1,114.4 0,-4.5 m 0,-75.2 0,4.5 m 40.6,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path95"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(250.7,136.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g97">
+    <text
+       id="text99">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3226">16</tspan>
+    </text>
+  </g>
+  <path
+     d="m 291.2,114.4 0,-4.5 m 0,-75.2 0,4.5 m 40.6,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path101"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(331.8,136.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g103">
+    <text
+       id="text105">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3228">64</tspan>
+    </text>
+  </g>
+  <path
+     d="m 372.3,114.4 0,-4.5 m 0,-75.2 0,4.5 m 40.5,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path107"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(412.8,136.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g109">
+    <text
+       id="text111">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3230">256</tspan>
+    </text>
+  </g>
+  <path
+     d="m 453.4,114.4 0,-4.5 m 0,-75.2 0,4.5 m 40.5,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path113"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(493.9,136.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g115">
+    <text
+       id="text117">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3232">1024</tspan>
+    </text>
+  </g>
+  <path
+     d="m 534.5,114.4 0,-4.5 m 0,-75.2 0,4.5 m 40.5,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path119"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(575,136.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g121">
+    <text
+       id="text123">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3234">4096</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,34.7 0,79.7 486.5,0 0,-79.7 -486.5,0 z m 0,0 h 0.01"
+     id="path125"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="matrix(0,-1,1,0,17.6,74.6)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g127">
+    <text
+       id="text129"
+       style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal">Precision</text>
+  </g>
+  <g
+     transform="translate(331.7,157.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g131">
+    <text
+       id="text133">
+      <tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;fill:#2b1100;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
+         id="tspan3220"># of candidates considered for a movie</tspan>
+    </text>
+  </g>
+  <g
+     style="color:#ff0000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g138">
+    <path
+       d="m 129,41 40.6,4.3 40.5,3 40.6,1 40.5,1.1 40.6,3.6 40.5,7.1 40.5,4.6 40.6,12.9 40.5,12.6 40.6,10.3 40.5,3.4 h 0.01"
+       id="path140"
+       inkscape:connector-curvature="0"
+       style="stroke:#ff0000" />
+  </g>
+  <path
+     d="m 88.5,34.7 0,79.7 486.5,0 0,-79.7 -486.5,0 z m 0,0 h 0.01"
+     id="path144"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <path
+     d="m 88.5,268.4 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path146"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <path
+     d="m 88.5,260.4 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path152"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,264.9)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g154">
+    <text
+       id="text156">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3202">0.86</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,244.5 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path164"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,249)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g166">
+    <text
+       id="text168">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3200">0.87</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,228.5 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path176"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,233)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g178">
+    <text
+       id="text180">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3198">0.88</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,212.6 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path188"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,217.1)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g190">
+    <text
+       id="text192">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3196">0.89</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,196.7 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path200"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,201.2)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g202">
+    <text
+       id="text204">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3194">0.9</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,188.7 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path206"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <path
+     d="m 88.5,268.4 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path212"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(88.5,290.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g214">
+    <text
+       id="text216">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3206">1</tspan>
+    </text>
+  </g>
+  <path
+     d="m 129,268.4 0,-4.5 m 0,-75.2 0,4.5 m 40.6,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path218"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(169.6,290.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g220">
+    <text
+       id="text222">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3208">4</tspan>
+    </text>
+  </g>
+  <path
+     d="m 210.1,268.4 0,-4.5 m 0,-75.2 0,4.5 m 40.6,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path224"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(250.7,290.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g226">
+    <text
+       id="text228">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3210">16</tspan>
+    </text>
+  </g>
+  <path
+     d="m 291.2,268.4 0,-4.5 m 0,-75.2 0,4.5 m 40.6,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path230"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(331.8,290.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g232">
+    <text
+       id="text234">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3212">64</tspan>
+    </text>
+  </g>
+  <path
+     d="m 372.3,268.4 0,-4.5 m 0,-75.2 0,4.5 m 40.5,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path236"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(412.8,290.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g238">
+    <text
+       id="text240">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3214">256</tspan>
+    </text>
+  </g>
+  <path
+     d="m 453.4,268.4 0,-4.5 m 0,-75.2 0,4.5 m 40.5,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path242"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(493.9,290.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g244">
+    <text
+       id="text246">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3216">1024</tspan>
+    </text>
+  </g>
+  <path
+     d="m 534.5,268.4 0,-4.5 m 0,-75.2 0,4.5 m 40.5,75.2 0,-9 m 0,-70.7 0,9 h 0.01"
+     id="path248"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(575,290.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g250">
+    <text
+       id="text252">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3218">4096</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,188.7 0,79.7 486.5,0 0,-79.7 -486.5,0 z m 0,0 h 0.01"
+     id="path254"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="matrix(0,-1,1,0,17.6,228.6)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g256">
+    <text
+       id="text258">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3204">Recall</tspan>
+    </text>
+  </g>
+  <g
+     transform="translate(331.7,311.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g260">
+    <text
+       id="text262">
+      <tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
+         id="tspan3778"># of candidates considered for a movie</tspan>
+    </text>
+  </g>
+  <g
+     style="color:#ff0000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g267">
+    <path
+       d="m 129,267.5 40.6,-50 40.5,-15.9 40.6,-4 40.5,-2.4 40.6,0 40.5,0 40.5,-1.5 40.6,0 40.5,0 40.6,0 40.5,0 h 0.01"
+       id="path269"
+       inkscape:connector-curvature="0"
+       style="stroke:#ff0000" />
+  </g>
+  <path
+     d="m 88.5,188.7 0,79.7 486.5,0 0,-79.7 -486.5,0 z m 0,0 h 0.01"
+     id="path273"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <path
+     d="m 88.5,422.4 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path275"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <path
+     d="m 88.5,414.4 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path281"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,418.9)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g283">
+    <text
+       id="text285">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3262">0.94</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,398.5 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path293"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,403)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g295">
+    <text
+       id="text297">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3260">0.944</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,382.5 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path305"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,387)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g307">
+    <text
+       id="text309">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3258">0.948</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,366.5 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path317"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,371)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g319">
+    <text
+       id="text321">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3256">0.952</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,350.6 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path329"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(80.2,355.1)"
+     style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g331">
+    <text
+       id="text333">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3254">0.956</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,342.6 9,0 m 477.5,0 -9,0 h 0.01"
+     id="path335"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <path
+     d="m 88.5,422.4 0,-9 m 0,-70.8 0,9 h 0.01"
+     id="path341"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(88.5,444.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g343">
+    <text
+       id="text345">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3236">1</tspan>
+    </text>
+  </g>
+  <path
+     d="m 129,422.4 0,-4.5 m 0,-75.3 0,4.5 m 40.6,75.3 0,-9 m 0,-70.8 0,9 h 0.01"
+     id="path347"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(169.6,444.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g349">
+    <text
+       id="text351">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3238">4</tspan>
+    </text>
+  </g>
+  <path
+     d="m 210.1,422.4 0,-4.5 m 0,-75.3 0,4.5 m 40.6,75.3 0,-9 m 0,-70.8 0,9 h 0.01"
+     id="path353"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(250.7,444.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g355">
+    <text
+       id="text357">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3240">16</tspan>
+    </text>
+  </g>
+  <path
+     d="m 291.2,422.4 0,-4.5 m 0,-75.3 0,4.5 m 40.6,75.3 0,-9 m 0,-70.8 0,9 h 0.01"
+     id="path359"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(331.8,444.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g361">
+    <text
+       id="text363">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3242">64</tspan>
+    </text>
+  </g>
+  <path
+     d="m 372.3,422.4 0,-4.5 m 0,-75.3 0,4.5 m 40.5,75.3 0,-9 m 0,-70.8 0,9 h 0.01"
+     id="path365"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(412.8,444.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g367">
+    <text
+       id="text369">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3244">256</tspan>
+    </text>
+  </g>
+  <path
+     d="m 453.4,422.4 0,-4.5 m 0,-75.3 0,4.5 m 40.5,75.3 0,-9 m 0,-70.8 0,9 h 0.01"
+     id="path371"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(493.9,444.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g373">
+    <text
+       id="text375">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3246">1024</tspan>
+    </text>
+  </g>
+  <path
+     d="m 534.5,422.4 0,-4.5 m 0,-75.3 0,4.5 m 40.5,75.3 0,-9 m 0,-70.8 0,9 h 0.01"
+     id="path377"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="translate(575,444.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g379">
+    <text
+       id="text381">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3248">4096</tspan>
+    </text>
+  </g>
+  <path
+     d="m 88.5,342.6 0,79.8 486.5,0 0,-79.8 -486.5,0 z m 0,0 h 0.01"
+     id="path383"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <g
+     transform="matrix(0,-1,1,0,17.6,382.5)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g385">
+    <text
+       id="text387">
+      <tspan
+         style="-inkscape-font-specification:CMU Serif Medium;font-family:CMU Serif;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan3252">F0.5</tspan>
+    </text>
+  </g>
+  <g
+     transform="translate(331.7,465.9)"
+     style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+     id="g389">
+    <text
+       id="text391">
+      <tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium"
+         id="tspan3250"># of candidates considered for a movie</tspan>
+    </text>
+  </g>
+  <g
+     style="color:#ff0000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g396">
+    <path
+       d="m 129,373.6 40.6,-24.2 40.5,-5.1 40.6,-0.4 40.5,-0.3 40.6,4.8 40.5,9.7 40.5,5.4 40.6,17.5 40.5,17.4 40.6,14.1 40.5,4.7 h 0.01"
+       id="path398"
+       inkscape:connector-curvature="0"
+       style="stroke:#ff0000" />
+  </g>
+  <path
+     d="m 88.5,342.6 0,79.8 486.5,0 0,-79.8 -486.5,0 z m 0,0 h 0.01"
+     id="path402"
+     inkscape:connector-curvature="0"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter" />
+  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3770"
+     style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:DejaVu Sans;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:DejaVu Sans;font-stretch:normal;font-variant:normal"><flowRegion
+       id="flowRegion3772"><rect
+         id="rect3774"
+         width="687.4516"
+         height="151.72833"
+         x="-7.1909165"
+         y="5.3995161" /></flowRegion><flowPara
+       id="flowPara3776" /></flowRoot></svg>
