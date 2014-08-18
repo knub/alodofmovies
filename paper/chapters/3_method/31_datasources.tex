@@ -8,7 +8,7 @@ The first data source is the \textit{Internet Movie Database (IMDb)}\footnote{\u
 This data source contains more than 274,000 movies and more than 365,000 people.
 %TODO SOURCE ^
 To get the individual movie resources, the system has to crawl HTML pages.
-While the content in IMDb is mostly user-generated, it has to go through multiple consistency checks, performed by professionals \cite{IMDb_DataCreation}.
+While the content in IMDb is mostly user-generated, it has to go through multiple consistency checks, performed by professionals \cite{IMDb_DataCreation, IMDb_amazon}.
 Thus, we can assume that the data is more likely to be correct when compared to data from entirely user generated data sources.
 
 A big open platform, which includes a big section about movies, is \textit{Freebase}\footnote{\url{http://www.freebase.com/}}.
@@ -32,8 +32,7 @@ It contains more than 236,000 movies and 54,000 people.
 To create a unified dataset of movies, a main data source must be chosen.
 This main source is used to match movies from different data sources against it.
 For \emph{Match Forrest, Match!} IMDb was chosen as the main data source, since it contains more movies than any of the other data sources.
-Additionally, IMDb is maintained by data editors, which manually add, delete and update the data\footnote{\url{https://uk-amazon.icims.com/jobs/274286/data-editor\%2c-database-content/job}}.
-%TODO remove? better source given above already
+Additionally, IMDb is maintained by data editors, which manually add, delete and update the data \cite{IMDb_DataCreation, IMDb_amazon}.
 All the other data sources are not maintained by paid professionals or are not as big as IMDb.
 
 Some movies from Freebase, TMDb and OFDb already contain links to the correpsonding IMDb movie.

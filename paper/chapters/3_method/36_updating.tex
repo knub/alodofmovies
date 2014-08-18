@@ -15,9 +15,9 @@ The steps to add upcoming movies are:
 	\item Load triples of an IMDb movie into the corresponding graph in the triple store. For the other resources, integrate the triples of the upcoming movie and store them in the corresponding graph.
 \end{enumerate}
 
-To get all new movies from IMDb, the scheduler crawls the ``Coming Soon'' page\footnote{\url{http://www.imdb.com/movies-coming-soon/2014-08/}} from the current month until the same month next year.
+To get all new movies from IMDb, the scheduler crawls the ``Coming Soon'' page (\url{http://www.imdb.com/movies-coming-soon/2014-08/}) from the current month until the same month next year.
 This page contains all new movies ids, which will be released in the time period crawled.
-Having the new movie ids, the scheduler automatically can construct the new movie resource\footnote{\url{http://www.imdb.com/[id]}}, which can be crawled.
+Having the new movie ids, the scheduler automatically can construct the new movie resource (\url{http://www.imdb.com/[id]}), which can be crawled.
 
 Freebase has an API, which the scheduler ask for all movies ids.
 Afterwards, the scheduler filters the ids for those ids, which are unknown.
@@ -31,7 +31,7 @@ At OFDb the movies have increasing ids.
 New movies published on the current day can be found under the following page \url{http://www.ofdb.de/view.php?page=neu&Kat=Film&Tage=1}.
 So, the scheduler knows the highest newest movie id and also the last movie id of OFDb in the triple store.
 All ids between these two are ids of new moives.
-With the help of the ids, the scheduler can esaliy build the URL for the movie resource\footnote{\url{http://www.ofdb.de/film/[id],}} and crawl it.
+With the help of the ids, the scheduler can esaliy build the URL for the movie resource (\url{http://www.ofdb.de/film/[id],}) and crawl it.
 
 To figure out how often the scheduler should add coming soon movies, IMDb's upcoming movie list was observed.
 How many coming soon movies are daily added to IMDb is shown in Figure \ref{fig_coming_soon_movie}.

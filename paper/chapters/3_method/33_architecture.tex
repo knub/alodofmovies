@@ -19,11 +19,7 @@ Therefor, the ontology, defined in Section \ref{subsec_method_ontology}, is used
 The component \textit{Matcher and Merger} is in charge of matching two movies from different data sources, so they can only be found once in the resulting dataset.
 This component is explained in detail in Section \ref{subsec_method_matching}.
 
-<<<<<<< HEAD
-The updater, described in Section \ref{subsec_method_updating}, ensures that the existing movies are always up to date and that new movies are getting loaded into the system.
-=======
 The updater, described in Section \ref{subsec_method_updating}, ensures that the existing movies are always up-to-date and that new movies are in the system.
->>>>>>> Stuff in train.
 
 The triple store \textit{Virtuoso} is used to store the resulting triples.
 To distinguish between the sources of the different triples, triples from each data source are stored in a distinct graph named after the source.
@@ -47,7 +43,6 @@ This is especially true when there are limits to crawl some web pages, which mea
 Triplifying and matching needs computational resources.
 Because the steps can be done in parallel, a messaging infrastructure was implemented to speed up the process and to avoid crawl limits.
 
-%The messaging infrastructure is based on \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}}.
 Therefor, the \textit{Task Distributor}, including the messaging server, uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
 
 A task consists of the following fields
