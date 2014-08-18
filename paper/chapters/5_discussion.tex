@@ -13,12 +13,11 @@ When comparing this with the results from movies, which have an IMDb-ID annotate
 Both precision and recall are significantly lower.
 This can be explained by the general lower annotation quality of those movies.
 Some movies even only have a name, with no further data annotated.
+However, compared to the baseline approach it is still a good improvement.
 
-Still, compared to the baseline approach it is still an improvement.
-
-Even though the results are already good there is still room for improvements.
+Even though the results are already good there is still room for better results.
 The analysis of the wrongly matched movies and the not found matches, as listed in Section \ref{subsec_evaluation_matching} has shown that the biggest possible gain is in improving the way the candidates are selected.
-Since candidate selection is based mainly on the name at the moment, movies with names that are not annotated so far are most likely not found.
+Since candidate selection is based only on the name and the year at the moment, movies with names that are not annotated so far are most likely not found.
 Thus, further criterias should be considered when calculating the pre-score for selecting candidates.
 Especially a set of movies that is choosen without an influence of there name could help.
 However, the movies that need to be matched, i.e. the one that do not have an annotated IMDb-ID, usually have many other properties not annotated.

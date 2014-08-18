@@ -99,7 +99,7 @@ the best match for $n_i$ is determined as follows:
 \begin{align}
 	match(n_i) &=
 		\begin{cases}
-			best\_match(n_i),~if> MIN\_SCORE) \\
+			best\_match(n_i),~if~score > MIN\_SCORE) \\
 			\bot
 		\end{cases}\label{aoeq:1}\\
 	best\_match(n_i) &=
@@ -109,7 +109,7 @@ the best match for $n_i$ is determined as follows:
 			{\left\lvert overlap\_set(A_{n_i}, A_{m_j}) \right\rvert}
 			{\left\lvert A_{n_i} \right\rvert}\label{aoeq:3}\\
 	overlap\_set(A_{n_i}, A_{m_j}) &=
-		\Set*{a_n \in A_n}{\exists a_m \in A_m: Levenshtein(a_n, a_m) < ACT\_DIST}.\label{aoeq:4}
+		\Set*{a_n \in A_n}{\exists a_m \in A_m: Levenshtein(a_n, a_m) \leq ACT\_DIST}.\label{aoeq:4}
 \end{align}
 
 The basic idea, which is shown in Equation \ref{aoeq:1}, is to only assume a match if the score of the best matching movie is above a certain threshold $MIN\_SCORE$.
