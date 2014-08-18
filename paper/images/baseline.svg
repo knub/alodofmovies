@@ -1,235 +1,406 @@
-<?xml version="1.0" encoding="utf-8"  standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg 
- width="600" height="480" 
- viewBox="0 0 600 480"
- xmlns="http://www.w3.org/2000/svg"
- xmlns:xlink="http://www.w3.org/1999/xlink"
->
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
 
-<title>Gnuplot</title>
-<desc>Produced by GNUPLOT 4.6 patchlevel 5 </desc>
-
-<g id="gnuplot_canvas">
-
-<rect x="0" y="0" width="600" height="480" fill="none"/>
-<defs>
-
-	<circle id='gpDot' r='0.5' stroke-width='0.5'/>
-	<path id='gpPt0' stroke-width='0.222' stroke='currentColor' d='M-1,0 h2 M0,-1 v2'/>
-	<path id='gpPt1' stroke-width='0.222' stroke='currentColor' d='M-1,-1 L1,1 M1,-1 L-1,1'/>
-	<path id='gpPt2' stroke-width='0.222' stroke='currentColor' d='M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1'/>
-	<rect id='gpPt3' stroke-width='0.222' stroke='currentColor' x='-1' y='-1' width='2' height='2'/>
-	<rect id='gpPt4' stroke-width='0.222' stroke='currentColor' fill='currentColor' x='-1' y='-1' width='2' height='2'/>
-	<circle id='gpPt5' stroke-width='0.222' stroke='currentColor' cx='0' cy='0' r='1'/>
-	<use xlink:href='#gpPt5' id='gpPt6' fill='currentColor' stroke='none'/>
-	<path id='gpPt7' stroke-width='0.222' stroke='currentColor' d='M0,-1.33 L-1.33,0.67 L1.33,0.67 z'/>
-	<use xlink:href='#gpPt7' id='gpPt8' fill='currentColor' stroke='none'/>
-	<use xlink:href='#gpPt7' id='gpPt9' stroke='currentColor' transform='rotate(180)'/>
-	<use xlink:href='#gpPt9' id='gpPt10' fill='currentColor' stroke='none'/>
-	<use xlink:href='#gpPt3' id='gpPt11' stroke='currentColor' transform='rotate(45)'/>
-	<use xlink:href='#gpPt11' id='gpPt12' fill='currentColor' stroke='none'/>
-</defs>
-<g style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<g transform="translate(300.0,22.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text></text>
-	</g>
-</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M53.9,463.4 L62.9,463.4 M175.0,463.4 L166.0,463.4  '/>	<g transform="translate(45.6,467.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0</text>
-	</g>
-	<path stroke='black'  d='M53.9,385.1 L62.9,385.1 M175.0,385.1 L166.0,385.1  '/>	<g transform="translate(45.6,389.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.2</text>
-	</g>
-	<path stroke='black'  d='M53.9,306.9 L62.9,306.9 M175.0,306.9 L166.0,306.9  '/>	<g transform="translate(45.6,311.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.4</text>
-	</g>
-	<path stroke='black'  d='M53.9,228.6 L62.9,228.6 M175.0,228.6 L166.0,228.6  '/>	<g transform="translate(45.6,233.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.6</text>
-	</g>
-	<path stroke='black'  d='M53.9,150.4 L62.9,150.4 M175.0,150.4 L166.0,150.4  '/>	<g transform="translate(45.6,154.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.8</text>
-	</g>
-	<path stroke='black'  d='M53.9,72.1 L62.9,72.1 M175.0,72.1 L166.0,72.1  '/>	<g transform="translate(45.6,76.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 1</text>
-	</g>
-	<path stroke='black'  d='M53.9,72.1 L53.9,463.4 L175.0,463.4 L175.0,72.1 L53.9,72.1 Z  '/>	<g transform="translate(114.4,49.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Precision</text>
-	</g>
-</g>
-	<g id="gnuplot_plot_1a" ><title>gnuplot_plot_1a</title>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<g transform="translate(107.9,94.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text>Baseline on movies with IMDb-id</text>
-	</g>
-	<defs>
-		<pattern id='gpPat1' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat1)' points = '116.2,94.6 158.4,94.6 158.4,85.6 116.2,85.6 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M116.2,94.6 L158.4,94.6 L158.4,85.6 L116.2,85.6 L116.2,94.6 Z  '/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat1)' points = '91.7,463.4 107.0,463.4 107.0,231.5 91.7,231.5 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M91.7,463.4 L91.7,231.6 L106.9,231.6 L106.9,463.4 L91.7,463.4 Z  '/></g>
-	</g>
-	<g id="gnuplot_plot_2a" ><title>gnuplot_plot_2a</title>
-<g style="fill:none; color:green; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<g transform="translate(107.9,112.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text>MFM on movies with IMDb-id</text>
-	</g>
-	<defs>
-		<pattern id='gpPat2' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat2)' points = '116.2,112.6 158.4,112.6 158.4,103.6 116.2,103.6 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M116.2,112.6 L158.4,112.6 L158.4,103.6 L116.2,103.6 L116.2,112.6 Z  '/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat2)' points = '106.9,463.4 122.1,463.4 122.1,75.2 106.9,75.2 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M106.9,463.4 L106.9,75.3 L122.0,75.3 L122.0,463.4 L106.9,463.4 Z  '/></g>
-	</g>
-	<g id="gnuplot_plot_3a" ><title>gnuplot_plot_3a</title>
-<g style="fill:none; color:blue; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<g transform="translate(107.9,130.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text>MFM on movies without IMDb-id</text>
-	</g>
-	<defs>
-		<pattern id='gpPat3' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0 M0,4 L4,8 L8,4 L4,0 L0,4'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat3)' points = '116.2,130.6 158.4,130.6 158.4,121.6 116.2,121.6 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M116.2,130.6 L158.4,130.6 L158.4,121.6 L116.2,121.6 L116.2,130.6 Z  '/>	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat3)' points = '122.0,463.4 137.3,463.4 137.3,113.9 122.0,113.9 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M122.0,463.4 L122.0,114.0 L137.2,114.0 L137.2,463.4 L122.0,463.4 Z  '/></g>
-	</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M53.9,72.1 L53.9,463.4 L175.0,463.4 L175.0,72.1 L53.9,72.1 Z  '/>	<path stroke='black'  d='M253.9,463.4 L262.9,463.4 M375.0,463.4 L366.0,463.4  '/>	<g transform="translate(245.6,467.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0</text>
-	</g>
-	<path stroke='black'  d='M253.9,385.1 L262.9,385.1 M375.0,385.1 L366.0,385.1  '/>	<g transform="translate(245.6,389.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.2</text>
-	</g>
-	<path stroke='black'  d='M253.9,306.9 L262.9,306.9 M375.0,306.9 L366.0,306.9  '/>	<g transform="translate(245.6,311.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.4</text>
-	</g>
-	<path stroke='black'  d='M253.9,228.6 L262.9,228.6 M375.0,228.6 L366.0,228.6  '/>	<g transform="translate(245.6,233.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.6</text>
-	</g>
-	<path stroke='black'  d='M253.9,150.4 L262.9,150.4 M375.0,150.4 L366.0,150.4  '/>	<g transform="translate(245.6,154.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.8</text>
-	</g>
-	<path stroke='black'  d='M253.9,72.1 L262.9,72.1 M375.0,72.1 L366.0,72.1  '/>	<g transform="translate(245.6,76.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 1</text>
-	</g>
-	<path stroke='black'  d='M253.9,72.1 L253.9,463.4 L375.0,463.4 L375.0,72.1 L253.9,72.1 Z  '/>	<g transform="translate(314.4,49.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Recall</text>
-	</g>
-</g>
-	<g id="gnuplot_plot_1b" ><title>gnuplot_plot_1b</title>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat4' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat4)' points = '291.7,463.4 307.0,463.4 307.0,231.4 291.7,231.4 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M291.7,463.4 L291.7,231.5 L306.9,231.5 L306.9,463.4 L291.7,463.4 Z  '/></g>
-	</g>
-	<g id="gnuplot_plot_2b" ><title>gnuplot_plot_2b</title>
-<g style="fill:none; color:green; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat5' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat5)' points = '306.9,463.4 322.1,463.4 322.1,116.3 306.9,116.3 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M306.9,463.4 L306.9,116.4 L322.0,116.4 L322.0,463.4 L306.9,463.4 Z  '/></g>
-	</g>
-	<g id="gnuplot_plot_3b" ><title>gnuplot_plot_3b</title>
-<g style="fill:none; color:blue; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat6' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0 M0,4 L4,8 L8,4 L4,0 L0,4'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat6)' points = '322.0,463.4 337.3,463.4 337.3,183.8 322.0,183.8 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M322.0,463.4 L322.0,183.9 L337.2,183.9 L337.2,463.4 L322.0,463.4 Z  '/></g>
-	</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M253.9,72.1 L253.9,463.4 L375.0,463.4 L375.0,72.1 L253.9,72.1 Z  '/>	<path stroke='black'  d='M453.9,463.4 L462.9,463.4 M575.0,463.4 L566.0,463.4  '/>	<g transform="translate(445.6,467.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0</text>
-	</g>
-	<path stroke='black'  d='M453.9,385.1 L462.9,385.1 M575.0,385.1 L566.0,385.1  '/>	<g transform="translate(445.6,389.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.2</text>
-	</g>
-	<path stroke='black'  d='M453.9,306.9 L462.9,306.9 M575.0,306.9 L566.0,306.9  '/>	<g transform="translate(445.6,311.4)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.4</text>
-	</g>
-	<path stroke='black'  d='M453.9,228.6 L462.9,228.6 M575.0,228.6 L566.0,228.6  '/>	<g transform="translate(445.6,233.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.6</text>
-	</g>
-	<path stroke='black'  d='M453.9,150.4 L462.9,150.4 M575.0,150.4 L566.0,150.4  '/>	<g transform="translate(445.6,154.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 0.8</text>
-	</g>
-	<path stroke='black'  d='M453.9,72.1 L462.9,72.1 M575.0,72.1 L566.0,72.1  '/>	<g transform="translate(445.6,76.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end">
-		<text> 1</text>
-	</g>
-	<path stroke='black'  d='M453.9,72.1 L453.9,463.4 L575.0,463.4 L575.0,72.1 L453.9,72.1 Z  '/>	<g transform="translate(514.4,49.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>F0.5</text>
-	</g>
-</g>
-	<g id="gnuplot_plot_1c" ><title>gnuplot_plot_1c</title>
-<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat7' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat7)' points = '491.7,463.4 507.0,463.4 507.0,231.5 491.7,231.5 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M491.7,463.4 L491.7,231.6 L506.9,231.6 L506.9,463.4 L491.7,463.4 Z  '/></g>
-	</g>
-	<g id="gnuplot_plot_2c" ><title>gnuplot_plot_2c</title>
-<g style="fill:none; color:green; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat8' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat8)' points = '506.9,463.4 522.1,463.4 522.1,84.2 506.9,84.2 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M506.9,463.4 L506.9,84.3 L522.0,84.3 L522.0,463.4 L506.9,463.4 Z  '/></g>
-	</g>
-	<g id="gnuplot_plot_3c" ><title>gnuplot_plot_3c</title>
-<g style="fill:none; color:blue; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<defs>
-		<pattern id='gpPat9' patternUnits='userSpaceOnUse' x='0' y='0' width='8' height='8'>
-			<path style='fill:none; stroke:rgb(0,0,0)' d='M0,0 L8,8 M0,8 L8,0 M0,4 L4,8 L8,4 L4,0 L0,4'/>
-		</pattern>
-	</defs>
-	<g style = 'stroke:none; shape-rendering:crispEdges'>
-		<polygon  fill = 'url(#gpPat9)' points = '522.0,463.4 537.3,463.4 537.3,130.6 522.0,130.6 '/>
-	</g>
-	<path stroke='rgb(  0,   0,   0)'  d='M522.0,463.4 L522.0,130.7 L537.2,130.7 L537.2,463.4 L522.0,463.4 Z  '/></g>
-	</g>
-<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter">
-	<path stroke='black'  d='M453.9,72.1 L453.9,463.4 L575.0,463.4 L575.0,72.1 L453.9,72.1 Z  '/></g>
-</g>
-</svg>
-
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   width="600"
+   height="480"
+   xml:space="preserve"
+   sodipodi:docname="baseline.pdf"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="960"
+     inkscape:window-height="1014"
+     id="namedview4"
+     showgrid="false"
+     inkscape:zoom="1.3906433"
+     inkscape:cx="179.57231"
+     inkscape:cy="177.73751"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="baseline"
+     transform="matrix(1.25,0,0,-1.25,0,480)"><g
+       id="g12"><g
+         id="g14"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 43.121,369.602 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path16" /></g><text
+         transform="matrix(1,0,0,-1,29.800313,10.8)"
+         id="text18"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0"
+           y="0"
+           id="tspan20">0</tspan></text>
+<g
+         id="g22"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 43.121,307.199 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path24" /></g><text
+         transform="matrix(1,0,0,-1,19.7925,73.2)"
+         id="text26"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan28">0.2</tspan></text>
+<g
+         id="g30"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 43.121,244.801 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path32" /></g><text
+         transform="matrix(1,0,0,-1,19.7925,135.6)"
+         id="text34"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan36">0.4</tspan></text>
+<g
+         id="g38"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 43.121,182.48 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path40" /></g><text
+         transform="matrix(1,0,0,-1,19.7925,197.92)"
+         id="text42"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan44">0.6</tspan></text>
+<g
+         id="g46"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 43.121,120.078 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path48" /></g><text
+         transform="matrix(1,0,0,-1,19.7925,260.32)"
+         id="text50"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan52">0.8</tspan></text>
+<g
+         id="g54"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 43.121,57.68 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path56" /></g><text
+         transform="matrix(1,0,0,-1,29.800313,322.72)"
+         id="text58"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0"
+           y="0"
+           id="tspan60">1</tspan></text>
+<g
+         id="g62"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 43.121,369.602 0,-7.204 m 0,-304.718 0,7.199 m 24.238,304.723 0,-7.204 m 0,-304.718 0,7.199 m 24.243,304.723 0,-7.204 m 0,-304.718 0,7.199 m 24.16,304.723 0,-7.204 m 0,-304.718 0,7.199 M 140,369.602 l 0,-7.204 m 0,-304.718 0,7.199 m -96.879,-7.199 0,311.922 96.879,0 0,-311.922 -96.879,0 z m 0,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path64" /></g><text
+         transform="matrix(1,0,0,-1,66.816875,344.32)"
+         id="text66"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 7.992 11.988 18.66 24.66 27.36 33.36 36.024 42.696"
+           y="0"
+           sodipodi:role="line"
+           id="tspan68">Precision</tspan><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="-26.574996 -18.582996 -11.910996 -5.910996 0.761004 3.425004 6.125004 12.797004"
+           y="36"
+           sodipodi:role="line"
+           id="tspan70">Baseline</tspan></text>
+<path
+         d="m 92.961,315.52 33.758,0 0,-7.199 -33.758,0 0,7.199 z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path72" /><g
+         id="g74"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 92.961,75.68 33.758,0 0,-7.2 -33.758,0 0,7.2 z m 0,0 0.008,0"
+           style="fill:none;stroke:#ff0000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path76" /></g><path
+         d="m 75.441,189.199 16.238,0 0,-174.801 -16.238,0 0,174.801 z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path78" /><g
+         id="g80"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 75.441,369.602 0,-174.723 16.161,0 0,174.723 -16.161,0 z m 0,0 0.008,0"
+           style="fill:none;stroke:#ff0000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path82" /></g><text
+         transform="matrix(1,0,0,-1,58.968438,293.92)"
+         id="text84"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 9.996 17.316"
+           y="0"
+           sodipodi:role="line"
+           id="tspan86">MFM</tspan></text>
+<path
+         d="m 92.961,301.121 33.758,0 0,-7.199 -33.758,0 0,7.199 z"
+         style="fill:#008000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path88" /><g
+         id="g90"
+         transform="matrix(1,0,0,-1,0,384)"
+         style="fill:#b3b3b3;fill-opacity:1"><path
+           d="m 92.961,90.078 33.758,0 0,-7.199 -33.758,0 0,7.199 z m 0,0 0.008,0"
+           style="fill:#b3b3b3;stroke:#008000;stroke-opacity:1;stroke-width:0.80000000000000004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+           id="path92" /></g><path
+         d="m 91.602,326.398 16.16,0 0,-312 -16.16,0 0,312 z"
+         style="fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path94" /><g
+         id="g96"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 91.602,369.602 0,-311.922 16.078,0 0,311.922 -16.078,0 z m 0,0 0.007,0"
+           style="fill:none;stroke:#008000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path98" /></g><g
+         id="g100"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 43.121,57.68 0,311.922 96.879,0 0,-311.922 -96.879,0 z m 0,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path102" /></g><g
+         id="g104"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 203.121,369.602 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path106" /></g><text
+         transform="matrix(1,0,0,-1,189.80031,10.8)"
+         id="text108"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0"
+           y="0"
+           id="tspan110">0</tspan></text>
+<g
+         id="g112"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 203.121,307.199 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path114" /></g><text
+         transform="matrix(1,0,0,-1,179.7925,73.2)"
+         id="text116"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan118">0.2</tspan></text>
+<g
+         id="g120"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 203.121,244.801 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path122" /></g><text
+         transform="matrix(1,0,0,-1,179.7925,135.6)"
+         id="text124"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan126">0.4</tspan></text>
+<g
+         id="g128"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 203.121,182.48 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path130" /></g><text
+         transform="matrix(1,0,0,-1,179.7925,197.92)"
+         id="text132"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan134">0.6</tspan></text>
+<g
+         id="g136"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 203.121,120.078 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path138" /></g><text
+         transform="matrix(1,0,0,-1,179.7925,260.32)"
+         id="text140"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan142">0.8</tspan></text>
+<g
+         id="g144"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 203.121,57.68 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path146" /></g><text
+         transform="matrix(1,0,0,-1,189.80031,322.72)"
+         id="text148"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0"
+           y="0"
+           id="tspan150">1</tspan></text>
+<g
+         id="g152"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 203.121,369.602 0,-7.204 m 0,-304.718 0,7.199 m 24.238,304.723 0,-7.204 m 0,-304.718 0,7.199 m 24.243,304.723 0,-7.204 m 0,-304.718 0,7.199 m 24.16,304.723 0,-7.204 m 0,-304.718 0,7.199 M 300,369.602 l 0,-7.204 m 0,-304.718 0,7.199 m -96.879,-7.199 0,311.922 96.879,0 0,-311.922 -96.879,0 z m 0,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path154" /></g><text
+         transform="matrix(1,0,0,-1,234.8325,344.32)"
+         id="text156"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 8.664 15.336 21.336 28.008 30.672"
+           y="0"
+           sodipodi:role="line"
+           id="tspan158">Recall</tspan></text>
+<path
+         d="m 235.441,193.602 16.238,0 0,-179.203 -16.238,0 0,179.203 z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path160" /><g
+         id="g162"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 235.441,369.602 0,-179.122 16.161,0 0,179.122 -16.161,0 z m 0,0 0.008,0"
+           style="fill:none;stroke:#ff0000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path164" /></g><path
+         d="m 251.602,326.398 16.16,0 0,-312 -16.16,0 0,312 z"
+         style="fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path166" /><g
+         id="g168"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 251.602,369.602 0,-311.922 16.078,0 0,311.922 -16.078,0 z m 0,0 0.007,0"
+           style="fill:none;stroke:#008000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path170" /></g><g
+         id="g172"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 203.121,57.68 0,311.922 96.879,0 0,-311.922 -96.879,0 z m 0,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path174" /></g><g
+         id="g176"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 363.121,369.602 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path178" /></g><text
+         transform="matrix(1,0,0,-1,349.80031,10.8)"
+         id="text180"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0"
+           y="0"
+           id="tspan182">0</tspan></text>
+<g
+         id="g184"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 363.121,307.199 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path186" /></g><text
+         transform="matrix(1,0,0,-1,339.7925,73.2)"
+         id="text188"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan190">0.2</tspan></text>
+<g
+         id="g192"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 363.121,244.801 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path194" /></g><text
+         transform="matrix(1,0,0,-1,339.7925,135.6)"
+         id="text196"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan198">0.4</tspan></text>
+<g
+         id="g200"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 363.121,182.48 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path202" /></g><text
+         transform="matrix(1,0,0,-1,339.7925,197.92)"
+         id="text204"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan206">0.6</tspan></text>
+<g
+         id="g208"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 363.121,120.078 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path210" /></g><text
+         transform="matrix(1,0,0,-1,339.7925,260.32)"
+         id="text212"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 6.672 9.996"
+           y="0"
+           sodipodi:role="line"
+           id="tspan214">0.8</tspan></text>
+<g
+         id="g216"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 363.121,57.68 7.199,0 m 89.68,0 -7.199,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path218" /></g><text
+         transform="matrix(1,0,0,-1,349.80031,322.72)"
+         id="text220"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0"
+           y="0"
+           id="tspan222">1</tspan></text>
+<g
+         id="g224"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 363.121,369.602 0,-7.204 m 0,-304.718 0,7.199 m 24.238,304.723 0,-7.204 m 0,-304.718 0,7.199 m 24.243,304.723 0,-7.204 m 0,-304.718 0,7.199 m 24.16,304.723 0,-7.204 m 0,-304.718 0,7.199 M 460,369.602 l 0,-7.204 m 0,-304.718 0,7.199 m -96.879,-7.199 0,311.922 96.879,0 0,-311.922 -96.879,0 z m 0,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path226" /></g><text
+         transform="matrix(1,0,0,-1,399.50828,344.32)"
+         id="text228"><tspan
+           style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Arial;font-variant:normal;font-weight:normal;font-size:12;writing-mode:lr;-inkscape-font-specification:ArialMT"
+           x="0 7.32 13.992 17.316"
+           y="0"
+           sodipodi:role="line"
+           id="tspan230">F0.5</tspan></text>
+<path
+         d="m 395.441,190.078 16.238,0 0,-175.68 -16.238,0 0,175.68 z"
+         style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path232" /><g
+         id="g234"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 395.441,369.602 0,-175.602 16.161,0 0,175.602 -16.161,0 z m 0,0 0.008,0"
+           style="fill:none;stroke:#ff0000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path236" /></g><path
+         d="m 411.602,326.398 16.16,0 0,-312 -16.16,0 0,312 z"
+         style="fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path238" /><g
+         id="g240"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 411.602,369.602 0,-311.922 16.078,0 0,311.922 -16.078,0 z m 0,0 0.007,0"
+           style="fill:none;stroke:#008000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path242" /></g><g
+         id="g244"
+         transform="matrix(1,0,0,-1,0,384)"><path
+           d="m 363.121,57.68 0,311.922 96.879,0 0,-311.922 -96.879,0 z m 0,0 0.008,0"
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+           id="path246" /></g></g></g></svg>
