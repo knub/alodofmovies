@@ -128,9 +128,17 @@ The baseline approach matches if there is an exact match between any of the anno
 
 \subsection{Error sources}
 The results of the last evaluation have been analyzed for possible error sources.
-Thereby, the following two main error sources have been found.
+The following error sources have been found for matching incorrectly:
 
 \begin{itemize}
-	\item A movie was matched incorrectly to a sequel/prequel becuase the correct movie is not in the database.
-	\item A movie was not matched becuase the correct match was not in the candidate set
+	\item In 82\% of the wrong matched the actual movie was not in the databse
+	\item In the rest of the cases the algorithm used an inprecise cut of the threshold
+\end{itemize}
+
+For not finding a possible match these error sources have been identified:
+
+\begin{itemize}
+	\item In around 70\% of the cases a match was not found because the correct match was not in the candidate set
+	\item In around 20\% of the cases there was no information to calculate the score.
+	\item In the rest of thes cases the threshold was to low.
 \end{itemize}
