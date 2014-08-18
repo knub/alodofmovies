@@ -9,19 +9,19 @@ This component is responsible for managing the other components, \textit{Crawler
 Therefore, it uses a messaging system, explained in Section \ref{subsubsec_messaging_infrastructure}.
 
 In general, the first step to get a movie into the system is to get the actual movie resource.
-This step is executed by the \textit{Crawler.}
+This step is executed by the Crawler.
 This component is responsible for downloading websites or for sending requests to the API a data source might provide.
 
-Once the page is downloaded, the \textit{Triplifier} can triplify the resource.
+Once the page is downloaded, the Triplifier can triplify the resource.
 This means that it extracts the information from the resource and creates triples out of it.
 Therefor, the ontology, defined in Section \ref{subsec_method_ontology}, is used.
 
-The component \textit{Matcher and Merger} is in charge of matching two movies from different data sources, so they can only be found once in the resulting dataset.
+The component Matcher and Merger is in charge of matching and merging two movies from different data sources, so they can only be found once in the resulting dataset.
 This component is explained in detail in Section \ref{subsec_method_matching}.
 
 The updater, described in Section \ref{subsec_method_updating}, ensures that the existing movies are always up-to-date and that new movies are in the system.
 
-The triple store \textit{Virtuoso} is used to store the resulting triples.
+The triple store \emph{Virtuoso}\footnote{\url{http://virtuoso.openlinksw.com/}} is used to store the resulting triples.
 To distinguish between the sources of the different triples, triples from each data source are stored in a distinct graph named after the source.
 Thus, there are four graphs in the triplestore, IMDb, Freebase, TMDb and OFDb.
 
@@ -43,7 +43,7 @@ This is especially true when there are limits to crawl some web pages, which mea
 Triplifying and matching needs computational resources.
 Because the steps can be done in parallel, a messaging infrastructure was implemented to speed up the process and to avoid crawl limits.
 
-Therefor, the \textit{Task Distributor}, including the messaging server, uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
+Therefor, the Task Distributor, including the messaging server, uses \emph{RabbitMQ}\footnote{\url{http://www.rabbitmq.com/}} to coordinate and send created task to multiple workers.
 
 A task consists of the following fields
 \begin{itemize}
@@ -51,9 +51,9 @@ A task consists of the following fields
   The unique id of the task.
   \item \textbf{Task type}:
    The type of the task.
-  Basically it exists a type for each of the compontent, controlled by the \textit{Task Distibutor}, for example ``Triplify'' or ``MatchAndMerge''.
-  ``Triplify'' is a task execute by the \textit{Triplifier} component.
-  The \textit{Matcher and Merger} component works on ``MatchAndMerge'' tasks.
+  Basically it exists a type for each of the compontent, controlled by the Task Distibutor, for example ``Triplify'' or ``MatchAndMerge''.
+  ``Triplify'' is a task execute by the Triplifier component.
+  The Matcher and Merger component works on ``MatchAndMerge'' tasks.
   There are also tasks, which combine some steps, such as the ``CrawlifyMatch'' task, which crawls, triplifies and matches a movie.
   \item \textbf{Due date}:
   The date until when the task should be finished.
@@ -70,7 +70,7 @@ A task consists of the following fields
 Not all fields have to be set, the task type defines which fields are needed.
 For example the ``Triplify'' task needs a file, but the ``MatchAndMerge'' task does not.
 
-All tasks are stored in an SQL database and new ones are created by the \textit{Updater}.
+All tasks are stored in an SQL database and new ones are created by the Updater.
 To get an initial data set, tasks have to be created manually.
 
 The messaging server takes a task from the SQL database and puts it into the messaging queue.
