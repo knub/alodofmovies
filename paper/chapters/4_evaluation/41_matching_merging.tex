@@ -64,7 +64,7 @@ The evaluation process is structured into two parts: parameter optimization and 
 In the first part, several experiments are conducted regarding the optimal parameters.
 Concretely, the goal was to find good values for $ACT\_DIST$, $MIN\_SCORE$ and $CANDIDATE\_SET\_SIZE$.
 In the second part, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name.
-Furthermore, to evaluate the bias of using the annotation of IMDb-IDs as goldstandard, the algorithm is run on a set of 100 movies that do not have an IMDb-ID annotated and the results are compared to a handcrafted gold standard.
+Furthermore, to evaluate the bias of using the annotation of IMDb-IDs as gold standard, the algorithm is run on a set of 100 movies that do not have an IMDb-ID annotated and the results are compared to a handcrafted gold standard.
 
 TODO: List of annotated properties
 TODO: Important, how are the other parameters set?
@@ -127,5 +127,10 @@ The baseline approach matches if there is an exact match between any of the anno
 \end{figure}
 
 \subsection{Error sources}
-What is wrong for incorrectly matchedm
-and what is wrong for not matcheds that should be matched?
+The results of the last evaluation have been analyzed for possible error sources.
+Thereby, the following two main error sources have been found.
+
+\begin{list}
+\item A movie was matched incorrectly to a sequel/prequel becuase the correct movie is not in the database.
+\item A movie was not matched becuase the correct match was not in the candidate set
+\end{list}
