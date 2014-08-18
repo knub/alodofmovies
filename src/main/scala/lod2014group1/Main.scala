@@ -63,26 +63,26 @@ object Main extends App with Logging {
 				case _ =>
 					val tmdbDir = new File(s"${Config.DATA_FOLDER}/TMDBMoviesList/movie")
 					val merger = new MovieMatcher(new TmdbMovieTriplifier())
-					val baseLine = new DirectMovieMatcher(new TmdbMovieTriplifier())
-					baseLine.VERBOSE = false
-					baseLine.RANDOM = 1002
-					baseLine.TEST_SET_SIZE = 4000
-//					merger.VERBOSE = true
-//					merger.RANDOM = 1001
-//					merger.TEST_SET_SIZE = 4000
-//					merger.runStatistic(tmdbDir)
-					time(baseLine.runStatistic(tmdbDir))
-					List(0.30000000000000004).foreach { minScore =>
-						List(3).foreach { actDist =>
-							val merger = new MovieMatcher(new TmdbMovieTriplifier())
-							merger.VERBOSE = false
-							merger.RANDOM = 1002
-							merger.TEST_SET_SIZE = 4000
-							merger.SCORE_THRESHOLD = minScore
-							merger.ACTOR_OVERLAP_LEVENSHTEIN = actDist
-							time(merger.runStatistic(tmdbDir))
-						}
-					}
+//					val baseLine = new DirectMovieMatcher(new TmdbMovieTriplifier())
+//					baseLine.VERBOSE = false
+//					baseLine.RANDOM = 1001
+//					baseLine.TEST_SET_SIZE = 4000
+					merger.VERBOSE = true
+					merger.RANDOM = 1001
+					merger.TEST_SET_SIZE = 2000
+					merger.runStatistic(tmdbDir)
+					time(merger.runStatistic(tmdbDir))
+//					List(0.30000000000000004).foreach { minScore =>
+//						List(3).foreach { actDist =>
+//							val merger = new MovieMatcher(new TmdbMovieTriplifier())
+//							merger.VERBOSE = false
+//							merger.RANDOM = 1002
+//							merger.TEST_SET_SIZE = 4000
+//							merger.SCORE_THRESHOLD = minScore
+//							merger.ACTOR_OVERLAP_LEVENSHTEIN = actDist
+//							time(merger.runStatistic(tmdbDir))
+//						}
+//					}
 			}
 		} else if (args contains "merge-ofdb") {
 			val dir = new File (s"${Config.DATA_FOLDER}/OFDB/movies/")
