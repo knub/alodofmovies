@@ -37,7 +37,7 @@ In general, the matching algorithm must satisfy two requirements:
 	\item{Performance:} With thousands of movies in each new dataset, matching one movie should not take too long.
 	For example TMDb has about 182,000 movies to match.
 	If each movie takes just 1 minute to match, the whole process for TMDb already takes $182,000~movies * 1 \frac{minute}{movie} * \frac{1}{1440} \frac{days}{minute} \approx 126~days$.
-	This is just one data source and only the current set of movies which is steadily increasing in size as more movies are added for each data source.
+	This is just one data source and only the current set of movies which is steadily increasing in size as more movies are added to each data source every day.
 \end{enumerate}
 
 This leads to two consequences: First, a certain level of confidence needs to be reached to match two movies to each other.
