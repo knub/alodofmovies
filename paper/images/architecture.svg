@@ -14,7 +14,7 @@
    inkscape:version="0.48.4 r9939"
    width="100%"
    height="100%"
-   sodipodi:docname="architecture.svg"
+   sodipodi:docname="architecture.pdf"
    style="fill:none;stroke:none">
   <metadata
      id="metadata3633">
@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -58,7 +58,7 @@
      fit-margin-bottom="0"
      inkscape:zoom="1.1319444"
      inkscape:cx="398.89251"
-     inkscape:cy="321.07405"
+     inkscape:cy="285.73663"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"

@@ -112,14 +112,14 @@ the best match $n_i$ is determined as follows:
 		\Set*{a_n \in A_n}{\exists a_m \in A_m: Levenshtein(a_n, a_m) < ACT\_DIST}.\label{aoeq:4}
 \end{align}
 
-The basic idea, which is shown in equation \ref{aoeq:1}, is to only assume a match, if the score of the best matching movie is above a certain threshold $MIN\_SCORE$.
+The basic idea, which is shown in Equation \ref{aoeq:1}, is to only assume a match, if the score of the best matching movie is above a certain threshold $MIN\_SCORE$.
 So $MIN\_SCORE$ determines, when a best matching movie is returned as an actual match.
 If its score is too low, the assumption is that the movie is not the right one (i.e. the correct one does not exist in the database).
 Thus, nothing is returned.
 
-The best matching movie is defined as the movie from the candidate set, which has the highest score (see equation \ref{aoeq:2}).
+The best matching movie is defined as the movie from the candidate set, which has the highest score (see Equation \ref{aoeq:2}).
 
-The algorithm's main idea is illustrated in equation \ref{aoeq:3}: Given the movie to match and a candidate, the score's is determined as the fraction of the movie's actor, which can also be found in the candidate movie's actors.
+The algorithm's main idea is illustrated in Equation \ref{aoeq:3}: Given the movie to match and a candidate, the score's is determined as the fraction of the movie's actor, which can also be found in the candidate movie's actors.
 
 For the check whether one actor from one movie is also in the other movie, no strict matching is used, but rather a fuzzy approach, see \ref{aoeq:4}.
 Two actors are considered equal (but only for the sake of matching movies), when their Levenshtein distance is below a certain threshold $ACT\_DIST$.
