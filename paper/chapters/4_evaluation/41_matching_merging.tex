@@ -62,7 +62,7 @@ To generate consistent results, the whole evaluation is done without the distrib
 
 The evaluation process is structured into two parts: parameter optimization and final evaluation.
 In the first part, several experiments are conducted regarding the optimal parameters.
-Concretely, the goal was to find good values for $ACT\_DIST$, $MIN\_SCORE$, $CANDIDATE\_SET\_SIZE$ and the weighting of the different score factors.
+Concretely, the goal was to find good values for $ACT\_DIST$, $MIN\_SCORE$ and $CANDIDATE\_SET\_SIZE$.
 In the second part, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name, and against the optimized system.
 
 TODO: List of annotated properties
@@ -102,21 +102,20 @@ The optimal value is at $MIN\_SCORE = 0.2$ and $ACT\_DIST = 2$.
 \end{figure}
 
 
-\subsection{Refinement Weight}
+% \subsection{Refinement Weight}
 
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[width=0.8\textwidth]{images/graph_weight.pdf}
-  \end{center}
-  \caption{Refinement weight}
-  \label{fig_weight}
-\end{figure}
+% \begin{figure}[h!]
+%   \begin{center}
+%   \includegraphics[width=0.8\textwidth]{images/graph_weight.pdf}
+%   \end{center}
+%   \caption{Refinement weight}
+%   \label{fig_weight}
+% \end{figure}
 \subsection{Final evaluation}
-With the determined parameters: $MIN\_SCORE = 1.00$, $ACT\_DIST = 1.00$, $CANDIDATE\_SET = 100$
-TODO: Write final parameters
-the final performance of the matching algorithm is illustrated in figure ref
-
-Comparison to Baseline Approach
+With the determined parameters $MIN\_SCORE = 0.2$, $ACT\_DIST = 2$ and $CANDIDATE\_SET = 32$ the evaluation ran on another test set as described above.
+The final results are shown in Figure \ref{fig_baseline}.
+For comparison, the results of the baseline approach are shown as well.
+The baseline approach matches, if and only if the movie names (considering both the movie name and the original title) match exactly.
 
 \begin{figure}[h!]
   \begin{center}
