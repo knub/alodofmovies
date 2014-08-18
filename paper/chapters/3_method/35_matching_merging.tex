@@ -4,7 +4,7 @@
 
 The following sections show the approach for matching (i.e. finding the same entity in different datasets) and merging (i.e. integrating two different datasets about the same entity into one.)
 
-\subsubsection{Problem statement}
+\subsubsection{Problem Statement}
 After loading the initial dataset into the database, the task is to integrate other datasets to create a whole dataset with more information than a single one can provide on their own.
 % TODO: Why IMDB?
 However, simply dumping the second dataset into the database would lead to duplicated entries and thereby decreasing the overall quality of the database.
@@ -28,7 +28,7 @@ However, only using the name as a matching criteria yields multiple problems, su
 \end{itemize}
 Hence, a more sophisticated approach needs to be developed to increase the quality of the dataset.
 
-\subsubsection{Matching using actor overlap}
+\subsubsection{Matching using Actor Overlap}
 In general, the matching algorithm must satisfy two requirements:
 \begin{enumerate}
 	\item{High precision:} A movie should not be matched to a wrong movie, as this decreases the quality of the dataset.
