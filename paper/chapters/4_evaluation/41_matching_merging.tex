@@ -63,7 +63,8 @@ To generate consistent results, the whole evaluation is done without the distrib
 The evaluation process is structured into two parts: parameter optimization and final evaluation.
 In the first part, several experiments are conducted regarding the optimal parameters.
 Concretely, the goal was to find good values for $ACT\_DIST$, $MIN\_SCORE$ and $CANDIDATE\_SET\_SIZE$.
-In the second part, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name, and against the optimized system.
+In the second part, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name.
+Furthermore, to evaluate the bias of using the annotation of IMDb-IDs as goldstandard, the algorithm is run on a set of 100 movies that do not have an IMDb-ID annotated and the results are compared to a handcrafted gold standard.
 
 TODO: List of annotated properties
 TODO: Important, how are the other parameters set?
@@ -112,10 +113,10 @@ The optimal value is at $MIN\_SCORE = 0.2$ and $ACT\_DIST = 2$.
 %   \label{fig_weight}
 % \end{figure}
 \subsection{Final evaluation}
-With the determined parameters $MIN\_SCORE = 0.2$, $ACT\_DIST = 2$ and $CANDIDATE\_SET = 32$ the evaluation ran on another test set as described above.
+With the determined parameters $MIN\_SCORE = 0.2$, $ACT\_DIST = 2$ and $CANDIDATE\_SET = 32$ the evaluation ran on the two other test sets as described above.
 The final results are shown in Figure \ref{fig_baseline}.
 For comparison, the results of the baseline approach are shown as well.
-The baseline approach matches, if and only if the movie names (considering both the movie name and the original title) match exactly.
+The baseline approach matches if there is an exact match between any of the annotated names of the new movie and the annotated names of a movie in the database.
 
 \begin{figure}[h!]
   \begin{center}
