@@ -2,7 +2,7 @@
 \subsection{Updating Movies}
 \label{subsec_method_updating}
 
-To ensure that the movies are always up to date, a scheduler is responsible to update the movies at certain repeading times.
+To ensure that the movies are always up to date, a scheduler is responsible to update the movies at certain repeating times.
 The scheduler creates ``CrawlifyMatch'' tasks, which downloads the movie resource, which should be updated, triplifies it, matches it (if necessary) and stores the updated triples in the triple store.
 Thereby, the scheduler distinguish between existing movies, which are released in the past from the current date, and coming soon movies, which will be released in the future.
 
@@ -25,13 +25,13 @@ Thus, the scheduler gets all new movies.
 
 TMDb offers a change set.
 The scheduler requests the change API to get all movies, which recently changed.
-Then, the scheduler can filter for movies, which are unkown and thus, which are new.
+Then, the scheduler can filter for movies, which are unknown and thus, which are new.
 
 At OFDb the movies have increasing ids.
 New movies published on the current day can be found under the following page \url{http://www.ofdb.de/view.php?page=neu&Kat=Film&Tage=1}.
 So, the scheduler knows the highest newest movie id and also the last movie id of OFDb in the triple store.
-All ids between these two are ids of new moives.
-With the help of the ids, the scheduler can esaliy build the URL for the movie resource\footnote{\url{http://www.ofdb.de/film/[id]}} and crawl it.
+All ids between these two are ids of new movies.
+With the help of the ids, the scheduler can easily build the URL for the movie resource\footnote{\url{http://www.ofdb.de/film/[id]}} and crawl it.
 
 To figure out how often the scheduler should add coming soon movies, IMDb's upcoming movie list was observed.
 How many coming soon movies are daily added to IMDb is shown in Figure \ref{fig_coming_soon_movie}.
@@ -52,10 +52,10 @@ TMDb and OFDb show a similar result, so that upcoming movies from these data sou
 
 \subsubsection{Updating existing movies}
 In Figure \ref{fig_new_movie} the number of changed triples of a new released movie from IMDb is displayed.
-Therefor, a movie was crawled and triplified daily.
+Therefore, a movie was crawled and triplified daily.
 As you can seen, the movie frequently changes in the first days.
 Also, the number of changing triples decreases with time.
-Often changing triples are for example cast triple, links to images and videos, IMDb rating, charachter triples or taglines.
+Often changing triples are for example cast triple, links to images and videos, IMDb rating, character triples or taglines.
 
 \begin{figure}[h!]
   \begin{center}
@@ -80,13 +80,13 @@ Each category is updated at different frequencies (Table \ref{tab_updating_exist
 	\caption{Frequency of updating existing movies}
 	\label{tab_updating_existing}
 \end{table}
-If a category should be updated, the scheduler does the follwing steps:
+If a category should be updated, the scheduler does the following steps:
 \begin{enumerate}
-	\item Find all movies, which should be updated regardless their originial data source.
+	\item Find all movies, which should be updated regardless their original data source.
 	\item For each of these movies, get the updated movie resource and triplify it.
 	\item Delete all triples of the movie in the triple store in the corresponding graph.
 	\item Load the new triples into the corresponding graph in the triple store.
 \end{enumerate}
-Because the movies are stored in different graphs depending on their originial data source, the scheduler knows, where to find the movie resource in the web.
-The originial resource of a movie is stored in a \emph{sameAs} triple.
+Because the movies are stored in different graphs depending on their original data source, the scheduler knows, where to find the movie resource in the web.
+The original resource of a movie is stored in a \emph{sameAs} triple.
 Deleting the existing triples and storing the new downloaded triples, ensures that no conflicting information is stored of a resource.
