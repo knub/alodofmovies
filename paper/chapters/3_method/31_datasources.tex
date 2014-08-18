@@ -12,7 +12,7 @@ While the content in IMDb is mostly user-generated, it has to go through multipl
 Thus, we can assume that the data is more likely to be correct when compared to data from entirely user generated data sources.
 
 A big open platform, which includes a big section about movies, is \textit{Freebase}\footnote{\url{http://www.freebase.com/}}.
-Google hosts that connected user-generated open database, which contains a lot of links to other platforms.
+Google hosts this connected user-generated open database, which contains a lot of links to other platforms.
 It contains more than 250,000 movies and more than 430,000 people.
 %TODO SOURCE ^
 Freebase offers a MQL API and a Topic API, which can be queried to get movie resources.
@@ -33,7 +33,8 @@ To create a unified dataset of movies, a main data source must be chosen.
 This main source is used to match movies from different data sources against it.
 For \emph{Match Forrest, Match!} IMDb was chosen as the main data source, since it contains more movies than any of the other data sources.
 Additionally, IMDb is maintained by data editors, which manually add, delete and update the data\footnote{\url{https://uk-amazon.icims.com/jobs/274286/data-editor\%2c-database-content/job}}.
+%TODO remove? better source given above already
 All the other data sources are not maintained by paid professionals or are not as big as IMDb.
 
 Some movies from Freebase, TMDb and OFDb already contain links to the correpsonding IMDb movie.
-This is immensely helpful in the matching process (Chapter \ref{subsec_method_matching}).
+This is immensely helpful in the matching process, see (Chapter \ref{subsec_method_matching}).
