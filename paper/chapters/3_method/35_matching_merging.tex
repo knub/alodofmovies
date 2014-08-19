@@ -49,7 +49,7 @@ Second, comparing each movie with all movies in the database is not feasible due
 
 This paper proposes the idea to first find a small list of movies that could be a match (henceforth called candidates) and then calculate a score for each of these candidates, which is based on the actors.
 
-Figure \ref{fig_matching_general} shows the general matching procedure:
+Figure~\ref{fig_matching_general} shows the general matching procedure:
 First, the algorithm checks each new movie that needs to be matched.
 For each movie $n_i \in N$ ($N$ is the set of movies which still need to be matched), a small set of movies $C_{i}$, that could be a match, is selected.
 The next step is to calculate a score which captures the similarity between $n_i$ and each $m_j \in C_i$.
@@ -127,7 +127,7 @@ Two actors are considered equal (but only for the sake of matching movies), when
 The main idea of the algorithm is to use the actor overlap between two movies as the main matching criteria.
 The Levenshtein distance in \ref{aoeq:4} may not be able to match all actors correctly (i.e. ``Emma Watson'' and ``Emily Watson'' with a distance of three), because similar name problems can occur as with the movie (misspellings, different spelling in different languages, actual similar names for different actors etc.).
 However, the idea is that less actors can be matched for different movies and more actors can be matched for the same movie in different data sources.
-An evaluation of this approach can be found in Section \ref{subsec_evaluation_matching}.
+An evaluation of this approach can be found in Section~\ref{subsec_evaluation_matching}.
 
 \paragraph{Implementation}
 The actual implementation does not only use the actor overlap, but also considers the overlap for producers, writers, voice actors and directors.

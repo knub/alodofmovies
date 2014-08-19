@@ -10,7 +10,7 @@ It uses a messaging system, which is explained in Section~\ref{subsubsec_messagi
 \subsubsection{System Overview}
 \label{subsubsec_workflow}
 
-The overview about the system can be seen in Figure \ref{fig_architecture}.
+The overview about the system can be seen in Figure~\ref{fig_architecture}.
 The first step to get a movie into the system is always to retrieve the web resource about a movie from one of the data sources.
 This step is executed by the Crawler.
 This component is responsible for downloading websites or for sending requests to the API a data source might provide.
@@ -77,7 +77,7 @@ All tasks are stored in an SQL database and new ones are created by the Updater.
 To get an initial dataset, tasks have to be created manually.
 
 The messaging server takes a task from the SQL database and puts it into the messaging queue.
-The functionality of the messaging system, is shown in Figure \ref{fig_messaging_infrastructure}.
+The functionality of the messaging system, is shown in Figure~\ref{fig_messaging_infrastructure}.
 The new task is then pushed to a worker which is registered on the task queue.
 If multiple workers are registered, a free worker is selected by using the round robin principle to perform the next task.
 When the worker has finished the task, it sends its answer to the answer queue and waits for the server to acknowledge its work.

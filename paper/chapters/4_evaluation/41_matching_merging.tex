@@ -3,7 +3,7 @@
 \label{subsec_evaluation_matching}
 
 \subsection{Introduction}
-The matching algorithm, explained in Section \ref{subsec_method_matching}, depends on multiple parameters.
+The matching algorithm, explained in Section~\ref{subsec_method_matching}, depends on multiple parameters.
 The following paragraphs explain the process of tuning these parameters and evaluating the quality of the matching algorithm.
 
 Evaluation is done on two sets of 4000 randomly selected movies.
@@ -16,7 +16,7 @@ The result is two lists of around 3000 movies which are then used to test the al
 Around 2000 of these movies could possibly be matched.
 
 Evaluation itself is done by means of precision, recall and F0.5-measure.
-As explained in Section \ref{subsec_method_matching}, Precision is more important and therefore the F0.5-measure is additionally observed in the evaluation process.
+As explained in Section~\ref{subsec_method_matching}, Precision is more important and therefore the F0.5-measure is additionally observed in the evaluation process.
 The following paragraphs show the definitions of the relevant sets for the purpose of calculating these evaluation metrics.
 
 Given the set of new movies $N$ and the set of existing movies $M$ the following function returns the correct matching movie $m_{j} \in M$ of a new movie $n_{i} \in N$:
@@ -55,7 +55,7 @@ FP &\coloneqq \Set*{(n_i, m_j)}{m_j \in M \land m_j \neq match(n_i) \land m_j = 
 An example for this definition can be found in Appendix \ref{appendix_example}.
 Based on these sets, standard definitions of the evaluation metrics, precision, recall, and F0.5-measure are used.
 
-To generate consistent results, the evaluation is done without the distributed environment, as explained in Section \ref{subsec_method_architecture}, but on a single machine with the following system specifications:
+To generate consistent results, the evaluation is done without the distributed environment, as explained in Section~\ref{subsec_method_architecture}, but on a single machine with the following system specifications:
 \begin{itemize}
 	\item CPU: Pentium(R) Dual-Core  CPU E5300  @ 2.60GHz
 	\item RAM: 16GB, Java is run with 4GB of RAM
@@ -70,7 +70,7 @@ In the second part, the algorithm will be evaluated on the second dataset agains
 Furthermore, to evaluate the bias of using the annotation of IMDb-IDs as gold standard, the algorithm was run on a set of 100 movies that do not have an IMDb-ID annotated and the results are compared to a handcrafted gold standard.
 
 \subsection{$CANDIDATE\_SET\_SIZE$ Parameter}
-The first test looks at the impact on the quality of the results when the number of considered candidates is increased (see Figure \ref{fig_candidate_set_size}).
+The first test looks at the impact on the quality of the results when the number of considered candidates is increased (see Figure~\ref{fig_candidate_set_size}).
 For each test step, the candidate set size was doubled (starting at 2), hence a logarithmic scale is used.
 In general, the candidate set size should be as small as possible, because the greater this number, the longer the runtime of the matching process.
 For example, when trying to match 4000 movies, it takes 145 minutes with a $CANDIDATE\_SET\_SIZE$ of 1024, but 276 minutes with a $CANDIDATE\_SET\_SIZE$ of 2048.
@@ -90,7 +90,7 @@ Increasing $ACT\_DIST$ immediately leads to a higher score, because more actors 
 
 For the optimization, $ACT\_DIST$ was tested for values from 1 to 4 and $MIN\_SCORE$ was tested for every value from 0 to 1 in 0.1 steps.
 
-The results can be seen in Figure \ref{fig_3d}.
+The results can be seen in Figure~\ref{fig_3d}.
 The results for $MIN\_SCORE > 0.7$ and $MIN\_SCORE < 0.1$ are far worse than the other results, which is why they have been excluded from the figure.
 The optimal value is at $MIN\_SCORE = 0.2$ and $ACT\_DIST = 2$.
 
@@ -104,7 +104,7 @@ The optimal value is at $MIN\_SCORE = 0.2$ and $ACT\_DIST = 2$.
 
 \subsection{Final Evaluation}
 With the determined parameters $MIN\_SCORE = 0.2$, $ACT\_DIST = 2$ and $CANDIDATE\_SET = 32$ the evaluation ran on the two other test sets as described above.
-The final results are shown in Figure \ref{fig_baseline}.
+The final results are shown in Figure~\ref{fig_baseline}.
 For comparison, the results of the baseline approach are shown as well.
 The baseline approach matches if there is an exact match between any of the annotated names of the new movie and the annotated names of a movie in the database.
 
