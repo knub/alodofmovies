@@ -1,1 +1,2 @@
+precision_baseline,precision_mfm_with_id,precision_mfm_without_id,recall_baseline,recall_mfm_with_id,recall_mfm_without_id,f0.5_baseline,f0.5_mfm_with_id,f0.5_mfm_without_id
 0.5923566878980892,0.991807755324959,0.8928571429,0.5925663716814159,0.88671875,0.7142857143,0.592398612782221,0.9688433632095604,0.8503401361
