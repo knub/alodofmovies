@@ -2,11 +2,13 @@
 \section{Discussion of Evaluation Results}
 \label{sec_discussion}
 
-The results shown in Section \ref{sec_evaluation} give a lot of insight on the approach used.
-The following section will discuss these findings and give insight on conclusions and possible improvements.
+The results shown in Section \ref{sec_evaluation} give a lot of insight about the used approach.
+The following section will discuss these findings and show conclusions and possible improvements.
 
 The evaluation of increasing the candidate set size showed only an improvement to a certain point.
-This lets conclude that in most cases the correct movie is either already in the first x movies or it will not be added anyway.
+This allows the conclusion, that with the current candidate selection approach the correct movie is in most cases either already in the first movies or it will not be added anyway.
+Surprisingly, the precision got even worse with a bigger candidate set.
+That implies, that a better matching incorrect movie movie was found in bigger candidate sets.
 
 Figure \ref{fig_baseline} shows the huge improvement of the discussed algorithm to the baseline approach.
 This improvement can be traced back to the limiting factors of the baseline approach, which have already been explained in Section \ref{subsec_method_matching}.
@@ -15,19 +17,20 @@ On the other hand, Figure \ref{fig_baseline} also shows results for matching mov
 When comparing this with the results from movies, which have an IMDb-ID annotated, a bias is clearly visible.
 Both, precision and recall are significantly lower.
 This can be explained by the general lower annotation quality of those movies.
-Some movies even only have a name, with no further data annotated.
+If movies do not have an IMDb-ID annotated, they have fewer data annotated in general.
+Some movies even only have a name, with no further data.
 However, compared to the baseline approach it is still a good improvement.
 
 Even though the results are already good there is still room for better results.
 The analysis of the wrongly matched movies and the matches which were not found, as listed in Section \ref{subsec_evaluation_matching}, has shown that the biggest possible gain lies in improving the way the candidates are selected.
 Since candidate selection is based, only relying on the name and the year at the moment, movies with names that are not annotated so far are most likely not found.
 Thus, further criterias should be considered when calculating the pre-score for selecting candidates.
-Especially a set of movies that is chosen without an influence of their name could help.
+This could also solve the problem described above, that an increased candidate set size does not yield better results, but in fact a worse precision.
+
+Especially selecting a set of movies as candidates without looking at their name could help.
 However, the movies that need to be matched, i.e. the one that do not have an IMDb-ID annotated, usually have very few other properties annotated.
+TODO
+Table \ref{table_properties} shows the data available for these movies.
 Possible further attributes to consider are overview, runtime and genre.
-Nonetheless, none of them are trivial to integrate.
-
-Surprisingly, wird nicht besser wenn candidate set size groesser -> erklaeren
-
-discuss: cartoons, evaluation
+However, integrating them is not straightforward, as overview is an free text field, the runtime varies up to 10 minutes between data sources, and the genre is not very selective.
 
