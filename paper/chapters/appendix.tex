@@ -17,4 +17,29 @@
 %WWW \> World Wide Web\\
 %\end{tabbing}
 
+$N = \{$LotR\textsubscript{N}, FG\textsubscript{N}, GoT\textsubscript{N}, BB\textsubscript{N}, HP\textsubscript{N}$\}$
+
+$M = \{$LotR\textsubscript{M}, FG\textsubscript{M}, HP\textsubscript{M}$\}$ \\
+
+Matches returned by the system:
+
+$\{
+($LotR\textsubscript{N}, LotR\textsubscript{M}$);
+($FG\textsubscript{N}, HP\textsubscript{M}$);
+($GoT\textsubscript{N}, $\mathbf{\bot});
+($BB\textsubscript{N}, HP\textsubscript{M}$);
+($HP\textsubscript{N}, $\mathbf{\bot})
+\}$
+
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+                       & \textbf{LotR\textsubscript{N}} & \textbf{FG\textsubscript{N}} & \textbf{GoT\textsubscript{N}} & \textbf{BB\textsubscript{N}} & \textbf{HP\textsubscript{N}} \\ \hline
+\textbf{LotR\textsubscript{M}}  & TP                    & TN                  & TN                   & TN                   & TN                  \\ \hline
+\textbf{FG\textsubscript{M}}    & TN                    & FN                  & TN                   & TN                   & TN                  \\ \hline
+\textbf{HP\textsubscript{M}}    & TN                    & FP                  & TN                   & FP                   & FN                  \\ \hline
+$\mathbf{\bot}$                 & TN                    & TN                  & TN                   & TN                   & TN                  \\ \hline
+\end{tabular}
+\end{table}
+
 \input{chapters/appendix_evaluationTable.tex}
