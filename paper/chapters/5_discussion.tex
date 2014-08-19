@@ -2,29 +2,29 @@
 \section{Discussion of Evaluation Results}
 \label{sec_discussion}
 
-The results shown in Section \ref{sec_evaluation} give a lot of insight on the used approach.
+The results shown in Section \ref{sec_evaluation} give a lot of insight on the approach used.
 The following section will discuss these findings and give insight on conclusions and possible improvements.
 
 Figure \ref{fig_baseline} shows the huge improvement of the discussed algorithm to the baseline approach.
-This improvement can be explained by the limiting factors of the baseline approach, which have already been explained in Section \ref{subsec_method_matching}.
+This improvement can be traced back to the limiting factors of the baseline approach, which have already been explained in Section \ref{subsec_method_matching}.
 
 On the other hand, Figure \ref{fig_baseline} also shows results for matching movies with no IMDb-ID annotated.
 When comparing this with the results from movies, which have an IMDb-ID annotated, a bias is clearly visible.
-Both precision and recall are significantly lower.
+Both, precision and recall are significantly lower.
 This can be explained by the general lower annotation quality of those movies.
 Some movies even only have a name, with no further data annotated.
 However, compared to the baseline approach it is still a good improvement.
 
 Even though the results are already good there is still room for better results.
-The analysis of the wrongly matched movies and the not found matches, as listed in Section \ref{subsec_evaluation_matching} has shown that the biggest possible gain is in improving the way the candidates are selected.
-Since candidate selection is based only on the name and the year at the moment, movies with names that are not annotated so far are most likely not found.
+The analysis of the wrongly matched movies and the matches which were not found, as listed in Section \ref{subsec_evaluation_matching}, has shown that the biggest possible gain lies in improving the way the candidates are selected.
+Since candidate selection is based, only relying on the name and the year at the moment, movies with names that are not annotated so far are most likely not found.
 Thus, further criterias should be considered when calculating the pre-score for selecting candidates.
-Especially a set of movies that is choosen without an influence of there name could help.
-However, the movies that need to be matched, i.e. the one that do not have an annotated IMDb-ID, usually have many other properties not annotated.
+Especially a set of movies that is chosen without an influence of their name could help.
+However, the movies that need to be matched, i.e. the one that do not have an IMDb-ID annotated, usually have very few other properties annotated.
 Possible further attributes to consider are overview, runtime and genre.
-Nonetheless, non of them are trivial to integrate.
+Nonetheless, none of them are trivial to integrate.
 
-surprisingly, wird nicht besser wenn candidate set size groesser -> erklaeren
+Surprisingly, wird nicht besser wenn candidate set size groesser -> erklaeren
 
 discuss: cartoons, evaluation
 
