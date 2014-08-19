@@ -71,7 +71,7 @@ The next paragraphs describe candidate selection and score calculation in detail
 The general goal of candidate selection is to reduce the set of all movies in the database to a smaller set of candidates.
 There are two constraints working against each other:
 \begin{itemize}
-	\item The candidate set should be as small as possible. This leads to fewer comparisions and thereby increased performance.
+	\item The candidate set should be as small as possible. This leads to fewer comparisons and thereby increased performance.
 	\item The correct movie, i.e. the movie that needs to be matched to the current movie, must be in the candidate set, if it exists in the database.
 \end{itemize}
 The former would be optimized by returning nothing, the latter by returning everything, so a viable tradeoff has to be found.

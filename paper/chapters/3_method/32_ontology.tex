@@ -42,13 +42,13 @@ A MoviePerson can have multiple sub-types of \textit{dbpedia-owl:Person}, depend
 As shown in Figure~\ref{fig_ontology} a distinction between these jobs (e.g. director, writer, producer) was made.
 For example, a person who is a director in one movie and an actor in another movie would have the additional classes \textit{dbpedia-owl:Actor} and \textit{dbpedia-owl:Director}.
 
-A problem, which occured when defining our ontology, was the entity Character.
+A problem, which occurred when defining our ontology, was the entity Character.
 In the initial definition, there was just one character class, which was connected to the corresponding movie and actor.
 The actor also had a connection to the character.
 The unique identifier of the character was build from the character's name.
 
 Thus, a character, which exists in multiple movies (e.g. ``cleaning lady''), would be one resource connected to each actor, who had ever portrayed this character.
-The character also had a list of movies, which it occured in.
+The character also had a list of movies, which it occurred in.
 That way, one could not say, which actors played the character in a certain movie.
 One such case is an actor, who played a certain character in an old movie, but also appears in the movie's newer remake.
 In the remake, they might play a different character while another actor plays their original character.
