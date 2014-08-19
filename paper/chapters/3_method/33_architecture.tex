@@ -5,7 +5,7 @@
 The following section describes the architecture of \emph{Match Forrest, Match!} system.
 The central component of the system is the \textit{Task Distributor}.
 This component is responsible for managing the other components, \textit{Crawler}, \textit{Triplifier}, \textit{Updater} and \textit{Matcher and Merger}.
-It uses a messaging system, which is explained in Section \ref{subsubsec_messaging_infrastructure}.
+It uses a messaging system, which is explained in Section~\ref{subsubsec_messaging_infrastructure}.
 
 \subsubsection{System Overview}
 \label{subsubsec_workflow}
@@ -17,14 +17,14 @@ This component is responsible for downloading websites or for sending requests t
 
 Once the page is downloaded, the Triplifier can triplify the resource.
 This means that it extracts the information from the resource (usually in HTML or JSON format) and creates triples according to a certain ontology.
-The ontology is described in Section \ref{subsec_method_ontology}.
+The ontology is described in Section~\ref{subsec_method_ontology}.
 
 The component Matcher and Merger is in charge of matching and merging two movies from different data sources, so they can only be found once in the resulting dataset.
 This is the crucial step in creating a clean dataset
 .
-This component is explained in detail in Section \ref{subsec_method_matching}.
+This component is explained in detail in Section~\ref{subsec_method_matching}.
 
-The Updater, described in Section \ref{subsec_method_updating}, ensures that the existing movies are always up-to-date and that new movies are in the system.
+The Updater, described in Section~\ref{subsec_method_updating}, ensures that the existing movies are always up-to-date and that new movies are in the system.
 
 The triple store \emph{Virtuoso}\footnote{\url{http://virtuoso.openlinksw.com/}} is used to store the resulting triples.
 To distinguish between the sources of the different triples, triples from each data source are stored in a distinct graph named after the source.
