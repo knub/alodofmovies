@@ -9,10 +9,10 @@ The following paragraphs explain the process of tuning these parameters and eval
 Evaluation is done on two sets of 4000 randomly selected movies.
 The selection is done by listing all movies sorted by name and then using $Random.shuffle$ to shuffle the list and take the first 4000 movies.
 The first list is used for the parameter optimization, while the second is used for the final evaluation.
-To get a gold standard only those movies with an annotated IMDb-id are taken into consideration.
-However, the id is not used to match the movies, it is only used as the gold standard.
+To get a gold standard, only those movies with an annotated IMDb-ID are taken into consideration.
+However, the ID is not used to match the movies, it is only used as the gold standard.
 These movies can be split into two parts: the movies that could potentially be matched and the movies that cannot be matched, i.e. movies that do not exist in the database.
-The result are two lists of around 3000 movies the algorithm is tested with.
+The result is two lists of around 3000 movies which are then used to test the algorithm.
 Around 2000 of these movies could possibly be matched.
 
 Evaluation itself is done by means of precision, recall and F0.5-measure.
@@ -41,7 +41,8 @@ TP &\coloneqq \Set*{(n_i, match(n_i))}{match(n_i) = gold(n_i) \land match(n_i) \
 \item[False Positives (FP)] is the set of incorrect matches, either meaning another movie is the correct match or no correct match exists in the database
 \begin{align}
 FP &\coloneqq \Set*{(n_i, match(n_i))}{match(n_i) \neq gold(n_i) \land match(n_i) \neq \bot}
-\end{align}\item[True Negatives (TN)] is the set of tuples that are no matches and that cannot be matched because they are not in the database,
+\end{align}
+\item[True Negatives (TN)] is the set of tuples that are no matches and that cannot be matched because they are not in the database,
 \begin{align}
 FP &\coloneqq \Set*{(n_i, m_j)}{m_j \in M \land (m_j \neq match(n_i) \land m_j \neq gold(n_i) \lor m_j = \bot)}
 \end{align}
@@ -51,9 +52,9 @@ FP &\coloneqq \Set*{(n_i, m_j)}{m_j \in M \land m_j \neq match(n_i) \land m_j = 
 \end{align}
 \end{description}
 
-Based on these sets, standard definitions of the evaluation metrics precision, recall, F0.5-measure are used.
+Based on these sets, standard definitions of the evaluation metrics, precision, recall, and F0.5-measure are used.
 
-To generate consistent results, the whole evaluation is done without the distributed enviroment, as explained in Section \ref{subsec_method_architecture}, but on a single machine with the following system specifications:
+To generate consistent results, the whole evaluation is done without the distributed environment, as explained in Section \ref{subsec_method_architecture}, but on a single machine with the following system specifications:
 \begin{itemize}
 	\item CPU: Pentium(R) Dual-Core  CPU E5300  @ 2.60GHz
 	\item RAM: 16GB, Java is run with 4GB of RAM
@@ -61,12 +62,13 @@ To generate consistent results, the whole evaluation is done without the distrib
 \end{itemize}
 
 The evaluation process is structured into two parts: parameter optimization and final evaluation.
-In the first part, several experiments are conducted regarding the optimal parameters.
+In the first part, several experiments were conducted regarding the optimal parameters.
 Concretely, the goal was to find good values for $ACT\_DIST$, $MIN\_SCORE$ and $CANDIDATE\_SET\_SIZE$.
 In the second part, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name.
-Furthermore, to evaluate the bias of using the annotation of IMDb-IDs as gold standard, the algorithm is run on a set of 100 movies that do not have an IMDb-ID annotated and the results are compared to a handcrafted gold standard.
+Furthermore, to evaluate the bias of using the annotation of IMDb-IDs as gold standard, the algorithm was run on a set of 100 movies that do not have an IMDb-ID annotated and the results are compared to a handcrafted gold standard.
 
 TODO: List of annotated properties
+
 TODO: Important, how are the other parameters set?
 
 \subsection{$CANDIDATE\_SET\_SIZE$ parameter}
@@ -88,7 +90,7 @@ A second test observes the maximum Levenshtein distance between two actors and t
 The assumption is, that these parameters are not independent of each other, as both directly affect the scoring procedure.
 Increasing $ACT\_DIST$ immediately leads to a higher score, because more actors are considered the same.
 
-For the optimization, $ACT\_DIST$ was tried for values from 1 to 4, $MIN\_SCORE$ was tried for every value from 0 to 1 in 0.1 steps.
+For the optimization, $ACT\_DIST$ was tested for values from 1 to 4 and $MIN\_SCORE$ was tested for every value from 0 to 1 in 0.1 steps.
 
 The results can be seen in Figure \ref{fig_3d}.
 The results for $MIN\_SCORE > 0.7$ and $MIN\_SCORE < 0.1$ are far worse than the other results, which is why they have been excluded from the figure.
@@ -131,14 +133,14 @@ The results of the last evaluation have been analyzed for possible error sources
 The following error sources have been found for matching incorrectly:
 
 \begin{itemize}
-	\item In 82\% of the wrong matched the actual movie was not in the database
-	\item In the rest of the cases the algorithm used an inprecise cut of the threshold
+	\item In 82\% of the wrongly matched movies, the actual movie was not in the database
+	\item In the remaining cases, the algorithm used an inprecise cut of the threshold
 \end{itemize}
 
-For not finding a possible match these error sources have been identified:
+The following error sources have been identified for not finding a possible match:
 
 \begin{itemize}
-	\item In around 70\% of the cases a match was not found because the correct match was not in the candidate set
-	\item In around 20\% of the cases there was no information to calculate the score.
-	\item In the rest of thes cases the threshold was to low.
+	\item In around 70\% of the cases, a match was not found because the correct match was not in the candidate set
+	\item In around 20\% of the cases, there was no information to calculate the score.
+	\item In the remaining cases, the threshold was to low.
 \end{itemize}
