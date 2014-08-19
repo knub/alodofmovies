@@ -8,7 +8,7 @@ The following section will discuss these findings and show conclusions and possi
 The evaluation of increasing the candidate set size showed only an improvement to a certain point.
 This allows the conclusion, that with the current candidate selection approach the correct movie is in most cases either already in the first movies or it will not be added anyway.
 Surprisingly, the precision got even worse with a bigger candidate set.
-That implies, that a better matching incorrect movie movie was found in bigger candidate sets.
+That implies, that a better matching incorrect movie was found in bigger candidate sets.
 
 Figure \ref{fig_baseline} shows the huge improvement of the discussed algorithm to the baseline approach.
 This improvement can be traced back to the limiting factors of the baseline approach, which have already been explained in Section \ref{subsec_method_matching}.
@@ -21,9 +21,9 @@ If movies do not have an IMDb-ID annotated, they have fewer data annotated in ge
 Some movies even only have a name, with no further data.
 However, compared to the baseline approach it is still a good improvement.
 
-Even though the results are already good there is still room for better results.
+Even though the results are already good there is still room for improvement.
 The analysis of the wrongly matched movies and the matches which were not found, as listed in Section \ref{subsec_evaluation_matching}, has shown that the biggest possible gain lies in improving the way the candidates are selected.
-Since candidate selection is based, only relying on the name and the year at the moment, movies with names that are not annotated so far are most likely not found.
+Since candidate selection is based on the name and the year at the moment, movies with names that are not annotated so far are most likely not found.
 Thus, further criterias should be considered when calculating the pre-score for selecting candidates.
 This could also solve the problem described above, that an increased candidate set size does not yield better results, but in fact a worse precision.
 
