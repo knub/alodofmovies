@@ -42,7 +42,7 @@
      id="namedview594"
      showgrid="false"
      inkscape:zoom="0.944"
-     inkscape:cx="100.20218"
+     inkscape:cx="102.32082"
      inkscape:cy="341.14322"
      inkscape:window-x="0"
      inkscape:window-y="27"
@@ -410,11 +410,6 @@
        id="text189"
        x="43.199997"
        y="165">F0.5</text>
-    <text
-       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:CMU Serif;-inkscape-font-specification:CMU Serif Medium;font-weight:500;font-style:normal;font-stretch:normal;font-variant:normal"
-       id="text193"
-       x="300"
-       y="41.299999">Parameter evaluation for ACTOR_OVERLAP_MINIMUM and MIN_SCORE</text>
     <polygon
        style="color:#ff0000;fill:#8a8a8a;stroke:none"
        id="polygon202"
@@ -1258,5 +1253,5 @@
            height="254.76695"
            x="502.64832"
            y="98.516953" /></flowRegion><flowPara
-         id="flowPara3888"></flowPara></flowRoot>  </g>
+         id="flowPara3888" /></flowRoot>  </g>
 </svg>
