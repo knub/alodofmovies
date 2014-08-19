@@ -2,18 +2,18 @@
 \section{Conclusion and Outlook}
 \label{sec_conclusion}
 
-\emph{Match Forrest, Match!} is a system which combines various pieces of information from different data sources to a unified, linked open data set of movies.
+\emph{Match Forrest, Match!} is a system which combines various pieces of information from different data sources to a unified, linked open dataset of movies.
 The system is based on the four online movie data sources IMDb, TMDb, OFDb and Freebase.
 The paper detailed the resulting movie ontology and the system architecture.
 Because a movie can exist in more than one of these data sources, a matching algorithm was developed and presented in this paper.
-Thus, a movie appears only once in the resulting data set.
-Thereby, the focus was on a high precision to keep the merged data set clean.
+Thus, a movie appears only once in the resulting dataset.
+Thereby, the focus was on a high precision to keep the merged data clean.
 The developed matching algorithm was based on to steps: first candidate selection and then overlap scoring.
 The candidate selection is fast and provides possible movie matches.
 The overlap scoring is based on the ratio of actors starring in both movies and runs only on the selected candidates to keep the runtime low.
 
 Overall, the algorithm has a high precision, while still maintaining a good recall.
-Furthermore, a strategy to keep the resulting data set up-to-date was explained in this paper.
+Furthermore, a strategy to keep the resulting dataset up-to-date was explained in this paper.
 The movies are divided into different categories depending on their age (time passed since they were published) and updated at different frequencies, because the older a movie gets, the less likely are changes.
 
 In the future, the system could include more online movie databases.

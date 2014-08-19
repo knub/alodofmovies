@@ -20,7 +20,8 @@ This means that it extracts the information from the resource (usually in HTML o
 The ontology is described in Section \ref{subsec_method_ontology}.
 
 The component Matcher and Merger is in charge of matching and merging two movies from different data sources, so they can only be found once in the resulting dataset.
-This is the crucial step in creating a clean data set.
+This is the crucial step in creating a clean dataset
+.
 This component is explained in detail in Section \ref{subsec_method_matching}.
 
 The Updater, described in Section \ref{subsec_method_updating}, ensures that the existing movies are always up-to-date and that new movies are in the system.
@@ -73,7 +74,7 @@ Not all fields have to be set, the task type defines which fields are needed.
 For example the ``Triplify'' task needs a file, but the ``MatchAndMerge'' task does not.
 
 All tasks are stored in an SQL database and new ones are created by the Updater.
-To get an initial data set, tasks have to be created manually.
+To get an initial dataset, tasks have to be created manually.
 
 The messaging server takes a task from the SQL database and puts it into the messaging queue.
 The functionality of the messaging system, is shown in Figure \ref{fig_messaging_infrastructure}.

@@ -26,7 +26,7 @@ Given the set of new movies $N$ and the set of existing movies $M$ the following
 	gold(n) &=
 		\begin{cases}
 		m \in M ~\text{if matching movie m exists in database}  \\
-		\bot
+		\bot,~otherwise
 		\end{cases}
 \end{align}
 
@@ -52,9 +52,10 @@ FP &\coloneqq \Set*{(n_i, m_j)}{m_j \in M \land m_j \neq match(n_i) \land m_j = 
 \end{align}
 \end{description}
 
+An example for this definition can be found in Appendix \ref{appendix_example}.
 Based on these sets, standard definitions of the evaluation metrics, precision, recall, and F0.5-measure are used.
 
-To generate consistent results, the whole evaluation is done without the distributed environment, as explained in Section \ref{subsec_method_architecture}, but on a single machine with the following system specifications:
+To generate consistent results, the evaluation is done without the distributed environment, as explained in Section \ref{subsec_method_architecture}, but on a single machine with the following system specifications:
 \begin{itemize}
 	\item CPU: Pentium(R) Dual-Core  CPU E5300  @ 2.60GHz
 	\item RAM: 16GB, Java is run with 4GB of RAM
@@ -64,10 +65,11 @@ To generate consistent results, the whole evaluation is done without the distrib
 The evaluation process is structured into two parts: parameter optimization and final evaluation.
 In the first part, several experiments were conducted regarding the optimal parameters.
 Concretely, the goal was to find good values for $ACT\_DIST$, $MIN\_SCORE$ and $CANDIDATE\_SET\_SIZE$.
+All measured values can be found in Appendix \ref{appendix_data}.
 In the second part, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name.
 Furthermore, to evaluate the bias of using the annotation of IMDb-IDs as gold standard, the algorithm was run on a set of 100 movies that do not have an IMDb-ID annotated and the results are compared to a handcrafted gold standard.
 
-\subsection{$CANDIDATE\_SET\_SIZE$ parameter}
+\subsection{$CANDIDATE\_SET\_SIZE$ Parameter}
 The first test looks at the impact on the quality of the results when the number of considered candidates is increased (see Figure \ref{fig_candidate_set_size}).
 For each test step, the candidate set size was doubled (starting at 2), hence a logarithmic scale is used.
 In general, the candidate set size should be as small as possible, because the greater this number, the longer the runtime of the matching process.
@@ -81,7 +83,7 @@ For example, when trying to match 4000 movies, it takes 145 minutes with a $CAND
   \label{fig_candidate_set_size}
 \end{figure}
 
-\subsection{$ACT\_DIST$ and $MIN\_SCORE$ parameter}
+\subsection{$ACT\_DIST$ and $MIN\_SCORE$ Parameter}
 A second test observes the maximum Levenshtein distance between two actors and the threshold that needs to be reached for the actor overlap.
 The assumption is, that these parameters are not independent of each other, as both directly affect the scoring procedure.
 Increasing $ACT\_DIST$ immediately leads to a higher score, because more actors are considered the same.
