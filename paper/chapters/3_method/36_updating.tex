@@ -9,13 +9,13 @@ Thereby, the scheduler distinguishes between existing movies, which were release
 \subsubsection{Adding coming soon Movies}
 The steps to add upcoming movies are:
 \begin {enumerate}
-	\item Get new movie resources.
+	\item Obtain new movie resources.
 	\item For each movie, download the new movie resource and triplify it.
 	\item Delete all triples of the movie in the triple store in the corresponding graph, if the movie already exists.
 	\item Load triples of an IMDb movie into the corresponding graph in the triple store. For the other resources, integrate the triples of the upcoming movie and store them in the corresponding graph.
 \end{enumerate}
 
-To get all new movies from IMDb, the scheduler crawls the ``Coming Soon'' page\footnote{\url{http://www.imdb.com/movies-coming-soon/2014-08/}} from the current month until the same month next year.
+To obtain all new movies from IMDb, the scheduler crawls the ``Coming Soon'' page\footnote{\url{http://www.imdb.com/movies-coming-soon/2014-08/}} from the current month until the same month next year.
 This page contains all new movies' IDs, which will be released in the crawled time period.
 Having the new movie ids, the scheduler can automatically construct the new movie resource\footnote{\url{http://www.imdb.com/[id]}} which can then be crawled.
 
@@ -24,8 +24,8 @@ Afterwards, the scheduler filters the IDs for unknown IDs.
 Thus, the scheduler gets all new movies.
 
 TMDb offers a change set.
-The scheduler sends a request to the change API to get all movies which changed recently.
-Then, the scheduler can filter for movies which are unknown and thus new.
+The scheduler sends a request to the change API to obtain all movies, which changed recently.
+Then, the scheduler can filter for movies, which are unknown and thus new.
 
 In OFDb, the movies have increasing IDs.
 New movies, added to the database since the day before, can be found on a special page\footnote{\url{http://www.ofdb.de/view.php?page=neu&Kat=Film&Tage=1}}.
@@ -50,24 +50,24 @@ It is noticeable, that most movies are published between Thursdays to Sundays on
 This observation lead to the decision to update upcoming movies from IMDb on a daily basis.
 TMDb and OFDb show similar results, so that upcoming movies from these data sources are updated daily, too.
 The sandbox of Freebase, which is requested over the API, updates once a week.
-This is why the upcoming movies from Freebase are only updated every week.
+This is why the upcoming movies from Freebase are updated only every week.
 
 \subsubsection{Updating existing Movies}
 In Figure~\ref{fig_new_movie} the number of changed triples of a newly released movie from IMDb is displayed.
 Therefor, a movie was crawled and triplified daily.
 Obviously, the movie frequently changes in the first days.
 Also, the number of changing triples decreases with time.
-Triples changing often are mostly cast triples, links to images and videos, IMDb rating, character triples or taglines.
+Triples changing often are mostly cast triples, links to images and videos, IMDb rating, character triples, or taglines.
 
 \begin{figure}[h!]
   \begin{center}
   \includegraphics[width=0.7\textwidth]{images/updating_2.pdf}
   \end{center}
-  \caption{Number of triples, which change in the first days of a newly released movie from IMDb. The older the movie gets, the less triples change.}
+  \caption{Number of triples, which change in the first days of a newly released movie from IMDb. The older the movie gets, the fewer triples change.}
   \label{fig_new_movie}
 \end{figure}
 
-Because a movie changes less the older it is, existing movies are divided into different categories.
+Because a movie changes fewer the older it is, existing movies are divided into different categories.
 Each category is updated at different frequencies (Table~\ref{tab_updating_existing}).
 \begin{table}[ht]
 	\begin{center}
@@ -84,8 +84,8 @@ Each category is updated at different frequencies (Table~\ref{tab_updating_exist
 \end{table}
 If a category should be updated, the scheduler does the following steps:
 \begin{enumerate}
-	\item Find all movies which should be updated regardless their original data source.
-	\item For each of these movies, get the updated movie resource and triplify it.
+	\item Find all movies, which should be updated regardless their original data source.
+	\item For each of these movies, obtain the updated movie resource and triplify it.
 	\item Delete all triples of the movie in the triple store in the corresponding graph.
 	\item Load the new triples into the corresponding graph in the triple store.
 \end{enumerate}

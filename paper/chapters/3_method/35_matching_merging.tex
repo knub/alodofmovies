@@ -16,7 +16,7 @@ As mentioned before, some movies from Freebase, OFDb and TMDb already have an IM
 But for those movies, which do not have a link to IMDb, another approach has to be developed.
 
 A first approach is to match movies only by their name.
-However, only using the name as a matching criteria yields multiple problems, such as:
+However, using only the name as a matching criteria yields multiple problems, such as:
 \begin{itemize}
 	\item different movies having the same name e.g.
 	\begin{itemize}
@@ -40,19 +40,19 @@ In general, the matching algorithm must satisfy two requirements:
 	\item{Performance:} With thousands of movies in each new dataset, matching one movie should not take too long.
 	For example TMDb has about 182,000 movies to match.
 	If each movie takes just 1 minute to match, the entire process for TMDb already takes $182,000~movies * 1 \frac{minute}{movie} * \frac{1}{1440} \frac{days}{minute} \approx 126~days$.
-	This is just one data source and only the current set of movies which is steadily increasing in size as more movies are added to each data source every day.
+	This is just one data source and only the current set of movies, which is steadily increasing in size as more movies are added to each data source every day.
 \end{enumerate}
 
 This leads to two consequences: First, a certain level of confidence needs to be reached to match two movies to each other.
-Otherwise, it is impossible to detect movies which are not matchable because they are not in the database.
+Otherwise, it is impossible to detect movies, which are not matchable, because they are not in the database.
 Second, comparing each movie with all movies in the database is not feasible due to time constraints.
 
 This paper proposes the idea to first find a small list of movies that could be a match (henceforth called candidates) and then calculate a score for each of these candidates, which is based on the actors.
 
 Figure~\ref{fig_matching_general} shows the general matching procedure:
 First, the algorithm checks each new movie that needs to be matched.
-For each movie $n_i \in N$ ($N$ is the set of movies which still need to be matched), a small set of movies $C_{i}$, that could be a match, is selected.
-The next step is to calculate a score which captures the similarity between $n_i$ and each $m_j \in C_i$.
+For each movie $n_i \in N$ ($N$ is the set of movies, which still need to be matched), a small set of movies $C_{i}$, that could be a match, is selected.
+The next step is to calculate a score, which captures the similarity between $n_i$ and each $m_j \in C_i$.
 This score is mostly based on the actor information available about the two movies.
 Finally, the movie with the highest score will be chosen as a match, if the score is above a certain threshold.
 
@@ -114,14 +114,14 @@ the best match for $n_i$ is determined as follows:
 		\Set*{a_n \in A_n}{\exists a_m \in A_m: Levenshtein(a_n, a_m) \leq ACT\_DIST}.\label{aoeq:4}
 \end{align}
 
-The basic idea, which is shown in Equation \ref{aoeq:1}, is to only assume a match if the score of the best matching movie is above a certain threshold $MIN\_SCORE$.
+The basic idea, which is shown in Equation~\ref{aoeq:1}, is to assume a match only if the score of the best matching movie is above a certain threshold $MIN\_SCORE$.
 So $MIN\_SCORE$ determines, when a best matching movie is returned as an actual match.
 If its score is too low, the assumption is that the movie is not the right one (i.e. the correct one does not exist in the database).
 Thus, nothing is returned.
 
-The best matching movie is defined as the movie from the candidate set, which has the highest score, as shown in Equation \ref{aoeq:2}.
-Equation \ref{aoeq:3} illustrates how the overlap score is calculated. Given the movie to match and a candidate, the score is determined as the fraction of the movie's actors, which can also be found in the candidate movie's actors.
-For the check whether one actor from one movie is also in the other movie, no strict matching is used, but rather a fuzzy approach, as seen in Equation \ref{aoeq:4}.
+The best matching movie is defined as the movie from the candidate set, which has the highest score, as shown in Equation~\ref{aoeq:2}.
+Equation~\ref{aoeq:3} illustrates how the overlap score is calculated. Given the movie to match and a candidate, the score is determined as the fraction of the movie's actors, which can also be found in the candidate movie's actors.
+For the check whether one actor from one movie is also in the other movie, no strict matching is used, but rather a fuzzy approach, as seen in Equation~\ref{aoeq:4}.
 Two actors are considered equal (but only for the sake of matching movies), when their Levenshtein distance is below a certain threshold $ACT\_DIST$.
 
 The main idea of the algorithm is to use the actor overlap between two movies as the main matching criteria.
@@ -130,9 +130,9 @@ However, the idea is that less actors can be matched for different movies and mo
 An evaluation of this approach can be found in Section~\ref{subsec_evaluation_matching}.
 
 \paragraph{Implementation}
-The actual implementation does not only use the actor overlap, but also considers the overlap for producers, writers, voice actors and directors.
+The actual implementation does not only use the actor overlap, but also considers the overlap for producers, writers, voice actors, and directors.
 If there are lots of actors in both, the new movie and the candidate movie, this is taken into account with a high weight.
-However, for movies which do not have much actor information (e.g. cartoons, animated films etc.), more weight is put to e.g. voice actors.
+However, for movies, which do not have much actor information (e.g. cartoons, animated films etc.), more weight is put to e.g. voice actors.
 Furthermore, the name of the movie and the year it was published are used as the deciding factor between movies, when their actor overlap is equal.
 
 \subsubsection{Merging Movie Resources}
@@ -142,4 +142,4 @@ The triples from the matched movie can contain new, duplicated or conflicting in
 The system, however, considers all triples to be correct and inserts them.
 A conflict detection and resolution is not in the scope of this paper.
 All triples are stored in an extra graph, depending on the data source where they originated from.
-This allows for tracking duplicated or conflicting information down to their origin.
+This concept allows for tracking duplicated or conflicting information down to their origin.

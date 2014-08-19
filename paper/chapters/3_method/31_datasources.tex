@@ -5,16 +5,16 @@
 \emph{Match Forrest, Match!} is built on four different data sources.
 The first data source is the \textit{Internet Movie Database (IMDb)}\footnote{\url{http://www.imdb.com/}}.
 This data source contains more than 313,000 movies and more than 6,000,000 people~\cite{IMDb_stats}.
-To get the individual movie resources, the system has to crawl HTML pages.
+To obtain the individual movie resources, the system has to crawl HTML pages.
 While the content in IMDb is mostly user-generated, it has to go through multiple consistency checks, performed by professionals~\cite{IMDb_DataCreation, IMDb_amazon}.
 Thus, in the rest of the this paper it is assumed that the data is more likely to be correct when compared to data from entirely user generated data sources.
 
 A big open platform, which includes a big section about movies, is \textit{Freebase}\footnote{\url{http://www.freebase.com/}}.
 Google hosts this connected user-generated open database, which contains a lot of links to other platforms.
 It contains more than 250,000 movies and more than 754,000 people~\cite{Freebase_stats}.
-Freebase offers a MQL API and a Topic API, which can be queried to get movie resources.
+Freebase offers two APIs, called MQL API and Topic API, which can be queried to obtain movie resources.
 
-\textit{themoviedb.org (TMDb)}\footnote{\url{http://www.themoviedb.org/}} is a movie database which contains a lot of images.
+\textit{themoviedb.org (TMDb)}\footnote{\url{http://www.themoviedb.org/}} is a movie database, which contains a lot of images.
 It also offers an API to send requests for movie resources.
 TMDb is a collection of 182,000 movies and 475,000 people~\cite{TMDb_stats}.
 TMDb also publishes diffs, which is helpful to keep all movies from this data source up-to-date.
@@ -26,7 +26,7 @@ It contains more than 257,000 movies and 60,000 people~\cite{OFDb_stats}.
 To create a unified dataset of movies, a main data source must be chosen.
 This main source is used to match movies from different data sources against it.
 For \emph{Match Forrest, Match!} IMDb was chosen as the main data source, since it contains more movies than any of the other data sources.
-Additionally, IMDb is maintained by data editors, which manually add, delete and update the data~\cite{IMDb_DataCreation, IMDb_amazon}.
+Additionally, IMDb is maintained by data editors, which manually add, delete, and update the data~\cite{IMDb_DataCreation, IMDb_amazon}.
 All the other data sources are not maintained by paid professionals or are not as big as IMDb.
 
 Some movies from Freebase, TMDb and OFDb already contain links to the correpsonding IMDb movie.

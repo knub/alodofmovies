@@ -5,11 +5,12 @@
 As described in the previous section, different data sources, each having their own data format, were used in the system \emph{Match Forrest, Match!}.
 To create a unified dataset and therefore enable simple querying over all data, an ontology for movies was defined.
 
-This ontology covers movie resources as well as resources which belong to a movie, such as awards.
+This ontology covers movie resources as well as resources, which belong to a movie, such as awards.
 In general, the defined ontology is based on the DBpedia ontology.
-If no DBpedia class or property was present, Freebase classes or properties or newly defined ones were used.
+Where possible, classes and properties where used from DBpedia and Freebase (in this order).
+If no were present, new classes or properties were defined.
 
-In the following, the defined entities used in the system with their corresponding RDF classes are listed in Table~\ref{tab_entities}.
+In the following, the defined entities used in the system are listed with their corresponding RDF classes in Table~\ref{tab_entities}.
 
 \begin{table}[ht]
 	\begin{center}
@@ -46,17 +47,17 @@ In the initial definition, there was just one character class, which was connect
 The actor also had a connection to the character.
 The unique identifier of the character was build from the character's name.
 
-Thus, a character which exists in multiple movies (e.g. "cleaning lady") would be one resource connected to each actor who had ever portrayed this character.
-The character also had a list of movies which it occured in.
-That way, one could not say which actors played the character in a certain movie.
-One such case is an actor who played a certain character in an old movie but also appears in the movie's newer remake.
+Thus, a character, which exists in multiple movies (e.g. ``cleaning lady''), would be one resource connected to each actor, who had ever portrayed this character.
+The character also had a list of movies, which it occured in.
+That way, one could not say, which actors played the character in a certain movie.
+One such case is an actor, who played a certain character in an old movie, but also appears in the movie's newer remake.
 In the remake, they might play a different character while another actor plays their original character.
-An example for this is the movie "Starsky \& Hutch" (2004), which is a remake of the 1970s television series with the same name.
-In the movie, both actors which originally portrayed Starsky and Hutch get a cameo appearance alongside the new cast for their old characters.
+An example for this is the movie ``Starsky \& Hutch'' (2004), which is a remake of the 1970s television series with the same name.
+In the movie, both actors, which originally portrayed Starsky and Hutch get a cameo appearance alongside the new cast for their old characters.
 With the old approach, the system could not know who played the Starsky character in the remake, because all actors who ever played the character are listed.
 
 Therefore, an additional class of MovieCharacter was introduced in the final ontology.
 This resource is only connected to one movie and all actors, who played that character in that movie.
 The unique identifier of the MovieCharacter is build from the unique identifier of the movie and the character.
 The MovieCharacter is a subclass of Character, which describes the general character.
-This means, that the unique identifier of the MovieCharacter in the "Starsky \& Hutch" example is "Starksy/Starsky\&Hutch1970" and identifier of Character is "Starksy".
+This means, that the unique identifier of the MovieCharacter in the ``Starsky \& Hutch'' example is ``Starsky/Starsky\&Hutch1970'' and the identifier of Character is ``Starsky''.

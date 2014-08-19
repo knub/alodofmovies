@@ -10,20 +10,20 @@ If users only know some plot points and try to find the corresponding movie's ti
 This problem can be solved by creating a linked open movie database from the data in those online movie databases, which should contain traditional data, such as the movie's actors or its release data, but also semantic information, such as the location where it is set and the major plot points.
 This approach was implemented and is presented in this paper.
 
-Every online database contains some information which is not found in others.
+Every online database contains some information, which is not found in others.
 So, building a complete database requires gathering data from multiple sources.
-The data sources which were used in this project are described in Section~\ref{subsec_method_datasources} and the categories of data are shown in Section~\ref{subsec_method_ontology}.
+The data sources, which were used in this project, are described in Section~\ref{subsec_method_datasources} and the categories of data are shown in Section~\ref{subsec_method_ontology}.
 The system's architecture can be found in Section~\ref{subsec_method_architecture} and the acquisition of the data is covered in Section~\ref{subsec_method_triplification}.
 
 If there is movie data from different sources, this data needs to be matched so that the linked database knows that both sets of data actually belong together.
 Since some movies may have different titles in different data sources, devloping a matching algorithm is not trivial.
 This paper details the matching algorithm in Section~\ref{subsec_method_matching}, evaluates it in Section~\ref{subsec_evaluation_matching} and discusses it in Section~\ref{sec_discussion}.
 
-Users often want information on recently released movies because they might wish to decide if those are worth watching in cinema.
+Users often want information on recently released movies, because they might wish to decide if those are worth watching in cinema.
 Thus, an updating strategy needs to be developed to keep the databases' contents up-to-date.
-The stratgey which was implemented is described in Section~\ref{subsec_method_updating}.
+The stratgey, which was implemented, is described in Section~\ref{subsec_method_updating}.
 
-Possible uses for the application of such a linked open movie database include semantic search, explorative search or recommender systems.
+Possible uses for the application of such a linked open movie database include semantic search, explorative search, or recommender systems.
 
 This paper details related work in Section~\ref{sec_related_work}.
 Finally, Section~\ref{sec_conclusion} concludes the paper with an outlook on potential development in the future.

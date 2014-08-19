@@ -9,13 +9,13 @@ The following paragraphs explain the process of tuning these parameters and eval
 Evaluation is done on two sets of 4000 randomly selected movies.
 The selection is done by listing all movies sorted by name and then using $Random.shuffle$ to shuffle the list and take the first 4000 movies.
 The first list is used for the parameter optimization, while the second is used for the final evaluation.
-To get a gold standard, only those movies with an annotated IMDb-ID are taken into consideration.
-However, the ID is not used to match the movies, it is only used as the gold standard.
+To obtain a gold standard, only those movies with an annotated IMDb-ID are taken into consideration.
+However, the ID is not used to match the movies, it is used only as the gold standard.
 These movies can be split into two parts: the movies that could potentially be matched and the movies that cannot be matched, i.e. movies that do not exist in the database.
-The result is two lists of around 3000 movies which are then used to test the algorithm.
-Around 2000 of these movies could possibly be matched.
+The result is two lists of around 3000 movies, which are then used to test the algorithm.
+Around 2000 of these movies could possibly be matched, i.e. the movie exists in the database, and around 1000 movies are not matchable.
 
-Evaluation itself is done by means of precision, recall and F0.5-measure.
+Evaluation itself is done by means of precision, recall, and F0.5-measure.
 As explained in Section~\ref{subsec_method_matching}, Precision is more important and therefore the F0.5-measure is additionally observed in the evaluation process.
 The following paragraphs show the definitions of the relevant sets for the purpose of calculating these evaluation metrics.
 
@@ -31,7 +31,7 @@ Given the set of new movies $N$ and the set of existing movies $M$ the following
 \end{align}
 
 The function $gold$ is defined by looking at the IMDb-IDs as described above.
-Using this function and the algorithm $match_{n_{i}}$ explained in \ref{subsec_method_matching} the following sets are defined:
+Using this function and the algorithm $match_{n_{i}}$ explained in Section~\ref{subsec_method_matching} the following sets are defined:
 
 \begin{description}
 \item[True Positives (TP)] is the set of correct matches between a new movie and an existing one in the database,
@@ -42,7 +42,7 @@ TP &\coloneqq \Set*{(n_i, match(n_i))}{match(n_i) = gold(n_i) \land match(n_i) \
 \begin{align}
 FP &\coloneqq \Set*{(n_i, match(n_i))}{match(n_i) \neq gold(n_i) \land match(n_i) \neq \bot}
 \end{align}
-\item[True Negatives (TN)] is the set of tuples that are no matches and that cannot be matched because they are not in the database,
+\item[True Negatives (TN)] is the set of tuples that are no matches and that cannot be matched, because they are not in the database,
 \begin{align}
 FP &\coloneqq \Set*{(n_i, m_j)}{m_j \in M \land (m_j \neq match(n_i) \land m_j \neq gold(n_i) \lor m_j = \bot)}
 \end{align}
@@ -52,7 +52,7 @@ FP &\coloneqq \Set*{(n_i, m_j)}{m_j \in M \land m_j \neq match(n_i) \land m_j = 
 \end{align}
 \end{description}
 
-An example for this definition can be found in Appendix \ref{appendix_example}.
+An example for this definition can be found in Appendix~\ref{appendix_example}.
 Based on these sets, standard definitions of the evaluation metrics, precision, recall, and F0.5-measure are used.
 
 To generate consistent results, the evaluation is done without the distributed environment, as explained in Section~\ref{subsec_method_architecture}, but on a single machine with the following system specifications:
@@ -65,8 +65,8 @@ To generate consistent results, the evaluation is done without the distributed e
 The evaluation process is structured into two parts: parameter optimization and final evaluation.
 In the first part, several experiments were conducted regarding the optimal parameters.
 Concretely, the goal was to find good values for $ACT\_DIST$, $MIN\_SCORE$ and $CANDIDATE\_SET\_SIZE$.
-All measured values can be found in Appendix \ref{appendix_data}.
-In the second part, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name.
+All measured values can be found in Appendix~\ref{appendix_data}.
+In the second part, the algorithm will be evaluated on the test dataset against the baseline approach of matching by name.
 Furthermore, to evaluate the bias of using the annotation of IMDb-IDs as gold standard, the algorithm was run on a set of 100 movies that do not have an IMDb-ID annotated and the results are compared to a handcrafted gold standard.
 
 \subsection{$CANDIDATE\_SET\_SIZE$ Parameter}
@@ -98,7 +98,7 @@ The optimal value is at $MIN\_SCORE = 0.2$ and $ACT\_DIST = 2$.
   \begin{center}
   \includegraphics[width=0.7\textwidth]{images/3d.pdf}
   \end{center}
-  \caption{$ACT\_DIST$  and $MIN\_SCORE$ evaluation. There are a lot of false positives between a threshold of 0.6 and 0.7, which explains the knee. Other parameter: $CANDIDATE\_SET\_SIZE = 10$.}
+  \caption{$ACT\_DIST$  and $MIN\_SCORE$ evaluation. There are a lot of false positives between a threshold of 0.6 and 0.7, which explains the knee. Other parameter: $CANDIDATE\_SET\_SIZE = 32$.}
   \label{fig_3d}
 \end{figure}
 
@@ -112,13 +112,13 @@ The baseline approach matches if there is an exact match between any of the anno
   \begin{center}
   \includegraphics[width=0.7\textwidth]{images/baseline.pdf}
   \end{center}
-  \caption{This shows the performance of the \emph{Match Forrest, Match!} system (MFM) compared to the baseline approach (matching only by name). MFM was ran on both movies with and without an IMDb-ID, the baseline approach was only ran on movies with IMDb-ID.}
+  \caption{This shows the performance of the \emph{Match Forrest, Match!} system (MFM) compared to the baseline approach (matching only by name). MFM was ran on both movies with and without an IMDb-ID, the baseline approach was ran only on movies with IMDb-ID.}
   \label{fig_baseline}
 \end{figure}
 
 \subsection{Error Sources}
 An error analysis was conducted and the results are listed in the following paragraph.
-In general, if the systems returns a match, this is very likely to be correct, as indicated by the high precision.
+In general, if the systems returns a match, this is likely to be correct, as indicated by the high precision.
 In the cases, where an incorrect match was returned, this was most likely a match for a movie, which was not in the database, i.e. the system found a match from the database, but actually, there was no correct match.
 This was the case in 85\% of the returned incorrect matches.
 The remaining 15\% were actual wrong matches, i.e. the correct movie could have been found, but wasn't.
@@ -128,10 +128,10 @@ For this, the following error sources have been identified:
 
 \begin{itemize}
 	\item
-    In around 70\% of the cases, a match was not found because the correct match was not in the candidate set
+    In around 70\% of the cases, a match was not found, because the correct match was not in the candidate set
 	\item
     In around 20\% of the cases, the information used for matching was not available.
     In general, lots of movies without an IMDb-ID only have a name and an overview (free text).
 	\item
-    In the remaining cases, the correct movie would have been matched but the calculated score was lower than the threshold.
+    In the remaining cases, the correct movie would have been matched, but the calculated score was lower than the threshold.
 \end{itemize}
