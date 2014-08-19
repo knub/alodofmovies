@@ -125,7 +125,7 @@ For the check whether one actor from one movie is also in the other movie, no st
 Two actors are considered equal (but only for the sake of matching movies), when their Levenshtein distance is below a certain threshold $ACT\_DIST$.
 
 The main idea of the algorithm is to use the actor overlap between two movies as the main matching criteria.
-The Levenshtein distance in \ref{aoeq:4} may not be able to match all actors correctly (i.e. ``Emma Watson'' and ``Emily Watson'' with a distance of three), because similar name problems can occur as with the movie (misspellings, different spelling in different languages, actual similar names for different actors etc.).
+The Levenshtein distance in Equation~\ref{aoeq:4} may not be able to match all actors correctly (i.e. ``Emma Watson'' and ``Emily Watson'' with a distance of three), because similar name problems can occur as with the movie (misspellings, different spelling in different languages, actual similar names for different actors etc.).
 However, the idea is that less actors can be matched for different movies and more actors can be matched for the same movie in different data sources.
 An evaluation of this approach can be found in Section~\ref{subsec_evaluation_matching}.
 
