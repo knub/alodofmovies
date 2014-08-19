@@ -1,6 +1,6 @@
 package lod2014group1.messaging.worker
 
-import lod2014group1.merging.MovieMerger
+import lod2014group1.merging.{MovieMatcher, MovieMerger}
 import lod2014group1.triplification.TriplifyDistributor
 
 
@@ -14,7 +14,8 @@ class MatchWorker extends Worker {
     val triplifier = new TriplifyDistributor
     val triples = triplifier.triplify(fileName, content).map { _.toRdfTripleString() }
 
-    // TODO match movie
+    //val matcher = new MovieMatcher()
+    //matcher.merge(triples)
 
     val answerMap: Map[String, String] = Map("graph" -> graph)
     new TaskAnswer(taskId, answerMap, Nil, triples)

@@ -28,8 +28,9 @@ object MovieMerger extends App{
 
 		val imdbId = tripleGraph.getImdbId
 		if (imdbId == null) {
-      // TODO match movie
-      return List()
+      // match movie
+      //val matcher = new MovieMatcher()
+      //matcher.merge(tripleGraph)
     }
 
 		val movieResource = tripleGraph.getObjectOfType("dbpedia-owl:Film")
@@ -41,7 +42,7 @@ object MovieMerger extends App{
 		
 		val releaseInfoTriple = getTriple(tripleGraph, imdbResource, "lod:ReleaseInfo", Merger.mergeReleaseInfoTriple(_:String, _:List[RdfTriple]))
 		val akaTriple = getTriple(tripleGraph, imdbResource, "lod:Aka", Merger.mergeAkaTriple(_:String, _:List[RdfTriple]))
-    // TODO merge award
+    // merge award
     //	val awardTriple = getTriple(tripleGraph, imdbResource, "dbpedia-owl:Awad", Merger.mergeAkaTriple(_:String, _:List[RdfTriple]))
 		
 		val movieTriplesToLoad = Merger.mergeMovieTriple(imdbResource, movieTriple) ::: releaseInfoTriple ::: akaTriple
@@ -57,7 +58,7 @@ object MovieMerger extends App{
 			imdbPersons.flatMap { imdbPerson =>
 				if (areActorNamesEqual(imdbPerson.name, personName)) {
 					Merger.mergeActorTriple(imdbPerson.resource, personTriples) ::: Merger.replaceSubjectAndObject(imdbResource, imdbPerson.resource, personMovieTriple)
-					//TODO merge charakter
+					// merge charakter
 				} else
           List()
 			}
