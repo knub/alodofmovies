@@ -118,8 +118,7 @@ If its score is too low, the assumption is that the movie is not the right one (
 Thus, nothing is returned.
 
 The best matching movie is defined as the movie from the candidate set, which has the highest score, as shown in Equation \ref{aoeq:2}.
-The algorithm's main idea is illustrated in Equation \ref{aoeq:3}: Given the movie to match and a candidate, the score is determined as the fraction of the movie's actors, which can also be found in the candidate movie's actors.
-
+Equation \ref{aoeq:3} illustrates how the overlap score is calculated. Given the movie to match and a candidate, the score is determined as the fraction of the movie's actors, which can also be found in the candidate movie's actors.
 For the check whether one actor from one movie is also in the other movie, no strict matching is used, but rather a fuzzy approach, as seen in Equation \ref{aoeq:4}.
 Two actors are considered equal (but only for the sake of matching movies), when their Levenshtein distance is below a certain threshold $ACT\_DIST$.
 
