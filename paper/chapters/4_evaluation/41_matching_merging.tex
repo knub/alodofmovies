@@ -67,10 +67,6 @@ Concretely, the goal was to find good values for $ACT\_DIST$, $MIN\_SCORE$ and $
 In the second part, the algorithm will be evaluated on the second dataset against the baseline approach of matching by name.
 Furthermore, to evaluate the bias of using the annotation of IMDb-IDs as gold standard, the algorithm was run on a set of 100 movies that do not have an IMDb-ID annotated and the results are compared to a handcrafted gold standard.
 
-TODO: List of annotated properties
-
-TODO: Important, how are the other parameters set?
-
 \subsection{$CANDIDATE\_SET\_SIZE$ parameter}
 The first test looks at the impact on the quality of the results when the number of considered candidates is increased (see Figure \ref{fig_candidate_set_size}).
 For each test step, the candidate set size was doubled (starting at 2), hence a logarithmic scale is used.
@@ -81,7 +77,7 @@ For example, when trying to match 4000 movies, it takes 145 minutes with a $CAND
   \begin{center}
   \includegraphics[width=0.7\textwidth]{images/candidateSetSize.pdf}
   \end{center}
-  \caption{$CANDIDATE\_SET\_SIZE$ evaluation: The best F0.5 performance is reached at a candidate set size of 32.}
+  \caption{$CANDIDATE\_SET\_SIZE$ evaluation: The best F0.5 performance is reached at a candidate set size of 32. Other parameters: $MIN\_SCORE = 0.3, ACT\_DIST = 3$.}
   \label{fig_candidate_set_size}
 \end{figure}
 
@@ -100,20 +96,10 @@ The optimal value is at $MIN\_SCORE = 0.2$ and $ACT\_DIST = 2$.
   \begin{center}
   \includegraphics[width=0.7\textwidth]{images/3d.pdf}
   \end{center}
-  \caption{$ACT\_DIST$  and $MIN\_SCORE$ evaluation. There are a lot of false positives between a threshold of 0.6 and 0.7, which explains the knee.}
+  \caption{$ACT\_DIST$  and $MIN\_SCORE$ evaluation. There are a lot of false positives between a threshold of 0.6 and 0.7, which explains the knee. Other parameter: $CANDIDATE\_SET\_SIZE = 10$.}
   \label{fig_3d}
 \end{figure}
 
-
-% \subsection{Refinement Weight}
-
-% \begin{figure}[h!]
-%   \begin{center}
-%   \includegraphics[width=0.8\textwidth]{images/graph_weight.pdf}
-%   \end{center}
-%   \caption{Refinement weight}
-%   \label{fig_weight}
-% \end{figure}
 \subsection{Final Evaluation}
 With the determined parameters $MIN\_SCORE = 0.2$, $ACT\_DIST = 2$ and $CANDIDATE\_SET = 32$ the evaluation ran on the two other test sets as described above.
 The final results are shown in Figure \ref{fig_baseline}.

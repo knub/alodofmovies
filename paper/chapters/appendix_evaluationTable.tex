@@ -4,7 +4,7 @@
 \begin{table}[h!]
 \centering
 \begin{tabular}{l|l|l|l}
-\multicolumn{1}{c|}{\bfseries candidate$\_$set$\_$size} & \multicolumn{1}{|c|}{\bfseries Precision} & \multicolumn{1}{|c|}{\bfseries Recall} & \multicolumn{1}{|c}{\bfseries F0.5}
+\multicolumn{1}{c|}{\bfseries $CANDIDATE_\_SET\_SIZE$} & \multicolumn{1}{|c|}{\bfseries Precision} & \multicolumn{1}{|c|}{\bfseries Recall} & \multicolumn{1}{|c}{\bfseries F0.5}
 \\ \hline \hline
 %\endhead
 
@@ -23,12 +23,12 @@
 4096 & 0.949161425576 & 0.901892430279 & 0.939315352697 \\ \hline
 
 \end{tabular}
-\caption{Candidate set size}
+\caption{Parameter optimization for the optimal candidate set size.}
 \end{table}
  
 
 \begin{longtable}{l|l|l|l|l}
-\multicolumn{1}{c|}{\bfseries min$\_$score} & \multicolumn{1}{|c|}{\bfseries act$\_$dist} & \multicolumn{1}{|c|}{\bfseries Precision} & \multicolumn{1}{|c|}{\bfseries Recall} & \multicolumn{1}{|c}{\bfseries F0.5}\\ \hline
+\multicolumn{1}{c|}{\bfseries $MIN\_SCORE$} & \multicolumn{1}{|c|}{\bfseries $ACT\_DIST$} & \multicolumn{1}{|c|}{\bfseries Precision} & \multicolumn{1}{|c|}{\bfseries Recall} & \multicolumn{1}{|c}{\bfseries F0.5}\\ \hline
 \endhead
  \hline
 
@@ -68,7 +68,7 @@
 					 & 3 & 0.9959159860 & 0.8500996016 & 0.9628835740 \\ \hhline{~----}
 					 & 4 & 0.9959325973 & 0.8535856574 & 0.9637876743 \\ \hline
 
-\caption{Results for Overlap and Score}
+\caption{Results for the optimization of the actor Levenshtein distance and minimal score parameter.}
 \label{tab_overlapScore}
 \end{longtable}
 
@@ -86,7 +86,7 @@
 \textbf{MFM without id} & 0.8928571429 & 0.7142857143 & 0.8503401361 \\
 
 \end{tabular}
-\caption{Baseline}
+\caption{Final evaluation results comparing Baseline and the MFM approach.}
 \end{table}
 
 %precision_baseline,precision_mfm_with_id,precision_mfm_without_id,recall_baseline,recall_mfm_with_id,recall_mfm_without_id,f0.5_baseline,f0.5_mfm_with_id,f0.5_mfm_without_id

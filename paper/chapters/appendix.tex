@@ -1,35 +1,30 @@
 %!TEX root = ../lod-group1.tex
 
-
-%\begin{description}
-%\item[Browser:]\index{Browser} blabla
-%\end{description}
-
-
-%\newpage
-
-% Appendix (Akronyme)
-%\section{Abbreviations and Acronyms}\index{Acronyms}
-
-%\begin{tabbing}
-%\hspace*{3cm}\=  \\ \kill
-%WWW \> World Wide Web\\
-%\end{tabbing}
-
 \section{Example}
+\label{appendix_example}
 
 To illustrate the definitions for \emph{True Positives (TP)}, \emph{False Positivies (FP)}, \emph{True Negatives (TN)} and \emph{False Negatives (FN)}, the following example is given.
 
 \begin{align*}
-N &= \{LotR\textsubscript{N}, FG\textsubscript{N}, GoT\textsubscript{N}, BB\textsubscript{N}, HP\textsubscript{N}\} \\
-M &= \{LotR\textsubscript{M}, FG\textsubscript{M}, HP\textsubscript{M}\}
+M &= \{LotR\textsubscript{M}, FG\textsubscript{M}, HP\textsubscript{M}\} \\
+N &= \{LotR\textsubscript{N}, FG\textsubscript{N}, GoT\textsubscript{N}, BB\textsubscript{N}, HP\textsubscript{N}\},~where \\
+\\
+LotR &= Lord~of~the~Rings \\
+FG &= Forrest~Gump \\
+GoT &= Game~of~Thrones \\
+BB &= Breaking~Bad \\
+HP &= Harry~Potter
 \end{align*}
 
 $M$ is the current dataset. $N$ is the set of new movies, that need to be matched. The subscript indicates, from which data source a movie comes from, e.g. $LotR_N$ is the movie $LotR$ from the new movie set.
 As a consequence, the gold standard would be:
 
 \begin{align*}
-gold()
+gold(LotR_N) &:= LotR_M \\
+gold(FG_N) &:= FG_M \\
+gold(GoT_N) &:= \bot~~(not~in~the~database) \\
+gold(BB_N) &:= \bot~~(not~in~the~database) \\
+gold(HP_N) &:= HP_M \\
 \end{align*}
 
 Assuming the system returned the following matches:
@@ -56,7 +51,5 @@ $\mathbf{\bot}$                 & TN                    & TN                  & 
 \caption{This shows the definitions \emph{TP}, \emph{TN}, \emph{FP} and \emph{FN}.}
 \label{tab_appendix}
 \end{table}
-
-
 
 \input{chapters/appendix_evaluationTable.tex}
