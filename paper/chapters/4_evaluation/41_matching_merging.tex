@@ -71,9 +71,6 @@ Furthermore, to evaluate the bias of using the annotation of IMDb-IDs as gold st
 
 \subsection{$CANDIDATE\_SET\_SIZE$ Parameter}
 The first test looks at the impact on the quality of the results when the number of considered candidates is increased (see Figure~\ref{fig_candidate_set_size}).
-For each test step, the candidate set size was doubled (starting at 2), hence a logarithmic scale is used.
-In general, the candidate set size should be as small as possible, because the greater this number, the longer the runtime of the matching process.
-For example, when trying to match 4000 movies, it takes 145 minutes with a $CANDIDATE\_SET\_SIZE$ of 1024, but 276 minutes with a $CANDIDATE\_SET\_SIZE$ of 2048.
 
 \begin{figure}[h!]
   \begin{center}
@@ -82,6 +79,10 @@ For example, when trying to match 4000 movies, it takes 145 minutes with a $CAND
   \caption{$CANDIDATE\_SET\_SIZE$ evaluation: The best F0.5 performance is reached at a candidate set size of 32. Other parameters: $MIN\_SCORE = 0.3, ACT\_DIST = 3$.}
   \label{fig_candidate_set_size}
 \end{figure}
+
+For each test step, the candidate set size was doubled (starting at 2), hence a logarithmic scale is used.
+In general, the candidate set size should be as small as possible, because the greater this number, the longer the runtime of the matching process.
+For example, when trying to match 4000 movies, it takes 145 minutes with a $CANDIDATE\_SET\_SIZE$ of 1024, but 276 minutes with a $CANDIDATE\_SET\_SIZE$ of 2048.
 
 \subsection{$ACT\_DIST$ and $MIN\_SCORE$ Parameter}
 A second test observes the maximum Levenshtein distance between two actors and the threshold that needs to be reached for the actor overlap.
