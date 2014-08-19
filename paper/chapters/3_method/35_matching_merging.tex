@@ -12,6 +12,9 @@ However, simply dumping the second dataset into the database would lead to dupli
 Thus, the datasets need to be aggregated and unified by looking for a match for each new entry in the old dataset.
 Potentially, this has to be done for matching every entry, such as movies, actors, characters, and others, but the following sections focus on matching movies only.
 
+As mentioned before, some movies from Freebase, OFDb and TMDb already have an IMDb-ID, so that they can directly be matched.
+But for those movies, which do not have a link to IMDb, another approach has to be developed.
+
 A first approach is to match movies only by their name.
 However, only using the name as a matching criteria yields multiple problems, such as:
 \begin{itemize}
