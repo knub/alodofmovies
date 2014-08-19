@@ -29,8 +29,8 @@
 \definecolor{lightgray}{gray}{0.85}
 \DeclareMathOperator*{\argmax}{\arg\!\max}
 \DeclarePairedDelimiterX\Set[2]{\lbrace}{\rbrace}%
- { #1 \,\delimsize|\, #2 }
- \numberwithin{equation}{section}
+{ #1 \,\delimsize|\, #2 }
+\numberwithin{equation}{section}
 
 \setlength\parindent{24pt}
 
@@ -50,36 +50,36 @@
 \begin{document}
 
 \begin{titlepage}
-  \begin{center}
-    \mbox{}
-    \vspace{1cm}
+\begin{center}
+\mbox{}
+\vspace{1cm}
 
-    {\huge Match Forrest, Match! \\[1em] {\LARGE Creating a unified Dataset of Movies}}
+{\huge Match Forrest, Match! \\[1em] {\LARGE Creating a unified Dataset of Movies}}
 
-    \vspace{4cm}
+\vspace{4cm}
 
-    Seminar paper for \\[1em]
-    {\large \sc Semantic Multimedia 2014 - A LOD of Movies} \\[1em]
-    Summer Semester 2014 \\[1em]
-    Hasso-Plattner-Institut for Softwaresystemtechnik GmbH \\[1em]
-    University Potsdam
+Seminar paper for \\[1em]
+{\large \sc Semantic Multimedia 2014 - A LOD of Movies} \\[1em]
+Summer Semester 2014 \\[1em]
+Hasso-Plattner-Institut for Softwaresystemtechnik GmbH \\[1em]
+University Potsdam
 
-    \vspace{3cm}
+\vspace{3cm}
 
-		Authors:
+Authors:
 
-    \vspace{1em}
+\vspace{1em}
 
-		{\Large Tanja Bergmann} \\
-		{\Large Stefan Bunk} \\
-		{\Large Tim Draeger} \\
-		{\Large Dominik Müller} \\
-		{\Large Ricarda Schüler}
+{\Large Tanja Bergmann} \\
+{\Large Stefan Bunk} \\
+{\Large Tim Draeger} \\
+{\Large Dominik Müller} \\
+{\Large Ricarda Schüler}
 
-    \vspace{3em}
+\vspace{3em}
 
-    August 19th, 2014
-  \end{center}
+August 19th, 2014
+\end{center}
 \end{titlepage}
 
 
@@ -89,12 +89,12 @@
 \begin{abstract}
 \noindent
 
-The world wide web contains lots of pages about movies, but most of them only offer unstructured content.
+The world wide web contains lots of pages about movies, but most of them offer only unstructured content.
 This paper describes the system \emph{Match Forrest, Match!}, which aggregates and links movie data from different online movie data sources to a unified, linked open dataset.
 Therefor, the IMDb, TMDb, OFDb and Freebase are used.
 Because one movie can exist in multiple of these data sources, the system has to recognize those movies and match them to one entity.
 Entities have different representations in different data sources, this is why a matching algorithm has to be developed.
-The matching algorithm presented in this paper uses the overlap of actors to determine which movies should be matched.
+The matching algorithm presented in this paper uses the overlap of actors to determine, which movies should be matched.
 The algorithm is evaluated and the results show a high precision, while still maintaining a good recall.
 Besides, the system updates all movies periodically, so that the resulting dataset is always up-to-date.
 
