@@ -129,20 +129,21 @@ The baseline approach matches if there is an exact match between any of the anno
 \end{figure}
 
 \subsection{Error Sources}
-The results of the last evaluation have been analyzed for possible error sources.
-The following error sources have been found for matching incorrectly:
+The results of an analysis of wrong matches came to the following conclusions:
+In general, if the systems returns a match, this is very likely to be correct (as indicated by the high precision).
+In the cases, where an incorrect match was returned, this was most likely a match for a movie, which was not in the database, i.e. the system thought it found a match from the database, but actually, there was not.
+This was the case in 85\% of the returned matches.
+The remaining 15\% were actual wrong matches, i.e. the correct movie could have been found, but wasn't.
+
+The bigger problem was not finding a possible match.
+For this, the following error sources have been identified:
 
 \begin{itemize}
-  \item
-    In 82\% of the wrong matches the actual movie was not in the database, but the system returned a match
 	\item
-    In the remaining cases, the algorithm used an inprecise cut of the threshold
-\end{itemize}
-
-The following error sources have been identified for not finding a possible match:
-
-\begin{itemize}
-	\item In around 70\% of the cases, a match was not found because the correct match was not in the candidate set
-	\item In around 20\% of the cases, there was no information to calculate the score.
-	\item In the remaining cases, the threshold was to low.
+    In around 70\% of the cases, a match was not found because the correct match was not in the candidate set
+	\item
+    In around 20\% of the cases, the information used for matching was not available.
+    In general, lots of movies without an IMDb-ID only have a name and an overview (free text).
+	\item
+    In the remaining cases, the threshold was to low.
 \end{itemize}
