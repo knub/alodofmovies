@@ -28,7 +28,7 @@ The scheduler sends a request to the change API to get all movies which changed 
 Then, the scheduler can filter for movies which are unknown and thus new.
 
 In OFDb, the movies have increasing IDs.
-New movies, added to the database on the current day, can be found on the following page \url{http://www.ofdb.de/view.php?page=neu&Kat=Film&Tage=1}.
+New movies, added to the database since the day before, can be found on a special page\footnote{\url{http://www.ofdb.de/view.php?page=neu&Kat=Film&Tage=1}}.
 So, the scheduler knows the highest and latest movie ID and also the last movie ID of OFDb in the triple store.
 All IDs between these two are IDs of new movies.
 With the help of these IDs, the scheduler can easily build the URL for the movie resource\footnote{\url{http://www.ofdb.de/film/[id]}} and crawl it.
