@@ -130,7 +130,6 @@ The baseline approach matches if there is an exact match between any of the anno
 
 \subsection{Error Sources}
 An error analysis was conducted and the results are listed in the following paragraph.
-
 In general, if the systems returns a match, this is very likely to be correct, as indicated by the high precision.
 In the cases, where an incorrect match was returned, this was most likely a match for a movie, which was not in the database, i.e. the system found a match from the database, but actually, there was no correct match.
 This was the case in 85\% of the returned incorrect matches.
@@ -146,5 +145,5 @@ For this, the following error sources have been identified:
     In around 20\% of the cases, the information used for matching was not available.
     In general, lots of movies without an IMDb-ID only have a name and an overview (free text).
 	\item
-    In the remaining cases, the correct movie would have been matched but the calculated score was lower then the threshold.
+    In the remaining cases, the correct movie would have been matched but the calculated score was lower than the threshold.
 \end{itemize}
