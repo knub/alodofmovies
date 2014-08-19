@@ -128,17 +128,15 @@ An evaluation of this approach can be found in Section \ref{subsec_evaluation_ma
 
 \paragraph{Implementation}
 The actual implementation does not only use the actor overlap, but also considers the overlap for producers, writers, voice actors and directors.
-If there are lots of actors in both, the new movie and the candidate movie, this information is taken into account with a high weight.
+If there are lots of actors in both, the new movie and the candidate movie, this is taken into account with a high weight.
 However, for movies which do not have much actor information (e.g. cartoons, animated films etc.), more weight is put to e.g. voice actors.
-Furthermore, the movie name and the year a movie was published are used as the deciding factor between movies, when their actor overlap is equal.
-
-These improvements have shown to produce better results as shown in Section \ref{subsec_evaluation_matching}.
+Furthermore, the name of the movie and the year it was published are used as the deciding factor between movies, when their actor overlap is equal.
 
 \subsubsection{Merging Movie Resources}
 
 If two movie resources are identified as the same, the movies have to be merged, i.e. the already existing movie is enriched with the new information.
-The triples from the matched movie can contain new, duplicate or conflicting information.
-The system, however, considers all triples to be correct and inserts them all.
+The triples from the matched movie can contain new, duplicated or conflicting information.
+The system, however, considers all triples to be correct and inserts them.
 A conflict detection and resolution is not in the scope of this paper.
 All triples are stored in an extra graph, depending on the data source where they originated from.
-This allows for tracking duplicate or conflicting information down to their origin.
+This allows for tracking duplicated or conflicting information down to their origin.
