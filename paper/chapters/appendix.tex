@@ -16,21 +16,33 @@
 %WWW \> World Wide Web\\
 %\end{tabbing}
 
-\section{TODO}
+\section{Example}
 
-$N = \{$LotR\textsubscript{N}, FG\textsubscript{N}, GoT\textsubscript{N}, BB\textsubscript{N}, HP\textsubscript{N}$\}$
+To illustrate the definitions for \emph{True Positives (TP)}, \emph{False Positivies (FP)}, \emph{True Negatives (TN)} and \emph{False Negatives (FN)}, the following example is given.
 
-$M = \{$LotR\textsubscript{M}, FG\textsubscript{M}, HP\textsubscript{M}$\}$ \\
+\begin{align*}
+N &= \{LotR\textsubscript{N}, FG\textsubscript{N}, GoT\textsubscript{N}, BB\textsubscript{N}, HP\textsubscript{N}\} \\
+M &= \{LotR\textsubscript{M}, FG\textsubscript{M}, HP\textsubscript{M}\}
+\end{align*}
 
-Matches returned by the system:
+$M$ is the current dataset. $N$ is the set of new movies, that need to be matched. The subscript indicates, from which data source a movie comes from, e.g. $LotR_N$ is the movie $LotR$ from the new movie set.
+As a consequence, the gold standard would be:
 
-$\{
-($LotR\textsubscript{N}, LotR\textsubscript{M}$);
-($FG\textsubscript{N}, HP\textsubscript{M}$);
-($GoT\textsubscript{N}, $\mathbf{\bot});
-($BB\textsubscript{N}, HP\textsubscript{M}$);
-($HP\textsubscript{N}, $\mathbf{\bot})
-\}$
+\begin{align*}
+gold()
+\end{align*}
+
+Assuming the system returned the following matches:
+
+\begin{align*}
+\{ (LotR\textsubscript{N}&, LotR\textsubscript{M}), \\
+(FG\textsubscript{N}&, HP\textsubscript{M}), \\
+(GoT\textsubscript{N}&, \mathbf{\bot}), \\
+(BB\textsubscript{N}&, HP\textsubscript{M}), \\
+(HP\textsubscript{N}&, \mathbf{\bot}) \} \\
+\end{align*}
+
+Then, by the definitions given in Section \ref{subsec_evaluation_matching}, the sets would look like this:
 
 \begin{table}[h]
 \centering
@@ -41,7 +53,7 @@ $\{
 \textbf{HP\textsubscript{M}}    & TN                    & FP                  & TN                   & FP                   & FN                  \\ \hline
 $\mathbf{\bot}$                 & TN                    & TN                  & TN                   & TN                   & TN                  \\ 
 \end{tabular}
-\caption{TODO}
+\caption{This shows the definitions \emph{TP}, \emph{TN}, \emph{FP} and \emph{FN}.}
 \label{tab_appendix}
 \end{table}
 
