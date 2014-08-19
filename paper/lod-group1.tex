@@ -83,7 +83,8 @@ August 19th, 2014
 \end{titlepage}
 
 
-\setcounter{page}{1}
+\pagenumbering{roman}
+% \setcounter{page}{1}
 
 % Zweite Seite = Kurzzusammenfassung
 \begin{abstract}
@@ -91,7 +92,7 @@ August 19th, 2014
 
 The world wide web contains lots of pages about movies, but most of them offer only unstructured content.
 This paper describes the system \emph{Match Forrest, Match!}, which aggregates and links movie data from different online movie data sources to a unified, linked open dataset.
-Therefor, the IMDb, TMDb, OFDb and Freebase are used.
+For that, the IMDb, TMDb, OFDb and Freebase are used.
 Because one movie can exist in multiple of these data sources, the system has to recognize those movies and match them to one entity.
 Entities have different representations in different data sources, this is why a matching algorithm has to be developed.
 The matching algorithm presented in this paper uses the overlap of actors to determine, which movies should be matched.
@@ -108,6 +109,8 @@ Besides, the system updates all movies periodically, so that the resulting datas
 \tableofcontents
 
 \newpage
+
+\pagenumbering{arabic}
 
 \input{chapters/1_introduction}
 %\clearpage
