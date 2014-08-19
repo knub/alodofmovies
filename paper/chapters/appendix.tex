@@ -3,7 +3,7 @@
 \section{Example}
 \label{appendix_example}
 
-To illustrate the definitions for \emph{True Positives (TP)}, \emph{False Positivies (FP)}, \emph{True Negatives (TN)} and \emph{False Negatives (FN)}, the following example is given.
+To illustrate the definitions for \emph{True Positives (TP)}, \emph{False Positivies (FP)}, \emph{True Negatives (TN)} and \emph{False Negatives (FN)}, the following artifical example is given.
 
 \begin{align*}
 M &= \{LotR\textsubscript{M}, FG\textsubscript{M}, HP\textsubscript{M}\} \\
@@ -30,11 +30,11 @@ gold(HP_N) &:= HP_M \\
 Assuming the system returned the following matches:
 
 \begin{align*}
-\{ (LotR\textsubscript{N}&, LotR\textsubscript{M}), \\
-(FG\textsubscript{N}&, HP\textsubscript{M}), \\
-(GoT\textsubscript{N}&, \mathbf{\bot}), \\
-(BB\textsubscript{N}&, HP\textsubscript{M}), \\
-(HP\textsubscript{N}&, \mathbf{\bot}) \} \\
+\{ (LotR\textsubscript{N}, LotR\textsubscript{M}),
+(FG\textsubscript{N}, HP\textsubscript{M}),
+(GoT\textsubscript{N}, \mathbf{\bot}),
+(BB\textsubscript{N}, HP\textsubscript{M}),
+(HP\textsubscript{N}, \mathbf{\bot}) \}
 \end{align*}
 
 Then, by the definitions given in Section~\ref{subsec_evaluation_matching}, the sets would look like this:
@@ -48,8 +48,10 @@ Then, by the definitions given in Section~\ref{subsec_evaluation_matching}, the 
 \textbf{HP\textsubscript{M}}    & TN                    & FP                  & TN                   & FP                   & FN                  \\ \hline
 $\mathbf{\bot}$                 & TN                    & TN                  & TN                   & TN                   & TN                  \\
 \end{tabular}
-\caption{This shows the definitions \emph{TP}, \emph{TN}, \emph{FP} and \emph{FN}.}
+\caption{This shows the mapping to \emph{TP}, \emph{TN}, \emph{FP} and \emph{FN}.}
 \label{tab_appendix}
 \end{table}
+
+Thus, precision would be $\frac{1}{3}$ and recall would be $\frac{1}{3}$.
 
 \input{chapters/appendix_evaluationTable}
