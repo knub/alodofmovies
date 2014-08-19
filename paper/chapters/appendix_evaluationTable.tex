@@ -1,3 +1,4 @@
+\clearpage
 \section{Exact Results for Evaluation of the Matching}
 \label{appendix_data}
 
@@ -27,7 +28,24 @@
 \end{tabular}
 \caption{Parameter optimization for the optimal candidate set size.}
 \end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l||l|l|l}
+ &  \multicolumn{1}{|c|}{\bfseries Precision} &  \multicolumn{1}{|c|}{\bfseries Recall} &  \multicolumn{1}{|c}{\bfseries F0.5}
+\\ \hline \hline
+%\endhead
+
+\textbf{Baseline}       & 0.5923566878980892 & 0.5925663716814159 & 0.592398612782221 \\ \hline
+\textbf{MFM with id}    & 0.991807755324959 & 0.88671875 & 0.9688433632095604 \\ \hline
+\textbf{MFM without id} & 0.8928571429 & 0.7142857143 & 0.8503401361 \\
+
+\end{tabular}
+\caption{Final evaluation results comparing Baseline and the MFM approach.}
+\end{table}
+
  
+\clearpage
 
 \begin{longtable}{l|l|l|l|l}
 \multicolumn{1}{c|}{\bfseries $MIN\_SCORE$} & \multicolumn{1}{|c|}{\bfseries $ACT\_DIST$} & \multicolumn{1}{|c|}{\bfseries Precision} & \multicolumn{1}{|c|}{\bfseries Recall} & \multicolumn{1}{|c}{\bfseries F0.5}\\ \hline
@@ -73,23 +91,6 @@
 \caption{Results for the optimization of the actor Levenshtein distance and minimal score parameter.}
 \label{tab_overlapScore}
 \end{longtable}
-
-
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{l||l|l|l}
- &  \multicolumn{1}{|c|}{\bfseries Precision} &  \multicolumn{1}{|c|}{\bfseries Recall} &  \multicolumn{1}{|c}{\bfseries F0.5}
-\\ \hline \hline
-%\endhead
-
-\textbf{Baseline}       & 0.5923566878980892 & 0.5925663716814159 & 0.592398612782221 \\ \hline
-\textbf{MFM with id}    & 0.991807755324959 & 0.88671875 & 0.9688433632095604 \\ \hline
-\textbf{MFM without id} & 0.8928571429 & 0.7142857143 & 0.8503401361 \\
-
-\end{tabular}
-\caption{Final evaluation results comparing Baseline and the MFM approach.}
-\end{table}
 
 %precision_baseline,precision_mfm_with_id,precision_mfm_without_id,recall_baseline,recall_mfm_with_id,recall_mfm_without_id,f0.5_baseline,f0.5_mfm_with_id,f0.5_mfm_without_id
 %0.5923566878980892,0.991807755324959,0.8928571429,0.5925663716814159,0.88671875,0.7142857143,0.592398612782221,0.9688433632095604,0.8503401361
